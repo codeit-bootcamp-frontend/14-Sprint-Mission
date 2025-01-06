@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: "pretendard", sans-serif;
+    margin:0;
+  }
+
+header {
+    height: 70px;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+}
+
+.header {
+    display:flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding:9px 0;
+}
+
+.logo {
+    height: 51px;
+    width: 153px;
+    margin-left: 200px;
+    cursor:pointer;
+}
+
+.login {
+    background-color: #3692FF;
+    border-radius: 8px;
+    width: 88px;
+    height: 42px;
+    padding: 12px 23px;
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 200px;
+    cursor:pointer;
+}
+
+.login:hover, .top_btn:hover {
+    background-color: #1251AA;
+}
+
+section {
+    background-color: #CFE5FF;
+    height: 540px;
+    width: 100%;
+}
+
+.top-section {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+
+.top_btn {
+    background-color: #3692FF;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 40px;
+    padding: 12px 71px;
+    cursor:pointer;
+}
+
+
+.content {
+    width: 700px;
+    margin-bottom: 150px;
+}
+.top-content {
+    font-size:30px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.img_home{
+    width: 746px;
+    height: 340px;
+}
+
+main {
+    background-color: #ffffff;
+   
+}
+
+.main-left, .main-right {
+    width: 900px;
+    margin: 90px auto;
+    display: grid;
+    background-color: #F7F8FA;
+    padding: 0 30px;
+}
+
+.main-left {
+    grid-template-areas: "img script";
+}
+
+.main-right {
+    grid-template-areas: "script img";
+}
+
+.main-div {
+    grid-area: script;
+    padding: 100px 0;
+}
+
+.main-div-right{
+    grid-area: script;
+    padding: 100px 0;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.main-img {
+    width: 588px;
+    height: 444px;
+    grid-area: img;
+}
+
+.title {
+    color: #3692FF;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.main-content-bold {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.main-content {
+    font-size: 15px;
+    color: #000000;
+}
+
+footer {
+    background-color: #111827;
+    padding: 30px 150px;
+    height: 200px;
+}
+
+.footer-div {
+    display: flex;
+    justify-content: space-evenly;
+    color: #ffffff;
+    align-items: flex-start;
+    font-size:18px;
+}
+
+.social-btn img {
+    height: 30px;
+    padding:5px;
+}
+
+.footer-link a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px;
+}
+
+hr {
+    height: 60px;
+    background-color: #F7F8FA;
+    margin : 0;
+    width: 100%;
+    border:0;
+}
