@@ -10,9 +10,12 @@
   --secondary-600: #4b5563;
   --secondary-500: #6b7280;
   --secondary-400: #9ca3af;
-  --secondary-300h: #e5e7eb;
+  --secondary-300: #e5e7eb;
   --secondary-200: #f3f4f6;
   --secondary-100: #f9fafb;
+}
+.text-primary-100 {
+  color: var(--primary-100);
 }
 /* font */
 * {
@@ -72,9 +75,25 @@
 /* Layout - Flex */
 .flex {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-sides {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+}
+/* Layout - Flex */
+.grid {
+  display: grid;
+}
+/* Layout - Spacing */
 .gap-8 {
   gap: 8px;
 }
