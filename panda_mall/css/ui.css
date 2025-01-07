@@ -1,0 +1,10 @@
+
+
+
+.btn { background-color: #3692FF;  color:#fff; }
+.btn:hover { background-color: #1967D6;  color:#fff; }
+.btn:active { background-color: #1251AA; color:#fff; }
+.btn.n_act { background-color: #9CA3AF; color:#fff; }
+
+.btn._a { display:inline-block; padding:16px 124px; border-radius: 50px; }
+.btn._b { display:inline-block; padding:12px 20px;  border-radius: 8px; }
