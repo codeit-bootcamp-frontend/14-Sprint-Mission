@@ -136,15 +136,16 @@ footer {
 	border-radius: 20px;
 }
 
-@media (max-width: 766px) {
+@media (max-width: 750px) {
 	.reverse {
 		flex-direction: column-reverse;
 	}
 }
 
 .group {
-	width: 350px;
-	padding: 20px;
+	flex-grow: 1;
+	width: 330px;
+	padding: 30px;
 	background-color: #FCFCFC;
 }
 
@@ -152,14 +153,17 @@ footer {
 	text-align: right;
 }
 
-@media (max-width: 766px) {
+@media (max-width: 750px) {
+	.group {
+		flex: 0 0 auto;
+	}
 	.group:nth-child(odd) {
 		text-align: left;
 	}
 }
 
 .img-group {
-	width: 60%;
+	width: 55%;
 	height: auto;
 	aspect-ratio: 5/4;
 	object-fit: cover;
@@ -173,12 +177,14 @@ footer {
 }
 
 .title {
+	margin: 12px 0 24px;
 	font-size: clamp(2rem, 3vw, 2.5rem); 
 	font-weight: 700;
 	text-overflow: ellipsis; 
 }
 
 .details {
+	margin: 0;
 	font-size: clamp(1rem, 3vw, 1.5rem); 
 	font-weight: 500;
 }
