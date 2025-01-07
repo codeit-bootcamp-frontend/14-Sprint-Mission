@@ -6,7 +6,7 @@ body {
 	margin: 0;
 	background: #ffffff;
 	font-family: 'Noto Sans KR', sans-serif;
-	min-width: 720px;
+	/* min-width: 720px; */
 }
 
 a {
@@ -46,6 +46,12 @@ footer {
 	}
 }
 
+@media (max-width: 720px) {
+	.header {
+		padding: 0 1rem;
+	}
+}
+
 .brand {
 	display: flex;
 	flex-shrink: 0;
@@ -61,6 +67,7 @@ footer {
 .brand-name {
 	display: flex;
 	align-items: center;
+	flex-shrink: 0;
 	gap: 0.5rem;
 	font-family: 'ROKAF Sans' !important;
 	font-size: 26px;
@@ -103,9 +110,12 @@ footer {
 }
 
 .view-button {
+	text-align: center;
+	display: inline-block;
+	width: 320px;
 	background-color: #3692FF;
 	color: #ffffff;
-	padding: 10px 120px;
+	padding: 10px;
 	border-radius: 40px;
 }
 
@@ -117,16 +127,23 @@ footer {
 
 .container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	max-width: 1000px;
-	margin: 140px auto 280px;
+	margin: min(140px, 8%) auto min(280px, 16%);
 	background-color: #FCFCFC;
 	border-radius: 20px;
 }
 
+@media (max-width: 766px) {
+	.reverse {
+		flex-direction: column-reverse;
+	}
+}
+
 .group {
-	flex-shrink: 0;
+	width: 350px;
 	padding: 20px;
 	background-color: #FCFCFC;
 }
@@ -135,9 +152,14 @@ footer {
 	text-align: right;
 }
 
+@media (max-width: 766px) {
+	.group:nth-child(odd) {
+		text-align: left;
+	}
+}
+
 .img-group {
 	width: 60%;
-	min-width: 400px;
 	height: auto;
 	aspect-ratio: 5/4;
 	object-fit: cover;
@@ -151,13 +173,13 @@ footer {
 }
 
 .title {
-	font-size: 40px;
+	font-size: clamp(2rem, 3vw, 2.5rem); 
 	font-weight: 700;
 	text-overflow: ellipsis; 
 }
 
 .details {
-	font-size: 24px;
+	font-size: clamp(1rem, 3vw, 1.5rem); 
 	font-weight: 500;
 }
 
@@ -187,7 +209,7 @@ footer {
 
 .info {
 	justify-content: center;
-	gap: 30px;
+	gap: min(30px, 10%);
 }
 
 .social {
@@ -200,6 +222,7 @@ footer {
 }
 
 .icon {
+	display: inline-block;
 	width: 20px;
 	height: 20px;
 }
