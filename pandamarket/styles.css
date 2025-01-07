@@ -1,0 +1,171 @@
+@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+
+* {
+    font-family: 'Pretendard', sans-serif;
+}
+
+header {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+body {
+    margin: 0;
+}
+
+.head {
+    width: 1120px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 153px;
+    height: 51px;
+}
+
+header .login-button {
+    width: 128px;
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgba(54, 146, 255, 1);
+    color: rgba(243, 244, 246, 1);
+    cursor: pointer;
+}
+
+.landingpage-image01 {
+    background-color: rgba(207, 229, 255, 1);
+    height: 540px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrap-1 {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    min-width: 1920px;
+}
+
+.landingpage-image01 img {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 350px;
+}
+
+.landingpage-description {
+    width: 357px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: absolute;
+    bottom: 100px;
+    left: 450px;
+}
+
+.landingpage-description a {
+    text-decoration: none;
+    width: 357px;
+    height: 56px;
+    cursor: pointer;
+}
+
+.p-1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.description-button {
+    cursor: pointer;
+    width: 357px;
+    height: 56px;
+    border-radius: 40px;
+    background-color: rgba(54, 146, 255, 1);
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(249, 250, 251, 1);
+}
+
+.landingpage-image02 {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.landingpage-image03 {
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+.landingpage-image04 {
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+.landingpage-image05 {
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+.landingpage-image05 img {
+    width: 100%;
+}
+
+footer {
+    height: 160px;
+    background-color: rgba(17, 24, 39, 1);
+    display: flex;
+    justify-content: center;
+
+}
+
+.foot {
+    width: 1120px;
+    height: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer p {
+    font-size: 16px;
+    color: rgba(229, 231, 235, 1);
+    font-weight: 400;
+}
+
+footer p a {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgba(229, 231, 235, 1);
+    font-weight: 400;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.middle {
+    display: flex;
+    gap: 20px;
+}
