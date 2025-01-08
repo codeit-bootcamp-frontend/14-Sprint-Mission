@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Pretendard";
+  max-width: 100vw;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10.417vw;
+}
+
+.panda-logo-image {
+  width: 9.563rem;
+  height: 3.188rem;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  width: 8rem;
+  height: 3rem;
+  gap: 0.625rem;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 11px 0;
+}
+
+section {
+  padding: 0.1px;
+}
+
+.landing-page {
+  max-width: 100%;
+  height: 540px;
+  background-color: #cfe5ff;
+  margin-bottom: 138px;
+  display: flex;
+  justify-content: center;
+}
+
+.landing-page-text {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 12.5rem;
+  height: 12.5rem;
+}
+
+.large-text {
+  font-size: 2.5rem;
+  font-family: "Pretendard";
+  font-weight: 700;
+  line-height: 3.5rem;
+  color: #374151;
+}
+
+.Seeflex {
+  width: 357px;
+  height: 3.5rem;
+}
+
+.See {
+  text-decoration: none;
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 357px;
+  height: 56px;
+  border-radius: 40px;
+  padding: 16px 124px;
+  background-color: #3692ff;
+  color: #f9fafb;
+}
+
+.See:hover,
+.login:hover {
+  background-color: #1967d6;
+}
+
+.main-img {
+  max-width: 46.625rem;
+  height: 21.25rem;
+  position: relative;
+  top: 12.5rem;
+}
+
+.second-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 138px;
+  margin-bottom: 138px;
+}
+
+.text-box {
+  background-color: #fcfcfc;
+  width: 400px;
+  height: 444px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 64px;
+}
+
+.event-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #3692ff;
+}
+
+.event-large-text {
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #374151;
+}
+
+.text-box-search {
+  background-color: #fcfcfc;
+  width: 400px;
+  height: 444px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 64px;
+  text-align: right;
+}
+
+.text-box-register {
+  background-color: #fcfcfc;
+  width: 400px;
+  height: 444px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 64px;
+}
+
+.empty-area {
+  height: 138px;
+  background-color: #fcfcfc;
+}
+
+.landing-page-last {
+  max-width: 100%;
+  height: 540px;
+  background-color: #cfe5ff;
+  display: flex;
+  justify-content: center;
+}
+
+.large-text-last {
+  font-size: 2.5rem;
+  font-family: "Pretendard";
+  font-weight: 700;
+  line-height: 56px;
+  color: #374151;
+  position: relative;
+  top: 50px;
+  margin-right: 60px;
+}
+
+.footer {
+  background-color: #111827;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 160px;
+}
+
+.design {
+  color: #9ca3af;
+}
+
+.fqa {
+  display: flex;
+  gap: 30px;
+}
+
+.footer p {
+  margin: 32.5px 0;
+}
+
+.real-last {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.last-img {
+  display: flex;
+  gap: 10px;
+}
+
+#JACJAC {
+  position: relative;
+  top: 3px;
+}
