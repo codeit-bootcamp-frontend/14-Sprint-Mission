@@ -10,20 +10,23 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="variables.css" />
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <link rel="stylesheet" href="/styles/common.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="flex-sides">
-      <div class="left flex">
-        <img src="./assets/image/logo.svg" alt="로고 이미지" />
-        <p>판다마켓</p>
+    <header>
+      <div class="wrapper flex-sides">
+        <div class="left flex gap-8">
+          <img src="./assets/image/logo.svg" alt="로고 이미지" />
+          <p class="text-primary-100">판다마켓</p>
+        </div>
+        <button type="button" class="small-48">로그인</button>
       </div>
-      <button type="button">로그인</button>
     </header>
     <main class="landing-page-content">
       <div class="top">
-        <div class="wrapper flex">
+        <div class="wrapper flex-center">
           <div class="grid gap-32">
             <h1 class="text-bold">일상의 모든 물건을 <br />거래해 보세요</h1>
             <button>구경하러 가기</button>
@@ -68,26 +71,20 @@
         <img src="./assets/image/Img_home_bottom.png" alt="랜딩페이지 하단 이미지" />
       </div>
     </main>
-    <footer class="flex-sides">
-      <p>©codeit - 2024</p>
-      <ul>
-        <li>Privacy Policy</li>
-        <li>FAQ</li>
-      </ul>
-      <ul>
-        <li>
+    <footer>
+      <div class="wrapper flex-sides">
+        <p>©codeit - 2024</p>
+        <ul class="flex-center">
+          <li>Privacy Policy</li>
+          <li>FAQ</li>
+        </ul>
+        <div class="sns-list flex-center gap-12">
           <a href="/facebook" class="facebook" />
-        </li>
-        <li>
           <a href="/twitter" class="twitter" />
-        </li>
-        <li>
           <a href="/youtube" class="youtube" />
-        </li>
-        <li>
           <a href="/instagram" class="instagram" />
-        </li>
-      </ul>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

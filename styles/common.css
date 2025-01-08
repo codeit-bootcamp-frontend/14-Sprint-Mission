@@ -1,0 +1,43 @@
+/* Common - Button */
+button,
+button.medium {
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  background-color: var(--primary-100);
+  border: 0;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+button.large {
+  min-width: 357px;
+  height: 56px;
+  font-size: 20px;
+  line-height: 32px;
+}
+button.small-40 {
+  min-width: 88px;
+  height: 42px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button.small-48 {
+  min-width: 88px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: var(--primary-200);
+  cursor: pointer;
+}
+button:active {
+  background-color: var(--primary-300);
+}
+button:disabled {
+  background-color: var(--secondary-400);
+}
