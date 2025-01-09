@@ -1,3 +1,112 @@
 body {
   background-color: #fcfcfc;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+}
+
+.login-main .logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.login-form .login-label p {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #1f2937;
+}
+
+.login-form .login-label .login-input-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 24px;
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+}
+
+.login-form .login-label img {
+  margin-left: 5px;
+}
+
+.login-form .login-label .login-input-box:focus-within {
+  border: 1px solid #3692ff;
+}
+
+.login-form .login-label input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  line-height: 26px;
+}
+
+.login-form .login-label input::placeholder {
+  color: #9ca3af;
+}
+
+.login-form button {
+  display: block;
+  padding: 12px 0;
+  background-color: #9ca3af;
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  color: #f3f4f6;
+}
+
+.convenient-login-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 16px 24px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #1f2937;
+}
+
+.convenient-login-box .convenient-login-icon-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.convenient-login-box .convenient-login-icon-box a {
+  height: 42px;
+}
+
+.sign-up-paragraph {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
+
+.sign-up-paragraph a {
+  color: #3692ff;
+  text-decoration: underline;
 }
