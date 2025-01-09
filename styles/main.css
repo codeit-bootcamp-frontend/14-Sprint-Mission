@@ -1,0 +1,147 @@
+header {
+  display: flex;
+  max-width: 1920px;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+.logo {
+  margin-left: 200px;
+  width: 153px;
+  height: 51px;
+}
+.login-button {
+  background-color: #3692ff;
+  color: #ffffff;
+  padding: 12px 23px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin-right: 200px;
+  font-size: 16px;
+}
+.hero-banner {
+  background-color: #cfe5ff;
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1920px;
+  height: 540px;
+  padding: 0;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: -60px;
+}
+.hero-title {
+  line-height: 56px;
+  font-size: 40px;
+  color: #374151;
+  font-weight: 700px;
+}
+.watch-button {
+  text-align: center;
+  justify-content: center;
+  display: inline-flex;
+  width: 320px;
+  background-color: #3692ff;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 40px;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: #fcfcfc;
+  border-radius: 12px;
+  padding: 138px 0;
+}
+.pand-group {
+  width: 50%;
+  height: auto;
+  padding-bottom: 138px;
+}
+.hero-tag {
+  color: #3692ff;
+  font-size: 18px;
+  margin-bottom: 12px;
+  line-height: 25px;
+  font-weight: 700;
+}
+.bottom-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0.02em;
+}
+.intro-text {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+.hero-description {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 120%;
+  margin-top: 24px;
+  letter-spacing: 0.08em;
+}
+.hero-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cfe5ff;
+}
+.bottom-panda {
+  margin-top: 50px;
+}
+.wrapper-bottom {
+  text-align: center;
+}
+.button:hover {
+  background-color: #1967d6;
+}
+.button:focus {
+  background-color: #1251aa;
+}
+.wrapper-bottom {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+footer {
+  background-color: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 400px 32px 400px;
+  font-size: 16px;
+  color: #9ca3af;
+}
+.faq-info {
+  display: flex;
+  gap: 30px;
+}
+.social {
+  display: flex;
+  gap: 12px;
+}
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
