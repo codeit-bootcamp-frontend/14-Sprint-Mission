@@ -134,16 +134,19 @@ body {
   width: 988px;
   height: 444px;
   margin: 138px 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  gap: 64px;
   border-radius: 12px;
   background: #FCFCFC;
   overflow: hidden;
 }
 
-.main .section--normal .texts {
-  margin: auto;
+.main .section--normal:nth-child(2n) {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 .main .section--extend {
