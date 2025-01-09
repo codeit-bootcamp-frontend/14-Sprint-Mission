@@ -37,6 +37,14 @@ body {
 }
 
 /* Header */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fcfcfc;
+}
 
 .main-nav {
   display: flex;
@@ -67,6 +75,9 @@ body {
 }
 
 /* Main */
+.home-main {
+  padding-top: 70px;
+}
 
 .center-content {
   position: relative;
