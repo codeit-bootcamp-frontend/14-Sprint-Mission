@@ -30,15 +30,15 @@ body {
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray-800);
 }
 
 .login-form .login-label .login-input-box {
   display: flex;
   justify-content: space-between;
   padding: 15px 24px;
-  background-color: #f3f4f6;
-  border: 1px solid #f3f4f6;
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-100);
   border-radius: 12px;
 }
 
@@ -47,7 +47,7 @@ body {
 }
 
 .login-form .login-label .login-input-box:focus-within {
-  border: 1px solid #3692ff;
+  border: 1px solid var(--blue);
 }
 
 .login-form .login-label input {
@@ -59,20 +59,20 @@ body {
 }
 
 .login-form .login-label input::placeholder {
-  color: #9ca3af;
+  color: var(--gray-400);
 }
 
 .login-form button {
   display: block;
   padding: 12px 0;
-  background-color: #9ca3af;
+  background-color: var(--gray-400);
   border: none;
   border-radius: 40px;
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
   text-align: center;
-  color: #f3f4f6;
+  color: var(--gray-100);
 }
 
 .convenient-login-box {
@@ -86,7 +86,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   line-height: 26px;
-  color: #1f2937;
+  color: var(--gray-800);
 }
 
 .convenient-login-box .convenient-login-icon-box {
@@ -107,6 +107,6 @@ body {
 }
 
 .sign-up-paragraph a {
-  color: #3692ff;
+  color: var(--blue);
   text-decoration: underline;
 }
