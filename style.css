@@ -1,0 +1,267 @@
+.header1{
+    margin: 0 auto;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1120px;
+    height: 51px;
+    padding: 9.5px 0px;
+    margin: 0 200px;
+}
+
+.title{
+    width: 153px;
+    height: 51px;
+}
+
+.login{
+    width: 48px;
+    height: 26px;
+    background-color: #3692FF;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #F9FAFB;
+    text-decoration: none;
+    padding: 11px 43px;
+    text-align: center;
+}
+
+.header2{
+    width: 100%;
+    height: 540px;
+    background-color: #CFE5FF;
+    margin: 0 auto;
+    display: flex;
+}
+
+.header2-main{
+    width: 1110px;
+    height: 340px;
+    display: flex;
+    padding: 200px 0px 0px 0px;
+    margin: 0 auto;
+}
+
+.title2{
+    width: 746px;
+    height: 340px;
+}
+
+.header2-title{
+    width: 357px;
+    height: 260px;
+    margin: 40px 7px 40px 0px;
+}
+
+.header2-title-font{
+    width: 313px;
+    height: 112px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 0 62px 32px 0;
+    color: #374151;
+}
+
+.items{
+    width: 115px;
+    height: 32px;
+    background-color: #3692FF;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #F9FAFB;
+    text-decoration: none;
+    padding: 12px 124px;
+    display: inline-block;
+}
+
+.main1{
+    width: 579px;
+    height: 444px;
+    margin: 0 63px 0 23.5px;
+}
+
+.main2{
+    width: 579px;
+    height: 444px;
+    margin: 0 23.5px 0 63px;
+}
+
+.main-theme{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 998px;
+    height: 444px;
+    background-color: #FCFCFC;
+    margin: 138px 466px;
+}
+
+.main1-1{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #3692FF;
+}
+
+.font1-1{
+    width: 77px;
+    height: 26px;
+    margin: 0 226px 12px 0;
+}
+
+.font2-1{
+    width: auto;
+    height: 26px;
+    margin: 0 0px 12px 257px;
+    text-align: right;
+}
+
+.font1-3{
+    width: 287px;
+    height: 64px;
+}
+
+.main1-2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    color: #374151;
+}
+
+.font1-2{
+    width: 230px;
+    height: 112px;
+    margin: 0 auto 24px 0;
+}
+
+.font2-2{
+    width: 304px;
+    height: 112px;
+    margin: 0 0 24px auto;
+    text-align: right;
+}
+
+.font2-3{
+    width: 304px;
+    height: 64px;
+    margin: 0 0 0px 29px;
+    text-align: right;
+}
+
+.font3-1{
+    width: 71px;
+    height: 26px;
+    margin: 0 288px 12px 0px;
+}
+
+.main1-3{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #374151;
+}
+
+.font3-2{
+    width: 304px;
+    height: 112px;
+    margin: 0 66px 24px 0;
+}
+
+.font3-3{
+    width: 353px;
+    height: 64px;
+    margin: 0 24px 0 0;
+}
+
+.footer1{
+    width: auto;
+    height: 138px;
+    background-color: #FCFCFC;
+}
+
+.footer2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 540px;
+    background-color: #CFE5FF;
+}
+
+.footer2-main{
+    padding: 143px 405px 0 405px;
+    display: flex;
+    background-color: #CFE5FF;
+    margin: 0 auto;
+    height: 397px;
+}
+
+.footer-image{
+    width: 746px;
+    height: 397px;
+}
+
+.footer-main{
+    display: inline-block;
+    width: 313px;
+    height: 172px;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 112.5px 69px 112.5px 0;
+}
+
+.footer3-main{
+    width: 100%;
+    height: 160px;
+    background-color: #111827;
+    display: flex;
+    justify-content: center ;
+}
+
+.footer3{
+    height: 20px;
+    width: 1120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 400px 108px 400px;
+}
+
+.footer-image2{
+    width: 18px;
+    height: 18px;
+}
+
+.privacy{
+    margin: auto 30px auto 0;
+    color: #E5E7EB;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.09px;
+    text-align: center;
+    text-decoration: none;
+    width: 103px;
+}
+
+.FAQ{
+    margin: auto 0;
+    color: #E5E7EB;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.09px;
+    text-align: center;
+    text-decoration: none;
+    width: 29px;
+}
