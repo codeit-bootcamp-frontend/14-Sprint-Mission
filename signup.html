@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>판다마켓 - 회원가입</title>
-</head>
-<body>
-  
-</body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles/common.css" />
+    <link rel="stylesheet" href="src/styles/auth.css" />
+    <title>판다마켓 - 회원가입</title>
+  </head>
+  <body>
+    <main>
+      <div class="login-main">
+        <div class="logo">
+          <a href="index.html">
+            <img src="src/assets/img/logo.svg" alt="판다 마켓 로고" />
+          </a>
+        </div>
+        <form class="login-form">
+          <label for="email" class="login-label">
+            <p>이메일</p>
+            <div class="login-input-box">
+              <input
+                id="email"
+                type="text"
+                name="email"
+                placeholder="이메일을 입력해주세요"
+              />
+            </div>
+          </label>
+          <label for="nickname" class="login-label">
+            <p>닉네임</p>
+            <div class="login-input-box">
+              <input
+                id="nickname"
+                type="text"
+                name="nickname"
+                placeholder="닉네임을 입력해주세요"
+              />
+            </div>
+          </label>
+          <label for="password" class="login-label">
+            <p>비밀번호</p>
+            <div class="login-input-box">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
+              <img
+                src="src/assets/icons/btn_visibility_off_24px.svg"
+                alt="감은 눈 아이콘"
+              />
+            </div>
+          </label>
+          <label for="repassword" class="login-label">
+            <p>비밀번호 확인</p>
+            <div class="login-input-box">
+              <input
+                id="repassword"
+                type="password"
+                name="repassword"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
+              />
+              <img
+                src="src/assets/icons/btn_visibility_off_24px.svg"
+                alt="감은 눈 아이콘"
+              />
+            </div>
+          </label>
+          <button class="login-button">회원가입</button>
+        </form>
+        <div class="convenient-login-box">
+          <p>간편 로그인하기</p>
+          <div class="convenient-login-icon-box">
+            <a href="https://www.google.com/">
+              <img src="src/assets/icons/ic_google.svg" alt="구글 아이콘" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/">
+              <img
+                src="src/assets/icons/ic_kakaotalk.svg"
+                alt="카카오톡 아이콘"
+              />
+            </a>
+          </div>
+        </div>
+        <p class="sign-up-paragraph">
+          이미 회원이신가요? <a href="login.html">로그인</a>
+        </p>
+      </div>
+    </main>
+  </body>
 </html>
