@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>판다마켓</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <a href="/">
+                <img src="images/logo/Property 1=lg@3x.png" alt="판다마켓 로고"/>
+            </a>
+        </div>
+        <div>
+            <a class="login-button" href="/login.html">로그인</a>
+        </div>
+    </header>
+    <main class="main">
+        <section class="main-section1">
+            <div class="section1-left">
+                <p class="landing-text">
+                일상의 모든 물건을<br>
+                거래해보세요
+                </p>
+                <a class="section1-button" href="/items.html">구경하러 가기</a>
+            </div>
+            <div class="section1-right">
+                <img class="section1-panda1" src="images/landing/Img_home_top.png" alt="랜딩페이지 판다1">
+            </div>
+        </section>
+        <section class="main-section2">
+            <div class="section2-sub1">
+                <div class="section2-1-left">
+                    <img class="section2-pic" src="images/landing/Img_home_01.png" alt="Hot item">
+                </div>
+                <div class="section2-1-right">
+                    <p class="section2-word">Hot item</p>
+                    <p class="section2-title">인기 상품을<br>확인해 보세요</p>
+                    <p class="section2-subtitle">가장 HOT한 중고거래 물품을<br>판다 마켓에서 확인해 보세요</p>
+                </div>
+            </div>
+            <div class="section2-sub2">
+                <div class="section2-2-left">
+                    <p class="section2-word">Search</p>
+                    <p class="section2-title">구매를 원하는<br>상품을 검색하세요</p>
+                    <p class="section2-subtitle">구매하고 싶은 물품은 검색해서<br>쉽게 찾아보세요</p>
+                </div>
+                <div class="section2-2-right">
+                    <img class="section2-pic" src="images/landing/Img_home_02.png" alt="Search">
+                </div>
+            </div>
+            <div class="section2-sub3">
+                <div class="section2-3-left">
+                    <img class="section2-pic" src="images/landing/Img_home_03.png" alt="Register">
+                </div>
+                <div class="section2-3-right">
+                    <p class="section2-word">Register</p>
+                    <p class="section2-title">판매를 원하는<br>상품을 등록하세요</p>
+                    <p class="section2-subtitle">어떤 물건이든 판매하고 싶은 상품을<br>쉽게 등록하세요</p>
+                </div>
+            </div>
+        </section>
+        <section class="main-section3">
+            <div class="section3-left">
+                <p class="landing-text">
+                믿을 수 있는<br>
+                판다마켓 중고 거래
+                </p>
+            </div>
+            <div class="section3-right">
+                <img src="images/landing/Img_home_bottom.png" alt="랜딩페이지 판다2"/>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <section class="footer-section1">
+            <div class="footer-text">
+                @codeit - 2024
+            </div>
+        </section>
+        <section class="footer-section2">
+            <div>
+                <a class="footer-privacy-policy" href="privacy.html">Privacy Policy</a>
+            </div>
+            <div>
+                <a class="footer-faq" href="faq.html">FAQ</a>
+            </div>
+        </section>
+        <section class="footer-section3">
+            <div>
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="images/landing/ic_facebook.png" alt="페이스북">
+                </a>
+            </div>
+            <div>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="images/landing/ic_twitter.png" alt="트위터">
+                </a>
+            </div>
+            <div>
+                <a href="https://www.youtube.com" target="_blank">
+                    <img src="images/landing/ic_youtube.png" alt="유튜브">
+                </a>
+            </div>
+            <div>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="images/landing/ic_instagram.png" alt="인스타">
+                </a>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
+
+<!--
+<궁금한 점?>
+1. class를 이름을 지정할 때 보통 어떤 기준으로 지정하게 되나요?
+    미션에서 작성한 클래스명에 대한 리뷰도 해주시면 감사하겠습니다.
+2. <a>를 이용해서 링크 이동을 구현했는데 button으로도 해당 기능이 가능한가요?
+3. 상단의 하늘색 배경 판다의 요소는 딱 bottom에 밀착이 되었는데, 
+    같은 방식으로 시도했을 때 하단의 하늘색 배경 판다와 bottom은 밀착이 되지 않습니다.
+    이 부분도 한 번 확인해봐주시면 감사하겠습니다.
+4. 심화학습에서 요구하는 브라우저 크기에 따라 요소 간의 간격 및 크기 등은 어떻게 조절하나요?
+    반응형을 사용하지 않고도 구현이 가능한가요?
+    제가 생각해본 바로는
+    "position: relative안에 absolute를 설정하고,
+    %나 rem/em, vw/vh 등을 이용"하면 어떨까 하는데
+    해당 방식으로 접근하면 구현이 되는지, 안된다면 이 아이디어로 구현이 안되는 이유가 무엇인지 알고 싶습니다.
+-->
