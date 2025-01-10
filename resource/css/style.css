@@ -98,6 +98,8 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
 /* ##############################################################
 	main page
 ############################################################## */
+.layout { min-width: 1200px; } /* 깨짐 방지 임시 코드 */
+
 /* header */
 .header {
     display: flex;
