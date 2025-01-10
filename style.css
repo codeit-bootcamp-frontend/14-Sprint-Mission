@@ -17,6 +17,7 @@ body {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  border: none;
 }
 
 .button--normal {
@@ -37,6 +38,50 @@ body {
   border-radius: 100px;
   padding: 16px 124px;
   font: 600 20px/24px 'Pretendard';
+}
+
+.logo {
+  height: 100%;
+  display: block;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon--18 {
+  width: 18px;
+  height: 18px;
+}
+
+.icon--24 {
+  width: 24px;
+  height: 24px;
+}
+
+.icon--42 {
+  width: 42px;
+  height: 42px;
+}
+
+.password-container {
+  position: relative;
+}
+
+#password__toggle {
+  position: absolute;
+  background: none;
+  border: none;
+  right: 24px;
+  top: 48%;
+  -webkit-transform: translateY(-52%);
+          transform: translateY(-52%);
 }
 
 .land-header {
@@ -73,15 +118,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.land-header--container__logo {
-  height: 100%;
-  display: block;
-}
-
-.land-header--container__logo img {
-  height: 100%;
 }
 
 .land-main {
@@ -218,14 +254,6 @@ body {
   gap: 12px;
 }
 
-.land-footer__end a {
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .land-h1 {
   font-size: 40px;
   font-weight: 700;
@@ -239,5 +267,121 @@ body {
   font-weight: 700;
   line-height: 1.4;
   margin: 12px 0 24px;
+}
+
+.sign {
+  background: #FCFCFC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 230px;
+}
+
+.sign-container {
+  width: 640px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+
+.sign-container .sign-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.sign-container .sign-form__input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 72px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #F3F4F6;
+  margin-bottom: 8px;
+}
+
+.sign-container .sign-form__input::-webkit-input-placeholder {
+  font: normal 400 16px/26px 'Pretendard';
+  color: #9ca3af;
+}
+
+.sign-container .sign-form__input:-ms-input-placeholder {
+  font: normal 400 16px/26px 'Pretendard';
+  color: #9ca3af;
+}
+
+.sign-container .sign-form__input::-ms-input-placeholder {
+  font: normal 400 16px/26px 'Pretendard';
+  color: #9ca3af;
+}
+
+.sign-container .sign-form__input::placeholder {
+  font: normal 400 16px/26px 'Pretendard';
+  color: #9ca3af;
+}
+
+.sign-container .sign-form__input:focus {
+  outline: none;
+  border: 2px solid #3692FF;
+}
+
+.sign-container .sign-form label {
+  color: #1f2937;
+  font: normal 700 18px/26px 'Pretendard';
+}
+
+.sign-container footer {
+  text-align: center;
+  font: normal 500 14px/24px 'Pretendard';
+  color: #1f2937;
+}
+
+.sign-container footer a {
+  color: #3692FF;
+}
+
+.social-log-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 640px;
+  height: 74px;
+  padding: 16px 23px;
+  border-radius: 8px;
+  background: #E6F2FF;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  color: #1f2937;
+  font: normal 500 16px/26px 'Pretendard';
+}
+
+.social-log-wrap__title {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 /*# sourceMappingURL=style.css.map */
