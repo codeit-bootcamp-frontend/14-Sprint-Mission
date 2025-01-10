@@ -43,7 +43,6 @@ a {
 
 .sky-bg {
   background-color: #CFE5FF;
-  height: 540px;
 }
 
 .ad-section {
@@ -97,7 +96,7 @@ a {
 .function-block {
   width: 988px;
   display: flex;
-  gap: 64px;
+  justify-content: space-around;
   border-radius: 12px;
   background-color: #FCFCFC;
 }
@@ -120,9 +119,13 @@ a {
   gap: 24px;
 }
 
+.left {
+  padding-right: 24px
+}
+
 .right {
   text-align: right;
-  padding-left: 40px;
+  padding-left: 24px;
 }
 
 .tag {
@@ -171,4 +174,119 @@ a {
 .sns a img {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 1120px) {
+  .ad-section {
+    height: 430px;
+  }
+
+  .ad-text {
+    gap: 20px;
+  }
+
+  .ad-section .title {
+    padding-left: 20px;
+  }
+  
+  .title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .button {
+    font-size: 15px;
+    width: 190px;
+    padding: 12px 28px;
+    text-align: center;
+    margin-left: 20px;
+  }
+
+  .panda {
+    width: 70%;
+    height: 30%;
+  }
+
+  .function-section {
+    height: 400px;
+  }
+
+  .function-block {
+    width: 70%;
+    height: 55%;
+  }
+
+  .function-block img {
+    width: 300px;
+  }
+
+  .tag {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .right {
+    padding-left: 20px;
+  }
+
+  .function-text {
+    gap: 15px;
+  }
+
+  footer {
+    padding: 0 20px;
+  }
+
+  .footer-codeit, .footer-link a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .ad-section {
+    height: 330px;
+  }
+  
+  .title {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .button {
+    font-size: 15px;
+    width: 150px;
+  }
+
+  .panda {
+    width: 65%;
+  }
+
+  .function-section {
+    height: 300px;
+  }
+
+  .function-block img {
+    width: 45%;
+  }
+
+  .tag {
+    font-size: 13px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .function-text {
+    gap: 10px;
+  }
+
+  footer {
+    height: 130px;
+  }
 }
