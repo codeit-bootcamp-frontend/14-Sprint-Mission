@@ -17,36 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-.header {
-    box-sizing: border-box;
-    width: 100%;
-    height: 70px;
-    padding: 9px 200px;
-    border-bottom: 1px solid #DFDFDF;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    &--container{
-        max-width: 1920px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        &__logo {
-            height: 100%;
-            display: block;
-    
-            img {
-                height: 100%;
-            }
-        }
-    }
-}
-
 .button {
     background: $blue;
     cursor: pointer;
@@ -73,12 +43,59 @@ body {
     }
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.land{
+    &-header {
+        position: fixed;
+        top: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 70px;
+        padding: 9px 200px;
+        border-bottom: 1px solid #DFDFDF;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &--container{
+            max-width: 1920px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            &__logo {
+                height: 100%;
+                display: block;
+        
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
 
-    .section {
+    &-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 70px;
+    
+        :nth-child(2n - 1) {
+            flex-direction: row-reverse;
+    
+            .texts {
+                text-align: right;
+            }
+        }
+    
+        >:last-child {
+            margin-top: 138px;
+        }
+    }
+
+    &-section {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -129,68 +146,63 @@ body {
         }
     }
 
-    :nth-child(2n - 1) {
-        flex-direction: row-reverse;
-
-        .texts {
-            text-align: right;
-        }
-    }
-
-    >:last-child {
-        margin-top: 138px;
-    }
-}
-
-.h1 {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 12px 0 24px;
-    margin-bottom: 32px;
-}
-
-.h2 {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 12px 0 24px;
-}
-
-.footer {
-    height: 96px;
-    background: #111827;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 32px 400px;
-    font-size: 16px;
-
-    a {
+    &-footer {
+        height: 96px;
+        background: #111827;
         text-decoration: none;
-        color: #E5E7EB;
-    }
-    
-    &__begin{
+        display: flex;
+        justify-content: space-between;
+        padding: 32px 400px;
         font-size: 16px;
-        color: #9CA3AF;
-    }
-
-    &__middle{
-        display: flex;
-        gap: 30px;
-    }
-
-    &__end{
-        display: flex;
-        gap: 12px;
-
+    
         a {
-            width: 18px;
-            height: 18px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+            text-decoration: none;
+            color: #E5E7EB;
+        }
+        
+        &__begin{
+            font-size: 16px;
+            color: #9CA3AF;
+        }
+    
+        &__middle{
+            display: flex;
+            gap: 30px;
+        }
+    
+        &__end{
+            display: flex;
+            gap: 12px;
+    
+            a {
+                width: 18px;
+                height: 18px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
         }
     }
+
+    &-h1 {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 12px 0 24px;
+        margin-bottom: 32px;
+    }
+
+    &-h2 {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 12px 0 24px;
+    }
 }
+
+
+
+
+
+
+
