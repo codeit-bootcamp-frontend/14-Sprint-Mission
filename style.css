@@ -212,7 +212,7 @@ body {
           align-items: end;
 }
 
-.land-section--extend .texts {
+.land-section--extend .land-h1, .land-section--extend .land-h2 {
   text-align: left;
 }
 
@@ -270,6 +270,7 @@ body {
 }
 
 .sign {
+  margin-top: 140px;
   background: #FCFCFC;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -277,7 +278,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 230px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .sign-container {
@@ -312,7 +315,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 100%;
-  height: 72px;
+  height: 56px;
   padding: 16px 24px;
   border: none;
   border-radius: 12px;

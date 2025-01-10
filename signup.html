@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 - 판다마켓</title>
+    <title>회원가입 - 판다마켓</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="sign">
     <div class="sign-container">
         <a href="/" class="logo"><img src="images/logo.svg" alt="판다마켓 로고"></a>
         <form class="sign-form" action="">
+            
             <label for="email">이메일</label>
             <input class="sign-form__input" placeholder="이메일을 입력해주세요" type="text" name="email" id="email">
+            
+            <label for="name">닉네임</label>
+            <input class="sign-form__input" placeholder="닉네임을 입력해주세요" type="text" name="name" id="name">
+
             <label for="password">비밀번호</label>
             <div class="password-container">
                 <input class="sign-form__input" placeholder="비밀번호를 입력해주세요" type="password" name="password" id="password">
                 <button id="password__toggle" class="icon icon--24" style="background-image: url(images/ico_eye-close.svg);"></button>
             </div>
-            <input class="button button--wide" type="submit" value="로그인">
+
+            <label for="password--check">비밀번호 확인</label>
+            <div class="password-container">
+                <input class="sign-form__input" placeholder="비밀번호를 다시 한 번 입력해주세요" type="password" name="password--check" id="password--check">
+                <button id="password__toggle" class="icon icon--24" style="background-image: url(images/ico_eye-close.svg);"></button>
+            </div>
+
+            <input class="button button--wide" type="submit" value="회원가입">
         </form>
         <div class="social-log-wrap">
             <p class="social-log-wrap__title">간편 로그인하기</p>
@@ -25,7 +37,7 @@
             <a class="icon icon--42" href="https://www.kakaocorp.com" style="background-image: url(images/ico_kakao.svg);"></a>
         </div>
         <footer>
-            판다마켓이 처음이신가요? <a href="/signup.html">회원가입</a>
+            이미 회원이신가요? <a href="/login.html">로그인</a>
         </footer>
     </div>
 </body>
