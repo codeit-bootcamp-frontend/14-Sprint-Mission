@@ -11,10 +11,14 @@ header {
     padding-top: 8px;
     margin-left: 200px;
     margin-right: 200px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 body {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .head {
