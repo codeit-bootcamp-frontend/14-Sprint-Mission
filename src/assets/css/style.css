@@ -102,6 +102,8 @@ img {
 }
 .main-kv__button {
   margin-top: 32px;
+  display: inline-block;
+  text-align: center;
 }
 
 /* 컨테이너 섹션 */
@@ -113,8 +115,7 @@ img {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  column-gap: 64px;
+  gap: 64px;
 }
 
 .main-section__category {
@@ -144,10 +145,12 @@ img {
 }
 
 .main-banner__inner {
+  display: flex;
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 20px;
   height: 100%;
+  align-items: center;
   background-image: url(../image/banner_img.png);
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -155,7 +158,6 @@ img {
 .main-banner__inner h2 {
   font-size: 40px;
   color: #374151;
-  padding-top: 250px;
 }
 
 /* 푸터 */
@@ -211,9 +213,6 @@ img {
 
 /* 미디어 쿼리 */
 @media screen and (max-width: 1366px) {
-  .mov {
-    display: none;
-  }
   .mov2 {
     display: none;
   }
@@ -238,6 +237,9 @@ img {
 }
 
 @media screen and (max-width: 1024px) {
+  .mov {
+    display: none;
+  }
   .header {
     padding: 0 20px;
   }
@@ -250,8 +252,7 @@ img {
   .main-section__image {
     width: 100%;
   }
-  .main-section__right--image,
-  .main-section__left--image {
+  .main-section__imagewrap {
     width: 100%;
     margin-bottom: 24px;
   }
@@ -271,9 +272,14 @@ img {
   .main-banner__inner {
     text-align: center;
     background-position: bottom center;
+    position: relative;
   }
   .main-banner__inner h2 {
-    padding-top: 200px;
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -313,8 +319,8 @@ img {
     background-size: 375px 198px;
   }
   .main-banner__inner h2 {
-    padding-top: 120px;
     font-size: 30px;
+    top: 100px;
   }
   .footer__top {
     position: relative;
