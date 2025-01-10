@@ -88,7 +88,7 @@ table {
 ############################################################## */
 body { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; word-break: keep-all; line-height: 1.4; }
 button, input, textarea, select, a { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; }
-a, a:link, a:visited, a:hover { text-decoration: none; color: inherit; }
+a, a:link, a:visited, a:hover { text-decoration: none; color: inherit; cursor: pointer;}
 button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring { outline: 1px solid #303030; }
 *:-moz-focusring { outline: 1px solid #303030; }
 * {box-sizing: border-box;}
@@ -121,15 +121,15 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
     color: #F3F4F6;
 }
 .login-link:hover,
-.link-btn:hover {
+.contents .banner .link-btn:hover {
     background-color: #1967D6;
 }
 .login-link:active,
-.link-btn:active {
+.contents .banner .link-btn:active {
     background-color: #1251AA;
 }
 .login-link[disabled],
-.link-btn[disabled] {
+.contents .banner .link-btn[disabled] {
     background-color: #9CA3AF;
 }
 
