@@ -17,9 +17,9 @@ header {
   color: #ffffff;
   padding: 12px 23px;
   border-radius: 8px;
-  flex-shrink: 0;
   margin-right: 200px;
   font-size: 16px;
+  font-weight: 600;
 }
 .hero-banner {
   background-color: #cfe5ff;
@@ -46,14 +46,16 @@ header {
   font-weight: 700px;
 }
 .watch-button {
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 32px;
   text-align: center;
   justify-content: center;
   display: inline-flex;
-  width: 320px;
   background-color: #3692ff;
   color: #ffffff;
   padding: 16px;
-  border-radius: 40px;
+  border-radius: 9999px;
 }
 .wrapper {
   margin: 0 auto;
@@ -108,9 +110,6 @@ header {
 }
 .bottom-panda {
   margin-top: 50px;
-}
-.wrapper-bottom {
-  text-align: center;
 }
 .button:hover {
   background-color: #1967d6;
