@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
+    <link rel="stylesheet" href="login-styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
+    <main>
+        <div class="wrap">
+            <div class="login-logo">
+                <img src="images/logo.png" alt="login-logo">
+            </div>
 
+
+            <form action="#">
+                <p>이메일</p>
+                <input type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+
+                <p>비밀번호</p>
+                <input type="text" name="password" id="password" placeholder="비밀번호를 입력해주세요">
+
+                <input type="submit" id="submit" value="로그인">
+            </form>
+
+            <div class="simple-login">
+                <p>간편 로그인하기</p>
+                <div class="logos">
+                    <img src="images/google-icon.png" alt="google-icon">
+                    <img src="images/kakao-icon.png" alt="google-icon">
+                </div>
+            </div>
+
+            <div class="move-to-signup">
+                <p>판다마켓이 처음이신가요? <a href="signup.html">회원가입</a></p>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
