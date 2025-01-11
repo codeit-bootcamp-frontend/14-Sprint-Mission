@@ -4,16 +4,22 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="sign.css">
         <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-        <title>로그인</title>
+        <title>회원가입</title>
     </head>
     <body>
-        <a href="/"><img src="image/logo_large.png" alt="로그인 로고" class="sign-logo"></a>
+        <a href="/"><img src="image/logo_large.png" alt="회원가입 로고" class="sign-logo"></a>
         <form class="sign-form">
             <div class="sign-form-label">
                 <label for="login-email">이메일</label>
             </div>
             <input id="login-email" name="email" type="email" 
                 placeholder="이메일을 입력해주세요" class="sign-form-input" required />
+
+            <div class="sign-form-label">
+                <label for="login-nickname">닉네임</label>
+            </div>
+            <input id="login-nickname" name="nickname"
+                placeholder="닉네임을 입력해주세요" class="sign-form-input" required />
 
             <div class="sign-form-label">
                 <label for="login-pwd" >비밀번호</label>
@@ -23,7 +29,17 @@
                     placeholder="비밀번호를 입력해주세요" class="sign-form-input" required/>
                 <img src="image/visibility_off.png" class="visibility_off">
             </div>
-            <button class="sign-btn">로그인</button>
+
+            <div class="sign-form-label">
+                <label for="login-pwd-confirm" >비밀번호  확인</label>
+            </div>
+            <div class="password-container">
+                <input id="login-pwd-confirm" name="pwd-confirm" type="password"
+                    placeholder="비밀번호를 다시 한 번 입력해주세요" class="sign-form-input" required/>
+                <img src="image/visibility_off.png" class="visibility_off">
+            </div>
+
+            <button class="sign-btn">회원가입</button>
             
         </form>
         <div class="simple-login-div">
@@ -33,8 +49,8 @@
                 <a href="https://www.kakaocorp.com/page/"><img src="image/kakao_icon.png" class="kakao-icon" alt="카카오 간편로그인 아이콘"></a>
             </div>
         </div>
-        <div class="footer">판다마켓이 처음이신가요?
-            <a href="/signup.html" class="footer-signup-link">회원가입</a>
+        <div class="footer">이미 회원이신가요?
+            <a href="/login.html" class="footer-signup-link">로그인</a>
         </div>
     </body>
 </html>
