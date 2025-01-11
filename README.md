@@ -10,8 +10,9 @@
 
 - [ ] [UI 디자인 기초 토픽](https://www.codeit.kr/topics/ui-design-basics) 수강
 - [x] 피그마 디자인에 맞게 페이지 생성 및 UI 라이브러리 미사용
-- [ ] HTML, CSS 파일을 Netlify로 배포해 주세요. (참고: https://www.codeit.kr/learn/5309)
-- [x] PC사이즈만 고려해 주어진 디자인으로 구현합니다.
+- [x] HTML, CSS 파일을 Netlify로 배포
+  - 링크: https://fe-14-sprint-mission-1-basic-lsj.netlify.app/
+- [x] PC사이즈만 고려해 주어진 디자인으로 구현
 
 ### 체크리스트 [기본]
 
