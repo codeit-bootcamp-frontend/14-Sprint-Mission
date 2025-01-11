@@ -1,233 +1,246 @@
+:root {
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #485563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --blue: #3692ff;
+  --blue-bg: #cfe5ff;
+}
+
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	background: #ffffff;
-	font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  background: #ffffff;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
-	text-decoration: none;
-	cursor: pointer;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 nav {
-	position: sticky;
-	top: 0;
-	background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
 }
 
 footer {
-	background-color: #111827;
-	height: 160px;
-	color: #9CA3AF;
+  background-color: var(--gray-900);
+  height: 160px;
+  color: var(--gray-400);
 }
 
 @font-face {
-	font-family: 'ROKAF Sans';
-	src: url("./font/ROKAF\ Slab\ Serif\ Bold.ttf") format("opentype");
+  font-family: "ROKAF Sans";
+  src: url("./font/ROKAF\ Slab\ Serif\ Bold.ttf") format("opentype");
 }
 
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: 1280px;
-	height: 70px;
-	margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  height: 70px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1919px) {
-	.header {
-		padding: 0 200px;
-	}
+  .header {
+    padding: 0 200px;
+  }
 }
 
 @media (max-width: 720px) {
-	.header {
-		padding: 0 1rem;
-	}
+  .header {
+    padding: 0 1rem;
+  }
 }
 
 .brand {
-	display: flex;
-	flex-shrink: 0;
-	align-items: center;
-	gap: 0.5rem;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .logo {
-	width: 40px;
-	height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .brand-name {
-	display: flex;
-	align-items: center;
-	flex-shrink: 0;
-	gap: 0.5rem;
-	font-family: 'ROKAF Sans' !important;
-	font-size: 26px;
-	color: #3692FF;
-	font-weight: 700;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  font-family: "ROKAF Sans" !important;
+  font-size: 26px;
+  color: var(--blue);
+  font-weight: 700;
 }
 
 .login-button {
-	flex-shrink: 0;
-	background-color: #3692FF;
-	color: #ffffff;
-	padding: 10px 40px;
-	border-radius: 8px;
+  flex-shrink: 0;
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 10px 40px;
+  border-radius: 8px;
 }
 
 .banner {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	max-width: 1120px;
-	padding: 0 1rem;
-	margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1120px;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .hero {
-	background-color: #CFE5FF;
-	padding-top: min(200px, 10%);
+  background-color: var(--blue-bg);
+  padding-top: min(200px, 10%);
 }
 
 .hero-text {
-	display: flex;
-	flex: 0 0 350px;
-	flex-direction: column;
+  display: flex;
+  flex: 0 0 350px;
+  flex-direction: column;
 }
 
 .hero-title {
-	font-weight: 700;
-	font-size: 40px;
-	color: #374151;
+  font-weight: 700;
+  font-size: 40px;
+  color: #374151;
 }
 
 .view-button {
-	text-align: center;
-	display: inline-block;
-	width: 320px;
-	background-color: #3692FF;
-	color: #ffffff;
-	padding: 10px;
-	border-radius: 40px;
+  text-align: center;
+  display: inline-block;
+  width: 320px;
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 40px;
 }
 
 .img-panda {
-	width: 60%;
-	height: auto;
-	margin-top: 2rem;
+  width: 60%;
+  height: auto;
+  margin-top: 2rem;
 }
 
 .container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	max-width: 1000px;
-	margin: min(140px, 8%) auto min(280px, 16%);
-	background-color: #FCFCFC;
-	border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: min(140px, 8%) auto min(280px, 16%);
+  background-color: var(--gray-50);
+  border-radius: 20px;
 }
 
 @media (max-width: 750px) {
-	.reverse {
-		flex-direction: column-reverse;
-	}
+  .reverse {
+    flex-direction: column-reverse;
+  }
 }
 
 .group {
-	flex-grow: 1;
-	width: 330px;
-	padding: 30px;
-	background-color: #FCFCFC;
+  flex-grow: 1;
+  width: 330px;
+  padding: 30px;
 }
 
 .group:nth-child(odd) {
-	text-align: right;
+  text-align: right;
 }
 
 @media (max-width: 750px) {
-	.group {
-		flex: 0 0 auto;
-	}
-	.group:nth-child(odd) {
-		text-align: left;
-	}
+  .group {
+    flex: 0 0 auto;
+  }
+  .group:nth-child(odd) {
+    text-align: left;
+  }
 }
 
 .img-group {
-	width: 55%;
-	height: auto;
-	aspect-ratio: 5/4;
-	object-fit: cover;
-	border-radius: 20px;
+  width: 55%;
+  height: auto;
+  aspect-ratio: 5/4;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .label {
-	color: #3692FF;
-	font-size: 18px;
-	font-weight: 700;
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .title {
-	margin: 12px 0 24px;
-	font-size: clamp(2rem, 3vw, 2.5rem); 
-	font-weight: 700;
-	text-overflow: ellipsis; 
+  margin: 12px 0 24px;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  text-overflow: ellipsis;
 }
 
 .details {
-	margin: 0;
-	font-size: clamp(1rem, 3vw, 1.5rem); 
-	font-weight: 500;
+  margin: 0;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 500;
 }
 
 .slogan {
-	background-color: #CFE5FF;
+  background-color: var(--blue-bg);
 }
 
 .slogan .banner {
-	padding-top: 140px;
-	align-items: center;
+  padding-top: 140px;
+  align-items: center;
 }
 
 .footer {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	max-width: 1120px;
-	margin: 0 auto;
-	padding: 30px 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 30px 1rem;
 }
 
 .codeit,
 .info,
 .social {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .info {
-	justify-content: center;
-	gap: min(30px, 10%);
+  justify-content: center;
+  gap: min(30px, 10%);
 }
 
 .social {
-	justify-content: flex-end;
-	gap: 12px;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .info a {
-	color: #9CA3AF;
+  color: var(--gray-400);
 }
 
 .icon {
-	display: inline-block;
-	width: 20px;
-	height: 20px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
