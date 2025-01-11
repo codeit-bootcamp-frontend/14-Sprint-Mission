@@ -63,7 +63,7 @@ body {
     position: relative;
   }
 
-  .visibility_off {
+  .visibility-off {
     position:absolute;
     width: 24px;
     height: 24px;
