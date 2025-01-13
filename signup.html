@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓 - 로그인</title>
+    <title>판다마켓 - 회원가입</title>
     <link rel="icon" href="assets/images/logo/favicon.ico" />
     <link
       rel="preload"
@@ -12,10 +12,10 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/signup.css" />
   </head>
   <body>
-    <main class="form-wrapper flex-center gap-40" id="login">
+    <main class="form-wrapper flex-center gap-40" id="signup">
       <img src="assets/images/logo/panda-market-logo.png" alt="로고 이미지" id="logo" />
       <form class="grid-center gap-24">
         <div class="input-field grid gap-16">
@@ -25,34 +25,47 @@
           </div>
         </div>
         <div class="input-field grid gap-16">
+          <label for="nickname" class="text-2lg text-bold">닉네임</label>
+          <div class="input-wrapper flex-left radius-12">
+            <input id="nickname" type="text" value="" placeholder="닉네임을 입력해주세요" />
+          </div>
+        </div>
+        <div class="input-field grid gap-16">
           <label for="pwd" class="text-2lg text-bold">비밀번호</label>
           <div class="input-wrapper flex-sides radius-12">
             <input id="pwd" type="password" value="" placeholder="비밀번호를 입력해주세요" />
             <input type="checkbox" alt="비밀번호 확인" id="visibility"  />
           </div>
         </div>
-        <button type="submit" id="btn-submit" disabled>로그인</button>
+        <div class="input-field grid gap-16">
+          <label for="pwd-check" class="text-2lg text-bold">비밀번호</label>
+          <div class="input-wrapper flex-sides radius-12">
+            <input id="pwd-check" type="password" value="" placeholder="비밀번호를 다시 한 번 입력해주세요" />
+            <input type="checkbox" alt="비밀번호 확인" id="visibility-again"  />
+          </div>
+        </div>
+        <button type="submit" id="btn-submit" disabled>회원가입</button>
         <div class="flex-sides radius-8" id="sns-login-wrapper">
           <p class="text-lg text-medium">간편 로그인 하기</p>
           <ul id="sns-login" class="flex-right gap-16">
             <li>
-              <a href="">
+              <a href="https://www.google.com/">
                 <img src="assets/images/login/social-google.svg" id="goggle" alt="구글 로그인" />
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk">
                 <img src="assets/images/login/social-kakao.svg" id="kakao" alt="카카오 로그인" />
               </a>
             </li>
           </ul>
         </div>
         <div class="flex-center gap-4 text-md text-medium" id="signup-wrapper">
-          <p>판다마켓이 처음이신가요?</p> 
-          <a href="signup.html">회원가입</a>
+          <p>이미 회원이신가요?</p> 
+          <a href="login.html">로그인</a>
         </p>
       </form>
     </main>
-    <script src="./scripts/login.js"></script>
+    <script src="./scripts/signup.js"></script>
   </body>
 </html>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다 마켓</title>
     <link rel="icon" href="assets/images/logo/favicon.ico" />
     <link
-      rel="stylesheet"
+      rel="preload"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/home.css" />
   </head>
   <body>
@@ -21,20 +21,20 @@
           <img src="assets/images/common/logo.svg" alt="로고 이미지" />
           <a href="/" class="text-primary-100">판다마켓</a>
         </div>
-        <a href="login.html"><button type="button" class="small-48">로그인</button></a>
+        <a href="login.html" class="button small-48">로그인</a>
       </div>
     </header>
     <main class="landing-page-content">
       <section class="banner flex-center" id="hero">
         <div class="wrapper grid">
           <h1 class="text-bold">일상의 모든 물건을 <br />거래해 보세요</h1>
-          <a href="items.html"><button>구경하러 가기</button></a>
+          <a class="button" href="items.html">구경하러 가기</a>
         </div>
         <img src="assets/images/home/hero-image.png" alt="배너 이미지" />
       </section>
       <section class="cards" id="features">
         <div class="card-wrapper flex-center">
-          <div class="card flex-center" id="feature-1">
+          <div class="card flex-center gap-40" id="feature-1">
             <img src="assets/images/home/feature1-image.png" alt="랜딩페이지 이미지 1" />
             <div class="grid gap-12">
               <p class="text-2lg text-primary-100 text-bold">Hot item</p>
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="card-wrapper flex-center">
-          <div class="card flex-center flex-reverse" id="feature-1">
+          <div class="card flex-center gap-40 flex-reverse" id="feature-1">
             <img src="assets/images/home/feature2-image.png" alt="랜딩페이지 이미지 2" />
             <div class="grid gap-12">
               <p class="text-2lg text-primary-100 text-bold">Search</p>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="card-wrapper flex-center">
-          <div class="card flex-center">
+          <div class="card flex-center gap-40">
             <img src="assets/images/home/feature3-image.png" alt="랜딩페이지 이미지 3" />
             <div class="grid gap-12">
               <p class="text-2lg text-primary-100 text-bold">Register</p>

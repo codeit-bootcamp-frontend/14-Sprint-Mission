@@ -48,14 +48,12 @@ main .cards .card-wrapper {
   height: 720px;
 }
 main .cards .card-wrapper .card {
-  gap: 40px;
   background-color: #fcfcfc;
-  padding: 0 14px;
 }
 main .cards .card-wrapper .card.flex-reverse {
   text-align: right;
 }
-main .cards .card-wrapper .card > .grid {
+main .cards .card-wrapper .card .grid {
   padding: 0 24px;
 }
 main #bottom-banner {
@@ -97,9 +95,11 @@ main #bottom-banner {
   }
   main .cards .card-wrapper .card .grid {
     width: 100%;
+    padding: 0;
   }
   main .cards .card-wrapper .card.flex-center {
     flex-direction: column;
+    gap: 24px;
     margin: 0;
     padding: 0;
   }
