@@ -56,10 +56,21 @@ a {
 	text-decoration: none;
 	font-family: 'ROKAF Sans';
 	font-weight: 700;
-	font-size: 66px;
+	font-size: 4rem;
 	color: var(--blue);
 	gap: 20px;
 }
+
+@media screen and (max-width: 425px) {
+	.logo {
+		width: 50px;
+		height: 50px;
+	}
+	.brand {
+		font-size: 2rem;
+	}
+}
+
 
 form {
 	display: flex;
