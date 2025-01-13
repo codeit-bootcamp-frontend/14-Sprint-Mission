@@ -1,0 +1,205 @@
+/* Header */
+header {
+  height: 70px;
+  margin: 0 auto;
+}
+header .wrapper {
+  height: 100%;
+  margin: 0 200px;
+}
+header .wrapper .left {
+  align-items: flex-end;
+}
+header .wrapper .left img {
+  width: 40px;
+}
+header .wrapper .left a {
+  font-family: "ROKAF Sans";
+  font-size: 25.63px;
+  line-height: 34.6px;
+}
+header .wrapper a button {
+  width: 128px;
+}
+@media (width < 1110px) {
+  /* Tablet */
+  header .wrapper {
+    margin: 0 24px;
+  }
+}
+@media (width < 768px) {
+  /* Mobile */
+  header .wrapper .left img {
+    display: none;
+  }
+}
+/* Main */
+main .banner {
+  background-color: #cfe5ff;
+  padding-top: 200px;
+}
+main .banner .wrapper {
+  gap: 7px;
+}
+main .banner .wrapper button {
+  width: 357px;
+}
+main .cards .card-wrapper {
+  height: 720px;
+}
+main .cards .card-wrapper .card {
+  gap: 40px;
+  background-color: #fcfcfc;
+  padding: 0 14px;
+}
+main .cards .card-wrapper .card.flex-reverse {
+  text-align: right;
+}
+main .cards .card-wrapper .card > .grid {
+  padding: 0 24px;
+}
+main #bottom-banner {
+  padding-top: 143px;
+  gap: 70px;
+}
+@media (width < 1110px) {
+  /* Tablet */
+  main .banner {
+    padding-top: 84px;
+  }
+  main .banner,
+  main .banner .wrapper {
+    flex-direction: column;
+  }
+  main .banner .wrapper a {
+    margin: 0 auto 132px;
+  }
+  main .banner .wrapper br {
+    display: none;
+  }
+  main .banner img,
+  main .banner .wrapper img {
+    width: 100%;
+  }
+  main .cards {
+    box-sizing: border-box;
+    padding: 24px 24px 56px;
+    display: grid;
+    width: 100%;
+    gap: 52px;
+  }
+  main .cards .card-wrapper {
+    display: block;
+    height: auto;
+  }
+  main .cards .card-wrapper .card {
+    background-color: inherit;
+  }
+  main .cards .card-wrapper .card .grid {
+    width: 100%;
+  }
+  main .cards .card-wrapper .card.flex-center {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  main .cards .card-wrapper .card img {
+    width: 100%;
+  }
+  main .banner#bottom-banner {
+    text-align: center;
+    padding: 0;
+    gap: 16px;
+  }
+  main .banner#bottom-banner h1 {
+    margin: 201px 0;
+  }
+}
+@media (width < 768px) {
+  /* Mobile */
+  main .banner .wrapper {
+    text-align: center;
+  }
+  main .banner .wrapper h1 {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+  main .banner .wrapper h1 br {
+    display: block;
+  }
+  main .banner .wrapper button {
+    font-size: 18px;
+    line-height: 26px;
+    width: 240px;
+  }
+  main .cards {
+    padding: 52px 16px 83px;
+    gap: 40px;
+  }
+  main .banner#bottom-banner {
+    gap: 10px;
+  }
+  main .banner#bottom-banner h1 {
+    margin: 121px 0;
+  }
+}
+/* Footer */
+footer {
+  height: 160px;
+  padding: 32px 0 0;
+  box-sizing: border-box;
+  background-color: var(--secondary-900);
+  color: var(--secondary-400);
+}
+footer .wrapper {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+}
+footer .wrapper ul {
+  justify-self: center;
+  gap: 30px;
+}
+footer .wrapper ul li {
+  list-style: none;
+  cursor: pointer;
+  color: var(--secondary-200);
+}
+#social-media {
+  justify-self: flex-end;
+}
+#social-media img {
+  width: 20px;
+  height: 20px;
+}
+@media (width < 1110px) {
+  /* Tablet */
+  footer {
+    padding: 32px 24px;
+  }
+}
+@media (width < 768px) {
+  footer {
+    padding: 32px 16px;
+  }
+  footer .wrapper {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "link sns"
+      "domain .";
+    gap: 25px 0;
+  }
+  footer .wrapper p#domain-name {
+    grid-area: domain;
+  }
+  footer .wrapper ul#links {
+    grid-area: link;
+    padding: 0;
+    justify-self: flex-start;
+  }
+  footer .wrapper div#social-media {
+    grid-area: sns;
+  }
+}
