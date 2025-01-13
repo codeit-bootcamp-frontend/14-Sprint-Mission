@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓 | 로그인</title>
+    <title>판다마켓 | 회원가입</title>
     <link rel="stylesheet" href="src/assets/css/main.css" />
     <link rel="stylesheet" href="src/assets/css/sub.css" />
     <link rel="stylesheet" href="src/assets/css/font.css" />
@@ -28,6 +28,15 @@
             />
           </div>
           <div class="form__group">
+            <label for="text">닉네임</label>
+            <input
+              type="text"
+              id="text"
+              class="form__input"
+              placeholder="닉네임을 입력해주세요"
+            />
+          </div>
+          <div class="form__group">
             <label for="password">비밀번호</label>
             <div class="form__visible">
               <input
@@ -36,12 +45,24 @@
                 class="form__input"
                 placeholder="비밀번호를 입력해주세요"
               />
-              <div class="visible-icon"></div>
+              <div class="visible-icon visible-icon1"></div>
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="password2">비밀번호 확인</label>
+            <div class="form__visible">
+              <input
+                type="password"
+                id="password2"
+                class="form__input"
+                placeholder="비밀번호를 다시 한 번 입력해주세요"
+              />
+              <div class="visible-icon visible-icon2"></div>
             </div>
           </div>
           <div class="form__group">
             <button type="submit" class="form__button">
-              <span>로그인</span>
+              <span>회원가입</span>
             </button>
           </div>
         </form>
@@ -67,8 +88,8 @@
           </ul>
         </div>
         <div class="form-box__signup">
-          판다마켓이 처음이신가요?
-          <a href="/signup.html">회원가입</a>
+          이미 회원이신가요?
+          <a href="/login.html">로그인</a>
         </div>
       </div>
     </div>

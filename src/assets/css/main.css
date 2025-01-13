@@ -6,6 +6,11 @@
   text-decoration: none;
   font-family: "Pretendard-Regular";
 }
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
 button {
   border: none;
   outline: none;
@@ -52,9 +57,14 @@ img {
 
 /* 헤더 */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 70px;
   background-color: #fff;
   padding: 0 200px;
+  z-index: 1;
 }
 .header__wrap {
   display: flex;
@@ -81,9 +91,9 @@ img {
 /* 키비쥬얼 */
 .main-kv {
   width: 100%;
-  height: 540px;
+  height: 610px;
   background-color: #cfe5ff;
-  padding: 0 200px;
+  padding: 70px 200px 0 200px;
 }
 .main-kv__wrap {
   max-width: 1120px;
@@ -93,15 +103,24 @@ img {
   background-repeat: no-repeat;
   background-position: bottom right;
 }
-
+.main-kv__contents {
+  position: relative;
+  height: 100%;
+}
+.main-kv__slogan {
+  position: absolute;
+  top: 240px;
+  left: 0;
+}
 .main-kv__contents h2 {
   font-size: 40px;
   line-height: 1.4;
   color: #374151;
-  padding-top: 240px;
 }
 .main-kv__button {
   margin-top: 32px;
+  display: inline-block;
+  text-align: center;
 }
 
 /* 컨테이너 섹션 */
@@ -113,8 +132,7 @@ img {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  column-gap: 64px;
+  gap: 64px;
 }
 
 .main-section__category {
@@ -144,10 +162,12 @@ img {
 }
 
 .main-banner__inner {
+  display: flex;
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 20px;
   height: 100%;
+  align-items: center;
   background-image: url(../image/banner_img.png);
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -155,7 +175,6 @@ img {
 .main-banner__inner h2 {
   font-size: 40px;
   color: #374151;
-  padding-top: 250px;
 }
 
 /* 푸터 */
@@ -211,9 +230,6 @@ img {
 
 /* 미디어 쿼리 */
 @media screen and (max-width: 1366px) {
-  .mov {
-    display: none;
-  }
   .mov2 {
     display: none;
   }
@@ -224,8 +240,13 @@ img {
   .main-kv__contents {
     text-align: center;
   }
+  .main-kv__slogan {
+    width: 100%;
+    top: 83px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .main-kv__contents h2 {
-    padding-top: 50px;
     font-size: 35px;
   }
   .main-kv__button {
@@ -238,8 +259,17 @@ img {
 }
 
 @media screen and (max-width: 1024px) {
+  .mov {
+    display: none;
+  }
   .header {
     padding: 0 20px;
+  }
+  .main-kv__slogan {
+    top: 48px;
+  }
+  .main-kv__slogan h2 {
+    font-size: 32px;
   }
   .main-section {
     padding: 24px;
@@ -250,8 +280,7 @@ img {
   .main-section__image {
     width: 100%;
   }
-  .main-section__right--image,
-  .main-section__left--image {
+  .main-section__imagewrap {
     width: 100%;
     margin-bottom: 24px;
   }
@@ -271,9 +300,14 @@ img {
   .main-banner__inner {
     text-align: center;
     background-position: bottom center;
+    position: relative;
   }
   .main-banner__inner h2 {
-    padding-top: 200px;
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -313,8 +347,8 @@ img {
     background-size: 375px 198px;
   }
   .main-banner__inner h2 {
-    padding-top: 120px;
     font-size: 30px;
+    top: 100px;
   }
   .footer__top {
     position: relative;

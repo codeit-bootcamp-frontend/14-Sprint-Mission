@@ -1,0 +1,141 @@
+.form-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.form-box__wrap {
+  max-width: 680px;
+  width: 100%;
+  padding: 0 20px;
+}
+.form-box__logo {
+  display: block;
+  width: 396px;
+  height: 132px;
+  margin: 0 auto;
+  background-image: url(../image/logo_sign.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.form-box__simplelogin {
+  display: flex;
+  padding: 16px 23px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  margin-top: 24px;
+}
+.form-box__social {
+  display: flex;
+  column-gap: 16px;
+}
+.social-icon {
+  width: 42px;
+  height: 42px;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.social-icon--google {
+  background-image: url(../image/google.svg);
+}
+.social-icon--kakao {
+  background-image: url(../image/kakao.svg);
+}
+.form-box__signup {
+  text-align: center;
+  margin-top: 24px;
+}
+.form-box__signup a {
+  text-decoration: underline;
+  color: var(--blue);
+}
+
+/* form */
+.form {
+  margin-top: 40px;
+}
+.form__group {
+  display: flex;
+  flex-direction: column;
+}
+.form__group + .form__group {
+  margin-top: 24px;
+}
+.form__group label {
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray800);
+  margin-bottom: 16px;
+}
+.form__input {
+  width: 100%;
+  padding: 15px 24px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background-color: var(--gray100);
+  line-height: 26px;
+}
+.form__input:focus {
+  outline: 1px solid var(--blue);
+}
+.form__input::placeholder {
+  color: var(--gray400);
+  line-height: 26px;
+  font-size: 16px;
+}
+.form__visible {
+  position: relative;
+}
+.visible-icon {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(../image/visibility_off.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.visible-icon.active {
+  background-image: url(../image/visibility_on.png);
+}
+
+.form__button {
+  display: block;
+  background-color: var(--gray400);
+  width: 100%;
+  border-radius: 28px;
+  cursor: pointer;
+}
+.form__button.active {
+  background-color: var(--blue);
+}
+.form__button span {
+  line-height: 56px;
+  font-size: 20px;
+  color: var(--gray100);
+}
+
+@media screen and (max-width: 750px) {
+  .form-box__logo {
+    display: block;
+    width: 250px;
+    height: 75px;
+    margin: 0 auto;
+    background-image: url(../image/logo_sign.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
