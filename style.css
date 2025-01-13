@@ -122,7 +122,6 @@ footer {
 
 .hero-text {
   display: flex;
-  flex: 0 0 350px;
   flex-direction: column;
 }
 

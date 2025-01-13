@@ -44,7 +44,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 10vh auto;
+	margin: 8vh auto 0;
 	padding: 1rem;
 	max-width: 640px;
 	gap: 40px;
