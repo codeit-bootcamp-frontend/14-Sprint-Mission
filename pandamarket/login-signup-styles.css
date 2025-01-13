@@ -11,7 +11,6 @@ main {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 .wrap {
@@ -23,11 +22,13 @@ main {
     justify-content: center;
 }
 
-.login-logo {
-    margin-bottom: 10px;
+.login-logo,
+.signup-logo {
+    margin-bottom: 40px;
 }
 
-form p {
+/* 폼 공통 스타일 */
+form label {
     font-size: 18px;
     font-weight: 700;
     color: rgba(31, 41, 55, 1);
@@ -43,6 +44,8 @@ form input {
     padding-left: 24px;
     padding-right: 24px;
     font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 form input:focus {
@@ -54,7 +57,7 @@ form #submit {
     border-radius: 40px;
     background-color: rgba(156, 163, 175, 1);
     color: rgba(243, 244, 246, 1);
-    margin-top: 24px;
+    margin-top: 8px;
     margin-bottom: 24px;
     cursor: pointer;
 }
@@ -93,11 +96,13 @@ form #submit {
     width: 42px;
 }
 
+.move-to-login,
 .move-to-signup {
     font-size: 14px;
     font-weight: 500;
 }
 
+.move-to-login a,
 .move-to-signup a {
     color: rgba(54, 146, 255, 1);
 }
