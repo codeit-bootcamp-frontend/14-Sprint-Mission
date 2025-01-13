@@ -38,11 +38,16 @@
 
 ## 주요 변경사항
 
+### 스프린트 미션 1 리뷰 반영
+- `<html lang="ko">`으로 수정
+- `a`, `button` 중첩 사용 제거
+- `h1`은 페이지에 하나만 사용
+
+### 스프린트 미션 2
 - [login.html](./login.html)
   - 로그인 폼 추가
   - 로그인 페이지 스타일 생성 ([/styles/login.css](./styles/login.css))
   - script 파일 추가: 로그인 버튼 활성화 및 비밀번호 보기 로직 생성 ([./scripts/login.js](/scripts/login.js))
-
 - [signup.html](./signup.html)
   - 회원가입 폼 추가
   - 회원가입 페이지 스타일 생성: [/styles/signup.css](./styles/signup.css)

@@ -6,7 +6,7 @@ main#signup input,
 main#signup p {
   color: #1f2937;
 }
-main#signup > img#logo {
+main#signup img#logo {
   height: 132px;
   margin: 60px 0 0;
 }

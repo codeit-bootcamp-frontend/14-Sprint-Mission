@@ -18,7 +18,7 @@ header .wrapper .left a {
   font-size: 25.63px;
   line-height: 34.6px;
 }
-header .wrapper a button {
+header .wrapper a.button {
   width: 128px;
 }
 @media (width < 1110px) {
@@ -41,7 +41,7 @@ main .banner {
 main .banner .wrapper {
   gap: 7px;
 }
-main .banner .wrapper button {
+main .banner .wrapper a.button {
   width: 357px;
 }
 main .cards .card-wrapper {
@@ -111,7 +111,7 @@ main #bottom-banner {
     padding: 0;
     gap: 16px;
   }
-  main .banner#bottom-banner h1 {
+  main .banner#bottom-banner .heading {
     margin: 201px 0;
   }
 }
@@ -120,14 +120,15 @@ main #bottom-banner {
   main .banner .wrapper {
     text-align: center;
   }
-  main .banner .wrapper h1 {
+  main .banner .wrapper h1,
+  main .banner .wrapper .heading {
     font-size: 32px;
     line-height: 44.8px;
   }
-  main .banner .wrapper h1 br {
+  main .banner .wrapper br {
     display: block;
   }
-  main .banner .wrapper button {
+  main .banner .wrapper a.button {
     font-size: 18px;
     line-height: 26px;
     width: 240px;
@@ -139,7 +140,7 @@ main #bottom-banner {
   main .banner#bottom-banner {
     gap: 10px;
   }
-  main .banner#bottom-banner h1 {
+  main .banner#bottom-banner .heading {
     margin: 121px 0;
   }
 }

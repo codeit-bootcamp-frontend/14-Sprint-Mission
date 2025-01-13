@@ -6,7 +6,7 @@ main#login input,
 main#login p {
   color: #1f2937;
 }
-main#login > img#logo {
+main#login img#logo {
   height: 132px;
   margin: 60px 0 0;
 }
