@@ -114,6 +114,14 @@ form {
 	cursor: pointer;
 }
 
+#eye-slash-confirm {
+	position: absolute;
+	width: 20px;
+	right: 16px;
+	bottom: 12px;
+	cursor: pointer;
+}
+
 .login-btn {
 	background-color: var(--gray-400);
 	color: white;
