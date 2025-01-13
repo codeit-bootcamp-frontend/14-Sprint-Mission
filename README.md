@@ -39,11 +39,11 @@
 
 - [common.css](./styles/common.css)
   - button 스타일 지정
-- [variables.css](./styles/variables.css)
   - 색상 변수 등록 및 텍스트 색상 지정 (`.text-primary-100`)
   - 클래스명 `.text-bold`, `.text-3xl` 등 활용으로 텍스트 스타일 지정
   - 클래스명 `.grid`, .`flex` 활용으로 CSS grid & flex 스타일 기본 지정
-
+- 빈 페이지 추가
+  - `login.html`, `items.html`, `privacy.html`, `faq.html`
 
 ## 스크린샷
 
