@@ -66,9 +66,12 @@ footer {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .header {
     padding: 0 1rem;
+  }
+  .logo {
+    display: none;
   }
 }
 
