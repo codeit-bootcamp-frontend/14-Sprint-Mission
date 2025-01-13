@@ -8,7 +8,6 @@
 
 ### 기본 요구사항
 
-- [ ] [UI 디자인 기초 토픽](https://www.codeit.kr/topics/ui-design-basics) 수강
 - [x] 피그마 디자인에 맞게 페이지 생성 및 UI 라이브러리 미사용
 - [x] HTML, CSS 파일을 Netlify로 배포
   - 링크: https://fe-14-sprint-mission-1-basic-lsj.netlify.app/
@@ -53,5 +52,4 @@
 ## 멘토에게
 
 -
--
-- [ ] 셀프 코드 리뷰를 통해 질문 이어가겠습니다.
+- 
