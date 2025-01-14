@@ -313,7 +313,7 @@
 
 /* Tablet 버전의 사이즈 */
 
-@media (max-width: 1119px) {
+@media (max-width: 1199px) {
     header {
         justify-content: center;
         display: flex;
