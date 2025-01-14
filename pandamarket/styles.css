@@ -5,304 +5,636 @@
     box-sizing: border-box;
 }
 
-header {
-    justify-content: center;
-    display: flex;
-    margin-bottom: 8px;
-    padding-top: 8px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: white;
+/* PC 버전의 사이즈 */
+
+@media (min-width: 1200px) {
+    header {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 8px;
+        padding-top: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: white;
+    }
+
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .head {
+        margin-left: 200px;
+        margin-right: 200px;
+        width: 1120px;
+        height: 51px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header .logo {
+        width: 153px;
+        height: 51px;
+    }
+
+    header .login-button {
+        width: 128px;
+        height: 48px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: rgba(54, 146, 255, 1);
+        color: rgba(243, 244, 246, 1);
+        cursor: pointer;
+    }
+
+    .landingpage-image01 {
+        background-color: rgba(207, 229, 255, 1);
+        height: 540px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .wrap-1 {
+        max-width: 1920px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        min-width: 1920px;
+    }
+
+    .landingpage-image01 img {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        right: 350px;
+    }
+
+    .landingpage-description {
+        width: 357px;
+        height: 260px;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        position: absolute;
+        bottom: 100px;
+        left: 450px;
+    }
+
+    .landingpage-description a {
+        text-decoration: none;
+        width: 357px;
+        height: 56px;
+        cursor: pointer;
+    }
+
+    .p-1 {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 56px;
+    }
+
+    .description-button {
+        cursor: pointer;
+        width: 357px;
+        height: 56px;
+        border-radius: 40px;
+        background-color: rgba(54, 146, 255, 1);
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(249, 250, 251, 1);
+    }
+
+
+    .landingpage-popular-product {
+        display: flex;
+        justify-content: center;
+        margin-top: 150px;
+        align-items: center;
+    }
+
+    .landingpage-popular-product-description {
+        box-sizing: border-box;
+        background-color: rgba(252, 252, 252, 1);
+        width: 400px;
+        height: 444px;
+        display: flex;
+        align-items: center;
+        padding-left: 60px;
+    }
+
+    .landingpage-popular-product-description p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .landingpage-popular-product .Hot-item {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .Hot-item-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .Hot-item-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .landingpage-wanted-product {
+        display: flex;
+        justify-content: center;
+        margin-top: 300px;
+    }
+
+    .landingpage-wantedproduct-description {
+        box-sizing: border-box;
+        background-color: rgba(252, 252, 252, 1);
+        width: 400px;
+        height: 444px;
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+    }
+
+    .landingpage-wantedproduct-description p {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .search-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .search-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .landingpage-want-to-sell {
+        display: flex;
+        justify-content: center;
+        margin-top: 300px;
+    }
+
+    .landingpage-sell-description {
+        box-sizing: border-box;
+        background-color: rgba(252, 252, 252, 1);
+        width: 400px;
+        height: 444px;
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+    }
+
+    .landingpage-sell-description p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .register {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .register-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .register-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .landingpage-image05 {
+        display: flex;
+        justify-content: center;
+        margin-top: 300px;
+    }
+
+    .landingpage-bottom {
+        width: 100%;
+        background-color: rgba(207, 229, 255, 1);
+        height: 540px;
+        margin-top: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .landingpage-bottom-wrap {
+        width: 1110px;
+        height: 397px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .landingpage-bottom-wrap p {
+        color: rgba(55, 65, 81, 1);
+        font-size: 40px;
+        font-weight: 700;
+        margin-right: 20px;
+        position: relative;
+        bottom: 20px;
+    }
+
+    .landingpage-bottom-wrap img {
+        width: 746px;
+        margin-left: 45px;
+    }
+
+    footer {
+        height: 160px;
+        background-color: rgba(17, 24, 39, 1);
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .foot {
+        width: 1120px;
+        height: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    footer p {
+        font-size: 16px;
+        color: rgba(229, 231, 235, 1);
+        font-weight: 400;
+    }
+
+    footer p a {
+        text-decoration: none;
+        font-size: 16px;
+        color: rgba(229, 231, 235, 1);
+        font-weight: 400;
+    }
+
+    .icons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .middle {
+        display: flex;
+        gap: 20px;
+    }
 }
 
-body {
-    margin-left: 0;
-    margin-right: 0;
-}
+/* Tablet 버전의 사이즈 */
 
-.head {
-    margin-left: 200px;
-    margin-right: 200px;
-    width: 1120px;
-    height: 51px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+@media (max-width: 1119px) {
+    header {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 8px;
+        padding-top: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: white;
+    }
 
-header .logo {
-    width: 153px;
-    height: 51px;
-}
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
 
-header .login-button {
-    width: 128px;
-    height: 48px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: rgba(54, 146, 255, 1);
-    color: rgba(243, 244, 246, 1);
-    cursor: pointer;
-}
+    .head {
+        margin-left: 24px;
+        margin-right: 24px;
+        width: 1120px;
+        height: 51px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-.landingpage-image01 {
-    background-color: rgba(207, 229, 255, 1);
-    height: 540px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+    header .logo {
+        width: 153px;
+        height: 51px;
+    }
 
-.wrap-1 {
-    max-width: 1920px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    min-width: 1920px;
-}
+    header .login-button {
+        width: 128px;
+        height: 48px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: rgba(54, 146, 255, 1);
+        color: rgba(243, 244, 246, 1);
+        cursor: pointer;
+    }
 
-.landingpage-image01 img {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    right: 350px;
-}
+    .landingpage-image01 {
+        background-color: rgba(207, 229, 255, 1);
+        height: 771px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
-.landingpage-description {
-    width: 357px;
-    height: 260px;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    position: absolute;
-    bottom: 100px;
-    left: 450px;
-}
+    .wrap-1 {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-.landingpage-description a {
-    text-decoration: none;
-    width: 357px;
-    height: 56px;
-    cursor: pointer;
-}
+    .landingpage-image01 img {
+        width: 744px;
+        height: 340px;
+    }
 
-.p-1 {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 56px;
-}
+    .landingpage-description {
+        width: 100%;
+        height: 260px;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
 
-.description-button {
-    cursor: pointer;
-    width: 357px;
-    height: 56px;
-    border-radius: 40px;
-    background-color: rgba(54, 146, 255, 1);
-    font-size: 20px;
-    font-weight: 600;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(249, 250, 251, 1);
-}
+    }
+
+    .landingpage-description a {
+        text-decoration: none;
+        width: 357px;
+        height: 56px;
+        cursor: pointer;
+    }
+
+    .p-1 {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 56px;
+        margin-bottom: 24px;
+        margin-top: 84px;
+    }
+
+    .description-button {
+        cursor: pointer;
+        width: 357px;
+        height: 56px;
+        border-radius: 40px;
+        background-color: rgba(54, 146, 255, 1);
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(249, 250, 251, 1);
+    }
 
 
-.landingpage-popular-product {
-    display: flex;
-    justify-content: center;
-    margin-top: 150px;
-    align-items: center;
-}
+    .landingpage-popular-product {
+        display: flex;
+        flex-direction: column;
+        margin-top: 52px;
+        align-items: center;
+        justify-content: center;
+    }
 
-.landingpage-popular-product-description {
-    box-sizing: border-box;
-    background-color: rgba(252, 252, 252, 1);
-    width: 400px;
-    height: 444px;
-    display: flex;
-    align-items: center;
-    padding-left: 60px;
-}
+    .landingpage-popular-product img {
+        width: 696px;
+    }
 
-.landingpage-popular-product-description p {
-    display: flex;
-    flex-direction: column;
-}
+    .landingpage-popular-product-description {
+        box-sizing: border-box;
+        width: 696px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
 
-.landingpage-popular-product .Hot-item {
-    color: rgba(54, 146, 255, 1);
-    font-size: 18px;
-    font-weight: 700;
-}
+    .landingpage-popular-product-description p {
+        display: flex;
+        flex-direction: column;
+    }
 
-.Hot-item-title {
-    color: rgba(55, 65, 81, 1);
-    font-size: 40px;
-    font-weight: 700;
-}
+    .landingpage-popular-product .Hot-item {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
 
-.Hot-item-description {
-    color: rgba(55, 65, 81, 1);
-    font-size: 24px;
-    font-weight: 500;
-}
+    .Hot-item-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 32px;
+        font-weight: 700;
+    }
 
-.landingpage-wanted-product {
-    display: flex;
-    justify-content: center;
-    margin-top: 300px;
-}
+    .Hot-item-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 18px;
+        font-weight: 500;
+    }
 
-.landingpage-wantedproduct-description {
-    box-sizing: border-box;
-    background-color: rgba(252, 252, 252, 1);
-    width: 400px;
-    height: 444px;
-    display: flex;
-    align-items: center;
-    padding-left: 50px;
-}
+    .landingpage-wanted-product {
+        display: flex;
+        flex-direction: column;
+        margin-top: 52px;
+        align-items: center;
+        justify-content: center;
+    }
 
-.landingpage-wantedproduct-description p {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-}
+    .landingpage-wanted-product img {
+        width: 696px;
+    }
 
-.search {
-    color: rgba(54, 146, 255, 1);
-    font-size: 18px;
-    font-weight: 700;
-}
+    .landingpage-wantedproduct-description {
+        box-sizing: border-box;
+        width: 696px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: left;
+    }
 
-.search-title {
-    color: rgba(55, 65, 81, 1);
-    font-size: 40px;
-    font-weight: 700;
-}
+    .landingpage-wantedproduct-description p {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+    }
 
-.search-description {
-    color: rgba(55, 65, 81, 1);
-    font-size: 24px;
-    font-weight: 500;
-}
+    .search {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
 
-.landingpage-want-to-sell {
-    display: flex;
-    justify-content: center;
-    margin-top: 300px;
-}
+    .search-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 32px;
+        font-weight: 700;
+    }
 
-.landingpage-sell-description {
-    box-sizing: border-box;
-    background-color: rgba(252, 252, 252, 1);
-    width: 400px;
-    height: 444px;
-    display: flex;
-    align-items: center;
-    padding-left: 50px;
-}
+    .search-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 18px;
+        font-weight: 500;
+    }
 
-.landingpage-sell-description p {
-    display: flex;
-    flex-direction: column;
-}
+    .landingpage-want-to-sell {
+        display: flex;
+        flex-direction: column;
+        margin-top: 52px;
+        align-items: center;
+        justify-content: center;
+    }
 
-.register {
-    color: rgba(54, 146, 255, 1);
-    font-size: 18px;
-    font-weight: 700;
-}
+    .landingpage-want-to-sell img {
+        width: 696px;
+    }
 
-.register-title {
-    color: rgba(55, 65, 81, 1);
-    font-size: 40px;
-    font-weight: 700;
-}
+    .landingpage-sell-description {
+        box-sizing: border-box;
+        width: 696px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
 
-.register-description {
-    color: rgba(55, 65, 81, 1);
-    font-size: 24px;
-    font-weight: 500;
-}
+    .landingpage-sell-description p {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+    }
 
-.landingpage-image05 {
-    display: flex;
-    justify-content: center;
-    margin-top: 300px;
-}
+    .register {
+        color: rgba(54, 146, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+    }
 
-.landingpage-bottom {
-    width: 100%;
-    background-color: rgba(207, 229, 255, 1);
-    height: 540px;
-    margin-top: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0;
-}
+    .register-title {
+        color: rgba(55, 65, 81, 1);
+        font-size: 32px;
+        font-weight: 700;
+    }
 
-.landingpage-bottom-wrap {
-    width: 1110px;
-    height: 397px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+    .register-description {
+        color: rgba(55, 65, 81, 1);
+        font-size: 18px;
+        font-weight: 500;
+    }
 
-.landingpage-bottom-wrap p {
-    color: rgba(55, 65, 81, 1);
-    font-size: 40px;
-    font-weight: 700;
-    margin-right: 20px;
-    position: relative;
-    bottom: 20px;
-}
+    .landingpage-image05 {
+        display: flex;
+        justify-content: center;
+        margin-top: 300px;
+    }
 
-.landingpage-bottom-wrap img {
-    width: 746px;
-    margin-left: 45px;
-}
+    .landingpage-bottom {
+        width: 100%;
+        background-color: rgba(207, 229, 255, 1);
+        height: 927px;
+        margin-top: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
 
-footer {
-    height: 160px;
-    background-color: rgba(17, 24, 39, 1);
-    display: flex;
-    justify-content: center;
+    .landingpage-bottom-wrap {
+        width: 100%;
+        height: 927px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-}
+    .landingpage-bottom-wrap p {
+        color: rgba(55, 65, 81, 1);
+        font-size: 40px;
+        font-weight: 700;
+        margin-right: 20px;
+        margin-top: 201px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-.foot {
-    width: 1120px;
-    height: 20px;
-    display: flex;
-    justify-content: space-evenly;
-}
+    .landingpage-bottom-wrap img {
+        width: 744px;
+    }
 
-footer p {
-    font-size: 16px;
-    color: rgba(229, 231, 235, 1);
-    font-weight: 400;
-}
+    footer {
+        height: 160px;
+        background-color: rgba(17, 24, 39, 1);
+        display: flex;
+        justify-content: center;
 
-footer p a {
-    text-decoration: none;
-    font-size: 16px;
-    color: rgba(229, 231, 235, 1);
-    font-weight: 400;
-}
+    }
 
-.icons {
-    display: flex;
-    gap: 10px;
-}
+    .foot {
+        width: 1120px;
+        height: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
 
-.middle {
-    display: flex;
-    gap: 20px;
+    footer p {
+        font-size: 16px;
+        color: rgba(229, 231, 235, 1);
+        font-weight: 400;
+    }
+
+    footer p a {
+        text-decoration: none;
+        font-size: 16px;
+        color: rgba(229, 231, 235, 1);
+        font-weight: 400;
+    }
+
+    .icons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .middle {
+        display: flex;
+        gap: 20px;
+    }
 }
