@@ -7,16 +7,16 @@ body {
     margin:0;
   }
 
-header {
+.main-header {
     height: 70px;
     background-color: #ffffff;
     position: sticky;
     top: 0;
 }
 
-.header {
+.main-header-div {
     display:flex;
-    margin: 0 auto;
+    margin: 0 200px;
     justify-content: space-between;
     padding:9px 0;
 }
@@ -24,7 +24,6 @@ header {
 .logo {
     height: 51px;
     width: 153px;
-    margin-left: 200px;
     cursor:pointer;
 }
 
@@ -36,7 +35,6 @@ header {
     padding: 12px 23px;
     text-decoration: none;
     color: #ffffff;
-    margin-right: 200px;
     cursor:pointer;
 }
 
@@ -58,7 +56,7 @@ section {
     height: 100%;
 }
 
-.top_btn {
+.top-btn {
     background-color: #3692FF;
     text-decoration: none;
     color: #ffffff;
@@ -70,7 +68,12 @@ section {
 
 .content {
     width: 700px;
-    margin-bottom: 150px;
+    padding-bottom: 60px;
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .top-content {
     font-size:30px;
@@ -93,7 +96,7 @@ main {
     margin: 90px auto;
     display: grid;
     background-color: #F7F8FA;
-    padding: 0 30px;
+    
 }
 
 .main-left {
@@ -111,8 +114,7 @@ main {
 
 .main-div-right{
     grid-area: script;
-    padding: 100px 0;
-    padding-right: 30px;
+    padding: 100px 40px;
     text-align: right;
 }
 
@@ -152,7 +154,7 @@ footer {
     justify-content: space-evenly;
     color: #ffffff;
     align-items: flex-start;
-    font-size:18px;
+    font-size:16px;
 }
 
 .social-btn img {
@@ -160,17 +162,11 @@ footer {
     padding:5px;
 }
 
-.footer-link a {
+.footer-link  a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 18px;
-    padding: 15px;
+    font-size: 16px;
+    padding-top: 4px;
+    padding-left: 10px;
 }
 
-hr {
-    height: 60px;
-    background-color: #F7F8FA;
-    margin : 0;
-    width: 100%;
-    border:0;
-}
