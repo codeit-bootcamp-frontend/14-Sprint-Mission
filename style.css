@@ -54,12 +54,13 @@
   height: 340px;
 }
 
-.trade {
+.banner-description {
   color: var(--Secondary-700, #374151);
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
+  white-space: nowrap;
 }
 
 .items-button {
@@ -81,7 +82,7 @@
   white-space: nowrap;
 }
 
-.main-slogan {
+.banner-slogan {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -168,4 +169,9 @@
 .register_img {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+.gray-container {
+  height: 138px;
+  background: #fcfcfc;
 }
