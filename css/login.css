@@ -84,6 +84,7 @@ form {
 	cursor: pointer;
 }
 
+.signup-btn,
 .login-btn {
 	background-color: var(--gray-400);
 	color: white;

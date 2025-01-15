@@ -24,7 +24,7 @@
 					<input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required onkeyup="changeButtonColor()">
 					<img id="eye-slash" src="/images/eye-slash.svg" alt="show password" onclick="toggleVisibility()">
 				</div>
-				<button type="submit" class="login-btn">로그인</button>
+				<button type="submit" class="login-btn" disabled>로그인</button>
 			</form>
 			<div class="social-login">
 				<span>간편 로그인하기</span>
@@ -41,33 +41,6 @@
 			</span>
 		</div>
 	</main>
-	<script>
-		const emailInput = document.getElementById('email');
-		const passwordInput = document.getElementById('password');
-		const eyeSlashImg = document.getElementById('eye-slash');
-
-		// 비밀번호 표시
-		function toggleVisibility(){
-			if (passwordInput.type === 'password') {
-				passwordInput.type = 'text';
-				eyeSlashImg.src = "/images/eye.svg"
-			} else {
-				passwordInput.type = 'password';
-				eyeSlashImg.src = "/images/eye-slash.svg"
-			}
-		}
-
-		// 모든 필드 값 입력시 버튼 색상 변경
-		function changeButtonColor() {
-			const loginButton = document.querySelector('.login-btn');
-
-			// 모든 필드에 값이 입력되었는지 확인
-			if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
-				loginButton.style.backgroundColor = '#3692ff';
-			} else {
-				loginButton.style.backgroundColor = '#9ca3af'; // 기본 색상으로 변경
-			}
-		}
-	</script>
+	<script src="./js/login.js"></script>
 </body>
 </html>
