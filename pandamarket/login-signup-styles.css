@@ -119,6 +119,7 @@ form #submit {
 
     .wrap {
         width: 343px;
+        max-width: 400px;
         height: 501px;
         display: flex;
         flex-direction: column;
