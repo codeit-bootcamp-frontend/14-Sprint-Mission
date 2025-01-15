@@ -4,19 +4,25 @@
   font-family: Pretendard, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+/* header */
+
 .header {
   height: 70px;
   padding: 9px 400px;
   background: #fff;
 }
 
-.navbar {
+.header__navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.login-button {
+.header__login-button {
   border-radius: 8px;
   background: var(--Primary-100, #3692ff);
   width: 128px;
@@ -32,9 +38,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: 26px;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.banner-section {
+/* banner */
+
+.banner {
   height: 540px;
   background: #cfe5ff;
   padding-top: 200px;
@@ -42,19 +52,19 @@
   padding-right: 405px;
 }
 
-.container {
+.banner__container {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 7px;
 }
 
-.bannerimg {
+.banner__image {
   width: 746px;
   height: 340px;
 }
 
-.banner-description {
+.banner__description {
   color: var(--Secondary-700, #374151);
   font-size: 40px;
   font-style: normal;
@@ -63,7 +73,7 @@
   white-space: nowrap;
 }
 
-.items-button {
+.banner__button {
   height: 56px;
   display: flex;
   border: none;
@@ -80,22 +90,25 @@
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.banner-slogan {
+.banner__slogan {
   display: flex;
   flex-direction: column;
   gap: 32px;
   margin-bottom: 100px;
 }
 
-.main-section {
+/* main */
+
+.highlight {
   padding: 138px;
   display: flex;
   justify-content: center;
 }
 
-.main-section_container {
+.highlight__container {
   display: flex;
   border-radius: 12px;
   background: #fcfcfc;
@@ -105,26 +118,26 @@
   width: 988px;
 }
 
-.popular-left {
+.highlight__image {
   margin-left: 23.5px;
 }
 
-.popular-right {
+.highlight__content {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding-right: 47.5px;
 }
 
-.main-section_title,
-.main-section_subtitle,
-.main-section_keyword {
+.highlight__subtitle,
+.highlight__title,
+.highlight__keyword {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.main-section_keyword {
+.highlight__keyword {
   color: var(--Primary-100, #3692ff);
   font-size: 18px;
   font-style: normal;
@@ -132,7 +145,7 @@
   line-height: 26px;
 }
 
-.main-section_title {
+.highlight__title {
   color: var(--Secondary-700, #374151);
   font-size: 40px;
   font-style: normal;
@@ -143,7 +156,7 @@
   margin-top: 12px;
 }
 
-.main-section_subtitle {
+.highlight__subtitle {
   color: var(--Secondary-700, #374151);
   font-size: 24px;
   font-style: normal;
@@ -151,37 +164,39 @@
   line-height: 32px;
 }
 
-.search-left {
+.highlight__search-content {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding-left: 38px;
 }
 
-.search-right {
+.highlight__search-image {
   margin-right: 14px;
 }
 
-.item-right {
+.highlight__item-content {
   margin-right: 24px;
 }
 
-.register_img {
+.highlight__register-image {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.gray-container {
+.highlight__gray-container {
   height: 138px;
   background: #fcfcfc;
 }
+
+/* footer */
 
 .footer {
   height: 160px;
   background: var(--Secondary-900, #111827);
 }
 
-.footer-section {
+.footer__section {
   padding: 32px 400px;
   display: flex;
   align-items: flex-start;
@@ -190,47 +205,46 @@
   height: 160px;
 }
 
-.footer span {
+.footer__copyright {
   color: #9ca3af;
 }
 
-.footer ul {
+.footer__links {
   display: flex;
-}
-
-.policy-faq {
   gap: 30px;
 }
-.policy-faq li a {
+
+.footer__link {
   color: #e5e7eb;
-  text-decoration: none;
 }
 
-.sns {
+.footer__sns {
+  display: flex;
   gap: 12px;
 }
 
-.icon {
+.footer__icon {
   display: inline-block;
   width: 20px;
   height: 20px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 }
 
-.icon.facebook {
+.footer__icon--facebook {
   background-image: url('images/ic_facebook.svg');
 }
 
-.icon.twitter {
+.footer__icon--twitter {
   background-image: url('images/ic_twitter.svg');
 }
 
-.icon.youtube {
+.footer__icon--youtube {
   background-image: url('images/ic_youtube.svg');
 }
 
-.icon.instagram {
+.footer__icon--instagram {
   background-image: url('images/ic_instagram.svg');
 }

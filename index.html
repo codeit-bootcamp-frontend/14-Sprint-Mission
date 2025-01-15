@@ -8,41 +8,41 @@
   </head>
   <body>
     <header class="header">
-      <div class="navbar">
+      <div class="header__navbar">
         <a href="index.html">
           <img src="images/logo.svg" alt="메인 로고" class="logo" />
         </a>
-        <a href="/login" class="login-button">로그인</a>
+        <a href="/login" class="header__login-button">로그인</a>
       </div>
     </header>
 
     <main>
-      <section class="banner-section">
-        <div class="container">
-          <div class="banner-slogan">
-            <p class="banner-description">
+      <section class="banner">
+        <div class="banner__container">
+          <div class="banner__slogan">
+            <p class="banner__description">
               일상의 모든 물건을<br />
               거래해 보세요
             </p>
-            <button class="items-button">구경하러 가기</button>
+            <a href="/items" class="banner__button">로그인</a>
           </div>
           <img
             src="images/banner_top.svg"
             alt="판다마켓 위배너"
-            class="bannerimg"
+            class="banner__image"
           />
         </div>
       </section>
 
-      <section class="main-section">
-        <div class="main-section_container">
-          <div class="popular-left">
+      <section class="highlight">
+        <div class="highlight__container">
+          <div class="highlight__image">
             <img src="images/Img_home_01.svg" alt="인기상품 이미지" />
           </div>
-          <div class="popular-right">
-            <span class="main-section_keyword">Hot item</span>
-            <p class="main-section_title">인기 상품을<br />확인해 보세요</p>
-            <p class="main-section_subtitle">
+          <div class="highlight__content">
+            <span class="highlight__keyword">Hot item</span>
+            <p class="highlight__title">인기 상품을<br />확인해 보세요</p>
+            <p class="highlight__subtitle">
               가장 HOT한 중고거래 물품을<br />
               판다 마켓에서 확인해 보세요
             </p>
@@ -50,39 +50,37 @@
         </div>
       </section>
 
-      <section class="main-section">
-        <div class="main-section_container">
-          <div class="search-left">
-            <span class="main-section_keyword">Search</span>
-            <p class="main-section_title" style="text-align: right">
+      <section class="highlight">
+        <div class="highlight__container">
+          <div class="highlight__search-content">
+            <span class="highlight__keyword">Search</span>
+            <p class="highlight__title" style="text-align: right">
               구매를 원하는<br />상품을 검색하세요
             </p>
-            <p class="main-section_subtitle" style="text-align: right">
+            <p class="highlight__subtitle" style="text-align: right">
               구매하고 싶은 물품은 검색해서<br />
               쉽게 찾아보세요
             </p>
           </div>
-          <div class="search-right">
+          <div class="highlight__search-image">
             <img src="images/search_img.svg" alt="상품검색 이미지" />
           </div>
         </div>
       </section>
 
-      <section class="main-section">
-        <div class="main-section_container">
-          <div class="item-left">
+      <section class="highlight">
+        <div class="highlight__container">
+          <div class="highlight__item-image">
             <img
               src="images/Img_home_03.svg"
               alt="상품등록 이미지"
-              class="register_img"
+              class="highlight__register-image"
             />
           </div>
-          <div class="item-right">
-            <span class="main-section_keyword">Register</span>
-            <p class="main-section_title">
-              판매를 원하는<br />상품을 등록하세요
-            </p>
-            <p class="main-section_subtitle">
+          <div class="highlight__item-content">
+            <span class="highlight__keyword">Register</span>
+            <p class="highlight__title">판매를 원하는<br />상품을 등록하세요</p>
+            <p class="highlight__subtitle">
               어떤 물건이든 판매하고 싶은 상품을<br />
               쉽게 등록하세요
             </p>
@@ -90,38 +88,38 @@
         </div>
       </section>
 
-      <div class="gray-container"></div>
+      <div class="highlight__gray-container"></div>
 
-      <section class="banner-section">
-        <div class="container">
-          <p class="banner-description" style="margin-bottom: 172.5px">
+      <section class="banner">
+        <div class="banner__container">
+          <p class="banner__description" style="margin-bottom: 172.5px">
             믿을 수 있는<br />
             판다마켓 중고 거래
           </p>
           <img
             src="images/banner_bottom.svg"
             alt="판다마켓 아래배너"
-            class="bannerimg"
+            class="banner__image"
           />
         </div>
       </section>
 
       <footer class="footer">
-        <div class="footer-section">
-          <span>@codeit - 2024</span>
-          <ul class="policy-faq">
+        <div class="footer__section">
+          <span class="footer__copyright">@codeit - 2024</span>
+          <ul class="footer__links">
             <li>
-              <a href="/privacy">Privacy Policy</a>
+              <a href="/privacy" class="footer__link">Privacy Policy</a>
             </li>
             <li>
-              <a href="/faq">FAQ</a>
+              <a href="/faq" class="footer__link">FAQ</a>
             </li>
           </ul>
-          <ul class="sns">
+          <ul class="footer__sns">
             <li>
               <a
                 href="https://www.facebook.com"
-                class="icon facebook"
+                class="footer__icon footer__icon--facebook"
                 target="_blank"
               >
               </a>
@@ -129,7 +127,7 @@
             <li>
               <a
                 href="https://www.twitter.com"
-                class="icon twitter"
+                class="footer__icon footer__icon--twitter"
                 target="_blank"
               >
               </a>
@@ -137,7 +135,7 @@
             <li>
               <a
                 href="https://www.youtube.com"
-                class="icon youtube"
+                class="footer__icon footer__icon--youtube"
                 target="_blank"
               >
               </a>
@@ -145,7 +143,7 @@
             <li>
               <a
                 href="https://www.instagram.com"
-                class="icon instagram"
+                class="footer__icon footer__icon--instagram"
                 target="_blank"
               ></a>
             </li>
