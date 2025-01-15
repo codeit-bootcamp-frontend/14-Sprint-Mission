@@ -175,3 +175,62 @@
   height: 138px;
   background: #fcfcfc;
 }
+
+.footer {
+  height: 160px;
+  background: var(--Secondary-900, #111827);
+}
+
+.footer-section {
+  padding: 32px 400px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 160px;
+}
+
+.footer span {
+  color: #9ca3af;
+}
+
+.footer ul {
+  display: flex;
+}
+
+.policy-faq {
+  gap: 30px;
+}
+.policy-faq li a {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.sns {
+  gap: 12px;
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon.facebook {
+  background-image: url('images/ic_facebook.svg');
+}
+
+.icon.twitter {
+  background-image: url('images/ic_twitter.svg');
+}
+
+.icon.youtube {
+  background-image: url('images/ic_youtube.svg');
+}
+
+.icon.instagram {
+  background-image: url('images/ic_instagram.svg');
+}
