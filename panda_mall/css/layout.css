@@ -99,7 +99,7 @@ header .inner .login_btn {  }
 
 /* 하단 */
 footer { 
-  background-color: var(--Secondary_900);
+  background-color: var(--Cool_Gray_900);
 }
 footer .inner {
   position:relative;
@@ -109,7 +109,7 @@ footer .inner {
   padding:32px 0 108px;
 }
 footer .inner .left {
-  color:var(--Secondary_400);
+  color:var(--Cool_Gray_400);
 }
 
 footer .inner .center {
@@ -118,7 +118,7 @@ footer .inner .center {
 }
 
 footer .inner .center a {
-  color:var(--Secondary_400);
+  color:var(--Cool_Gray_400);
 }
 
 footer .inner .right {

@@ -1,11 +1,19 @@
 
 :root {
-  --Primary: #3692FF;
   --Secondary: #374151;
   --Secondary_200:#E5E7EB;
-  --Secondary_400:#9CA3AF;
-  --Secondary_900:#111827;
+
+  
+  --Primary: #3692FF;
+  --Cool_Gray_900:#111827;
+  --Cool_Gray_800:#1F2937;
+  --Cool_Gray_700:#374151;
+  --Cool_Gray_600:#4B5563;
+  --Cool_Gray_500:#6B7280;
+  --Cool_Gray_400:#9CA3AF;
+  --Cool_Gray_200:#E5E7EB;
   --Cool_Gray_100:#F3F4F6;
+  --Cool_Gray_50:#F9FAFB;
 }
 
 
