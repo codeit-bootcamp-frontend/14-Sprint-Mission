@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+/* nav 창 css */
+#nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 48px;
+  background-color: #3692ff;
+  border-radius: 8px;
+  border: 0;
+}
+
+.login-button > p {
+  color: white;
+}
