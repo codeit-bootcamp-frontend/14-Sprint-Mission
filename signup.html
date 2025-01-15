@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입 - 판다마켓</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+	<main>
+		<div class="container">
+			<a class="brand" href="/">
+				<img class="logo" src="/images/logo.png" alt="logo" width="100" height="100">
+				판다마켓
+			</a>
+			<form>
+				<div class="input-box">
+					<label for="email">이메일</label>
+					<input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" required onkeyup="changeButtonColor()">
+				</div>
+				<div class="input-box">
+					<label for="email">닉네임</label>
+					<input id="username" name="username" type="text" placeholder="닉네임을 입력해주세요" required onkeyup="changeButtonColor()">
+				</div>
+				<div class="input-box">
+					<label for="password">비밀번호</label>
+					<input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required onkeyup="changeButtonColor()">
+					<img id="eye-slash" src="/images/eye-slash.svg" alt="show password" onclick="toggleVisibility()">
+				</div>
+				<div class="input-box">
+					<label for="password-confirm">비밀번호 확인</label>
+					<input id="password-confirm" name="password-confirm" type="password" placeholder="비밀번호를 다시 한번 입력해주세요" required onkeyup="changeButtonColor()">
+					<img id="eye-slash-confirm" src="/images/eye-slash.svg" alt="show password" onclick="toggleConfirmVisibility()">
+				</div>
+				<button type="submit" class="login-btn">회원가입</button>
+			</form>
+			<div class="social-login">
+				<span>간편 로그인하기</span>
+				<a href="https://google.com">
+					<img src="./images/social/google.png" alt="google logo" width="40">
+				</a>
+				<a href="https://kakao.com">
+					<img src="./images/social/kakao.png" alt="google logo" width="40">
+				</a>
+			</div>
+			<span>
+				이미 회원이신가요? 
+				<a href="/login.html">로그인</a>
+			</span>
+		</div>
+	</main>
+	<script>
+		const emailInput = document.getElementById('email');
+		const usernameInput = document.getElementById('username');
+		const passwordInput = document.getElementById('password');
+		const passwordConfirmInput = document.getElementById('password-confirm');
+		const eyeSlashImg = document.getElementById('eye-slash');
+		const eyeSlashConfirmImg = document.getElementById('eye-slash-confirm');
+
+		// 비밀번호 표시
+		function toggleVisibility(){
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+				eyeSlashImg.src = "/images/eye.svg"
+			} else {
+				passwordInput.type = 'password';
+				eyeSlashImg.src = "/images/eye-slash.svg"
+			}
+		}
+		// 비밀번호 확인 표시
+		function toggleConfirmVisibility(){
+			if (passwordConfirmInput.type === 'password') {
+					passwordConfirmInput.type = 'text';
+					eyeSlashConfirmImg.src = "/images/eye.svg"
+			} else {
+				passwordConfirmInput.type = 'password';
+				eyeSlashConfirmImg.src = "/images/eye-slash.svg"
+			}
+		}
+
+		// 모든 필드 값 입력시 버튼 색상 변경
+		function changeButtonColor() {
+			const loginButton = document.querySelector('.login-btn');
+
+			// 모든 필드에 값이 입력되었는지 확인
+			if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '' && usernameInput.value.trim() !== '' && passwordConfirmInput.value.trim() !== '') {
+				loginButton.style.backgroundColor = '#3692ff';
+			} else {
+				loginButton.style.backgroundColor = '#9ca3af'; // 기본 색상으로 변경
+			}
+		}
+	</script>
+</body>
+</html>

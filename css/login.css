@@ -1,0 +1,148 @@
+:root {
+	--gray-900: #111827;
+	--gray-800: #1f2937;
+	--gray-700: #374151;
+	--gray-600: #485563;
+	--gray-500: #6b7280;
+	--gray-400: #9ca3af;
+	--gray-200: #e5e7eb;
+	--gray-100: #f3f4f6;
+	--gray-50: #f9fafb;
+	--blue: #3692ff;
+	--blue-bg: #cfe5ff;
+	--blue-50: #E6F2FF;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: "Pretendard";
+}
+
+body {
+	margin: 0;
+	background: #ffffff;
+	font-family: "Pretendard", sans-serif;
+}
+
+a {
+	color: var(--blue);
+}
+
+@font-face {
+	font-family: "ROKAF Sans";
+	src: url("./font/ROKAF\ Slab\ Serif\ Bold.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style:normal;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 8vh auto 0;
+	padding: 1rem;
+	max-width: 640px;
+	gap: 40px;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	font-family: 'ROKAF Sans';
+	font-weight: 700;
+	font-size: 4rem;
+	color: var(--blue);
+	gap: 20px;
+}
+
+@media screen and (max-width: 425px) {
+	.logo {
+		width: 50px;
+		height: 50px;
+	}
+	.brand {
+		font-size: 2rem;
+	}
+}
+
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 24px;
+}
+
+.input-box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.input-box label {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.input-box input {
+	border: none;
+	background-color: var(--gray-100);
+	padding: 15px 24px;
+	border-radius: 15px;
+}
+
+.input-box input::-webkit-input-placeholder {
+	color: var(--gray-400);
+}
+
+.input-box input:focus {
+	outline: 2px solid var(--blue);
+}
+
+#eye-slash {
+	position: absolute;
+	width: 20px;
+	right: 16px;
+	bottom: 12px;
+	cursor: pointer;
+}
+
+#eye-slash-confirm {
+	position: absolute;
+	width: 20px;
+	right: 16px;
+	bottom: 12px;
+	cursor: pointer;
+}
+
+.login-btn {
+	background-color: var(--gray-400);
+	color: white;
+	font-weight: 400;
+	font-size: 20px;
+	cursor: pointer;
+	padding: 12px 0 12px;
+	border: none;
+	border-radius: 40px;
+}
+
+.social-login {
+	display: flex;
+	align-items: center;
+	background-color: var(--blue-50);
+	width: 100%;
+	padding: 16px 23px;
+	gap: 16px;
+	border-radius: 8px;
+}
+
+.social-login span {
+	flex-grow: 1;
+}
