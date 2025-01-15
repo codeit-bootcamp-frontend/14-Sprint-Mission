@@ -1,0 +1,55 @@
+
+
+
+/* 로그인 페이지 */
+
+#login { min-height: 100vh; display: flex; align-items: center; }
+.login_wrap { width:95%; max-width:640px; margin:0 auto; text-align: center; }
+.login_wrap .logo { margin-bottom:55px; }
+.login_wrap .logo a {  }
+.login_wrap .logo a img { vertical-align: middle; }
+.login_wrap .logo a img:first-child { height:100px; margin-right:22px; }
+.login_wrap .logo a img:last-child { height:50px; }
+
+.login_wrap .login_box { text-align: left; }
+.login_wrap .login_box label { display:block; font-weight:700; font-size:18px; margin-bottom:16px; }
+.login_wrap .login_box input[type='email'],
+.login_wrap .login_box input[type='password'],
+.login_wrap .login_box input[type='text']  { 
+  display:block; width:100%; margin-bottom:24px; 
+  padding:15px 24px; background-color: var(--Cool_Gray_100); 
+  border-radius: 12px; border:0; 
+}
+
+.login_wrap .login_box input[type='password']{
+  background-image : url('../images/Variant202.png');
+  background-position: center right 20px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.login_wrap .login_box input[type='password'].active {
+  background-image : url('../images/Default01.png');
+}
+.login_wrap .login_box input[type='submit'] { 
+  display:block; width:100%; 
+  border-radius: 9999px; 
+  padding:12px 0; color: var(--Cool_Gray_100); 
+  font-size:20px; font-weight:600; line-height:32px;
+  background-color: var(--Primary); border:0; cursor: pointer;
+}
+.login_wrap .login_box input[type='submit']:disabled { background-color: #9CA3AF; }
+
+.login_wrap .sns_login {  
+  background-color: #E6F2FF; color:#1F2937;
+  padding:14px 23px; margin-top:24px; margin-bottom:24px; border-radius: 8px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login_wrap .sns_icon {  }
+.login_wrap .sns_icon a { display:inline-block; margin-left:8px; }
+.login_wrap .sns_icon a img { height: 42px; width:42px; }
+
+.login_wrap .member_sub_box {  }
+.login_wrap .member_sub_box span { font-size:14px; }
+.login_wrap .member_sub_box span a {  }

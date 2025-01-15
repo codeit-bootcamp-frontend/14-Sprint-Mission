@@ -1,47 +1,46 @@
 * { box-sizing:border-box; margin:0; }
 
-
 @font-face {
   font-family: 'Pretendard-Regular';
   src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
-
 body { font-family: 'Pretendard-Regular'; font-size:15px;  font-weight: 400; color:var(--Secondary); }
 a { text-decoration: none; }
 
 .inner,.box_inner { margin:0 auto;  min-width:325px; max-width:1120px; }
 
-:root {
-  --Primary: #3692FF;
-  --Secondary: #374151;
-  --Secondary_200:#E5E7EB;
-  --Secondary_400:#9CA3AF;
-  --Secondary_900:#111827;
-}
+input:hover,
+input:focus {outline:1px solid #3692FF;}
+input::placeholder { color:#9CA3AF; }
+input[type='submit'] { outline:0; }
 
-.font_1 { font-size:40px; }
-.font_2 { font-size:24px; }
-.font_3 { font-size:18px; }
-
+/* 상단 */
+header { position:sticky; top:0; width:100%; background-color: #fff; z-index: 9999; }
 header .inner { display:flex; justify-content: space-between; align-items: center; padding:13px 0; }
 header .inner .logo_top {  }
 header .inner .logo_top img { height:40px;  }
 header .inner .logo_top img:last-child { height:35px; }
 header .inner .login_btn {  }
 
+
+
+/* 내용 _ mainimg */
 .main_title { width:100%; background-color: #CFE5FF ; height: 540px; }
 .main_title .inner { 
   position:relative; 
   height:100%; 
-  background-image: url(/images/Img_home_top.png); 
+  background-image: url(../images/Img_home_top.png); 
   background-position: bottom right; 
   background-repeat: no-repeat; 
 }
 .main_title h1 { font-weight:700; margin-bottom:25px; }
 .main_title a {  }
 .main_title .text_box { position:absolute; top:40%; left:0; }
+
+
+/* 내용 _ section */
 .section { height: 720px;  }
 .section .box_inner { 
   display:flex; height: 100%; align-items: center; 
@@ -67,7 +66,7 @@ header .inner .login_btn {  }
   font-weight: 700;
   color:var(--Primary);
 }
-.section .box_inner .box h1 { 
+.section .box_inner .box h2 { 
   font-weight: 700; 
   margin-top:12px;
   margin-bottom:24px;
@@ -87,7 +86,7 @@ header .inner .login_btn {  }
 .section._4 .inner {
   position:relative; 
   height:100%; 
-  background-image: url(/images/Img_home_bottom.png); 
+  background-image: url(../images/Img_home_bottom.png); 
   background-position: bottom right; 
   background-repeat: no-repeat; 
   margin-top:138px;
@@ -98,6 +97,7 @@ header .inner .login_btn {  }
 
 }
 
+/* 하단 */
 footer { 
   background-color: var(--Secondary_900);
 }
@@ -150,23 +150,23 @@ footer .inner .right img {
 }
 @media (max-width: 780px) {
   
-  .font_1 { font-size:1.3rem; }
-  .font_2 { font-size:1em; }
-  .font_3 { font-size:0.8rem; }
+  .font_1 { font-size:1.8rem; }
+  .font_2 { font-size:1.2em; }
+  .font_3 { font-size:1.3rem; }
   .section._4 .inner, .main_title .inner { background-size: contain; }
   
   .section { height:auto; }
-  .section .box_inner { padding:100px 0; }
+  .section .box_inner { padding:100px 0 0; height:auto;}
   .section .box_inner .box { flex-direction:column; width:100%; gap: 10px; align-items: stretch; }
   .section .box_inner .box > div { padding: 0 0 24px; }
-  .section .box_inner .box > div h1 { margin-top: 12px; margin-bottom: 12px; }
+  .section .box_inner .box > div h2 { margin-top: 12px; margin-bottom: 12px; }
   .section .box_inner .box > div br { display:none; }
   .section .box_inner .box img { width:100%; }
 }
 
 @media (max-width: 375px){
-  a.btn._a { padding: 16px 44px; }
+  a.btn._roundedM { padding: 16px 44px; }
   header .inner .logo_top img:first-child { display:none; }
   footer .inner .left { position: absolute; top:65px; }
-  .section { height:500px; }
+  .section .box_inner { padding:50px 0 0;}
 }
