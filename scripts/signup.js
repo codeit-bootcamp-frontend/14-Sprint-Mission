@@ -1,27 +1,51 @@
-// 비밀번호 확인 버튼 클릭 로직
-document.getElementById("visibility").addEventListener("change", onVisibilityChange);
+const emailInputField = document.getElementById("email");
+const nicknameInputField = document.getElementById("nickname");
+
+const pwdInputField = document.getElementById("pwd");
+const visiblilityBtn = document.getElementById("visibility");
+
+const pwdCheckInputField = document.getElementById("pwd-check");
+const visiblilityAgainBtn = document.getElementById("visibility-again");
+
+const signupBtn = document.getElementById("btn-submit-signup");
+
+// 비밀번호 입력 보기 버튼 클릭 로직
+visiblilityBtn.addEventListener("click", onVisibilityChange);
+
 function onVisibilityChange(e) {
-  const value = e.target.checked;
-  if (value) document.getElementById("pwd").setAttribute("type", "text");
-  else document.getElementById("pwd").setAttribute("type", "password");
+  if (e.target.classList.value.includes("checked")) {
+    visiblilityBtn.classList.remove("checked");
+    pwdInputField.setAttribute("type", "password");
+  } else {
+    visiblilityBtn.classList.add("checked");
+    pwdInputField.setAttribute("type", "text");
+  }
 }
-document.getElementById("visibility-again").addEventListener("change", onVisibilityAgainChange);
+// 비밀번호 확인 입력 버튼 클릭 로직
+visiblilityAgainBtn.addEventListener("click", onVisibilityAgainChange);
+
 function onVisibilityAgainChange(e) {
-  const value = e.target.checked;
-  if (value) document.getElementById("pwd-check").setAttribute("type", "text");
-  else document.getElementById("pwd-check").setAttribute("type", "password");
+  if (e.target.classList.value.includes("checked")) {
+    visiblilityAgainBtn.classList.remove("checked");
+    pwdCheckInputField.setAttribute("type", "password");
+  } else {
+    visiblilityAgainBtn.classList.add("checked");
+    pwdCheckInputField.setAttribute("type", "text");
+  }
 }
-// 로그인 버튼 활성화 로직
-document.getElementById("email").addEventListener("change", onchange);
-document.getElementById("nickname").addEventListener("change", onchange);
-document.getElementById("pwd").addEventListener("change", onchange);
-document.getElementById("pwd-check").addEventListener("change", onchange);
-function onchange() {
-  const email = document.getElementById("email").value;
-  const nickname = document.getElementById("nickname").value;
-  const pwd = document.getElementById("pwd").value;
-  const pwdCheck = document.getElementById("pwd-check").value;
-  if (email && nickname && pwd && pwd === pwdCheck)
-    document.getElementById("btn-submit").removeAttribute("disabled");
-  else document.getElementById("btn-submit").setAttribute("disabled", "true");
+// 회원가입 버튼 활성화 로직
+emailInputField.addEventListener("change", onSignupInputChange);
+nicknameInputField.addEventListener("change", onSignupInputChange);
+pwdInputField.addEventListener("change", onSignupInputChange);
+pwdCheckInputField.addEventListener("change", onSignupInputChange);
+
+function onSignupInputChange() {
+  const email = emailInputField.value;
+  const nickname = nicknameInputField.value;
+  const pwd = pwdInputField.value;
+  const pwdCheck = pwdCheckInputField.value;
+
+  // TODO: 입력 체크 로직
+  if (email && nickname && pwd && pwd === pwdCheck) signupBtn.removeAttribute("disabled");
+  else signupBtn.setAttribute("disabled", "true");
 }

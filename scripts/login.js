@@ -1,16 +1,31 @@
-// 비밀번호 확인 버튼 클릭 로직
-document.getElementById("visibility").addEventListener("change", onVisibilityChange);
+const emailInputField = document.getElementById("email");
+
+const pwdInputField = document.getElementById("pwd");
+const visiblilityBtn = document.getElementById("visibility");
+
+const loginBtn = document.getElementById("btn-submit-login");
+
+// 비밀번호 입력 보기 버튼 클릭 로직
+visiblilityBtn.addEventListener("click", onVisibilityChange);
+
 function onVisibilityChange(e) {
-  const value = e.target.checked;
-  if (value) document.getElementById("pwd").setAttribute("type", "text");
-  else document.getElementById("pwd").setAttribute("type", "password");
+  if (e.target.classList.value.includes("checked")) {
+    visiblilityBtn.classList.remove("checked");
+    pwdInputField.setAttribute("type", "password");
+  } else {
+    visiblilityBtn.classList.add("checked");
+    pwdInputField.setAttribute("type", "text");
+  }
 }
 // 로그인 버튼 활성화 로직
-document.getElementById("email").addEventListener("change", onchange);
-document.getElementById("pwd").addEventListener("change", onchange);
-function onchange() {
-  const email = document.getElementById("email").value;
-  const pwd = document.getElementById("pwd").value;
-  if (email && pwd) document.getElementById("btn-submit").removeAttribute("disabled");
-  else document.getElementById("btn-submit").setAttribute("disabled", "true");
+emailInputField.addEventListener("change", onSignupInputChange);
+pwdInputField.addEventListener("change", onSignupInputChange);
+
+function onSignupInputChange() {
+  const email = emailInputField.value;
+  const pwd = pwdInputField.value;
+
+  // TODO: 입력 체크 로직
+  if (email && pwd) loginBtn.removeAttribute("disabled");
+  else loginBtn.setAttribute("disabled", "true");
 }
