@@ -82,7 +82,7 @@
         text-decoration: none;
         position: absolute;
         bottom: 100px;
-        left: 450px;
+        left: 460px;
     }
 
     .landingpage-description a {
@@ -96,6 +96,7 @@
         font-size: 40px;
         font-weight: 700;
         line-height: 56px;
+        padding-right: 30px;
     }
 
     .description-button {
@@ -146,6 +147,7 @@
         color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
+        padding-right: 120px;
     }
 
     .Hot-item-description {
@@ -158,6 +160,7 @@
         display: flex;
         justify-content: center;
         margin-top: 300px;
+        flex-direction: row-reverse;
     }
 
     .landingpage-wantedproduct-description {
@@ -186,6 +189,10 @@
         color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
+    }
+
+    .search-title span {
+        padding-left: 90px;
     }
 
     .search-description {
@@ -225,6 +232,10 @@
         color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
+    }
+
+    .register-title span {
+        padding-right: 100px;
     }
 
     .register-description {
@@ -491,7 +502,8 @@
     .landingpage-wantedproduct-description p {
         text-align: right;
         display: flex;
-        flex-direction: column;
+        text-align: right;
+        justify-content: end;
     }
 
     .search {
@@ -504,6 +516,10 @@
         color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
+    }
+
+    .search-title span {
+        padding-left: 0px;
     }
 
     .search-description {
@@ -529,14 +545,11 @@
         width: 696px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
+        justify-content: left;
     }
 
     .landingpage-sell-description p {
         text-align: left;
-        display: flex;
-        flex-direction: column;
     }
 
     .register {
@@ -549,6 +562,10 @@
         color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
+    }
+
+    .register-title span {
+        padding-right: 0;
     }
 
     .register-description {
@@ -638,3 +655,6 @@
         gap: 20px;
     }
 }
+
+/* 모바일 버전의 사이즈 */
+@media (max-width: 767px) {}
