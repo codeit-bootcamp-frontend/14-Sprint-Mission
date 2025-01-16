@@ -1,0 +1,220 @@
+@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+
+* {
+    font-family: 'Pretendard', sans-serif;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width: 640px;
+    height: 618px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo,
+.signup-logo {
+    margin-bottom: 40px;
+}
+
+/* 폼 공통 스타일 */
+form label {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(31, 41, 55, 1);
+}
+
+form input {
+    box-sizing: border-box;
+    background-color: rgba(243, 244, 246, 1);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    width: 640px;
+    height: 56px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+form input:focus {
+    border-color: #3692FF;
+    outline: none;
+}
+
+form #submit {
+    border-radius: 40px;
+    background-color: rgba(156, 163, 175, 1);
+    color: rgba(243, 244, 246, 1);
+    margin-top: 8px;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.simple-login {
+    box-sizing: border-box;
+    width: 640px;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background-color: rgba(230, 242, 255, 1);
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.simple-login p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.logos {
+    box-sizing: border-box;
+    display: flex;
+    width: 100px;
+    height: 42px;
+    justify-content: space-between;
+}
+
+.logos img {
+    height: 42px;
+    width: 42px;
+}
+
+.move-to-login,
+.move-to-signup {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.move-to-login a,
+.move-to-signup a {
+    color: rgba(54, 146, 255, 1);
+}
+
+@media (max-width: 767px) {
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrap {
+        width: 343px;
+        max-width: 400px;
+        height: 501px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-logo,
+    .signup-logo {
+        margin-bottom: 40px;
+    }
+
+    .login-logo img,
+    .signup-logo img {
+        width: 198px;
+        height: 66px;
+    }
+
+    /* 폼 공통 스타일 */
+    form label {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(31, 41, 55, 1);
+    }
+
+    form input {
+        box-sizing: border-box;
+        background-color: rgba(243, 244, 246, 1);
+        border: 2px solid transparent;
+        border-radius: 12px;
+        width: 343px;
+        height: 56px;
+        padding-left: 24px;
+        padding-right: 24px;
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    form input:focus {
+        border-color: #3692FF;
+        outline: none;
+    }
+
+    form #submit {
+        border-radius: 40px;
+        background-color: rgba(156, 163, 175, 1);
+        color: rgba(243, 244, 246, 1);
+        margin-top: 8px;
+        margin-bottom: 24px;
+        cursor: pointer;
+    }
+
+    .simple-login {
+        box-sizing: border-box;
+        width: 343px;
+        height: 66px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 23px;
+        padding-right: 23px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        background-color: rgba(230, 242, 255, 1);
+        border-radius: 8px;
+        margin-bottom: 24px;
+    }
+
+    .simple-login p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .logos {
+        box-sizing: border-box;
+        display: flex;
+        width: 100px;
+        height: 42px;
+        justify-content: space-between;
+    }
+
+    .logos img {
+        height: 42px;
+        width: 42px;
+    }
+
+    .move-to-login,
+    .move-to-signup {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .move-to-login a,
+    .move-to-signup a {
+        color: rgba(54, 146, 255, 1);
+    }
+}
