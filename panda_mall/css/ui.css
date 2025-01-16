@@ -1,4 +1,20 @@
 
+:root {
+  --Secondary: #374151;
+  --Secondary_200:#E5E7EB;
+
+  
+  --Primary: #3692FF;
+  --Cool_Gray_900:#111827;
+  --Cool_Gray_800:#1F2937;
+  --Cool_Gray_700:#374151;
+  --Cool_Gray_600:#4B5563;
+  --Cool_Gray_500:#6B7280;
+  --Cool_Gray_400:#9CA3AF;
+  --Cool_Gray_200:#E5E7EB;
+  --Cool_Gray_100:#F3F4F6;
+  --Cool_Gray_50:#F9FAFB;
+}
 
 
 .btn { background-color: #3692FF;  color:#fff; }
@@ -6,5 +22,9 @@
 .btn:active { background-color: #1251AA; color:#fff; }
 .btn.n_act { background-color: #9CA3AF; color:#fff; }
 
-.btn._a { display:inline-block; padding:16px 124px; border-radius: 50px; }
-.btn._b { display:inline-block; padding:12px 20px;  border-radius: 8px; }
+.btn._roundedM { display:inline-block; padding:16px 124px; border-radius: 50px; }
+.btn._roundedS { display:inline-block; padding:12px 20px;  border-radius: 8px; }
+
+.font_1 { font-size:40px; }
+.font_2 { font-size:24px; }
+.font_3 { font-size:18px; }
