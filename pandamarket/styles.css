@@ -700,7 +700,7 @@ footer p a {
 }
 
 /* 모바일 버전의 사이즈 */
-@media (max-width: 767px) {
+@media (max-width: 700px) {
     body {
         padding-right: 0;
         padding-left: 0;
