@@ -108,28 +108,10 @@ form #submit {
 }
 
 @media (max-width: 767px) {
-    main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-    }
-
     .wrap {
         width: 343px;
         max-width: 400px;
         height: 501px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .login-logo,
-    .signup-logo {
-        margin-bottom: 40px;
     }
 
     .login-logo img,
@@ -174,47 +156,7 @@ form #submit {
     }
 
     .simple-login {
-        box-sizing: border-box;
         width: 343px;
         height: 66px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 23px;
-        padding-right: 23px;
-        padding-top: 24px;
-        padding-bottom: 24px;
-        background-color: rgba(230, 242, 255, 1);
-        border-radius: 8px;
-        margin-bottom: 24px;
-    }
-
-    .simple-login p {
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .logos {
-        box-sizing: border-box;
-        display: flex;
-        width: 100px;
-        height: 42px;
-        justify-content: space-between;
-    }
-
-    .logos img {
-        height: 42px;
-        width: 42px;
-    }
-
-    .move-to-login,
-    .move-to-signup {
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    .move-to-login a,
-    .move-to-signup a {
-        color: rgba(54, 146, 255, 1);
     }
 }
