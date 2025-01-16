@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,87 +8,89 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"rel="stylesheet"/>
 </head>
 <body style="margin: 0;">
-    <header class="header1">
-        <nav class="nav1">
-            <a href="./index.html" target="_self" class="title"><img src="./img/logo.png" class="title"></a>
-            <a href="./pages/login.html" target="_blank" class="login">로그인</a>
+    <header class="header-top">
+        <nav class="header-nav">
+            <a href="./index.html" target="_self" class="header-logo"><img src="./img/logo.png" class="header-logo" alt="판다마켓 로고 사진"></a>
+            <a href="./pages/login.html" target="_blank" class="header-login">로그인</a>
         </nav>
     </header>
-    <header class="header2">
-        <div class="header2-main">
-            <div class="header2-title">
-                <p class="header2-title-font">일상의 모든 물건을 거래해 보세요</p>
+    <div class="header-main">
+        <div class="header-main-container">
+            <div class="header-main-title">
+                <h1 class="header-title-font">일상의 모든 물건을 거래해 보세요</h1>
                 <div>
-                    <a href="./pages/items.html" target="_blank" class="items">구경하러 가기</a>
+                    <a href="./pages/items.html" target="_blank" class="header-items">구경하러 가기</a>
                 </div>
             </div>
-            <img src="./img/Img_home_top.png" class="title2">
+            <img src="./img/Img_home_top.png" class="header-image" alt="판다마켓 백그라운드사진">
         </div>
-    </header>
-    <main style="display: flex;flex-direction: column;gap: 0;justify-content: center;align-items: center;">
+    </div>
+    <!-- 메인 -->
+    <main class="main-basic">
         <div class="main-theme">
-            <img src="./img/Img_home_01.png" class="main1">
-            <div style="width: 298px; height: 238px;">
+            <img src="./img/Img_home_01.png" class="main-popular-sell-image" alt="판다마켓 인기 상품 사진">
+            <div class="main-theme-basic">
                 <div>
-                    <p class="main1-1 font1-1">Hot item</p>
+                    <h1 class="main-popular-sell-font-top">Hot item</h1>
                 </div>
                 <div>
-                    <p class="main1-2 font1-2">인기 상품을 확인해 보세요</p>
+                    <h1 class="main-popular-sell-font-middle">인기 상품을 <br>확인해 보세요</h1>
                 </div>
                 <div>
-                    <p class="main1-3 font1-3">가장 HOT한 중고거래 물품을 판다 마켓에서 확인해 보세요</p>
+                    <p class="main-popular-sell-font-bottom">가장 HOT한 중고거래 물품을 <br>판다 마켓에서 확인해 보세요</p>
                 </div>
             </div>
         </div>
         <div class="main-theme">
-            <div>
+            <div class="main-theme-basic main-theme-basic-middle">
                 <div>
-                    <p class="main1-1 font2-1">Search</p>
+                    <h1 class="main-popular-sell-font-top">Search</h1>
                 </div>
                 <div>
-                    <p class="main1-2 font2-2">구매를 원하는<br> 상품을 검색하세요</p>
+                    <h1 class="main-popular-sell-font-middle">구매를 원하는<br> 상품을 검색하세요</h1>
                 </div>
                 <div>
-                    <p class="main1-3 font2-3">구매하고 싶은 물품은 검색해서<br> 쉽게 찾아보세요</p>
+                    <p class="main-popular-sell-font-bottom">구매하고 싶은 물품은 검색해서<br> 쉽게 찾아보세요</p>
                 </div>
             </div>
-            <img src="./img/Img_home_02.png" class="main2">
+            <img src="./img/Img_home_02.png" class="main-search-image" alt="판다마켓 상품 검색 사진">
         </div>
         <div class="main-theme">
-            <img src="./img/Img_home_03.png" class="main1">
-            <div>
+            <img src="./img/Img_home_03.png" class="main-popular-sell-image" alt="판다마켓 인기 상품 등록">
+            <div class="main-theme-basic">
                 <div>
-                    <p class="main1-1 font3-1">Register</p>
+                    <h1 class="main-popular-sell-font-top">Register</h1>
                 </div>
                 <div>
-                    <p class="main1-2 font3-2">판매를 원하는 <br>상품을 검색하세요</p>
+                    <h1 class="main-popular-sell-font-middle">판매를 원하는 <br>상품을 등록하세요</h1>
                 </div>
                 <div>
-                    <p class="main1-3 font3-3">어떤 물건이든 판매하고 싶은 상품을<br> 쉽게 등록하세요</p>
+                    <p class="main-popular-sell-font-bottom">어떤 물건이든 판매하고 싶은 상품을<br> 쉽게 등록하세요</p>
                 </div>
             </div>
         </div>
     </main>
-    <footer style="display: flex;flex-direction: column;justify-content: center;align-items: center;width: auto;">
-        <div class="footer1"></div>
-        <div class="footer2">
-            <div class="footer2-main">
-                <p class="footer-main">믿을 수 있는<br>판다마켓 중고 거래</p>
-                <img src="./img/Img_home_bottom.png" class="footer-image">
+    <!-- footer -->
+    <footer class="footer-main-container">
+        <div class="footer-empty"></div>
+        <div class="footer-container">
+            <div class="footer-background">
+                <h1 class="footer-font">믿을 수 있는<br>판다마켓 중고 거래</h1>
+                <img src="./img/Img_home_bottom.png" class="footer-image" alt="판다마켓 백그라운드 사진">
             </div>
         </div>
-        <div class="footer3-main">
-            <div class="footer3">
-                <p style="color: #9CA3AF;">©codeit - 2024</p>
-                <div style="color: #E5E7EB;display: flex;width: 167px;">
+        <div class="footer-nav">
+            <div class="footer-nav-main">
+                <p class="codeit">©codeit - 2024</p>
+                <div class="privacy-faq">
                     <a href="./pages/privacy.html" target="_blank" class="privacy">Privacy Policy</a>
-                    <a href="./pages/faq.html" target="_blank" class="FAQ">FAQ</a>
+                    <a href="./pages/faq.html" target="_blank" class="privacy FAQ">FAQ</a>
                 </div>
                 <div>
-                    <a href="https://www.facebook.com/" target="_blank"><img src="./img/ic_facebook.png" class="footer-image2" style="margin-right: 13px"></a>
-                    <a href="https://x.com/" target="_blank"><img src="./img/ic_twitter.png" class="footer-image2" style="margin-right: 13px"></a>
-                    <a href="https://www.youtube.com/" target="_blank"><img src="./img/ic_youtube.png" class="footer-image2" style="margin-right: 13px"></a>
-                    <a href="https://www.instagram.com/" target="_blank"><img src="./img/ic_instagram.png" class="footer-image2" style="margin-right: 13px"></a>
+                    <a href="https://www.facebook.com/" target="_blank"><img src="./img/ic_facebook.png" class="footer-nav-image" alt="페이스북 로고 사진"></a>
+                    <a href="https://x.com/" target="_blank"><img src="./img/ic_twitter.png" class="footer-nav-image" alt="트위터 로고 사진"></a>
+                    <a href="https://www.youtube.com/" target="_blank"><img src="./img/ic_youtube.png" class="footer-nav-image" alt="유튜브 로고 사진"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="./img/ic_instagram.png" class="footer-nav-image" alt="인스타그램 로고 사진"></a>
                 </div>
             </div>
         </div>

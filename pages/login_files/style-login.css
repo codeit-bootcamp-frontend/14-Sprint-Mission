@@ -1,0 +1,112 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+}
+
+.login-header-logo{
+    width: 396px;
+    height: 132px;
+    margin: 231px auto 40px auto;
+}
+
+/* form */
+.container-box{
+    width: 640px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.email-password-container{
+    width: 640px;
+    height: 94px;
+    
+}
+
+.email-password-font{
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+
+.email-box{
+    background-color: #F3F4F6;
+    width: 616px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    margin: 0 0 24px 0;
+    border: 0;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 24px;
+}
+
+.email-box.password-box {
+    background-image: url(./img/Vector\ \(2\).png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    background-position-x: 593px;
+}
+
+.email-password-box:focus{
+    border-style:solid;
+    border-width:px;
+    border-color: #3692FF;
+    outline: none;
+}
+
+.login-button{
+    width: 640px;
+    height: 56px;
+    border-radius: 40px;
+    background-color: #9CA3AF;
+    border: 0;
+}
+
+.login-button:hover{
+    background-color: #3692FF;
+}
+
+.login-button-font{
+    color: #F3F4F6;
+    font-size: 20px;
+    font-weight: 600;
+    margin: auto;
+}
+
+.login-choice-container{
+    width: 640px;
+    height: 74px;
+    border-radius: 8px;
+    background-color: #E6F2FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0;
+}
+
+.login-font{
+    font-weight: 500;
+    font-size: 16px;
+    color: #1F2937;
+    margin: 24px 389px 24px 23px;
+}
+
+.login-choice{
+    width: 42px;
+    height: 42px;
+    margin-right: 16px;
+}
+
+/* footer */
+.footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+    margin-left: 4px;
+}

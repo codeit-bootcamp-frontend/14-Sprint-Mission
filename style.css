@@ -1,267 +1,215 @@
-.header1{
-    margin: 0 auto;
-    width: 100%;
-    height: 70px;
+.header-top{
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
 }
 
-.nav1{
+.header-nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1120px;
-    height: 51px;
-    padding: 9.5px 0px;
-    margin: 0 200px;
+    width: 100%;
+    padding: 0.6rem 0px;
+    margin: 0 13rem;
 }
 
-.title{
-    width: 153px;
-    height: 51px;
+.header-logo{
+    width: 9.5rem;
+    height: 3.2rem;
 }
 
-.login{
-    width: 48px;
-    height: 26px;
+.header-login{
+    width: 3rem;
     background-color: #3692FF;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.7rem;
     color: #F9FAFB;
     text-decoration: none;
-    padding: 11px 43px;
+    padding: 0.7rem 3rem;
     text-align: center;
 }
 
-.header2{
+.header-main{
     width: 100%;
-    height: 540px;
     background-color: #CFE5FF;
-    margin: 0 auto;
+}
+
+.header-main-title{
+    width: auto;
+    margin: auto 0;
+}
+
+.header-main-container{
+    width: max-content;
     display: flex;
-}
-
-.header2-main{
-    width: 1110px;
-    height: 340px;
-    display: flex;
-    padding: 200px 0px 0px 0px;
+    padding: 12.5rem 0px 0px 0px;
     margin: 0 auto;
 }
 
-.title2{
-    width: 746px;
-    height: 340px;
-}
-
-.header2-title{
-    width: 357px;
-    height: 260px;
-    margin: 40px 7px 40px 0px;
-}
-
-.header2-title-font{
-    width: 313px;
-    height: 112px;
-    font-size: 40px;
+.header-title-font{
+    width: 20rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    line-height: 56px;
-    margin: 0 62px 32px 0;
+    line-height: 3rem;
+    margin: 0 4rem 2rem 0;
     color: #374151;
 }
 
-.items{
-    width: 115px;
-    height: 32px;
+.header-items{
+    width: 7.25rem;
     background-color: #3692FF;
     border-radius: 40px;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 1.25rem;
+    line-height: 2rem;
     color: #F9FAFB;
     text-decoration: none;
-    padding: 12px 124px;
+    padding: 0.75rem 7.75rem;
     display: inline-block;
 }
 
-.main1{
-    width: 579px;
-    height: 444px;
-    margin: 0 63px 0 23.5px;
+ /* 메인 */
+ .main-basic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .main-theme{
+    display: flex;
+    background-color: #FCFCFC;
+    margin: 8.63rem auto;
 }
 
-.main2{
-    width: 579px;
-    height: 444px;
-    margin: 0 23.5px 0 63px;
+.main-popular-sell-image{
+    width: auto;
+    height: auto;
 }
 
-.main-theme{
+.main-theme-basic{
+    width: 22.25rem;
+    height: 14.88rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 998px;
-    height: 444px;
+    align-items: flex-start;
     background-color: #FCFCFC;
-    margin: 138px 466px;
+    flex-direction: column;
+    padding: 6.44rem 1.44rem 6.44rem 4rem;
 }
 
-.main1-1{
+.main-theme-basic-middle{
+    align-items: flex-end;
+    text-align: right;
+}
+
+.main-popular-sell-font-top{
+    margin: 0 0px 0.75rem 0;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 1.3rem;
     color: #3692FF;
 }
 
-.font1-1{
-    width: 77px;
-    height: 26px;
-    margin: 0 226px 12px 0;
-}
-
-.font2-1{
-    width: auto;
-    height: 26px;
-    margin: 0 0px 12px 257px;
-    text-align: right;
-}
-
-.font1-3{
-    width: 287px;
-    height: 64px;
-}
-
-.main1-2{
+.main-popular-sell-font-middle{
+    margin: 0 auto 1.5rem 0;
     font-weight: 700;
-    font-size: 40px;
-    line-height: 56px;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
     color: #374151;
 }
 
-.font1-2{
-    width: 230px;
-    height: 112px;
-    margin: 0 auto 24px 0;
-}
-
-.font2-2{
-    width: 304px;
-    height: 112px;
-    margin: 0 0 24px auto;
-    text-align: right;
-}
-
-.font2-3{
-    width: 304px;
-    height: 64px;
-    margin: 0 0 0px 29px;
-    text-align: right;
-}
-
-.font3-1{
-    width: 71px;
-    height: 26px;
-    margin: 0 288px 12px 0px;
-}
-
-.main1-3{
+.main-popular-sell-font-bottom{
     font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #374151;
+    width: 22.44rem;
 }
 
-.font3-2{
-    width: 304px;
-    height: 112px;
-    margin: 0 66px 24px 0;
+.main-search-image{
+    width: 579px;
+    height: 444px;
+    margin: 0 auto 0 63px;
 }
 
-.font3-3{
-    width: 353px;
-    height: 64px;
-    margin: 0 24px 0 0;
-}
+ /* footer */
 
-.footer1{
+.footer-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+.footer-empty{
     width: auto;
     height: 138px;
     background-color: #FCFCFC;
 }
 
-.footer2{
+.footer-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 540px;
     background-color: #CFE5FF;
 }
 
-.footer2-main{
-    padding: 143px 405px 0 405px;
+.footer-background{
+    padding: 9rem 25rem 0 13.9rem;
     display: flex;
-    background-color: #CFE5FF;
-    margin: 0 auto;
     height: 397px;
+}
+
+.footer-font{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 7rem 69px 7rem 0;
 }
 
 .footer-image{
-    width: 746px;
-    height: 397px;
+    width: 46.63rem;
+    height: 24.81rem;
 }
 
-.footer-main{
-    display: inline-block;
-    width: 313px;
-    height: 172px;
-    font-size: 40px;
-    font-weight: 700;
-    margin: 112.5px 69px 112.5px 0;
-}
 
-.footer3-main{
+.footer-nav{
     width: 100%;
-    height: 160px;
     background-color: #111827;
     display: flex;
     justify-content: center ;
 }
 
-.footer3{
-    height: 20px;
-    width: 1120px;
+.footer-nav-main{
+    height: 1.25rem;
+    width: 64rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 32px 400px 108px 400px;
+    margin: 2rem 25rem 6.75rem 26rem;
 }
 
-.footer-image2{
+.codeit{
+    color: #9CA3AF;
+}
+
+.privacy-faq{
+    color: #E5E7EB;
+    display: flex;
+    width: 10.44rem;
+}
+
+.footer-nav-image{
     width: 18px;
     height: 18px;
+    margin-right: 13px
 }
 
 .privacy{
-    margin: auto 30px auto 0;
+    margin: auto 2rem auto 0;
     color: #E5E7EB;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.09px;
-    text-align: center;
     text-decoration: none;
-    width: 103px;
 }
 
 .FAQ{
     margin: auto 0;
-    color: #E5E7EB;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.09px;
-    text-align: center;
-    text-decoration: none;
-    width: 29px;
 }
