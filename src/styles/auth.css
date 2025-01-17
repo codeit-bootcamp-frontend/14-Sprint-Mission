@@ -25,7 +25,8 @@ body {
   margin-bottom: 24px;
 }
 
-.login-form .login-label p {
+.login-form .login-label span {
+  display: inline-block;
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 700;
