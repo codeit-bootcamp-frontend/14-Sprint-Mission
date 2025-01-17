@@ -62,7 +62,7 @@ header .login-button {
     display: flex;
 }
 
-.landingpage-popular-product-description p {
+.landingpage-popular-product-description span {
     display: flex;
 }
 
@@ -83,7 +83,7 @@ header .login-button {
     justify-content: center;
 }
 
-.landingpage-wantedproduct-description p {
+.landingpage-wantedproduct-description span {
     text-align: right;
     display: flex;
 }
@@ -104,7 +104,7 @@ header .login-button {
     display: flex;
 }
 
-.landingpage-sell-description p {
+.landingpage-sell-description span {
     display: flex;
 }
 
@@ -152,11 +152,11 @@ footer {
     display: flex;
 }
 
-footer p {
+footer span {
     color: rgba(229, 231, 235, 1);
 }
 
-footer p a {
+footer span a {
     text-decoration: none;
     color: rgba(229, 231, 235, 1);
 }
@@ -263,7 +263,7 @@ footer p a {
         padding-left: 60px;
     }
 
-    .landingpage-popular-product-description p {
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
@@ -294,11 +294,13 @@ footer p a {
         width: 400px;
         height: 444px;
         display: flex;
-        align-items: center;
-        padding-left: 50px;
+        justify-content: center;
+        flex-direction: column;
+        text-align: right;
+        padding-right: 64px;
     }
 
-    .landingpage-wantedproduct-description p {
+    .landingpage-wantedproduct-description span {
         flex-direction: column;
     }
 
@@ -312,7 +314,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 90px;
     }
 
@@ -335,7 +337,7 @@ footer p a {
         padding-left: 50px;
     }
 
-    .landingpage-sell-description p {
+    .landingpage-sell-description span {
         flex-direction: column;
     }
 
@@ -349,7 +351,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 100px;
     }
 
@@ -401,6 +403,7 @@ footer p a {
         height: 20px;
         justify-content: center;
         flex-direction: row;
+        margin-top: 20px;
     }
 
     .foot-start {
@@ -411,12 +414,12 @@ footer p a {
         flex-direction: row;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
         font-weight: 400;
     }
 
-    footer p a {
+    footer span a {
         font-size: 16px;
         font-weight: 400;
     }
@@ -523,9 +526,10 @@ footer p a {
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
+        margin-top: 24px;
     }
 
-    .landingpage-popular-product-description p {
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
@@ -561,9 +565,10 @@ footer p a {
         flex-direction: column;
         align-items: flex-end;
         text-align: left;
+        margin-top: 24px;
     }
 
-    .landingpage-wantedproduct-description p {
+    .landingpage-wantedproduct-description span {
         text-align: right;
         justify-content: end;
     }
@@ -578,7 +583,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 0px;
     }
 
@@ -604,9 +609,10 @@ footer p a {
         display: flex;
         flex-direction: column;
         justify-content: left;
+        margin-top: 24px;
     }
 
-    .landingpage-sell-description p {
+    .landingpage-sell-description span {
         text-align: left;
     }
 
@@ -620,7 +626,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 0;
     }
 
@@ -674,6 +680,7 @@ footer p a {
     .foot {
         height: 20px;
         justify-content: center;
+        margin-top: 20px;
     }
 
     .foot div {
@@ -684,12 +691,12 @@ footer p a {
         margin-right: 71px;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
         font-weight: 400;
     }
 
-    footer p a {
+    footer span a {
         font-size: 16px;
         font-weight: 400;
     }
@@ -797,7 +804,7 @@ footer p a {
         text-align: left;
     }
 
-    .landingpage-popular-product-description p {
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
@@ -835,7 +842,7 @@ footer p a {
         text-align: left;
     }
 
-    .landingpage-wantedproduct-description p {
+    .landingpage-wantedproduct-description span {
         text-align: right;
         justify-content: end;
     }
@@ -850,7 +857,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 0px;
     }
 
@@ -878,7 +885,7 @@ footer p a {
         justify-content: left;
     }
 
-    .landingpage-sell-description p {
+    .landingpage-sell-description span {
         text-align: left;
     }
 
@@ -892,7 +899,7 @@ footer p a {
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 0;
     }
 
@@ -969,13 +976,13 @@ footer p a {
         flex-direction: row;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
         color: rgba(103, 103, 103, 1);
         font-weight: 400;
     }
 
-    footer p a {
+    footer span a {
         font-size: 16px;
         font-weight: 400;
     }
