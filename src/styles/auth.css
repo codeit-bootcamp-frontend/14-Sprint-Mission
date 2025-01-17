@@ -122,7 +122,9 @@ body {
 @media (min-width: 375px) and (max-width: 767px) {
   .login-main {
     top: 80px;
-    width: 343px;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 16px;
   }
 
   .login-main .logo {
