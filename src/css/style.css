@@ -1,25 +1,38 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: Pretendard, sans-serif;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
 a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* header */
 
 .header {
   height: 70px;
-  padding: 9px 400px;
+  padding: 0 200px;
   background: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .header__navbar {
   display: flex;
-  justify-content: space-between;
+  gap: 839px;
   align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .header__login-button {
@@ -47,21 +60,26 @@ a {
 .banner {
   height: 540px;
   background: #cfe5ff;
-  padding-top: 200px;
-  padding-left: 405px;
-  padding-right: 405px;
+  display: flex;
+  width: 100%;
 }
 
 .banner__container {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
   gap: 7px;
+  margin: 0 auto;
+  align-items: flex-end;
+}
+
+.banner__container--bottom {
+  gap: 62px;
 }
 
 .banner__image {
-  width: 746px;
-  height: 340px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .banner__description {
@@ -71,6 +89,10 @@ a {
   font-weight: 700;
   line-height: 140%;
   white-space: nowrap;
+}
+
+.banner__description--bottom {
+  margin-bottom: 172.5px;
 }
 
 .banner__button {
@@ -116,6 +138,14 @@ a {
   align-items: center;
   gap: 32px;
   width: 988px;
+  overflow: hidden;
+  height: 444px;
+}
+
+.highlight__image,
+.highlight__search-image,
+.highlight__item-image {
+  height: 100%;
 }
 
 .highlight__image {
@@ -156,6 +186,10 @@ a {
   margin-top: 12px;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .highlight__subtitle {
   color: var(--Secondary-700, #374151);
   font-size: 24px;
@@ -194,15 +228,15 @@ a {
 .footer {
   height: 160px;
   background: var(--Secondary-900, #111827);
+  padding: 32px 400px;
 }
 
 .footer__section {
-  padding: 32px 400px;
+  max-width: 1120px;
+  justify-content: space-between;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   margin: 0 auto;
-  height: 160px;
 }
 
 .footer__copyright {
@@ -234,17 +268,17 @@ a {
 }
 
 .footer__icon--facebook {
-  background-image: url('images/ic_facebook.svg');
+  background-image: url('../assets/images/ic_facebook.svg');
 }
 
 .footer__icon--twitter {
-  background-image: url('images/ic_twitter.svg');
+  background-image: url('../assets/images/ic_twitter.svg');
 }
 
 .footer__icon--youtube {
-  background-image: url('images/ic_youtube.svg');
+  background-image: url('../assets/images/ic_youtube.svg');
 }
 
 .footer__icon--instagram {
-  background-image: url('images/ic_instagram.svg');
+  background-image: url('../assets/images/ic_instagram.svg');
 }

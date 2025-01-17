@@ -4,13 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <header class="header">
       <div class="header__navbar">
-        <a href="index.html">
-          <img src="images/logo.svg" alt="메인 로고" class="logo" />
+        <a href="/">
+          <img src="../assets/images/logo.svg" alt="메인 로고" class="logo" />
         </a>
         <a href="/login" class="header__login-button">로그인</a>
       </div>
@@ -24,10 +30,10 @@
               일상의 모든 물건을<br />
               거래해 보세요
             </p>
-            <a href="/items" class="banner__button">로그인</a>
+            <a href="/items" class="banner__button">구경하러 가기</a>
           </div>
           <img
-            src="images/banner_top.svg"
+            src="../assets/images/panda_topbanner.svg"
             alt="판다마켓 위배너"
             class="banner__image"
           />
@@ -37,7 +43,10 @@
       <section class="highlight">
         <div class="highlight__container">
           <div class="highlight__image">
-            <img src="images/Img_home_01.svg" alt="인기상품 이미지" />
+            <img
+              src="../assets/images/popular_item.svg"
+              alt="인기상품 이미지"
+            />
           </div>
           <div class="highlight__content">
             <span class="highlight__keyword">Hot item</span>
@@ -54,16 +63,16 @@
         <div class="highlight__container">
           <div class="highlight__search-content">
             <span class="highlight__keyword">Search</span>
-            <p class="highlight__title" style="text-align: right">
+            <p class="highlight__title align-right">
               구매를 원하는<br />상품을 검색하세요
             </p>
-            <p class="highlight__subtitle" style="text-align: right">
+            <p class="highlight__subtitle align-right">
               구매하고 싶은 물품은 검색해서<br />
               쉽게 찾아보세요
             </p>
           </div>
           <div class="highlight__search-image">
-            <img src="images/search_img.svg" alt="상품검색 이미지" />
+            <img src="../assets/images/search_img.svg" alt="상품검색 이미지" />
           </div>
         </div>
       </section>
@@ -72,7 +81,7 @@
         <div class="highlight__container">
           <div class="highlight__item-image">
             <img
-              src="images/Img_home_03.svg"
+              src="../assets/images/register_item.svg"
               alt="상품등록 이미지"
               class="highlight__register-image"
             />
@@ -91,13 +100,13 @@
       <div class="highlight__gray-container"></div>
 
       <section class="banner">
-        <div class="banner__container">
-          <p class="banner__description" style="margin-bottom: 172.5px">
+        <div class="banner__container banner__container--bottom">
+          <p class="banner__description banner__description--bottom">
             믿을 수 있는<br />
             판다마켓 중고 거래
           </p>
           <img
-            src="images/banner_bottom.svg"
+            src="../assets/images/panda_bottombanner.svg"
             alt="판다마켓 아래배너"
             class="banner__image"
           />
