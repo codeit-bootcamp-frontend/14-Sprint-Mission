@@ -45,6 +45,12 @@ body {
   padding-top: 70px;
 }
 
+/* Hero Section */
+.hero-section {
+  height: 540px;
+  background-color: #cfe5ff;
+}
+
 .center-content {
   position: relative;
   max-width: 1120px;
@@ -53,22 +59,20 @@ body {
   margin: 0 auto;
 }
 
-/* Hero Section */
-.hero-section {
-  height: 540px;
-  background-color: #cfe5ff;
+.hero-section .content {
+  position: relative;
+  top: 240px;
 }
 
-.hero-section .title {
+.hero-section .content p {
+  position: relative;
   margin-bottom: 32px;
-  padding-top: 240px;
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
 }
 
 .hero-section a {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,8 +163,8 @@ body {
 }
 
 .bottom-section p {
-  margin-bottom: 32px;
-  padding-top: 256px;
+  position: relative;
+  top: 256px;
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
@@ -205,4 +209,103 @@ body {
 .main-footer .footer-box .footer-icon img {
   width: 20px;
   cursor: pointer;
+}
+
+/** 태블릿 반응형 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /** Navibation  */
+  .main-nav {
+    padding: 0 24px;
+  }
+
+  /** Hero Section  */
+  .hero-section {
+    height: 770px;
+  }
+
+  .hero-section .content {
+    top: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section .content p br {
+    display: none;
+  }
+
+  .hero-section img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /** Home Section */
+  .home-section {
+    height: fit-content;
+    padding: 0;
+  }
+
+  .home-section .inner {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .home-section .inner img {
+    width: 100%;
+    padding: 0;
+  }
+
+  .home-section .inner .content {
+    padding: 24px 0 0 0;
+  }
+
+  .home-section .inner .content .title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .home-section .inner .content .title br {
+    display: none;
+  }
+
+  .home-section .inner .content .description {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /* Bottom Section */
+  .bottom-section {
+    height: 926px;
+    margin-top: 32px;
+  }
+
+  .bottom-section p {
+    top: 200px;
+    text-align: center;
+  }
+
+  .bottom-section img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /** Footter */
+  .main-footer .footer-box {
+    padding: 32px 104px 0 104px;
+  }
+}
+
+/** 모바일 반응형  */
+@media (min-width: 375px) and (max-width: 767px) {
 }
