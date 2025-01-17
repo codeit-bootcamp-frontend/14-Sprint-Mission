@@ -11,7 +11,15 @@
     <header class="main-header">
       <nav class="main-nav">
         <a href="/">
-          <img src="src/assets/img/panda-logo.png" alt="판다마켓 로고" />
+          <picture>
+            <source
+              srcset="src/assets/img/logo_tablet_to_desktop.svg"
+              media="(min-width: 768px)"
+            />
+            <img src="src/assets/img/logo_mobile.svg" alt="판다마켓 로고" />
+
+            <!-- <img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" /> -->
+          </picture>
         </a>
         <a class="login" href="login.html">로그인</a>
       </nav>
