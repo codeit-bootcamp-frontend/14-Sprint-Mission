@@ -260,7 +260,7 @@ footer span a {
         width: 400px;
         height: 444px;
         align-items: center;
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     .landingpage-popular-product-description span {
@@ -297,7 +297,7 @@ footer span a {
         justify-content: center;
         flex-direction: column;
         text-align: right;
-        padding-right: 64px;
+        padding-right: 50px;
     }
 
     .landingpage-wantedproduct-description span {
