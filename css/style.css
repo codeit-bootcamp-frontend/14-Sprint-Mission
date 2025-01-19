@@ -15,8 +15,6 @@ footer {
   color: var(--gray-400);
 }
 
-
-
 .header {
   display: flex;
   align-items: center;
@@ -30,23 +28,69 @@ footer {
   .header {
     padding: 0 200px;
   }
+  .banner {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 1199px) {
   .header {
     padding: 0 24px;
   }
+
+  .banner {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-text {
+    width: 33rem;
+    margin-bottom: 200px;
+  }
+
+  .img-panda {
+    width: 100%;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
+  
 }
 
 @media (max-width: 767px) {
   .header {
     padding: 0 16px;
   }
+
   .logo {
     display: none;
   }
+
+  .hero-text {
+    width: 15rem;
+    margin-bottom: 130px;
+  }
+
+  .hero-text .hero-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .hero-text .view-button {
+    width: 240px;
+  }
+
+  .group {
+    flex: 0 0 auto;
+  }
+  .group:nth-child(odd) {
+    text-align: left;
+  }
 }
 
+/* header */
 .brand {
   display: flex;
   flex-shrink: 0;
@@ -78,12 +122,12 @@ footer {
   border-radius: 8px;
 }
 
+/* banner */
 .banner {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   max-width: 1120px;
-  padding: 0 1rem;
   margin: 0 auto;
 }
 
@@ -95,9 +139,11 @@ footer {
 .hero-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-title {
+  width: 100%;
   font-weight: 700;
   font-size: 40px;
   color: #374151;
@@ -114,14 +160,13 @@ footer {
 }
 
 .img-panda {
-  width: 60%;
+  flex: 1;
   height: auto;
   margin-top: 2rem;
 }
 
 .container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   max-width: 1000px;
@@ -130,14 +175,8 @@ footer {
   border-radius: 20px;
 }
 
-@media (max-width: 750px) {
-  .reverse {
-    flex-direction: column-reverse;
-  }
-}
-
 .group {
-  flex-grow: 1;
+  flex: 1;
   width: 330px;
   padding: 30px;
 }
@@ -146,14 +185,6 @@ footer {
   text-align: right;
 }
 
-@media (max-width: 750px) {
-  .group {
-    flex: 0 0 auto;
-  }
-  .group:nth-child(odd) {
-    text-align: left;
-  }
-}
 
 .img-group {
   width: 55%;
