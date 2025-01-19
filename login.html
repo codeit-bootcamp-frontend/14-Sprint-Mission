@@ -21,7 +21,7 @@
         <form class="login-form">
           <label for="email" class="login-label">
             <span>이메일</span>
-            <div class="login-input-box">
+            <div class="login-input-box gray-border">
               <input
                 id="email"
                 type="text"
@@ -32,20 +32,27 @@
           </label>
           <label for="password" class="login-label">
             <span>비밀번호</span>
-            <div class="login-input-box">
+            <div class="login-input-box gray-border">
               <input
                 id="password"
                 type="password"
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
               />
-              <img
-                src="src/assets/icons/btn_visibility_off_24px.svg"
-                alt="감은 눈 아이콘"
-              />
+              <div class="eye">
+                <img
+                  src="src/assets/icons/ic_closed_eye.svg"
+                  alt="감은 눈 아이콘"
+                />
+                <img
+                  class="none"
+                  src="src/assets/icons/ic_opened_eye.svg"
+                  alt="뜬 눈 아이콘"
+                />
+              </div>
             </div>
           </label>
-          <button class="login-button">로그인</button>
+          <button class="login-button" disabled>로그인</button>
         </form>
         <div class="convenient-login-box">
           <span>간편 로그인하기</span>
@@ -67,4 +74,6 @@
       </div>
     </main>
   </body>
+  <script type="module" src="src/js/validate.mjs"></script>
+  <script type="module" src="src/js/sign-in.mjs"></script>
 </html>
