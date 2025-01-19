@@ -1,12 +1,12 @@
-import { ERROR_MESSAGE } from "./contants.mjs";
 import { checkButton, resetErrorMessage, validate } from "./validate.mjs";
 import { AUTH_VALIDATOR } from "./validator.mjs";
+import { ERROR_MESSAGE } from "./contants.mjs";
 
 const $emailInput = document.querySelector("#email");
 const $nicknameInput = document.querySelector("#nickname");
 const $passwordInput = document.querySelector("#password");
 const $repasswordInput = document.querySelector("#repassword");
-const $loginButton = document.querySelector(".login-button");
+const $submitButton = document.querySelector(".auth-button");
 const $eyeIcon = document.querySelectorAll(".eye");
 
 const checkEmptyInputs = [
@@ -27,7 +27,7 @@ function checkFocusOutEmail(e) {
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function checkFocusOutNickname(e) {
@@ -37,7 +37,7 @@ function checkFocusOutNickname(e) {
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function checkFocusPassWord(e) {
@@ -51,7 +51,7 @@ function checkFocusPassWord(e) {
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function checkFocusRepassWord(e) {
@@ -70,7 +70,7 @@ function checkFocusRepassWord(e) {
     callback: AUTH_VALIDATOR.IS_MATCH,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function clickButton(e) {
@@ -91,6 +91,6 @@ $emailInput.addEventListener("focusout", checkFocusOutEmail);
 $nicknameInput.addEventListener("focusout", checkFocusOutNickname);
 $passwordInput.addEventListener("focusout", checkFocusPassWord);
 $repasswordInput.addEventListener("focusout", checkFocusRepassWord);
-$loginButton.addEventListener("click", clickButton);
+$submitButton.addEventListener("click", clickButton);
 
 $eyeIcon.forEach(($eyeEl) => $eyeEl.addEventListener("click", toggleInputType));

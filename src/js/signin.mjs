@@ -4,7 +4,7 @@ import { ERROR_MESSAGE } from "./contants.mjs";
 
 const $emailInput = document.querySelector("#email");
 const $passwordInput = document.querySelector("#password");
-const $loginButton = document.querySelector(".login-button");
+const $submitButton = document.querySelector(".auth-button");
 const $eyeIcon = document.querySelector(".eye");
 
 const checkEmptyInputs = [$emailInput, $passwordInput];
@@ -20,7 +20,7 @@ function checkFocusOutEmail(e) {
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function checkFocusPassWord(e) {
@@ -34,7 +34,7 @@ function checkFocusPassWord(e) {
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($loginButton, { checkEmptyInputs });
+  checkButton($submitButton, { checkEmptyInputs });
 }
 
 function clickButton(e) {
@@ -53,5 +53,5 @@ function toggleInputType(e) {
 
 $emailInput.addEventListener("focusout", checkFocusOutEmail);
 $passwordInput.addEventListener("focusout", checkFocusPassWord);
-$loginButton.addEventListener("click", clickButton);
+$submitButton.addEventListener("click", clickButton);
 $eyeIcon.addEventListener("click", toggleInputType);
