@@ -1,7 +1,3 @@
-const MINIMUM_PASSWORD_LENGTH = 8;
-const EMAIL_REG_EXP =
-  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
 function addErrorMessage(el, message) {
   const target = el.parentElement.parentElement;
   const $p = document.createElement("p");
@@ -53,10 +49,11 @@ function resetErrorMessage(e) {
   }
 }
 
-function validate(e, { message, validate }) {
-  const el = e.target;
-  const value = e.target.value;
-  const isValidate = validate(value);
+function validate(e, { targetEl, message, callback }) {
+  const el = e?.target ? e.target : e;
+  const value1 = el.value;
+  const value2 = targetEl?.value;
+  const isValidate = callback(value1, value2);
 
   toggleRedBorder({ el, isValidate, message });
 }

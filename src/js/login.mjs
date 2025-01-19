@@ -10,11 +10,11 @@ function checkFocusOutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
     message: "이메일을 입력해주세요.",
-    validate: AUTH_VALIDATOR.IS_EMPTY_INPUT,
+    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
     message: "잘못된 이메일입니다.",
-    validate: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
+    callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
   checkButton($loginButton, {
@@ -26,11 +26,11 @@ function checkFocusPassWord(e) {
   resetErrorMessage(e);
   validate(e, {
     message: "비밀번호를 입력해주세요.",
-    validate: AUTH_VALIDATOR.IS_EMPTY_INPUT,
+    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
     message: "비밀번호를 8자 이상 입력해주세요.",
-    validate: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
+    callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
   checkButton($loginButton, {

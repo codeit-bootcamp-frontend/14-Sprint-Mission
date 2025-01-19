@@ -50,10 +50,17 @@
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
               />
-              <img
-                src="src/assets/icons/btn_visibility_off_24px.svg"
-                alt="감은 눈 아이콘"
-              />
+              <div class="eye">
+                <img
+                  src="src/assets/icons/ic_closed_eye.svg"
+                  alt="감은 눈 아이콘"
+                />
+                <img
+                  class="none"
+                  src="src/assets/icons/ic_opened_eye.svg"
+                  alt="뜬 눈 아이콘"
+                />
+              </div>
             </div>
           </label>
           <label for="repassword" class="login-label">
@@ -65,13 +72,21 @@
                 name="repassword"
                 placeholder="비밀번호를 다시 한 번 입력해주세요"
               />
-              <img
-                src="src/assets/icons/btn_visibility_off_24px.svg"
-                alt="감은 눈 아이콘"
-              />
+
+              <div class="eye">
+                <img
+                  src="src/assets/icons/ic_closed_eye.svg"
+                  alt="감은 눈 아이콘"
+                />
+                <img
+                  class="none"
+                  src="src/assets/icons/ic_opened_eye.svg"
+                  alt="뜬 눈 아이콘"
+                />
+              </div>
             </div>
           </label>
-          <button class="login-button">회원가입</button>
+          <button class="login-button" disabled>회원가입</button>
         </form>
         <div class="convenient-login-box">
           <span>간편 로그인하기</span>
@@ -93,4 +108,6 @@
       </div>
     </main>
   </body>
+  <script type="module" src="src/js/validator.mjs"></script>
+  <script type="module" src="src/js/sign-up.mjs"></script>
 </html>
