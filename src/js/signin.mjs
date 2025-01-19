@@ -1,6 +1,6 @@
-import { checkButton, resetErrorMessage, validate } from "./validate.mjs";
-import { AUTH_VALIDATOR } from "./validator.mjs";
-import { ERROR_MESSAGE } from "./contants.mjs";
+import { checkButton, resetErrorMessage, validate } from "./utils/validate.mjs";
+import { AUTH_VALIDATOR } from "./constants/validator.mjs";
+import { ERROR_MESSAGE } from "./constants/contants.mjs";
 
 const $emailInput = document.querySelector("#email");
 const $passwordInput = document.querySelector("#password");
