@@ -1,5 +1,6 @@
 import { checkButton, resetErrorMessage, validate } from "./validate.mjs";
 import { AUTH_VALIDATOR } from "./validator.mjs";
+import { ERROR_MESSAGE } from "./contants.mjs";
 
 const $emailInput = document.querySelector("#email");
 const $passwordInput = document.querySelector("#password");
@@ -9,11 +10,11 @@ const $eyeIcon = document.querySelector(".eye");
 function checkFocusOutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "이메일을 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_EMAIL,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
-    message: "잘못된 이메일입니다.",
+    message: ERROR_MESSAGE.IS_WRONG_EMAIL_FORMAT,
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
@@ -25,11 +26,11 @@ function checkFocusOutEmail(e) {
 function checkFocusPassWord(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "비밀번호를 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_PASSWORD,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
-    message: "비밀번호를 8자 이상 입력해주세요.",
+    message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 

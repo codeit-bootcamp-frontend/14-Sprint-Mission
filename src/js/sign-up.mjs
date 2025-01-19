@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from "./contants.mjs";
 import { checkButton, resetErrorMessage, validate } from "./validate.mjs";
 import { AUTH_VALIDATOR } from "./validator.mjs";
 
@@ -11,11 +12,11 @@ const $eyeIcon = document.querySelectorAll(".eye");
 function checkFocusOutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "이메일을 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_EMAIL,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
-    message: "잘못된 이메일입니다.",
+    message: ERROR_MESSAGE.IS_WRONG_EMAIL_FORMAT,
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
@@ -32,7 +33,7 @@ function checkFocusOutEmail(e) {
 function checkFocusOutNickname(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "닉네임을 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_NICKNAME,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
 
@@ -49,11 +50,11 @@ function checkFocusOutNickname(e) {
 function checkFocusPassWord(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "비밀번호를 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_PASSWORD,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
-    message: "비밀번호를 8자 이상 입력해주세요.",
+    message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
@@ -70,16 +71,16 @@ function checkFocusPassWord(e) {
 function checkFocusRepassWord(e) {
   resetErrorMessage(e);
   validate(e, {
-    message: "비밀번호를 입력해주세요.",
+    message: ERROR_MESSAGE.IS_EMPTY_REPASSWORD,
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
-    message: "비밀번호를 8자 이상 입력해주세요.",
+    message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
   validate(e.target, {
     targetEl: $passwordInput,
-    message: "비밀번호가 일치하지 않습니다.",
+    message: ERROR_MESSAGE.IS_NOT_MATCH_PASSWORD,
     callback: AUTH_VALIDATOR.IS_MATCH,
   });
 
