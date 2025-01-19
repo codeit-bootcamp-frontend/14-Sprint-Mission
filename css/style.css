@@ -24,71 +24,6 @@ footer {
   margin: 0 auto;
 }
 
-@media (min-width: 1200px) {
-  .header {
-    padding: 0 200px;
-  }
-  .banner {
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 1199px) {
-  .header {
-    padding: 0 24px;
-  }
-
-  .banner {
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero-text {
-    width: 33rem;
-    margin-bottom: 200px;
-  }
-
-  .img-panda {
-    width: 100%;
-  }
-
-  .container {
-    flex-wrap: wrap;
-  }
-  
-}
-
-@media (max-width: 767px) {
-  .header {
-    padding: 0 16px;
-  }
-
-  .logo {
-    display: none;
-  }
-
-  .hero-text {
-    width: 15rem;
-    margin-bottom: 130px;
-  }
-
-  .hero-text .hero-title {
-    text-align: center;
-    font-size: 2rem;
-  }
-
-  .hero-text .view-button {
-    width: 240px;
-  }
-
-  .group {
-    flex: 0 0 auto;
-  }
-  .group:nth-child(odd) {
-    text-align: left;
-  }
-}
 
 /* header */
 .brand {
@@ -165,6 +100,7 @@ footer {
   margin-top: 2rem;
 }
 
+/* section */
 .container {
   display: flex;
   justify-content: center;
@@ -187,6 +123,7 @@ footer {
 
 
 .img-group {
+  flex: 1;
   width: 55%;
   height: auto;
   aspect-ratio: 5/4;
@@ -222,6 +159,7 @@ footer {
   align-items: center;
 }
 
+/* footer */
 .footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -248,11 +186,98 @@ footer {
 }
 
 .info a {
-  color: var(--gray-400);
+  color: white;
 }
 
 .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    padding: 0 200px;
+  }
+  .banner {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-text {
+    width: 33rem;
+    margin-bottom: 200px;
+  }
+
+  .img-panda {
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .reverse {
+    flex-direction: column-reverse;
+  }
+
+  .container .img-group {
+    width: 100%;
+  }
+
+  .container .group {
+    width: 100%;
+  }
+
+  .slogan {
+    text-align: center;
+  }
+
+  .footer {
+    padding: 2rem 6rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .hero-text {
+    width: 15rem;
+    margin-bottom: 130px;
+  }
+
+  .hero-text .hero-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .hero-text .view-button {
+    width: 240px;
+  }
+
+  .footer {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .codeit {
+    grid-row: 2 / 3;
+  }
 }
