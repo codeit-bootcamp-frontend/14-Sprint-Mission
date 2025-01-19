@@ -75,7 +75,7 @@ function checkFocusRepassWord(e) {
 
 function clickButton(e) {
   e.preventDefault();
-  location.href = "/login.html";
+  location.href = "/signin.html";
 }
 
 function toggleInputType(e) {
