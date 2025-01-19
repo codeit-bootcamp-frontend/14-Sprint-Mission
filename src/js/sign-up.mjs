@@ -9,6 +9,13 @@ const $repasswordInput = document.querySelector("#repassword");
 const $loginButton = document.querySelector(".login-button");
 const $eyeIcon = document.querySelectorAll(".eye");
 
+const checkEmptyInputs = [
+  $emailInput,
+  $nicknameInput,
+  $passwordInput,
+  $repasswordInput,
+];
+
 function checkFocusOutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
@@ -20,14 +27,7 @@ function checkFocusOutEmail(e) {
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [
-      $emailInput,
-      $nicknameInput,
-      $passwordInput,
-      $repasswordInput,
-    ],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function checkFocusOutNickname(e) {
@@ -37,14 +37,7 @@ function checkFocusOutNickname(e) {
     callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [
-      $emailInput,
-      $nicknameInput,
-      $passwordInput,
-      $repasswordInput,
-    ],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function checkFocusPassWord(e) {
@@ -58,14 +51,7 @@ function checkFocusPassWord(e) {
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [
-      $emailInput,
-      $nicknameInput,
-      $passwordInput,
-      $repasswordInput,
-    ],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function checkFocusRepassWord(e) {
@@ -84,14 +70,7 @@ function checkFocusRepassWord(e) {
     callback: AUTH_VALIDATOR.IS_MATCH,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [
-      $emailInput,
-      $nicknameInput,
-      $passwordInput,
-      $repasswordInput,
-    ],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function clickButton(e) {

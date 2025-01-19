@@ -7,6 +7,8 @@ const $passwordInput = document.querySelector("#password");
 const $loginButton = document.querySelector(".login-button");
 const $eyeIcon = document.querySelector(".eye");
 
+const checkEmptyInputs = [$emailInput, $passwordInput];
+
 function checkFocusOutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
@@ -18,9 +20,7 @@ function checkFocusOutEmail(e) {
     callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [$emailInput, $passwordInput],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function checkFocusPassWord(e) {
@@ -34,9 +34,7 @@ function checkFocusPassWord(e) {
     callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($loginButton, {
-    checkEmptyInputs: [$emailInput, $passwordInput],
-  });
+  checkButton($loginButton, { checkEmptyInputs });
 }
 
 function clickButton(e) {
