@@ -1,3 +1,17 @@
+:root {
+  --gray-900: #111827;
+  --gray-800: #1F2937;
+  --gray-700: #374151;
+  --gray-600: #4B5563;
+  --gray-500: #6B7280;
+  --gray-400: #9CA3AF;
+  --gray-200: #E5E7EB;
+  --gray-100: #F3F4F6;
+  --gray-50: #F9FAFB;
+  --blue: #3692FF;
+  --blue-400: #CFE5FF;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,8 +34,14 @@ header {
   padding: 10px 15px;
 }
 
+.nav {
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+}
+
 footer {
-  background-color: #111827;
+  background-color: var(--gray-900);
   height: 160px;
 }
 
@@ -35,14 +55,14 @@ a {
 
 .login-button {
   padding: 12px 37px;
-  background-color: #3692FF;
+  background-color: var(--blue);
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;
 }
 
 .sky-bg {
-  background-color: #CFE5FF;
+  background-color: var(--blue-400);
 }
 
 .ad-section {
@@ -73,17 +93,17 @@ a {
   font-size: 40px;
   font-weight: 700;
   line-height: 56px;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 .button {
   text-decoration: none;
-  background-color: #3692FF;
+  background-color: var(--blue);
   padding: 16px 124px;
   border-radius: 40px;
   font-size: 20px;
   font-weight: 600;
-  color: #F9FAFB;
+  color: var(--gray-50);
   margin-bottom: 60px;
 }
 
@@ -131,14 +151,14 @@ a {
 .tag {
   font-size: 18px;
   font-weight: 700;
-  color: #3692FF;
+  color: var(--blue);
 }
 
 .description {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #374151;
+  color: var(--gray-700);
 }
 
 .footer-contents {
@@ -149,7 +169,7 @@ a {
 }
 
 .footer-codeit {
-  color: #9ca3af;
+  color: var(--gray-400);
   font-size: 16px;
   font-weight: 400;
 }
@@ -161,7 +181,7 @@ a {
 
 .footer-link a {
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--gray-200);
   font-size: 16px;
   font-weight: 400;
 }
