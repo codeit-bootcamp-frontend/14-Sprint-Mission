@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓 - 로그인</title>
+    <title>판다마켓 - 회원가입</title>
     <link rel="icon" href="images/logo/favicon.ico" />
     <link
       rel="stylesheet"
@@ -16,18 +16,18 @@
   </head>
 
   <body>
-    <main class="signin-container">
+    <main class="login-container">
       <div class="login-logo">
         <a href="index.html">
           <img
-            src="images/logo/panda-market-logo.png"
+            src="/images/logo/panda-market-logo.png"
             alt="판다마켓 로고"
             id="logo-img"
           />
         </a>
       </div>
       <form method="post">
-        <div class="login_input">
+        <div class="signup_input">
           <label for="email">이메일</label>
           <input
             id="email"
@@ -36,7 +36,16 @@
             placeholder="이메일을 입력해 주세요"
           />
         </div>
-        <div class="login_input">
+        <div class="signup_input">
+          <label for="textname">닉네임</label>
+          <input
+            id="textname"
+            name="textname"
+            type="text"
+            placeholder="닉네임을 입력해 주세요"
+          />
+        </div>
+        <div class="signup_input">
           <label for="password">비밀번호</label>
           <div class="input-wrap">
             <input
@@ -47,15 +56,29 @@
             />
             <img
               src="images/icons/eye-invisible.svg"
-              alt="감추기"
+              alt="비밀번호 감추기"
               class="hide-password"
             />
           </div>
         </div>
-
-        <button type="submit" class="login-button">로그인</button>
+        <div class="signup_input">
+          <label for="passwordCheck">비밀번호 확인</label>
+          <div class="input-wrap">
+            <input
+              id="passwordCheck"
+              name="passwordCheck"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해 주세요"
+            />
+            <img
+              src="images/icons/eye-invisible.svg"
+              alt="비밀번호 감추기"
+              class="hide-password"
+            />
+          </div>
+        </div>
+        <button type="submit" class="button signup-button">회원가입</button>
       </form>
-
       <div class="social-login">
         <h3>간편 로그인하기</h3>
         <div class="social-login-button">
@@ -76,7 +99,7 @@
         </div>
       </div>
       <div class="login-change">
-        판다마켓이 처음이신가요? <a href="signup.html">회원가입</a>
+        이미 회원이신가요? <a href="login.html">로그인</a>
       </div>
     </main>
   </body>

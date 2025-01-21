@@ -1,0 +1,123 @@
+/* 로그인 CSS */
+.signin-container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.login-logo {
+  display: block;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+.login-logo img #logo-img {
+  height: 132px;
+  width: 396px;
+}
+.login_input {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+input {
+  padding: 16px 24px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+input:focus {
+  outline-color: var(--blue);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hide-password {
+  position: absolute;
+  right: 24px;
+  cursor: pointer;
+}
+.login-button {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 40px;
+  padding: 16px 126px;
+  background-color: #9ca3af;
+}
+.social-login {
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 23px;
+  margin: 24px 0;
+}
+.social-login h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.social-login-button {
+  display: flex;
+  gap: 16px;
+}
+
+.login-change {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.login-change a {
+  color: #3182f6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 회원가입 CSS */
+
+.login-container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.login-logo img#logo-img {
+  height: 132px;
+  width: 396px;
+}
+.signup_input {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.signup-button {
+  font-size: 20px;
+  font-weight: 700;
+  width: 100%;
+  color: white;
+  border-radius: 999px;
+  padding: 16px 126px;
+  background-color: #9ca3af;
+}
