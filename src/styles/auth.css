@@ -18,6 +18,11 @@ body {
   margin-bottom: 40px;
 }
 
+.login-main .logo img {
+  width: 396px;
+  height: 132px;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -25,7 +30,8 @@ body {
   margin-bottom: 24px;
 }
 
-.login-form .login-label p {
+.login-form .login-label span {
+  display: inline-block;
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: 700;
@@ -55,6 +61,7 @@ body {
   background: none;
   border: none;
   outline: none;
+  font-size: 16px;
   line-height: 26px;
 }
 
@@ -109,4 +116,30 @@ body {
 .sign-up-paragraph a {
   color: var(--blue);
   text-decoration: underline;
+}
+
+/** 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .login-main {
+    top: 80px;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 16px;
+  }
+
+  .login-main .logo {
+    margin-bottom: 24px;
+  }
+
+  .login-main .logo img {
+    width: 198px;
+    height: 66px;
+  }
+
+  .login-form .login-label span {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 24px;
+  }
 }
