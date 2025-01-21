@@ -39,6 +39,6 @@ function changeButtonState() {
 	signupButton.disabled = !isFormValid;
   
 	if(isFormValid){
-		signupButton.style.backgroundColor = '#3692ff';
+		signupButton.classList.add('valid');
 	}
 }

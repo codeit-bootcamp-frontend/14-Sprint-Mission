@@ -25,6 +25,6 @@ function changeButtonState() {
   loginButton.disabled = !isFormValid;
 
   if(isFormValid){
-	loginButton.style.backgroundColor = '#3692ff';
+	loginButton.classList.add('valid');
   }
 }

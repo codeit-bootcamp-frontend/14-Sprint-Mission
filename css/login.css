@@ -96,6 +96,10 @@ form {
 	border-radius: 40px;
 }
 
+.valid {
+	background-color: var(--blue);
+}
+
 .social-login {
 	display: flex;
 	align-items: center;
