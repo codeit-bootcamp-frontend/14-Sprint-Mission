@@ -177,7 +177,7 @@ footer {
 
 .info {
   justify-content: center;
-  gap: min(30px, 10%);
+  gap: 30px;
 }
 
 .social {
@@ -186,7 +186,7 @@ footer {
 }
 
 .info a {
-  color: white;
+  color: var(--gray-300);
 }
 
 .icon {
@@ -274,16 +274,19 @@ footer {
 
   .footer {
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     padding: 2rem;
   }
 
   .info {
-    justify-content: start;
-    gap: min(30px, 10%);
+    justify-content: flex-start;
+    align-items: flex-start;
   }
-
+  .social {
+    align-items: flex-start;
+  }
   .codeit {
+    align-items: flex-end;
     grid-row: 2 / 3;
   }
 }
