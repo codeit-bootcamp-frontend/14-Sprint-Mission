@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="nav-header">
       <a href="/">
         <img
           class="logo"
@@ -32,81 +32,68 @@
     </header>
 
     <main>
-      <section class="hero-banner">
-        <div class="banner">
-          <div class="banner-text">
-            <h1 class="hero-title">
-              일상의 모든 물건을<br />
-              거래해 보세요
-            </h1>
-            <a class="watch-button" href="items.html">구경하러 가기</a>
-          </div>
-          <img
-            src="images/home/panda-main.png"
-            alt="상단 판다 이미지"
-            width="50%"
-          />
+      <section id="banner-panda" class="hero-banner">
+        <div class="wrap">
+          <h1>
+            일상의 모든 물건을<br />
+            거래해 보세요
+          </h1>
+          <a class="watch-button" href="items.html">구경하러 가기</a>
         </div>
       </section>
-      <section class="hero-hot">
+
+      <section class="wrap">
         <div class="container">
-          <img
-            class="pand-group"
-            src="images/home/panda-hot.png"
-            alt="인기 상품"
-          />
-          <div>
-            <h2 class="hero-tag">Hot item</h2>
-            <h1 class="hero-title">
+          <img src="images/home/panda-hot.png" alt="인기 상품" width="50%" />
+          <div class="container-text">
+            <h1 class="hero-tag">Hot item</h1>
+            <h2 class="hero-title">
               인기 상품을<br />
               확인해 보세요
-            </h1>
+            </h2>
             <p class="intro-text">
               가장 HOT한 중고거래 물품을<br />
               판다마켓에서 확인해 보세요
             </p>
           </div>
         </div>
-      </section>
-      <section class="hero-search">
-        <div class="container">
-          <div>
-            <h2 class="hero-tag">Search</h2>
-            <h1 class="hero-title">구매를 원하는<br />상품을 검색하세요</h1>
-            <p class="intro-text">
-              구매하고 싶은 물품은 검색해서
-              <br />쉽게 찾아보세요
-            </p>
-          </div>
-          <img
-            class="pand-group"
-            src="images/home/search.png"
-            alt="검색 기능"
-            width="50%"
-          />
-        </div>
-      </section>
 
-      <section class="hero-register">
+        <div class="container">
+          <div class="wrap">
+              <h1 class="hero-tag">Search</h1>
+              <h2 class="hero-title">구매를 원하는<br />상품을 검색하세요</h2>
+              <p class="intro-text">
+                구매하고 싶은 물품은 검색해서
+                <br />쉽게 찾아보세요
+              </p>
+            </div>
+            <img
+              class="pand-group"
+              src="images/home/search.png"
+              alt="검색 기능"
+              width="50%"
+            />
+          </div>
+        </div>
         <div class="container">
           <img
-            class="pand-group"
-            src="images/home/register.png"
-            alt="판매 상품 등록"
-            width="50%"
+          class="pand-group"
+          src="images/home/register.png"
+          alt="판매 상품 등록"
+          width="50%"
           />
-          <div>
-            <h2 class="hero-tag">Register</h2>
-            <h1 class="hero-title">판매를 원하는<br />상품을 등록하세요</h1>
-            <p class="intro-text">
-              어떤 물건이든 판매하고 싶은 상품을
-              <br />쉽게 등록하세요
-            </p>
+          <div class="wrap">
+              <h1 class="hero-tag">Register</h1>
+              <h2 class="hero-title">판매를 원하는<br />상품을 등록하세요</h2>
+              <p class="intro-text">
+                어떤 물건이든 판매하고 싶은 상품을
+                <br />쉽게 등록하세요
+              </p>
           </div>
         </div>
       </section>
 
-      <section class="hero-bottom">
+      <section id="bottom-panda" class="hero-bottom">
         <div class="wrapper-bottom">
           <div>
             <h1 class="bottom-title">
@@ -114,16 +101,10 @@
               <br />
               판다마켓 중고거래
             </h1>
-          </div>
-          <img
-            class="bottom-panda"
-            src="images/home/panda-bottom.png"
-            alt="하단 판다 이미지"
-            width="750px"
-          />
         </div>
       </section>
     </main>
+
     <footer>
       <div>©codeit - 2024</div>
       <div class="faq-info">
