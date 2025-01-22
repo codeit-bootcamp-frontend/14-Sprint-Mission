@@ -4,6 +4,8 @@ const eyeSlashImg = document.getElementById("eye-slash");
 const loginButton = document.querySelector(".login-btn");
 
 // 비밀번호 표시
+eyeSlashImg.addEventListener('click',toggleVisibility);
+
 function toggleVisibility() {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";

@@ -5,25 +5,23 @@ const passwordConfirmInput = document.getElementById("password-confirm");
 const eyeSlashImg = document.getElementById("eye-slash");
 const eyeSlashConfirmImg = document.getElementById("eye-slash-confirm");
 const signupButton = document.querySelector(".signup-btn");
+const showPassword = document.querySelector(".eye-slash");
 
 // 비밀번호 표시
-function toggleVisibility() {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    eyeSlashImg.src = "/images/eye.svg";
+eyeSlashImg.addEventListener('click', () => {
+  toggleVisibility(passwordInput, eyeSlashImg);
+});
+eyeSlashConfirmImg.addEventListener('click', () => {
+  toggleVisibility(passwordConfirmInput, eyeSlashConfirmImg);
+});
+
+function toggleVisibility(inputElement, eyeElement) {
+  if (inputElement.type === "password") {
+    inputElement.type = "text";
+    eyeElement.src = "/images/eye.svg";
   } else {
-    passwordInput.type = "password";
-    eyeSlashImg.src = "/images/eye-slash.svg";
-  }
-}
-// 비밀번호 확인 표시
-function toggleConfirmVisibility() {
-  if (passwordConfirmInput.type === "password") {
-    passwordConfirmInput.type = "text";
-    eyeSlashConfirmImg.src = "/images/eye.svg";
-  } else {
-    passwordConfirmInput.type = "password";
-    eyeSlashConfirmImg.src = "/images/eye-slash.svg";
+    inputElement.type = "password";
+    eyeElement.src = "/images/eye-slash.svg";
   }
 }
 
