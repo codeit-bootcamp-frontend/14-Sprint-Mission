@@ -1,43 +1,5 @@
-:root {
-	--gray-900: #111827;
-	--gray-800: #1f2937;
-	--gray-700: #374151;
-	--gray-600: #485563;
-	--gray-500: #6b7280;
-	--gray-400: #9ca3af;
-	--gray-200: #e5e7eb;
-	--gray-100: #f3f4f6;
-	--gray-50: #f9fafb;
-	--blue: #3692ff;
-	--blue-bg: #cfe5ff;
-	--blue-50: #E6F2FF;
-}
-
-* {
-	box-sizing: border-box;
-	font-family: "Pretendard";
-}
-
-body {
-	margin: 0;
-	background: #ffffff;
-	font-family: "Pretendard", sans-serif;
-}
-
 a {
 	color: var(--blue);
-}
-
-@font-face {
-	font-family: "ROKAF Sans";
-	src: url("./font/ROKAF\ Slab\ Serif\ Bold.ttf") format("opentype");
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style:normal;
 }
 
 .container {
@@ -122,6 +84,7 @@ form {
 	cursor: pointer;
 }
 
+.signup-btn,
 .login-btn {
 	background-color: var(--gray-400);
 	color: white;
@@ -131,6 +94,10 @@ form {
 	padding: 12px 0 12px;
 	border: none;
 	border-radius: 40px;
+}
+
+.valid {
+	background-color: var(--blue);
 }
 
 .social-login {
@@ -145,4 +112,19 @@ form {
 
 .social-login span {
 	flex-grow: 1;
+}
+
+@media (max-width: 767px) {
+	.container {
+		max-width: 400px;
+	}
+
+	.brand {
+		font-size: 2rem;
+	}
+
+	.logo {
+		width: 50px;
+		height: 50px;
+	}
 }

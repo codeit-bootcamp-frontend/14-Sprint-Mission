@@ -1,27 +1,3 @@
-:root {
-  --gray-900: #111827;
-  --gray-800: #1f2937;
-  --gray-700: #374151;
-  --gray-600: #485563;
-  --gray-500: #6b7280;
-  --gray-400: #9ca3af;
-  --gray-200: #e5e7eb;
-  --gray-100: #f3f4f6;
-  --gray-50: #f9fafb;
-  --blue: #3692ff;
-  --blue-bg: #cfe5ff;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  font-family: "Pretendard", sans-serif;
-}
-
 a {
   text-decoration: none;
   cursor: pointer;
@@ -35,20 +11,6 @@ nav {
 
 footer {
   background-color: var(--gray-900);
-  height: 160px;
-  color: var(--gray-400);
-}
-
-@font-face {
-  font-family: "ROKAF Sans";
-  src: url("./font/ROKAF\ Slab\ Serif\ Bold.ttf") format("opentype");
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style:normal;
 }
 
 .header {
@@ -60,21 +22,8 @@ footer {
   margin: 0 auto;
 }
 
-@media (max-width: 1919px) {
-  .header {
-    padding: 0 200px;
-  }
-}
 
-@media (max-width: 768px) {
-  .header {
-    padding: 0 1rem;
-  }
-  .logo {
-    display: none;
-  }
-}
-
+/* header */
 .brand {
   display: flex;
   flex-shrink: 0;
@@ -92,7 +41,7 @@ footer {
   align-items: center;
   flex-shrink: 0;
   gap: 0.5rem;
-  font-family: "ROKAF Sans" !important;
+  font-family: "ROKAF Sans";
   font-size: 26px;
   color: var(--blue);
   font-weight: 700;
@@ -106,12 +55,12 @@ footer {
   border-radius: 8px;
 }
 
+/* banner */
 .banner {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   max-width: 1120px;
-  padding: 0 1rem;
   margin: 0 auto;
 }
 
@@ -123,9 +72,11 @@ footer {
 .hero-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-title {
+  width: 100%;
   font-weight: 700;
   font-size: 40px;
   color: #374151;
@@ -142,14 +93,14 @@ footer {
 }
 
 .img-panda {
-  width: 60%;
+  flex: 1;
   height: auto;
   margin-top: 2rem;
 }
 
+/* section */
 .container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   max-width: 1000px;
@@ -158,14 +109,8 @@ footer {
   border-radius: 20px;
 }
 
-@media (max-width: 750px) {
-  .reverse {
-    flex-direction: column-reverse;
-  }
-}
-
 .group {
-  flex-grow: 1;
+  flex: 1;
   width: 330px;
   padding: 30px;
 }
@@ -174,16 +119,9 @@ footer {
   text-align: right;
 }
 
-@media (max-width: 750px) {
-  .group {
-    flex: 0 0 auto;
-  }
-  .group:nth-child(odd) {
-    text-align: left;
-  }
-}
 
 .img-group {
+  flex: 1;
   width: 55%;
   height: auto;
   aspect-ratio: 5/4;
@@ -219,12 +157,15 @@ footer {
   align-items: center;
 }
 
+/* footer */
 .footer {
+  height: 160px;
+  color: var(--gray-400);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 30px 1rem;
+  padding: 30px 2rem;
 }
 
 .codeit,
@@ -236,7 +177,7 @@ footer {
 
 .info {
   justify-content: center;
-  gap: min(30px, 10%);
+  gap: 30px;
 }
 
 .social {
@@ -245,11 +186,107 @@ footer {
 }
 
 .info a {
-  color: var(--gray-400);
+  color: var(--gray-300);
 }
 
 .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    padding: 0 200px;
+  }
+  .banner {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-text {
+    width: 33rem;
+    margin-bottom: 200px;
+  }
+
+  .img-panda {
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .reverse {
+    flex-direction: column-reverse;
+  }
+
+  .container .img-group {
+    width: 100%;
+  }
+
+  .container .group {
+    width: 100%;
+  }
+
+  .slogan {
+    text-align: center;
+  }
+
+  .footer {
+    padding: 2rem 6rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .hero-text {
+    width: 15rem;
+    margin-bottom: 130px;
+  }
+
+  .hero-text .hero-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .hero-text .view-button {
+    width: 240px;
+  }
+
+  .footer {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    padding: 2rem;
+  }
+
+  .info {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .social {
+    align-items: flex-start;
+  }
+  .codeit {
+    align-items: flex-end;
+    grid-row: 2 / 3;
+  }
 }
