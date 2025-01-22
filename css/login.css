@@ -7,7 +7,7 @@ a {
 	flex-direction: column;
 	align-items: center;
 	margin: 8vh auto 0;
-	padding: 1rem;
+	padding: 16px;
 	max-width: 640px;
 	gap: 40px;
 }
@@ -18,7 +18,7 @@ a {
 	text-decoration: none;
 	font-family: 'ROKAF Sans';
 	font-weight: 700;
-	font-size: 4rem;
+	font-size: 64px;
 	color: var(--blue);
 	gap: 20px;
 }
@@ -29,7 +29,7 @@ a {
 		height: 50px;
 	}
 	.brand {
-		font-size: 2rem;
+		font-size: 16px;
 	}
 }
 
@@ -120,7 +120,7 @@ form {
 	}
 
 	.brand {
-		font-size: 2rem;
+		font-size: 16px;
 	}
 
 	.logo {

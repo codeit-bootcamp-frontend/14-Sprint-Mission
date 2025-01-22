@@ -20,6 +20,8 @@ footer {
   max-width: 1280px;
   height: 70px;
   margin: 0 auto;
+  padding: 0 200px;
+
 }
 
 
@@ -28,7 +30,7 @@ footer {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .logo {
@@ -40,7 +42,7 @@ footer {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  gap: 0.5rem;
+  gap: 8px;
   font-family: "ROKAF Sans";
   font-size: 26px;
   color: var(--blue);
@@ -62,6 +64,7 @@ footer {
   align-items: center;
   max-width: 1120px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .hero {
@@ -95,7 +98,7 @@ footer {
 .img-panda {
   flex: 1;
   height: auto;
-  margin-top: 2rem;
+  margin-top: 16px;
 }
 
 /* section */
@@ -137,14 +140,14 @@ footer {
 
 .title {
   margin: 12px 0 24px;
-  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-size: clamp(16px, 3vw, 40px);
   font-weight: 700;
   text-overflow: ellipsis;
 }
 
 .details {
   margin: 0;
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(16px, 3vw, 24px);
   font-weight: 500;
 }
 
@@ -193,15 +196,6 @@ footer {
   display: inline-block;
   width: 20px;
   height: 20px;
-}
-
-@media (min-width: 1200px) {
-  .header {
-    padding: 0 200px;
-  }
-  .banner {
-    padding: 0 1rem;
-  }
 }
 
 @media (max-width: 1199px) {
