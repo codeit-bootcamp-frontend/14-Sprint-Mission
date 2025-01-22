@@ -27,9 +27,9 @@
 - [x] 화면 영역이 줄어들면 “Privacy Policy”, “FAQ”, “codeit-2024”이 있는 영역과 SNS 아이콘들이 있는 영역의 간격이 줄어듭니다.
 
 #### 로그인, 회원가입 페이지
-- [ ] Tablet: 내부 디자인은 PC사이즈와 동일
-- [ ] Mobile: 좌우 여백 16px, 내부 요소들이 너비를 모두 차지
-- [ ] Mobile: 내부 요소 `max-width: 400px`
+- [x] Tablet: 내부 디자인은 PC사이즈와 동일
+- [x] Mobile: 좌우 여백 16px, 내부 요소들이 너비를 모두 차지
+- [x] Mobile: 내부 요소 `max-width: 400px`
 
 ### 체크리스트 [심화]
 
