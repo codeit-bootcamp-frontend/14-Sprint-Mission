@@ -1,23 +1,21 @@
-main#login {
+main#members {
   min-height: 100vh;
   flex-direction: column;
 }
-main#login input,
-main#login p {
+main#members input,
+main#members p {
   color: #1f2937;
 }
-main#login img#logo {
+main#members img#logo {
   height: 132px;
   margin: 60px 0 0;
 }
-main#login > form {
+main#members > form {
   width: 640px;
   margin: 0 0 60px;
+  justify-content: stretch;
 }
 /* Input Field */
-.input-field {
-  width: 640px;
-}
 .input-wrapper {
   gap: 10px;
   padding: 16px 24px;
@@ -71,4 +69,18 @@ form > button#btn-submit-login {
 #signup-wrapper > a {
   color: var(--primary-100);
   text-decoration: underline;
+}
+
+@media (width < 768px) {
+  main#members {
+    padding: 0 16px;
+  }
+  main#members img#logo {
+    height: 66px;
+    margin: 80px 0 0;
+  }
+  main#members > form {
+    width: 100%;
+    max-width: 400px;
+  }
 }
