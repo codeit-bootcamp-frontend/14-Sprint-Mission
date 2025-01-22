@@ -86,7 +86,7 @@ form {
 
 .signup-btn,
 .login-btn {
-	background-color: var(--gray-400);
+	background-color: var(--blue);
 	color: white;
 	font-weight: 400;
 	font-size: 20px;
@@ -96,8 +96,10 @@ form {
 	border-radius: 40px;
 }
 
-.valid {
-	background-color: var(--blue);
+.login-btn:disabled,
+.signup-btn:disabled {
+	background-color: var(--gray-400);
+	cursor: not-allowed;
 }
 
 .social-login {
