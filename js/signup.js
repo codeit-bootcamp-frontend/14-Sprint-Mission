@@ -6,6 +6,7 @@ const eyeSlashImg = document.getElementById("eye-slash");
 const eyeSlashConfirmImg = document.getElementById("eye-slash-confirm");
 const signupButton = document.querySelector(".signup-btn");
 const showPassword = document.querySelector(".eye-slash");
+const form = document.getElementById('form');
 
 // 비밀번호 표시
 eyeSlashImg.addEventListener('click', () => {
@@ -26,19 +27,17 @@ function toggleVisibility(inputElement, eyeElement) {
 }
 
 // 모든 필드 값 입력시 버튼 활성화
-emailInput.addEventListener("input", changeButtonState);
-usernameInput.addEventListener("input", changeButtonState);
-passwordInput.addEventListener("input", changeButtonState);
-passwordConfirmInput.addEventListener("input", changeButtonState);
+form.addEventListener('input', () => {
+  const inputs = form.querySelectorAll('input');
+  let isFormValid = true;
 
-function changeButtonState() {
-  const isFormValid =
-    emailInput.value.trim() !== "" &&
-    passwordInput.value.trim() !== "" &&
-    usernameInput.value.trim() !== "" &&
-    passwordConfirmInput.value.trim() !== "";
+  for(let input of inputs){
+    if(input.value.trim() == ""){
+      isFormValid = false;
+      break;
+    }
+  }
 
   signupButton.disabled = !isFormValid;
-
   signupButton.classList.toggle("valid", isFormValid);
-}
+});
