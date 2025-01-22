@@ -65,7 +65,7 @@
 ![mobile-page-image-signup](./assets/screenshot/signup-page-mobile.png)
 
 ### 랜딩 페이지 공유
-![open-graph-image-landing-page](./assets/screenshot/landing-page-open-graph.png)
+![open-graph-image-landing-page](./assets/screenshot/landing-page-open-graph.jpg)
 
 ## 멘토에게
 
