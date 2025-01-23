@@ -1,74 +1,72 @@
-# 02. 스프린트 미션 2
+# 03. 스프린트 미션 3
 
 ## 요구사항
 
-### 스프린트 미션 2 시안
+### 스프린트 미션 3 시안
 
-- [실습 과제 디자인 Figma](https://www.figma.com/design/IVkRlYWHY74QlgmxqA99Ym/%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EB%AF%B8%EC%85%98?node-id=18-2760&t=A7sb11LEwIRA2krc-1)
+- [실습 과제 디자인 Figma](https://www.figma.com/design/IVkRlYWHY74QlgmxqA99Ym/%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EB%AF%B8%EC%85%98?node-id=63-3453)
 
 ### 기본 요구사항
 
 - [x] 피그마 디자인에 맞게 페이지 생성 및 UI 라이브러리 미사용
 - [x] HTML, CSS 파일을 Netlify로 배포
-  - 링크: https://fe-14-sprint-mission-1-basic-lsj.netlify.app/
-- [x] PC사이즈만 고려해 주어진 디자인으로 구현
+  - 링크: https://fe-14-sprint-mission-basic-lsj.netlify.app/
 
 ### 체크리스트 [기본]
 
-- 페이지 이동
-  - [x] "판다마켓" 클릭 시 루트 페이지('/')로 이동
-  - [x] '로그인' 버튼 클릭 시 로그인 페이지('/login')로 이동
-  - [x] SNS 아이콘 클릭 시 각각 실제 서비스 홈페이지로 이동
-  - [x] 로그인 페이지 내 [회원가입] 버튼 클릭 시 "/signup" 페이지로 이동
-  - [x] 회원가입 페이지 내 [로그인] 버튼 클릭 시 "/login" 페이지로 이동
+#### 공통
+- [x] 브라우저에 현재 보이는 화면의 영역(viewport) 너비를 기준으로 분기되는 반응형 디자인을 적용합니다.
+  - PC: 1200px ~
+  - Tablet: 768px ~ 1199px
+  - Mobile: 375px ~ 767px
 
-- 여백
-  - [x] 로그인 페이지, 회원가입 페이지 모두 로고 위 상단 여백 동일
+#### 랜딩 페이지
+- [x] 헤더 좌우 여백 수정
+  - Tablet: 24px
+  - Mobile: 16px
+- [x] 화면 영역이 줄어들면 “Privacy Policy”, “FAQ”, “codeit-2024”이 있는 영역과 SNS 아이콘들이 있는 영역의 간격이 줄어듭니다.
 
-- 스타일
-  - [x] input 요소 focus in 시 `border-color: #3692FF;` 지정
-  - [x] input 요소 focus out 시 `border: none`
-
+#### 로그인, 회원가입 페이지
+- [x] Tablet: 내부 디자인은 PC사이즈와 동일
+- [x] Mobile: 좌우 여백 16px, 내부 요소들이 너비를 모두 차지
+- [x] Mobile: 내부 요소 `max-width: 400px`
 
 ### 체크리스트 [심화]
 
-- [x] palette에 있는 color 값을 css 변수로 등록하고 사용
-- [x] 비밀번호 input 요소 위에 비밀번호 확인 아이콘 추가
-
+- [x] SNS에 랜딩 페이지(“/”) 공유 시 미리보기를 볼 수 있도록 메타 태그 설정
+- [x] 미리보기 제목은 “판다 마켓”, 설명은 “일상의 모든 물건을 거래해보세요”로 설정
 
 ## 주요 변경사항
 
-### 스프린트 미션 1 리뷰 반영
-- `<html lang="ko">`으로 수정
-- `a`, `button` 중첩 사용 제거
-- `h1`은 페이지에 하나만 사용
+### 스프린트 미션 2 리뷰 반영
+- [login.js](./scripts/login.js), [signup.js](./scripts/signup.js)
+  - 변수 지정 및 함수명 변경을 통한 가독성 확보
+- [login.html](./login.html), [signup.html](./signup.html)
+  - `<p>` 태그는 문단을 나타낼 때만 사용으로 변경
+  - 비밀번호 확인 `<input type="checkbox" />`에서 `<button type="button" />`사용으로 변경
+- [login.css](./styles/login.css), [signup.css](./styles/signup.css)
+  - `signup.css`의 중복되는 스타일 제거
 
-### 스프린트 미션 2
-- [login.html](./login.html)
-  - 로그인 폼 추가
-  - 로그인 페이지 스타일 생성 ([/styles/login.css](./styles/login.css))
-  - script 파일 추가: 로그인 버튼 활성화 및 비밀번호 보기 로직 생성 ([./scripts/login.js](/scripts/login.js))
-- [signup.html](./signup.html)
-  - 회원가입 폼 추가
-  - 회원가입 페이지 스타일 생성: [/styles/signup.css](./styles/signup.css)
-  - script 파일 추가: 회원가입 버튼 활성화 및 비밀번호 보기 로직 생성 ([/scripts/signup.js](./scripts/signup.js))
+### 스프린트 미션 3
+- 
 
 ## 스크린샷
 
-### 로그인
-![desktop-page-image-login](./assets/screenshot/login-page-desktop.png)
+### 랜딩 페이지 헤더 - Tablet
+![tablet-page-image-landing-page](./assets/screenshot/landing-page-tablet.png)
 
-### 회원가입
-![desktop-page-image-signup](./assets/screenshot/signup-page-desktop.png)
+### 랜딩 페이지 헤더 - Mobile
+![mobile-page-image-landing-page](./assets/screenshot/landing-page-mobile.png)
+
+### 로그인 - Tablet
+![tablet-page-image-login](./assets/screenshot/login-page-tablet.png)
+
+### 회원가입 - Mobile
+![mobile-page-image-signup](./assets/screenshot/signup-page-mobile.png)
+
+### 랜딩 페이지 공유
+![open-graph-image-landing-page](./assets/screenshot/landing-page-open-graph.jpg)
 
 ## 멘토에게
 
-- 로그인 페이지를 제작한 후에, html 파일과 css 파일을 복사 붙여넣기 하여 회원가입 페이지를 생성하였습니다. <br />로그인 페이지와 회원가입 페이지에 중복되는 스타일을 제거 혹은 파일로 합치고 싶은데 어떻게 처리하는 게 가장 효율적이고 좋을까요?
-
-  1) `login.css` , `signup.css` 파일에서 공통되는 스타일을 제거한다.<br/>
-  : 예시로 form 그리드, 인풋, 버튼, SNS 로그인 스타일 등 통일되는 스타일을 담은 `form.css` 파일을 제작하여,<br/>
-  `login.html` 페이지와 `signup.html` 페이지에서 공동으로 사용하고, <br/>
-  각각 추가적인 스타일은 따로 파일을 생성해 추가한다.
-  2) `login.html` 페이지와 `signup.html` 페이지가 하나의 css 파일을 함께 사용한다.
-
-- `global.css` 파일에 사용하지 않는 공통 스타일은 제거하는 것이 좋을까요? <br/>아니면 스타일 가이드를 위해 남겨 놓는 것이 좋을까요?
+- 
