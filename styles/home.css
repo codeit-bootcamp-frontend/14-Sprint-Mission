@@ -44,9 +44,10 @@ header .wrapper a.button {
 main .banner {
   background-color: #cfe5ff;
   padding-top: 200px;
+  gap: 7px;
 }
 main .banner .wrapper {
-  gap: 7px;
+  gap: 32px;
 }
 main .banner .wrapper a.button {
   width: 357px;
@@ -75,6 +76,7 @@ main #bottom-banner {
   main .banner,
   main .banner .wrapper {
     flex-direction: column;
+    gap: 24px;
   }
   main .banner .wrapper a {
     margin: 0 auto 132px;
@@ -126,6 +128,7 @@ main #bottom-banner {
   /* Mobile */
   main .banner .wrapper {
     text-align: center;
+    gap: 18px;
   }
   main .banner .wrapper h1,
   main .banner .wrapper .heading {
