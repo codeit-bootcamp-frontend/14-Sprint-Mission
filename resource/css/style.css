@@ -1,104 +1,11 @@
 @charset "utf-8";
-
-/* ##############################################################
-	font #폰트
-############################################################## */
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 800;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-
-
-/* ##############################################################
-	reset #리셋
-############################################################## */
-/* http://meyerweb.com/eric/tools/css/reset/
-    v2.0 | 20110126
-    License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-
-/* ##############################################################
-	Reset override #리셋 오버라이드
-############################################################## */
-body { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; word-break: keep-all; line-height: 1.4; }
-button, input, textarea, select, a { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; }
-a, a:link, a:visited, a:hover { text-decoration: none; color: inherit; cursor: pointer;}
-button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring { outline: 1px solid #303030; }
-*:-moz-focusring { outline: 1px solid #303030; }
-* {box-sizing: border-box;}
-
+@import url('./root.css');
+@import url('./common.css');
 
 
 /* ##############################################################
 	main page
 ############################################################## */
-.layout { min-width: 1200px; } /* 깨짐 방지 임시 코드 */
 
 /* header */
 .header {
@@ -110,27 +17,8 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
     height: 70px;
     margin: 0 auto ;
 }
-.header .login-link {
-    display: block;
+.header .el-btn.btn-sm {
     padding: 0 43px;
-    line-height: 48px;
-    background: #3692FF;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 800;
-    color: #F3F4F6;
-}
-.login-link:hover,
-.contents .banner .link-btn:hover {
-    background-color: #1967D6;
-}
-.login-link:active,
-.contents .banner .link-btn:active {
-    background-color: #1251AA;
-}
-.login-link[disabled],
-.contents .banner .link-btn[disabled] {
-    background-color: #9CA3AF;
 }
 
 /* contents */
@@ -153,25 +41,17 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
     font-size: 40px;
     color: #374151;
 }
-.contents .banner .link-btn {
-    display: block;
+.contents .banner .el-btn.btn-l {
     margin-top: 32px;
-    border-radius: 40px;
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 56px;
-    color: #F9FAFB;
-    background-color: #3691ff;
-    text-align: center;
+    min-width: 357px;
 }
 .contents .main-cont section {
     padding: 138px 0;
 }
 .main-cont .cont-box {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 64px;
+    gap: 40px;
     margin: 0 auto;
     width: 988px;
     height: 444px;
@@ -180,6 +60,7 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
 }
 .cont-box .box-img {
     height: 100%;
+    padding: 0 23px;
 }
 .cont-box .box-img img {
     width: 100%;
@@ -201,6 +82,9 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
     font-size: 24px;
     font-weight: 500;
     color: #374151;
+}
+.cont-box.ty-revers {
+    justify-content: flex-end;
 }
 .cont-box.ty-revers .box-text {
     text-align: right;
