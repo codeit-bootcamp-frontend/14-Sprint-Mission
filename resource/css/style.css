@@ -9,13 +9,21 @@
 
 /* header */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+}
+.header .inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 200px;
     max-width: 1520px;
-    height: 70px;
+    padding: 0 200px;
     margin: 0 auto ;
+    height: 70px;
 }
 .header .el-btn.btn-sm {
     padding: 0 43px;
@@ -120,4 +128,61 @@
     display: flex;
     gap: 12px;
     align-items: center;
+}
+
+
+
+/* ##############################################################
+	login/signup page
+############################################################## */
+/* layout */
+.layout-sign {
+    padding-top: 100px;
+}
+.layout-sign .contents {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* contents */
+.layout-sign .sign-form {
+    margin-top: 40px;
+}
+.sign-form .input-box {
+    margin-bottom: 24px;
+}
+.sns-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding: 16px 23px;
+    background-color: #E6F2FF;
+    border-radius: 8px;
+}
+.sns-login .login-tit {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-gray800);
+}
+.sns-login .sns-login-link {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.sns-login .sns-login-link li {
+    width: 42px;
+    height: 42px;
+}
+.layout-sign .sign-msg {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: var(--text-md);
+}
+.sign-msg .link-txt {
+    font-weight: 500;
+    font-size: var(--text-md);
+    color: var(--color-primary-100);
+    text-decoration: underline;
 }

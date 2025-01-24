@@ -98,14 +98,20 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
 /* ##############################################################
 	Component #컴포넌트
 ############################################################## */
-/* button */
+/*
+    button
+*/
 a.el-btn,
 button.el-btn {
     display: block;
+    padding: 0;
+    width: 100%;
     font-weight: 800;
     text-align: center;
     background-color: var(--color-primary-100);
     color: var(--color-gray100);
+    border: none;
+    cursor: pointer;
 }
 .el-btn:hover {
     background-color: var(--color-primary-200);
@@ -117,6 +123,7 @@ button.el-btn {
     background-color: var(--color-gray400);
 }
 
+/* btn size */
 .el-btn.btn-l {
     border-radius: 40px;
     font-size: var(--text-xl);
@@ -138,4 +145,58 @@ button.el-btn {
     line-height: 42px;
     border-radius: 8px;
     font-size: var(--text-lg);
+}
+
+/* icon-btn */
+.el-btn.btn-password {
+    width: 24px;
+    height: 24px;
+    background: transparent url('../img/btn_vis.png') no-repeat center/24px;
+}
+.el-btn.btn-password.on {
+    background-image: url('../img/btn_vis_on.png');
+}
+
+
+
+/*
+    input
+*/
+/* text */
+.el-txt-input {
+    position: relative;
+}
+.el-txt-input label {
+    display: block;
+    font-size: var(--text-2lg);
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-gray800);
+}
+.el-txt-input input {
+    padding: 15px 50px 15px 24px;
+    width: 100%;
+    font-size: var(--text-lg);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background-color: var(--color-gray100);
+    color: var(--color-gray800);
+}
+.el-txt-input input::placeholder {
+    font-size: var(--text-lg);
+    color: var(--color-gray400);
+}
+.el-txt-input input:focus {
+    border: 2px solid #3692ff;
+}
+.el-txt-input input:focus-visible {
+    outline: none;
+}
+.el-txt-input label + input {
+    margin-top: 16px;
+}
+.el-txt-input .el-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 24px;
 }

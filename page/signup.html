@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판다마켓 - 로그인</title>
+    <title>판다마켓 - 회원가입입</title>
     <link rel="stylesheet" href="../resource/css/style.css">
 </head>
 <body>
@@ -15,15 +15,24 @@
             <div class="sign-form">
                 <form>
                     <div class="input-box el-txt-input">
-                        <label for="login-email">이메일</label>
-                        <input id="login-email" type="email" placeholder="이메일을 입력해주세요">
+                        <label for="signup-email">이메일</label>
+                        <input id="signup-email" type="email" placeholder="이메일을 입력해주세요">
                     </div>
                     <div class="input-box el-txt-input">
-                        <label for="login-password">비밀번호</label>
-                        <input id="login-password" type="password" placeholder="비밀번호를 입력해주세요">
+                        <label for="signup-name">닉네임</label>
+                        <input id="signup-name" type="text" placeholder="닉네임임을 입력해주세요">
+                    </div>
+                    <div class="input-box el-txt-input">
+                        <label for="signup-password">비밀번호</label>
+                        <input id="signup-password" type="password" placeholder="비밀번호를 입력해주세요">
                         <button type="button" class="el-btn btn-password"></button>
                     </div>
-                    <button type="submit" class="el-btn btn-l" disabled>로그인</button>
+                    <div class="input-box el-txt-input">
+                        <label for="signup-password-chk">비밀번호</label>
+                        <input id="signup-password-chk" type="password" placeholder="비밀번호를 다시 한 번 입력해주세요">
+                        <button type="button" class="el-btn btn-password"></button>
+                    </div>
+                    <button type="submit" class="el-btn btn-l" disabled>회원가입</button>
                 </form>
             </div>
             <div class="sns-login">
@@ -33,7 +42,7 @@
                     <li><a href="https://www.kakaocorp.com/page/"><img src="../resource/img/ic_kakao.png" alt="카카오톡 로그인"></a></li>
                 </ul>
             </div>
-            <p class="sign-msg">판다마켓이 처음이신가요? <a href="./signup.html" class="link-txt">회원가입</a></p>
+            <p class="sign-msg">이미 회원이신가요? <a href="./login.html" class="link-txt">로그인</a></p>
         </div>
     </div>
 </body>
