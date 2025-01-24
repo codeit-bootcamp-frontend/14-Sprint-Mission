@@ -40,8 +40,7 @@ function checkValidation(input) {
 
   switch (type) {
     case "email":
-      // TODO: RegExp 사용으로 변경
-      result = input.validity.valid;
+      result = input.value.length > 0 && input.validity.valid;
       className = "error-email";
       if (!result)
         errorMsg = value.length === 0 ? "이메일을 입력해주세요." : "잘못된 이메일 형식입니다";
@@ -79,4 +78,26 @@ function checkValidation(input) {
     inputField?.append(newErrorParagraph);
   }
   return result;
+}
+
+/**
+ * input 값에 따른 form button 활성화/비활성화 처리
+ * @param {*} btn - 활성화 처리할 버튼 엘리먼트
+ */
+export function onFormInputChange(btn) {
+  let isEmptyInput = false;
+  const form = document.getElementsByTagName("form")[0];
+  for (let inputField of form.children) {
+    if (!inputField.classList.value.includes("input-field")) break;
+    const inputFieldWrapper = inputField.children[1];
+    const inputElement = inputFieldWrapper.children[0];
+    if (inputElement?.value.length === 0) {
+      isEmptyInput = true;
+      break;
+    }
+    checkValidation(inputElement);
+  }
+  const errorText = document.getElementsByClassName("text-error");
+  if (errorText.length === 0 && !isEmptyInput) btn.removeAttribute("disabled");
+  else btn.setAttribute("disabled", "true");
 }
