@@ -19,18 +19,18 @@
       <a href="/">
         <img src="assets/images/logo/panda-market-logo.png" alt="로고 이미지" id="logo" />
       </a>
-      <form class="grid-center gap-24">
-        <div class="input-field grid gap-16">
+      <form class="form-login grid-center gap-24">
+        <div class="input-field grid">
           <label for="email" class="text-2lg text-bold">이메일</label>
-          <div class="input-wrapper flex-left radius-12">
+          <div class="input-wrapper flex-left radius-12" id="input-wrapper-email">
             <input id="email" type="email" value="" placeholder="이메일을 입력해주세요" />
           </div>
         </div>
-        <div class="input-field grid gap-16">
+        <div class="input-field grid">
           <label for="pwd" class="text-2lg text-bold">비밀번호</label>
-          <div class="input-wrapper flex-sides radius-12">
+          <div class="input-wrapper flex-sides radius-12" id="input-wrapper-pwd">
             <input id="pwd" type="password" value="" placeholder="비밀번호를 입력해주세요" />
-            <button type="button" alt="비밀번호 입력 보기" id="visibility"  />
+            <button type="button" aria-label ="비밀번호 입력 보기" id="visibility"  />
           </div>
         </div>
         <button type="submit" id="btn-submit-login" disabled>로그인</button>
@@ -55,6 +55,6 @@
         </p>
       </form>
     </main>
-    <script src="./scripts/login.js"></script>
+    <script type="module" src="./scripts/login.js"></script>
   </body>
 </html>
