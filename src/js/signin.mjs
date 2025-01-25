@@ -2,9 +2,9 @@ import {
   validate,
   resetErrorMessage,
   changeButtonStatus,
-} from "./utils/validate.mjs";
-import { toggleInputType } from "./utils/auth.mjs";
-import { authValidator } from "./constants/validator.mjs";
+} from "./common/validate.mjs";
+import { toggleInputType } from "./common/auth.mjs";
+import { authValidator } from "./common/validator.mjs";
 import { ERROR_MESSAGE } from "./constants/contants.mjs";
 
 const $emailInput = document.querySelector("#email");
