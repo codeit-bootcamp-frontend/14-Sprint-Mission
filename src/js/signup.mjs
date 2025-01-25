@@ -1,5 +1,10 @@
-import { checkButton, resetErrorMessage, validate } from "./utils/validate.mjs";
-import { AUTH_VALIDATOR } from "./constants/validator.mjs";
+import {
+  validate,
+  resetErrorMessage,
+  changeButtonStatus,
+} from "./utils/validate.mjs";
+import { toggleInputType } from "./utils/auth.mjs";
+import { authValidator } from "./constants/validator.mjs";
 import { ERROR_MESSAGE } from "./constants/contants.mjs";
 
 const $emailInput = document.querySelector("#email");
@@ -9,88 +14,78 @@ const $repasswordInput = document.querySelector("#repassword");
 const $submitButton = document.querySelector(".auth-button");
 const $eyeIcon = document.querySelectorAll(".eye");
 
-const checkEmptyInputs = [
+const checkEmptyInputElements = [
   $emailInput,
   $nicknameInput,
   $passwordInput,
   $repasswordInput,
 ];
 
-function checkFocusOutEmail(e) {
+function checkFocusoutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_EMAIL,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
+    validator: authValidator.isWrongEmailFormat,
     message: ERROR_MESSAGE.IS_WRONG_EMAIL_FORMAT,
-    callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function checkFocusOutNickname(e) {
+function checkFocusoutNickname(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_NICKNAME,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function checkFocusPassWord(e) {
+function onFocusoutPassWord(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
+    validator: authValidator.isMoreThanEight,
     message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function checkFocusRepassWord(e) {
+function onFocusoutRepassWord(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_REPASSWORD,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
+    validator: authValidator.isMoreThanEight,
     message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
   validate(e.target, {
     targetEl: $passwordInput,
+    validator: authValidator.isMatch,
     message: ERROR_MESSAGE.IS_NOT_MATCH_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_MATCH,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function clickButton(e) {
+function onClickButton(e) {
   e.preventDefault();
   location.href = "/signin.html";
 }
 
-function toggleInputType(e) {
-  const [closeEye, openEye] = e.currentTarget.children;
-  const target = e.currentTarget.parentElement.firstElementChild;
-
-  closeEye.classList.toggle("none");
-  openEye.classList.toggle("none");
-  target.type = target.type === "password" ? "text" : "password";
-}
-
-$emailInput.addEventListener("focusout", checkFocusOutEmail);
-$nicknameInput.addEventListener("focusout", checkFocusOutNickname);
-$passwordInput.addEventListener("focusout", checkFocusPassWord);
-$repasswordInput.addEventListener("focusout", checkFocusRepassWord);
-$submitButton.addEventListener("click", clickButton);
-
+$emailInput.addEventListener("focusout", checkFocusoutEmail);
+$nicknameInput.addEventListener("focusout", checkFocusoutNickname);
+$passwordInput.addEventListener("focusout", onFocusoutPassWord);
+$repasswordInput.addEventListener("focusout", onFocusoutRepassWord);
 $eyeIcon.forEach(($eyeEl) => $eyeEl.addEventListener("click", toggleInputType));
+$submitButton.addEventListener("click", onClickButton);

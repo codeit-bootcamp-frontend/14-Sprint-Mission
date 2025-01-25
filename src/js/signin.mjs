@@ -1,5 +1,10 @@
-import { checkButton, resetErrorMessage, validate } from "./utils/validate.mjs";
-import { AUTH_VALIDATOR } from "./constants/validator.mjs";
+import {
+  validate,
+  resetErrorMessage,
+  changeButtonStatus,
+} from "./utils/validate.mjs";
+import { toggleInputType } from "./utils/auth.mjs";
+import { authValidator } from "./constants/validator.mjs";
 import { ERROR_MESSAGE } from "./constants/contants.mjs";
 
 const $emailInput = document.querySelector("#email");
@@ -7,51 +12,42 @@ const $passwordInput = document.querySelector("#password");
 const $submitButton = document.querySelector(".auth-button");
 const $eyeIcon = document.querySelector(".eye");
 
-const checkEmptyInputs = [$emailInput, $passwordInput];
+const checkEmptyInputElements = [$emailInput, $passwordInput];
 
-function checkFocusOutEmail(e) {
+function onFocusoutEmail(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_EMAIL,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
+    validator: authValidator.isWrongEmailFormat,
     message: ERROR_MESSAGE.IS_WRONG_EMAIL_FORMAT,
-    callback: AUTH_VALIDATOR.IS_WRONG_EMAIL_FORMAT,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function checkFocusPassWord(e) {
+function onFocusoutPassword(e) {
   resetErrorMessage(e);
   validate(e, {
+    validator: authValidator.isEmptyInput,
     message: ERROR_MESSAGE.IS_EMPTY_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_EMPTY_INPUT,
   });
   validate(e, {
+    validator: authValidator.isMoreThanEight,
     message: ERROR_MESSAGE.IS_MORE_THAN_EIGHT_PASSWORD,
-    callback: AUTH_VALIDATOR.IS_MORT_THAN_EIGHT,
   });
 
-  checkButton($submitButton, { checkEmptyInputs });
+  changeButtonStatus($submitButton, { checkEmptyInputElements });
 }
 
-function clickButton(e) {
+function onClickButton(e) {
   e.preventDefault();
   location.href = "/items.html";
 }
 
-function toggleInputType(e) {
-  const [closeEye, openEye] = e.currentTarget.children;
-
-  closeEye.classList.toggle("none");
-  openEye.classList.toggle("none");
-  $passwordInput.type =
-    $passwordInput.type === "password" ? "text" : "password";
-}
-
-$emailInput.addEventListener("focusout", checkFocusOutEmail);
-$passwordInput.addEventListener("focusout", checkFocusPassWord);
-$submitButton.addEventListener("click", clickButton);
+$emailInput.addEventListener("focusout", onFocusoutEmail);
+$passwordInput.addEventListener("focusout", onFocusoutPassword);
 $eyeIcon.addEventListener("click", toggleInputType);
+$submitButton.addEventListener("click", onClickButton);
