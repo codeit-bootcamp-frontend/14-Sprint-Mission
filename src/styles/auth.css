@@ -4,7 +4,7 @@ body {
   height: 100vh;
 }
 
-.login-main {
+.auth-main {
   position: absolute;
   top: 10%;
   left: 50%;
@@ -12,25 +12,25 @@ body {
   width: 640px;
 }
 
-.login-main .logo {
+.auth-main .logo {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
 }
 
-.login-main .logo img {
+.auth-main .logo img {
   width: 396px;
   height: 132px;
 }
 
-.login-form {
+.auth-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
   margin-bottom: 24px;
 }
 
-.login-form .login-label span {
+.auth-form .auth-label span {
   display: inline-block;
   margin-bottom: 16px;
   font-size: 18px;
@@ -39,24 +39,44 @@ body {
   color: var(--gray-800);
 }
 
-.login-form .login-label .login-input-box {
+.auth-form .auth-label .auth-input-box {
   display: flex;
   justify-content: space-between;
   padding: 15px 24px;
   background-color: var(--gray-100);
-  border: 1px solid var(--gray-100);
   border-radius: 12px;
 }
 
-.login-form .login-label img {
+.auth-form .auth-label .eye {
+  display: flex;
   margin-left: 5px;
 }
 
-.login-form .login-label .login-input-box:focus-within {
+.none {
+  display: none;
+}
+
+.gray-border {
+  border: 1px solid var(--gray-100);
+}
+
+.red-border {
+  border: 1px solid var(--error-red);
+}
+
+.auth-form .auth-label .auth-input-box.gray-border:focus-within {
   border: 1px solid var(--blue);
 }
 
-.login-form .login-label input {
+.error-message {
+  margin-top: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error-red);
+}
+
+.auth-form .auth-label input {
   width: 100%;
   background: none;
   border: none;
@@ -65,14 +85,14 @@ body {
   line-height: 26px;
 }
 
-.login-form .login-label input::placeholder {
+.auth-form .auth-label input::placeholder {
   color: var(--gray-400);
 }
 
-.login-form button {
-  display: block;
+.auth-form .auth-button {
+  display: inline-block;
   padding: 12px 0;
-  background-color: var(--gray-400);
+  background-color: var(--blue);
   border: none;
   border-radius: 40px;
   font-size: 20px;
@@ -80,9 +100,15 @@ body {
   line-height: 32px;
   text-align: center;
   color: var(--gray-100);
+  cursor: pointer;
 }
 
-.convenient-login-box {
+.auth-form .auth-button:disabled {
+  background-color: var(--gray-400);
+  cursor: default;
+}
+
+.convenient-auth-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,13 +122,13 @@ body {
   color: var(--gray-800);
 }
 
-.convenient-login-box .convenient-login-icon-box {
+.convenient-auth-box .convenient-auth-icon-box {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.convenient-login-box .convenient-login-icon-box a {
+.convenient-auth-box .convenient-auth-icon-box a {
   height: 42px;
 }
 
@@ -120,23 +146,23 @@ body {
 
 /** 모바일 반응형 */
 @media (min-width: 375px) and (max-width: 767px) {
-  .login-main {
+  .auth-main {
     top: 80px;
     width: 100%;
     max-width: 400px;
     padding: 0 16px;
   }
 
-  .login-main .logo {
+  .auth-main .logo {
     margin-bottom: 24px;
   }
 
-  .login-main .logo img {
+  .auth-main .logo img {
     width: 198px;
     height: 66px;
   }
 
-  .login-form .login-label span {
+  .auth-form .auth-label span {
     display: inline-block;
     margin-bottom: 8px;
     font-size: 14px;
