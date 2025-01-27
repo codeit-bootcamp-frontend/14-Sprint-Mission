@@ -200,3 +200,48 @@ button.el-btn {
     bottom: 14px;
     right: 24px;
 }
+
+
+
+/* 반응형 */
+.mobile {
+    display: none;
+}
+.tablet {
+    display: none;
+}
+.pc {
+    display: block;
+}
+
+@media (width < 1200px) {
+    .pc {
+        display: none;
+    }
+    .tablet {
+        display: block;
+    }
+}
+
+@media (width < 768px) {
+    .pc {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    /* button */
+    .el-btn.btn-l {
+        font-size: var(--text-2lg);
+        line-height: 48px;
+    }
+
+    /* input */
+    .el-txt-input label {
+        font-size: var(--text-md);
+    }
+    .el-txt-input label + input {
+        margin-top: 8px;
+    }
+}

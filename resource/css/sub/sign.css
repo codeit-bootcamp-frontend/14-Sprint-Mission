@@ -1,0 +1,93 @@
+@charset "utf-8";
+@import url('../root.css');
+@import url('../common.css');
+
+
+
+/* ##############################################################
+	login/signup page
+############################################################## */
+/* layout */
+.layout-sign {
+    padding-top: 100px;
+}
+.layout-sign .contents {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* contents */
+.layout-sign .sign-form {
+    margin-top: 40px;
+}
+.sign-form .input-box {
+    margin-bottom: 24px;
+}
+.sns-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding: 16px 23px;
+    background-color: #E6F2FF;
+    border-radius: 8px;
+}
+.sns-login .login-tit {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-gray800);
+}
+.sns-login .sns-login-link {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.sns-login .sns-login-link li {
+    width: 42px;
+    height: 42px;
+}
+.layout-sign .sign-msg {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: var(--text-md);
+}
+.sign-msg .link-txt {
+    font-weight: 500;
+    font-size: var(--text-md);
+    color: var(--color-primary-100);
+    text-decoration: underline;
+}
+
+
+/*
+    반응형
+*/
+/* tablet */
+@media (width < 1200px) {
+    .layout-sign {
+        padding-top: 48px;
+    }
+}
+
+/* mobile */
+@media (width < 768px) {
+    .layout-sign {
+        padding: 24px 16px 0;
+    }
+    .layout-sign .contents {
+        max-width: 400px;
+    }
+    .layout-sign .contents .logo-area img {
+        width: 198px;
+    }
+    .layout-sign .sign-form {
+        margin-top: 24px;
+    }
+    .sign-form .input-box {
+        margin-bottom: 16px;
+    }
+    .sign-form .el.btn.btn-l {
+        line-height: 56px;
+    }
+}
