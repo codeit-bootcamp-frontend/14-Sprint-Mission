@@ -200,3 +200,34 @@ button.el-btn {
     bottom: 14px;
     right: 24px;
 }
+
+
+.mobile {
+    display: none;
+}
+.tablet {
+    display: none;
+}
+
+@media (width < 1200px) {
+    .pc {
+        display: none;
+    }
+    .tablet {
+        display: block;
+    }
+}
+
+@media (width < 768px) {
+    .pc {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+
+    .el-btn.btn-l {
+        font-size: var(--text-2lg);
+        line-height: 48px;
+    }
+}
