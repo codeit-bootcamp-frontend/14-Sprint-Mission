@@ -226,8 +226,17 @@ button.el-btn {
         display: block;
     }
 
+    /* button */
     .el-btn.btn-l {
         font-size: var(--text-2lg);
         line-height: 48px;
+    }
+
+    /* input */
+    .el-txt-input label {
+        font-size: var(--text-md);
+    }
+    .el-txt-input label + input {
+        margin-top: 8px;
     }
 }

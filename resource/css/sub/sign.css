@@ -58,3 +58,38 @@
     color: var(--color-primary-100);
     text-decoration: underline;
 }
+
+
+
+/*
+    tablet
+*/
+@media (width < 1200px) {
+    .layout-sign {
+        padding-top: 48px;
+    }
+}
+
+/*
+    mobile
+*/
+@media (width < 768px) {
+    .layout-sign {
+        padding: 24px 16px 0;
+    }
+    .layout-sign .contents {
+        max-width: 400px;
+    }
+    .layout-sign .contents .logo-area img {
+        width: 198px;
+    }
+    .layout-sign .sign-form {
+        margin-top: 24px;
+    }
+    .sign-form .input-box {
+        margin-bottom: 16px;
+    }
+    .sign-form .el.btn.btn-l {
+        line-height: 56px;
+    }
+}
