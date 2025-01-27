@@ -134,8 +134,9 @@
 
 
 /*
-    tablet
+    반응형
 */
+/* tablet */
 @media (width < 1200px) {
     .header .inner {
         padding: 0 25px;
@@ -202,9 +203,7 @@
     }
 }
 
-/*
-    mobile
-*/
+/* mobile */
 @media (width < 768px) {
     .header .inner {
         padding: 0 16px;

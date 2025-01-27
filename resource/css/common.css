@@ -202,11 +202,16 @@ button.el-btn {
 }
 
 
+
+/* 반응형 */
 .mobile {
     display: none;
 }
 .tablet {
     display: none;
+}
+.pc {
+    display: block;
 }
 
 @media (width < 1200px) {

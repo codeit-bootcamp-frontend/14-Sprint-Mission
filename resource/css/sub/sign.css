@@ -60,19 +60,17 @@
 }
 
 
-
 /*
-    tablet
+    반응형
 */
+/* tablet */
 @media (width < 1200px) {
     .layout-sign {
         padding-top: 48px;
     }
 }
 
-/*
-    mobile
-*/
+/* mobile */
 @media (width < 768px) {
     .layout-sign {
         padding: 24px 16px 0;
