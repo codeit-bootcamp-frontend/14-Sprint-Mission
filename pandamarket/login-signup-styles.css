@@ -53,6 +53,31 @@ form input:focus {
     outline: none;
 }
 
+.error {
+    border: 2px solid red;
+    outline: none;
+}
+
+#error-message-login {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+#error-message-password {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
 form #submit {
     border-radius: 40px;
     background-color: rgba(156, 163, 175, 1);
@@ -144,6 +169,31 @@ form #submit {
     form input:focus {
         border-color: #3692FF;
         outline: none;
+    }
+
+    .error {
+        border: 2px solid red;
+        outline: none;
+    }
+
+    #error-message-login {
+        color: red;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #error-message-password {
+        color: red;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
     }
 
     form #submit {
