@@ -12,7 +12,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10.417vw;
+  padding: 0 200px;
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff; 
+  z-index: 1;
 }
 
 .panda-logo-image {
@@ -36,15 +40,10 @@ body {
   margin: 11px 0;
 }
 
-section {
-  padding: 0.1px;
-}
-
 .landing-page {
   max-width: 100%;
   height: 540px;
   background-color: #cfe5ff;
-  margin-bottom: 138px;
   display: flex;
   justify-content: center;
 }
@@ -65,12 +64,12 @@ section {
   color: #374151;
 }
 
-.Seeflex {
+.see-flex {
   width: 357px;
   height: 3.5rem;
 }
 
-.See {
+.see {
   text-decoration: none;
   font-family: "Pretendard";
   font-weight: 600;
@@ -86,13 +85,14 @@ section {
   color: #f9fafb;
 }
 
-.See:hover,
+.see:hover,
 .login:hover {
   background-color: #1967d6;
 }
 
 .main-img {
-  max-width: 46.625rem;
+  width: 55%;
+  max-width: 55%;
   height: 21.25rem;
   position: relative;
   top: 12.5rem;
@@ -104,6 +104,11 @@ section {
   align-items: center;
   margin-top: 138px;
   margin-bottom: 138px;
+}
+
+.main-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .text-box {
@@ -180,6 +185,7 @@ section {
   justify-content: space-around;
   align-items: baseline;
   height: 160px;
+  padding-top: 32.5px;
 }
 
 .design {
@@ -205,7 +211,173 @@ section {
   gap: 10px;
 }
 
-#JACJAC {
+#twiter {
   position: relative;
   top: 3px;
 }
+
+@media (max-width: 1200px) {
+  .nav-flex {
+    padding: 0 200px;
+  }
+
+  .large-text {
+    font-size: 2rem;
+  }
+
+  .main-img {
+    width: 500px;
+    height: 340px;
+  }
+
+  .see {
+    font-size: 1rem;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    padding: 16px 60px;
+  }
+
+  .large-text-last {
+    font-size: 2rem;
+  }
+
+  .second-page img {
+    width: 450px;
+    height: 400px;
+  }
+
+  .second-page .text-box,
+  .second-page .text-box-search,
+  .second-page .text-box-register {
+    width: 450px;
+    height: 400px;
+  }
+
+  
+
+  .event-text {
+    font-size: 1rem;
+  }
+
+  .event-large-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-flex {
+    padding: 0 100px;
+  }
+
+  .large-text {
+    font-size: 1.25rem;
+  }
+
+  .main-img {
+    width: 400px;
+    margin-left: 50px;
+  }
+
+  .see-flex {
+    width: 200px;
+
+  }
+
+  .see {
+    width: 200px;
+    font-size: 0.75rem;
+  }
+
+  .landing-page-text {
+    margin-right: 20px;
+    top: 15rem;
+  }
+
+  .large-text-last {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .second-page img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .second-page .text-box,
+  .second-page .text-box-search,
+  .second-page .text-box-register {
+    width: 300px;
+    height: 250px;
+  }
+
+  
+
+  .event-text {
+    font-size: 0.75rem;
+  }
+
+  .event-large-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-flex {
+    padding: 0 50px;
+  }
+
+  .large-text {
+    font-size: 1rem;
+  }
+
+  .main-img {
+    width: 250px;
+    margin-left: 50px;
+  }
+
+  .see-flex {
+    width: 170px;
+
+  }
+
+  .see {
+    width: 200px;
+    font-size: 0.75rem;
+  }
+
+  .landing-page-text {
+    margin-right: 20px;
+    top: 15rem;
+  }
+
+  .large-text-last {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .second-page img {
+    width: 270px;
+    height: 270px;
+  }
+
+  .second-page .text-box,
+  .second-page .text-box-search,
+  .second-page .text-box-register {
+    width: 270px;
+    height: 270px;
+  }
+
+  
+
+  .event-text {
+    font-size: 0.75rem;
+  }
+
+  .event-large-text {
+    font-size: 1.5rem;
+  }
+}
+
+
+
