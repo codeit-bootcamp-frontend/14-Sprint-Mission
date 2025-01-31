@@ -4,7 +4,7 @@
 /* 로그인 페이지 */
 
 #login { min-height: 100vh; display: flex; align-items: center; }
-.login_wrap { width:95%; max-width:640px; margin:0 auto; text-align: center; }
+.login_wrap { width:100%; max-width:640px; margin:0 auto; text-align: center; }
 .login_wrap .logo { margin-bottom:55px; }
 .login_wrap .logo a {  }
 .login_wrap .logo a img { vertical-align: middle; }
@@ -53,3 +53,14 @@
 .login_wrap .member_sub_box {  }
 .login_wrap .member_sub_box span { font-size:14px; }
 .login_wrap .member_sub_box span a {  }
+
+
+/* Mobile */
+@media (max-width: 767px) {
+  #login { padding:0 16px; }
+  .login_wrap { width:100%; max-width:400px; }
+  
+  .login_wrap .logo a img:first-child { height:52px; margin-right:8px; }
+  .login_wrap .logo a img:last-child { height:40px; }
+  .login_wrap .login_box label { font-size:14px; }
+}
