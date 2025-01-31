@@ -136,7 +136,7 @@ footer .inner .right img {
   .inner { padding-left:24px!important; padding-right:24px!important; }
   .section { height:500px; }
   
-  .main_title { height:771px; padding-bottom:24px; }
+  .main_title { height:771px; margin-bottom:24px; }
   .main_title h1 br { display:none; }
   
   .section { height:auto; }
