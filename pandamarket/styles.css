@@ -5,33 +5,181 @@
     box-sizing: border-box;
 }
 
+/* 전체 default */
+header {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+}
+
+body {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .login-button {
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(54, 146, 255, 1);
+    color: rgba(243, 244, 246, 1);
+    cursor: pointer;
+}
+
+.landingpage-image01 {
+    background-color: rgba(207, 229, 255, 1);
+    display: flex;
+    justify-content: center;
+}
+
+.landingpage-description a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.description-button {
+    cursor: pointer;
+    background-color: rgba(54, 146, 255, 1);
+    border: none;
+    color: rgba(249, 250, 251, 1);
+}
+
+.landingpage-popular-product {
+    display: flex;
+}
+
+.landingpage-popular-product-description {
+    display: flex;
+}
+
+.landingpage-popular-product-description span {
+    display: flex;
+}
+
+.landingpage-popular-product .Hot-item {
+    color: rgba(54, 146, 255, 1);
+}
+
+.Hot-item-title {
+    color: rgba(55, 65, 81, 1);
+}
+
+.Hot-item-description {
+    color: rgba(55, 65, 81, 1);
+}
+
+.landingpage-wanted-product {
+    display: flex;
+    justify-content: center;
+}
+
+.landingpage-wantedproduct-description span {
+    text-align: right;
+    display: flex;
+}
+
+.search {
+    color: rgba(54, 146, 255, 1);
+}
+
+.search-title {
+    color: rgba(55, 65, 81, 1);
+}
+
+.search-description {
+    color: rgba(55, 65, 81, 1);
+}
+
+.landingpage-want-to-sell {
+    display: flex;
+}
+
+.landingpage-sell-description span {
+    display: flex;
+}
+
+.register {
+    color: rgba(54, 146, 255, 1);
+}
+
+.register-title {
+    color: rgba(55, 65, 81, 1);
+}
+
+.register-description {
+    color: rgba(55, 65, 81, 1);
+}
+
+.landingpage-image05 {
+    display: flex;
+}
+
+.landingpage-bottom {
+    width: 100%;
+    background-color: rgba(207, 229, 255, 1);
+    display: flex;
+    padding: 0;
+}
+
+.landingpage-bottom-wrap {
+    display: flex;
+}
+
+.landingpage-bottom-wrap p {
+    color: rgba(55, 65, 81, 1);
+}
+
+footer {
+    background-color: rgba(17, 24, 39, 1);
+}
+
+.foot {
+    width: 100%;
+    display: flex;
+}
+
+.foot div {
+    display: flex;
+}
+
+footer span {
+    color: rgba(229, 231, 235, 1);
+}
+
+footer span a {
+    text-decoration: none;
+    color: rgba(229, 231, 235, 1);
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.middle {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
 /* PC 버전의 사이즈 */
 
 @media (min-width: 1200px) {
-    header {
-        justify-content: center;
-        display: flex;
-        margin-bottom: 8px;
-        padding-top: 8px;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background-color: white;
-    }
-
-    body {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
     .head {
         margin-left: 200px;
         margin-right: 200px;
         width: 1120px;
         height: 51px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     header .logo {
@@ -42,21 +190,14 @@
     header .login-button {
         width: 128px;
         height: 48px;
-        border-radius: 8px;
-        border: none;
         font-size: 16px;
         font-weight: 600;
-        background-color: rgba(54, 146, 255, 1);
         color: rgba(243, 244, 246, 1);
-        cursor: pointer;
     }
 
     .landingpage-image01 {
-        background-color: rgba(207, 229, 255, 1);
         height: 540px;
         width: 100%;
-        display: flex;
-        justify-content: center;
     }
 
     .wrap-1 {
@@ -86,10 +227,8 @@
     }
 
     .landingpage-description a {
-        text-decoration: none;
         width: 357px;
         height: 56px;
-        cursor: pointer;
     }
 
     .p-1 {
@@ -100,65 +239,51 @@
     }
 
     .description-button {
-        cursor: pointer;
         width: 357px;
         height: 56px;
         border-radius: 40px;
-        background-color: rgba(54, 146, 255, 1);
         font-size: 20px;
         font-weight: 600;
-        border: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgba(249, 250, 251, 1);
     }
 
-
     .landingpage-popular-product {
-        display: flex;
         justify-content: center;
         margin-top: 150px;
         align-items: center;
     }
 
     .landingpage-popular-product-description {
-        box-sizing: border-box;
         background-color: rgba(252, 252, 252, 1);
         width: 400px;
         height: 444px;
-        display: flex;
         align-items: center;
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
-    .landingpage-popular-product-description p {
-        display: flex;
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
     .landingpage-popular-product .Hot-item {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .Hot-item-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
         padding-right: 120px;
     }
 
     .Hot-item-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 500;
     }
 
     .landingpage-wanted-product {
-        display: flex;
-        justify-content: center;
         margin-top: 300px;
         flex-direction: row-reverse;
     }
@@ -169,46 +294,41 @@
         width: 400px;
         height: 444px;
         display: flex;
-        align-items: center;
-        padding-left: 50px;
+        justify-content: center;
+        flex-direction: column;
+        text-align: right;
+        padding-right: 50px;
     }
 
-    .landingpage-wantedproduct-description p {
-        text-align: right;
-        display: flex;
+    .landingpage-wantedproduct-description span {
         flex-direction: column;
     }
 
     .search {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .search-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 90px;
     }
 
     .search-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 500;
     }
 
     .landingpage-want-to-sell {
-        display: flex;
         justify-content: center;
         margin-top: 300px;
     }
 
     .landingpage-sell-description {
-        box-sizing: border-box;
         background-color: rgba(252, 252, 252, 1);
         width: 400px;
         height: 444px;
@@ -217,60 +337,49 @@
         padding-left: 50px;
     }
 
-    .landingpage-sell-description p {
-        display: flex;
+    .landingpage-sell-description span {
         flex-direction: column;
     }
 
     .register {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .register-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 100px;
     }
 
     .register-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 500;
     }
 
     .landingpage-image05 {
-        display: flex;
         justify-content: center;
         margin-top: 300px;
     }
 
     .landingpage-bottom {
-        width: 100%;
-        background-color: rgba(207, 229, 255, 1);
         height: 540px;
         margin-top: 300px;
-        display: flex;
         justify-content: center;
         align-items: flex-end;
-        padding: 0;
     }
 
     .landingpage-bottom-wrap {
         width: 1110px;
         height: 397px;
-        display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
     .landingpage-bottom-wrap p {
-        color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
         margin-right: 20px;
@@ -285,18 +394,16 @@
 
     footer {
         height: 160px;
-        background-color: rgba(17, 24, 39, 1);
         display: flex;
         justify-content: center;
         flex-direction: row;
     }
 
     .foot {
-        width: 100%;
         height: 20px;
-        display: flex;
         justify-content: center;
         flex-direction: row;
+        margin-top: 20px;
     }
 
     .foot-start {
@@ -304,53 +411,27 @@
     }
 
     .foot div {
-        display: flex;
         flex-direction: row;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
-        color: rgba(229, 231, 235, 1);
         font-weight: 400;
     }
 
-    footer p a {
-        text-decoration: none;
+    footer span a {
         font-size: 16px;
-        color: rgba(229, 231, 235, 1);
         font-weight: 400;
-    }
-
-    .icons {
-        display: flex;
-        gap: 10px;
     }
 
     .middle {
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
         margin-right: 366px;
     }
 }
 
 /* Tablet 버전의 사이즈 */
-
 @media (max-width: 1199px) {
-    header {
-        justify-content: center;
-        display: flex;
-        margin-bottom: 8px;
-        padding-top: 8px;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background-color: white;
-    }
-
     body {
-        margin-left: 0;
-        margin-right: 0;
         padding-right: 0;
         padding-left: 0;
     }
@@ -360,9 +441,6 @@
         margin-right: 24px;
         width: 1120px;
         height: 51px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     header .logo {
@@ -373,21 +451,13 @@
     header .login-button {
         width: 128px;
         height: 48px;
-        border-radius: 8px;
-        border: none;
         font-size: 16px;
         font-weight: 600;
-        background-color: rgba(54, 146, 255, 1);
-        color: rgba(243, 244, 246, 1);
-        cursor: pointer;
     }
 
     .landingpage-image01 {
-        background-color: rgba(207, 229, 255, 1);
         height: 771px;
         width: 100%;
-        display: flex;
-        justify-content: center;
     }
 
     .wrap-1 {
@@ -400,7 +470,7 @@
     }
 
     .landingpage-image01 img {
-        width: 744px;
+        width: 100%;
         height: 340px;
     }
 
@@ -416,10 +486,8 @@
     }
 
     .landingpage-description a {
-        text-decoration: none;
         width: 357px;
         height: 56px;
-        cursor: pointer;
     }
 
     .p-1 {
@@ -431,23 +499,17 @@
     }
 
     .description-button {
-        cursor: pointer;
         width: 357px;
         height: 56px;
         border-radius: 40px;
-        background-color: rgba(54, 146, 255, 1);
         font-size: 20px;
         font-weight: 600;
-        border: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgba(249, 250, 251, 1);
     }
 
-
     .landingpage-popular-product {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
@@ -461,41 +523,35 @@
     .landingpage-popular-product-description {
         box-sizing: border-box;
         width: 696px;
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
+        margin-top: 24px;
     }
 
-    .landingpage-popular-product-description p {
-        display: flex;
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
     .landingpage-popular-product .Hot-item {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .Hot-item-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
     }
 
     .Hot-item-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 18px;
         font-weight: 500;
     }
 
     .landingpage-wanted-product {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
-        justify-content: center;
     }
 
     .landingpage-wanted-product img {
@@ -509,39 +565,34 @@
         flex-direction: column;
         align-items: flex-end;
         text-align: left;
+        margin-top: 24px;
     }
 
-    .landingpage-wantedproduct-description p {
-        text-align: right;
-        display: flex;
+    .landingpage-wantedproduct-description span {
         text-align: right;
         justify-content: end;
     }
 
     .search {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .search-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 0px;
     }
 
     .search-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 18px;
         font-weight: 500;
     }
 
     .landingpage-want-to-sell {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
@@ -558,62 +609,53 @@
         display: flex;
         flex-direction: column;
         justify-content: left;
+        margin-top: 24px;
     }
 
-    .landingpage-sell-description p {
+    .landingpage-sell-description span {
         text-align: left;
     }
 
     .register {
-        color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 700;
     }
 
     .register-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 0;
     }
 
     .register-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 18px;
         font-weight: 500;
     }
 
     .landingpage-image05 {
-        display: flex;
         justify-content: center;
         margin-top: 300px;
     }
 
     .landingpage-bottom {
-        width: 100%;
-        background-color: rgba(207, 229, 255, 1);
         height: 927px;
         margin-top: 52px;
-        display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
     }
 
     .landingpage-bottom-wrap {
         width: 100%;
         height: 927px;
-        display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
     }
 
     .landingpage-bottom-wrap p {
-        color: rgba(55, 65, 81, 1);
         font-size: 40px;
         font-weight: 700;
         margin-right: 20px;
@@ -631,21 +673,17 @@
 
     footer {
         height: 160px;
-        background-color: rgba(17, 24, 39, 1);
         display: flex;
         justify-content: center;
-
     }
 
     .foot {
-        width: 100%;
         height: 20px;
-        display: flex;
         justify-content: center;
+        margin-top: 20px;
     }
 
     .foot div {
-        display: flex;
         flex-direction: row;
     }
 
@@ -653,47 +691,24 @@
         margin-right: 71px;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
-        color: rgba(229, 231, 235, 1);
         font-weight: 400;
     }
 
-    footer p a {
-        text-decoration: none;
+    footer span a {
         font-size: 16px;
-        color: rgba(229, 231, 235, 1);
         font-weight: 400;
-    }
-
-    .icons {
-        display: flex;
-        gap: 10px;
     }
 
     .middle {
-        display: flex;
-        gap: 20px;
         margin-right: 71px;
     }
 }
 
 /* 모바일 버전의 사이즈 */
-@media (max-width: 767px) {
-    header {
-        justify-content: center;
-        display: flex;
-        margin-bottom: 8px;
-        padding-top: 8px;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        background-color: white;
-    }
-
+@media (max-width: 700px) {
     body {
-        margin-left: 0;
-        margin-right: 0;
         padding-right: 0;
         padding-left: 0;
     }
@@ -703,9 +718,6 @@
         margin-right: 16px;
         width: 100%;
         height: 51px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     header .logo {
@@ -716,21 +728,13 @@
     header .login-button {
         width: 100px;
         height: 35px;
-        border-radius: 8px;
-        border: none;
         font-size: 16px;
         font-weight: 600;
-        background-color: rgba(54, 146, 255, 1);
-        color: rgba(243, 244, 246, 1);
-        cursor: pointer;
     }
 
     .landingpage-image01 {
-        background-color: rgba(207, 229, 255, 1);
         height: 540px;
         width: 100%;
-        display: flex;
-        justify-content: center;
     }
 
     .wrap-1 {
@@ -758,10 +762,8 @@
     }
 
     .landingpage-description a {
-        text-decoration: none;
         width: 240px;
         height: 48px;
-        cursor: pointer;
     }
 
     .p-1 {
@@ -773,23 +775,17 @@
     }
 
     .description-button {
-        cursor: pointer;
         width: 240px;
         height: 48px;
         border-radius: 40px;
-        background-color: rgba(54, 146, 255, 1);
         font-size: 18px;
         font-weight: 600;
-        border: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgba(249, 250, 251, 1);
     }
 
-
     .landingpage-popular-product {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
@@ -803,41 +799,34 @@
     .landingpage-popular-product-description {
         box-sizing: border-box;
         width: 344px;
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
     }
 
-    .landingpage-popular-product-description p {
-        display: flex;
+    .landingpage-popular-product-description span {
         flex-direction: column;
     }
 
     .landingpage-popular-product .Hot-item {
-        color: rgba(54, 146, 255, 1);
         font-size: 16px;
         font-weight: 700;
     }
 
     .Hot-item-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 700;
     }
 
     .Hot-item-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 16px;
         font-weight: 500;
     }
 
     .landingpage-wanted-product {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
-        justify-content: center;
     }
 
     .landingpage-wanted-product img {
@@ -853,37 +842,31 @@
         text-align: left;
     }
 
-    .landingpage-wantedproduct-description p {
-        text-align: right;
-        display: flex;
+    .landingpage-wantedproduct-description span {
         text-align: right;
         justify-content: end;
     }
 
     .search {
-        color: rgba(54, 146, 255, 1);
         font-size: 16px;
         font-weight: 700;
     }
 
     .search-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 700;
     }
 
-    .search-title span {
+    .search-title-custom {
         padding-left: 0px;
     }
 
     .search-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 16px;
         font-weight: 500;
     }
 
     .landingpage-want-to-sell {
-        display: flex;
         flex-direction: column;
         margin-top: 52px;
         align-items: center;
@@ -902,44 +885,37 @@
         justify-content: left;
     }
 
-    .landingpage-sell-description p {
+    .landingpage-sell-description span {
         text-align: left;
     }
 
     .register {
-        color: rgba(54, 146, 255, 1);
         font-size: 16px;
         font-weight: 700;
     }
 
     .register-title {
-        color: rgba(55, 65, 81, 1);
         font-size: 24px;
         font-weight: 700;
     }
 
-    .register-title span {
+    .register-title-custom {
         padding-right: 0;
     }
 
     .register-description {
-        color: rgba(55, 65, 81, 1);
         font-size: 16px;
         font-weight: 500;
     }
 
     .landingpage-image05 {
-        display: flex;
         justify-content: center;
         margin-top: 300px;
     }
 
     .landingpage-bottom {
-        width: 100%;
-        background-color: rgba(207, 229, 255, 1);
         height: 540px;
         margin-top: 52px;
-        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -949,7 +925,6 @@
     .landingpage-bottom-wrap {
         width: 100%;
         height: 540px;
-        display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -957,7 +932,6 @@
     }
 
     .landingpage-bottom-wrap p {
-        color: rgba(55, 65, 81, 1);
         font-size: 32px;
         font-weight: 700;
         margin-top: 121px;
@@ -976,15 +950,12 @@
     }
 
     footer {
-        background-color: rgba(17, 24, 39, 1);
         display: flex;
         justify-content: center;
         height: 160px;
     }
 
     .foot {
-        width: 100%;
-        display: flex;
         flex-direction: column-reverse;
         align-items: center;
         padding-left: 0;
@@ -993,7 +964,8 @@
         margin-right: 0;
         margin-top: 64px;
     }
-    .foot-start{
+
+    .foot-start {
         margin: 0;
         padding: 0;
         text-align: left;
@@ -1001,30 +973,21 @@
     }
 
     .foot div {
-        display: flex;
         flex-direction: row;
     }
 
-    footer p {
+    footer span {
         font-size: 16px;
         color: rgba(103, 103, 103, 1);
         font-weight: 400;
     }
 
-    footer p a {
-        text-decoration: none;
+    footer span a {
         font-size: 16px;
-        color: rgba(229, 231, 235, 1);
         font-weight: 400;
     }
 
-    .icons {
-        display: flex;
-        gap: 10px;
-    }
-
     .middle {
-        display: flex;
         gap: 32px;
         margin-right: 32px;
     }
