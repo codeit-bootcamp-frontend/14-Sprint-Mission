@@ -6,7 +6,7 @@
   font-weight: 400;
   font-style: normal;
 }
-body { font-family: 'Pretendard-Regular'; font-size:15px;  font-weight: 400; color:var(--Secondary); }
+body { font-family: 'Pretendard-Regular'; font-size:16px; min-width:355px; font-weight: 400; color:var(--Secondary); }
 a { text-decoration: none; }
 
 .inner,.box_inner { margin:0 auto;  min-width:325px; max-width:1120px; }
@@ -20,8 +20,8 @@ input[type='submit'] { outline:0; }
 header { position:sticky; top:0; width:100%; background-color: #fff; z-index: 9999; }
 header .inner { display:flex; justify-content: space-between; align-items: center; padding:13px 0; }
 header .inner .logo_top {  }
-header .inner .logo_top img { height:40px;  }
-header .inner .logo_top img:last-child { height:35px; }
+header .inner .logo_top img { height:40px; vertical-align: middle; }
+header .inner .logo_top img:last-child { height:30px; margin-left:8px; }
 header .inner .login_btn {  }
 
 
@@ -48,7 +48,7 @@ header .inner .login_btn {  }
 .section .box_inner .box { 
   display: flex; 
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #FCFCFC;
   gap: 40px;
   border-radius: 12px;
@@ -57,7 +57,7 @@ header .inner .login_btn {  }
   max-width: 100%;
 }
 .section .box_inner .box img {
-  width: 50%;
+  width: 57%;
 }
 .section .box_inner .box > div {
   padding:0 23px;
@@ -130,43 +130,56 @@ footer .inner .right img {
 
 }
 
-
-@media (max-width: 1919px) {
-   .inner { padding-left:200px!important; padding-right:200px!important; }
-}
-@media (max-width: 1120px) {
-  body { font-size:13px; }
-
-  .font_1 { font-size:2rem; }
-  .font_2 { font-size:1.5rem; }
-  .font_3 { font-size:1rem; }
+/* tablet */
+@media (max-width: 1199px) {
 
   .inner { padding-left:24px!important; padding-right:24px!important; }
   .section { height:500px; }
   
-  .main_title .text_box,
-  .section._4 .text_box { width:100%; padding:0 24px; text-align: center; top:10%; }
-  .section._4 .text_box { top:20%; }
-}
-@media (max-width: 780px) {
-  
-  .font_1 { font-size:1.8rem; }
-  .font_2 { font-size:1.2em; }
-  .font_3 { font-size:1.3rem; }
-  .section._4 .inner, .main_title .inner { background-size: contain; }
+  .main_title { height:771px; margin-bottom:24px; }
+  .main_title h1 br { display:none; }
   
   .section { height:auto; }
-  .section .box_inner { padding:100px 0 0; height:auto;}
-  .section .box_inner .box { flex-direction:column; width:100%; gap: 10px; align-items: stretch; }
-  .section .box_inner .box > div { padding: 0 0 24px; }
-  .section .box_inner .box > div h2 { margin-top: 12px; margin-bottom: 12px; }
-  .section .box_inner .box > div br { display:none; }
+  .section .box_inner { padding:0px 24px 0px; height:auto;}
+  .section .box_inner .box { flex-direction:column; width:100%; gap: 24px; background-color:#fff; align-items: stretch; padding: 0px;  }
+  .section .box_inner .box > div { padding: 0 0 52px; }
+  .section .box_inner .box > div h2 { margin-top: 16px; margin-bottom: 16px; }
+  .section .box_inner .box > div h2 br { display:none; }
   .section .box_inner .box img { width:100%; }
-}
 
-@media (max-width: 375px){
-  a.btn._roundedM { padding: 16px 44px; }
+  .main_title .text_box,
+  .section._4 .text_box { width:100%; padding:0 24px; text-align: center; top:84px; }
+  .main_title .inner,
+  .section._4 .inner { background-position: bottom center; }
+  .section._4 .text_box { top:20%; }
+  .section._4 { height:927px; }
+  .section._4 .inner { margin-top: 4px; }
+
+  footer .inner .right { padding-right:80px; }
+  footer .inner .left { padding-left:80px; }
+
+}
+/* Mobile */
+@media (max-width: 767px) {
+  
   header .inner .logo_top img:first-child { display:none; }
-  footer .inner .left { position: absolute; top:65px; }
-  .section .box_inner { padding:50px 0 0;}
+
+  .inner { padding-left:16px!important; padding-right:16px!important; }
+
+  .main_title { height:540px; }
+  .main_title h1 br { display:block; }
+
+  .section .box_inner .box > div h2 { margin-top: 8px; margin-bottom: 8px; }
+
+  .section .box_inner { padding:0px 16px 0;}
+  .section .box_inner .box > div { padding: 0 0 40px; }
+  .section._4 .inner, 
+  .main_title .inner { background-size: contain; }
+  .section._4 { height:540px; }
+  .section._4 .inner { margin-top: 43px; }
+
+  footer .inner .left { position: absolute; bottom:32px; }
+  footer .inner .right { padding-right:16px; }
+  footer .inner .center { padding-left:16px; }
+  footer .inner .left { padding-left:16px; }
 }

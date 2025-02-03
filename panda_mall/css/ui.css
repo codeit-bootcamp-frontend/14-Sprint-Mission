@@ -22,9 +22,29 @@
 .btn:active { background-color: #1251AA; color:#fff; }
 .btn.n_act { background-color: #9CA3AF; color:#fff; }
 
-.btn._roundedM { display:inline-block; padding:16px 124px; border-radius: 50px; }
-.btn._roundedS { display:inline-block; padding:12px 20px;  border-radius: 8px; }
+.btn._roundedM { display:inline-block; font-size:20px; padding:16px 124px; border-radius: 50px; }
+.btn._roundedS { display:inline-block; font-size:16px; padding:11px 43px;  border-radius: 8px; }
 
 .font_1 { font-size:40px; }
 .font_2 { font-size:24px; }
 .font_3 { font-size:18px; }
+.font_4 { font-size:40px; }
+
+
+
+@media (max-width: 1120px) {
+
+  .font_2 { font-size:18px; }
+  .font_4 { font-size:32px; }
+   a.btn._roundedM { padding: 12px 124px; }
+
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .font_1 { font-size:32px; }
+  .font_3 { font-size:16px; }
+  .font_4 { font-size:24px; }
+
+  a.btn._roundedM { font-size:18px; padding: 11px 71px; }
+}
