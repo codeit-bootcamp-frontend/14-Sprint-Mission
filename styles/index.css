@@ -1,0 +1,227 @@
+/* Header */
+header {
+  height: 70px;
+  margin: 0 auto;
+  top: 0;
+  background-color: #ffff;
+  border-bottom: 1px solid #dfdfdf;
+  position: sticky;
+}
+
+header .nav {
+  margin: 0 200px;
+  height: 100%;
+}
+
+header .nav .left {
+  align-items: flex-end;
+}
+
+header .nav .left img {
+  width: 40px;
+}
+
+header .nav .left a {
+  font-family: "ROKAF Sans";
+  font-size: 25.63px;
+  line-height: 34.6px;
+}
+header .nav a.button {
+  width: 128px;
+}
+.hero-title {
+  font-size: 40px;
+  line-height: 56px;
+  font-weight: 700;
+}
+.break-title {
+  display: none;
+}
+@media (min-width: 1200px) {
+  header .nav {
+    margin: 0 48px;
+    height: 100%;
+  }
+  .break-title {
+    display: inline;
+  }
+}
+@media (max-width: 1199px) {
+  header .nav {
+    margin: 0 24px;
+  }
+}
+/* 모바일 */
+@media (max-width: 768px) {
+  header .nav .left img {
+    display: none;
+  }
+}
+
+/* 메인 */
+main .banner {
+  background-color: #cfe5ff;
+  padding-top: 200px;
+}
+main .banner .wrap {
+  gap: 7px;
+}
+main .banner .wrap a.button {
+  width: 357px;
+}
+main .card-list .card-wrap {
+  height: 720px;
+}
+main .card-list .card-wrap .card {
+  background-color: #fcfcfc;
+}
+main .card-list .card-wrap .card.flex-reverse {
+  text-align: right;
+}
+main .card-list .card-wrap .card .grid {
+  padding: 0 24px;
+}
+main #bottom-panda {
+  padding-top: 143px;
+  gap: 70px;
+}
+
+@media (max-width: 1919px) {
+  main .banner {
+    padding-top: 84px;
+  }
+  main .banner,
+  main .banner .wrap {
+    flex-direction: column;
+  }
+  main .banner .wrap a {
+    margin: 20px auto 132px;
+  }
+  main .banner .wrap br {
+    display: none;
+  }
+  main .banner img,
+  main .banner .wrap img {
+    width: 100%;
+  }
+  main .card-list {
+    box-sizing: border-box;
+    display: grid;
+    width: 100%;
+    gap: 52px;
+    padding: 24px 24px 56px;
+  }
+  main .card-list .card-wrap {
+    display: block;
+    height: auto;
+  }
+  main .card-list .card-wrap .card {
+    background-color: inherit;
+  }
+  main .card-list .card-wrap .card .grid {
+    width: 100%;
+    padding: 0;
+  }
+  main .card-list .card-wrap .card.flex-center {
+    flex-direction: column;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  main .card-list .card-wrap .card img {
+    width: 100%;
+  }
+  main .banner#bottom-panda {
+    text-align: center;
+    padding: 0;
+    gap: 16px;
+  }
+  main .banner#bottom-panda .hero-title {
+    margin: 200px 0;
+  }
+}
+/* 모바일 메인 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+  main .banner .wrap {
+    text-align: center;
+  }
+  main .banner .wrap h1,
+  main .banner .wrap .hero-title {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+  main .banner .wrap br {
+    display: block;
+  }
+  main .banner .wrap a.button {
+    font-size: 18px;
+    line-height: 26px;
+    width: 240px;
+  }
+  main .card-list {
+    padding: 52px 16px 83px;
+    gap: 40px;
+  }
+  main .banner#bottom-panda {
+    gap: 10px;
+  }
+  main .banner#bottom-panda .hero-title {
+    margin: 121px 0;
+  }
+}
+/* footer */
+footer {
+  height: 160px;
+  padding: 32px 0 0;
+  box-sizing: border-box;
+  background-color: var(--gray-900);
+  color: var(--gray-400);
+}
+footer .wrap {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1120px;
+  grid-template-columns: repeat(3, 1fr);
+}
+footer .wrap ul {
+  justify-content: center;
+  gap: 30px;
+}
+footer .wrap ul li {
+  list-style: none;
+  cursor: pointer;
+  color: var(--gray-200);
+}
+#socials {
+  justify-self: flex-end;
+}
+#socials img {
+  width: 20px;
+  height: 20px;
+}
+
+#links li a:hover {
+  text-decoration: underline;
+}
+
+#socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+@media (max-width: 1919px) {
+  footer {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 32px 16px;
+  }
+}

@@ -16,115 +16,143 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/index.css"/>
   </head>
 
   <body>
-    <header class="nav-header">
-      <a href="/">
-        <img
-          class="logo"
-          src="images/logo/panda-market-logo.png"
-          alt="판다마켓 로고 "
-        />
-      </a>
-      <a href="login.html" class="login-button">로그인</a>
+    <header>
+      <div class="nav flex-sides">
+        <div class="left flex gap-8">
+          <img
+          src="images/common/logo.svg"
+          alt="판다마켓 로고 이미지"
+          />
+          <a href="/" class="logo">판다마켓
+          </a>
+        </div>
+        <a href="login.html" class="button small-48 flex-center">로그인</a>
+      </div>
     </header>
 
-    <main>
-      <section id="banner-panda" class="hero-banner">
+    <main class="main-content">
+      <section class="banner flex-center" id="hero">
         <div class="wrap">
-          <h1>
-            일상의 모든 물건을<br />
-            거래해 보세요
-          </h1>
-          <a class="watch-button" href="items.html">구경하러 가기</a>
+          <p class="hero-title">
+            일상의 모든 물건을
+            <span>
+              <br />
+            </span>
+              거래해 보세요
+          </p>
+          <a class="button flex-center gap-12" href="items.html">구경하러 가기</a>
         </div>
+        <img src="images/home/pand-main.png" alt="판다 배너 이미지">
       </section>
 
-      <section class="wrap">
-        <div class="container">
-          <img src="images/home/panda-hot.png" alt="인기 상품" width="50%" />
-          <div class="container-text">
-            <h1 class="hero-tag">Hot item</h1>
-            <h2 class="hero-title">
-              인기 상품을<br />
-              확인해 보세요
-            </h2>
-            <p class="intro-text">
-              가장 HOT한 중고거래 물품을<br />
-              판다마켓에서 확인해 보세요
-            </p>
+      <section class="card-list" id="sections">
+        <div class="card-wrap flex-center">
+          <div class="card flex-center gap-40" id="section-1">
+            <img src="images/home/panda-hot.png" alt="인기 상품 이미지" />
+            <div class="grid gap-12">
+              <p class="text-2lg logo text-bold">Hot item</p>
+              <div class="grid gap-24">
+                <p class="hero-title">
+                  인기 상품을
+                  <span class="break-title">
+                    <br />
+                  </span>
+                  확인해 보세요
+                </p>
+                <p class="text-2xl">
+                  가장 HOT한 중고거래 물품을
+                  <span class="break-title">
+                    <br />
+                  </span>
+                  판다마켓에서 확인해 보세요
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="container">
-          <div class="wrap">
-              <h1 class="hero-tag">Search</h1>
-              <h2 class="hero-title">구매를 원하는<br />상품을 검색하세요</h2>
-              <p class="intro-text">
+        <div class="card-wrap flex-center">
+          <div class="card flex-center gap-40 flex-reverse">
+            <img src="images/home/search.png" alt="서치 이미지">
+            <div class="grid gap-12">
+              <p class="text-21g logo text-bold">Search</p>
+              <p class="hero-title">구매를 원하는
+                <span class="break-title">
+                  <br />
+                </span>상품을 검색하세요</p>
+              <p class="text-2xl">
                 구매하고 싶은 물품은 검색해서
-                <br />쉽게 찾아보세요
+                <span class="break-title">
+                  <br />
+                </span>
+                쉽게 찾아보세요
               </p>
             </div>
-            <img
-              class="pand-group"
-              src="images/home/search.png"
-              alt="검색 기능"
-              width="50%"
-            />
           </div>
         </div>
-        <div class="container">
-          <img
-          class="pand-group"
-          src="images/home/register.png"
-          alt="판매 상품 등록"
-          width="50%"
-          />
-          <div class="wrap">
-              <h1 class="hero-tag">Register</h1>
-              <h2 class="hero-title">판매를 원하는<br />상품을 등록하세요</h2>
-              <p class="intro-text">
-                어떤 물건이든 판매하고 싶은 상품을
-                <br />쉽게 등록하세요
-              </p>
+      </div>  
+
+        <div class="card-wrap flex-center">
+          <div class="card flex-center gap-40">
+            <img
+            src="images/home/register.png"
+            alt="판매 상품 등록"
+            />
+            <div class="grid gap-12">
+              <p class="text-21g logo text-bold">Register</p>
+              <div class="grid gap-24">
+                <p class="hero-title">판매를 원하는<span class="break-title">
+                  <br />
+                </span>
+                상품을 등록하세요</p>
+                <p class="text-2xl">
+                  어떤 물건이든 판매하고 싶은 상품을
+                  <br />쉽게 등록하세요
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="bottom-panda" class="hero-bottom">
-        <div class="wrapper-bottom">
-          <div>
-            <h1 class="bottom-title">
+      <section id="bottom-panda" class="banner">
+        <div class="wrap flex-center">
+            <p class="hero-title">
               믿을 수 있는
               <br />
               판다마켓 중고거래
-            </h1>
+            </p>
+            <img src="images/home/panda-bottom.png" alt="하단 이미지">
         </div>
       </section>
     </main>
 
     <footer>
-      <div>©codeit - 2024</div>
-      <div class="faq-info">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div class="social">
-        <a class="icon" href="https://www.facebook.com/" target="_blank"
-          ><img src="images/social/facebook-logo.svg" alt="facebook.icon"
-        /></a>
-        <a class="icon" href="https://twitter.com/" target="_blank"
-          ><img src="images/social/twitter-logo.svg" alt="twitter.icon"
-        /></a>
-        <a class="icon" href="https://www.youtube.com/" target="_blank"
-          ><img src="images/social/youtube-logo.svg" alt="youtube.lcon"
-        /></a>
-        <a class="icon" href="https://www.instagram.com/" target="_blank">
-          <img src="images/social/instagram-logo.svg" alt="instagram_icon" />
-        </a>
-      </div>
+      <div class="wrap grid">
+        <p class="site-name">©codeit - 2024</p>
+        <ul class="flex-center" id="links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <div class="flex-right gap-12" id="socials">
+            <a href="https://www.facebook.com/" target="_blank"
+            ><img src="images/social/facebook-logo.svg" alt="facebook.icon"
+            width="20"/></a>
+            <a href="https://twitter.com/" target="_blank"
+            ><img src="images/social/twitter-logo.svg" alt="twitter.icon"
+            width="20"/></a>
+            <a href="https://www.youtube.com/" target="_blank"
+            ><img src="images/social/youtube-logo.svg" alt="youtube.lcon"
+            width="20"/></a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="images/social/instagram-logo.svg" alt="instagram_icon" width="20"/>
+            </a>
+          </div>
+        </div>
     </footer>
   </body>
 </html>
