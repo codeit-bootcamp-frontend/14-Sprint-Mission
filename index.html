@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>판다마켓</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-      rel="stylesheet"
-    />
-  </head>
+  <!DOCTYPE html>
+  <html lang="ko">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:title" content="판다 마켓" />
+      <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+      <meta property="og:image" content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png" />
+      <meta property="og:url" content="https://rainbow-sunflower-f8c164.netlify.app/" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:title" content="판다 마켓" />
+      <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
+      <meta name="twitter:image" content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <title>판다마켓</title>
+      <link rel="stylesheet" href="./css/style.css" />
+      <link
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+        rel="stylesheet"
+      />
+    </head>
   <body>
-    <header>
-      <nav class="nav-flex">
-        <a href="/" class="logo"
-          ><img
-            src="./assets/panda-logo.png"
-            alt="panda logo image"
-            class="panda-logo-image"
-        /></a>
-        <a href="./login.html" class="login">로그인</a>
-      </nav>
+    <header class="nav-flex">
+      <a href="/" class="logo"
+        ><img
+          src="./assets/panda-logo.png"
+          alt="panda logo image"
+          class="panda-logo-image"
+      /></a>
+      <a href="./login.html" class="login">로그인</a>
     </header>
 
     <main>
       <div class="landing-page">
         <div class="landing-page-text">
-          <h2 class="large-text">일상의 모든 물건을 <br />거래해보세요</h2>
+          <h2 class="large-text">
+            일상의 모든 물건을 <br />
+            <span class="deal">거래해보세요</span>
+          </h2>
           <div class="see-flex">
             <a href="/items.html" class="see">구경하러 가기</a>
           </div>
@@ -48,7 +60,7 @@
                 >인기 상품을 <br />확인해보세요</span
               >
             </h2>
-            <span
+            <span class="hot-text"
               >가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요</span
             >
           </div>
@@ -64,7 +76,9 @@
                 >구매를 원하는<br />상품을 검색하세요</span
               >
             </h2>
-            <span>구매하고 싶은 물품은 검색해서 <br />쉽게 찾아보세요</span>
+            <span class="hot-text"
+              >구매하고 싶은 물품은 검색해서 <br />쉽게 찾아보세요</span
+            >
           </div>
           <img src="./assets/search.png" alt="A magnifying glass picture" />
         </div>
@@ -84,7 +98,7 @@
                 >판매를 원하는 <br />상품을 등록하세요</span
               >
             </h2>
-            <span
+            <span class="hot-text"
               >어떤 물건이든 판매하고 싶은 상품을 <br />쉽게 등록하세요</span
             >
           </div>
@@ -96,13 +110,14 @@
       <div class="landing-page-last">
         <div class="landing-page-text">
           <span class="large-text-last">
-            믿을 수 있는<br />판다마켓 중고 거래
+            <span class="reliable">믿을 수 있는</span><br />판다마켓 중고 거래
           </span>
         </div>
         <img
           src="./assets/footer.png"
           alt="A photo of a panda waving its hand"
           class="main-img"
+          id="last"
         />
       </div>
     </main>

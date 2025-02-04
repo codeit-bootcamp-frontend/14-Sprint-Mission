@@ -1,11 +1,18 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   font-family: "Pretendard";
   max-width: 100vw;
+}
+
+main {
+  overflow: hidden;
+  padding-top: 70px;
 }
 
 .nav-flex {
@@ -15,8 +22,8 @@ body {
   padding: 0 200px;
   position: fixed;
   width: 100%;
-  background-color: #ffffff; 
-  z-index: 1;
+  background-color: #ffffff;
+  z-index: 1000;
 }
 
 .panda-logo-image {
@@ -91,11 +98,12 @@ body {
 }
 
 .main-img {
-  width: 55%;
-  max-width: 55%;
+  width: 100%;
+  max-width: 746px;
   height: 21.25rem;
   position: relative;
   top: 12.5rem;
+  object-fit: cover;
 }
 
 .second-page {
@@ -215,169 +223,233 @@ body {
   position: relative;
   top: 3px;
 }
-
-@media (max-width: 1200px) {
+/* Tablet (768px ~ 1199px) */
+@media (max-width: 1199px) {
   .nav-flex {
-    padding: 0 200px;
+    margin: 0;
+    padding: 0 24px;
   }
 
-  .large-text {
-    font-size: 2rem;
-  }
-
-  .main-img {
-    width: 500px;
-    height: 340px;
-  }
-
-  .see {
-    font-size: 1rem;
-    width: 300px;
-    height: 50px;
-    display: flex;
-    padding: 16px 60px;
-  }
-
-  .large-text-last {
-    font-size: 2rem;
-  }
-
-  .second-page img {
-    width: 450px;
-    height: 400px;
-  }
-
-  .second-page .text-box,
-  .second-page .text-box-search,
-  .second-page .text-box-register {
-    width: 450px;
-    height: 400px;
-  }
-
-  
-
-  .event-text {
-    font-size: 1rem;
-  }
-
-  .event-large-text {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .nav-flex {
-    padding: 0 100px;
-  }
-
-  .large-text {
-    font-size: 1.25rem;
-  }
-
-  .main-img {
-    width: 400px;
-    margin-left: 50px;
-  }
-
-  .see-flex {
-    width: 200px;
-
-  }
-
-  .see {
-    width: 200px;
-    font-size: 0.75rem;
+  .landing-page {
+    height: 771px;
   }
 
   .landing-page-text {
-    margin-right: 20px;
-    top: 15rem;
+    width: auto;
+    height: 56px;
+    position: relative;
+    top: 84px;
+    left: 400px;
+    white-space: nowrap;
   }
 
-  .large-text-last {
-    font-size: 1.25rem;
+  .large-text {
+    margin-bottom: 24px;
+  }
+  
+  h2.large-text br {
+    display: none;
+  }
+
+  .see-flex {
+    position: relative;
+    left: 80px;
+  }
+
+  .main-list {
+    margin: 24px 24px 0 24px;
+  }
+
+  .main-img {
+    top: 430px;
+    right: 255px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .second-page {
     margin: 0;
   }
 
   .second-page img {
-    width: 300px;
-    height: 250px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
   }
 
-  .second-page .text-box,
-  .second-page .text-box-search,
-  .second-page .text-box-register {
-    width: 300px;
-    height: 250px;
+  .second-page#hot-item {
+    flex-direction: column;
   }
 
-  
+  .text-box,
+  .text-box-search,
+  .text-box-register {
+    width: 100%;
+    height: auto;
+    margin-top: 24px;
+    padding: 0;
+  }
 
   .event-text {
-    font-size: 0.75rem;
+    margin-bottom: 16px;
+    font-size: 18px;
   }
 
   .event-large-text {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-flex {
-    padding: 0 50px;
+    font-size: 32px;
   }
 
-  .large-text {
-    font-size: 1rem;
+  .hot-text {
+    margin-top: 24px;
+    font-size: 18px;
   }
 
-  .main-img {
-    width: 250px;
-    margin-left: 50px;
+  .event-large-text br {
+    display: none;
   }
 
-  .see-flex {
-    width: 170px;
-
+  .second-page#search {
+    margin-top: 52px;
+    flex-direction: column-reverse;
   }
 
-  .see {
-    width: 200px;
-    font-size: 0.75rem;
+  .second-page#register {
+    margin-top: 52px;
+    flex-direction: column;
   }
 
-  .landing-page-text {
-    margin-right: 20px;
-    top: 15rem;
+  .empty-area {
+    height: 56px;
+  }
+
+  .landing-page-last {
+    width: 100%;
+    height: 927px;
+  }
+
+  .reliable {
+    position: relative;
+    left: 50px;
   }
 
   .large-text-last {
-    font-size: 1rem;
-    margin: 0;
+    top: 150px;
   }
 
-  .second-page img {
-    width: 270px;
-    height: 270px;
-  }
-
-  .second-page .text-box,
-  .second-page .text-box-search,
-  .second-page .text-box-register {
-    width: 270px;
-    height: 270px;
-  }
-
-  
-
-  .event-text {
-    font-size: 0.75rem;
-  }
-
-  .event-large-text {
-    font-size: 1.5rem;
+  .main-img#last {
+    top: 587px;
+    height: 397px;
+    width: 100%;
+    right: 176px;
   }
 }
 
+@media (max-width: 766px) {
+  .nav-flex {
+    padding: 0 16px;
+  }
 
+  .landing-page {
+    height: 540px;
+  }
 
+  h2.large-text br {
+    display: block;
+  }
+
+  .landing-page-text {
+    width: auto;
+    height: 156px;
+    left: 280px;
+  }
+
+  .large-text {
+    font-size: 32px;
+  }
+
+  .deal {
+    position: relative;
+    left: 35px;
+  }
+
+  .see-flex {
+    position: relative;
+    left: 0;
+  }
+  
+  .event-text {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .event-large-text {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .hot-text {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .see {
+    width: 240px;
+    height: 48px;
+  }
+
+  .main-img {
+    height: 204px;
+    top: 336px;
+    right: 177px;
+    width: 448px;
+    max-width: 448px;
+    object-fit: cover;
+  }
+
+  .landing-page-last {
+    width: 100%;
+    height: 540px;
+  }
+
+  .large-text-last {
+    font-size: 32px;
+    top: 0;
+    right: 50px;
+  }
+
+  .main-img#last {
+    width: 375px;
+    max-width: 375px;
+    height: 198px;
+    top: 342px;
+    right: 148px;
+  }
+
+  .reliable {
+    position: relative;
+    left: 40px;
+  }
+
+  .design {
+    position: relative;
+    white-space: nowrap;
+    top: 80px;
+    left: 32px;
+  }
+
+  .fqa,
+  .last-img {
+    position: relative;
+    right: 78px;
+  }
+
+  .fqa {
+    margin-right: 20px;
+    white-space: nowrap;
+  }
+
+  .last-img {
+    top: 3px;
+    right: 50px;
+  }
+}
