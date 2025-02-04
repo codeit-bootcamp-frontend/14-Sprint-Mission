@@ -1,0 +1,218 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+}
+
+body {
+  color: #374151;
+  width: 100%;
+  min-width: 375px;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font: 700 40px/140% "Pretendard";
+}
+
+@media (max-width: 1200px) {
+  h2 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.button {
+  background: #3692FF;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 40px;
+  display: block;
+  font: 600 20px/32px 'Pretendard';
+  color: #F3F4F6;
+  line-height: 56px;
+}
+
+.button:hover {
+  background: #1967D6;
+  cursor: pointer;
+}
+
+.button:active {
+  background: #1251AA;
+}
+
+.button[disabled] {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.button--large {
+  width: 357px;
+  height: 56px;
+}
+
+.button--medium {
+  width: 240px;
+  height: 48px;
+  font-size: 18px;
+  line-height: 48px;
+}
+
+.button--small-48 {
+  width: 128px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 48px;
+}
+
+.button--small-48--outline {
+  background: #F9FAFB;
+  color: #3692FF;
+  border: 1px solid #3692FF;
+}
+
+.button--small-40 {
+  width: 88px;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 42px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-image: url("/images/logo.svg");
+  background-size: contain;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+
+.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon--18 {
+  width: 18px;
+  height: 18px;
+}
+
+.icon--24 {
+  width: 24px;
+  height: 24px;
+}
+
+.icon--42 {
+  width: 42px;
+  height: 42px;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.flex-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flex-right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.flex-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flex-top {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.flex-middle {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-bottom {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gap-12 {
+  gap: 12px;
+}
+
+.gap-24 {
+  gap: 24px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+.gap-64 {
+  gap: 64px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+/*# sourceMappingURL=global.css.map */

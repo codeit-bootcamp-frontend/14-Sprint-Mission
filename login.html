@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 - 판다마켓</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/fav.ico">
+    <link rel="stylesheet" href="/styles/sign.css">
 </head>
 <body class="sign">
     <div class="sign-container">
-        <a href="/" class="logo"><img src="images/logo.svg" alt="판다마켓 로고"></a>
+        <a href="/" class="logo"></a>
         <form class="sign-form" action="">
             <label for="email">이메일</label>
             <input class="sign-form__input" placeholder="이메일을 입력해주세요" type="text" name="email" id="email">
             <label for="password">비밀번호</label>
             <div class="password-container">
                 <input class="sign-form__input" placeholder="비밀번호를 입력해주세요" type="password" name="password" id="password">
-                <button id="password__toggle" class="icon icon--24" style="background-image: url(images/ico_eye-close.svg);"></button>
+                <button id="password__toggle" class="icon icon--24" type="button" style="background-image: url(images/ico_eye-close.svg);"></button>
             </div>
             <input class="button button--wide" type="submit" value="로그인">
         </form>
