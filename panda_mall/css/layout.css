@@ -19,10 +19,8 @@ input[type='submit'] { outline:0; }
 /* 상단 */
 header { position:sticky; top:0; width:100%; background-color: #fff; z-index: 9999; }
 header .inner { display:flex; justify-content: space-between; align-items: center; padding:13px 0; }
-header .inner .logo_top {  }
 header .inner .logo_top img { height:40px; vertical-align: middle; }
 header .inner .logo_top img:last-child { height:30px; margin-left:8px; }
-header .inner .login_btn {  }
 
 
 
@@ -36,7 +34,6 @@ header .inner .login_btn {  }
   background-repeat: no-repeat; 
 }
 .main_title h1 { font-weight:700; margin-bottom:25px; }
-.main_title a {  }
 .main_title .text_box { position:absolute; top:40%; left:0; }
 
 
@@ -62,7 +59,7 @@ header .inner .login_btn {  }
 .section .box_inner .box > div {
   padding:0 23px;
 }
-.section .box_inner .box h4 { 
+.section .box_inner .box span { 
   font-weight: 700;
   color:var(--Primary);
 }
@@ -126,9 +123,6 @@ footer .inner .right {
  gap: 10px;
 }
 
-footer .inner .right img {
-
-}
 
 /* tablet */
 @media (max-width: 1199px) {

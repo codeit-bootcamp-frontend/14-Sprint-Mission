@@ -6,7 +6,6 @@
 #login { min-height: 100vh; display: flex; align-items: center; }
 .login_wrap { width:100%; max-width:640px; margin:0 auto; text-align: center; }
 .login_wrap .logo { margin-bottom:55px; }
-.login_wrap .logo a {  }
 .login_wrap .logo a img { vertical-align: middle; }
 .login_wrap .logo a img:first-child { height:100px; margin-right:22px; }
 .login_wrap .logo a img:last-child { height:50px; }
@@ -46,13 +45,10 @@
   align-items: center;
   justify-content: space-between;
 }
-.login_wrap .sns_icon {  }
 .login_wrap .sns_icon a { display:inline-block; margin-left:8px; }
 .login_wrap .sns_icon a img { height: 42px; width:42px; }
 
-.login_wrap .member_sub_box {  }
 .login_wrap .member_sub_box span { font-size:14px; }
-.login_wrap .member_sub_box span a {  }
 
 
 /* Mobile */
