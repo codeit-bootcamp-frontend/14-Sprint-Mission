@@ -3,38 +3,254 @@
   margin: 0;
   padding: 0;
 }
-main {
-  display: block;
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
-body {
+
+/* color */
+:root {
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #375151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --Primary-100: #3692ff;
+  --Primary-200: #1967d6;
+  --Primary-300: #1251aa;
+  --error-red: #f74747;
+}
+
+.body {
   background: #ffffff;
   font-family: "Pretendard", "Arial Narrow", Arial, sans-serif;
   margin: 0;
 }
-h1 {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 50px;
-  letter-spacing: 0.02em;
+/* font */
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("/font/ROKAF\ Sans\ Bold.ttf");
+  font-weight: bold;
 }
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+@media (max-width: 1919px) {
+  .hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+  }
 }
-a {
-  text-decoration: none !important;
-  color: inherit;
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
-button {
-  background: none;
-  border: none;
-  outline: none;
-  box-shadow: none;
+.text-bold {
+  font-weight: 700;
+}
+.text-semibold {
+  font-weight: 600;
+}
+.text-medium {
+  font-weight: 500;
+}
+.text-regular {
+  font-weight: 400;
+}
+
+/* 텍스트 크기 */
+.text-3xl {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 700;
+}
+.text-2xl {
+  font-size: 24px;
+  line-height: 32px;
+}
+.text-xl {
+  font-size: 20px;
+  line-height: 32px;
+}
+.text-2lg {
+  font-size: 18px;
+  line-height: 26px;
+}
+.tex-lg {
+  font-size: 16px;
+  line-height: 26px;
+}
+.text-md {
+  font-size: 14px;
+  line-height: 24px;
+}
+.text-sm {
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 500;
+}
+.text-xs {
+  font-size: 12px;
+  line-height: 20px;
+}
+.text-xs.text-semibold {
+  line-height: 20px;
+}
+.logo {
+  color: var(--Primary-100);
+}
+
+/* 테블릿 */
+@media (max-width: 1919px) {
+  .text-2xl {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-2xl {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* 레이아웃 - Flex */
+.flex {
+  display: flex;
+}
+.flex-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-sides {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+}
+.grid {
+  display: grid;
+}
+.grid-center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 레이아웃 - Spacing */
+.gap-4 {
+  gap: 4px;
+}
+.gap-8 {
+  gap: 8px;
+}
+.gap-12 {
+  gap: 12px;
+}
+.gap-16 {
+  gap: 16px;
+}
+.gap-24 {
+  gap: 24px;
+}
+.gap-32 {
+  gap: 32px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.gap-64 {
+  gap: 64px;
+}
+
+/* Radius */
+.radius-8 {
+  border-radius: 8px;
+}
+.radius-12 {
+  border-radius: 12px;
+}
+.radius-16 {
+  border-radius: 16px;
+}
+.radius-24 {
+  border-radius: 24px;
+}
+.radius-32 {
+  border-radius: 32px;
+}
+.radius-40 {
+  border-radius: 40px;
+}
+.radius-64 {
+  border-radius: 64px;
+}
+
+/* 버튼 */
+button,
+button.medium,
+.button {
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  background-color: var(--Primary-100);
+  border: 0;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+button.large,
+.button.large {
+  min-width: 357px;
+  height: 56px;
+  font-size: 20px;
+  line-height: 32px;
+}
+button.small-40,
+.button.small-40 {
+  min-width: 88px;
+  height: 42px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button.small-48,
+.button.small-48 {
+  min-width: 88px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: var(--Primary-200);
   cursor: pointer;
 }
-
-img {
-  vertical-align: bottom;
+button:active {
+  background-color: var(--Primary-300);
+}
+button:disabled {
+  background-color: var(--gray-400);
+  cursor: not-allowed;
 }

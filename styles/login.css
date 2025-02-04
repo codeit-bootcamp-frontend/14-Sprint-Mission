@@ -1,21 +1,36 @@
+body {
+  background-color: #fcfcfc;
+  width: 100vw;
+}
 /* 로그인 CSS */
 .signin-container {
-  max-width: 640px;
-  margin: 0 auto;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
 }
 
 .login-logo {
-  display: block;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 .login-logo img #logo-img {
   height: 132px;
   width: 396px;
 }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
 .login_input {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
 }
@@ -29,7 +44,7 @@ label {
 
 input {
   padding: 16px 24px;
-  background-color: #f3f4f6;
+  background-color: var(--gray-100);
   border: none;
   border-radius: 12px;
   font-size: 16px;
@@ -38,13 +53,13 @@ input {
 }
 
 input::placeholder {
-  color: #9ca3af;
+  color: var(--gray-400);
   font-size: 16px;
   line-height: 24px;
 }
 
 input:focus {
-  outline-color: var(--blue);
+  outline-color: var(--Primary-100);
 }
 
 .input-wrap {
@@ -58,13 +73,17 @@ input:focus {
   cursor: pointer;
 }
 .login-button {
-  color: white;
+  color: var(--gray-100);
   font-size: 20px;
   font-weight: 600;
   width: 100%;
-  border-radius: 40px;
-  padding: 16px 126px;
-  background-color: #9ca3af;
+  line-height: 32px;
+  display: block;
+  border-radius: 999px;
+  padding: 12px 0;
+  text-align: center;
+  margin: 20px 0;
+  background-color: var(--gray-400);
 }
 .social-login {
   background-color: #e6f2ff;
@@ -86,32 +105,24 @@ input:focus {
 }
 
 .login-change {
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   font-weight: 500;
+  line-height: 24px;
 }
 
 .login-change a {
-  color: #3182f6;
+  color: var(--Primary-100);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-
 /* 회원가입 CSS */
 
-.login-container {
-  max-width: 640px;
-  margin: 0 auto;
-}
 .login-logo img#logo-img {
   height: 132px;
   width: 396px;
 }
-.signup_input {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
+
 .signup-button {
   font-size: 20px;
   font-weight: 700;
@@ -119,5 +130,70 @@ input:focus {
   color: white;
   border-radius: 999px;
   padding: 16px 126px;
-  background-color: #9ca3af;
+  background-color: var(--gray-400);
+}
+
+/* 데스크탑 */
+@media (max-width: 1919px) {
+  .signin-container {
+    max-width: 640px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .login-logo {
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+  .login-logo img #logo-img {
+    height: 132px;
+    width: 396px;
+  }
+  .login_input {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  input {
+    padding: 16px 24px;
+    background-color: var(--gray-100);
+
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+  }
+}
+/* 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .signin-container {
+    margin-top: 80px;
+    max-width: 400px;
+    width: 100%;
+    padding: 0 16px;
+  }
+  .signin-container .login-logo {
+    margin-bottom: 24px;
+  }
+  .login-logo img#logo-img {
+    margin: 60px 0 0;
+    width: 198px;
+    height: 66px;
+  }
+  .login-form .login_input {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 24px;
+  }
 }
