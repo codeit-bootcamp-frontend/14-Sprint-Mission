@@ -54,7 +54,7 @@ passwordConfirmInput.addEventListener('focusout', (e) => {
   checkInputs(form, signupButton);
 })
 
-//로그인 버튼
+// 회원가입 버튼
 signupButton.addEventListener('click', () => {
   window.location.href = '/signin.html';
 });
