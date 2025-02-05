@@ -7,7 +7,7 @@ a {
 	flex-direction: column;
 	align-items: center;
 	margin: 8vh auto 0;
-	padding: 1rem;
+	padding: 16px;
 	max-width: 640px;
 	gap: 40px;
 }
@@ -18,7 +18,7 @@ a {
 	text-decoration: none;
 	font-family: 'ROKAF Sans';
 	font-weight: 700;
-	font-size: 4rem;
+	font-size: 64px;
 	color: var(--blue);
 	gap: 20px;
 }
@@ -29,7 +29,7 @@ a {
 		height: 50px;
 	}
 	.brand {
-		font-size: 2rem;
+		font-size: 16px;
 	}
 }
 
@@ -68,25 +68,28 @@ form {
 	outline: 2px solid var(--blue);
 }
 
-#eye-slash {
-	position: absolute;
-	width: 20px;
-	right: 16px;
-	bottom: 12px;
-	cursor: pointer;
+.input-box .error {
+	outline: 1px solid red;
 }
 
+.error-message {
+  color: red;
+  font-size: 14px;
+	margin-left: 16px;
+}
+
+#eye-slash,
 #eye-slash-confirm {
 	position: absolute;
 	width: 20px;
 	right: 16px;
-	bottom: 12px;
+	top: 50px;
 	cursor: pointer;
 }
 
 .signup-btn,
 .login-btn {
-	background-color: var(--gray-400);
+	background-color: var(--blue);
 	color: white;
 	font-weight: 400;
 	font-size: 20px;
@@ -96,8 +99,10 @@ form {
 	border-radius: 40px;
 }
 
-.valid {
-	background-color: var(--blue);
+.login-btn:disabled,
+.signup-btn:disabled {
+	background-color: var(--gray-400);
+	cursor: not-allowed;
 }
 
 .social-login {
@@ -120,7 +125,7 @@ form {
 	}
 
 	.brand {
-		font-size: 2rem;
+		font-size: 16px;
 	}
 
 	.logo {
