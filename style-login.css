@@ -8,11 +8,12 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+    margin-top: 14.385rem;
 }
 
 .login-header-logo{
     height: 8.25rem;
-    padding-top: 14.438rem;
+    margin: 0;
 }
 
 /* form */
@@ -27,17 +28,12 @@
     width: 100%;
     font-size: 1.125rem;
     font-weight: 700;
-    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
-.email-password-container{
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
-    padding: 0 1.6rem 0 0;
-}
 
 .email-box{
+    box-sizing: border-box;
     background-color: #F3F4F6;
     width: 100%;
     height: 3.5rem;
@@ -46,16 +42,22 @@
     border: 0;
     font-size: 100%;
     font-weight: 400;
-    padding-left: 1.5rem;
+    padding: 0 1.5rem;
 }
 
-/* 아래 password-box에서 아이콘 이미지를 백그라운드 포지션 오른쪽으로 정렬했습니다. 
-하지만 여기서 아이콘 이미지만 살짝 왼쪽으로 이동시키고 싶은데 어떻게 해야하는지 잘 모르겠습니다.*/
+.password-container{
+    width: 100%;
+    margin-top: 16px;
+    height: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .password-box {
-    background-image: url(./img/Vector\ \(2\).png);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position:right;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        bottom: 60px;
+        left: 580px;
 }
 
 .email-password-box:focus{
@@ -107,6 +109,11 @@
     margin-right: 1rem;
 }
 
+.first{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 /* footer */
 .footer-container{
     display: flex;
@@ -115,4 +122,145 @@
     font-size: 1rem;
     font-weight: 500;
     color: #1F2937;
+}
+
+/** ipad **/
+@media (max-width: 768px){
+    
+    .login-container{ /**/
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        margin-top: 11.88rem;
+    }
+}
+
+@media (max-width: 375px){
+    
+    .total{
+        margin: 2rem;
+        background-color: #fcfcfc;
+        min-width: 20rem;
+    }
+    
+    .login-container{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        margin-top: 14.385rem;
+    }
+    
+    .login-header-logo{ /**/
+        height: 66px;
+        width: 12.38rem;
+        height: 4.13rem;
+    }
+    
+    /* form */
+    .container-box{
+        width: 100%;
+        max-width: 40rem;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .email-password-font{
+        width: 100%;
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    
+    .email-box{
+        box-sizing: border-box;
+        background-color: #F3F4F6;
+        width: 100%;
+        height: 3.5rem;
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+        border: 0;
+        font-size: 100%;
+        font-weight: 400;
+        padding: 0 1.5rem;
+    }
+    
+    .password-container{
+        width: 100%;
+        margin-top: 16px;
+        height: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .password-box {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            bottom: 60px;
+            left: 580px;
+    }
+    
+    .email-password-box:focus{
+        border-style:solid;
+        border-width:px;
+        border-color: #3692FF;
+        outline: none;
+    }
+    
+    .login-button{
+        width: 100%;
+        height: 3.6rem;
+        border-radius: 40px;
+        background-color: #9CA3AF;
+        border: 0;
+    }
+    
+    .login-button:hover{
+        background-color: #3692FF;
+    }
+    
+    .login-button-font{
+        color: #F3F4F6;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: auto;
+    }
+    
+    .login-choice-container{
+        width: auto;
+        height: 4.63rem;
+        border-radius: 8px;
+        background-color: #E6F2FF;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1.5rem 0;
+    }
+    
+    .login-font{
+        font-weight: 500;
+        font-size: 100%;
+        color: #1F2937;
+        padding: 0 0 0 1.5rem;
+    }
+    
+    .login-choice{
+        height: 2.63rem;
+        margin-right: 1rem;
+    }
+    
+    .first{
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    /* footer */
+    .footer-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #1F2937;
+    }
 }
