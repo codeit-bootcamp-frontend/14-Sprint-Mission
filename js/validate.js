@@ -32,6 +32,7 @@ function checkEmailInput(input){
   }
 }
 
+// 비밀번호 검사
 function checkPasswordInput(input){
   removeError(input);
   if(input.value.trim() === ''){
@@ -41,6 +42,25 @@ function checkPasswordInput(input){
   }
 }
 
+// 비밀번호 확인 검사
+function checkPasswordConfirmInput(input, passInput){
+  removeError(input);
+  if(input.value.trim() === ''){
+    showError(input, '비밀번호를 확인을 입력해주세요.')
+  } else if(input.value !== passInput.value){
+    showError(input, '비밀번호가 일치하지 않습니다.')
+  }
+}
+
+// 닉네임 검사
+function checkUsernameInput(input){
+  removeError(input);
+  if(input.value.trim() === ''){
+    showError(input, '닉네임을 입력해주세요.')
+  }
+}
+
+// 모든 필드 입력값 및 에러 검사
 function checkInputs(form, button) {
   const inputs = form.querySelectorAll('input');
   const errorMessage = form.querySelector('.error-message')
@@ -60,4 +80,10 @@ function checkInputs(form, button) {
   button.classList.toggle("valid", isFormValid);
 }
 
-export { checkEmailInput,checkPasswordInput, checkInputs};
+export { 
+  checkEmailInput,
+  checkPasswordInput,
+  checkPasswordConfirmInput,
+  checkUsernameInput,
+  checkInputs,
+};

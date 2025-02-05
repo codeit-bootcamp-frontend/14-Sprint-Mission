@@ -1,3 +1,11 @@
+import {  
+  checkEmailInput,
+  checkPasswordInput,
+  checkPasswordConfirmInput,
+  checkUsernameInput,
+  checkInputs,
+} from './validate.js';
+
 const emailInput = document.getElementById("email");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
@@ -5,7 +13,6 @@ const passwordConfirmInput = document.getElementById("password-confirm");
 const eyeSlashImg = document.getElementById("eye-slash");
 const eyeSlashConfirmImg = document.getElementById("eye-slash-confirm");
 const signupButton = document.querySelector(".signup-btn");
-const showPassword = document.querySelector(".eye-slash");
 const form = document.getElementById('form');
 
 // 비밀번호 표시
@@ -27,17 +34,27 @@ function toggleVisibility(inputElement, eyeElement) {
 }
 
 // 모든 필드 값 입력시 버튼 활성화
-form.addEventListener('input', () => {
-  const inputs = form.querySelectorAll('input');
-  let isFormValid = true;
+form.addEventListener('input', () => checkInputs(form, signupButton));
 
-  for(let input of inputs){
-    if(input.value.trim() == ""){
-      isFormValid = false;
-      break;
-    }
-  }
+// 유효성 검사
+emailInput.addEventListener('focusout', (e) => {
+  checkEmailInput(e.target);
+  checkInputs(form, signupButton);
+});
+usernameInput.addEventListener('focusout', (e) => {
+  checkUsernameInput(e.target);
+  checkInputs(form, signupButton);
+})
+passwordInput.addEventListener('focusout', (e) => {
+  checkPasswordInput(e.target);
+  checkInputs(form, signupButton);
+})
+passwordConfirmInput.addEventListener('focusout', (e) => {
+  checkPasswordConfirmInput(e.target,passwordInput);
+  checkInputs(form, signupButton);
+})
 
-  signupButton.disabled = !isFormValid;
-  signupButton.classList.toggle("valid", isFormValid);
+//로그인 버튼
+signupButton.addEventListener('click', () => {
+  window.location.href = '/signin.html';
 });
