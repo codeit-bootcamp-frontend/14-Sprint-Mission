@@ -68,19 +68,22 @@ form {
 	outline: 2px solid var(--blue);
 }
 
-#eye-slash {
-	position: absolute;
-	width: 20px;
-	right: 16px;
-	bottom: 12px;
-	cursor: pointer;
+.input-box .error {
+	outline: 1px solid red;
 }
 
+.error-message {
+  color: red;
+  font-size: 14px;
+	margin-left: 16px;
+}
+
+#eye-slash,
 #eye-slash-confirm {
 	position: absolute;
 	width: 20px;
 	right: 16px;
-	bottom: 12px;
+	top: 50px;
 	cursor: pointer;
 }
 

@@ -1,3 +1,5 @@
+import { checkEmailInput,checkPasswordInput, checkInputs } from './validate.js';
+
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const eyeSlashImg = document.getElementById("eye-slash");
@@ -18,17 +20,19 @@ function toggleVisibility() {
 }
 
 // 모든 필드 값 입력시 버튼 활성화
-form.addEventListener('input', () => {
-  const inputs = form.querySelectorAll('input');
-  let isFormValid = true;
+form.addEventListener('input', () => checkInputs(form, loginButton));
 
-  for(let input of inputs){
-    if(input.value.trim() == ""){
-      isFormValid = false;
-      break;
-    }
-  }
+// 유효성 검사
+emailInput.addEventListener('focusout', (e) => {
+  checkEmailInput(e.target);
+  checkInputs(form, loginButton);
+});
+passwordInput.addEventListener('focusout', (e) => {
+  checkPasswordInput(e.target);
+  checkInputs(form, loginButton);
+})
 
-  loginButton.disabled = !isFormValid;
-  loginButton.classList.toggle("valid", isFormValid);
+//로그인 버튼
+loginButton.addEventListener('click', () => {
+  window.location.href = '/items.html';
 });
