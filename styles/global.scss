@@ -1,0 +1,158 @@
+// fonts
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+
+// colors
+$primary-100: #3692FF;
+$primary-200: #1967D6;
+$primary-300: #1251AA;
+
+$basic: #FCFCFC;
+$error-red: #F74747;
+
+$secondary-900: #111827;
+$secondary-800: #1f2937;
+$secondary-700: #374151;
+$secondary-600: #4b5563;
+$secondary-500: #6b7280;
+$secondary-400: #9ca3af;
+$secondary-300: #E5E7EB;
+$secondary-200: #F3F4F6;
+$secondary-10: #F9FAFB;
+
+$tablet: 1200px;
+$mobile: 768px;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+}
+
+body {
+    color: $secondary-700;
+    width: 100%;
+    min-width: 375px;
+    overflow-x: hidden;
+}
+
+h1, h2 {font: 700 40px/140% "Pretendard";}
+
+@media (max-width: $tablet) {
+    h2 {
+        font-size: 32px;
+        line-height: 42px;
+    }
+}
+
+@media (max-width: $mobile) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+.button {
+    background: $primary-100;
+    &:hover { background: $primary-200; cursor: pointer; }
+    &:active { background: $primary-300; }
+    &[disabled] { background: $secondary-400; cursor: not-allowed; }
+    
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 40px;
+    display: block;
+    font: 600 20px/32px 'Pretendard';
+    color: $secondary-200;
+    line-height: 56px;
+
+    &--large {
+        width: 357px;
+        height: 56px;
+    }
+
+    &--medium {
+        width: 240px;
+        height: 48px;
+        font-size: 18px;
+        line-height: 48px;
+    }
+
+    &--small-48 {
+        width: 128px;
+        height: 48px;
+        border-radius: 8px;
+        font-size: 16px;
+        line-height: 48px;
+
+        &--outline {
+            background: $secondary-10;
+            color: $primary-100;
+            border: 1px solid $primary-100;
+        }
+    }
+
+    //세로길이가 42인데, 피그마에서는 40이라 부름... 이유는 모른다
+    &--small-40 {
+        width: 88px;
+        height: 42px;
+        border-radius: 8px;
+        font-size: 16px;
+        line-height: 42px;
+    }
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: url('/images/logo.svg');
+    background-size: contain;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+.icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--18 { width: 18px; height: 18px; }
+    &--24 { width: 24px; height: 24px; }
+    &--42 { width: 42px; height: 42px; }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+
+    &-left { justify-content: flex-start; }
+    &-center { justify-content: center; }
+    &-right { justify-content: flex-end; }
+    &-between { justify-content: space-between; }
+
+    &-top { align-items: flex-start; }
+    &-middle { align-items: center; }
+    &-bottom { align-items: flex-end; }
+
+    &-column { flex-direction: column; }
+}
+
+.gap-12 { gap: 12px; }
+.gap-24 { gap: 24px; }
+.gap-30 { gap: 30px; }
+.gap-64 { gap: 64px; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
