@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>로그인 - 판다마켓</title>
-	<link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 	<main>
@@ -17,12 +17,12 @@
 			<form id="form">
 				<div class="input-box">
 					<label for="email">이메일</label>
-					<input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" required onkeyup="changeButtonColor()">
+					<input id="email" name="email" type="email" placeholder="이메일을 입력해주세요" required>
 				</div>
 				<div class="input-box">
 					<label for="password">비밀번호</label>
-					<input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required onkeyup="changeButtonColor()">
-					<img id="eye-slash" src="/images/eye-slash.svg" alt="show password" onclick="toggleVisibility()">
+					<input id="password" name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+					<img id="eye-slash" src="/images/eye-slash.svg" alt="show password">
 				</div>
 				<button type="submit" class="login-btn" disabled>로그인</button>
 			</form>
