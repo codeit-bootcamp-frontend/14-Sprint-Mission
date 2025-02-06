@@ -1,0 +1,26 @@
+/* Mobile */
+@media (min-width:375px) and (max-width:767px) {
+    .sign-body {
+         width: 100%;
+         padding-left: 16px;
+         padding-right: 16px;
+    }
+    .sign-logo{
+        width: 55%;
+        height: 20%;
+    }
+
+    .sign-form  * , .sign-logo {
+        max-width: 400px;
+        display: block;
+        margin-left:  auto;
+        margin-right: auto;
+    }
+
+    .simple-login-div{
+        max-width: 400px;
+        margin-left:  auto;
+        margin-right: auto;
+    }
+
+}

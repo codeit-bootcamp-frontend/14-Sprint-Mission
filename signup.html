@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="sign.css">
-        <link rel="stylesheet" href="responsive.css">
+        <link rel="stylesheet" href="common-responsive.css">
+        <link rel="stylesheet" href="sign-responsive.css">
         <link rel="stylesheet" href="root.css">
         <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
         <title>회원가입</title>
@@ -41,7 +42,7 @@
                 <img src="image/visibility_off.png" class="visibility-off" alt="비밀번호 숨기기">
             </div>
 
-            <button class="sign-btn">회원가입</button>
+            <a class="sign-btn" id="sign-btn">회원가입</a>
             
         </form>
         <div class="simple-login-div">
@@ -54,5 +55,6 @@
         <div class="footer">이미 회원이신가요?
             <a href="/login.html" class="footer-signup-link">로그인</a>
         </div>
+        <script type="module" src="signup.js"></script>
     </body>
 </html>

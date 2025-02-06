@@ -1,0 +1,22 @@
+/* Mobile */
+@media (min-width:375px) and (max-width:767px){
+    .main-header-div {
+        margin: 0 16px;
+    }
+   .img-home{
+        width: 100%;
+   }
+   
+}
+/* Tablet */
+@media (min-width:768px) and (max-width:1199px){
+    .main-header-div {
+        margin: 0 24px;
+    }
+    .main-left, .main-right {
+        max-width: 900px;
+    }
+    .br-none-title {
+        display: none;
+    }
+}
