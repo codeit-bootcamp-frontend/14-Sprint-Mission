@@ -1,4 +1,4 @@
-import { showInputError, hideInputError, regEmail } from "./sign.js";
+import { showInputError, hideInputError, regEmail } from "/sign.js";
 
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
