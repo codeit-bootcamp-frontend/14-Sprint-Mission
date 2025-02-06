@@ -10,13 +10,17 @@
     <meta property="og:title" content="판다마켓">
     <meta property="og:description" content="일상의 모든 물건을 거래해보세요">
     <meta property="og:url" content="/">
-    <meta property="og:image" content="images/preview_panda.jpg">
-    <script src="/main.js"></script>
+    <meta property="og:image" content="/images/preview_panda.jpg">
 </head>
 <body>
     <header class="flex-center" role="navigation">
         <div class="container flex flex-between">
-            <a href="/" class="logo"></a>
+            <a href="/" class="logo">
+                <picture>
+                    <source srcset="/images/logo.svg" media="(min-width:768px)"">
+                    <img src="/images/logo_typo_only.svg" alt="판다마켓 로고">
+                </picture>
+            </a>
             <a href="/login.html" class="button button--small-48">로그인</a>
         </div>
     </header>
@@ -70,10 +74,10 @@
             <a href="/faq">FAQ</a>
         </div>
         <div class="flex gap-12">
-            <a class="icon icon--18" href="https://www.facebook.com" target="_blank" style="background-image: url(images/ico_facebook.svg);"></a>
-            <a class="icon icon--18" href="https://www.twitter.com" target="_blank" style="background-image: url(images/ico_twitter.svg);"></a>
-            <a class="icon icon--18" href="https://www.youtube.com" target="_blank" style="background-image: url(images/ico_youtube.svg);"></a>
-            <a class="icon icon--18" href="https://www.instagram.com" target="_blank" style="background-image: url(images/ico_instagram.svg);"></a>
+            <a class="icon icon--18" aria-label="페이스북 계정 방문하기" href="https://www.facebook.com" target="_blank" style="background-image: url(images/ico_facebook.svg);"></a>
+            <a class="icon icon--18" aria-label="트위터 계정 방문하기" href="https://www.twitter.com" target="_blank" style="background-image: url(images/ico_twitter.svg);"></a>
+            <a class="icon icon--18" aria-label="유튜브 채널 방문하기" href="https://www.youtube.com" target="_blank" style="background-image: url(images/ico_youtube.svg);"></a>
+            <a class="icon icon--18" aria-label="인스타그램 계정 방문하기" href="https://www.instagram.com" target="_blank" style="background-image: url(images/ico_instagram.svg);"></a>
         </div>
     </footer>
 </body>
