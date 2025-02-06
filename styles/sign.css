@@ -275,6 +275,12 @@ h1, h2 {
 .sign-container .logo {
   height: 132px;
   background-position: 50% 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sign-container .sign-form {
@@ -348,6 +354,7 @@ h1, h2 {
   text-align: center;
   font: normal 500 14px/24px 'Pretendard';
   color: #1f2937;
+  margin-bottom: 200px;
 }
 
 .sign-container footer a {

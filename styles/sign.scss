@@ -1,4 +1,4 @@
-@import "/global.scss";
+@import "global.scss";
 
 .password-container {
     position: relative;
@@ -36,6 +36,8 @@
         .logo {
             height: 132px;
             background-position: 50% 50%;
+            display: flex;
+            justify-content: center;
         }
 
         .sign-form {
@@ -88,6 +90,7 @@
             text-align: center;
             font: normal 500 14px/24px 'Pretendard';
             color: $secondary-800;
+            margin-bottom: 200px;
 
             a {
                 color: $primary-100;
