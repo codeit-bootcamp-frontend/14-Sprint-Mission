@@ -3,10 +3,12 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="sign.css">
-        <link rel="stylesheet" href="responsive.css">
+        <link rel="stylesheet" href="common-responsive.css">
+        <link rel="stylesheet" href="sign-responsive.css">
         <link rel="stylesheet" href="root.css">
         <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
         <title>로그인</title>
+        
     </head>
     <body class="sign-body">
         <a href="/"><img src="image/logo_large.png" alt="로그인 로고" class="sign-logo"></a>
@@ -25,7 +27,7 @@
                     placeholder="비밀번호를 입력해주세요" class="sign-form-input" required/>
                 <img src="image/visibility_off.png" class="visibility-off" alt="비밀번호 숨기기">
             </div>
-            <button class="sign-btn">로그인</button>
+            <a class="sign-btn" id="login-btn">로그인</a>
             
         </form>
         <div class="simple-login-div">
@@ -38,5 +40,7 @@
         <div class="footer">판다마켓이 처음이신가요?
             <a href="/signup.html" class="footer-signup-link">회원가입</a>
         </div>
+        <script type="module" src="login.js"></script>
     </body>
+    
 </html>

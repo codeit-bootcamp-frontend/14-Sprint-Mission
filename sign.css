@@ -69,12 +69,11 @@
     font-size: 20px;
     font-weight: 500;
     color: var(--gray100);
-    cursor:pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
   }
 
-  .sign-btn:hover {
-    background-color: var(--blue);
-  }
 
 .simple-login-div {
   display: flex;
@@ -84,6 +83,7 @@
   padding :16px 23px;
   width: 100%;
   background-color: #e6f2ff;
+  border-radius: 8px;
 }
 
 .simple-login-txt {
@@ -115,8 +115,24 @@
   color: var(--blue);
 }
 
-
+/*이벤트발생 시 적용할 css*/
 .footer-signup-link:hover {
   color : #1251aa
 }
 
+.sign-form-input.empty {
+  margin-bottom: 0;
+  outline : 1px solid var(--red);
+}
+.alert-empty{
+  font-size: 14px;
+  color: var(--red);
+  margin-top: 10px;
+  margin-bottom: 16px;
+  padding : 0 15px; 
+}
+.ok-btn:hover{
+  background-color: var(--blue);
+  cursor:pointer;
+  text-decoration: none;
+}
