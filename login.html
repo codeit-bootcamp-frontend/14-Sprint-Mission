@@ -9,16 +9,18 @@
 </head>
 <body class="sign">
     <div class="sign-container">
-        <a href="/" class="logo"></a>
+        <a href="/" class="logo"><img src="/images/logo.svg"></a>
         <form class="sign-form" action="">
             <label for="email">이메일</label>
             <input class="sign-form__input" placeholder="이메일을 입력해주세요" type="text" name="email" id="email">
+            <span class="sign-form__input__msg hide" id="msg-email">이메일을 입력해주세요</span>
             <label for="password">비밀번호</label>
             <div class="password-container">
                 <input class="sign-form__input" placeholder="비밀번호를 입력해주세요" type="password" name="password" id="password">
-                <button id="password__toggle" class="icon icon--24" type="button" style="background-image: url(images/ico_eye-close.svg);"></button>
+                <button id="show-password" class="icon icon--24 show-password password-hide" type="button"></button>
             </div>
-            <input class="button button--wide" type="submit" value="로그인">
+            <span class="sign-form__input__msg hide" id="msg-password">비밀번호를 입력해주세요</span>
+            <input disabled class="button button--wide" type="submit" id="submit" value="로그인">
         </form>
         <div class="social-log-wrap">
             <p class="social-log-wrap__title">간편 로그인하기</p>
@@ -31,3 +33,4 @@
     </div>
 </body>
 </html>
+<script src="/login.js" type="module"></script>

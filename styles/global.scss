@@ -74,6 +74,10 @@ h1, h2 {font: 700 40px/140% "Pretendard";}
     font: 600 20px/32px 'Pretendard';
     color: $secondary-200;
     line-height: 56px;
+    padding: 0 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &--large {
         width: 357px;
@@ -115,11 +119,7 @@ h1, h2 {font: 700 40px/140% "Pretendard";}
     width: 100%;
     height: 100%;
     display: block;
-    background-image: url('/images/logo.svg');
-    background-size: contain;
-    background-position: 0% 50%;
-    background-repeat: no-repeat;
-    background-origin: content-box;
+    picture img{ height: 100%; }
 }
 
 .icon {
@@ -152,6 +152,8 @@ h1, h2 {font: 700 40px/140% "Pretendard";}
 .gap-24 { gap: 24px; }
 .gap-30 { gap: 30px; }
 .gap-64 { gap: 64px; }
+
+.hide { display: none; }
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }

@@ -48,6 +48,10 @@ h1, h2 {
   font: 600 20px/32px 'Pretendard';
   color: #F3F4F6;
   line-height: 56px;
+  padding: 0 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .button:hover {
@@ -102,11 +106,10 @@ h1, h2 {
   width: 100%;
   height: 100%;
   display: block;
-  background-image: url("/images/logo.svg");
-  background-size: contain;
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  background-origin: content-box;
+}
+
+.logo picture img {
+  height: 100%;
 }
 
 .icon {
@@ -204,6 +207,10 @@ h1, h2 {
   gap: 64px;
 }
 
+.hide {
+  display: none;
+}
+
 .text-left {
   text-align: left;
 }
@@ -220,7 +227,7 @@ h1, h2 {
   position: relative;
 }
 
-#password__toggle {
+.show-password {
   position: absolute;
   background: none;
   border: none;
@@ -229,6 +236,11 @@ h1, h2 {
   top: 50%;
   -webkit-transform: translateY(-65%);
           transform: translateY(-65%);
+  background-image: url(/images/ico_eye-open.svg);
+}
+
+.show-password.password-hide {
+  background-image: url(/images/ico_eye-close.svg);
 }
 
 .sign {
@@ -263,6 +275,12 @@ h1, h2 {
 .sign-container .logo {
   height: 132px;
   background-position: 50% 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sign-container .sign-form {
@@ -290,6 +308,11 @@ h1, h2 {
   margin-bottom: 8px;
 }
 
+.sign-container .sign-form__input--error {
+  outline: none;
+  border: 2px solid #F74747;
+}
+
 .sign-container .sign-form__input::-webkit-input-placeholder {
   font: normal 400 16px/26px 'Pretendard';
   color: #9ca3af;
@@ -315,6 +338,13 @@ h1, h2 {
   border: 2px solid #3692FF;
 }
 
+.sign-container .sign-form__input__msg {
+  font-size: 14px;
+  margin-left: 14px;
+  margin-top: -16px;
+  color: #F74747;
+}
+
 .sign-container .sign-form label {
   color: #1f2937;
   font: normal 700 18px/26px 'Pretendard';
@@ -324,6 +354,7 @@ h1, h2 {
   text-align: center;
   font: normal 500 14px/24px 'Pretendard';
   color: #1f2937;
+  margin-bottom: 200px;
 }
 
 .sign-container footer a {

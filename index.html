@@ -10,13 +10,17 @@
     <meta property="og:title" content="판다마켓">
     <meta property="og:description" content="일상의 모든 물건을 거래해보세요">
     <meta property="og:url" content="/">
-    <meta property="og:image" content="images/preview_panda.jpg">
-    <script src="/main.js"></script>
+    <meta property="og:image" content="/images/preview_panda.jpg">
 </head>
 <body>
     <header class="flex-center" role="navigation">
         <div class="container flex flex-between">
-            <a href="/" class="logo"></a>
+            <a href="/" class="logo">
+                <picture>
+                    <source srcset="/images/logo.svg" media="(min-width:768px)"">
+                    <img src="/images/logo_typo_only.svg" alt="판다마켓 로고">
+                </picture>
+            </a>
             <a href="/login.html" class="button button--small-48">로그인</a>
         </div>
     </header>
@@ -27,11 +31,11 @@
                     <h1>일상의 모든 물건을 <br>거래해 보세요</h1>
                     <a href="/items" class="button button--large">구경하러 가기</a>
                 </div>
-                <img src="images/landing_top.svg" alt="판다마켓 랜딩 이미지">
+                <img src="/images/landing_top.svg" alt="판다마켓 랜딩 이미지">
             </div>
         </section>
         <section class="section section--normal flex flex-left gap-64">
-            <img src="images/landing_01.svg" alt="판다마켓 랜딩 이미지">
+            <img src="/images/landing_01.svg" alt="판다마켓 랜딩 이미지">
             <div class="text-left">
                 <h3 class="section__tag">Hot item</h3>
                 <h2>인기 상품을 <br>확인해 보세요</h2>
@@ -44,10 +48,10 @@
                 <h2>구매를 원하는 <br>상품을 검색하세요</h2>
                 <p class="description">구매하고 싶은 물품은 검색해서<br>쉽게 찾아보세요</p>
             </div>
-            <img src="images/landing_02.svg" alt="판다마켓 랜딩 이미지">
+            <img src="/images/landing_02.svg" alt="판다마켓 랜딩 이미지">
         </section>
         <section class="section section--normal flex flex-left gap-64">
-            <img src="images/landing_03.svg" alt="판다마켓 랜딩 이미지">
+            <img src="/images/landing_03.svg" alt="판다마켓 랜딩 이미지">
             <div class="text-left">
                 <h3 class="section__tag">Register</h3>
                 <h2>판매를 원하는 <br>상품을 등록하세요</h2>
@@ -59,7 +63,7 @@
                 <div class="text-left">
                     <h2>믿을 수 있는<br>판다마켓 중고 거래</h2>
                 </div>
-                <img src="images/landing_bottom.svg" alt="판다마켓 랜딩 이미지">
+                <img src="/images/landing_bottom.svg" alt="판다마켓 랜딩 이미지">
             </div>
         </section>
     </main>
@@ -70,10 +74,10 @@
             <a href="/faq">FAQ</a>
         </div>
         <div class="flex gap-12">
-            <a class="icon icon--18" href="https://www.facebook.com" target="_blank" style="background-image: url(images/ico_facebook.svg);"></a>
-            <a class="icon icon--18" href="https://www.twitter.com" target="_blank" style="background-image: url(images/ico_twitter.svg);"></a>
-            <a class="icon icon--18" href="https://www.youtube.com" target="_blank" style="background-image: url(images/ico_youtube.svg);"></a>
-            <a class="icon icon--18" href="https://www.instagram.com" target="_blank" style="background-image: url(images/ico_instagram.svg);"></a>
+            <a class="icon icon--18" aria-label="페이스북 계정 방문하기" href="https://www.facebook.com" target="_blank" style="background-image: url(/images/ico_facebook.svg);"></a>
+            <a class="icon icon--18" aria-label="트위터 계정 방문하기" href="https://www.twitter.com" target="_blank" style="background-image: url(/images/ico_twitter.svg);"></a>
+            <a class="icon icon--18" aria-label="유튜브 채널 방문하기" href="https://www.youtube.com" target="_blank" style="background-image: url(/images/ico_youtube.svg);"></a>
+            <a class="icon icon--18" aria-label="인스타그램 계정 방문하기" href="https://www.instagram.com" target="_blank" style="background-image: url(/images/ico_instagram.svg);"></a>
         </div>
     </footer>
 </body>

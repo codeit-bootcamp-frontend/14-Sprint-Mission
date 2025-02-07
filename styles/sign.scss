@@ -4,7 +4,7 @@
     position: relative;
 }
 
-#password__toggle {
+.show-password {
     position: absolute;
     background: none;
     border: none;
@@ -12,6 +12,11 @@
     left: auto;
     top: 50%;
     transform: translateY(-65%);
+    background-image: url(/images/ico_eye-open.svg);
+
+    &.password-hide {
+        background-image: url(/images/ico_eye-close.svg);
+    }
 }
 
 .sign {
@@ -31,6 +36,8 @@
         .logo {
             height: 132px;
             background-position: 50% 50%;
+            display: flex;
+            justify-content: center;
         }
 
         .sign-form {
@@ -50,6 +57,11 @@
                 background: $secondary-200;
                 margin-bottom: 8px;
 
+                &--error {
+                    outline: none;
+                    border: 2px solid $error-red;
+                }
+
                 &::placeholder {
                     font: normal 400 16px/26px 'Pretendard';
                     color: $secondary-400;
@@ -58,6 +70,13 @@
                 &:focus {
                     outline: none;
                     border: 2px solid $primary-100;
+                }
+
+                &__msg {
+                    font-size: 14px;
+                    margin-left: 14px;
+                    margin-top: -16px;
+                    color: $error-red;
                 }
             }
     
@@ -71,6 +90,7 @@
             text-align: center;
             font: normal 500 14px/24px 'Pretendard';
             color: $secondary-800;
+            margin-bottom: 200px;
 
             a {
                 color: $primary-100;

@@ -97,6 +97,7 @@ footer {
             padding: 0 24px;
             margin-top: 24px;
             margin-bottom: 28px;
+            gap: 24px;
 
             img {
                 width: 100%;
@@ -140,10 +141,7 @@ footer {
 @media (max-width: $mobile) {
     header { padding: 9px 16px; }
     h2 { margin: 8px 0 16px; }
-    .logo {
-        padding: 8px 0;
-        background-image: url('/images/logo_typo_only.svg');
-    }
+    .logo { padding: 8px 0; }
 
     .section {
         p {
