@@ -12,30 +12,36 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/form.css" />
   </head>
 
   <body>
     <section>
-      <form action="." class="login-form">
-        <h1 class="login-form__logo">
+      <form action="." class="form">
+        <h1 class="form__logo">
           <a href="/"
             ><img src="./images/logo/panda-market-logo.png" alt="판다마켓 홈"
           /></a>
         </h1>
-        <div class="login-form__group">
+        <div class="form__group">
           <label for="email">이메일</label>
-          <input type="email" id="email" placeholder="이메일을 입력해주세요" />
+          <input
+            type="email"
+            id="email"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
         </div>
-        <div class="login-form__group">
+        <div class="form__group">
           <label for="password">비밀번호</label>
-          <div class="login-form__password">
+          <div class="form__password">
             <input
               type="password"
               id="password"
               placeholder="비밀번호를 입력해주세요"
+              required
             />
-            <button class="login-form__password-toggle">
+            <button class="form__password-toggle" type="button">
               <img
                 src="./images/auth/btn_visibility_off.svg"
                 alt="비밀번호 보이기"
@@ -43,8 +49,8 @@
             </button>
           </div>
         </div>
-        <button class="login-form__button">로그인</button>
-        <div class="login-form__social-login">
+        <button class="form__button">로그인</button>
+        <div class="form__social-login">
           <p>간편 로그인하기</p>
           <a href="https://google.com/"
             ><img src="./images/auth/btn_google-login.svg" alt="구글 로그인"
@@ -53,7 +59,7 @@
             ><img src="./images/auth/btn_kakao-login.svg" alt="카카오 로그인"
           /></a>
         </div>
-        <div class="login-form__signup-link">
+        <div class="form__signup-link">
           <p>판다마켓이 처음이신가요? <a href="/signup.html">회원가입</a></p>
         </div>
       </form>

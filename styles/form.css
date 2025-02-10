@@ -7,7 +7,7 @@ section {
 }
 
 /* 로그인 폼을 세로방향 flex로 지정함 자식 요소끼리 24px만큼 gap을 줌*/
-.login-form {
+.form {
   width: 100%;
   height: auto;
   display: flex;
@@ -17,18 +17,18 @@ section {
 }
 
 /* 로그인 폼의 로고와 중앙 정렬 */
-.login-form__logo {
+.form__logo {
   width: 396px;
   margin: 0 auto;
   margin-bottom: 16px;
 }
 
-.login-form__logo img {
+.form__logo img {
   width: 100%;
 }
 
 /* 라벨과 인풋태그를 감싼 div의 스타일링 flex를 통해 gap을 줘서 거리를 띄움 */
-.login-form__group {
+.form__group {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,12 +37,12 @@ section {
   line-height: 26px;
 }
 
-.login-form__group label {
+.form__group label {
   font-weight: 700;
   font-size: 18px;
 }
 
-.login-form__group input {
+.form__group input {
   width: 100%;
   height: 56px;
   background-color: #f3f4f6;
@@ -53,21 +53,21 @@ section {
   font-size: 16px;
 }
 
-.login-form__group input:focus {
+.form__group input:focus {
   border: 1px solid #3692ff;
 }
 
-.login-form__group input::placeholder {
+.form__group input::placeholder {
   color: #9ca3af;
   font-weight: 400;
 }
 
 /* 심화 요구사항 password 우측에 눈모양 아이콘을 추가함  */
-.login-form__password {
+.form__password {
   position: relative;
 }
 
-.login-form__password-toggle {
+.form__password-toggle {
   width: 24px;
   position: absolute;
   top: calc((100% - 24px) / 2);
@@ -75,7 +75,7 @@ section {
   cursor: pointer;
 }
 
-.login-form__button {
+.form__button {
   width: 100%;
   height: 56px;
   background-color: #9ca3af;
@@ -84,10 +84,11 @@ section {
   border-radius: 40px;
   font-weight: 600;
   font-size: 20px;
+  transition: background-color 0.5s ease;
 }
 
 /* 소셜로그인  flex-grow속성을 사용해 정렬함*/
-.login-form__social-login {
+.form__social-login {
   width: 100%;
   height: 74px;
   background-color: #e6f2ff;
@@ -99,15 +100,15 @@ section {
   gap: 16px;
 }
 
-.login-form__social-login p {
+.form__social-login p {
   flex-grow: 1;
 }
 
-.login-form__social-login img {
+.form__social-login img {
   width: 42px;
 }
 
-.login-form__signup-link {
+.form__signup-link {
   width: 100%;
   color: #1f2937;
   font-weight: 500;
@@ -116,7 +117,16 @@ section {
   text-align: center;
 }
 
-.login-form__signup-link a {
+.form__signup-link a {
   color: #3692ff;
   text-decoration: underline;
+}
+
+/* input값이 모두 채워지면 버튼의 색을 변경하는 css */
+form:has(input:invalid) .form__button {
+  background-color: #9ca3af;
+}
+
+form:not(:has(input:invalid)) .form__button {
+  background-color: #3692ff;
 }
