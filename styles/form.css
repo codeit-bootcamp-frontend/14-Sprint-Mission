@@ -1,3 +1,11 @@
+:root {
+  --color-primary: #3692ff;
+  --color-secondary: #9ca3af;
+  --color-input-bg: #f3f4f6;
+  --color-social-bg: #e6f2ff;
+  --color-text: #1f2937;
+}
+
 /* 로그인 폼을 감싼 섹션을 화면높이를 전부 차지하게 하고 maigin: 0 auto를 통해 가로 정렬 align-content를 통해 세로정렬함 */
 section {
   width: 640px;
@@ -45,7 +53,7 @@ section {
 .form__group input {
   width: 100%;
   height: 56px;
-  background-color: #f3f4f6;
+  background-color: var(--color-input-bg);
   border: none;
   border-radius: 12px;
   padding: 16px 24px;
@@ -58,7 +66,7 @@ section {
 }
 
 .form__group input::placeholder {
-  color: #9ca3af;
+  color: var(--color-secondary);
   font-weight: 400;
 }
 
@@ -78,8 +86,8 @@ section {
 .form__button {
   width: 100%;
   height: 56px;
-  background-color: #9ca3af;
-  color: #f3f4f6;
+  background-color: var(--color-secondary);
+  color: var(--color-input-bg);
   border: none;
   border-radius: 40px;
   font-weight: 600;
@@ -91,7 +99,7 @@ section {
 .form__social-login {
   width: 100%;
   height: 74px;
-  background-color: #e6f2ff;
+  background-color: var(--color-social-bg);
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -110,7 +118,7 @@ section {
 
 .form__signup-link {
   width: 100%;
-  color: #1f2937;
+  color: var(--color-text);
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
@@ -118,15 +126,15 @@ section {
 }
 
 .form__signup-link a {
-  color: #3692ff;
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
 /* input값이 모두 채워지면 버튼의 색을 변경하는 css */
 form:has(input:invalid) .form__button {
-  background-color: #9ca3af;
+  background-color: var(--color-secondary);
 }
 
 form:not(:has(input:invalid)) .form__button {
-  background-color: #3692ff;
+  background-color: var(--color-primary);
 }
