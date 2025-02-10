@@ -1,87 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓</title>
+    <link rel="icon" href="images/logo/favicon.ico" />
     <link
       rel="stylesheet"
       as="style"
       crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
-    <title>판다마켓</title>
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/home.css" />
   </head>
   <body>
     <header>
-      <div class="header-wrap">
-        <a href="/" class="logo"
-          ><img src="images/logo/Property 1=sm.png" alt="logo-img"
-        /></a>
-        <a href="/login" class="login-btn basic-btn">로그인</a>
-      </div>
+      <a href="/"
+        ><img
+          src="images/logo/panda-market-logo.png"
+          alt="판다마켓 홈"
+          width="153"
+      /></a>
+      <a href="login.html" id="loginLinkButton" class="button">로그인</a>
     </header>
+
     <main>
-      <section class="main-banner">
-        <div class="main-banner-wrapper">
-          <div class="main-banner-text">
-            <h2>일상의 모든 물건을<br />거래해 보세요</h2>
-            <a href="/items" class="main-banner-btn basic-btn">구경하러 가기</a>
-          </div>
-          <img
-            src="images/landing/Img_home_top.png"
-            alt="서비스를 소개하는 메인 배너 이미지"
-            class="main-banner-img"
-          />
+      <section id="hero" class="banner">
+        <div class="wrapper">
+          <h1>
+            일상의 모든 물건을<br />
+            거래해 보세요
+          </h1>
+          <a href="items.html" class="button pill-button">구경하러 가기</a>
         </div>
       </section>
-      <section class="landing-description">
-        <div class="service-img-container">
+
+      <section id="features" class="wrapper">
+        <div class="feature">
           <img
-            src="images/landing/desktop_02.png"
-            alt="인기상품 확인가능 관련 이미지"
+            src="images/home/feature1-image.png"
+            alt="인기 상품"
+            width="50%"
+          />
+          <div class="feature-content">
+            <h2 class="feature-tag">Hot item</h2>
+            <h1>인기 상품을<br />확인해 보세요</h1>
+            <p class="feature-description">
+              가장 HOT한 중고거래 물품을<br />판다마켓에서 확인해 보세요
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-content">
+            <h2 class="feature-tag">Search</h2>
+            <h1>구매를 원하는<br />상품을 검색하세요</h1>
+            <p class="feature-description">
+              구매하고 싶은 물품은 검색해서
+              <br />쉽게 찾아보세요
+            </p>
+          </div>
+          <img
+            src="images/home/feature2-image.png"
+            alt="검색 기능"
+            width="50%"
           />
         </div>
-        <div class="service-img-container">
+        <div class="feature">
           <img
-            src="images/landing/desktop_03.png"
-            alt="상품 검색 관련 이미지"
+            src="images/home/feature3-image.png"
+            alt="판매 상품 등록"
+            width="50%"
           />
+          <div class="feature-content">
+            <h2 class="feature-tag">Register</h2>
+            <h1>판매를 원하는<br />상품을 등록하세요</h1>
+            <p class="feature-description">
+              어떤 물건이든 판매하고 싶은 상품을
+              <br />쉽게 등록하세요
+            </p>
+          </div>
         </div>
-        <div class="service-img-container">
-          <img
-            src="images/landing/desktop_04.png"
-            alt="상품 등록 관련 이미지"
-          />
+      </section>
+
+      <section id="bottomBanner" class="banner">
+        <div class="wrapper">
+          <h1>
+            믿을 수 있는
+            <br />
+            판다마켓 중고거래
+          </h1>
         </div>
       </section>
     </main>
+
     <footer>
-      <img
-        src="images/landing/desktop_05.png"
-        alt="서비스를 소개하는 하단 배너 이미지"
-      />
-      <div class="footer-background">
-        <div class="footer-container">
-          <p style="color: #9ca3af">@codeit - 2024</p>
-          <div id="footer-links">
-            <a href="/privacy">Privacy Policy</a><a href="/faq">FAQ</a>
-          </div>
-          <div id="footer-web-links">
-            <a href="https://www.facebook.com"
-              ><img src="images/icon/ic_facebook.png" alt="facebook_link"
-            /></a>
-            <a href="https://www.x.com"
-              ><img src="images/icon/ic_twitter.png" alt="twitter_link"
-            /></a>
-            <a href="https://www.youtube.com"
-              ><img src="images/icon/ic_youtube.png" alt="youtube_link"
-            /></a>
-            <a href="https://www.instagram.com"
-              ><img src="images/icon/ic_instagram.png" alt="instagram_link"
-            /></a>
-          </div>
-        </div>
+      <div>©codeit - 2024</div>
+      <div id="footerMenu">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div id="socialMedia">
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><img src="images/social/facebook-logo.svg" alt="페이스북" width="20"
+        /></a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+          ><img src="images/social/twitter-logo.svg" alt="트위터" width="20"
+        /></a>
+        <a
+          href="https://www.youtube.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><img src="images/social/youtube-logo.svg" alt="유튜브" width="20"
+        /></a>
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><img
+            src="images/social/instagram-logo.svg"
+            alt="인스타그램"
+            width="20"
+        /></a>
       </div>
     </footer>
   </body>
