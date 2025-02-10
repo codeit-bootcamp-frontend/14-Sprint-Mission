@@ -1,0 +1,122 @@
+/* 로그인 폼을 감싼 섹션을 화면높이를 전부 차지하게 하고 maigin: 0 auto를 통해 가로 정렬 align-content를 통해 세로정렬함 */
+section {
+  width: 640px;
+  height: 100vh;
+  margin: 0 auto;
+  align-content: center;
+}
+
+/* 로그인 폼을 세로방향 flex로 지정함 자식 요소끼리 24px만큼 gap을 줌*/
+.login-form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* 로그인 폼의 로고와 중앙 정렬 */
+.login-form__logo {
+  width: 396px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+.login-form__logo img {
+  width: 100%;
+}
+
+/* 라벨과 인풋태그를 감싼 div의 스타일링 flex를 통해 gap을 줘서 거리를 띄움 */
+.login-form__group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  line-height: 26px;
+}
+
+.login-form__group label {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.login-form__group input {
+  width: 100%;
+  height: 56px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.login-form__group input:focus {
+  border: 1px solid #3692ff;
+}
+
+.login-form__group input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* 심화 요구사항 password 우측에 눈모양 아이콘을 추가함  */
+.login-form__password {
+  position: relative;
+}
+
+.login-form__password-toggle {
+  width: 24px;
+  position: absolute;
+  top: calc((100% - 24px) / 2);
+  right: 24px;
+  cursor: pointer;
+}
+
+.login-form__button {
+  width: 100%;
+  height: 56px;
+  background-color: #9ca3af;
+  color: #f3f4f6;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* 소셜로그인  flex-grow속성을 사용해 정렬함*/
+.login-form__social-login {
+  width: 100%;
+  height: 74px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 23px;
+  gap: 16px;
+}
+
+.login-form__social-login p {
+  flex-grow: 1;
+}
+
+.login-form__social-login img {
+  width: 42px;
+}
+
+.login-form__signup-link {
+  width: 100%;
+  color: #1f2937;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.login-form__signup-link a {
+  color: #3692ff;
+  text-decoration: underline;
+}
