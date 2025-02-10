@@ -1,0 +1,81 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+html,
+body,
+* {
+  color: #374151;
+  word-break: keep-all;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+:root {
+  /* Font sizes */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-2lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+
+  /* Line heights */
+  --line-height-xs: 1.5; /* 18px / 12px */
+  --line-height-sm: 1.69; /* 22px / 13px */
+  --line-height-md: 1.71; /* 24px / 14px */
+  --line-height-lg: 1.625; /* 26px / 16px */
+  --line-height-2lg: 1.556; /* 28px / 18px */
+  --line-height-xl: 1.6; /* 32px / 20px */
+  --line-height-2xl: 1.333; /* 32px / 24px */
+  --line-height-3xl: 1.313; /* 42px / 32px */
+
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--line-height-3xl);
+  }
+
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--line-height-2xl);
+  }
+
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--line-height-xl);
+  }
+
+  .text-2lg {
+    font-size: var(--text-2lg);
+    line-height: var(--line-height-2lg);
+  }
+
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-lg);
+  }
+
+  .text-md {
+    font-size: var(--text-md);
+    line-height: var(--line-height-md);
+  }
+
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-sm);
+  }
+
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--line-height-xs);
+  }
+}
