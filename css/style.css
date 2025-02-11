@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media (max-width: 100.00vw) {
+    header {
+        margin: 0 10.42vw;
+    }
+    .main_background {
+        margin: 0 10.42vw;
+    }
+    .icon {
+        margin-right: auto;
+    }
+    a.button {
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 100.00vw) {
+    header {
+        margin: 0;
+    }
+    .main_background {
+        margin: 0;
+        padding: 10.42vw 0;
+    }
+    footer {
+        padding: 1.67vw 5.21vw;
+    }
+    .contents {
+        padding: 7.19vw 5.21vw;
+    }
+    .contents_detail {
+        width: 52.08vw;
+    }
+    .home_img {
+        width: 31.25vw;
+        height: auto;
+    }
+    .main_img {
+        width: 41.67vw;
+        height: auto;
+    }
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Pretendard-Regular;
+}
+
+header{
+    display: flex;
+    justify-content: center; /* 수평 */
+    align-items: center;     /* 수직 */
+    margin: 0.49vw 10.42vw;
+}
+
+a{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+p{
+    margin: 0;
+    font-size: 1.18vw;
+}
+
+h2{
+    box-sizing: border-box;
+    margin: 0;
+    color: #374151;
+    font-size: 1.27vw;
+    font-weight: bold;
+    line-height: 140%;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vw;
+    background-color: #111827;
+    padding: 1.67vw 20.83vw;
+    gap: 0 19.09vw;
+}
+
+/*header*/
+
+.icon{
+    display: flex;
+    align-items: center;
+    width: 7.97vw;
+    height: 2.66vw;
+}
+
+.image_icon{
+    width: 2.08vw;
+    height: 2.08vw;
+    margin-top: 0.26vw;
+    margin-bottom: 0.30vw;
+}
+
+.header_title{
+    margin: 0.51vw 0.07vw 0.33vw 0.45vw;
+    color: #3692FF;
+    font-size: 1.33vw;
+    font-weight: bold;
+}
+
+a.button{
+    width: 6.67vw;
+    height: 2.50vw;
+    background-color: #3692FF;
+    border-radius: 0.42vw;
+    padding: 0.63vw 1.20vw;
+    margin: 0.08vw 0.00vw 0.08vw 43.70vw;
+    color: white;
+}
+
+/*main_intro*/
+.main_background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #CFE5FF;
+    height: 28.13vw;
+    padding: 10.42vw 23.44vw 0.00vw;
+}
+
+.bg_text{
+    margin: 2.08vw 0;
+}
+
+.bg_text_and_image {
+    display: flex;
+    align-items: center;
+    gap: 0 3.59vw;
+}
+
+a.main_button{
+    width: 18.59vw;
+    height: 2.92vw;
+    background-color: #3692FF;
+    border-radius: 2.08vw;
+    padding: 0.63vw 6.46vw;
+    margin: 1.67vw 0.00vw 3.13vw;
+    color: white;   
+}
+
+.main_img{
+    width: 38.85vw;
+    height: 17.71vw;
+    margin-left: 0.36vw;
+}
+
+/*main*/
+.contents{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7.19vw 24.27vw;
+}
+
+.contents_detail{
+    display: flex;
+    align-items: center;
+    width: 51.46vw;
+    height: 23.13vw;
+    margin: 0 1.22vw;
+    gap: 0 3.33vw;
+}
+
+.home_img{
+    width: 30.16vw;
+    height: 23.13vw;
+}
+
+.contents_text{
+    margin: 5.36vw 0;
+}
+
+.right_text{
+    text-align: right;
+}
+
+.blue_text{
+    color: #3692FF;
+    font-size: 0.94vw;
+    font-weight: bold;
+    margin-bottom: 0.63vw;
+}
+
+.small_text{
+    margin-top: 1.25vw;
+}
+
+/*footer*/
+.footer_detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_text{
+    color: #E5E7EB;
+    font-size: 0.83vw;
+}
+
+.pp_and_faq{
+    gap: 0 1.56vw;
+}
+
+.sns_img{
+    width: 1.04vw;
+    height: 1.04vw;
+    gap: 0 0.63vw;
+}
