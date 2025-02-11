@@ -4,24 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓 로그인</title>
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="../css/common.css" />
     <link
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
       rel="stylesheet"
     />
+    <script src="../scripts/login.js" type="module" defer></script>
   </head>
   <body>
     <main class="all-elements">
       <div class="hearder">
         <a href="./" class="panda-logo-a">
-          <img
-            src="./assets/panda-logo.png"
-            alt="panda logo image"
-            class="panda-logo-img"
-          />
+          <picture>
+            <source
+              srcset="../assets/panda-logo-small.png"
+              media="(max-width: 766px)"
+            />
+            <img
+              src="../assets/panda-logo.png"
+              alt="panda logo image"
+              class="panda-logo-img"
+            />
+          </picture>
         </a>
         <div class="main">
-          <form action="/" method="POST" class="form">
+          <form action="./items.html" method="GET" class="form">
             <label for="useremail">이메일</label>
             <input
               type="email"
@@ -30,6 +37,9 @@
               required
               placeholder="이메일을 입력해주세요"
             />
+            <span class="error-message" id="email-message"
+              >이메일을 입력해주세요.</span
+            >
             <label for="password">비밀번호</label>
             <div class="password-check-flex">
               <input
@@ -39,23 +49,26 @@
                 required
                 placeholder="비밀번호를 입력해주세요"
               />
-              <img src="./assets/eyes.png" alt="eyes" class="eyes" />
+              <img src="../assets/eyes.png" alt="eyes" class="eyes" id="eyes" />
             </div>
-            <button type="submit">로그인</button>
+            <span class="error-message" id="password-message"
+              >비밀번호를 8자 이상 입력해주세요</span
+            >
+            <button type="submit" id="active-button">로그인</button>
           </form>
           <div class="simple-login">
             <span>간편 로그인하기</span>
             <div>
               <a href="https://www.google.com" id="google">
                 <img
-                  src="./assets/google.png"
+                  src="../assets/google.png"
                   alt="google logo image"
                   class="google-logo"
                 />
               </a>
               <a href="https://www.kakaocorp.com/page" id="kakao">
                 <img
-                  src="./assets/kakao.png"
+                  src="../assets/kakao.png"
                   alt="kakao logo image"
                   class="kakao-logo"
                 />

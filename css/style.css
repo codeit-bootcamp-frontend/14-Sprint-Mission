@@ -1,3 +1,22 @@
+/*유틸리티 클래스*/
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,9 +35,7 @@ main {
 }
 
 .nav-flex {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 0 200px;
   position: fixed;
   width: 100%;
@@ -32,9 +49,6 @@ main {
 }
 
 .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-decoration: none;
   background-color: #3692ff;
   color: #f3f4f6;
@@ -51,12 +65,9 @@ main {
   max-width: 100%;
   height: 540px;
   background-color: #cfe5ff;
-  display: flex;
-  justify-content: center;
 }
 
 .landing-page-text {
-  display: flex;
   flex-direction: column;
   position: relative;
   top: 12.5rem;
@@ -65,7 +76,6 @@ main {
 
 .large-text {
   font-size: 2.5rem;
-  font-family: "Pretendard";
   font-weight: 700;
   line-height: 3.5rem;
   color: #374151;
@@ -78,12 +88,8 @@ main {
 
 .see {
   text-decoration: none;
-  font-family: "Pretendard";
   font-weight: 600;
   font-size: 1.25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 357px;
   height: 56px;
   border-radius: 40px;
@@ -106,16 +112,16 @@ main {
   object-fit: cover;
 }
 
+.main-img#last {
+  height: 397px;
+}
+
 .second-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 138px;
   margin-bottom: 138px;
 }
 
 .main-list {
-  display: flex;
   flex-direction: column;
 }
 
@@ -123,9 +129,7 @@ main {
   background-color: #fcfcfc;
   width: 400px;
   height: 444px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   padding-left: 64px;
 }
 
@@ -146,9 +150,7 @@ main {
   background-color: #fcfcfc;
   width: 400px;
   height: 444px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   padding-right: 64px;
   text-align: right;
 }
@@ -157,9 +159,7 @@ main {
   background-color: #fcfcfc;
   width: 400px;
   height: 444px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   padding-left: 64px;
 }
 
@@ -172,24 +172,19 @@ main {
   max-width: 100%;
   height: 540px;
   background-color: #cfe5ff;
-  display: flex;
-  justify-content: center;
 }
 
 .large-text-last {
   font-size: 2.5rem;
-  font-family: "Pretendard";
   font-weight: 700;
   line-height: 56px;
   color: #374151;
   position: relative;
   top: 50px;
-  margin-right: 60px;
 }
 
 .footer {
   background-color: #111827;
-  display: flex;
   justify-content: space-around;
   align-items: baseline;
   height: 160px;
@@ -201,7 +196,6 @@ main {
 }
 
 .fqa {
-  display: flex;
   gap: 30px;
 }
 
@@ -215,7 +209,6 @@ main {
 }
 
 .last-img {
-  display: flex;
   gap: 10px;
 }
 
@@ -235,18 +228,14 @@ main {
   }
 
   .landing-page-text {
-    width: auto;
-    height: 56px;
-    position: relative;
-    top: 84px;
-    left: 400px;
-    white-space: nowrap;
+    top: 50px;
+    justify-content: center;
   }
 
   .large-text {
     margin-bottom: 24px;
   }
-  
+
   h2.large-text br {
     display: none;
   }
@@ -261,10 +250,11 @@ main {
   }
 
   .main-img {
-    top: 430px;
-    right: 255px;
+    position: absolute;
+    top: 500px;
     width: 100%;
     max-width: 100%;
+    width: 743px;
   }
 
   .second-page {
@@ -325,22 +315,15 @@ main {
   .landing-page-last {
     width: 100%;
     height: 927px;
-  }
-
-  .reliable {
+    text-align: center;
     position: relative;
-    left: 50px;
-  }
-
-  .large-text-last {
-    top: 150px;
   }
 
   .main-img#last {
-    top: 587px;
-    height: 397px;
-    width: 100%;
-    right: 176px;
+    position: absolute;
+    top: 540px;
+    max-width: 100%;
+    width: 743px;
   }
 }
 
@@ -360,7 +343,9 @@ main {
   .landing-page-text {
     width: auto;
     height: 156px;
-    left: 280px;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .large-text {
@@ -374,9 +359,9 @@ main {
 
   .see-flex {
     position: relative;
-    left: 0;
+    left: 50px;
   }
-  
+
   .event-text {
     font-size: 16px;
     white-space: nowrap;
@@ -399,8 +384,7 @@ main {
 
   .main-img {
     height: 204px;
-    top: 336px;
-    right: 177px;
+    top: 406px;
     width: 448px;
     max-width: 448px;
     object-fit: cover;
@@ -414,20 +398,14 @@ main {
   .large-text-last {
     font-size: 32px;
     top: 0;
-    right: 50px;
   }
 
   .main-img#last {
-    width: 375px;
-    max-width: 375px;
-    height: 198px;
+    position: absolute;
     top: 342px;
-    right: 148px;
-  }
-
-  .reliable {
-    position: relative;
-    left: 40px;
+    max-width: 100%;
+    width: 375px;
+    height: 198px;
   }
 
   .design {
