@@ -127,7 +127,7 @@ footer .inner .right {
 /* tablet */
 @media (max-width: 1199px) {
 
-  .inner { padding-left:24px!important; padding-right:24px!important; }
+  div.inner { padding-left:24px; padding-right:24px; }
   .section { height:500px; }
   
   .main_title { height:771px; margin-bottom:24px; }
@@ -158,7 +158,7 @@ footer .inner .right {
   
   header .inner .logo_top img:first-child { display:none; }
 
-  .inner { padding-left:16px!important; padding-right:16px!important; }
+  div.inner { padding-left:16px; padding-right:16px; }
 
   .main_title { height:540px; }
   .main_title h1 br { display:block; }

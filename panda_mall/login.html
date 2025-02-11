@@ -32,12 +32,15 @@
         </a>
       </div>
       <div class="login_box">
-        <form onchange="login_check()">
-          <label for="login_email">이메일</label>
-          <input id='login_email' type='email' placeholder="이메일을 입력해주세요"/>
-          <label for="login_pwd">비밀번호</label>
-          <input id='login_pwd' type='password' placeholder="비밀번호를 입력해주세요"/>
-          <input type="submit" id="submit" value="로그인" disabled>
+        <form>
+            <label for="login_email">이메일
+              <input id='login_email' type='email' placeholder="이메일을 입력해주세요"/>
+            </label>
+            <label for="login_pwd">비밀번호
+              <input id='login_pwd' type='password' placeholder="비밀번호를 입력해주세요"/>
+              <img src="images/Variant202.png" alt="eye" class="eye" id="eye">
+            </label>
+          <input type="button" id="submit" value="로그인" disabled>
         </form>
       </div>
       <div class="sns_login">
@@ -51,16 +54,6 @@
         <span>판다마켓은 처음이신가요? <a href="signup.html">회원가입</a></span>
       </div>
     </main>
-    <script>
-      function login_check(){
-        let in_email = document.getElementById('login_email').value;
-        let in_pwd = document.getElementById('login_pwd').value;
-        if( in_email.length > 0 && in_pwd.length > 0 ){
-          document.getElementById('submit').disabled = false; 
-        } else {
-          document.getElementById('submit').disabled = true;
-        }
-      }
-    </script>
+    <script type="module" src="js/login.js"></script>
   </body>
 </html>
