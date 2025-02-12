@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <!DOCTYPE html>
-  <html lang="ko">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="판다 마켓" />
-      <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
-      <meta property="og:image" content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png" />
-      <meta property="og:url" content="https://rainbow-sunflower-f8c164.netlify.app/" />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:title" content="판다 마켓" />
-      <meta name="twitter:description" content="일상의 모든 물건을 거래해보세요" />
-      <meta name="twitter:image" content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <title>판다마켓</title>
-      <link rel="stylesheet" href="./css/style.css" />
-      <link
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-        rel="stylesheet"
-      />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta
+      property="og:image"
+      content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png"
+    />
+    <meta
+      property="og:url"
+      content="https://rainbow-sunflower-f8c164.netlify.app/"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://rainbow-sunflower-f8c164.netlify.app/assets/example.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>판다마켓</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+  </head>
   <body>
-    <header class="nav-flex">
-      <a href="/" class="logo"
+    <header class="nav-flex flex align-center">
+      <a href="./" class="logo"
         ><img
-          src="./assets/panda-logo.png"
+          src="../assets/panda-logo.png"
           alt="panda logo image"
           class="panda-logo-image"
       /></a>
-      <a href="./login.html" class="login">로그인</a>
+      <a href="./login.html" class="login center">로그인</a>
     </header>
 
     <main>
-      <div class="landing-page">
-        <div class="landing-page-text">
+      <div class="landing-page flex justify-center">
+        <div class="landing-page-text flex">
           <h2 class="large-text">
             일상의 모든 물건을 <br />
             <span class="deal">거래해보세요</span>
           </h2>
           <div class="see-flex">
-            <a href="/items.html" class="see">구경하러 가기</a>
+            <a href="./items.html" class="see center">구경하러 가기</a>
           </div>
         </div>
         <img
-          src="./assets/main.png"
+          src="../assets/main.png"
           alt="A cute panda standing there"
           class="main-img"
         />
       </div>
 
-      <div class="main-list">
-        <div class="second-page" id="hot-item">
-          <img src="./assets/hot-item.png" alt="A green panda shirt" />
-          <div class="text-box">
+      <div class="main-list flex">
+        <div class="second-page center" id="hot-item">
+          <img src="../assets/hot-item.png" alt="A green panda shirt" />
+          <div class="text-box flex justify-center">
             <span class="event-text">Hot item</span>
             <h2>
               <span class="event-large-text"
@@ -68,8 +78,8 @@
 
         <div class="margin"></div>
 
-        <div class="second-page" id="search">
-          <div class="text-box-search">
+        <div class="second-page center" id="search">
+          <div class="text-box-search flex justify-center">
             <span class="event-text">Search</span>
             <h2>
               <span class="event-large-text"
@@ -80,18 +90,18 @@
               >구매하고 싶은 물품은 검색해서 <br />쉽게 찾아보세요</span
             >
           </div>
-          <img src="./assets/search.png" alt="A magnifying glass picture" />
+          <img src="../assets/search.png" alt="A magnifying glass picture" />
         </div>
 
         <div class="margin"></div>
 
-        <div class="second-page" id="register">
+        <div class="second-page center" id="register">
           <img
-            src="./assets/register.png"
+            src="../assets/register.png"
             alt="Register for a variety of photos"
             class="register-img"
           />
-          <div class="text-box-register">
+          <div class="text-box-register flex justify-center">
             <span class="event-text">Register</span>
             <h2>
               <span class="event-large-text"
@@ -107,14 +117,14 @@
 
       <div class="empty-area"></div>
 
-      <div class="landing-page-last">
+      <div class="landing-page-last flex justify-center">
         <div class="landing-page-text">
           <span class="large-text-last">
             <span class="reliable">믿을 수 있는</span><br />판다마켓 중고 거래
           </span>
         </div>
         <img
-          src="./assets/footer.png"
+          src="../assets/footer.png"
           alt="A photo of a panda waving its hand"
           class="main-img"
           id="last"
@@ -123,24 +133,24 @@
     </main>
 
     <footer>
-      <div class="footer">
+      <div class="footer flex">
         <span class="design">©codeit - 2024</span>
-        <div class="fqa">
-          <a href="./privacy.html" class="real-last">Privacy Policy</a>
-          <a href="./faq.html" class="real-last">FAQ</a>
+        <div class="fqa flex">
+          <a href="./html/privacy.html" class="real-last">Privacy Policy</a>
+          <a href="./html/faq.html" class="real-last">FAQ</a>
         </div>
-        <div class="last-img">
+        <div class="last-img flex">
           <a href="https://www.facebook.com" target="_blank"
-            ><img src="./assets/facebook.png" alt=""
+            ><img src="../assets/facebook.png" alt=""
           /></a>
           <a href="https://x.com/?mx=2" target="_blank" id="twiter"
-            ><img src="./assets/twiter.png" alt=""
+            ><img src="../assets/twiter.png" alt=""
           /></a>
           <a href="https://www.youtube.com" target="_blank"
-            ><img src="./assets/youtube.png" alt=""
+            ><img src="../assets/youtube.png" alt=""
           /></a>
           <a href="https://www.instagram.com" target="_blank"
-            ><img src="./assets/instagram.png" alt=""
+            ><img src="../assets/instagram.png" alt=""
           /></a>
         </div>
       </div>

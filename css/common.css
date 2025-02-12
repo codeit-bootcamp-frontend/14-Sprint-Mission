@@ -11,6 +11,16 @@
   --blue: #3692ff;
 }
 
+.error-message {
+  display: none;
+  position: relative;
+  bottom: 16px;
+  left: 16px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #f74747;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,10 +35,6 @@
 
 .panda-logo-a {
   margin-top: 231px;
-}
-
-#join {
-  margin-bottom: 231px;
 }
 
 .panda-logo-img {
@@ -68,8 +74,8 @@
 }
 
 .eyes {
-  width: 20px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   position: relative;
   top: 5px;
   right: 50px;
@@ -137,6 +143,7 @@
 
 #join {
   margin-left: 4px;
+  margin-bottom: 231px;
 }
 
 .join-first {
@@ -155,8 +162,6 @@
 
 @media (max-width: 766px) {
   .panda-logo-a {
-    display: block;
-    width: fit-content;
     margin: 0 auto;
     margin-top: 80px;
   }
@@ -197,8 +202,8 @@
   }
 
   .eyes {
-    top: -95%;
-    left: 85%;
+    top: -53px;
+    left: 300px;
   }
 
   .simple-login {
