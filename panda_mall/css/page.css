@@ -72,4 +72,9 @@
   .login_wrap .logo a img:first-child { height:52px; margin-right:8px; }
   .login_wrap .logo a img:last-child { height:40px; }
   .login_wrap .login_box label { font-size:14px; }
+
+  .login_wrap .login_box .eye {
+    top: 42px;
+  }
+  
 }
