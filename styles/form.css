@@ -78,7 +78,8 @@ section {
 .form__password-toggle {
   width: 24px;
   position: absolute;
-  top: calc((100% - 24px) / 2);
+  top: 50%;
+  transform: translateY(-50%);
   right: 24px;
   cursor: pointer;
 }
@@ -108,7 +109,7 @@ section {
   gap: 16px;
 }
 
-.form__social-login p {
+.form__social-login span {
   flex-grow: 1;
 }
 
