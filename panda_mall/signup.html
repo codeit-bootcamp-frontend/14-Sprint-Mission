@@ -32,15 +32,25 @@
         </a>
       </div>
       <div class="login_box">
-        <form onchange="login_check()">
-          <label for="login_email">이메일</label>
-          <input id='login_email' type='email' placeholder="이메일을 입력해주세요"/>
-          <label for="login_name">닉네임</label>
-          <input id='login_name' type='text' placeholder="닉네임을 입력해주세요"/>
-          <label for="login_pwd">비밀번호</label>
-          <input id='login_pwd' type='password' placeholder="비밀번호를 입력해주세요"/>
-          <label for="login_pwd_check">비밀번호 확인</label>
-          <input id='login_pwd_check' type='password' placeholder="비밀번호를 다시 입력해주세요"/>
+        <form>
+          <label for="login_email">
+            이메일
+            <input id='login_email' type='email' placeholder="이메일을 입력해주세요"/>
+          </label>
+          <label for="login_name">
+            닉네임
+            <input id='login_name' type='text' placeholder="닉네임을 입력해주세요"/>
+          </label>
+          <label for="login_pwd">
+            비밀번호
+            <input id='login_pwd' type='password' placeholder="비밀번호를 입력해주세요"/>
+            <img src="images/Variant202.png" alt="eye" class="eye" id="eye">
+          </label>
+          <label for="login_pwd_check">
+            비밀번호 확인
+            <input id='login_pwd_check' type='password' placeholder="비밀번호를 다시 입력해주세요"/>
+            <img src="images/Variant202.png" alt="eye" class="eye" id="eye">
+          </label>
           <input type="submit" id="submit" value="회원가입" disabled>
         </form>
       </div>
@@ -55,18 +65,6 @@
         <span>이미 회원이신가요? <a href="login.html">로그인</a></span>
       </div>
     </main>
-    <script>
-      function login_check(){
-        let in_email = document.getElementById('login_email').value;
-        let in_name = document.getElementById('login_name').value;
-        let in_pwd = document.getElementById('login_pwd').value;
-        let in_pwd_check = document.getElementById('login_pwd_check').value;
-        if( in_email.length > 0 && in_name.length > 0 && in_pwd.length > 0 && in_pwd_check.length > 0 ){
-          document.getElementById('submit').disabled = false; 
-        } else {
-          document.getElementById('submit').disabled = true;
-        }
-      }
-    </script>
+    <script type="module" src="js/signup.js"></script>
   </body>
 </html>
