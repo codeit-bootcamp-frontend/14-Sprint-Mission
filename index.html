@@ -17,11 +17,19 @@
   <body>
     <header>
       <a href="/"
-        ><img
-          src="images/logo/panda-market-logo.png"
-          alt="판다마켓 홈"
-          width="153"
-      /></a>
+        ><picture>
+          <source
+            media="(max-width: 767px)"
+            srcset="images/logo/mobile-logo.png"
+            width="103px"
+          />
+          <img
+            src="images/logo/panda-market-logo.png"
+            alt="판다마켓 홈"
+            width="153"
+          />
+        </picture>
+      </a>
       <a href="login.html" id="loginLinkButton" class="button">로그인</a>
     </header>
 
@@ -98,7 +106,7 @@
     </main>
 
     <footer>
-      <div>©codeit - 2024</div>
+      <div class="company_tag">©codeit - 2024</div>
       <div id="footerMenu">
         <a href="privacy.html">Privacy Policy</a>
         <a href="faq.html">FAQ</a>

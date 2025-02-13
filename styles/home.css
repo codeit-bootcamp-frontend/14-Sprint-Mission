@@ -170,3 +170,89 @@ footer {
     flex-direction: column-reverse;
   }
 }
+
+@media (min-width: 375px) and (max-width: 767px) {
+  header {
+    padding: 0 16px;
+  }
+
+  .banner {
+    flex-direction: column;
+    height: 540px;
+    overflow: hidden;
+  }
+
+  .banner:first-child {
+    margin-bottom: 52px;
+  }
+
+  .banner .heroTitle {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  .banner .pill-button {
+    width: 240px;
+    padding: 12px 71px;
+    font-size: 18px;
+  }
+
+  .banner img {
+    height: 204px;
+  }
+
+  .feature {
+    flex-direction: column;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .feature h3 {
+    font-size: 24px;
+  }
+
+  .feature-description {
+    font-size: 16px;
+  }
+
+  .feature h3 br {
+    display: none;
+  }
+
+  .feature img {
+    width: 100%;
+  }
+
+  .feature:nth-child(2) {
+    align-items: end;
+    flex-direction: column-reverse;
+  }
+
+  #bottomBanner h3 {
+    margin-top: 84px;
+    text-align: center;
+  }
+
+  footer {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    padding: 32px;
+  }
+
+  footer a {
+    min-width: fit-content;
+  }
+
+  footer .company_tag {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+  }
+}
