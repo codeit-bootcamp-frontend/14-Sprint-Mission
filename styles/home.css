@@ -112,19 +112,61 @@ footer {
   }
 
   .banner {
-    min-height: 540px;
+    flex-direction: column;
+    min-height: 771px;
   }
 
-  .banner .wrapper {
+  .banner .heroTitle {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 84px;
+  }
+
+  #bottomBanner h3 {
+    margin-top: 84px;
     text-align: center;
-    position: relative;
-    top: -120px;
+  }
+
+  .pill-button {
+    display: block;
+    max-width: fit-content;
+    height: 56px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
   }
 
   h1 br {
     display: none;
   }
 
-  .wrapper {
+  .features {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .feature {
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .feature h3 br {
+    display: none;
+  }
+
+  .feature img {
+    width: 100%;
+  }
+
+  .feature:nth-child(2) {
+    align-items: end;
+    flex-direction: column-reverse;
   }
 }
