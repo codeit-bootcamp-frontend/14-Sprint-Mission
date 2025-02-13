@@ -40,22 +40,23 @@ footer {
   background-color: #cfe5ff;
   height: 540px;
   display: flex;
+  justify-content: center;
   align-items: center;
   background-repeat: no-repeat;
-  background-position: 80% bottom;
-  background-size: 55%;
 }
 
-#hero {
-  background-image: url("../images/home/hero-image.png");
+.banner img {
+  max-width: 746px;
+  display: block;
+  margin-top: auto;
 }
+
+/* #hero {
+  background-image: url("../images/home/hero-image.png");
+} */
 
 #features {
   padding-bottom: 138px;
-}
-
-#bottomBanner {
-  background-image: url("../images/home/bottom-banner-image.png");
 }
 
 #loginLinkButton {
@@ -98,4 +99,32 @@ footer {
   line-height: 120%;
   letter-spacing: 0.08em;
   margin-top: 24px;
+}
+
+/* @media (min-width: 375px) and (max-width: 767px) {
+  header
+} */
+
+/* 이미지의 최솟값을 지정해줌으로 인해서 더이상 크기가 줄어들지 않게 함 추가로 해야할 것은 이미지의 중앙 정렬을 신경쓰는 것*/
+@media (min-width: 768px) and (max-width: 1199px) {
+  header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    min-height: 540px;
+  }
+
+  .banner .wrapper {
+    text-align: center;
+    position: relative;
+    top: -120px;
+  }
+
+  h1 br {
+    display: none;
+  }
+
+  .wrapper {
+  }
 }
