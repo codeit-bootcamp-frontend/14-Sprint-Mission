@@ -139,3 +139,15 @@ form:has(input:invalid) .form__button {
 form:not(:has(input:invalid)) .form__button {
   background-color: var(--color-primary);
 }
+
+@media (min-width: 375px) and (max-width: 767px) {
+  section {
+    width: 100%;
+    max-width: 432px;
+    padding: 0 16px;
+  }
+
+  .form__logo {
+    width: 198px;
+  }
+}
