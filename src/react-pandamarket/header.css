@@ -1,0 +1,43 @@
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable.css");
+
+header {
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(229, 231, 235, 1); /* 회색 구분선 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.logo {
+  width: 153px;
+  height: 51px;
+}
+
+.free-board {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(75, 85, 99, 1);
+  margin-left: 47px;
+}
+
+.used-market {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(75, 85, 99, 1);
+  margin-left: 30px;
+}
+
+.profile-background {
+  background-color: rgba(156, 163, 175, 1);
+  border-radius: 40px;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+}
