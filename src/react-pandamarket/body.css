@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 1200px;
 }
 
 .best-product {
@@ -29,13 +30,32 @@
   justify-content: space-between;
 }
 
+.search-product {
+  display: flex;
+  flex-direction: row;
+}
+
 .all-product {
   font-size: 20px;
   font-weight: bold;
   color: rgba(17, 24, 39, 1);
 }
 
+.search-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon{
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 16px;
+}
+
 .search-input {
+  padding-left: 44px;
   width: 325px;
   height: 42px;
   font-size: 16px;
@@ -56,6 +76,7 @@
   background-color: rgba(54, 146, 255, 1);
   border: none;
   margin-left: 12px;
+  cursor: pointer;
 }
 .search-option {
   width: 130px;
@@ -65,4 +86,57 @@
   background-color: whitesmoke;
   border: 1px solid rgb(207, 208, 209);
   margin-left: 12px;
+}
+.all-product-cardContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.pagination-wrap {
+  max-width: 304px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 42px;
+}
+
+.back-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(229, 231, 235, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.forward-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(229, 231, 235, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.arrow {
+  color: rgba(75, 85, 99, 1);
+  width: 25px;
+  height: 50px;
 }

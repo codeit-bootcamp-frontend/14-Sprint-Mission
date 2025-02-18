@@ -9,6 +9,7 @@ header {
   flex-direction: row;
   align-items: center;
   border-bottom: 1px solid rgba(229, 231, 235, 1); /* 회색 구분선 */
+  background-color: white;
   position: fixed;
   top: 0;
   left: 0;

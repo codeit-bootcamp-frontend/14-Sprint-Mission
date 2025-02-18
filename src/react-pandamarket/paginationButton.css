@@ -1,0 +1,31 @@
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(229, 231, 235, 1);
+  color: rgba(107, 114, 128, 1);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.clicked-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(47, 128, 237, 1);
+  color: rgba(249, 250, 251, 1);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 8px;
+}

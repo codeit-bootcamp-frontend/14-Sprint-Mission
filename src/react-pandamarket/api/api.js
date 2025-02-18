@@ -2,8 +2,8 @@ import axios from "axios";
 
 const Base_URL = "https://panda-market-api.vercel.app";
 
-export async function getProduct(offset = 0, limit = 10) {
-  const query = `offset=${offset}&limit=${limit}`;
+export async function getProduct(page = 1, pageSize = 10) {
+  const query = `page=${page}&pageSize=${pageSize}`;
   try {
     const response = await axios.get(`${Base_URL}/products?${query}`);
     return response.data;

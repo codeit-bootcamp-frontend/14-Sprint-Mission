@@ -3,9 +3,19 @@
   height: 378px;
   margin-right: 24px;
 }
+.card-wrap-allProduct {
+  width: 221px;
+  height: 317px;
+}
 .card-image {
   width: 282px;
   height: 282px;
+  border-radius: 16px;
+  margin-top: 16px;
+}
+.card-image-allProduct {
+  width: 221px;
+  height: 221px;
   border-radius: 16px;
   margin-top: 16px;
 }
