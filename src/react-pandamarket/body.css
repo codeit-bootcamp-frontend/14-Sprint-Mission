@@ -77,7 +77,7 @@
   background-color: rgba(243, 244, 246, 1);
 }
 
-.search-button {
+.add-product-button {
   width: 133px;
   height: 42px;
   font-size: 16px;
@@ -210,6 +210,32 @@
 
   .best-product {
     width: 696px;
+    font-size: 18px;
+  }
+
+  .all-product-header {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 40px;
+    justify-content: space-between;
+  }
+
+  .all-product {
+    margin-top: 7px;
+    font-size: 18px;
+  }
+
+  .search-product {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-option {
+    width: 63px;
+    height: 30px;
   }
 
   .all-product-cardContainer {
@@ -229,7 +255,24 @@
     width: 344px;
   }
   .search-input {
-    width: 242px;
-    height: 42px;
+    width: 200px;
+    height: 30px;
+    font-size: 12px;
+    padding-left: 35px;
+  }
+  .add-product-button {
+    font-size: 12px;
+    width: 100px;
+    height: 30px;
+  }
+
+  .button-option {
+    margin-top: 7px;
+    display: flex;
+    justify-content: end;
+  }
+
+  .search-icon {
+    left: 8px;
   }
 }

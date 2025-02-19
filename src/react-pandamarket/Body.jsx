@@ -185,10 +185,10 @@ const Body = () => {
 
   useEffect(() => {
     if (isSearch !== true) {
-      if (window.innerWidth <= 1199) {
-        getAllProduct(6);
-      } else if (window.innerWidth <= 767) {
+      if (window.innerWidth <= 767) {
         getAllProduct(4);
+      } else if (window.innerWidth <= 1199) {
+        getAllProduct(6);
       } else {
         getAllProduct(10);
       }
@@ -230,18 +230,20 @@ const Body = () => {
               }}
             />
           </div>
-          <Link to={"/additem"}>
-            <button className="search-button">상품 등록하기</button>
-          </Link>
-          <select
-            name="category"
-            id="category"
-            className="search-option"
-            onChange={handleOptionChange}
-          >
-            <option value="latest">최신순</option>
-            <option value="sortByLike">좋아요순</option>
-          </select>
+          <div className="button-option">
+            <Link to={"/additem"}>
+              <button className="add-product-button">상품 등록하기</button>
+            </Link>
+            <select
+              name="category"
+              id="category"
+              className="search-option"
+              onChange={handleOptionChange}
+            >
+              <option value="latest">최신순</option>
+              <option value="sortByLike">좋아요순</option>
+            </select>
+          </div>
         </div>
       </div>
 
