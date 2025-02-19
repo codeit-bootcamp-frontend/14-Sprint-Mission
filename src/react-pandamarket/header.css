@@ -42,3 +42,45 @@ header {
   width: 40px;
   height: 40px;
 }
+
+@media (max-width: 1199px) {
+  header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .free-board {
+    margin-left: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .logo {
+    width: 100px;
+    height: 35px;
+  }
+
+  .free-board {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .used-market {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .profile-background {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile {
+    width: 30px;
+    height: 30px;
+  }
+}

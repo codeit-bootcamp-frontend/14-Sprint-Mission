@@ -1,6 +1,4 @@
 .card-wrap {
-  width: 282px;
-  height: 378px;
   margin-right: 24px;
 }
 .card-wrap-allProduct {
@@ -52,4 +50,27 @@
   width: 16px;
   height: 16px;
   margin-right: 4px;
+}
+
+@media (max-width: 1199px) {
+  .card-wrap {
+    margin-right: 10px;
+  }
+  .card-image {
+    width: 343px;
+    height: 343px;
+  }
+}
+@media (max-width: 767px) {
+  .card-wrap {
+    margin-right: 0px;
+  }
+  .card-image {
+    width: 343px;
+    height: 343px;
+  }
+  .card-image-allProduct {
+    width: 168px;
+    height: 168px;
+  }
 }
