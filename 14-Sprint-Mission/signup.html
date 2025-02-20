@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <link rel="stylesheet" href="login-signup-styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <title>Signup</title>
+</head>
+
+<body>
+    <main>
+        <div class="wrap">
+            <div class="signup-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="signup-logo">
+                </a>
+            </div>
+
+
+            <form action="signin.html">
+                <label for="email">이메일</label>
+                <input type="email" name="email" id="email" placeholder="이메일을 입력해주세요">
+
+                <label for="nickname">닉네임</label>
+                <input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력해주세요">
+
+                <label for="password">비밀번호</label>
+                <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요">
+
+                <label for="password-confirm">비밀번호 확인</label>
+                <input type="password" name="password-confirm" id="password-confirm" placeholder="비밀번호를 다시 한 번 입력해주세요">
+
+                <input type="submit" id="submit" value="회원가입">
+            </form>
+
+            <div class="simple-login">
+                <p>간편 로그인하기</p>
+                <div class="logos">
+                    <a href="https://www.google.com/">
+                        <img src="images/google-icon.png" alt="google-icon">
+                    </a>
+                    <a href="https://www.kakaocorp.com/page/">
+                        <img src="images/kakao-icon.png" alt="google-icon">
+                    </a>
+                </div>
+            </div>
+
+            <div class="move-to-login">
+                <p>이미 회원이신가요? <a href="login.html" style="color: rgba(54, 146, 255, 1);">로그인</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="signup.js"></script>
+
+</html>
