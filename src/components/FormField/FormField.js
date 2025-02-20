@@ -12,6 +12,8 @@ const FormField = ({
   errorMessage,
   renderEnabledIcon,
   renderDisabledIcon,
+  onChange,
+  onBlur,
 }) => {
   const postfixIcon = true ? renderEnabledIcon : renderDisabledIcon;
 
@@ -23,7 +25,7 @@ const FormField = ({
           styles.field_input_box,
           styles.gray_border,
           {
-            [styles.red_border]: false,
+            [styles.red_border]: Boolean(errorMessage),
           },
         ])}
       >
@@ -33,6 +35,8 @@ const FormField = ({
           name={name}
           placeholder={placeholder}
           className={styles.field_input}
+          onChange={onChange}
+          onBlur={onBlur}
         />
         <div className={styles.icon_box}>{postfixIcon}</div>
       </div>
