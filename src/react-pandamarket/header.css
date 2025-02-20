@@ -35,6 +35,12 @@ header {
   color: rgba(75, 85, 99, 1);
   margin-left: 30px;
 }
+.used-market-selected {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3692ff;
+  margin-left: 30px;
+}
 
 .profile-background {
   background-color: rgba(156, 163, 175, 1);
