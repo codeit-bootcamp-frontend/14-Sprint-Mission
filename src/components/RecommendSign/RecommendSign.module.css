@@ -1,0 +1,11 @@
+.sign_paragraph {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
+
+.sign_paragraph a {
+  color: var(--blue);
+  text-decoration: underline;
+}

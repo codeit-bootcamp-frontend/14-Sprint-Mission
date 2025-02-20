@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { MainLayout } from "./layouts";
+import { AuthLayout, MainLayout } from "./layouts";
 
-import { HomePage } from "./pages";
+import { HomePage, SigninPage } from "./pages";
 
 function App() {
   return (
@@ -10,6 +10,9 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index path="/" element={<HomePage />} />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path="/signin" element={<SigninPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
