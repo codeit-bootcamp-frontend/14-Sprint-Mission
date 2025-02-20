@@ -88,12 +88,12 @@ const Body = () => {
     setIsSearch(true);
     setSearchValue(value);
     if (option === "latest") {
-      if (window.innerWidth <= 1199) {
-        const pagesize = 6;
+      if (window.innerWidth <= 767) {
+        const pagesize = 4;
         const response = await getProduct(pageNum, pagesize, value);
         setSearchProduct(response.list);
-      } else if (window.innerWidth <= 767) {
-        const pagesize = 4;
+      } else if (window.innerWidth <= 1199) {
+        const pagesize = 6;
         const response = await getProduct(pageNum, pagesize, value);
         setSearchProduct(response.list);
       } else {
@@ -101,15 +101,15 @@ const Body = () => {
         setSearchProduct(response.list);
       }
     } else {
-      if (window.innerWidth <= 1199) {
-        const pagesize = 6;
+      if (window.innerWidth <= 767) {
+        const pagesize = 4;
         const response = await getProduct(pageNum, pagesize, value);
         const sortedByFavorite = response.list.sort(
           (a, b) => b.favoriteCount - a.favoriteCount
         );
         setSearchProduct(sortedByFavorite);
-      } else if (window.innerWidth <= 767) {
-        const pagesize = 4;
+      } else if (window.innerWidth <= 1199) {
+        const pagesize = 6;
         const response = await getProduct(pageNum, pagesize, value);
         const sortedByFavorite = response.list.sort(
           (a, b) => b.favoriteCount - a.favoriteCount

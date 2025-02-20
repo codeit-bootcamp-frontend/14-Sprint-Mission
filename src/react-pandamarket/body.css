@@ -1,11 +1,12 @@
 .body {
-  padding-left: 360px;
-  padding-right: 360px;
+  margin-left: 360px;
+  margin-right: 360px;
   margin-top: 96px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   align-items: center;
 }
 
@@ -108,7 +109,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0px;
 }
 
 .pagination-wrap {
@@ -171,16 +172,10 @@
   }
 
   .all-product-cardContainer {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 16px;
-    justify-content: center;
-    align-items: center;
     max-width: 696px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
   }
 
   .all-product-header {
@@ -197,8 +192,8 @@
     max-width: 344px;
     width: 100%;
     margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
     margin-top: 96px;
   }
   .card-container {
@@ -214,13 +209,8 @@
   }
 
   .all-product-header {
-    display: flex;
-    flex-direction: row;
     align-items: start;
-    width: 100%;
-    margin-bottom: 16px;
     margin-top: 40px;
-    justify-content: space-between;
   }
 
   .all-product {
@@ -234,21 +224,14 @@
   }
 
   .search-option {
-    width: 63px;
+    width: 55px;
     height: 30px;
   }
 
   .all-product-cardContainer {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
     gap: 8px;
-    justify-content: center;
-    align-items: center;
-    max-width: 8px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
+    max-width: 344px;
   }
 
   .all-product-header {

@@ -5,7 +5,7 @@ import "./card.css";
 const Card = ({ images, name, price, favoriteCount, showType }) => {
   console.log(images);
   return (
-    <div className="card-wrap">
+    <div className={showType === "전체상품" ? "" : 'card-wrap'}>
       <img
         src={images}
         alt="image"
