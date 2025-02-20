@@ -25,17 +25,21 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
     (configMode) => (e) => {
       const { name, value } = e.target;
 
-      setFormValue((prev) => ({
-        ...prev,
-        values: { ...prev.values, [name]: value },
-        errors:
-          mode === configMode
-            ? {
-                ...prev.errors,
-                [name]: prev.validators[name].validate(value),
-              }
-            : { ...prev.errors },
-      }));
+      setFormValue((prev) => {
+        const allValues = prev.values;
+
+        return {
+          ...prev,
+          values: { ...prev.values, [name]: value },
+          errors:
+            mode === configMode
+              ? {
+                  ...prev.errors,
+                  [name]: prev.validators[name].validate(value, allValues),
+                }
+              : { ...prev.errors },
+        };
+      });
 
       setIsDirty(true);
     },
@@ -45,9 +49,21 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
   const changeHandler = makeInteractionHandler("onChange");
   const blurHandler = makeInteractionHandler("onBlur");
 
+  const removeError = useCallback((target) => {
+    setFormValue((prev) => {
+      return {
+        ...prev,
+        errors: {
+          ...prev.errors,
+          [target]: [],
+        },
+      };
+    });
+  }, []);
+
   const isValidate = useMemo(() => {
     const filtered =
-      Object.values(formValue.errors).filter(({ errors }) => errors.length)
+      Object.values(formValue.errors).filter(({ errors }) => errors?.length)
         .length === 0;
 
     const isAllValueNotEmpty = Object.values(formValue.values).every(
@@ -57,7 +73,14 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
     return filtered && isAllValueNotEmpty;
   }, [formValue.errors, formValue.values]);
 
-  return { isDirty, isValidate, formValue, changeHandler, blurHandler };
+  return {
+    isDirty,
+    isValidate,
+    formValue,
+    changeHandler,
+    blurHandler,
+    removeError,
+  };
 };
 
 export default useForm;

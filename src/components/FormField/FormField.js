@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useMemo, useState } from "react";
 
 import styles from "./FormField.module.css";
 
@@ -15,7 +15,18 @@ const FormField = ({
   onChange,
   onBlur,
 }) => {
-  const postfixIcon = true ? renderEnabledIcon : renderDisabledIcon;
+  const [isExistIcon, setIsExistIcon] = useState(false);
+
+  const convertableTypeForPassword = useMemo(() => {
+    if (type === "password") {
+      return isExistIcon ? "text" : "password";
+    }
+    return type;
+  }, [type, isExistIcon]);
+
+  const postfixIcon = isExistIcon ? renderEnabledIcon : renderDisabledIcon;
+
+  const toggleIconHandler = () => setIsExistIcon((prev) => !prev);
 
   return (
     <label htmlFor={id}>
@@ -31,14 +42,20 @@ const FormField = ({
       >
         <input
           id={label}
-          type={type}
+          type={convertableTypeForPassword}
           name={name}
           placeholder={placeholder}
           className={styles.field_input}
           onChange={onChange}
           onBlur={onBlur}
         />
-        <div className={styles.icon_box}>{postfixIcon}</div>
+        <button
+          type="button"
+          className={styles.icon_box}
+          onClick={toggleIconHandler}
+        >
+          {postfixIcon}
+        </button>
       </div>
       <p className={styles.error_message}>{errorMessage}</p>
     </label>

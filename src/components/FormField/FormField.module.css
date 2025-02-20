@@ -18,6 +18,10 @@
 .icon_box {
   display: flex;
   margin-left: 5px;
+  border: none;
+  outline: none;
+  background-color: none;
+  cursor: pointer;
 }
 
 .gray_border {

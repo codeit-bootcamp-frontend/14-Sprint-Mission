@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { AuthLayout, MainLayout } from "./layouts";
 
-import { HomePage, SigninPage } from "./pages";
+import { HomePage, SigninPage, SignupPage } from "./pages";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/signin" element={<SigninPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

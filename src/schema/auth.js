@@ -9,6 +9,26 @@ const password = new Validator("password")
   .isEmpty(ERROR_MESSAGE.PASSWORD.IS_EMPTY_PASSWORD)
   .isMoreThanEight(ERROR_MESSAGE.PASSWORD.IS_MORE_THAN_EIGHT_PASSWORD);
 
-const signinSchema = { email, password };
+const passwordForSignup = new Validator("password")
+  .isEmpty(ERROR_MESSAGE.PASSWORD.IS_EMPTY_PASSWORD)
+  .isMoreThanEight(ERROR_MESSAGE.PASSWORD.IS_MORE_THAN_EIGHT_PASSWORD)
+  .isMatch(ERROR_MESSAGE.PASSWORD.IS_NOT_MATCH_PASSWORD, "repassword");
 
-export { signinSchema };
+const repassword = new Validator("password")
+  .isEmpty(ERROR_MESSAGE.PASSWORD.IS_EMPTY_PASSWORD)
+  .isMoreThanEight(ERROR_MESSAGE.PASSWORD.IS_MORE_THAN_EIGHT_PASSWORD)
+  .isMatch(ERROR_MESSAGE.PASSWORD.IS_NOT_MATCH_PASSWORD, "password");
+
+const nickname = new Validator("nickname").isEmpty(
+  ERROR_MESSAGE.NICKNAME.IS_EMPTY_NICKNAME
+);
+
+const signinSchema = { email, password };
+const signupSchema = {
+  email,
+  password: passwordForSignup,
+  repassword,
+  nickname,
+};
+
+export { signinSchema, signupSchema };

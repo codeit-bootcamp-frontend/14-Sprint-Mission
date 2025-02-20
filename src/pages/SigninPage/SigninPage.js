@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -13,6 +14,7 @@ import useForm from "../../hooks/useForm";
 import styles from "./SigninPage.module.css";
 
 const SigninPage = () => {
+  const navigate = useNavigate();
   const { formValue, isDirty, isValidate, blurHandler, changeHandler } =
     useForm({
       mode: "onBlur",
@@ -20,9 +22,14 @@ const SigninPage = () => {
       resolver: signinSchema,
     });
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate("/items");
+  };
+
   return (
     <>
-      <form className={styles.auth_form}>
+      <form className={styles.auth_form} onSubmit={submitHandler}>
         <FormField
           label="이메일"
           id="email"
@@ -43,7 +50,7 @@ const SigninPage = () => {
           onBlur={blurHandler}
           onChange={changeHandler}
         />
-        <Button type="button" disabled={!isValidate || !isDirty}>
+        <Button type="submit" disabled={!isValidate || !isDirty}>
           로그인
         </Button>
       </form>

@@ -17,7 +17,7 @@ class Validator {
   }
 
   setValidator({ validator, errorMessage }) {
-    this.#field.validators.push({ validator, errorMessage });
+    this.#field.validators.push({ validator, errorMessage, connectField: "" });
 
     return this;
   }
@@ -43,19 +43,24 @@ class Validator {
     });
   }
 
-  isMatch(errorMessage) {
-    return this.setValidator({
-      validator: authValidator.isMatch,
+  isMatch(errorMessage, connectField) {
+    this.#field.validators.push({
+      validator: authValidator.isNotMatch,
       errorMessage,
+      connectField,
     });
+
+    return this;
   }
 
-  validate(value) {
+  validate(value, allValues) {
     const errors = [];
     const { validators } = this.#field;
 
-    for (const { validator, errorMessage } of validators) {
-      if (validator(value) === true) {
+    for (const { validator, errorMessage, connectField } of validators) {
+      console.log(connectField, allValues[connectField]);
+
+      if (validator(value, allValues[connectField]) === true) {
         errors.push(errorMessage);
       }
     }
