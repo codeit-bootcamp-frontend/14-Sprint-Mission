@@ -1,0 +1,93 @@
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable.css");
+
+header {
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(229, 231, 235, 1); /* 회색 구분선 */
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: 153px;
+  height: 51px;
+}
+
+.free-board {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(75, 85, 99, 1);
+  margin-left: 47px;
+}
+
+.used-market {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(75, 85, 99, 1);
+  margin-left: 30px;
+}
+.used-market-selected {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3692ff;
+  margin-left: 30px;
+}
+
+.profile-background {
+  background-color: rgba(156, 163, 175, 1);
+  border-radius: 40px;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 1199px) {
+  header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .free-board {
+    margin-left: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .logo {
+    width: 100px;
+    height: 35px;
+  }
+
+  .free-board {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .used-market {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .profile-background {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile {
+    width: 30px;
+    height: 30px;
+  }
+}
