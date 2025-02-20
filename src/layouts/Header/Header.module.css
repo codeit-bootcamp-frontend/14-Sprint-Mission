@@ -1,0 +1,57 @@
+.main_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fcfcfc;
+}
+
+.main_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1520px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 200px;
+}
+
+.logo {
+  width: 152px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.login_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 48px;
+  background-color: var(--blue);
+  color: var(--gray-100);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/** 태블릿 반응형 */
+@media (max-width: 1199px) {
+  .main_nav {
+    padding: 0 24px;
+  }
+}
+
+/** 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .main_nav {
+    padding: 0 12px;
+  }
+
+  .logo {
+    width: 102px;
+    height: 35px;
+    cursor: pointer;
+  }
+}

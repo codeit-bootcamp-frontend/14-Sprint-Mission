@@ -1,0 +1,61 @@
+.center_content {
+  position: relative;
+  max-width: 1120px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.main_footer {
+  background-color: var(--gray-900);
+}
+
+.footer_box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 160px;
+  padding-top: 32px;
+  color: var(--gray-400);
+}
+
+.footer_link {
+  display: flex;
+  gap: 30px;
+}
+
+.footer_link a {
+  color: var(--gray-200);
+  cursor: pointer;
+}
+
+.footer_icon {
+  display: flex;
+  gap: 12px;
+}
+
+.footer_icon img {
+  width: 20px;
+  cursor: pointer;
+}
+
+/** 태블릿 반응형 */
+@media (max-width: 1199px) {
+  .footer_box {
+    padding: 32px 104px 0;
+  }
+}
+
+/** 모바일 반응형  */
+@media (min-width: 375px) and (max-width: 767px) {
+  .footer_box {
+    position: relative;
+    padding: 32px 32px 0;
+  }
+
+  .footer_box p {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+  }
+}
