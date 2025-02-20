@@ -1,15 +1,18 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 import Header from "../Header";
+import Footer from "../Footer";
 
 import styles from "./MainLayout.module.css";
-import Footer from "../Footer/Footer";
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
     <>
       <Header />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
