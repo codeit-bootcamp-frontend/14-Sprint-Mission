@@ -9,11 +9,13 @@ import styles from "./NavHeader.module.css";
 const navList = [
   {
     to: "/board",
-    className: ({ isActive }) => isActive && styles.active,
+    name: "자유게시판",
+    className: ({ isActive }) => (isActive ? styles.active : undefined),
   },
   {
     to: "/items",
-    className: ({ isActive }) => isActive && styles.active,
+    name: "중고마켓",
+    className: ({ isActive }) => (isActive ? styles.active : undefined),
   },
 ];
 
@@ -25,10 +27,10 @@ const NavHeader = () => {
           <img className={styles.logo} src={Logo} alt="판다마켓 로고" />
         </Link>
         <ul className={styles.menu_list}>
-          {navList.map(({ to, className }) => (
+          {navList.map(({ to, name, className }) => (
             <li key={to}>
               <NavLink to={to} className={className}>
-                자유게시판
+                {name}
               </NavLink>
             </li>
           ))}

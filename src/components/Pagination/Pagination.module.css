@@ -1,0 +1,53 @@
+.pagination_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination_list_item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-500);
+  overflow: hidden;
+}
+
+.pagination_list_item button {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pagination_list_item:not(.active) button:not(:disabled):hover {
+  background-color: var(--gray-100);
+}
+
+.pagination_list_item button:disabled {
+  background-color: var(--gray-200);
+  cursor: default;
+}
+
+.pagination_list_item button img {
+  height: 18px;
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.active {
+  background-color: var(--blue);
+}
+
+.active button {
+  color: var(--gray-50);
+}

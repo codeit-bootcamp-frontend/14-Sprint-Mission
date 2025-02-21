@@ -46,6 +46,12 @@ code {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
 :root {
   --gray-900: #111827;
   --gray-800: #1f2937;
@@ -56,6 +62,6 @@ code {
   --gray-200: #e5e7eb;
   --gray-100: #f3f4f6;
   --gray-50: #f9fafb;
-  --blue: #3682ff;
+  --blue: #3692ff;
   --error-red: #f74747;
 }

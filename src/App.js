@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { AuthLayout, MainLayout, Header, NavHeader } from "./layouts";
-
-import { HomePage, SigninPage, SignupPage } from "./pages";
+import { HomePage, ItemsPage, SigninPage, SignupPage } from "./pages";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
           <Route index path="/" element={<HomePage />} />
         </Route>
         <Route element={<MainLayout header={<NavHeader />} />}>
-          <Route index path="/items" element={<HomePage />} />
+          <Route index path="/items" element={<ItemsPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/signin" element={<SigninPage />} />

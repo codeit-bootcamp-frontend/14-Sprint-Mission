@@ -42,7 +42,7 @@
 }
 
 .menu_list a {
-  color: #4b5563;
+  color: var(--gray-600);
 }
 
 .menu_list .active {
