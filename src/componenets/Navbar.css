@@ -1,0 +1,30 @@
+.brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.brand-name {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  font-family: "ROKAF Sans";
+  font-size: 26px;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.login-button {
+  flex-shrink: 0;
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 10px 40px;
+  border-radius: 8px;
+}
