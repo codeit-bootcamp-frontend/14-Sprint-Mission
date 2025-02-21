@@ -1,3 +1,23 @@
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 200px;
+}
+
 .brand {
   display: flex;
   flex-shrink: 0;
@@ -25,6 +45,6 @@
   flex-shrink: 0;
   background-color: var(--blue);
   color: #ffffff;
-  padding: 10px 40px;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
 }

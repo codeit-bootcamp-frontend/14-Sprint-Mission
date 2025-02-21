@@ -6,13 +6,13 @@ function Navbar() {
   return (
     <nav>
       <div class="header">
-        <Link class="brand-name" href="/">
+        <Link class="brand-name" to="/">
           <img class="logo" src={logo} alt="logo" />
           판다마켓
         </Link>
-        <a class="login-button" href="/signin.html">
+        <Link class="login-button" to="/signin">
           로그인
-        </a>
+        </Link>
       </div>
     </nav>
   );

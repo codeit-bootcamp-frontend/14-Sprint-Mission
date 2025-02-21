@@ -1,0 +1,40 @@
+footer {
+  background-color: var(--gray-900);
+}
+
+.footer {
+  height: 160px;
+  color: var(--gray-400);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 30px 2rem;
+}
+
+.codeit,
+.info,
+.social {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  justify-content: center;
+  gap: 30px;
+}
+
+.social {
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.info a {
+  color: var(--gray-300);
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
