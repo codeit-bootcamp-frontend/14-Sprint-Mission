@@ -1,0 +1,146 @@
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    background-color: #FCFCFC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    margin-bottom: 40px;
+}
+
+.header-logo a img {
+    width: 396px;
+    height: 132px;
+}
+
+main {
+    width: 640px;
+    height: 618px;
+}
+
+.login-container {
+    display: block;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1F2937;
+    line-height: 26px;
+}
+
+.login-form input {
+    box-sizing: border-box;
+    display: block;
+    padding: 16px 24px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+    background-color: #F3F4F6;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.login-form input::placeholder {
+    color: #9CA3AF;
+}
+
+button {
+    width: 100%;
+    border-radius: 40px;
+    padding: 16px 124px;
+    margin-bottom: 24px;
+    color: white;
+    background-color: #3692FF;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    align-items: center;
+    border: 0px;
+}
+
+button:focus {
+    outline: none;
+    outline-color: #3692FF;
+}
+
+.easy-login p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #1F2937;
+}
+
+.easy-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E6F2FF;
+    border-radius: 8px;
+    height: 42px;
+    padding: 16px 23px;
+    margin-bottom: 24px;
+}
+
+.login-icon {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.login-icon img {
+    box-sizing: border-box;
+    width: 42px;
+    height: 42px;
+}
+
+.join-membership {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #1F2937;
+    gap: 4px;
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%); /* 아이콘을 수직 중앙 정렬 */
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    cursor: pointer;
+}
+
+#eye-icon {
+    width: 24px;
+    height: 24px;
+}
