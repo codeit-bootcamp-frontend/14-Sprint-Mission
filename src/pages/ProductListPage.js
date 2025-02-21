@@ -7,21 +7,21 @@ import "./ProductListPage.css";
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
   const [products, setProducts] = useState();
-  const [displayedBestProducts, setDisplayedBestProducts] = useState([]);
-  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [pageSize, setPageSize] = useState(10);
+  const [pageBestSize, setPageBestSize] = useState(4);
 
   // 전체 상품 받아오기
-  const handleLoad = async () => {
-    const result = await getProducts({});
-    const { list } = result;
+  const handleLoad = async (pageSize) => {
+    const result = await getProducts({ pageSize: pageSize });
+    const { list, totalCount } = result;
     setProducts(list);
   };
 
   // 베스트 상품 받아오기
-  const handleBestLoad = async () => {
+  const handleBestLoad = async (pageSize) => {
     const bestResult = await getProducts({
       page: 1,
-      pageSize: 4,
+      pageSize: pageSize,
       keyword: "",
       orderBy: "favorite",
     });
@@ -29,44 +29,11 @@ function ProductListPage() {
     setBestProducts(list);
   };
 
-  // 미디어 사이즈에 따라 물품 개수 가져오기
-  const getDisplayedProducts = (
-    productList,
-    desktopCount,
-    tabletCount,
-    mobileCount
-  ) => {
-    const windowWidth = window.innerWidth;
-    if (windowWidth >= 1024) {
-      return productList?.slice(0, desktopCount);
-    } else if (windowWidth >= 601) {
-      return productList?.slice(0, tabletCount);
-    } else {
-      return productList?.slice(0, mobileCount);
-    }
-  };
-
-  // 보여주는 상품 state 변경
-  const updateDisplayedProducts = () => {
-    setDisplayedBestProducts(getDisplayedProducts(bestProducts, 4, 2, 1));
-    setDisplayedProducts(getDisplayedProducts(products, 10, 6, 4));
-  };
-
   // 상품 데이터 불러오기
   useEffect(() => {
-    handleLoad();
-    handleBestLoad();
+    handleLoad(pageSize);
+    handleBestLoad(pageBestSize);
   }, []);
-
-  // 창 크기 변경시 보여지는 상품 개수 변경
-  useEffect(() => {
-    updateDisplayedProducts();
-    const handleResize = () => {
-      updateDisplayedProducts();
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [bestProducts, products]);
 
   return (
     <div>
@@ -75,7 +42,7 @@ function ProductListPage() {
         <div className="best-container">
           <h2>베스트 상품</h2>
           <div className="best-products">
-            {displayedBestProducts?.map((product) => (
+            {bestProducts?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
@@ -85,7 +52,7 @@ function ProductListPage() {
             <h2>전체</h2>
           </div>
           <div className="all-products">
-            {displayedProducts?.map((product) => (
+            {products?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>

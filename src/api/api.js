@@ -12,5 +12,7 @@ export async function getProducts({
     throw new Error("상품을 불러오는데 실패했습니다.");
   }
   const body = await res.json();
+  console.log(body);
+
   return body;
 }
