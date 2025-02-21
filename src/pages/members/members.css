@@ -54,12 +54,12 @@ main#members > form {
   cursor: pointer;
   appearance: none;
   background-color: transparent;
-  background-image: url("../assets/images/login/visibility_off.svg");
+  background-image: url("src/assets/images/login/visibility_off.svg");
 }
 .input-wrapper > #visibility.checked {
-  background-image: url("../assets/images/login/visibility_on.svg");
+  background-image: url("src/assets/images/login/visibility_on.svg");
 }
-form > button#btn-submit-login {
+form > button#btn-submit {
   font-weight: 600;
   width: 100%;
 }

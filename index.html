@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -11,101 +11,17 @@
     />
     <meta property="og:url" content="https://fe-14-sprint-mission-basic-lsj.netlify.app/" />
     <title>판다 마켓</title>
-    <link rel="icon" href="assets/images/logo/favicon.ico" />
+    <link rel="icon" href="/public/favicon.ico" />
     <link
       rel="preload"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/home.css" />
   </head>
   <body>
-    <header>
-      <div class="wrapper flex-sides">
-        <div class="left flex gap-8">
-          <img src="assets/images/common/logo.svg" alt="로고 이미지" />
-          <a href="/" class="text-primary-100">판다마켓</a>
-        </div>
-        <a href="login.html" class="button small-48 flex-center">로그인</a>
-      </div>
-    </header>
-    <main class="landing-page-content">
-      <section class="banner flex-center" id="hero">
-        <div class="wrapper grid">
-          <h1 class="text-bold">일상의 모든 물건을 <br />거래해 보세요</h1>
-          <a class="button flex-center" href="items.html">구경하러 가기</a>
-        </div>
-        <img src="assets/images/home/hero-image.png" alt="배너 이미지" />
-      </section>
-      <section class="cards" id="features">
-        <div class="card-wrapper flex-center">
-          <div class="card flex-center gap-40" id="feature-1">
-            <img src="assets/images/home/feature1-image.png" alt="랜딩페이지 이미지 1" />
-            <div class="grid gap-12">
-              <p class="text-2lg text-primary-100 text-bold">Hot item</p>
-              <div class="grid gap-24">
-                <p class="heading">인기 상품을<br />확인해 보세요</p>
-                <p class="text-2xl">가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-wrapper flex-center">
-          <div class="card flex-center gap-40 flex-reverse" id="feature-1">
-            <img src="assets/images/home/feature2-image.png" alt="랜딩페이지 이미지 2" />
-            <div class="grid gap-12">
-              <p class="text-2lg text-primary-100 text-bold">Search</p>
-              <div class="grid gap-24">
-                <p class="heading">구매를 원하는<br />상품을 검색하세요</p>
-                <p class="text-2xl">구매하고 싶은 물품은 검색해서<br />쉽게 찾아보세요</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-wrapper flex-center">
-          <div class="card flex-center gap-40">
-            <img src="assets/images/home/feature3-image.png" alt="랜딩페이지 이미지 3" />
-            <div class="grid gap-12">
-              <p class="text-2lg text-primary-100 text-bold">Register</p>
-              <div class="grid gap-24">
-                <p class="heading">판매를 원하는 <br />상품을 등록하세요</p>
-                <p class="text-2xl">어떤 물건이든 판매하고 싶은 상품을 <br />쉽게 등록하세요</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="banner" id="bottom-banner">
-        <div class="wrapper flex-center">
-          <p class="heading">믿을 수 있는 <br />판다마켓 중고 거래</p>
-          <img src="assets/images/home/bottom-banner-image.png" alt="랜딩페이지 하단 이미지" />
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="wrapper grid">
-        <p id="domain-name">©codeit - 2024</p>
-        <ul class="flex-center" id="links">
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-        <div class="flex-right gap-12" id="social-media">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/social/facebook-logo.svg" alt="페이스북" width="20" />
-          </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/social/twitter-logo.svg" alt="트위터" width="20" />
-          </a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/social/youtube-logo.svg" alt="유튜브" width="20" />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/social/instagram-logo.svg" alt="인스타그램" width="20" />
-          </a>
-        </div>
-      </div>
-    </footer>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

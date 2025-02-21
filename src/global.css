@@ -34,7 +34,7 @@ a {
 @font-face {
   /* 로고 폰트 */
   font-family: "ROKAF Sans";
-  src: url("../assets/font/ROKAF\ Sans\ Bold.ttf");
+  src: url("./assets/font/ROKAF\ Sans\ Bold.ttf");
 }
 * {
   margin: 0;
