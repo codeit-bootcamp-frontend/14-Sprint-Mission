@@ -6,16 +6,28 @@ nav {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1280px;
   height: 70px;
   margin: 0 auto;
   padding: 0 200px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+}
+
+.link-list {
+  display: flex;
+  list-style: none;
+  gap: 30px;
 }
 
 .brand {
@@ -45,6 +57,27 @@ a {
   flex-shrink: 0;
   background-color: var(--blue);
   color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 10px 25px;
   border-radius: 8px;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .link-list {
+    padding: 8px;
+    gap: 8px;
+  }
 }

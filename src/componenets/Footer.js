@@ -7,25 +7,25 @@ import instagramIcon from "../assets/social/instagram.png";
 function Footer() {
   return (
     <footer>
-      <div class="footer">
-        <div class="codeit">
+      <div className="footer">
+        <div className="codeit">
           <p>@codeit - 2024</p>
         </div>
-        <div class="info">
+        <div className="info">
           <a href="/privacy">Privacy Policy</a>
           <a href="/faq">FAQ</a>
         </div>
-        <div class="social">
-          <a class="icon" href="http://facebook.com" target="_blank">
+        <div className="social">
+          <a className="icon" href="http://facebook.com" target="_blank">
             <img src={facebookIcon} alt="facebook icon" width="20px" />
           </a>
-          <a class="icon" href="http://twitter.com" target="_blank">
+          <a className="icon" href="http://twitter.com" target="_blank">
             <img src={twitterIcon} alt="twitter icon" width="20px" />
           </a>
-          <a class="icon" href="http://youtube.com" target="_blank">
+          <a className="icon" href="http://youtube.com" target="_blank">
             <img src={youtubeIcon} alt="youtube icon" width="20px" />
           </a>
-          <a class="icon" href="http://instagram.com" target="_blank">
+          <a className="icon" href="http://instagram.com" target="_blank">
             <img src={instagramIcon} alt="info icon" width="20px" />
           </a>
         </div>
