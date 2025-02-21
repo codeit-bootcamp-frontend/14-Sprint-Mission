@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import FacebookLogo from "../assets/images/social/facebook-logo.svg";
+import InstagramLogo from "../assets/images/social/instagram-logo.svg";
 import TwitterLogo from "../assets/images/social/twitter-logo.svg";
 import YoutubeLogo from "../assets/images/social/youtube-logo.svg";
-import InstagramLogo from "../assets/images/social/instagram-logo.svg";
 
 export default function Footer() {
   return (
@@ -9,8 +10,12 @@ export default function Footer() {
       <div className="wrapper grid">
         <p id="domain-name">©codeit - 2024</p>
         <ul className="flex-center" id="links">
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li>
+            <Link to="/privacy">Privacy Policy</Link>
+          </li>
+          <li>
+            <Link to="/faq">FAQ</Link>
+          </li>
         </ul>
         <div className="flex-right gap-12" id="social-media">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
@@ -27,5 +32,6 @@ export default function Footer() {
           </a>
         </div>
       </div>
-    </footer>)
+    </footer>
+  );
 }

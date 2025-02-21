@@ -1,15 +1,21 @@
+import { Link } from "react-router-dom";
 import BannerBottom from "../../assets/images/home/bottom-banner-image.png";
 import ImageFeature1 from "../../assets/images/home/feature1-image.png";
 import ImageFeature2 from "../../assets/images/home/feature2-image.png";
 import ImageFeature3 from "../../assets/images/home/feature3-image.png";
 import BannerTop from "../../assets/images/home/hero-image.png";
 import Footer from "../../components/Footer";
+import HeaderNav from "../../components/HeaderNav";
 import Card from "./components/Card";
 import "./home.css";
+import { useContext } from "react";
+import { UserContext } from "../../app";
 
 export default function Home() {
+  const { user } = useContext(UserContext);
   return (
     <>
+      <HeaderNav />
       <main className="landing-page-content">
         <section className="banner flex-center" id="hero">
           <div className="wrapper grid">
@@ -17,9 +23,9 @@ export default function Home() {
               일상의 모든 물건을 <br />
               거래해 보세요
             </h1>
-            <a className="button flex-center" href="items.html">
+            <Link to={user ? "/items" : "/login"} className="button flex-center">
               구경하러 가기
-            </a>
+            </Link>
           </div>
           <img src={BannerTop} alt="배너 이미지" />
         </section>

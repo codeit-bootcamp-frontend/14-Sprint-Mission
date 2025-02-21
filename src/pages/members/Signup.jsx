@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
 import TextInput from "./components/TextInput";
 import "./members.css";
+import { UserContext } from "../../app";
 
 export default function Signup() {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({});
   const [isBtnDisabled, setBtnDisabled] = useState(true);
 
@@ -23,6 +26,12 @@ export default function Signup() {
     const errMsgs = document.querySelectorAll(".text-error");
     if (errMsgs.length === 0) setBtnDisabled(false);
   }, [formData]);
+
+  function onSignup(e) {
+    e.preventDefault();
+    setUser({ email: formData.email, nickname: formData.nickname });
+    navigate("/");
+  }
 
   return (
     <main className="form-wrapper flex-center gap-40" id="members">
@@ -55,7 +64,7 @@ export default function Signup() {
           onChange={(v) => setFormData({ ...formData, passwordConfirmation: v })}
           isValid={formData.password === formData.passwordConfirmation}
         />
-        <button type="submit" id="btn-submit" disabled={isBtnDisabled}>
+        <button type="submit" id="btn-submit" disabled={isBtnDisabled} onClick={onSignup}>
           회원가입
         </button>
         <SocailLogin />
