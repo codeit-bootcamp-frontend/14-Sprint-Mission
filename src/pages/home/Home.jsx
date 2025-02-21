@@ -1,15 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../app";
 import BannerBottom from "../../assets/images/home/bottom-banner-image.png";
 import ImageFeature1 from "../../assets/images/home/feature1-image.png";
 import ImageFeature2 from "../../assets/images/home/feature2-image.png";
 import ImageFeature3 from "../../assets/images/home/feature3-image.png";
 import BannerTop from "../../assets/images/home/hero-image.png";
-import Footer from "../../components/Footer";
 import HeaderNav from "../../components/HeaderNav";
 import Card from "./components/Card";
+import Footer from "./components/Footer";
 import "./home.css";
-import { useContext } from "react";
-import { UserContext } from "../../app";
 
 export default function Home() {
   const { user } = useContext(UserContext);

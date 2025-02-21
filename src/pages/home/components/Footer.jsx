@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import FacebookLogo from "../assets/images/social/facebook-logo.svg";
-import InstagramLogo from "../assets/images/social/instagram-logo.svg";
-import TwitterLogo from "../assets/images/social/twitter-logo.svg";
-import YoutubeLogo from "../assets/images/social/youtube-logo.svg";
+import FacebookLogo from "../../../assets/images/social/facebook-logo.svg";
+import InstagramLogo from "../../../assets/images/social/instagram-logo.svg";
+import TwitterLogo from "../../../assets/images/social/twitter-logo.svg";
+import YoutubeLogo from "../../../assets/images/social/youtube-logo.svg";
 
 export default function Footer() {
   return (
