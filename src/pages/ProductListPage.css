@@ -76,6 +76,7 @@ main {
   font-weight: 400;
   background-color: var(--blue);
   min-width: 132px;
+  cursor: pointer;
 }
 
 .mobile {

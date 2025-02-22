@@ -51,14 +51,14 @@ function ProductListPage() {
     <div>
       <Navbar isLoggedIn={true} />
       <main>
-        {/* <div className="best-container">
+        <div className="best-container">
           <h2>베스트 상품</h2>
           <div className="best-products">
             {bestProducts?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
-        </div> */}
+        </div>
         <div className="all-container">
           <div className="filter">
             <div className="row">
