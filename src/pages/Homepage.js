@@ -4,8 +4,8 @@ import pandaImg2 from "../assets/panda2.png";
 import hotImg from "../assets/hot.png";
 import searchImg from "../assets/search.png";
 import registerImg from "../assets/register.png";
-import Navbar from "../componenets/Navbar";
-import Footer from "../componenets/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Homepage() {
   return (

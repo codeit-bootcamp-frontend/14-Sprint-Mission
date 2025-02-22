@@ -1,7 +1,9 @@
 nav {
+  width: 100%;
   position: sticky;
   top: 0;
   background-color: #ffffff;
+  z-index: 999;
 }
 
 a {
@@ -74,6 +76,10 @@ a {
 
   .logo {
     display: none;
+  }
+
+  .brand-name {
+    font-size: 20px;
   }
 
   .link-list {

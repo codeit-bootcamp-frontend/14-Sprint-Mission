@@ -3,6 +3,7 @@ import { CiHeart } from "react-icons/ci";
 
 function Product({ product }) {
   const { id, images, name, price, favoriteCount } = product;
+  const formatPrice = price.toLocaleString("ko-KR");
   return (
     <div className="product">
       <img
@@ -13,7 +14,7 @@ function Product({ product }) {
       />
       <div className="product-details">
         <h2 className="product-name">{name}</h2>
-        <p className="product-price">{`${price}원`}</p>
+        <p className="product-price">{`${formatPrice}원`}</p>
         <span className="product-favorite">
           <CiHeart />
           {favoriteCount}
