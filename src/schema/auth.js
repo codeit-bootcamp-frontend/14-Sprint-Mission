@@ -5,7 +5,7 @@ const email = new Validator("email")
   .isEmpty(ERROR_MESSAGE.EMAIL.IS_EMPTY_EMAIL)
   .isWrongEmailFormat(ERROR_MESSAGE.EMAIL.IS_WRONG_EMAIL_FORMAT);
 
-const password = new Validator("password")
+const passwordForSignin = new Validator("password")
   .isEmpty(ERROR_MESSAGE.PASSWORD.IS_EMPTY_PASSWORD)
   .isMoreThanEight(ERROR_MESSAGE.PASSWORD.IS_MORE_THAN_EIGHT_PASSWORD);
 
@@ -23,7 +23,7 @@ const nickname = new Validator("nickname").isEmpty(
   ERROR_MESSAGE.NICKNAME.IS_EMPTY_NICKNAME
 );
 
-const signinSchema = { email, password };
+const signinSchema = { email, password: passwordForSignin };
 const signupSchema = {
   email,
   password: passwordForSignup,

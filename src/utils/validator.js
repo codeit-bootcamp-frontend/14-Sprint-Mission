@@ -58,8 +58,6 @@ class Validator {
     const { validators } = this.#field;
 
     for (const { validator, errorMessage, connectField } of validators) {
-      console.log(connectField, allValues[connectField]);
-
       if (validator(value, allValues[connectField]) === true) {
         errors.push(errorMessage);
       }

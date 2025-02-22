@@ -46,15 +46,8 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
     [mode]
   );
 
-  const changeHandler = useCallback(
-    () => makeInteractionHandler("onChange"),
-    [makeInteractionHandler]
-  );
-
-  const blurHandler = useCallback(
-    () => makeInteractionHandler("onBlur"),
-    [makeInteractionHandler]
-  );
+  const changeHandler = makeInteractionHandler("onChange");
+  const blurHandler = makeInteractionHandler("onBlur");
 
   const removeError = useCallback((target) => {
     setFormValue((prev) => {

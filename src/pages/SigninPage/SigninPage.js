@@ -38,7 +38,6 @@ const SigninPage = () => {
           placeholder="이메일을 입력해주세요."
           errorMessage={formValue.errors?.email?.errors[0] ?? ""}
           onBlur={blurHandler}
-          onChange={changeHandler}
         />
         <FormField
           label="비밀번호"
@@ -48,7 +47,6 @@ const SigninPage = () => {
           placeholder="비밀번호를 입력해주세요."
           errorMessage={formValue.errors?.password?.errors[0] ?? ""}
           onBlur={blurHandler}
-          onChange={changeHandler}
         />
         <Button type="submit" disabled={!isValidate || !isDirty}>
           로그인
