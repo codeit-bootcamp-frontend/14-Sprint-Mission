@@ -1,77 +1,22 @@
-import { Link, useSearchParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import debounce from "../../utils/debounce";
-import { getItems } from "../../api/item";
-import useWindowSize from "../../hooks/useWindowSize";
 import { CardItemList, Input, Pagination, Select } from "../../components";
+import useItemPageState from "./useItemPageState";
 
 import SearchIcon from "../../assets/icons/ic_search.svg";
 import styles from "./ItemsPage.module.css";
 
 const PAGINATION_AMOUNT = 5;
 
-const columnList = {
-  best: {
-    desktop: 4,
-    tablet: 2,
-    mobile: 1,
-  },
-  all: {
-    desktop: 10,
-    tablet: 6,
-    mobile: 4,
-  },
-};
-
 const ItemsPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [itemList, setItemList] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const windowSize = useWindowSize({
-    desktop: 1200,
-    tablet: 768,
-  });
-
-  const currentPageNumber = Number(searchParams.get("page")) || 1;
-  const sortBy = searchParams.get("sortBy") || "recent";
-  const keyword = searchParams.get("keyword") || "";
-
-  const currentPageSize = columnList.all[windowSize];
-  const currentBestItemsAmount = columnList.best[windowSize];
-
-  const searchKeywordChangeHandler = debounce((e) => {
-    const { value } = e.target;
-
-    setSearchParams((prev) => {
-      const newSearchParams = new URLSearchParams(prev);
-      newSearchParams.set("keyword", value);
-      newSearchParams.set("page", 1);
-
-      return newSearchParams;
-    });
-  }, 300);
-
-  const requestItems = useCallback(async () => {
-    const result = await getItems({
-      page: currentPageNumber,
-      pageSize: currentPageSize,
-      sortBy,
-      keyword,
-    });
-
-    setItemList(result.list);
-    setTotalCount(result.totalCount);
-  }, [currentPageNumber, currentPageSize, sortBy, keyword]);
-
-  useEffect(() => {
-    requestItems();
-  }, [requestItems]);
-
-  const bestItemList =
-    itemList
-      ?.sort((a, b) => b.favoriteCount - a.favoriteCount)
-      .slice(0, currentBestItemsAmount) ?? [];
+  const {
+    itemList,
+    bestItemList,
+    keyword,
+    totalCount,
+    currentPageNumber,
+    typingKeywordChangeHandler,
+  } = useItemPageState();
 
   return (
     <div className={styles.main_center}>
@@ -94,7 +39,7 @@ const ItemsPage = () => {
               className={styles.input_wrapper}
               placeholder="검색할 상품을 입력해주세요."
               prefix={<img src={SearchIcon} alt="검색 아이콘" />}
-              onChange={searchKeywordChangeHandler}
+              onChange={typingKeywordChangeHandler}
             />
             <Link className={styles.search_button} to="/additem">
               상품 등록하기

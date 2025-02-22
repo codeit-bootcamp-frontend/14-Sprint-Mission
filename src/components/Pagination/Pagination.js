@@ -6,10 +6,10 @@ import styles from "./Pagination.module.css";
 
 const Pagination = ({
   currentPageNumber = 1,
-  pageSize,
-  totalCount,
+  pageSize = 5,
+  totalCount = 0,
+  showItemCount = 5,
   className,
-  showItemCount,
 }) => {
   const [, setSearchParams] = useSearchParams();
 
