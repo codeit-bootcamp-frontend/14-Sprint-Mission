@@ -46,6 +46,12 @@ code {
   text-decoration: none;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   border: none;
   outline: none;

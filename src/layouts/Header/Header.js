@@ -12,8 +12,8 @@ const Header = () => {
         <Link href="/">
           <img className={styles.logo} src={Logo} alt="판다마켓 로고" />
         </Link>
-        <Link to="/signin">
-          <a className={styles.login_link}>로그인</a>
+        <Link to="/signin" className={styles.login_link}>
+          로그인
         </Link>
       </nav>
     </header>

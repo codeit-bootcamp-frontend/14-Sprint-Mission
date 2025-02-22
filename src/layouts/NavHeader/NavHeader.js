@@ -23,7 +23,7 @@ const NavHeader = () => {
   return (
     <header className={styles.main_header}>
       <nav className={styles.main_nav}>
-        <Link href="/">
+        <Link to="/">
           <img className={styles.logo} src={Logo} alt="판다마켓 로고" />
         </Link>
         <ul className={styles.menu_list}>

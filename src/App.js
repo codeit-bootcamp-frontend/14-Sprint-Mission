@@ -1,7 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { AuthLayout, MainLayout, Header, NavHeader } from "./layouts";
-import { HomePage, ItemsPage, SigninPage, SignupPage } from "./pages";
+import {
+  AddItemPage,
+  HomePage,
+  ItemsPage,
+  SigninPage,
+  SignupPage,
+} from "./pages";
 
 function App() {
   return (
@@ -12,6 +18,7 @@ function App() {
         </Route>
         <Route element={<MainLayout header={<NavHeader />} />}>
           <Route index path="/items" element={<ItemsPage />} />
+          <Route path="/additem" element={<AddItemPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/signin" element={<SigninPage />} />

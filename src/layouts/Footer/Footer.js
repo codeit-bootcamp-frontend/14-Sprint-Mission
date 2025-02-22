@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
         <div className={styles.footer_icon}>
           {ICON_LIST.map(({ link, iconSrc, alt }) => (
-            <a key={link} href={link} target="_blank">
+            <a key={link} href={link} target="_blank" rel="noreferrer">
               <img src={iconSrc} alt={alt} />
             </a>
           ))}
