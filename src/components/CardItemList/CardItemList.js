@@ -17,7 +17,12 @@ const CardItemList = ({ itemList, imgSize = "large", className }) => {
       ])}
     >
       {itemList?.map((item) => (
-        <CardItem key={item.id} {...item} imgSize={imgSize} />
+        <CardItem
+          key={item.id}
+          imgSrc={item.images[0]}
+          imgSize={imgSize}
+          {...item}
+        />
       ))}
     </ul>
   );

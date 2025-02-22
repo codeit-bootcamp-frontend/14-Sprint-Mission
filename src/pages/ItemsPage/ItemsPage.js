@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
 
 import { getItems } from "../../api/item";
@@ -34,25 +34,30 @@ const ItemsPage = () => {
 
   const currentPageNumber = Number(searchParams.get("page")) || 1;
   const sortBy = searchParams.get("sortBy") || "recent";
+
   const currentPageSize = columnList.all[windowSize];
   const currentBestItemsAmount = columnList.best[windowSize];
 
-  useEffect(() => {
-    const requestItems = async () => {
+  const requestItems = useCallback(
+    async (keyword) => {
       const result = await getItems({
         page: currentPageNumber,
-        sortBy,
         pageSize: currentPageSize,
+        sortBy,
+        keyword,
       });
 
       if (result) {
         setItemList(result.list);
         setTotalCount(result.totalCount);
       }
-    };
+    },
+    [currentPageNumber, currentPageSize, sortBy]
+  );
 
+  useEffect(() => {
     requestItems();
-  }, [sortBy, currentPageNumber, currentPageSize]);
+  }, [requestItems]);
 
   if (currentPageNumber < 1) {
     return <Navigate to="/items?page=1" />;
