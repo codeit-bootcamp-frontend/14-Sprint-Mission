@@ -1,22 +1,30 @@
 import classNames from 'classnames';
 import styles from './mainSection.module.css';
 
-function mainSection({ className, children }) {
-
+function MainSection({ className, boxName , children }) {
   return (
-    <section className={styles.section}>
-      <div className={styles.box_inner}>
-        <div className={styles.box}>
-          <img src="images/Img_home_01.png" alt="Hot item" />
-          <div className={styles.text_box}>
-            <span>Hot item</span>
-            <h2>인기 상품을 <br />확인해 보세요</h2>
-            <p>가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요</p>
+    <>
+      <section className={classNames(styles[className])}>
+        <div className={styles.box_inner}>
+          <div className={classNames( styles[boxName])}>
+            {children}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
-export default mainSection;
+function SectionChildren( props ) {
+  return (
+    <>
+      <img src={props.src} alt={props.alt} />
+      <div>
+        <span className="font_3">{props.span}</span>
+        <h2 className="font_4">{props.h2[0]}<br/>{props.h2[1]}</h2>
+        <p className="font_2">{props.p[0]}<br/>{props.p[1]}</p>
+      </div>
+    </>
+  );
+}
+export default { MainSection, SectionChildren };
