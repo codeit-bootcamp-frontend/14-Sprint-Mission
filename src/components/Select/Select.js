@@ -21,7 +21,12 @@ const Select = ({ children }) => {
   const toggleClickHandler = () => setIsOpen((prev) => !prev);
 
   const changeSearchParam = (value) => {
-    setSearchParams({ ...searchParams, sortBy: value });
+    setSearchParams((prev) => {
+      const newSearchParams = new URLSearchParams(prev);
+      newSearchParams.set("sortBy", value);
+
+      return newSearchParams;
+    });
   };
 
   useEffect(() => {

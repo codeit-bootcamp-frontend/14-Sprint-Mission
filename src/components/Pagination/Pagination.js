@@ -9,15 +9,16 @@ const Pagination = ({
   pageSize,
   totalCount,
   className,
+  showItemCount,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const mod = currentPageNumber % pageSize;
   const value = Math.floor(currentPageNumber / pageSize);
   const currentPage = mod === 0 ? value - 1 : value;
 
   const isDivisibleTotalCount = totalCount % pageSize === 0;
-  const totalPage = Math.floor(totalCount / pageSize);
+  const totalPage = Math.floor(totalCount / showItemCount);
   const totalFullPageCount = isDivisibleTotalCount ? totalPage : totalPage + 1;
 
   const leftPages = totalFullPageCount - currentPage * pageSize;
@@ -28,20 +29,28 @@ const Pagination = ({
     (_, i) => currentPage * pageSize + i + 1
   );
 
-  const canMovePrev = currentPageNumber !== 1;
+  const minimumPageNumberArray =
+    pageNumberArray.length > 0 ? pageNumberArray : [1];
+
+  const canMovePrev = pageLength > 0 && currentPageNumber !== 1;
   const canMoveNext = currentPageNumber < totalFullPageCount;
 
   const offSetClickHandler = (offset) => {
-    setSearchParams({ ...searchParams, page: currentPageNumber + offset });
+    setSearchParams((prev) => {
+      const newSearchParams = new URLSearchParams(prev);
+      newSearchParams.set("page", currentPageNumber + offset);
+
+      return newSearchParams;
+    });
   };
 
   const movePageClickHandler = (pageNumber) => {
-    if (pageNumber !== currentPageNumber) {
-      setSearchParams({
-        ...searchParams,
-        page: pageNumber,
-      });
-    }
+    setSearchParams((prev) => {
+      const newSearchParams = new URLSearchParams(prev);
+      newSearchParams.set("page", pageNumber);
+
+      return newSearchParams;
+    });
   };
 
   return (
@@ -55,7 +64,7 @@ const Pagination = ({
           <img src={ArrowLeftIcon} alt="왼쪽 화살표" />
         </button>
       </li>
-      {pageNumberArray.map((pageNumber) => (
+      {minimumPageNumberArray.map((pageNumber) => (
         <li
           key={pageNumber}
           className={clsx([
@@ -68,6 +77,7 @@ const Pagination = ({
           <button
             type="button"
             onClick={() => movePageClickHandler(pageNumber)}
+            disabled={pageLength < 0}
           >
             {pageNumber}
           </button>

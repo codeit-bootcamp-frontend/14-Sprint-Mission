@@ -1,6 +1,7 @@
+import { Link, useSearchParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { Link, Navigate, useSearchParams } from "react-router-dom";
 
+import debounce from "../../utils/debounce";
 import { getItems } from "../../api/item";
 import useWindowSize from "../../hooks/useWindowSize";
 import { CardItemList, Input, Pagination, Select } from "../../components";
@@ -24,7 +25,7 @@ const columnList = {
 };
 
 const ItemsPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [itemList, setItemList] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const windowSize = useWindowSize({
@@ -34,34 +35,38 @@ const ItemsPage = () => {
 
   const currentPageNumber = Number(searchParams.get("page")) || 1;
   const sortBy = searchParams.get("sortBy") || "recent";
+  const keyword = searchParams.get("keyword") || "";
 
   const currentPageSize = columnList.all[windowSize];
   const currentBestItemsAmount = columnList.best[windowSize];
 
-  const requestItems = useCallback(
-    async (keyword) => {
-      const result = await getItems({
-        page: currentPageNumber,
-        pageSize: currentPageSize,
-        sortBy,
-        keyword,
-      });
+  const searchKeywordChangeHandler = debounce((e) => {
+    const { value } = e.target;
 
-      if (result) {
-        setItemList(result.list);
-        setTotalCount(result.totalCount);
-      }
-    },
-    [currentPageNumber, currentPageSize, sortBy]
-  );
+    setSearchParams((prev) => {
+      const newSearchParams = new URLSearchParams(prev);
+      newSearchParams.set("keyword", value);
+      newSearchParams.set("page", 1);
+
+      return newSearchParams;
+    });
+  }, 300);
+
+  const requestItems = useCallback(async () => {
+    const result = await getItems({
+      page: currentPageNumber,
+      pageSize: currentPageSize,
+      sortBy,
+      keyword,
+    });
+
+    setItemList(result.list);
+    setTotalCount(result.totalCount);
+  }, [currentPageNumber, currentPageSize, sortBy, keyword]);
 
   useEffect(() => {
     requestItems();
   }, [requestItems]);
-
-  if (currentPageNumber < 1) {
-    return <Navigate to="/items?page=1" />;
-  }
 
   const bestItemList =
     itemList
@@ -70,18 +75,26 @@ const ItemsPage = () => {
 
   return (
     <div className={styles.main_center}>
-      <article className={styles.best_items}>
+      <article className={styles.best_items_container}>
         <p className={styles.title}>베스트 상품</p>
-        <CardItemList itemList={bestItemList} />
+        <div className={styles.best_items_box}>
+          {itemList.length > 0 ? (
+            <CardItemList itemList={bestItemList} />
+          ) : (
+            <p className={styles.empty_paragraph}>상품을 찾을 수 없습니다.</p>
+          )}
+        </div>
       </article>
       <article>
         <div className={styles.all_items_container}>
           <p className={styles.title}>전체 상품</p>
           <div className={styles.serach_box}>
             <Input
+              defaultValue={keyword}
               className={styles.input_wrapper}
               placeholder="검색할 상품을 입력해주세요."
               prefix={<img src={SearchIcon} alt="검색 아이콘" />}
+              onChange={searchKeywordChangeHandler}
             />
             <Link className={styles.search_button} to="/additem">
               상품 등록하기
@@ -92,12 +105,19 @@ const ItemsPage = () => {
             </Select>
           </div>
         </div>
-        <CardItemList itemList={itemList} imgSize="small" />
+        <div className={styles.all_items_box}>
+          {itemList.length > 0 ? (
+            <CardItemList itemList={itemList} imgSize="small" />
+          ) : (
+            <p className={styles.empty_paragraph}>상품을 찾을 수 없습니다.</p>
+          )}
+        </div>
         <Pagination
           className={styles.pagination}
           pageSize={PAGINATION_AMOUNT}
           totalCount={totalCount}
           currentPageNumber={currentPageNumber}
+          showItemCount={10}
         />
       </article>
     </div>

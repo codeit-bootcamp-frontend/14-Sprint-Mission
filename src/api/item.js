@@ -17,6 +17,6 @@ export const getItems = async ({
     return data;
   } catch (error) {
     console.log("err", error);
-    return { totalCount: 0, list: [] };
+    return { list: [], totalCount: 0 };
   }
 };
