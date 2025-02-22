@@ -14,6 +14,7 @@ const ItemsPage = () => {
     bestItemList,
     keyword,
     totalCount,
+    currentPageSize,
     currentPageNumber,
     typingKeywordChangeHandler,
   } = useItemPageState();
@@ -62,7 +63,7 @@ const ItemsPage = () => {
           pageSize={PAGINATION_AMOUNT}
           totalCount={totalCount}
           currentPageNumber={currentPageNumber}
-          showItemCount={10}
+          showItemCount={currentPageSize}
         />
       </article>
     </div>

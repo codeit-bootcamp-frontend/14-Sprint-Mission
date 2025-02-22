@@ -70,6 +70,7 @@ const useItemPageState = () => {
   return {
     itemList,
     bestItemList,
+    currentPageSize,
     currentPageNumber,
     totalCount,
     typingKeywordChangeHandler,

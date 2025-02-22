@@ -45,12 +45,14 @@ const Pagination = ({
   };
 
   const movePageClickHandler = (pageNumber) => {
-    setSearchParams((prev) => {
-      const newSearchParams = new URLSearchParams(prev);
-      newSearchParams.set("page", pageNumber);
+    if (pageNumber !== currentPageNumber) {
+      setSearchParams((prev) => {
+        const newSearchParams = new URLSearchParams(prev);
+        newSearchParams.set("page", pageNumber);
 
-      return newSearchParams;
-    });
+        return newSearchParams;
+      });
+    }
   };
 
   return (

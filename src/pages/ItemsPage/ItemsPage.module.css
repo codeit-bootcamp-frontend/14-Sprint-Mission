@@ -80,6 +80,18 @@
     padding-top: 24px;
   }
 
+  .best_items_box {
+    height: auto;
+  }
+
+  .empty_paragraph {
+    margin: 30% 0;
+  }
+
+  .all_items_box {
+    height: auto;
+  }
+
   .input_wrapper {
     width: 242px;
   }
