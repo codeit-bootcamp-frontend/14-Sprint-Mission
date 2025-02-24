@@ -6,8 +6,6 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   const pageNumbers = [];
   const pagesPerGroup = 5;
 
-  console.log(totalPages);
-
   // totalPages 유효성 검사 및 초기값 처리
   if (totalPages && totalPages > 0 && totalPages < Number.MAX_SAFE_INTEGER) {
     const currentGroup = Math.ceil(currentPage / pagesPerGroup);

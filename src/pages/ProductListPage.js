@@ -11,7 +11,6 @@ function ProductListPage() {
   const [displayedBestProducts, setDisplayedBestProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [pageBestSize, setPageBestSize] = useState(4);
   const [sortOrder, setSortOrder] = useState("recent");
@@ -56,6 +55,7 @@ function ProductListPage() {
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
     setSortOrder(value);
+    setCurrentPage(1);
   };
 
   // 창 크기에 따라 상품 개수 변경
