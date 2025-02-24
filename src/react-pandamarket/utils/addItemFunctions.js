@@ -7,7 +7,8 @@ export const onProductIntroChange = ({ e, setProductIntro }) => {
 };
 
 export const onPriceChange = ({ e, setProductPrice }) => {
-  setProductPrice(Number(e.target.value));
+  const onlyNumber = e.target.value.replace(/[^0-9]/g, "");
+  setProductPrice(onlyNumber === "" ? 0 : Number(onlyNumber));
 };
 
 export const onTagChange = ({ e, setTag }) => {
