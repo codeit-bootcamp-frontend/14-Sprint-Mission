@@ -1,4 +1,4 @@
-main {
+.market {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -54,14 +54,17 @@ main {
   width: 100%;
   max-width: 320px;
 }
-
 .search-bar {
-  flex: 1 1 auto;
-  padding: 9px 20px;
+  flex: 1 1 240px;
+  padding: 9px 20px 9px 40px;
   border: none;
   background-color: var(--gray-100);
   border-radius: 12px;
   height: 42px;
+  background-image: url("/src/assets/searchIcon.png");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: 12px 50%;
 }
 
 .search-bar:focus {
