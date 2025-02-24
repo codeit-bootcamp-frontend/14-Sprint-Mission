@@ -1,39 +1,52 @@
-.header{
-    display: flex; /* 가로 배치 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+header {
+    display: flex;
     justify-content: space-around; /* 양 끝으로 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     background-color: #FFFFFF;
-    border-bottom: 1px;
     width: 100%;
     height: 70px;
+    font-family: 'Pretendard', sans-serif;
 }
 
-.header-logo img{
+.header-logo img {
     width: 153px;
     height: 51px;
 }
 
 .login-button{
+    display: flex;               /* 플렉스 박스를 사용 */
+    justify-content: center;     /* 가로 방향 중앙 정렬 */
+    align-items: center;         /* 세로 방향 중앙 정렬 */
+    text-align: center;          /* 글자 중앙 정렬 */
     background-color: #3692FF;
-    color: #F3F4F6;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 23px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
     width: 128px;
     height: 48px;
+    padding: 12px 23px;
+    gap: 10px;
+    border-radius: 8px;
+    color: #F3F4F6;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0%;
+    text-decoration: none;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    word-break: keep-all; /* 띄어쓰기 기준으로 줄바꿈하도록 설정 */
     font-family: 'Pretendard', sans-serif;
 }
 
-.main-section1, .main-section3{
+.banner {
     position: relative;
     display: flex;
     justify-content: center;
@@ -43,28 +56,83 @@ body {
     height: 540px;
     box-sizing: border-box;
     gap: 7px;
+    background-position: 80% bottom;
 }
 
-.section1-left, .section3-left{
+#features {
+    padding-bottom: 138px;
+}
+
+.feature {
+    background-color: #FCFCFC;
+    padding: 138px 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding-bottom: 124px;
-    gap: 32px;
-    max-width: 1920px;
-    padding: 0 auto;
+    align-items: center;
+    border-radius: 12px;
+    gap: 64px;
 }
 
-.landing-text{
-    font-family: 'Pretendard';
-    font-size: 40px;
-    line-height: 56px;
-    font-weight: 700;
+.feature:nth-child(2) {
+    text-align: right;
+}
+
+/*
+.feature-content {
+    flex: 1;
+}
+*/
+
+/* 요소 최대 넓이보다 큰 경우에 가로 중앙 정렬 해주는 inner container */
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+}
+
+.wrapper > div {
+    padding: 40px 0;
+}
+
+#top-banner-title {
+    padding: 0;
+}
+
+#bottom-banner-title {
+    padding: 72.5px 0 0;
+}
+
+h1 {
     color: #374151;
-    flex-wrap: wrap;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: 0%;
+    padding: 12px 0;
 }
 
-.section1-button{
+.feature-tag {
+    font-family: 'Pretendard', sans-serif;
+    color: #3692FF;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0%;
+}
+
+.feature-description {
+    font-family: 'Pretendard';
+    color: #374151;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 2%;
+    padding: 12px 0 0 0;
+}
+
+.hero-button {
+    font-family: 'Pretendard', sans-serif;
     background-color: #3692FF;
     color: #F9FAFB;
     font-size: 20px;
@@ -73,132 +141,61 @@ body {
     border: none;
     border-radius: 40px;
     padding: 16px 124px;
-    text-align: center;
+    display: inline-flex; /**/
+    align-items: center; /**/
+    justify-content: center; /**/
     gap: 10px;
+    margin-top: 32px;
 }
 
-.section1-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 340px;
-    gap: 7px;
-}
-
-.section1-panda1{
-    width: 746px;
-    height: 340px;
-}
-
-/* 섹션 레이아웃, 배경, 여백 설정 */
-.main-section2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #FFFFFF;
-    padding: 138px 466px;
-    gap: 10px;
-}
-
-.section2-sub1, .section2-sub2, .section2-sub3 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FCFCFC;
-    border-radius: 12px;
-    gap: 64px;
-    flex-direction: row;
-    height: 720px;
-}
-
-.section2-pic {
-    width: 579px;
-    height: 444px;
-}
-
-.section2-1-right, .section2-3-right {
-    margin-right: 24px;
-}
-
-.section2-2-left {
-    margin-left: 24px;
-}
-
-.section2-word {
-    font-family: 'Pretendard';
-    color: #3692FF;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
-}
-
-.section2-title {
-    font-family: 'Pretendard';
-    color: #374151;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 56px;
-    letter-spacing: 2%;
-}
-
-.section2-subtitle {
-    font-family: 'Pretendard';
-    color: #374151;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 2%;
-}
-
-.footer {
+footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #111827;
     font-family: 'Pretendard';
-    color: #9CA3AF;
     line-height: 19.09px;
-    padding: 32px 400px;
+    padding: 32px 400px 108px 400px;
     gap: 10px;
 }
 
-.footer-section1 {
+.copyright {
     text-align: left;
-}
-
-.footer-text {
     font-size: 16px;
     font-weight: 400;
-}
-
-.footer-section2 {
-    display: flex;
-    text-align: center;
-    gap: 30px;
-}
-
-.footer-privacy-policy, .footer-faq {
     color: #9CA3AF;
+    letter-spacing: 0%;
+    line-height: 19.09px;
+}
+
+.footerMenu {
+    display: flex;
+    gap: 30px 
+}
+.footer-link {
+    color: #E5E7EB;
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
-    gap: 30px;
     transition: color 0.3s ease;
 }
 
-.footer-privacy-policy:hover, .footer-faq:hover {
-    color: #FFFFFF;
+.footer-link:hover,
+.footer-link:visited,
+.footer-link:active {
+    color: #E5E7EB;
+    text-decoration: none;
 }
 
-.footer-section3 {
+.socialMedia {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 12px;
 }
 
-.footer-section3 > img {
+.socialMedia > img {
     width: 20px;
     height: 20px;
 }
