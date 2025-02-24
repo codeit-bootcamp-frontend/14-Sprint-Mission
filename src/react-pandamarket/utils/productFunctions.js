@@ -13,6 +13,7 @@ export const getAllProduct = async ({
   option,
   setPaginationNum,
   pageNum,
+  setAllProductState,
 }) => {
   if (option === "latest") {
     // 서버로 사이즈 보내기
@@ -82,42 +83,42 @@ export const searchSubmit = async ({
   }
 };
 
- // 옵션 바뀌었을 때 동작하는 함수(정렬 바꾸기)
-  export const handleOptionChange = async ({
-    e,
-    setOption,
-    isSearch,
-    searchProduct,
-    setAllProduct,
-    setSearchProduct,
-    pageNum,
-    pageSize,
-  }) => {
-    if (e.target.value === "latest" && !isSearch) {
-      setOption(e.target.value);
-      const response = await getProduct(pageNum, pageSize, "recent");
-      setAllProduct(response.list);
-    } else if (e.target.value === "sortByLike" && !isSearch) {
-      setOption(e.target.value);
-      const response = await getProduct(pageNum, pageSize, "favorite");
-      setAllProduct(response.list);
-    } else if (e.target.value === "latest" && isSearch) {
-      setOption(e.target.value);
-      const response = await getProduct(
-        pageNum,
-        pageSize,
-        "recent",
-        searchProduct
-      );
-      setSearchProduct(response.list);
-    } else if (e.target.value === "sortByLike" && isSearch) {
-      setOption(e.target.value);
-      const response = await getProduct(
-        pageNum,
-        pageSize,
-        "favorite",
-        searchProduct
-      );
-      setSearchProduct(response.list);
-    }
-  };
+// 옵션 바뀌었을 때 동작하는 함수(정렬 바꾸기)
+export const handleOptionChange = async ({
+  e,
+  setOption,
+  isSearch,
+  searchProduct,
+  setAllProduct,
+  setSearchProduct,
+  pageNum,
+  pageSize,
+}) => {
+  if (e.target.value === "latest" && !isSearch) {
+    setOption(e.target.value);
+    const response = await getProduct(pageNum, pageSize, "recent");
+    setAllProduct(response.list);
+  } else if (e.target.value === "sortByLike" && !isSearch) {
+    setOption(e.target.value);
+    const response = await getProduct(pageNum, pageSize, "favorite");
+    setAllProduct(response.list);
+  } else if (e.target.value === "latest" && isSearch) {
+    setOption(e.target.value);
+    const response = await getProduct(
+      pageNum,
+      pageSize,
+      "recent",
+      searchProduct
+    );
+    setSearchProduct(response.list);
+  } else if (e.target.value === "sortByLike" && isSearch) {
+    setOption(e.target.value);
+    const response = await getProduct(
+      pageNum,
+      pageSize,
+      "favorite",
+      searchProduct
+    );
+    setSearchProduct(response.list);
+  }
+};

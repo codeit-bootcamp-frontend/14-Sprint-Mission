@@ -27,6 +27,10 @@ const Body = () => {
   const [searchValue, setSearchValue] = useState("");
   const [option, setOption] = useState("latest");
   const [browserSize, setBrowseSize] = useState(window.innerWidth);
+  const bestPlaceHolderCount =
+    browserSize <= 767 ? 1 : browserSize <= 1199 ? 2 : 4;
+  const allPlaceHolderCount =
+    browserSize <= 767 ? 4 : browserSize <= 1199 ? 6 : 10;
 
   // 뒤로가기 버튼 클릭
   const goBack = () => {
@@ -139,15 +143,20 @@ const Body = () => {
         <span className="best-product">베스트 상품</span>
       </div>
       <div className="card-container">
-        {bestProduct.map((product, index) => (
-          <Card
-            key={index}
-            images={product.images}
-            name={product.name}
-            price={product.price}
-            favoriteCount={product.favoriteCount}
-          />
-        ))}
+        {bestProduct.length > 0
+          ? bestProduct.map((product, index) => (
+              <Card
+                key={index}
+                images={product.images}
+                name={product.name}
+                price={product.price}
+                favoriteCount={product.favoriteCount}
+                productExist={true}
+              />
+            ))
+          : Array.from({ length: bestPlaceHolderCount }, (_, index) => (
+              <Card key={index} productExist={false} />
+            ))}
       </div>
       <div className="all-product-header">
         <span className="all-product">전체 상품</span>
@@ -205,25 +214,35 @@ const Body = () => {
 
       <div className="all-product-cardContainer">
         {isSearch
-          ? searchProduct.map((product, index) => (
+          ? searchProduct.length > 0
+            ? searchProduct.map((product, index) => (
+                <Card
+                  key={index}
+                  images={product.images}
+                  name={product.name}
+                  price={product.price}
+                  favoriteCount={product.favoriteCount}
+                  showType="전체상품"
+                  productExist={true}
+                />
+              ))
+            : Array.from({ length: allPlaceHolderCount }, (_, index) => (
+                <Card key={index} productExist={false} showType="전체상품" />
+              ))
+          : allProduct.length > 0
+          ? allProduct.map((product, index) => (
               <Card
                 key={index}
                 images={product.images}
                 name={product.name}
                 price={product.price}
                 favoriteCount={product.favoriteCount}
-                showType={"전체상품"}
+                showType="전체상품"
+                productExist={true}
               />
             ))
-          : allProduct.map((product, index) => (
-              <Card
-                key={index}
-                images={product.images}
-                name={product.name}
-                price={product.price}
-                favoriteCount={product.favoriteCount}
-                showType={"전체상품"}
-              />
+          : Array.from({ length: allPlaceHolderCount }, (_, index) => (
+              <Card key={index} productExist={false} showType="전체상품" />
             ))}
       </div>
 
