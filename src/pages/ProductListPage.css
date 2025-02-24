@@ -82,6 +82,10 @@
   cursor: pointer;
 }
 
+.add-item.button a {
+  color: white;
+}
+
 .mobile {
   display: none;
 }

@@ -16,16 +16,36 @@ function Footer() {
           <a href="/faq">FAQ</a>
         </div>
         <div className="social">
-          <a className="icon" href="http://facebook.com" target="_blank">
+          <a
+            className="icon"
+            href="http://facebook.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={facebookIcon} alt="facebook icon" width="20px" />
           </a>
-          <a className="icon" href="http://twitter.com" target="_blank">
+          <a
+            className="icon"
+            href="http://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={twitterIcon} alt="twitter icon" width="20px" />
           </a>
-          <a className="icon" href="http://youtube.com" target="_blank">
+          <a
+            className="icon"
+            href="http://youtube.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={youtubeIcon} alt="youtube icon" width="20px" />
           </a>
-          <a className="icon" href="http://instagram.com" target="_blank">
+          <a
+            className="icon"
+            href="http://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={instagramIcon} alt="info icon" width="20px" />
           </a>
         </div>

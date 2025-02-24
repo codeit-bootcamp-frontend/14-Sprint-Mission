@@ -5,6 +5,7 @@ import Product from "../components/Product";
 import "./ProductListPage.css";
 import Select from "../components/Select";
 import Pagination from "../components/Pagination";
+import { Link } from "react-router-dom";
 
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
@@ -151,7 +152,9 @@ function ProductListPage() {
                   placeholder="검색할 상품을 입력해주세요"
                 />
               </form>
-              <button className="add-item button desktop">상품 등록하기</button>
+              <button className="add-item button desktop">
+                <Link to={`/additem`}>상품 등록하기</Link>
+              </button>
               <Select
                 className="select"
                 options={["recent", "favorite"]}
