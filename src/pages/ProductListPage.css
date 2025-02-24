@@ -105,18 +105,11 @@
   .best-products {
     grid-template-columns: repeat(1, 1fr);
   }
-
   .all-products {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .filter {
     flex-direction: column;
-  }
-
-  .filter h2 {
-  }
-  .add-item.button {
   }
   .filter form {
     max-width: 100%;
