@@ -14,6 +14,16 @@
   margin-bottom: 32px;
 }
 
+@mixin add-button {
+  width: 72px;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
 .body {
   width: 1200px;
   margin: 94px auto;
@@ -30,14 +40,12 @@
       font-weight: 700;
     }
     .header__add-button {
-      width: 72px;
-      height: 42px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
+      @include add-button;
       color: rgba(243, 244, 246, 1);
-      border: none;
-      cursor: pointer;
+    }
+    .header__add-button--activate {
+      @include add-button;
+      background-color: rgba(54, 146, 255, 1);
     }
   }
 
@@ -96,6 +104,13 @@
       .product-image__fileWrapper__input {
         display: none;
       }
+    }
+
+    .product-image__warning {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(247, 71, 71, 1);
+      margin-top: 16px;
     }
   }
 
