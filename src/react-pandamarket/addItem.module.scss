@@ -72,6 +72,27 @@
         }
       }
 
+      .preview-container {
+        position: relative;
+
+        .preview-container__preview {
+          width: 282px;
+          height: 282px;
+          border-radius: 12px;
+        }
+        .preview-container__delete {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 24px;
+          height: 24px;
+          background-color: rgba(156, 163, 175, 1);
+          color: rgba(255, 255, 255, 1);
+          border-radius: 20px;
+          border: none;
+        }
+      }
+
       .product-image__fileWrapper__input {
         display: none;
       }

@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
 import styles from "./addItem.module.scss";
 import { IoIosAdd } from "react-icons/io";
 
 const AddItem = () => {
+  const [preview, setPreview] = useState(null);
+  const fileRef = useRef(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileURL = URL.createObjectURL(file);
+      setPreview(fileURL);
+    }
+  };
+
+  const removeFile = () => {
+    setPreview(null);
+    if (fileRef.current) {
+      fileRef.current.value = "";
+    }
+  };
+
   return (
     <>
       {/* 헤더 */}
@@ -27,10 +45,29 @@ const AddItem = () => {
               <IoIosAdd className={styles["fileWrapper__label__icon"]} />
               이미지 등록
             </label>
+            {preview ? (
+              <div className={styles["preview-container"]}>
+                <img
+                  src={preview}
+                  alt="미리보기"
+                  className={styles["preview-container__preview"]}
+                />
+                <button
+                  onClick={removeFile}
+                  className={styles["preview-container__delete"]}
+                >
+                  x
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
             <input
               type="file"
               className={styles["product-image__fileWrapper__input"]}
               id="file-upload"
+              onChange={handleFileChange}
+              ref={fileRef}
             />
           </div>
         </div>
