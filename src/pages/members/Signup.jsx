@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../app";
+import { INITIAL_SIGNUP_VALUE, signUp } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
+import { useSetUser } from "../../contexts/UserContext";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
 import TextInput from "./components/TextInput";
@@ -9,27 +10,28 @@ import "./members.scss";
 
 export default function Signup() {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
-  const [formData, setFormData] = useState({});
+  const setUser = useSetUser();
+  const [formData, setFormData] = useState(INITIAL_SIGNUP_VALUE);
   const [isBtnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    if (
-      !(formData.email?.length > 0) ||
-      !(formData.nickname?.length > 0) ||
-      !(formData.password?.length > 0) ||
-      !(formData.passwordConfirmation?.length > 0)
-    )
-      return;
+    for (const key in formData) {
+      if (formData[key].length === 0) return;
+    }
     const errMsgs = document.querySelectorAll(".text-error");
     if (errMsgs.length === 0) setBtnDisabled(false);
     else setBtnDisabled(true);
   }, [formData]);
 
-  function onSignup(e) {
+  async function onSignup(e) {
     e.preventDefault();
-    setUser({ email: formData.email, nickname: formData.nickname });
-    navigate("/");
+    const datas = await signUp(formData);
+    if (datas) {
+      const { loading, user } = datas;
+      setBtnDisabled(loading);
+      setUser(user);
+      if (user) navigate("/items");
+    }
   }
 
   return (
@@ -38,7 +40,7 @@ export default function Signup() {
       <Link to="/">
         <img src={LogoImage} alt="로고 이미지" id="logo" />
       </Link>
-      <form className="form-signup display-grid justify-center gap-24">
+      <form className="form-signup display-grid justify-center gap-24" onSubmit={onSignup}>
         <TextInput
           value={formData.email}
           onChange={(v) => setFormData({ ...formData, email: v })}
@@ -63,7 +65,7 @@ export default function Signup() {
           onChange={(v) => setFormData({ ...formData, passwordConfirmation: v })}
           isValid={formData.password === formData.passwordConfirmation}
         />
-        <button type="submit" id="btn-submit" disabled={isBtnDisabled} onClick={onSignup}>
+        <button type="submit" id="btn-submit" disabled={isBtnDisabled}>
           회원가입
         </button>
         <SocailLogin />

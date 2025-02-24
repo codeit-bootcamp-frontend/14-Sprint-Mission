@@ -1,7 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../app";
+import { INITIAL_LOGIN_VALUE, logIn } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
+import { useSetUser } from "../../contexts/UserContext";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
 import TextInput from "./components/TextInput";
@@ -9,21 +10,25 @@ import "./members.scss";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
-
-  const [formData, setFormData] = useState({});
+  const setUser = useSetUser();
+  const [formData, setFormData] = useState(INITIAL_LOGIN_VALUE);
   const [isBtnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    if (!(formData.email?.length > 0) || !(formData.password?.length > 0)) return;
+    if (formData.email.length === 0 || formData.password.length === 0) return;
     const errMsgs = document.querySelectorAll(".text-error");
     if (errMsgs.length === 0) setBtnDisabled(false);
   }, [formData]);
 
-  function onLogin(e) {
+  async function onLogin(e) {
     e.preventDefault();
-    setUser({ email: formData.email });
-    navigate("/items");
+    const datas = await logIn(formData);
+    if (datas) {
+      const { loading, user } = datas;
+      setBtnDisabled(loading);
+      setUser(user);
+      if (user) navigate("/items");
+    }
   }
 
   return (

@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserContextProvider from "./contexts/UserContext";
 import Faq from "./pages/faq/Faq";
 import Home from "./pages/home/Home";
 import Items from "./pages/items/Items";
@@ -7,12 +7,9 @@ import Login from "./pages/members/Login";
 import Signup from "./pages/members/Signup";
 import Privacy from "./pages/privacy/Privacy";
 
-export const UserContext = createContext();
-
 export default function App() {
-  const [user, setUser] = useState();
   return (
-    <UserContext value={{ user, setUser }}>
+    <UserContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +20,6 @@ export default function App() {
           <Route path="/faq" element={<Faq />} />
         </Routes>
       </BrowserRouter>
-    </UserContext>
+    </UserContextProvider>
   );
 }
