@@ -9,28 +9,28 @@ import BannerTop from "../../assets/images/home/hero-image.png";
 import HeaderNav from "../../components/HeaderNav";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
-import "./home.css";
+import "./home.scss";
 
 export default function Home() {
   const { user } = useContext(UserContext);
   return (
     <>
       <HeaderNav />
-      <main className="landing-page-content">
-        <section className="banner flex-center" id="hero">
-          <div className="wrapper grid">
+      <main className="landing-page-content" id="home">
+        <section className="banner display-flex justify-center gap-8" id="hero">
+          <div className="wrapper display-grid gap-32">
             <h1 className="text-bold">
               일상의 모든 물건을 <br />
               거래해 보세요
             </h1>
-            <Link to={user ? "/items" : "/login"} className="button flex-center">
+            <Link to={user ? "/items" : "/login"} className="button display-flex justify-center">
               구경하러 가기
             </Link>
           </div>
           <img src={BannerTop} alt="배너 이미지" />
         </section>
         <section className="cards" id="features">
-          <Card imgSrc={ImageFeature1}>
+          <Card imgSrc={ImageFeature1} title={"Hot Item"}>
             <p className="heading">
               인기 상품을
               <br />
@@ -42,7 +42,7 @@ export default function Home() {
               판다 마켓에서 확인해 보세요
             </p>
           </Card>
-          <Card imgSrc={ImageFeature2} isFlexReverse={true}>
+          <Card imgSrc={ImageFeature2} title="Search" isFlexReverse={true}>
             <p className="heading">
               구매를 원하는
               <br />
@@ -54,7 +54,7 @@ export default function Home() {
               쉽게 찾아보세요
             </p>
           </Card>
-          <Card imgSrc={ImageFeature3}>
+          <Card imgSrc={ImageFeature3} title="Register">
             <p className="heading">
               판매를 원하는 <br />
               상품을 등록하세요
@@ -66,7 +66,7 @@ export default function Home() {
           </Card>
         </section>
         <section className="banner" id="bottom-banner">
-          <div className="wrapper flex-center">
+          <div className="wrapper display-flex justify-center">
             <p className="heading">
               믿을 수 있는 <br />
               판다마켓 중고 거래

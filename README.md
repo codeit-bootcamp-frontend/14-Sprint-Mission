@@ -1,6 +1,7 @@
 # 스프린트 미션 5
 
 ## 기본 요구사항
+
 - [ ] Github에 PR(Pull Request)을 만들어서 미션을 제출합니다.
 - [ ] 피그마 디자인에 맞게 페이지를 만들어 주세요.
 - [x] React를 사용합니다
@@ -28,4 +29,21 @@
   - [ ] Mobile : 4개 보이기
 
 ## 체크리스트 [심화]
+
 - [ ] 페이지 네이션 기능을 구현합니다.
+
+## 변경 사항
+
+### 설치 사항
+
+1. Getting Start React Project with Vite
+
+```
+npm create vite@latest sprint-mission -- --template react
+```
+
+2. Styling with SCSS
+
+```
+npm install scss
+```

@@ -18,11 +18,11 @@ export default function TextInput({
     setErrMsg(msg);
   }
   return (
-    <div className="input-field grid">
+    <div className="input-field display-grid justify-stretch">
       <label htmlFor={id || type} className="text-2lg text-bold">
         {labelText}
       </label>
-      <div className="input-wrapper flex-left radius-12">
+      <div className="input-wrapper display-flex justify-left radius-12">
         <input
           id={id || type}
           type={type}

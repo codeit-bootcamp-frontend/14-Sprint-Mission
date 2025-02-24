@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../app";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
 import TextInput from "./components/TextInput";
-import "./members.css";
-import { UserContext } from "../../app";
+import "./members.scss";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -15,16 +15,15 @@ export default function Signup() {
 
   useEffect(() => {
     if (
-      !(
-        formData.email?.length > 0 ||
-        formData.nickname?.length > 0 ||
-        formData.password?.length > 0 ||
-        formData.passwordConfirmation?.length > 0
-      )
+      !(formData.email?.length > 0) ||
+      !(formData.nickname?.length > 0) ||
+      !(formData.password?.length > 0) ||
+      !(formData.passwordConfirmation?.length > 0)
     )
       return;
     const errMsgs = document.querySelectorAll(".text-error");
     if (errMsgs.length === 0) setBtnDisabled(false);
+    else setBtnDisabled(true);
   }, [formData]);
 
   function onSignup(e) {
@@ -34,12 +33,12 @@ export default function Signup() {
   }
 
   return (
-    <main className="form-wrapper flex-center gap-40" id="members">
+    <main className="form-wrapper display-flex justify-center gap-40" id="members">
       <title>판다 마켓 - 회원가입</title>
       <Link to="/">
         <img src={LogoImage} alt="로고 이미지" id="logo" />
       </Link>
-      <form className="form-signup grid-center gap-24">
+      <form className="form-signup display-grid justify-center gap-24">
         <TextInput
           value={formData.email}
           onChange={(v) => setFormData({ ...formData, email: v })}
@@ -68,7 +67,7 @@ export default function Signup() {
           회원가입
         </button>
         <SocailLogin />
-        <div className="flex-center gap-4 text-md text-medium" id="signup-wrapper">
+        <div className="display-flex justify-center gap-4 text-md text-medium" id="signup-wrapper">
           <p>이미 회원이신가요?</p>
           <Link to="/login">로그인</Link>
         </div>

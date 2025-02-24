@@ -19,11 +19,11 @@ export default function PwdInput({
     setErrMsg(msg);
   }
   return (
-    <div className="input-field grid">
+    <div className="input-field display-grid justify-stretch">
       <label htmlFor={id} className="text-2lg text-bold">
         {labelText}
       </label>
-      <div className="input-wrapper flex-sides radius-12" id="input-wrapper-pwd">
+      <div className="input-wrapper display-flex justify-sides radius-12" id="input-wrapper-pwd">
         <input
           id={id}
           type={isVisible ? "text" : "password"}

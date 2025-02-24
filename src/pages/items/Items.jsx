@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HeaderNav from "../../components/HeaderNav";
 import ItemCard from "./components/ItemCard";
+import "./items.scss";
 
 export default function Items() {
   const [searchResult, setSearchResult] = useState([]);
@@ -10,7 +11,6 @@ export default function Items() {
       favoriteCount: 0,
       ownerNickname: "string",
       ownerId: 1,
-      images: ["https://example.com/..."],
       tags: ["전자제품"],
       price: 0,
       description: "string",
@@ -22,22 +22,22 @@ export default function Items() {
     <>
       <title>판다마켓 - 상품 리스트</title>
       <HeaderNav />
-      <main className="grid gap-40">
-        <section id="best-items" className="grid gap-16">
+      <main className="display-grid display-grid justify-center gap-40" id="items">
+        <section id="best-items" className="display-grid justify-stretch gap-16">
           <h2 className="text-xl text-bold">베스트 상품</h2>
-          <div className="flex-sides">
+          <div className="display-flex justify-sides">
             {bestList.map((item) => (
-              <ItemCard {...item} />
+              <ItemCard key={item.id} {...item} />
             ))}
           </div>
         </section>
-        <section id="search-items" className="grid gap-24">
-          <div className="flex-sides">
+        <section id="search-items" className="display-grid justify-stretch gap-24">
+          <div className="display-flex justify-sides">
             <h2 className="text-xl text-bold">전체 상품</h2>
           </div>
-          <div className="flex-sides">
+          <div className="display-flex justify-sides">
             {searchResult.map((item) => (
-              <ItemCard {...item} />
+              <ItemCard key={item.id} {...item} />
             ))}
           </div>
         </section>
