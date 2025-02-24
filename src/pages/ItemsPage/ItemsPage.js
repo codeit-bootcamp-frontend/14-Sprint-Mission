@@ -25,7 +25,7 @@ const ItemsPage = () => {
         <p className={styles.title}>베스트 상품</p>
         <div className={styles.best_items_box}>
           {itemList.length > 0 ? (
-            <CardItemList itemList={bestItemList} />
+            <CardItemList itemList={bestItemList} columnSize="large" />
           ) : (
             <p className={styles.empty_paragraph}>상품을 찾을 수 없습니다.</p>
           )}
@@ -53,7 +53,7 @@ const ItemsPage = () => {
         </div>
         <div className={styles.all_items_box}>
           {itemList.length > 0 ? (
-            <CardItemList itemList={itemList} imgSize="small" />
+            <CardItemList itemList={itemList} columnSize="small" />
           ) : (
             <p className={styles.empty_paragraph}>상품을 찾을 수 없습니다.</p>
           )}

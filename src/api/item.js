@@ -14,9 +14,9 @@ export const getItems = async ({
     );
     const data = await result.json();
 
-    return data;
+    return { status: result.status, ...data };
   } catch (error) {
-    console.log("err", error);
-    return { list: [], totalCount: 0 };
+    console.error(error);
+    return { status: 520, list: [], totalCount: 0 };
   }
 };

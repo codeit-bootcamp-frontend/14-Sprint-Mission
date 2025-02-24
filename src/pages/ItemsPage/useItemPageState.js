@@ -44,7 +44,11 @@ const useItemPageState = () => {
 
     setSearchParams((prev) => {
       const newSearchParams = new URLSearchParams(prev);
-      newSearchParams.set("keyword", value);
+      if (value === "") {
+        newSearchParams.delete("keyword");
+      } else {
+        newSearchParams.set("keyword", value);
+      }
       newSearchParams.set("page", 1);
 
       return newSearchParams;
@@ -59,8 +63,10 @@ const useItemPageState = () => {
       keyword,
     });
 
-    setItemList(result.list);
-    setTotalCount(result.totalCount);
+    if (result.status !== 520) {
+      setItemList(result.list);
+      setTotalCount(result.totalCount);
+    }
   }, [currentPageNumber, currentPageSize, sortBy, keyword]);
 
   useEffect(() => {
