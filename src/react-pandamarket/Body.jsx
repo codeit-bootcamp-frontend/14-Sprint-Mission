@@ -4,8 +4,6 @@ import AllProduct from "./AllProduct";
 import Pagination from "./Pagination";
 import "./body.css";
 import {
-  getAllProduct,
-  getBestProduct,
   getProductFetch,
   handleOptionChange,
   searchSubmit,
