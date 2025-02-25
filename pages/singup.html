@@ -6,6 +6,7 @@
     <title>Signup Page</title>
     <link rel="stylesheet" href="../style-login.css"> 
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"rel="stylesheet"/>
+    <script src="../js/sighup.js" type="module" defer></script>
 </head>
 <body class="total">
     <div class="login-container"> 
@@ -13,26 +14,61 @@
     </div>
     <!-- form -->
     <form class="container-box">
-        <h1 class="email-password-font">이메일</h1>
-        <div class="email-password-container">
-            <input type="email" name="name"  placeholder="이메일을 입력해주세요." class="email-box">
-        </div>
-        <h1 class="email-password-font">닉네임</h1>
-        <div class="email-password-container">
-            <input type="text" name="name"  placeholder="닉네임을 입력해주세요." class="email-box">
-        </div>
-        <h1 class="email-password-font">비밀번호</h1>
-        <div class="email-password-container">
-            <input type="password" name="password"  placeholder="비밀번호를 입력해주세요."  class="email-box password-box">
-        </div>
-        <h1 class="email-password-font">비밀번호 확인</h1>
-        <div class="email-password-container">
-            <input type="password" name="password"  placeholder="비밀번호를 다시 한 번 입력해주세요."  class="email-box password-box">
-        </div>
-        <button class="login-button">
-            <p class="login-button-font">로그인</p>
-        </button>
+        <div class="email-password-font">이메일</div>
+            <label class="email-password-font" for="email-box">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="이메일을 입력해주세요."
+                    id="email-box"
+                    />
+                </label>
+      <p class="email-error-message">이메일을 입력해주세요.</p>
+      <p class="email-valid-message">잘못된 이메일 형식입니다.</p>
         
+        <div class="email-password-font">닉네임</div>
+            <label class="email-password-font" for="name-box"></label>
+                <input type="text" name="nickname" placeholder="닉네임을 입력해주세요" id="name-box">
+            </label>
+        <p class="text-error-message">닉네임을 입력해주세요.</p>
+        
+        <label class="email-password-font" for="password-box"
+        >비밀번호
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요."
+            id="password-box"
+          />
+          <img
+            src="../img/Vector2.png"
+            class="password-box-icon"
+            alt="숨김표시아이콘"
+          />
+        </div>
+      </label>
+      <p class="password-error-message">비밀번호를 입력해주세요.</p>
+      <p class="password-valid-message">비밀번호를 8자 이상을 입력해주세요.</p>
+      <label class="email-password-font" for="password-check-box"
+        >비밀번호 확인
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요."
+            id="password-check-box"
+          />
+          <img
+            src="../img/Vector2.png"
+            class="password-check-box-icon"
+            alt="숨김표시아이콘"
+          />
+        </div>
+      </label>
+      <p class="passwordTwo-error-message">비밀번호가 일치하지 않습니다.</p>
+        <button class="login-button" disabled>회원가입</button>
+          
         <div class="login-choice-container">
             <p class="login-font">간편 로그인하기</p>
             <div>
