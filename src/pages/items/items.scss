@@ -3,6 +3,7 @@ main#items {
   max-width: 1200px;
   > #best-items > .display-grid {
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
   }
   > #search-items > .display-grid {
     grid-template-columns: repeat(5, 1fr);
@@ -10,6 +11,7 @@ main#items {
   }
   @media (width < 1200px) {
     /* Tablet */
+    margin: 24px 16px 58px;
     > #best-items > .display-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -43,5 +45,23 @@ main#items {
       width: 100%;
       height: 100%;
     }
+  }
+}
+#pagination {
+  > button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    border: 1px solid var(--secondary-300);
+  }
+  > button:first-child > img {
+    transform: rotate(180deg);
+  }
+  > button:not(#page-active):hover {
+    background-color: var(--secondary-300);
   }
 }

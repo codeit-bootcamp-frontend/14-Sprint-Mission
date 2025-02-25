@@ -46,19 +46,19 @@ header.common-header {
       width: 128px;
     }
   }
-}
-@media (width < 1200px) {
-  /* Tablet */
-  header .wrapper {
-    margin: 0 24px;
+  @media (width < 1200px) {
+    /* Tablet */
+    .wrapper {
+      margin: 0 24px;
+    }
   }
-}
-@media (width < 768px) {
-  /* Mobile */
-  header > .wrapper {
-    margin: 0 16px;
-  }
-  header > .wrapper > .left > img {
-    display: none;
+  @media (width < 768px) {
+    /* Mobile */
+    > .wrapper {
+      margin: 0 16px;
+    }
+    > .wrapper > .left > img {
+      display: none;
+    }
   }
 }

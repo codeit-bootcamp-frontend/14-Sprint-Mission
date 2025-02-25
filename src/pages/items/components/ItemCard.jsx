@@ -13,7 +13,7 @@ export default function ItemCard({ images = [], name, price = 0, favoriteCount }
         </p>
         <div className="flex display-flex justify-left gap-4">
           <img src={IconFavorite} alt="상품 좋아요 수 표시" />
-          <p className="text-xs text-medium text-tertiary">{favoriteCount}</p>
+          <p className="text-xs text-medium text-secondary">{favoriteCount}</p>
         </div>
       </div>
     </article>
