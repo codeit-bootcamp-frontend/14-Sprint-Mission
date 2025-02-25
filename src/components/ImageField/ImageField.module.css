@@ -1,0 +1,66 @@
+.field_label {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.image_container {
+  display: flex;
+  gap: 24px;
+}
+
+.image_box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 282px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.add_box {
+  background-color: var(--gray-100);
+  cursor: pointer;
+}
+
+.add_box span {
+  font-size: 16px;
+  color: var(--gray-400);
+}
+
+.item_image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.delete_button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.error_message {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error-red);
+}
+
+/*** 태블릿 반응형 */
+@media (max-width: 1199px) {
+  .image_box {
+    width: 168px;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import Logo from "../../assets/img/logo_with_panda_icon.svg";
 import Profile from "../../assets/icons/default_profile.svg";
@@ -10,16 +10,20 @@ const navList = [
   {
     to: "/board",
     name: "자유게시판",
-    className: ({ isActive }) => (isActive ? styles.active : undefined),
+    include: [],
   },
   {
     to: "/items",
     name: "중고마켓",
-    className: ({ isActive }) => (isActive ? styles.active : undefined),
+    include: ["/additem"],
   },
 ];
 
+const activeStyle = (isActive) => (isActive ? styles.active : undefined);
+
 const NavHeader = () => {
+  const { pathname } = useLocation();
+
   return (
     <header className={styles.main_header}>
       <nav className={styles.main_nav}>
@@ -27,9 +31,12 @@ const NavHeader = () => {
           <img className={styles.logo} src={Logo} alt="판다마켓 로고" />
         </Link>
         <ul className={styles.menu_list}>
-          {navList.map(({ to, name, className }) => (
+          {navList.map(({ to, name, include }) => (
             <li key={to}>
-              <NavLink to={to} className={className}>
+              <NavLink
+                to={to}
+                className={activeStyle([to, ...include].includes(pathname))}
+              >
                 {name}
               </NavLink>
             </li>

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React, { useMemo, useState } from "react";
 
+import Field from "../Field/Field";
 import styles from "./FormField.module.css";
 
 const FormField = ({
@@ -14,6 +15,8 @@ const FormField = ({
   renderDisabledIcon,
   onChange,
   onBlur,
+  renderElement: RenderComponent = "input",
+  renderClassName,
 }) => {
   const [isExistIcon, setIsExistIcon] = useState(false);
 
@@ -29,36 +32,28 @@ const FormField = ({
   const toggleIconHandler = () => setIsExistIcon((prev) => !prev);
 
   return (
-    <label htmlFor={id}>
-      <span className={styles.field_label}>{label}</span>
-      <div
-        className={clsx([
-          styles.field_input_box,
-          styles.gray_border,
-          {
-            [styles.red_border]: Boolean(errorMessage),
-          },
-        ])}
-      >
-        <input
-          id={label}
+    <Field id={id} label={label} errorMessage={errorMessage}>
+      <div className={styles.field_input_box}>
+        <RenderComponent
+          id={id}
           type={convertableTypeForPassword}
           name={name}
+          className={clsx([styles.field_input, renderClassName])}
           placeholder={placeholder}
-          className={styles.field_input}
           onChange={onChange}
           onBlur={onBlur}
         />
-        <button
-          type="button"
-          className={styles.icon_box}
-          onClick={toggleIconHandler}
-        >
-          {postfixIcon}
-        </button>
+        {postfixIcon && (
+          <button
+            type="button"
+            className={styles.icon_box}
+            onClick={toggleIconHandler}
+          >
+            {postfixIcon}
+          </button>
+        )}
       </div>
-      <p className={styles.error_message}>{errorMessage}</p>
-    </label>
+    </Field>
   );
 };
 
