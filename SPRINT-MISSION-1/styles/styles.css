@@ -91,3 +91,18 @@
 footer > div {
   color: #9ca3af;
 }
+
+@media (min-width: 1600px) {
+  header {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1600px) {
+  header {
+    margin: 0;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
