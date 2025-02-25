@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
+import BestProduct from "./BestProduct";
+import AllProduct from "./AllProduct";
+import Pagination from "./Pagination";
 import "./body.css";
-import Card from "./Card";
-import { getProduct } from "./api/api";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
-import { CiSearch } from "react-icons/ci";
-import PaginationButton from "./PaginationButton";
-import { Link } from "react-router-dom";
 import {
   getAllProduct,
   getBestProduct,
@@ -31,26 +27,6 @@ const Body = () => {
     browserSize <= 767 ? 1 : browserSize <= 1199 ? 2 : 4;
   const allPlaceHolderCount =
     browserSize <= 767 ? 4 : browserSize <= 1199 ? 6 : 10;
-
-  // 뒤로가기 버튼 클릭
-  const goBack = () => {
-    setShowPagination((prevNum) => Math.max(prevNum - 5, 0));
-  };
-
-  // 앞으로 가기 버튼
-  const goFront = () => {
-    if (showPagination + 5 <= paginationNum.length) {
-      setShowPagination((prevNum) => prevNum + 5);
-    }
-  };
-
-  // 페이지네이션 버튼 클릭해서 불러오는 값 바꾸기
-  const buttonClick = (num) => {
-    // 클릭한 버튼 색을 위한 상태 변경
-    setClickedPage(() => num);
-    // page 숫자를 변경해서 서버로 보내기 위한 상태 변경
-    setPageNum(() => num);
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -139,133 +115,39 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="best-product-wrap">
-        <span className="best-product">베스트 상품</span>
-      </div>
-      <div className="card-container">
-        {bestProduct.length > 0
-          ? bestProduct.map((product, index) => (
-              <Card
-                key={index}
-                images={product.images}
-                name={product.name}
-                price={product.price}
-                favoriteCount={product.favoriteCount}
-                productExist={true}
-              />
-            ))
-          : Array.from({ length: bestPlaceHolderCount }, (_, index) => (
-              <Card key={index} productExist={false} />
-            ))}
-      </div>
-      <div className="all-product-header">
-        <span className="all-product">전체 상품</span>
+      {/* 베스트 상품 */}
+      <BestProduct
+        bestProduct={bestProduct}
+        bestPlaceHolderCount={bestPlaceHolderCount}
+      />
 
-        <div className="search-product">
-          <div className="search-container">
-            <CiSearch className="search-icon" />
-            <input
-              type="search"
-              placeholder="검색할 상품을 입력해주세요"
-              className="search-input"
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  searchSubmit({
-                    value: event.target.value,
-                    pageNum,
-                    pageSize,
-                    option,
-                    setIsSearch,
-                    setSearchValue,
-                    setSearchProduct,
-                    setPaginationNum,
-                  });
-                }
-              }}
-            />
-          </div>
-          <div className="button-option">
-            <Link to={"/additem"}>
-              <button className="add-product-button">상품 등록하기</button>
-            </Link>
-            <select
-              name="category"
-              id="category"
-              className="search-option"
-              onChange={(e) =>
-                handleOptionChange({
-                  e,
-                  setOption,
-                  isSearch,
-                  searchProduct,
-                  setAllProduct,
-                  setSearchProduct,
-                  pageNum,
-                  pageSize,
-                })
-              }
-            >
-              <option value="latest">최신순</option>
-              <option value="sortByLike">좋아요순</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      <AllProduct
+        pageNum={pageNum}
+        pageSize={pageSize}
+        option={option}
+        setIsSearch={setIsSearch}
+        setSearchValue={setSearchValue}
+        setSearchProduct={setSearchProduct}
+        setPaginationNum={setPaginationNum}
+        searchSubmit={searchSubmit}
+        setOption={setOption}
+        isSearch={isSearch}
+        searchProduct={searchProduct}
+        setAllProduct={setAllProduct}
+        allProduct={allProduct}
+        allPlaceHolderCount={allPlaceHolderCount}
+        handleOptionChange={handleOptionChange}
+      />
 
-      <div className="all-product-cardContainer">
-        {isSearch
-          ? searchProduct.length > 0
-            ? searchProduct.map((product, index) => (
-                <Card
-                  key={index}
-                  images={product.images}
-                  name={product.name}
-                  price={product.price}
-                  favoriteCount={product.favoriteCount}
-                  showType="전체상품"
-                  productExist={true}
-                />
-              ))
-            : Array.from({ length: allPlaceHolderCount }, (_, index) => (
-                <Card key={index} productExist={false} showType="전체상품" />
-              ))
-          : allProduct.length > 0
-          ? allProduct.map((product, index) => (
-              <Card
-                key={index}
-                images={product.images}
-                name={product.name}
-                price={product.price}
-                favoriteCount={product.favoriteCount}
-                showType="전체상품"
-                productExist={true}
-              />
-            ))
-          : Array.from({ length: allPlaceHolderCount }, (_, index) => (
-              <Card key={index} productExist={false} showType="전체상품" />
-            ))}
-      </div>
-
-      <div className="pagination-wrap">
-        <button className="back-button" onClick={() => goBack()}>
-          <IoIosArrowBack className="arrow" />
-        </button>
-
-        {paginationNum
-          .slice(showPagination, showPagination + 5)
-          .map((num, index) => (
-            <PaginationButton
-              key={index}
-              pageNumber={num}
-              isClicked={clickedPage === num}
-              onClick={() => buttonClick(num)}
-            />
-          ))}
-
-        <button className="forward-button" onClick={() => goFront()}>
-          <IoIosArrowForward className="arrow" />
-        </button>
-      </div>
+      {/* 페이지네이션 컴포넌트 */}
+      <Pagination
+        setShowPagination={setShowPagination}
+        showPagination={showPagination}
+        setClickedPage={setClickedPage}
+        setPageNum={setPageNum}
+        clickedPage={clickedPage}
+        paginationNum={paginationNum}
+      />
     </div>
   );
 };
