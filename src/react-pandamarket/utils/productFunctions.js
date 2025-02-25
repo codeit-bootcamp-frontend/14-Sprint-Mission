@@ -122,3 +122,55 @@ export const handleOptionChange = async ({
     setSearchProduct(response.list);
   }
 };
+
+// 화면 사이즈에 맞게 상품 호출
+export const getProductFetch = ({
+  isSearch,
+  setAllProduct,
+  option,
+  setPaginationNum,
+  pageNum,
+  searchValue,
+  setIsSearch,
+  setSearchValue,
+  setSearchProduct,
+  setbestProduct,
+  pageSize,
+}) => {
+  let bestSize;
+  let AllSize;
+
+  if (window.innerWidth <= 767) {
+    bestSize = 1;
+    AllSize = 4;
+  } else if (window.innerWidth <= 1199) {
+    bestSize = 2;
+    AllSize = 6;
+  } else {
+    bestSize = 4;
+    AllSize = 10;
+  }
+
+  getBestProduct(bestSize, setbestProduct);
+
+  if (!isSearch) {
+    getAllProduct({
+      pageSize: AllSize,
+      setAllProduct,
+      option,
+      setPaginationNum,
+      pageNum,
+    });
+  } else {
+    searchSubmit({
+      value: searchValue,
+      pageNum,
+      pageSize,
+      option,
+      setIsSearch,
+      setSearchValue,
+      setSearchProduct,
+      setPaginationNum,
+    });
+  }
+};

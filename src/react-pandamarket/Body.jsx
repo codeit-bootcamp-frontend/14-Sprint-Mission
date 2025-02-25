@@ -6,6 +6,7 @@ import "./body.css";
 import {
   getAllProduct,
   getBestProduct,
+  getProductFetch,
   handleOptionChange,
   searchSubmit,
 } from "./utils/productFunctions";
@@ -36,35 +37,20 @@ const Body = () => {
     // 리스너 추가
     window.addEventListener("resize", handleResize);
 
-    if (window.innerWidth <= 767) {
-      // 모바일 조건을 가장 먼저 체크
-      getBestProduct(1, setbestProduct);
-      getAllProduct({
-        pageSize: 4,
-        setAllProduct,
-        option,
-        setPaginationNum,
-        pageNum,
-      });
-    } else if (window.innerWidth <= 1199) {
-      getBestProduct(2, setbestProduct);
-      getAllProduct({
-        pageSize: 6,
-        setAllProduct,
-        option,
-        setPaginationNum,
-        pageNum,
-      });
-    } else {
-      getBestProduct(4, setbestProduct);
-      getAllProduct({
-        pageSize: 10,
-        setAllProduct,
-        option,
-        setPaginationNum,
-        pageNum,
-      });
-    }
+    getProductFetch({
+      isSearch,
+      setAllProduct,
+      option,
+      setPaginationNum,
+      pageNum,
+      searchSubmit,
+      searchValue,
+      setIsSearch,
+      setSearchValue,
+      setSearchProduct,
+      setbestProduct,
+      pageSize,
+    });
 
     // 클린업
     return () => {
@@ -73,44 +59,20 @@ const Body = () => {
   }, [browserSize]);
 
   useEffect(() => {
-    if (isSearch !== true) {
-      if (window.innerWidth <= 767) {
-        getAllProduct({
-          pageSize: 4,
-          setAllProduct,
-          option,
-          setPaginationNum,
-          pageNum,
-        });
-      } else if (window.innerWidth <= 1199) {
-        getAllProduct({
-          pageSize: 6,
-          setAllProduct,
-          option,
-          setPaginationNum,
-          pageNum,
-        });
-      } else {
-        getAllProduct({
-          pageSize: 10,
-          setAllProduct,
-          option,
-          setPaginationNum,
-          pageNum,
-        });
-      }
-    } else {
-      searchSubmit({
-        value: searchValue,
-        pageNum,
-        pageSize,
-        option,
-        setIsSearch,
-        setSearchValue,
-        setSearchProduct,
-        setPaginationNum,
-      });
-    }
+    getProductFetch({
+      isSearch,
+      setAllProduct,
+      option,
+      setPaginationNum,
+      pageNum,
+      searchSubmit,
+      searchValue,
+      setIsSearch,
+      setSearchValue,
+      setSearchProduct,
+      setbestProduct,
+      pageSize,
+    });
   }, [clickedPage, option]);
 
   return (
