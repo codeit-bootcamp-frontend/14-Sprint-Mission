@@ -32,7 +32,7 @@ main#items {
 #item-card {
   > .img-wrapper {
     aspect-ratio: 1;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--secondary-300);
     width: 100%;
     overflow: hidden;
     border: 1px solid var(--secondary-200);
@@ -44,6 +44,57 @@ main#items {
       object-fit: cover;
       width: 100%;
       height: 100%;
+    }
+  }
+}
+#item-card.skeleton {
+  > .img-wrapper {
+    min-width: 100%;
+    > .thumbnail {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  > .skeleton-details {
+    > div {
+      height: 24px;
+      border-radius: 8px;
+    }
+    > div:first-child {
+      width: 100%;
+    }
+    > div:nth-child(2) {
+      width: 50%;
+    }
+    > div:last-child {
+      width: 36px;
+    }
+  }
+}
+#order-selector {
+  position: relative;
+  .dropdown {
+    width: 130px;
+    height: 42px;
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+  > .dropdown {
+    border-radius: 12px;
+    border: 1px solid var(--secondary-300);
+    > .rotated {
+      transform: rotate(180deg);
+    }
+  }
+  > .element-wrapper {
+    z-index: 1;
+    position: absolute;
+    margin-top: 8px;
+    border: 1px solid var(--secondary-300);
+    border-radius: 12px;
+    overflow: hidden;
+    > .element:not(:last-child) {
+      border-bottom: 1px solid var(--secondary-300);
     }
   }
 }

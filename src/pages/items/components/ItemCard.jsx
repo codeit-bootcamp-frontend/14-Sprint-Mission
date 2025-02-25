@@ -1,6 +1,6 @@
 import IconFavorite from "../../../assets/images/items/ic_heart.svg";
 
-export default function ItemCard({ images = [], name, price = 0, favoriteCount }) {
+export default function ItemCard({ images = [], name, price = 0, favoriteCount = 0 }) {
   return (
     <article className="display-grid justify-stretch gap-16" id="item-card">
       <div className="img-wrapper radius-16">
