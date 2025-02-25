@@ -5,29 +5,34 @@ import XIcon from "../../assets/icons/ic_X.svg";
 import PlusIcon from "../../assets/icons/ic_plus.svg";
 import styles from "./ImageField.module.css";
 
-const ImageField = ({ id, name, label, errorMessage }) => {
-  const [imageFile, setImageFile] = useState(null);
+const ImageField = ({ id, name, label, errorMessage, onChange, onBlur }) => {
+  const [imageUrl, setImageUrl] = useState(null);
   const imageRef = useRef(null);
 
   const clickHandler = () => {
-    if (imageFile === null) {
+    if (imageUrl === null) {
       imageRef.current.click();
     }
   };
 
-  const imageChangeHandler = () => {
+  const imageChangeHandler = (e) => {
     const file = imageRef.current.files[0];
-    console.log(file);
+
+    if (imageUrl) {
+      URL.revokeObjectURL(imageUrl);
+    }
 
     if (file) {
       const fileUrl = URL.createObjectURL(file);
-
-      setImageFile(fileUrl);
+      setImageUrl(fileUrl);
     }
+
+    onChange(e);
   };
 
   const removeImageClickHandler = () => {
-    setImageFile(null);
+    setImageUrl(null);
+    imageRef.current.value = null;
   };
 
   return (
@@ -39,6 +44,7 @@ const ImageField = ({ id, name, label, errorMessage }) => {
           ref={imageRef}
           name={name}
           onChange={imageChangeHandler}
+          onBlur={onBlur || undefined}
           hidden
         />
         <button
@@ -49,11 +55,11 @@ const ImageField = ({ id, name, label, errorMessage }) => {
           <img src={PlusIcon} alt="플러스 아이콘" />
           <span>이미지 등록</span>
         </button>
-        {imageFile && (
+        {imageUrl && (
           <div className={styles.image_box}>
             <img
               className={styles.item_image}
-              src={imageFile}
+              src={imageUrl}
               alt="상품 이미지"
             />
             <button
@@ -65,7 +71,9 @@ const ImageField = ({ id, name, label, errorMessage }) => {
           </div>
         )}
       </div>
-      {errorMessage && <p className={styles.error_message}>*{errorMessage}</p>}
+      {imageUrl && errorMessage && (
+        <p className={styles.error_message}>{errorMessage}</p>
+      )}
     </label>
   );
 };

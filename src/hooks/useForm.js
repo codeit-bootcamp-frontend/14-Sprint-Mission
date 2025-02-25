@@ -27,6 +27,7 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
 
       setFormValue((prev) => {
         const allValues = prev.values;
+        const validatedError = prev.validators[name].validate(value, allValues);
 
         return {
           ...prev,
@@ -35,7 +36,7 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
             mode === configMode
               ? {
                   ...prev.errors,
-                  [name]: prev.validators[name].validate(value, allValues),
+                  [name]: validatedError,
                 }
               : { ...prev.errors },
         };

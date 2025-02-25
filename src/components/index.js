@@ -2,6 +2,7 @@ import MainSection from "./MainSection/MainSection";
 import WideSection from "./WideSection/WideSection";
 
 import ImageField from "./ImageField/ImageField";
+import TagField from "./TagField/TagField";
 import FormField from "./FormField/FormField";
 import Button from "./Button/Button";
 import ConvenientSigninBox from "./ConvenientSigninBox/ConvenientSigninBox";
@@ -17,6 +18,7 @@ import Pagination from "./Pagination/Pagination";
 export {
   MainSection,
   WideSection,
+  TagField,
   ImageField,
   FormField,
   Button,

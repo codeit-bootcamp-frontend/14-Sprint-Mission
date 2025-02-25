@@ -3,7 +3,7 @@ const EMAIL_REG_EXP =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
 const authValidator = {
-  isEmptyInput: (value) => value === "",
+  isEmptyInput: (value) => value === null || value === "",
   isWrongEmailFormat: (value) => !EMAIL_REG_EXP.test(value),
   isNotMoreThanEight: (value) => value.length < MINIMUM_PASSWORD_LENGTH,
   isNotMatch: (value1, value2) => value1 !== "" && value1 !== value2,
