@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     validateInput(e, "password")
   );
   nameCheck.addEventListener("focusout", (e) => validateInput(e, "text"));
+  passwordTwoCheck.addEventListener("focusout", (e) =>
+    validateInput(e, "password")
+  );
 
   emailCheck.addEventListener("input", validButton);
   passwordCheck.addEventListener("input", validButton);
@@ -19,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   passwordTwoCheck.addEventListener("input", validButton);
 
   submitButton.addEventListener("click", (e) => {
-    // items 페이지로 이동
     e.preventDefault();
     if (
       emailCheck.value !== "" &&
@@ -30,27 +32,26 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordCheck.value === passwordTwoCheck.value
     ) {
       window.location.href = "../pages/login.html";
-    } else {
     }
   });
 
   function validateInput(e, type) {
-    // 이메일과 비밀번호 조건 함수 // 왜 길지.. 이거 아닌데..
     const input = e.target;
     const errorMessage = document.querySelector(`.${type}-error-message`);
     const validMessage = document.querySelector(`.${type}-valid-message`);
     const passwordErrorMessage = document.querySelector(
       ".passwordTwo-error-message"
     );
+
     if (type === "email") {
-      if (type === "email" && !input.checkValidity()) {
-        errorMessage.style.display = "none";
-        validMessage.style.display = "block";
-        emailCheck.classList.add("error-border");
-        emailCheck.style.margin = "0";
-      } else if (type === "email" && input.value === "") {
+      if (input.value === "") {
         errorMessage.style.display = "block";
         validMessage.style.display = "none";
+        emailCheck.classList.add("error-border");
+        emailCheck.style.margin = "0";
+      } else if (!input.checkValidity()) {
+        validMessage.style.display = "block";
+        errorMessage.style.display = "none";
         emailCheck.classList.add("error-border");
         emailCheck.style.margin = "0";
       } else {
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         emailCheck.style.marginBottom = "1.5rem";
       }
     } else if (type === "text") {
-      if (type === "text" && input.value === "") {
+      if (input.value === "") {
         errorMessage.style.display = "block";
         nameCheck.classList.add("error-border");
         nameCheck.style.margin = "0";
@@ -72,17 +73,17 @@ document.addEventListener("DOMContentLoaded", function () {
         nameCheck.style.marginBottom = "1.5rem";
       }
     } else if (type === "password") {
-      if (type === "password" && input.value === "") {
+      if (input.value === "") {
         errorMessage.style.display = "block";
         validMessage.style.display = "none";
         passwordCheck.classList.add("error-border");
         passwordCheck.style.marginBottom = "0";
-      } else if (type === "password" && input.value.length < 8) {
-        errorMessage.style.display = "none";
+      } else if (input.value.length < 8) {
         validMessage.style.display = "block";
+        errorMessage.style.display = "none";
         passwordCheck.classList.add("error-border");
         passwordCheck.style.marginBottom = "0";
-      } else if (type === "password" && input.value.length >= 8) {
+      } else {
         errorMessage.style.display = "none";
         validMessage.style.display = "none";
         passwordCheck.classList.remove("error-border");
@@ -90,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         passwordCheck.style.marginBottom = "1.5rem";
       }
     }
+
     if (passwordCheck.value !== passwordTwoCheck.value) {
       passwordErrorMessage.style.display = "block";
       passwordTwoCheck.classList.add("error-border");
@@ -106,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function validButton() {
-    // 회원가입 버튼 비활성화 or 활성화
     if (
       emailCheck.value !== "" &&
       emailCheck.checkValidity() &&
