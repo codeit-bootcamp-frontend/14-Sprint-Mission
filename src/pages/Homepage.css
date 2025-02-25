@@ -1,0 +1,163 @@
+/* banner */
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.hero {
+  background-color: var(--blue-bg);
+  padding-top: min(200px, 10%);
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  width: 100%;
+  font-weight: 700;
+  font-size: 40px;
+  color: #374151;
+}
+
+.view-button {
+  text-align: center;
+  display: inline-block;
+  width: 320px;
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 40px;
+  margin-top: 20px;
+}
+
+.img-panda {
+  flex: 1;
+  height: auto;
+  margin-top: 16px;
+}
+
+/* section */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: min(140px, 8%) auto min(280px, 16%);
+  background-color: var(--gray-50);
+  border-radius: 20px;
+}
+
+.group {
+  flex: 1;
+  width: 330px;
+  padding: 30px;
+}
+
+.group:nth-child(odd) {
+  text-align: right;
+}
+
+.img-group {
+  flex: 1;
+  width: 55%;
+  height: auto;
+  aspect-ratio: 5/4;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.label {
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.title {
+  margin: 12px 0 24px;
+  font-size: clamp(16px, 3vw, 40px);
+  font-weight: 700;
+  text-overflow: ellipsis;
+}
+
+.details {
+  margin: 0;
+  font-size: clamp(16px, 3vw, 24px);
+  font-weight: 500;
+}
+
+.slogan {
+  background-color: var(--blue-bg);
+}
+
+.slogan .banner {
+  padding-top: 140px;
+  align-items: center;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-text {
+    width: 33rem;
+    margin-bottom: 100px;
+  }
+
+  .img-panda {
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .reverse {
+    flex-direction: column-reverse;
+  }
+
+  .container .img-group {
+    width: 100%;
+  }
+
+  .container .group {
+    width: 100%;
+  }
+
+  .slogan {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo {
+    display: none;
+  }
+
+  .hero-text {
+    width: 15rem;
+    margin-bottom: 130px;
+  }
+
+  .hero-text .hero-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .hero-text .view-button {
+    width: 240px;
+  }
+}
