@@ -1,0 +1,43 @@
+.auth_main {
+  background-color: #fcfcfc;
+  width: 100vw;
+  height: 100vh;
+}
+
+.auth_center {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.logo img {
+  width: 396px;
+  height: 132px;
+}
+
+/** 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .auth_center {
+    top: 80px;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    margin-bottom: 24px;
+  }
+
+  .logo img {
+    width: 198px;
+    height: 66px;
+  }
+}

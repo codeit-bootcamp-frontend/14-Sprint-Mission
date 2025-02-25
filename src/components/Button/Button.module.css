@@ -1,0 +1,18 @@
+.common_button {
+  display: inline-block;
+  padding: 12px 0;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.common_button:disabled {
+  background-color: var(--gray-400);
+  cursor: default;
+}

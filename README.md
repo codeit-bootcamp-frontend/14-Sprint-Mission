@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# 코드잇 프론트엔드 스프린트 14기 스프린트 미션 (판다마켓)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 스프린트 미션 5
 
-## Available Scripts
+### Todo List
 
-In the project directory, you can run:
+#### 리액트 전환
 
-### `npm start`
+- [x] `/` 홈페이지
+- [x] `/signin` 로그인
+- [x] `/signup` 회원가입
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 페이지 구현
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] `/items` 상품 페이지
+  - [x] 중고마켓 페이지 주소는 `/items` 입니다.
+  - [x] 페이지 주소가 `/items` 일때 상단네비게이션바의 '중고마켓' 버튼의 색상은 `3692FF`입니다.
+  - [x] 상단 네비게이션 바는 이전 미션에서 구현한 랜딩 페이지와 동일한 스타일로 만들어 주세요.
+  - [x] 상품 데이터 정보는 `https://panda-market-api.vercel.app/docs/#/` 에 명세된 GET 메소드 `/products` 를 사용해주세요.
+  - [x] `상품 등록하기` 버튼을 누르면 `/additem` 로 이동합니다. ( 빈 페이지 )
+  - [x] 전체 상품에서 드롭 다운으로 `최신 순` 또는 `좋아요 순`을 선택해서 정렬을 할 수 있습니다.
 
-### `npm test`
+##### 중고마켓 반응형
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 베스트 상품
+  - Desktop : 4개 보이기
+  - Tablet : 2개 보이기
+  - Mobile : 1개 보이기
+- 전체 상품
+  - Desktop : 12개 보이기
+  - Tablet : 6개 보이기
+  - Mobile : 4개 보이기
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 심화
+- [x] 페이지 네이션 기능을 구현합니다.

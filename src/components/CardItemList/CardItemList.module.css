@@ -1,0 +1,37 @@
+.item_list {
+  display: grid;
+  row-gap: 40px;
+  column-gap: 24px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.large_column {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.small_column {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/*** 태블릿 반응형 */
+@media (max-width: 1199px) {
+  .large_column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .small_column {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*** 모바일 반응형  */
+@media (min-width: 375px) and (max-width: 767px) {
+  .large_column {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .small_column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

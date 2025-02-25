@@ -1,0 +1,68 @@
+.field_label {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.field_input_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 24px;
+  background-color: var(--gray-100);
+  border-radius: 12px;
+}
+
+.icon_box {
+  display: flex;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  background-color: none;
+  cursor: pointer;
+}
+
+.gray_border {
+  border: 1px solid var(--gray-100);
+}
+
+.red_border {
+  border: 1px solid var(--error-red);
+}
+
+.field_input_box:has(.field_input:focus) {
+  border: 1px solid var(--blue);
+}
+
+.error_message {
+  margin-top: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--error-red);
+}
+
+.field_input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.field_input::placeholder {
+  color: var(--gray-400);
+}
+
+/** 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .field_label {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

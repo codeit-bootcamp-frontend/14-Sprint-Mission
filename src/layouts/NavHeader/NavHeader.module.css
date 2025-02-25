@@ -1,0 +1,70 @@
+.main_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.main_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1520px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 200px;
+}
+
+.main_nav li {
+  cursor: pointer;
+}
+
+.logo {
+  width: 152px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.menu_list {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 30px;
+  padding: 0 15px;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.menu_list a {
+  color: var(--gray-600);
+}
+
+.menu_list .active {
+  color: #3692ff;
+}
+
+/** 태블릿 반응형 */
+@media (max-width: 1199px) {
+  .main_nav {
+    padding: 0 24px;
+  }
+}
+
+/** 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .main_nav {
+    padding: 0 12px;
+  }
+
+  .logo {
+    width: 102px;
+    height: 35px;
+    cursor: pointer;
+  }
+}

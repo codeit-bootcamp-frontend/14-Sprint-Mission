@@ -1,0 +1,26 @@
+.input_wrapper {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px;
+  background-color: var(--gray-100);
+  border-radius: 12px;
+}
+
+.input_wrapper i {
+  display: inline-block;
+  height: 100%;
+}
+
+.input_wrapper img {
+  height: 100%;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+}

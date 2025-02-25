@@ -1,0 +1,23 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 16px 24px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--gray-800);
+}
+
+.icon_box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.link {
+  height: 42px;
+}
