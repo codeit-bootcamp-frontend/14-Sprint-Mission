@@ -1,46 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="../style-login.css"> 
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"rel="stylesheet"/>
-</head>
-<body class="total">
-    <div class="login-container"> 
-        <a href="../index.html" target="_self"><img src="./login_files/Property 1=lg@3x.png" class="login-header-logo" alt="누르면 판다마켓 메인 페이지로 이동합니다."></a>
+    <link rel="stylesheet" href="../style-login.css" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+    <script src="../js/login.js" type="module" defer></script>
+  </head>
+  <body class="total">
+    <div class="login-container">
+      <a href="../index.html" target="_self"
+        ><img
+          src="./login_files/Property 1=lg@3x.png"
+          class="login-header-logo"
+          alt="누르면 판다마켓 메인 페이지로 이동합니다."
+      /></a>
     </div>
     <!-- form -->
     <form class="container-box">
-        <label class="email-password-font">
-            <div class="email-password-font">이메일</div>
-            <input type="email" name="name" placeholder="이메일을 입력해주세요." class="email-box">
-        </label>
-            <label class="email-password-font">비밀번호</label>
-            <div class="password-container">
-                <input type="password" name="password" placeholder="비밀번호를 입력해주세요." class="email-box">
-                <img src="../img/Vector (2).png" class="password-box" alt="숨김표시아이콘"/>
-            </div>
-               
-        <button class="login-button">
-            <h1 class="login-button-font">로그인</h1>
-        </button>
-        
-        <div class="login-choice-container">
-            <div class="login-box">
-                <h2 class="login-font">간편 로그인하기</h2>
-            </div>
-            <div>
-                <a href="https://www.google.com/" target="_blank"><img src="./login_files/KakaoTalk_20250113_184623726.png" alt="구글로 로그인" class="login-choice"></a>
-                <a href="https://www.kakaocorp.com/page/" target="_blank"><img src="./login_files/KakaoTalk_20250113_184702322.png" alt="카카오톡으로 로그인" class="login-choice"></a>
-            </div>
+      <div class="email-password-font">이메일</div>
+      <label class="email-password-font" for="email-box">
+        <input
+          type="email"
+          name="email"
+          placeholder="이메일을 입력해주세요."
+          id="email-box"
+        />
+      </label>
+      <p class="email-error-message">이메일을 입력해주세요.</p>
+      <p class="email-valid-message">잘못된 이메일입니다.</p>
+      <label class="email-password-font" for="password-box"
+        >비밀번호
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력해주세요."
+            id="password-box"
+          />
+          <img
+            src="../img/Vector2.png"
+            class="password-box-icon"
+            alt="숨김표시아이콘"
+          />
         </div>
-        <!-- footer -->
-        <footer class="footer-container">
-            <h2 class="first">판다마켓이 처음이신가요? &nbsp;</h2> 
-            <a href="./singup.html" target="_blank">회원가입</a>
-        </footer>
+      </label>
+      <p class="password-error-message">비밀번호를 입력해주세요.</p>
+      <p class="password-valid-message">비밀번호를 8자 이상을 입력해주세요.</p>
+      <button class="login-button" disabled>로그인</button>
+
+      <div class="login-choice-container">
+        <div class="login-box">
+          <p class="login-font">간편 로그인하기</p>
+        </div>
+        <div>
+          <a href="https://www.google.com/" target="_blank"
+            ><img
+              src="./login_files/KakaoTalk_20250113_184623726.png"
+              alt="구글로 로그인"
+              class="login-choice"
+          /></a>
+          <a href="https://www.kakaocorp.com/page/" target="_blank"
+            ><img
+              src="./login_files/KakaoTalk_20250113_184702322.png"
+              alt="카카오톡으로 로그인"
+              class="login-choice"
+          /></a>
+        </div>
+      </div>
+      <!-- footer -->
+      <footer class="footer-container">
+        <h2 class="first">판다마켓이 처음이신가요? &nbsp;</h2>
+        <a href="./singup.html" target="_blank">회원가입</a>
+      </footer>
     </form>
-</body>
+  </body>
 </html>
