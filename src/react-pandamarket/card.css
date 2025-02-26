@@ -1,3 +1,16 @@
+@keyframes placeholder-glow {
+  0% {
+    background-color: #888888;
+  }
+  50% {
+    background-color: #888888;
+    opacity: 0.2;
+  }
+  100% {
+    background-color: #888888;
+  }
+}
+
 .card-wrap {
   margin-right: 24px;
   padding: 0;
@@ -53,11 +66,68 @@
   margin-right: 4px;
 }
 
+/* 로딩 중일 때의 카드 상태 */
+.card-image-glow {
+  width: 282px;
+  height: 282px;
+  border-radius: 16px;
+  margin-top: 16px;
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+.card-image-allProduct-glow {
+  width: 221px;
+  height: 221px;
+  border-radius: 16px;
+  margin-top: 16px;
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+.card-info-glow {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.product-name-glow {
+  width: 100%;
+  height: 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+.product-price-glow {
+  width: 100%;
+  height: 20px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+.heart-glow {
+  width: 100%;
+  height: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+
+.heart-icon-glow {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
 @media (max-width: 1199px) {
   .card-wrap {
     margin-right: 10px;
   }
   .card-image {
+    width: 343px;
+    height: 343px;
+  }
+  .card-image-glow {
     width: 343px;
     height: 343px;
   }
@@ -73,5 +143,9 @@
   .card-image-allProduct {
     width: 168px;
     height: 168px;
+  }
+  .card-image-glow {
+    width: 343px;
+    height: 343px;
   }
 }
