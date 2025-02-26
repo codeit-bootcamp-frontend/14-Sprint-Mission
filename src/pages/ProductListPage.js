@@ -22,41 +22,9 @@ function ProductListPage() {
   const [sortOrder, setSortOrder] = useState("recent");
   const [keyword, setkeyword] = useState("");
   const [totalProductsCount, setTotalProductsCount] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // 전체 상품 받아오기
-  const handleLoad = useCallback(async () => {
-    try {
-      const result = await getProducts({
-        page: currentPage,
-        pageSize: pageSize,
-        orderBy: sortOrder,
-      });
-      const { list, totalCount } = result;
-      setProducts(list);
-      setTotalProductsCount(totalCount);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [sortOrder, currentPage]);
-
-  // 베스트 상품 받아오기
-  const handleBestLoad = useCallback(async () => {
-    try {
-      const bestResult = await getProducts({
-        page: 1,
-        pageSize: pageBestSize,
-        keyword: "",
-        orderBy: "favorite",
-      });
-      const { list } = bestResult;
-      setBestProducts(list);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [pageBestSize]);
+  const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
@@ -100,35 +68,54 @@ function ProductListPage() {
     [bestProducts]
   );
 
-  // 총 페이지 수 변경
-  const handlePageCount = useCallback(() => {
-    const pageCount = Math.ceil(totalProductsCount / pageSize);
-    setTotalPages(pageCount);
-    // console.log("totalPages:" + totalPages);
-  }, [pageSize, totalProductsCount]);
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   // 상품 데이터 불러오기
   useEffect(() => {
+    // 전체 상품 받아오기
+    const handleLoad = async () => {
+      try {
+        const result = await getProducts({
+          page: currentPage,
+          pageSize: pageSize,
+          orderBy: sortOrder,
+        });
+        const { list, totalCount } = result;
+        setProducts(list);
+        setTotalProductsCount(totalCount);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    // 베스트 상품 받아오기
+    const handleBestLoad = async () => {
+      try {
+        const bestResult = await getProducts({
+          page: 1,
+          pageSize: pageBestSize,
+          keyword: "",
+          orderBy: "favorite",
+        });
+        const { list } = bestResult;
+        setBestProducts(list);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     handleLoad();
     handleBestLoad();
-  }, [sortOrder, handleLoad, handleBestLoad]);
+  }, [sortOrder, currentPage, pageBestSize, pageSize]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     updateDisplayedProducts(windowWidth);
     updateDisplayedBestProducts(windowWidth);
-    handlePageCount();
     return () => window.removeEventListener("resize", handleResize);
-  }, [
-    windowWidth,
-    updateDisplayedProducts,
-    updateDisplayedBestProducts,
-    handlePageCount,
-  ]);
+  }, [windowWidth, updateDisplayedProducts, updateDisplayedBestProducts]);
 
   return (
     <div>
