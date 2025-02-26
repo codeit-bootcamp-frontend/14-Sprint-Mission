@@ -1,0 +1,111 @@
+/* Main */
+main#home {
+  > .banner {
+    background-color: #cfe5ff;
+    padding-top: 200px;
+    > .wrapper a.button {
+      width: 357px;
+    }
+  }
+  > .cards > .card-wrapper {
+    height: 720px;
+  }
+  > .cards > .card-wrapper {
+    > .card {
+      background-color: #fcfcfc;
+    }
+    > .card.direction-row-reverse {
+      text-align: right;
+    }
+  }
+  > .banner#bottom-banner {
+    padding-top: 143px;
+    gap: 70px;
+  }
+  @media (width < 1200px) {
+    /* Tablet */
+    > .banner {
+      padding-top: 84px;
+      flex-direction: column;
+      > .wrapper {
+        flex-direction: column;
+        gap: 24px;
+        > a {
+          margin: 0 auto 132px;
+        }
+        br {
+          display: none;
+        }
+      }
+      > img,
+      > .wrapper > img {
+        width: 100%;
+      }
+    }
+    > .cards {
+      box-sizing: border-box;
+      padding: 24px 24px 56px;
+      display: grid;
+      width: 100%;
+      gap: 52px;
+      > .card-wrapper {
+        display: block;
+        height: auto;
+        > .card {
+          background-color: inherit;
+          flex-direction: column;
+          gap: 24px;
+          margin: 0;
+          padding: 0;
+          > .display-grid {
+            width: 100%;
+            padding: 0;
+          }
+          > img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    > .banner#bottom-banner {
+      text-align: center;
+      padding: 0;
+      gap: 16px;
+      .heading {
+        margin: 201px 0;
+      }
+    }
+  }
+  @media (width < 768px) {
+    /* Mobile */
+    > .banner {
+      > .wrapper {
+        text-align: center;
+        gap: 18px;
+        > h1,
+        > .heading {
+          font-size: 32px;
+          line-height: 44.8px;
+          br {
+            display: block;
+          }
+        }
+        > a.button {
+          font-size: 18px;
+          line-height: 26px;
+          width: 240px;
+        }
+      }
+      > .cards {
+        padding: 52px 16px 83px;
+        gap: 40px;
+      }
+    }
+    > .banner#bottom-banner {
+      gap: 10px;
+      .heading {
+        margin: 121px 0;
+      }
+    }
+  }
+}

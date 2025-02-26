@@ -1,0 +1,74 @@
+.display-grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.display-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+// Grid, Flex - Justify
+$justify-list: (
+  "left": flex-start,
+  "right": flex-end,
+  "center": center,
+  "sides": space-between,
+  "evenly": space-evenly,
+  "stretch": stretch,
+);
+@each $name, $justify in $justify-list {
+  .display-grid.justify-#{$name},
+  .display-flex.justify-#{$name} {
+    justify-content: $justify;
+  }
+}
+// Grid, Flex - Align
+$align-list: (
+  "upper": flex-start,
+  "center": center,
+  "lower": flex-end,
+  "stretch": stretch,
+  "sides": space-between,
+  "evenly": space-evenly,
+);
+@each $name, $align in $align-list {
+  .display-grid.align-#{$name},
+  .display-flex.align-#{$name} {
+    align-items: $align;
+  }
+}
+.display-flex.direction-row {
+  flex-direction: row;
+}
+.display-flex.direction-row-reverse {
+  flex-direction: row-reverse;
+}
+.display-flex.direction-column {
+  flex-direction: column;
+}
+.display-grid.direction-row {
+  grid-auto-flow: row;
+}
+.display-grid.direction-column {
+  grid-auto-flow: column;
+}
+// Spacing (Gap)
+@for $spacing from 0 through 40 {
+  .gap-#{calc($spacing * 2)} {
+    gap: #{calc($spacing * 2)}px;
+  }
+}
+// Border Radius
+@for $radius from 0 through 32 {
+  .radius-#{calc($radius * 2)} {
+    border-radius: #{calc($radius * 2)}px;
+  }
+}
+.radius-9999 {
+  border-radius: 9999px;
+}
+.radius-circle {
+  border-radius: 100%;
+}
