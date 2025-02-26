@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router";
-import ProductListPage from "./pages/ProductListPage";
 import Homepage from "./pages/Homepage";
+import ProductListPage from "./pages/ProductListPage";
+import AddItemPage from "./pages/AddItemPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
           <Route path="items">
             <Route index element={<ProductListPage />} />
           </Route>
+          <Route path="additem" element={<AddItemPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

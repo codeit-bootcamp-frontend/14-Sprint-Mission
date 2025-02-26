@@ -1,0 +1,9 @@
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-input-container input {
+  width: 280px;
+  height: 280px;
+}
