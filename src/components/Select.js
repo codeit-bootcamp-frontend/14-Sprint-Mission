@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import "./Select.css";
 import { FaCaretDown, FaSortAmountDown } from "react-icons/fa";
 
-function Select({ onSelect }) {
+function Select({ onSelect, selectBox }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("최신순");
+  const [selectedOption, setSelectedOption] = useState(selectBox[0].label);
   const selectRef = useRef(null);
 
   const toggleOpen = () => {
@@ -13,6 +13,7 @@ function Select({ onSelect }) {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
+    console.log(selectedOption);
     setIsOpen(false);
     onSelect(option.value);
   };
@@ -38,20 +39,16 @@ function Select({ onSelect }) {
       </div>
       <FaSortAmountDown className="sort-icon" />
       <ul className={`options ${isOpen ? "show" : ""}`}>
-        <li
-          onClick={() =>
-            handleOptionClick({ label: "최신순", value: "recent" })
-          }
-        >
-          최신순
-        </li>
-        <li
-          onClick={() =>
-            handleOptionClick({ label: "좋아요순", value: "favorite" })
-          }
-        >
-          좋아요순
-        </li>
+        {selectBox.map((select) => (
+          <li
+            key={select.label}
+            onClick={() =>
+              handleOptionClick({ label: select.label, value: select.value })
+            }
+          >
+            {select.label}
+          </li>
+        ))}
       </ul>
     </div>
   );

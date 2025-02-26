@@ -7,6 +7,11 @@ import Select from "../components/Select";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 
+const selectBox = [
+  { label: "최신순", value: "recent" },
+  { label: "좋아요순", value: "favorite" },
+];
+
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
   const [displayedBestProducts, setDisplayedBestProducts] = useState([]);
@@ -157,7 +162,7 @@ function ProductListPage() {
               </button>
               <Select
                 className="select"
-                options={["recent", "favorite"]}
+                selectBox={selectBox}
                 onSelect={handleChange}
               />
             </div>
