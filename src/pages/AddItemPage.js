@@ -9,12 +9,13 @@ function AddItemPage() {
     name: "",
     description: "",
     price: "",
+    tags: [],
   });
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
 
   // 폼 입력시 버튼 활성화
   const isEnabled =
-    formData.name && formData.description && formData.price && tags[0];
+    formData.name && formData.description && formData.price && formData.tags[0];
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -24,11 +25,16 @@ function AddItemPage() {
     }));
   };
 
+  const handleTagsChange = (newTags) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      tags: newTags,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  console.log(tags);
 
   return (
     <div>
@@ -50,7 +56,7 @@ function AddItemPage() {
               value={formData.name}
               onChange={handleChange}
               placeholder="상품명을 입력해주세요"
-            ></input>
+            />
             <label htmlFor="description">상품 소개</label>
             <input
               id="description"
@@ -58,7 +64,7 @@ function AddItemPage() {
               value={formData.description}
               onChange={handleChange}
               placeholder="상품 소개을 입력해주세요"
-            ></input>
+            />
             <label htmlFor="price">판매가격</label>
             <input
               id="price"
@@ -66,8 +72,8 @@ function AddItemPage() {
               value={formData.price}
               onChange={handleChange}
               placeholder="판매 가격을 입력해주세요"
-            ></input>
-            <Tags tags={tags} onChange={setTags} />
+            />
+            <Tags tags={formData.tags} onChange={handleTagsChange} />
           </div>
         </form>
       </div>

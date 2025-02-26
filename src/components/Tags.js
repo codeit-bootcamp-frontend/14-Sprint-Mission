@@ -21,7 +21,6 @@ function Tags({ tags, onChange }) {
   // 태그 제거
   const handleRemoveTag = (tagToRemove) => {
     onChange(tags.filter((t) => t !== tagToRemove));
-    console.log("removed");
   };
 
   return (
