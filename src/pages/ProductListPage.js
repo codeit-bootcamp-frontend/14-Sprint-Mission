@@ -6,6 +6,7 @@ import "./ProductListPage.css";
 import Select from "../components/Select";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
+import useWindowWidth from "../components/hooks/useWindowWidth";
 
 const selectBox = [
   { label: "최신순", value: "recent" },
@@ -23,18 +24,13 @@ function ProductListPage() {
   const [keyword, setkeyword] = useState("");
   const [totalProductsCount, setTotalProductsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const windowWidth = useWindowWidth();
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
     setSortOrder(value);
     setCurrentPage(1);
-  };
-
-  // 창 크기에 따라 상품 개수 변경
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
   };
 
   // 창 크기에 따라 표시되는 상품 개수 변경
@@ -111,10 +107,8 @@ function ProductListPage() {
   }, [sortOrder, currentPage, pageBestSize, pageSize]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
     updateDisplayedProducts(windowWidth);
     updateDisplayedBestProducts(windowWidth);
-    return () => window.removeEventListener("resize", handleResize);
   }, [windowWidth, updateDisplayedProducts, updateDisplayedBestProducts]);
 
   return (
