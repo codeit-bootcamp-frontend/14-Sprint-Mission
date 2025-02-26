@@ -1,5 +1,7 @@
 # 스프린트 미션 5
 
+배포 사항: https://fe-14-sprint-mission-react-lsj.netlify.app/
+
 ## 기본 요구사항
 
 - [x] Github에 PR(Pull Request)을 만들어서 미션을 제출합니다.
