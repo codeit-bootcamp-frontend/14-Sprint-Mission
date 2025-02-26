@@ -49,9 +49,9 @@ export default function HeaderNav() {
     <header className="common-header">
       <div className="wrapper display-flex justify-sides">
         <LogoArea />
-        <a href="/login" className="button small-48 display-flex justify-center">
+        <Link to="/login" className="button small-48 display-flex justify-center">
           로그인
-        </a>
+        </Link>
       </div>
     </header>
   );
