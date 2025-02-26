@@ -15,11 +15,9 @@ const selectBox = [
 
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
-  const [displayedBestProducts, setDisplayedBestProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [pageSize, setPageSize] = useState(10);
-  const [pageBestSize, setPageBestSize] = useState(4);
+  const [bestPageSize, setBestPageSize] = useState(4);
   const [sortOrder, setSortOrder] = useState("recent");
   const [keyword, setkeyword] = useState("");
   const [totalProductsCount, setTotalProductsCount] = useState(0);
@@ -34,35 +32,18 @@ function ProductListPage() {
   };
 
   // 창 크기에 따라 표시되는 상품 개수 변경
-  const updateDisplayedProducts = useCallback(
-    (width) => {
-      if (width >= 1024) {
-        setDisplayedProducts(products.slice(0, 10));
-        setPageSize(10);
-      } else if (width >= 640) {
-        setDisplayedProducts(products.slice(0, 6));
-        setPageSize(6);
-      } else {
-        setDisplayedProducts(products.slice(0, 4));
-        setPageSize(4);
-      }
-    },
-    [products]
-  );
-
-  // 창 크기에 따라 표시되는 베스트 상품 개수 변경
-  const updateDisplayedBestProducts = useCallback(
-    (width) => {
-      if (width >= 1024) {
-        setDisplayedBestProducts(bestProducts.slice(0, 4));
-      } else if (width >= 640) {
-        setDisplayedBestProducts(bestProducts.slice(0, 2));
-      } else {
-        setDisplayedBestProducts(bestProducts.slice(0, 1));
-      }
-    },
-    [bestProducts]
-  );
+  const updateDisplayedProducts = useCallback((width) => {
+    if (width >= 1024) {
+      setPageSize(10);
+      setBestPageSize(4);
+    } else if (width >= 640) {
+      setPageSize(6);
+      setBestPageSize(2);
+    } else {
+      setPageSize(4);
+      setBestPageSize(1);
+    }
+  }, []);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -91,7 +72,7 @@ function ProductListPage() {
       try {
         const bestResult = await getProducts({
           page: 1,
-          pageSize: pageBestSize,
+          pageSize: bestPageSize,
           keyword: "",
           orderBy: "favorite",
         });
@@ -104,12 +85,11 @@ function ProductListPage() {
 
     handleLoad();
     handleBestLoad();
-  }, [sortOrder, currentPage, pageBestSize, pageSize]);
+  }, [sortOrder, currentPage, bestPageSize, pageSize]);
 
   useEffect(() => {
     updateDisplayedProducts(windowWidth);
-    updateDisplayedBestProducts(windowWidth);
-  }, [windowWidth, updateDisplayedProducts, updateDisplayedBestProducts]);
+  }, [windowWidth, updateDisplayedProducts]);
 
   return (
     <div>
@@ -118,7 +98,7 @@ function ProductListPage() {
         <div className="best-container">
           <h2>베스트 상품</h2>
           <div className="best-products">
-            {displayedBestProducts?.map((product) => (
+            {bestProducts?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
@@ -149,7 +129,7 @@ function ProductListPage() {
             </div>
           </div>
           <div className="all-products">
-            {displayedProducts?.map((product) => (
+            {products?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
