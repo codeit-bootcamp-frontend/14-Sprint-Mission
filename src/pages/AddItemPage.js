@@ -10,6 +10,7 @@ function AddItemPage() {
     description: "",
     price: "",
     tags: [],
+    imgFile: null,
   });
   // const [tags, setTags] = useState([]);
 
@@ -25,10 +26,10 @@ function AddItemPage() {
     }));
   };
 
-  const handleTagsChange = (newTags) => {
+  const handleInputChange = (name, value) => {
     setFormData((prevData) => ({
       ...prevData,
-      tags: newTags,
+      [name]: value,
     }));
   };
 
@@ -73,7 +74,7 @@ function AddItemPage() {
               onChange={handleChange}
               placeholder="판매 가격을 입력해주세요"
             />
-            <Tags tags={formData.tags} onChange={handleTagsChange} />
+            <Tags tags={formData.tags} onChange={handleInputChange} />
           </div>
         </form>
       </div>

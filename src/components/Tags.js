@@ -13,14 +13,17 @@ function Tags({ tags, onChange }) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && newTag.trim() !== "") {
       e.preventDefault();
-      onChange([...tags, newTag.trim()]);
+      onChange("tags", [...tags, newTag.trim()]);
       setNewTag("");
     }
   };
 
   // 태그 제거
   const handleRemoveTag = (tagToRemove) => {
-    onChange(tags.filter((t) => t !== tagToRemove));
+    onChange(
+      "tags",
+      tags.filter((t) => t !== tagToRemove)
+    );
   };
 
   return (
