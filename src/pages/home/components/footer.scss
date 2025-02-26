@@ -8,6 +8,7 @@ footer {
   > .wrapper {
     width: 100%;
     max-width: 1120px;
+    padding: 32px 0;
     margin: 0 auto;
     grid-template-columns: repeat(3, 1fr);
     > ul {
@@ -29,11 +30,13 @@ footer {
   }
   @media (width < 1200px) {
     /* Tablet */
-    padding: 32px 24px;
+    > .wrapper {
+      padding: 32px 24px;
+    }
   }
   @media (width < 768px) {
-    padding: 32px 16px;
     > .wrapper {
+      padding: 32px 16px;
       grid-template-rows: repeat(2, 1fr);
       grid-template-columns: repeat(2, 1fr);
       grid-template-areas:

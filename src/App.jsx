@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
+import AddItem from "./pages/additem/AddItem";
+import Boards from "./pages/boards/Boards";
 import Faq from "./pages/faq/Faq";
 import Home from "./pages/home/Home";
 import Items from "./pages/items/Items";
@@ -16,6 +18,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/additem" element={<AddItem />} />
+          <Route path="/boards" element={<Boards />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/faq" element={<Faq />} />
         </Routes>

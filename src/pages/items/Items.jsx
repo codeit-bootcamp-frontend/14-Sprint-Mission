@@ -7,8 +7,8 @@ import ItemCard from "./components/ItemCard";
 import ItemCardSkeleton from "./components/ItemCardSkeleton";
 import OrderSelector from "./components/OrderSelector";
 import Pagination from "./components/Pagination";
-import "./items.scss";
 import SearchInput from "./components/SearchInput";
+import "./items.scss";
 
 const PAGE_SIZE = {
   best: { desktop: 4, tablet: 2, mobile: 1 },
