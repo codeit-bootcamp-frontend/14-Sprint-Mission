@@ -13,6 +13,13 @@ function FileInput({ value, onChange }) {
 
   const handleChange = (e) => {
     const nextImage = e.target.files[0];
+
+    if (value) {
+      setError("*이미지 등록은 최대 1개까지 가능합니다.");
+      return;
+    }
+
+    setError(null);
     if (!nextImage) return;
     setPreview(nextImage);
     onChange("imgFile", nextImage);
@@ -20,8 +27,11 @@ function FileInput({ value, onChange }) {
 
   const handleRemove = () => {
     const inputNode = inputRef.current;
-    if (!inputNode) return;
+    if (!inputNode) {
+      return;
+    }
     inputNode.value = "";
+    setError(null);
     setPreview(null);
     onChange("imgFile", null);
   };
@@ -30,7 +40,9 @@ function FileInput({ value, onChange }) {
     if (!value) return;
     const nextPreview = URL.createObjectURL(value);
     setPreview(nextPreview);
-  }, [value]);
+  }, [value, error]);
+
+  console.log("error:", error);
 
   return (
     <div className="file-input-container">
@@ -61,6 +73,7 @@ function FileInput({ value, onChange }) {
           </div>
         )}
       </div>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }
