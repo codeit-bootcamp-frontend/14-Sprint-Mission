@@ -12,17 +12,16 @@ function AddItemPage() {
     tags: [],
     imgFile: null,
   });
-  // const [tags, setTags] = useState([]);
 
   // 폼 입력시 버튼 활성화
   const isEnabled =
     formData.name && formData.description && formData.price && formData.tags[0];
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value,
+      [name]: value,
     }));
   };
 
@@ -49,19 +48,20 @@ function AddItemPage() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="product-details">
-            <FileInput />
+            <FileInput value={formData.imgFile} onChange={handleInputChange} />
             <label htmlFor="name">상품명</label>
             <input
               id="name"
+              name="name"
               type="text"
               value={formData.name}
               onChange={handleChange}
               placeholder="상품명을 입력해주세요"
             />
             <label htmlFor="description">상품 소개</label>
-            <input
+            <textarea
               id="description"
-              type="text"
+              name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder="상품 소개을 입력해주세요"
@@ -69,6 +69,7 @@ function AddItemPage() {
             <label htmlFor="price">판매가격</label>
             <input
               id="price"
+              name="price"
               type="number"
               value={formData.price}
               onChange={handleChange}

@@ -11,6 +11,7 @@
 .tag-name {
   font-size: 16px;
   font-weight: 400;
+  color: var(--gray-800);
 }
 
 .remove-tag-button {
