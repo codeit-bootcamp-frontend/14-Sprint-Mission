@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContextProvider from "./contexts/UserContext";
 import AddItem from "./pages/additem/AddItem";
 import Boards from "./pages/boards/Boards";
-import BoardDetail from "./pages/boards/children/Boards";
+import BoardDetail from "./pages/boards/children/BoardDetail";
 import Faq from "./pages/faq/Faq";
 import Home from "./pages/home/Home";
 import ItemDetail from "./pages/items/children/ItemDetail";
