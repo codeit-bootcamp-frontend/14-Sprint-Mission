@@ -36,7 +36,7 @@
 
 .wrapper#banner {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex: 1;
 }
 
@@ -90,4 +90,19 @@
 
 footer > div {
   color: #9ca3af;
+}
+
+@media (min-width: 1600px) {
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1600px) {
+  .header-container {
+    margin: 0;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
 }

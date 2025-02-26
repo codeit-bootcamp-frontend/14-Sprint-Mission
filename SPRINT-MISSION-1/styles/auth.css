@@ -1,0 +1,98 @@
+@import url(./typography.css);
+
+.auth-container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.logo-wrapper {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.input-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+label {
+  font-size: var(--text-2lg);
+  line-height: var(--text-2lg);
+  font-weight: 700;
+  color: #1f2937;
+}
+
+input {
+  width: 100%;
+  background-color: #f3f4f6;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+}
+
+input::placeholder {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg);
+  color: #1f2937;
+  font-weight: 400;
+}
+
+input:focus {
+  outline-color: #3182f6;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 24px;
+}
+
+.login-btn {
+  width: 100%;
+  border: 0px;
+}
+
+.social-login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  padding: 16px 23px;
+  background-color: #e6f2ff;
+  margin: 24px 0;
+}
+
+.social-login-container div {
+  font-weight: 500;
+  color: #1f2037;
+}
+
+.social-login-btns-container {
+  display: flex;
+  gap: 16px;
+}
+
+.auth-switch {
+  text-align: center;
+  font-weight: 500;
+}
+
+.auth-switch span {
+  color: #1f2937;
+  margin-right: 4px;
+}
+
+.auth-switch a {
+  line-height: 16.71px;
+  text-decoration: underline;
+  color: #3692ff;
+  text-underline-offset: 2px;
+}
