@@ -93,14 +93,14 @@ footer > div {
 }
 
 @media (min-width: 1600px) {
-  header {
+  .header-container {
     max-width: 1200px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 1600px) {
-  header {
+  .header-container {
     margin: 0;
     padding-left: 200px;
     padding-right: 200px;
