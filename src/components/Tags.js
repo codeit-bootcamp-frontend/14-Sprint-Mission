@@ -1,33 +1,28 @@
 import "./Tags.css";
 import Tag from "./Tag";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Tags({ tags, onChange }) {
-  const [productTags, setProductTags] = useState(tags);
   const [newTag, setNewTag] = useState("");
 
   const handleInputChange = (e) => {
     setNewTag(e.target.value);
   };
 
-  // 엔터키 누를시 태그 추가
+  // 엔터 누를시 새로운 태그 추가
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && newTag.trim() !== "") {
-      setProductTags((prevTags) => [...prevTags, newTag.trim()]);
+      e.preventDefault();
+      onChange([...tags, newTag.trim()]);
       setNewTag("");
     }
   };
 
-  console.log(productTags);
-
   // 태그 제거
-  const handleRemoveTag = (tag) => {
-    setProductTags((prevTags) => prevTags.filter((t) => t !== tag));
+  const handleRemoveTag = (tagToRemove) => {
+    onChange(tags.filter((t) => t !== tagToRemove));
+    console.log("removed");
   };
-
-  useEffect(() => {
-    onChange(productTags);
-  }, [productTags]);
 
   return (
     <div className="tags">
@@ -41,7 +36,7 @@ function Tags({ tags, onChange }) {
         placeholder="태그를 입력해주세요"
       />
       <div className="tag-container">
-        {productTags.map((tag, i) => (
+        {tags?.map((tag, i) => (
           <Tag key={i} name={tag} onClick={() => handleRemoveTag(tag)} />
         ))}
       </div>

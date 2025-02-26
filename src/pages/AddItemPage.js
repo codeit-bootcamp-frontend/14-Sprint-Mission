@@ -9,12 +9,12 @@ function AddItemPage() {
     name: "",
     description: "",
     price: "",
-    tags: [],
   });
+  const [tags, setTags] = useState([]);
 
   // 폼 입력시 버튼 활성화
   const isEnabled =
-    formData.name && formData.description && formData.price && formData.tags[0];
+    formData.name && formData.description && formData.price && tags[0];
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -24,16 +24,11 @@ function AddItemPage() {
     }));
   };
 
-  const handleTagsChange = (newTags) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      tags: newTags,
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  console.log(tags);
 
   return (
     <div>
@@ -72,7 +67,7 @@ function AddItemPage() {
               onChange={handleChange}
               placeholder="판매 가격을 입력해주세요"
             ></input>
-            <Tags tags={formData.tags} onChange={handleTagsChange} />
+            <Tags tags={tags} onChange={setTags} />
           </div>
         </form>
       </div>
