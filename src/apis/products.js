@@ -2,8 +2,8 @@ import { instance, STATUS_OK } from "./common-http";
 
 const PATH = "/products";
 
-export async function getProducts(page = 1, pageSize = 10, orderBy = "recent") {
-  const params = { page, pageSize, orderBy };
+export async function getProducts(page = 1, pageSize = 10, orderBy = "recent", keyword) {
+  const params = { page, pageSize, orderBy, keyword };
   try {
     const response = await instance.get(PATH, { params });
     if (response.status === STATUS_OK) return response.data;

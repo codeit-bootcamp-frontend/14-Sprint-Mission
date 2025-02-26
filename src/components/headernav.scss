@@ -16,6 +16,7 @@ header.common-header {
   height: 70px;
   margin: 0 auto;
   position: sticky;
+  z-index: 1;
   background-color: white;
   border-bottom: 1px solid var(--secondary-300);
   > .wrapper {
