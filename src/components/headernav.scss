@@ -49,17 +49,35 @@ header.common-header {
   }
   @media (width < 1200px) {
     /* Tablet */
-    .wrapper {
+    > .wrapper {
       margin: 0 24px;
+      > .left {
+        gap: 20px;
+      }
     }
   }
   @media (width < 768px) {
     /* Mobile */
     > .wrapper {
       margin: 0 16px;
+      > .left {
+        gap: 8px;
+        > #menus {
+          font-size: 16px;
+          gap: 8px;
+          > li > a {
+            padding: 0;
+          }
+        }
+      }
     }
-    > .wrapper > .left > img {
-      display: none;
+    #logo-area {
+      > img {
+        display: none;
+      }
+      > #logo {
+        font-size: 20px;
+      }
     }
   }
 }

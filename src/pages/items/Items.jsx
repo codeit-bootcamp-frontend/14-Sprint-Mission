@@ -39,6 +39,10 @@ export default function Items() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  function handleKeywordChange(value) {
+    setKeyword(value);
+    setCurrentPage(1);
+  }
   function handleOrderChange(value) {
     setOrder(value);
     setCurrentPage(1);
@@ -71,7 +75,7 @@ export default function Items() {
             className="search-items-header display-grid justify-left gap-12"
           >
             <h2 className="text-xl text-bold">전체 상품</h2>
-            <SearchInput keyword={keyword} onSearch={setKeyword} />
+            <SearchInput keyword={keyword} onSearch={handleKeywordChange} />
             <button className="small-40 radius-8" onClick={() => navigate("/additem")}>
               상품 등록하기
             </button>
