@@ -5,6 +5,20 @@
 /* components */
 @import url(./components/button.css);
 
+.header__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+}
+
 .loginLinkButton {
   padding: 11px 43px;
 }
@@ -96,16 +110,33 @@ footer > div {
 }
 
 @media (min-width: 1600px) {
-  .header-container {
+  .header__container {
     max-width: 1200px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 1600px) {
-  .header-container {
-    margin: 0;
+  .header__container {
     padding-left: 200px;
     padding-right: 200px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header__container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header__img {
+    display: none;
   }
 }

@@ -44,13 +44,6 @@ header {
   border-bottom: 1px solid #dfdfdf;
 }
 
-.header-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 footer {
   background-color: #111827;
   display: flex;
