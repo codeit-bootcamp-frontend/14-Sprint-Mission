@@ -1,60 +1,107 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="sign.css">
-        <link rel="stylesheet" href="common-responsive.css">
-        <link rel="stylesheet" href="sign-responsive.css">
-        <link rel="stylesheet" href="root.css">
-        <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-        <title>회원가입</title>
-    </head>
-    <body class="sign-body">
-        <a href="/"><img src="image/logo_large.png" alt="회원가입 로고" class="sign-logo"></a>
-        <form class="sign-form">
-            <div class="sign-form-label">
-                <label for="login-email">이메일</label>
-            </div>
-            <input id="login-email" name="email" type="email" 
-                placeholder="이메일을 입력해주세요" class="sign-form-input" required />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="sign.css" />
+    <link rel="stylesheet" href="common-responsive.css" />
+    <link rel="stylesheet" href="sign-responsive.css" />
+    <link rel="stylesheet" href="root.css" />
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <title>회원가입</title>
+  </head>
+  <body class="sign-body">
+    <a href="/"
+      ><img src="image/logo_large.png" alt="회원가입 로고" class="sign-logo"
+    /></a>
+    <form class="sign-form" action="signin">
+      <div class="sign-form-label">
+        <label for="login-email">이메일</label>
+      </div>
+      <input
+        id="login-email"
+        name="email"
+        type="email"
+        placeholder="이메일을 입력해주세요"
+        class="sign-form-input"
+        required
+      />
 
-            <div class="sign-form-label">
-                <label for="login-nickname">닉네임</label>
-            </div>
-            <input id="login-nickname" name="nickname"
-                placeholder="닉네임을 입력해주세요" class="sign-form-input" required />
+      <div class="sign-form-label">
+        <label for="login-nickname">닉네임</label>
+      </div>
+      <input
+        id="login-nickname"
+        name="nickname"
+        placeholder="닉네임을 입력해주세요"
+        class="sign-form-input"
+        required
+      />
 
-            <div class="sign-form-label">
-                <label for="login-pwd" >비밀번호</label>
-            </div>
-            <div class="password-container">
-                <input id="login-pwd" name="pwd" type="password"
-                    placeholder="비밀번호를 입력해주세요" class="sign-form-input" required/>
-                <img src="image/visibility_off.png" class="visibility-off" alt="비밀번호 숨기기">
-            </div>
+      <div class="sign-form-label">
+        <label for="login-pwd">비밀번호</label>
+      </div>
+      <div class="password-container">
+        <input
+          id="login-pwd"
+          name="pwd"
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          class="sign-form-input"
+          required
+        />
+        <img
+          src="image/visibility_off.png"
+          class="visibility-off"
+          alt="비밀번호 숨기기"
+        />
+      </div>
 
-            <div class="sign-form-label">
-                <label for="login-pwd-confirm" >비밀번호  확인</label>
-            </div>
-            <div class="password-container">
-                <input id="login-pwd-confirm" name="pwd-confirm" type="password"
-                    placeholder="비밀번호를 다시 한 번 입력해주세요" class="sign-form-input" required/>
-                <img src="image/visibility_off.png" class="visibility-off" alt="비밀번호 숨기기">
-            </div>
+      <div class="sign-form-label">
+        <label for="login-pwd-confirm">비밀번호 확인</label>
+      </div>
+      <div class="password-container">
+        <input
+          id="login-pwd-confirm"
+          name="pwd-confirm"
+          type="password"
+          placeholder="비밀번호를 다시 한 번 입력해주세요"
+          class="sign-form-input"
+          required
+        />
+        <img
+          src="image/visibility_off.png"
+          class="visibility-off"
+          alt="비밀번호 숨기기"
+        />
+      </div>
 
-            <a class="sign-btn" id="sign-btn">회원가입</a>
-            
-        </form>
-        <div class="simple-login-div">
-            <div class="simple-login-txt">간편 로그인하기</div>
-            <div class="simple-login-icon">
-                <a href="https://www.google.com/"><img src="image/google_icon.png"class="google-icon" alt="구글 간편로그인 아이콘"></a>
-                <a href="https://www.kakaocorp.com/page/"><img src="image/kakao_icon.png" class="kakao-icon" alt="카카오 간편로그인 아이콘"></a>
-            </div>
-        </div>
-        <div class="footer">이미 회원이신가요?
-            <a href="/login.html" class="footer-signup-link">로그인</a>
-        </div>
-        <script type="module" src="signup.js"></script>
-    </body>
+      <a class="sign-btn" id="sign-btn">회원가입</a>
+    </form>
+    <div class="simple-login-div">
+      <div class="simple-login-txt">간편 로그인하기</div>
+      <div class="simple-login-icon">
+        <a href="https://www.google.com/"
+          ><img
+            src="image/google_icon.png"
+            class="google-icon"
+            alt="구글 간편로그인 아이콘"
+        /></a>
+        <a href="https://www.kakaocorp.com/page/"
+          ><img
+            src="image/kakao_icon.png"
+            class="kakao-icon"
+            alt="카카오 간편로그인 아이콘"
+        /></a>
+      </div>
+    </div>
+    <div class="footer">
+      이미 회원이신가요?
+      <a href="/login.html" class="footer-signup-link">로그인</a>
+    </div>
+    <script type="module" src="signup.js"></script>
+  </body>
 </html>

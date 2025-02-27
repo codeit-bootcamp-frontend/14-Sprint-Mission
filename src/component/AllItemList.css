@@ -1,0 +1,119 @@
+.item-section-flex {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 12px;
+  height: 42px;
+}
+
+.item-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: auto;
+}
+
+.item-all-section-search-container {
+  display: inline-block;
+  position: relative;
+}
+
+.item-all-section-search {
+  background-color: var(--gray100);
+  font-size: 16px;
+  color: var(--gray400);
+  border: none;
+  border-radius: 12px;
+  width: 325px;
+  height: 42px;
+  padding-left: 30px;
+}
+.search-icon {
+  position: absolute;
+  left: 5px;
+  top: 25%;
+  width: 24px;
+  height: 24px;
+}
+
+.item-all-section-button {
+  width: 133px;
+  height: 42px;
+  padding: 12px 23px;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.item-all-section-select {
+  width: 130px;
+  height: 42px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--gray200);
+  font-size: 16px;
+  appearance: none;
+  background: url("/image/item_select.png") no-repeat right 5px center;
+  background-size: 24px;
+}
+
+.item-all-section-select:focus {
+  border: 1px solid var(--blue);
+  outline: none;
+}
+
+.all-item-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px 24px;
+  margin: 24px 0;
+}
+
+.all-item-grid div {
+  background-color: #fcfcfc;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .all-item-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 8px;
+  }
+  .item-section-flex {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 92px;
+  }
+
+  .item-section-title {
+    order: 1;
+  }
+  .item-all-section-button {
+    order: 2;
+  }
+  .item-all-section-search-container {
+    order: 3;
+  }
+
+  .item-all-section-search {
+    width: 250px;
+  }
+  .item-all-section-select {
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: url("/image/select_icon.png") no-repeat center;
+    background-size: 42px;
+    order: 4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .all-item-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 16px;
+  }
+  .item-all-section-search {
+    width: 242px;
+  }
+}
