@@ -77,7 +77,10 @@
 .login_wrap .member_sub_box span {
   font-size: 14px;
 }
-
+.login_wrap .member_sub_box a {
+  color: var(--Primary);
+  text-decoration: underline;
+}
 .submit {
   display: block;
   width: 100%;

@@ -15,7 +15,7 @@ function HomePage() {
         <h1 className="font_1">
           일상의 모든 물건을<br />거래해 보세요
         </h1>
-        <Button link="items" variant="roundedM">구경하러 가기</Button>
+        <Button link="ItemsBox" variant="roundedM">구경하러 가기</Button>
       </MainSection>
       <MainSection className="section" boxName="box">
         <SectionChildren 

@@ -110,7 +110,7 @@ function Login() {
           </form>
         </div>
         <SnsLogin />
-        <div className="member_sub_box">
+        <div className={styles.member_sub_box}>
           <span>이미 회원이신가요? <Link to="/login">로그인</Link></span>
         </div>
       </div>

@@ -79,7 +79,7 @@ function Login() {
           </form>
         </div>
         <SnsLogin />
-        <div className="member_sub_box">
+        <div className={styles.member_sub_box}>
           <span>판다마켓은 처음이신가요? <Link to="/Signup">회원가입</Link></span>
         </div>
       </div>

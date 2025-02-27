@@ -7,7 +7,7 @@ function SnsLogin() {
   return (
     <div className={styles.sns_login}>
       <div className="sns_txt">간편 로그인하기</div>
-      <div className="sns_icon">
+      <div className={styles.sns_icon}>
         <Link to="https://www.google.com/" className="sns_gg" target="_blank" rel="noopener noreferrer">
           <img src={sns_google} alt="sns_login_google" />
         </Link>
