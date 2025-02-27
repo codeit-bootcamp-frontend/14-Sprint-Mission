@@ -31,9 +31,6 @@ input {
   padding: 16px 24px;
   border: none;
   border-radius: 12px;
-}
-
-input::placeholder {
   font-size: var(--text-lg);
   line-height: var(--text-lg);
   color: #1f2937;
