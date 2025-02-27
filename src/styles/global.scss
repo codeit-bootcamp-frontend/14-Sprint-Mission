@@ -1,0 +1,57 @@
+@use "reset";
+@use "layout";
+@use "typography";
+@use "button";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* color */
+:root {
+  --primary-100: #3692ff;
+  --primary-200: #1967d6;
+  --primary-300: #1251aa;
+  --error-red: #f74747;
+  --secondary-900: #111827;
+  --secondary-800: #1f2937;
+  --secondary-700: #374151;
+  --secondary-600: #4b5563;
+  --secondary-500: #6b7280;
+  --secondary-400: #9ca3af;
+  --secondary-300: #e5e7eb;
+  --secondary-200: #f3f4f6;
+  --secondary-100: #f9fafb;
+  --cool-gray-100: #f3f4f6;
+}
+.text-primary-100 {
+  color: var(--primary-100);
+}
+.text-error {
+  color: var(--error-red);
+}
+.text-secondary-900 {
+  color: var(--secondary-700);
+}
+.text-secondary-700 {
+  color: var(--secondary-700);
+}
+.text-secondary-500 {
+  color: var(--secondary-500);
+}
+.surface-primary-100 {
+  background-color: var(--primary-100);
+}
+.surface-secondary-300 {
+  background-color: var(--secondary-300);
+}
+.surface-secondary-100 {
+  background-color: var(--secondary-100);
+}
+.surface-secondary-0 {
+  background-color: white;
+}
