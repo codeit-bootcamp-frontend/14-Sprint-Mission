@@ -6,52 +6,24 @@ import "./ProductListPage.css";
 import Select from "../components/Select";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
+import useWindowWidth from "../components/hooks/useWindowWidth";
+
+const selectBox = [
+  { label: "최신순", value: "recent" },
+  { label: "좋아요순", value: "favorite" },
+];
 
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
-  const [displayedBestProducts, setDisplayedBestProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [pageSize, setPageSize] = useState(10);
-  const [pageBestSize, setPageBestSize] = useState(4);
+  const [bestPageSize, setBestPageSize] = useState(4);
   const [sortOrder, setSortOrder] = useState("recent");
   const [keyword, setkeyword] = useState("");
   const [totalProductsCount, setTotalProductsCount] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // 전체 상품 받아오기
-  const handleLoad = useCallback(async () => {
-    try {
-      const result = await getProducts({
-        page: currentPage,
-        pageSize: pageSize,
-        orderBy: sortOrder,
-      });
-      const { list, totalCount } = result;
-      setProducts(list);
-      setTotalProductsCount(totalCount);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [sortOrder, currentPage]);
-
-  // 베스트 상품 받아오기
-  const handleBestLoad = useCallback(async () => {
-    try {
-      const bestResult = await getProducts({
-        page: 1,
-        pageSize: pageBestSize,
-        keyword: "",
-        orderBy: "favorite",
-      });
-      const { list } = bestResult;
-      setBestProducts(list);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [pageBestSize]);
+  const windowWidth = useWindowWidth();
+  const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
@@ -59,48 +31,19 @@ function ProductListPage() {
     setCurrentPage(1);
   };
 
-  // 창 크기에 따라 상품 개수 변경
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
   // 창 크기에 따라 표시되는 상품 개수 변경
-  const updateDisplayedProducts = useCallback(
-    (width) => {
-      if (width >= 1024) {
-        setDisplayedProducts(products.slice(0, 10));
-        setPageSize(10);
-      } else if (width >= 640) {
-        setDisplayedProducts(products.slice(0, 6));
-        setPageSize(6);
-      } else {
-        setDisplayedProducts(products.slice(0, 4));
-        setPageSize(4);
-      }
-    },
-    [products]
-  );
-
-  // 창 크기에 따라 표시되는 베스트 상품 개수 변경
-  const updateDisplayedBestProducts = useCallback(
-    (width) => {
-      if (width >= 1024) {
-        setDisplayedBestProducts(bestProducts.slice(0, 4));
-      } else if (width >= 640) {
-        setDisplayedBestProducts(bestProducts.slice(0, 2));
-      } else {
-        setDisplayedBestProducts(bestProducts.slice(0, 1));
-      }
-    },
-    [bestProducts]
-  );
-
-  // 총 페이지 수 변경
-  const handlePageCount = useCallback(() => {
-    const pageCount = Math.ceil(totalProductsCount / pageSize);
-    setTotalPages(pageCount);
-    // console.log("totalPages:" + totalPages);
-  }, [pageSize, totalProductsCount]);
+  const updateDisplayedProducts = useCallback((width) => {
+    if (width >= 1024) {
+      setPageSize(10);
+      setBestPageSize(4);
+    } else if (width >= 640) {
+      setPageSize(6);
+      setBestPageSize(2);
+    } else {
+      setPageSize(4);
+      setBestPageSize(1);
+    }
+  }, []);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -108,22 +51,45 @@ function ProductListPage() {
 
   // 상품 데이터 불러오기
   useEffect(() => {
+    // 전체 상품 받아오기
+    const handleLoad = async () => {
+      try {
+        const result = await getProducts({
+          page: currentPage,
+          pageSize: pageSize,
+          orderBy: sortOrder,
+        });
+        const { list, totalCount } = result;
+        setProducts(list);
+        setTotalProductsCount(totalCount);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    // 베스트 상품 받아오기
+    const handleBestLoad = async () => {
+      try {
+        const bestResult = await getProducts({
+          page: 1,
+          pageSize: bestPageSize,
+          keyword: "",
+          orderBy: "favorite",
+        });
+        const { list } = bestResult;
+        setBestProducts(list);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     handleLoad();
     handleBestLoad();
-  }, [sortOrder, handleLoad, handleBestLoad]);
+  }, [sortOrder, currentPage, bestPageSize, pageSize]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
     updateDisplayedProducts(windowWidth);
-    updateDisplayedBestProducts(windowWidth);
-    handlePageCount();
-    return () => window.removeEventListener("resize", handleResize);
-  }, [
-    windowWidth,
-    updateDisplayedProducts,
-    updateDisplayedBestProducts,
-    handlePageCount,
-  ]);
+  }, [windowWidth, updateDisplayedProducts]);
 
   return (
     <div>
@@ -132,7 +98,7 @@ function ProductListPage() {
         <div className="best-container">
           <h2>베스트 상품</h2>
           <div className="best-products">
-            {displayedBestProducts?.map((product) => (
+            {bestProducts?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
@@ -157,13 +123,13 @@ function ProductListPage() {
               </button>
               <Select
                 className="select"
-                options={["recent", "favorite"]}
+                selectBox={selectBox}
                 onSelect={handleChange}
               />
             </div>
           </div>
           <div className="all-products">
-            {displayedProducts?.map((product) => (
+            {products?.map((product) => (
               <Product key={product.id} product={product} />
             ))}
           </div>
