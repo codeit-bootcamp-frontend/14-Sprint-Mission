@@ -2,6 +2,11 @@ import { instance, STATUS_CREATED, STATUS_OK } from "./common-http";
 
 const PATH = "/products";
 
+export const PAGE_SIZE = {
+  best: { desktop: 4, tablet: 2, mobile: 1 },
+  search: { desktop: 10, tablet: 6, mobile: 4 },
+};
+
 export async function getProducts(page = 1, pageSize = 10, orderBy = "recent", keyword) {
   const params = { page, pageSize, orderBy, keyword };
   try {

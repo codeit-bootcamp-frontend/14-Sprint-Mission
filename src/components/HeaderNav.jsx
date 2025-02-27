@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../assets/images/common/logo.svg";
+import IconProfile from "../assets/images/common/profile.svg";
 import { useUser } from "../contexts/UserContext";
 import "./headernav.scss";
-import IconProfile from "../assets/images/common/profile.svg";
 
 function LogoArea() {
   return (

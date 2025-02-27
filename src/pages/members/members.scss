@@ -70,7 +70,7 @@ main#members {
     > input::placeholder {
       color: #9ca3af;
     }
-    > #visibility {
+    > .visibility {
       width: 24px;
       height: 24px;
       cursor: pointer;
@@ -78,7 +78,7 @@ main#members {
       background-color: transparent;
       background-image: url("src/assets/images/login/visibility_off.svg");
     }
-    > #visibility.checked {
+    > .visibility.checked {
       background-image: url("src/assets/images/login/visibility_on.svg");
     }
   }
