@@ -19,7 +19,7 @@
           />
         </a>
 
-        <form class="auth__form" action="/login" method="post">
+        <form class="auth__form" action="/signup" method="post">
           <div class="auth__field">
             <label for="email" class="auth__label">이메일</label>
             <input
@@ -33,12 +33,26 @@
           </div>
 
           <div class="auth__field">
+            <label for="nickname" class="auth__label">닉네임</label>
+            <input
+              name="nickname"
+              type="text"
+              id="nickname"
+              class="auth__input"
+              placeholder="닉네임을 입력해주세요"
+              required
+            />
+          </div>
+
+          <div class="auth__field">
             <label for="password" class="auth__label">비밀번호</label>
             <input
               type="password"
               id="password"
+              name="password"
               class="auth__input"
               placeholder="비밀번호를 입력해주세요"
+              required
             />
             <button
               type="button"
@@ -52,7 +66,29 @@
             </button>
           </div>
 
-          <button type="submit" class="auth__button">로그인</button>
+          <div class="auth__field">
+            <label for="passwordcheck" class="auth__label">비밀번호 확인</label>
+            <input
+              type="password"
+              id="passwordcheck"
+              name="passwordcheck"
+              class="auth__input"
+              placeholder="비밀번호를 다시 입력해주세요"
+              required
+            />
+            <button
+              type="button"
+              class="auth__visible"
+              aria-label="비밀번호 보기"
+            >
+              <img
+                src="../assets/images/visibility_on.svg"
+                alt="비밀번호 보이기"
+              />
+            </button>
+          </div>
+
+          <button type="submit" class="auth__button">회원가입</button>
         </form>
 
         <div class="auth__social">
@@ -75,8 +111,8 @@
         </div>
 
         <div class="auth__signup-link">
-          <p>판다마켓이 처음이신가요?</p>
-          <a href="./signup.html">회원가입</a>
+          <p>이미 회원이신가요?</p>
+          <a href="./login.html">로그인</a>
         </div>
       </div>
     </div>
