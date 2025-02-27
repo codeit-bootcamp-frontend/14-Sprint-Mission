@@ -88,7 +88,6 @@ input:focus {
 }
 
 .auth-switch a {
-  line-height: 16.71px;
   text-decoration: underline;
   color: #3692ff;
   text-underline-offset: 2px;
