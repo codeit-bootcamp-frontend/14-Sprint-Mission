@@ -4,31 +4,33 @@
 	font #폰트
 ############################################################## */
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Pretendard";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 800;
-    font-style: normal;
+  font-family: "Pretendard";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+  font-weight: 800;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
+  font-family: "Pretendard";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Pretendard';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Pretendard";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
-
-
 
 /* ##############################################################
 	reset #리셋
@@ -37,63 +39,168 @@
     v2.0 | 20110126
     License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
-
 
 /* ##############################################################
 	Reset override #리셋 오버라이드
 ############################################################## */
-body { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; word-break: keep-all; line-height: 1.4; }
-button, input, textarea, select, a { font-family: 'Pretendard', 'malgun gothic', 'sans-serif', 'dotum'; font-size: 24px; }
-a, a:link, a:visited, a:hover { text-decoration: none; color: inherit; cursor: pointer;}
-button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring { outline: 1px solid #303030; }
-*:-moz-focusring { outline: 1px solid #303030; }
-* {box-sizing: border-box;}
-
-
+body {
+  font-family: "Pretendard", "malgun gothic", "sans-serif", "dotum";
+  font-size: 24px;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+button,
+input,
+textarea,
+select,
+a {
+  font-family: "Pretendard", "malgun gothic", "sans-serif", "dotum";
+  font-size: 24px;
+}
+a,
+a:link,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px solid #303030;
+}
+*:-moz-focusring {
+  outline: 1px solid #303030;
+}
+* {
+  box-sizing: border-box;
+}
 
 /* ##############################################################
 	Component #컴포넌트
@@ -103,145 +210,153 @@ button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring
 */
 a.el-btn,
 button.el-btn {
-    display: block;
-    padding: 0;
-    width: 100%;
-    font-weight: 800;
-    text-align: center;
-    background-color: var(--color-primary-100);
-    color: var(--color-gray100);
-    border: none;
-    cursor: pointer;
+  display: block;
+  padding: 0;
+  width: 100%;
+  font-weight: 800;
+  text-align: center;
+  background-color: var(--color-primary-100);
+  color: var(--color-gray100);
+  border: none;
+  cursor: pointer;
 }
 .el-btn:hover {
-    background-color: var(--color-primary-200);
+  background-color: var(--color-primary-200);
 }
 .el-btn:active {
-    background-color: var(--color-primary-300);
+  background-color: var(--color-primary-300);
 }
 .el-btn:disabled {
-    background-color: var(--color-gray400);
+  background-color: var(--color-gray400);
 }
 
 /* btn size */
 .el-btn.btn-l {
-    border-radius: 40px;
-    font-size: var(--text-xl);
-    line-height: 56px;
+  border-radius: 40px;
+  font-size: var(--text-xl);
+  line-height: 56px;
 }
 .el-btn.btn-m {
-    border-radius: 40px;
-    font-size: var(--text-2lg);
-    line-height: 48px;
+  border-radius: 40px;
+  font-size: var(--text-2lg);
+  line-height: 48px;
 }
 .el-btn.btn-sm {
-    padding: 0 30px;
-    line-height: 48px;
-    border-radius: 8px;
-    font-size: var(--text-lg);
+  padding: 0 30px;
+  line-height: 48px;
+  border-radius: 8px;
+  font-size: var(--text-lg);
 }
 .el-btn.btn-s {
-    padding: 0 23px;
-    line-height: 42px;
-    border-radius: 8px;
-    font-size: var(--text-lg);
+  padding: 0 23px;
+  line-height: 42px;
+  border-radius: 8px;
+  font-size: var(--text-lg);
 }
 
 /* icon-btn */
 .el-btn.btn-password {
-    width: 24px;
-    height: 24px;
-    background: transparent url('../img/btn_vis.png') no-repeat center/24px;
+  width: 24px;
+  height: 24px;
+  background: transparent url("../img/btn_vis.png") no-repeat center/24px;
 }
-.el-btn.btn-password.on {
-    background-image: url('../img/btn_vis_on.png');
+.el-btn.btn-password.active {
+  background-image: url("../img/btn_vis_on.png");
 }
-
-
 
 /*
     input
 */
 /* text */
 .el-txt-input {
-    position: relative;
+  position: relative;
 }
 .el-txt-input label {
-    display: block;
-    font-size: var(--text-2lg);
-    font-weight: bold;
-    text-align: left;
-    color: var(--color-gray800);
+  display: block;
+  margin-bottom: 16px;
+  font-size: var(--text-2lg);
+  font-weight: bold;
+  text-align: left;
+  color: var(--color-gray800);
 }
 .el-txt-input input {
-    padding: 15px 50px 15px 24px;
-    width: 100%;
-    font-size: var(--text-lg);
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background-color: var(--color-gray100);
-    color: var(--color-gray800);
+  padding: 15px 50px 15px 24px;
+  width: 100%;
+  font-size: var(--text-lg);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background-color: var(--color-gray100);
+  color: var(--color-gray800);
 }
 .el-txt-input input::placeholder {
-    font-size: var(--text-lg);
-    color: var(--color-gray400);
+  font-size: var(--text-lg);
+  color: var(--color-gray400);
 }
 .el-txt-input input:focus {
-    border: 2px solid #3692ff;
+  border: 1px solid #3692ff;
 }
 .el-txt-input input:focus-visible {
-    outline: none;
-}
-.el-txt-input label + input {
-    margin-top: 16px;
+  outline: none;
 }
 .el-txt-input .el-btn {
-    position: absolute;
-    bottom: 14px;
-    right: 24px;
+  position: absolute;
+  bottom: 14px;
+  right: 24px;
 }
-
-
+.el-txt-input .has-btn {
+  position: relative;
+}
+/* error */
+.el-txt-input.error input {
+  border-color: var(--color-error);
+}
+.error-txt {
+  padding: 8px 0 0 16px;
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--color-error);
+  text-align: left;
+}
 
 /* 반응형 */
 .mobile {
-    display: none;
+  display: none;
 }
 .tablet {
-    display: none;
+  display: none;
 }
 .pc {
-    display: block;
+  display: block;
 }
 
 @media (width < 1200px) {
-    .pc {
-        display: none;
-    }
-    .tablet {
-        display: block;
-    }
+  .pc {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
 }
 
 @media (width < 768px) {
-    .pc {
-        display: none;
-    }
-    .mobile {
-        display: block;
-    }
+  .pc {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
 
-    /* button */
-    .el-btn.btn-l {
-        font-size: var(--text-2lg);
-        line-height: 48px;
-    }
+  /* button */
+  .el-btn.btn-l {
+    font-size: var(--text-2lg);
+    line-height: 48px;
+  }
 
-    /* input */
-    .el-txt-input label {
-        font-size: var(--text-md);
-    }
-    .el-txt-input label + input {
-        margin-top: 8px;
-    }
+  /* input */
+  .el-txt-input label {
+    font-size: var(--text-md);
+  }
+  .el-txt-input label + input {
+    margin-top: 8px;
+  }
 }
