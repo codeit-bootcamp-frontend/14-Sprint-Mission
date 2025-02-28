@@ -4,16 +4,6 @@
   margin-bottom: 16px;
 }
 
-@mixin input {
-  border-radius: 12px;
-  background-color: rgba(243, 244, 246, 1);
-  font-size: 16px;
-  font-weight: 400px;
-  border: none;
-  padding-left: 24px;
-  margin-bottom: 32px;
-}
-
 @mixin add-button {
   width: 72px;
   height: 42px;
@@ -111,61 +101,6 @@
       font-weight: 400;
       color: rgba(247, 71, 71, 1);
       margin-top: 16px;
-    }
-  }
-
-  .product-name {
-    display: flex;
-    flex-direction: column;
-    margin-top: 32px;
-
-    .product-name__span {
-      @include product-span;
-    }
-    .product-name__input {
-      height: 56px;
-      @include input;
-    }
-  }
-
-  .product-intro {
-    display: flex;
-    flex-direction: column;
-
-    .product-intro__span {
-      @include product-span;
-    }
-    .product-intro__input {
-      height: 282px;
-      @include input;
-      padding-top: 16px;
-      resize: none;
-    }
-  }
-
-  .product-price {
-    display: flex;
-    flex-direction: column;
-
-    .product-price__span {
-      @include product-span;
-    }
-    .product-price__input {
-      height: 56px;
-      @include input;
-    }
-  }
-
-  .product-tag {
-    display: flex;
-    flex-direction: column;
-
-    .product-tag__span {
-      @include product-span;
-    }
-    .product-tag__input {
-      height: 56px;
-      @include input;
     }
   }
 }
