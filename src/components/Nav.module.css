@@ -1,0 +1,18 @@
+
+.nav { position:sticky; top:0; width:100%; background-color: #fff; z-index: 9999; }
+.nav > div { display:flex; justify-content: space-between; align-items: center; padding-top:13px; padding-bottom:13px; }
+
+.logo_top img { height:40px; vertical-align: middle; }
+.logo_top img:last-child { height:30px; margin-left:8px; }
+
+
+/* tablet */
+@media (max-width: 1199px) {
+
+}
+/* Mobile */
+@media (max-width: 767px) {
+  
+  .logo_top img:first-child { display:none; }
+
+}

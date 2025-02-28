@@ -1,0 +1,11 @@
+
+.inner { margin:0 auto;  min-width:325px; max-width:1120px; }
+
+/* tablet */
+@media (max-width: 1199px) {
+  .inner { padding-left:24px; padding-right:24px; }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  .inner { padding-left:16px; padding-right:16px; }
+}

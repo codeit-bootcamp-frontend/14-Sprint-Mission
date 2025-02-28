@@ -1,0 +1,19 @@
+.sns_login {
+  background-color: #e6f2ff;
+  color: #1f2937;
+  padding: 14px 23px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sns_login .sns_icon a {
+  display: inline-block;
+  margin-left: 8px;
+}
+.sns_login .sns_icon a img {
+  height: 42px;
+  width: 42px;
+}

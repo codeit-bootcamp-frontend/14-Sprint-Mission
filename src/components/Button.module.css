@@ -1,0 +1,51 @@
+.btn {
+  background-color: #3692ff;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+.btn:hover {
+  background-color: #1967d6;
+  color: #fff;
+}
+.btn:active {
+  background-color: #1251aa;
+  color: #fff;
+}
+.btn.n_act {
+  background-color: #9ca3af;
+  color: #fff;
+}
+
+.btn.roundedM {
+  display: inline-block;
+  font-size: 20px;
+  padding: 16px 124px;
+  border-radius: 50px;
+}
+.btn.roundedS {
+  display: inline-block;
+  font-size: 16px;
+  padding: 11px 43px;
+  border-radius: 8px;
+}
+.btn.roundedSS {
+  display: inline-block;
+  font-size: 16px;
+  padding: 11px 23px;
+  border-radius: 8px;
+}
+
+@media (max-width: 1120px) {
+  .btn.roundedM {
+    padding: 12px 124px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .btn.roundedM {
+    font-size: 18px;
+    padding: 11px 71px;
+  }
+}

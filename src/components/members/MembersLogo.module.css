@@ -1,0 +1,24 @@
+.logo {
+  margin-bottom: 55px;
+}
+.logo a img {
+  vertical-align: middle;
+}
+.logo a img:first-child {
+  height: 100px;
+  margin-right: 22px;
+}
+.logo a img:last-child {
+  height: 50px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .logo a img:first-child {
+    height: 52px;
+    margin-right: 8px;
+  }
+  .logo a img:last-child {
+    height: 40px;
+  }
+}

@@ -1,0 +1,26 @@
+.prodList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 40px;
+}
+
+.prodList li img {
+  width: 100%;
+}
+
+.prodList.Column_1 li {
+  flex: 0 0 100%;
+}
+.prodList.Column_2 li {
+  flex: 0 0 calc(50% - 12px);
+}
+.prodList.Column_3 li {
+  flex: 0 0 calc(33.33% - 16px);
+}
+.prodList.Column_4 li {
+  flex: 0 0 calc(25% - 18px);
+}
+.prodList.Column_5 li {
+  flex: 0 0 calc(20% - 20px);
+}

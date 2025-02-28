@@ -1,0 +1,44 @@
+.imgBox {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.imgBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.description .name {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 6px;
+}
+
+.description .price {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.description .like {
+  font-size: 12px;
+  line-height: 18px;
+  display: flex;
+  cursor: pointer;
+}
+
+.description .like img {
+  width: 16px;
+  margin-right: 4px;
+}

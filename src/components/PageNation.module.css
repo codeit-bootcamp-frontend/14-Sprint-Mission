@@ -1,0 +1,31 @@
+.pageNation {
+  display: flex;
+  justify-content: center;
+  margin: 43px auto 58px;
+  gap: 4px;
+}
+
+.pageNation li {
+  line-height: 20px;
+  padding: 10px 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+  border: 1px solid var(--Cool_Gray_200);
+  color: var(--Cool_Gray_500);
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pageNation li.active {
+  background-color: #2f80ed;
+  border-color: #2f80ed;
+  color: #f9fafb;
+}
+.pageNation li.disabled {
+  cursor: default;
+}
+.pageNation li.disabled img {
+  opacity: 0.2;
+}
