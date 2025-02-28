@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { getProducts } from "../api/api";
 import Product from "../components/Product";
@@ -7,6 +7,7 @@ import Select from "../components/Select";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../components/hooks/useWindowWidth";
+import useProducts from "../components/hooks/useProducts";
 
 // select prop
 const selectBox = [
@@ -26,14 +27,21 @@ const getPageSize = (width) => {
 };
 
 function ProductListPage() {
-  const [bestProducts, setBestProducts] = useState([]);
-  const [products, setProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState("recent");
   const [keyword, setkeyword] = useState("");
-  const [totalProductsCount, setTotalProductsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
+  const { products, totalProductsCount } = useProducts({
+    sortOrder,
+    currentPage,
+    pageSize,
+  });
+  const { products: bestProducts } = useProducts({
+    sortOrder: "favorite",
+    currentPage: 1,
+    pageSize: bestPageSize,
+  });
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
@@ -45,44 +53,6 @@ function ProductListPage() {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  // 상품 데이터 불러오기
-  useEffect(() => {
-    // 전체 상품 받아오기
-    const handleLoad = async () => {
-      try {
-        const result = await getProducts({
-          page: currentPage,
-          pageSize: pageSize,
-          orderBy: sortOrder,
-        });
-        const { list, totalCount } = result;
-        setProducts(list);
-        setTotalProductsCount(totalCount);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // 베스트 상품 받아오기
-    const handleBestLoad = async () => {
-      try {
-        const bestResult = await getProducts({
-          page: 1,
-          pageSize: bestPageSize,
-          keyword: "",
-          orderBy: "favorite",
-        });
-        const { list } = bestResult;
-        setBestProducts(list);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    handleLoad();
-    handleBestLoad();
-  }, [sortOrder, currentPage, bestPageSize, pageSize]);
 
   return (
     <div>
