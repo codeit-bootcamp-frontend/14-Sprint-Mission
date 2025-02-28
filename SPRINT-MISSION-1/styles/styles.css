@@ -5,6 +5,19 @@
 /* components */
 @import url(./components/button.css);
 
+.header {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #dfdfdf;
+}
+
 .header__container {
   width: 100%;
   display: flex;
@@ -105,8 +118,31 @@
   text-align: right;
 }
 
-footer > div {
+.footer {
+  background-color: #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 200px 108px 200px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.09px;
+  text-align: center;
+}
+
+.footer > div {
   color: #9ca3af;
+}
+
+#footerMenu {
+  display: flex;
+  gap: 30px;
+  color: #f3f4f6;
+}
+
+#socialMedia {
+  display: flex;
+  gap: 12px;
 }
 
 @media (min-width: 1600px) {
