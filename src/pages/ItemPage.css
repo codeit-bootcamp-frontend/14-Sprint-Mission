@@ -1,0 +1,16 @@
+.item-section {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .item-section {
+    width: 696px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .item-section {
+    width: 344px;
+  }
+}

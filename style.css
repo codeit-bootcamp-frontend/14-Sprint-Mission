@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-header {
+  height: 70px;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+}
+
+.main-header-div {
+  display: flex;
+  margin: 0 200px;
+  justify-content: space-between;
+  padding: 9px 0;
+}
+
+.logo {
+  height: 51px;
+  width: 153px;
+  cursor: pointer;
+}
+
+.login {
+  background-color: var(--blue);
+  border-radius: 8px;
+  width: 88px;
+  height: 42px;
+  padding: 12px 23px;
+  text-decoration: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.login:hover,
+.top_btn:hover {
+  background-color: #1251aa;
+}
+
+.top-section {
+  background-color: #cfe5ff;
+  height: 540px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.top-div {
+  height: 60%;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  gap: 7px;
+  flex-basis: content;
+}
+.content {
+  padding-top: 60px;
+}
+
+.top-btn {
+  background-color: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 40px;
+  padding: 12px 71px;
+  cursor: pointer;
+}
+
+.top-content {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  width: 250px;
+}
+
+main {
+  background-color: var(--white);
+}
+
+.main-left,
+.main-right {
+  width: 900px;
+  margin: 90px auto;
+  display: flex;
+  background-color: #f7f8fa;
+  gap: 60px;
+}
+
+.main-right {
+  flex-direction: row-reverse;
+}
+
+.main-div,
+.main-div-right {
+  margin: auto 0;
+  flex-grow: 1;
+}
+
+.main-div-right {
+  text-align: right;
+}
+
+.main-img {
+  width: 588px;
+  height: 444px;
+}
+
+.title {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.main-content-bold {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  font-size: 15px;
+  color: #000000;
+}
+
+footer {
+  background-color: var(--gray900);
+  margin: 0 auto;
+  height: 200px;
+}
+
+.footer-div {
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--white);
+  align-items: flex-start;
+  padding: 30px 32px;
+  font-size: 16px;
+}
+
+.social-btn img {
+  height: 30px;
+  padding: 5px;
+}
+.footer-link {
+  display: flex;
+  gap: 10px;
+  justify-items: center;
+  padding-top: 3px;
+}
+
+.footer-link a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+}

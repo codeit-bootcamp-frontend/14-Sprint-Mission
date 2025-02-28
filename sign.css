@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+  }
+
+.sign-body {
+    font-family: "pretendard", sans-serif;
+    margin: 0 auto;
+    width: 640px;
+    padding-top: 231px;
+  }
+
+
+  .sign-logo {
+    display: block;
+    width: 396px;
+    height: 132px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+
+  .sign-form-label {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    color: var(--gray800);
+    margin-bottom: 16px;
+  }
+
+  .sign-form-input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--gray100);
+    padding : 16px 24px;
+    margin-bottom: 24px;
+  }
+
+  .sign-form-input:focus {
+    outline-color: var(--blue);
+  }
+
+  .sign-form-input::placeholder {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 300;
+    color: var(--gray400);
+  }
+
+  .password-container {
+    position: relative;
+  }
+
+  .visibility-off {
+    position:absolute;
+    width: 24px;
+    height: 24px;
+    top: 16px;
+    bottom: 16px;
+    right: 24px;
+  }
+
+  .sign-btn {
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+    padding: 16px 124px;
+    background-color: var(--gray400);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gray100);
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+
+.simple-login-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+  padding :16px 23px;
+  width: 100%;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+}
+
+.simple-login-txt {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray800);
+}
+
+.simple-login-icon {
+  display: flex;
+  gap: 16px;
+}
+
+.simple-login-icon img{
+  width: 42px;
+  height: 42px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 14px;
+  color: var(--gray800);
+  gap: 4px;
+}
+
+.footer-signup-link {
+  color: var(--blue);
+}
+
+/*이벤트발생 시 적용할 css*/
+.footer-signup-link:hover {
+  color : #1251aa
+}
+
+.sign-form-input.empty {
+  margin-bottom: 0;
+  outline : 1px solid var(--red);
+}
+.alert-empty{
+  font-size: 14px;
+  color: var(--red);
+  margin-top: 10px;
+  margin-bottom: 16px;
+  padding : 0 15px; 
+}
+.ok-btn:hover{
+  background-color: var(--blue);
+  cursor:pointer;
+  text-decoration: none;
+}
