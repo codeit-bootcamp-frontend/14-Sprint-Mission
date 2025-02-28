@@ -22,20 +22,26 @@
                 id="login-email"
                 type="email"
                 placeholder="이메일을 입력해주세요"
+                name="email"
               />
+              <p class="error-txt"></p>
             </div>
             <div class="input-box el-txt-input">
               <label for="login-password">비밀번호</label>
-              <input
-                id="login-password"
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-              />
-              <button
-                type="button"
-                class="el-btn btn-password"
-                aria-label="비밀번호 표시"
-              ></button>
+              <div class="has-btn">
+                <input
+                  id="login-password"
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  name="password"
+                />
+                <button
+                  type="button"
+                  class="el-btn btn-password"
+                  aria-label="비밀번호 표시"
+                ></button>
+              </div>
+              <p class="error-txt"></p>
             </div>
             <button type="submit" class="el-btn btn-l" disabled>로그인</button>
           </form>
@@ -61,5 +67,7 @@
         </p>
       </div>
     </div>
+    <script type="module" src="../resource/js/common/validator.js"></script>
+    <script type="module" src="../resource/js/login.js"></script>
   </body>
 </html>

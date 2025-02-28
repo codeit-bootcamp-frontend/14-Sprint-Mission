@@ -260,7 +260,7 @@ button.el-btn {
   height: 24px;
   background: transparent url("../img/btn_vis.png") no-repeat center/24px;
 }
-.el-btn.btn-password.on {
+.el-btn.btn-password.active {
   background-image: url("../img/btn_vis_on.png");
 }
 
@@ -273,6 +273,7 @@ button.el-btn {
 }
 .el-txt-input label {
   display: block;
+  margin-bottom: 16px;
   font-size: var(--text-2lg);
   font-weight: bold;
   text-align: left;
@@ -282,7 +283,7 @@ button.el-btn {
   padding: 15px 50px 15px 24px;
   width: 100%;
   font-size: var(--text-lg);
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 12px;
   background-color: var(--color-gray100);
   color: var(--color-gray800);
@@ -292,18 +293,29 @@ button.el-btn {
   color: var(--color-gray400);
 }
 .el-txt-input input:focus {
-  border: 2px solid #3692ff;
+  border: 1px solid #3692ff;
 }
 .el-txt-input input:focus-visible {
   outline: none;
-}
-.el-txt-input label + input {
-  margin-top: 16px;
 }
 .el-txt-input .el-btn {
   position: absolute;
   bottom: 14px;
   right: 24px;
+}
+.el-txt-input .has-btn {
+  position: relative;
+}
+/* error */
+.el-txt-input.error input {
+  border-color: var(--color-error);
+}
+.error-txt {
+  padding: 8px 0 0 16px;
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--color-error);
+  text-align: left;
 }
 
 /* 반응형 */
