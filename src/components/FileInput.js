@@ -40,6 +40,7 @@ function FileInput({ value, onChange }) {
     if (!value) return;
     const nextPreview = URL.createObjectURL(value);
     setPreview(nextPreview);
+    return () => URL.revokeObjectURL(nextPreview);
   }, [value, error]);
 
   console.log("error:", error);

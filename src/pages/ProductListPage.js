@@ -8,21 +8,32 @@ import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
 import useWindowWidth from "../components/hooks/useWindowWidth";
 
+// select prop
 const selectBox = [
   { label: "최신순", value: "recent" },
   { label: "좋아요순", value: "favorite" },
 ];
 
+// pageSize 계산 함수
+const getPageSize = (width) => {
+  if (width >= 1024) {
+    return { pageSize: 10, bestPageSize: 4 };
+  } else if (width >= 640) {
+    return { pageSize: 6, bestPageSize: 2 };
+  } else {
+    return { pageSize: 4, bestPageSize: 1 };
+  }
+};
+
 function ProductListPage() {
   const [bestProducts, setBestProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [pageSize, setPageSize] = useState(10);
-  const [bestPageSize, setBestPageSize] = useState(4);
   const [sortOrder, setSortOrder] = useState("recent");
   const [keyword, setkeyword] = useState("");
   const [totalProductsCount, setTotalProductsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const windowWidth = useWindowWidth();
+  const { pageSize, bestPageSize } = getPageSize(windowWidth);
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
@@ -30,20 +41,6 @@ function ProductListPage() {
     setSortOrder(value);
     setCurrentPage(1);
   };
-
-  // 창 크기에 따라 표시되는 상품 개수 변경
-  const updateDisplayedProducts = useCallback((width) => {
-    if (width >= 1024) {
-      setPageSize(10);
-      setBestPageSize(4);
-    } else if (width >= 640) {
-      setPageSize(6);
-      setBestPageSize(2);
-    } else {
-      setPageSize(4);
-      setBestPageSize(1);
-    }
-  }, []);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -86,10 +83,6 @@ function ProductListPage() {
     handleLoad();
     handleBestLoad();
   }, [sortOrder, currentPage, bestPageSize, pageSize]);
-
-  useEffect(() => {
-    updateDisplayedProducts(windowWidth);
-  }, [windowWidth, updateDisplayedProducts]);
 
   return (
     <div>
