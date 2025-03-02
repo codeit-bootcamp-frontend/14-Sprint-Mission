@@ -50,11 +50,6 @@
   background-repeat: no-repeat;
 }
 
-.banner__contents {
-  display: flex;
-  align-items: center;
-}
-
 .banner__title {
   font-weight: 700;
   font-size: 40px;
@@ -65,21 +60,8 @@
 }
 
 .section-wrapper {
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 32px;
-}
-
-.section-item {
-  margin: 138px 0;
   display: flex;
-  align-items: center;
-  gap: 5%;
-  background-color: #fcfcfc;
-}
-
-.section-img-wrapper {
-  height: 444px;
+  flex-direction: column;
 }
 
 .section-img-wrapper img {
@@ -161,6 +143,8 @@
   }
 
   .banner__contents {
+    display: flex;
+    align-items: center;
     height: 540px;
   }
 
@@ -181,6 +165,18 @@
     padding: 12px 124px;
     font-size: var(--text-xl);
     line-height: var(--text-xl);
+  }
+
+  .section-wrapper {
+    padding: 138px 0;
+    gap: 276px;
+  }
+
+  .section-item {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    background-color: #fcfcfc;
   }
 }
 
@@ -201,6 +197,8 @@
   }
 
   .banner__contents {
+    display: flex;
+    align-items: center;
     height: 540px;
   }
 
@@ -221,6 +219,18 @@
     padding: 12px 124px;
     font-size: var(--text-xl);
     line-height: var(--text-xl);
+  }
+
+  .section-wrapper {
+    padding: 138px 0;
+    gap: 276px;
+  }
+
+  .section-item {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    background-color: #fcfcfc;
   }
 }
 
@@ -242,6 +252,7 @@
 
   .banner__title {
     text-align: center;
+    align-items: center;
   }
 
   .banner-top__title__span {
@@ -267,6 +278,21 @@
     font-size: var(--text-xl);
     line-height: var(--text-xl);
   }
+
+  .section-wrapper {
+    padding: 24px 24px 56px 24px;
+    gap: 52px;
+  }
+
+  .section-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .section-item:nth-child(2) {
+    flex-direction: column-reverse;
+  }
 }
 
 @media (max-width: 767px) {
@@ -289,10 +315,6 @@
     background-position: bottom;
   }
 
-  .banner__title {
-    text-align: center;
-  }
-
   .banner-top__title__span {
     display: block;
   }
@@ -311,9 +333,8 @@
     line-height: var(--text-2lg);
   }
 
-  .section-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .section-wrapper {
+    padding: 52px 15px 83px 15px;
+    gap: 40px;
   }
 }
