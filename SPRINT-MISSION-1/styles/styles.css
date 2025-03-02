@@ -101,20 +101,23 @@
 
 .footer {
   background-color: #111827;
+  padding-top: 32px;
+  padding-bottom: 108px;
+}
+
+.footer-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 200px 108px 200px;
   font-weight: 400;
   font-size: 16px;
   line-height: 19.09px;
   text-align: center;
 }
 
-.footer > div {
+.footer-wrapper div {
   color: #9ca3af;
 }
-
 #footerMenu {
   display: flex;
   gap: 30px;
@@ -292,6 +295,10 @@
 
   .section-item:nth-child(2) {
     flex-direction: column-reverse;
+  }
+
+  .footer-wrapper {
+    justify-content: space-evenly;
   }
 }
 
