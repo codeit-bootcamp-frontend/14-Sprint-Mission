@@ -118,13 +118,13 @@
 .footer-wrapper div {
   color: #9ca3af;
 }
-#footerMenu {
+#footer__menu {
   display: flex;
   gap: 30px;
   color: #f3f4f6;
 }
 
-#socialMedia {
+#footer__media {
   display: flex;
   gap: 12px;
 }
@@ -343,5 +343,15 @@
   .section-wrapper {
     padding: 52px 15px 83px 15px;
     gap: 40px;
+  }
+
+  .footer {
+    position: relative;
+  }
+
+  .footer__info {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
   }
 }
