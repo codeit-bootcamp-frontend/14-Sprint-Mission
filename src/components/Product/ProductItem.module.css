@@ -4,6 +4,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 16px;
+  border: 1px solid var(--Cool_Gray_200);
 }
 .imgBox img {
   position: absolute;

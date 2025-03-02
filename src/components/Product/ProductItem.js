@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Icon from '../Icon';
 import styles from './ProductItem.module.css';
+import img from '../../assets/img/img_4.jpg';
 
 function ProductItem({images ,name , price, favoriteCount}) {
   // const randomNum = Math.floor(Math.random() * 4) + 1;
   // const randomImg = `../img/img_${randomNum}.jpg`;
-  const Img = '../img/img_4.jpg';
 
   const [isLiked, setIsLiked] = useState(false);
   const handleClick = () => {
@@ -15,7 +15,7 @@ function ProductItem({images ,name , price, favoriteCount}) {
 
   return (
     <li className={styles.listItem}>
-      <Link to="ItemsDetail"><div className={styles.imgBox}><img src={images} alt="ProductImg" onError={(e) => e.target.src = Img} /></div></Link>
+      <Link to="ItemsDetail"><div className={styles.imgBox}><img src={images} alt="ProductImg" onError={(e) => e.target.src = img} /></div></Link>
       <div className={styles.description}>
         <div className={styles.name}>{name}</div>
         <div className={styles.price}>{price.toLocaleString()}원</div>

@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import styles from './Button.module.css';
+import { Link } from 'react-router-dom';
 
 function Button({ variant, className, link, ...restProps }) {
   if (link) {
     return (
-      <a
+      <Link
         {...restProps}
-        href={link}
+        to={link}
         className={classNames(styles.btn, styles[variant], className)}
       />
     );
