@@ -5,13 +5,17 @@
   margin: 0 auto;
 }
 
-.logo-wrapper {
+.auth-container__logo {
   text-align: center;
   margin-top: 60px;
   margin-bottom: 40px;
 }
 
-.input-item {
+.auth-logo-img {
+  width: 80%;
+}
+
+.login-form__item {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -52,9 +56,10 @@ input:focus {
   right: 24px;
 }
 
-.login-btn {
+.auth-btn {
   width: 100%;
   border: 0px;
+  background-color: #9ca3af;
 }
 
 .social-login-container {
@@ -65,14 +70,11 @@ input:focus {
   padding: 16px 23px;
   background-color: #e6f2ff;
   margin: 24px 0;
-}
-
-.social-login-container div {
   font-weight: 500;
   color: #1f2037;
 }
 
-.social-login-btns-container {
+.social-login-container__btns {
   display: flex;
   gap: 16px;
 }
@@ -91,4 +93,12 @@ input:focus {
   text-decoration: underline;
   color: #3692ff;
   text-underline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .auth-container {
+    padding: 0 16px;
+    box-sizing: content-box;
+    max-width: 400px;
+  }
 }

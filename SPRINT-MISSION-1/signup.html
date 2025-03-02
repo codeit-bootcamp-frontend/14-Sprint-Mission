@@ -12,17 +12,16 @@
   </head>
   <body>
     <div class="auth-container">
-      <div class="logo-wrapper">
+      <div class="auth-container__logo">
         <a href="/"
           ><img
-            src="images/logo/panda-market-logo-lg.png"
+            src="images/logo/panda-market.png"
             alt="판다마켓 홈"
-            width="396px"
-            height="132px"
+            class="auth-logo-img"
         /></a>
       </div>
-      <form>
-        <div class="input-item">
+      <form class="login-form">
+        <div class="login-form__item">
           <label for="email">이메일</label>
           <input
             id="email"
@@ -31,7 +30,7 @@
             placeholder="이메일을 입력해주세요."
           />
         </div>
-        <div class="input-item">
+        <div class="login-form__item">
           <label for="nickname">닉네임</label>
           <input
             id="nickname"
@@ -40,14 +39,14 @@
             placeholder="닉네임을 입력해주세요."
           />
         </div>
-        <div class="input-item">
+        <div class="login-form__item">
           <label for="password">비밀번호</label>
           <div class="input-wrapper">
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="비밀번호를 입력해주세요."
             />
             <button class="toggle-password">
             <img
@@ -59,14 +58,14 @@
           </div>
           </button>
         </div>
-        <div class="input-item">
+        <div class="login-form__item">
           <label for="password">비밀번호 확인</label>
           <div class="input-wrapper">
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="비밀번호를 다시 입력해주세요"
+              placeholder="비밀번호를 다시 입력해주세요."
             />
             <button class="toggle-password">
             <img
@@ -77,13 +76,13 @@
           </button>
           </div>
         </div>
-        <button type="submit" class="login-btn btn-large btn-primary text-xl">
+        <button type="submit" class="auth-btn btn-large btn-primary text-xl">
           회원가입
         </button>
       </form>
       <div class="social-login-container">
         <div class="text-lg">간편 로그인하기</div>
-        <div class="social-login-btns-container">
+        <div class="social-login-container__btns">
           <a href="https://www.google.com/" target="_blank"
             ><img
               src="./images/social/google.png"
