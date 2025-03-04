@@ -27,7 +27,7 @@ export default function Pagination({ current = 1, total = 0, onPageChange }) {
   return (
     <div className="display-flex justify-center gap-4" id="pagination">
       <button
-        className="surface-secondary-0"
+        className="icon-wrapper surface-secondary-0"
         onClick={() => onPageChange(offset - 1)}
         disabled={offset === 1}
       >
@@ -49,7 +49,7 @@ export default function Pagination({ current = 1, total = 0, onPageChange }) {
         )
       )}
       <button
-        className="surface-secondary-0"
+        className="icon-wrapper surface-secondary-0"
         onClick={() => onPageChange(offset + 1)}
         disabled={offset === total}
       >

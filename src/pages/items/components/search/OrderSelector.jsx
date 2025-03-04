@@ -34,7 +34,7 @@ export default function OrderSelector({
     <div id="order-selector">
       {isMobile ? (
         <div className="display-flex justify-left">
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button className="icon-wrapper" onClick={() => setIsOpen(!isOpen)}>
             <img src={IconSort} alt="상품 정렬 방법 보기" />
           </button>
         </div>

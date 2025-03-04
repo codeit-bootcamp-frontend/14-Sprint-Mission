@@ -49,3 +49,9 @@ button:disabled {
   background-color: var(--secondary-400);
   cursor: not-allowed;
 }
+button.icon-wrapper {
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+}

@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/items">
             <Route index element={<Items />} />
-            <Route path=":itemId" element={<ItemDetail />} />
+            <Route path=":productId" element={<ItemDetail />} />
           </Route>
           <Route path="/additem" element={<AddItem />} />
           <Route path="/boards">

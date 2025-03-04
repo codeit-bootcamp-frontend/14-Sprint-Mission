@@ -28,7 +28,7 @@ export default function SearchInput({ keyword = "", onSearch }) {
         placeholder="검색할 상품을 입력해주세요"
       />
       {value.length > 0 && (
-        <button type="reset" onClick={handleClear}>
+        <button type="reset" className="icon-wrapper" onClick={handleClear}>
           <img src={IconClose} alt="상품 검색어 제거 아이콘" />
         </button>
       )}
