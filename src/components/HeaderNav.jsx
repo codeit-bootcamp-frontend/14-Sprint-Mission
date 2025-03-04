@@ -33,7 +33,11 @@ export default function HeaderNav() {
             <li>
               <NavLink
                 to="/items"
-                className={({ isActive }) => (isActive ? "text-primary-100" : "")}
+                className={({ isActive }) =>
+                  isActive || window.location.pathname.endsWith("/additem")
+                    ? "text-primary-100"
+                    : ""
+                }
               >
                 중고마켓
               </NavLink>

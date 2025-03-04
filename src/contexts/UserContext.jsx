@@ -11,6 +11,7 @@ export default function UserContextProvider({ children }) {
       try {
         setUser(JSON.parse(data));
       } catch (e) {
+        setUser();
         console.log("유저 정보를 불러올 수 없습니다.", e);
         localStorage.removeItem("user");
       }

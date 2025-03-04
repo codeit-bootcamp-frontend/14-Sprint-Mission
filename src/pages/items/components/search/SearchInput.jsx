@@ -1,6 +1,6 @@
 import { useState } from "react";
 import IconSearch from "../../../../assets/images/items/ic_search.svg";
-import IconClose from "../../../../assets/images/items/ic_X.svg";
+import IconClose from "../../../../assets/images/common/ic_X.svg";
 
 export default function SearchInput({ keyword = "", onSearch }) {
   const [value, setValue] = useState(keyword);

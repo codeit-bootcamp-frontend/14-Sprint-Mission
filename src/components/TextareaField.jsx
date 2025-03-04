@@ -1,11 +1,13 @@
-export default function TextInput({
-  labelText = "이메일",
-  name = "email",
-  type = "email",
-  placeholder = "이메일을 입력해주세요",
+import "./input.scss";
+
+export default function TextareaField({
+  labelText,
+  name,
+  placeholder = "내용을 입력해주세요",
   value = "",
   onChange,
   children,
+  ...props
 }) {
   function onInputChange(e) {
     const newValue = e.target.value;
@@ -13,15 +15,18 @@ export default function TextInput({
   }
   return (
     <div className="input-field display-grid justify-stretch">
-      <label htmlFor={name} className="text-2lg text-bold">
-        {labelText}
-      </label>
+      {labelText?.length > 0 && (
+        <label htmlFor={name} className="text-2lg text-bold">
+          {labelText}
+        </label>
+      )}
       <div className="input-wrapper display-flex justify-left radius-12">
-        <input
+        <textarea
           id={name}
-          {...{ name, type, value, placeholder }}
+          {...{ name, value, placeholder }}
           onClick={onInputChange}
           onChange={onInputChange}
+          {...props}
         />
       </div>
       {children}

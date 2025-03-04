@@ -21,7 +21,12 @@ export async function signUp(values) {
 export async function logIn(values) {
   try {
     const response = await instance.post(`${PATH}/signIn`, values);
-    if (response.status === STATUS_OK) return response.data;
+    if (response.status === STATUS_OK) {
+      const { user, accessToken, refreshToken } = response.data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      return user;
+    }
   } catch (e) {
     throw new Error("로그인에 오류가 발생했습니다.");
   }

@@ -1,4 +1,4 @@
-import { instance, STATUS_CREATED, STATUS_OK } from "./common-http";
+import { instance, multipartInstance, STATUS_CREATED, STATUS_OK } from "./common-http";
 
 const PATH = "/products";
 
@@ -6,6 +6,7 @@ export const PAGE_SIZE = {
   best: { desktop: 4, tablet: 2, mobile: 1 },
   search: { desktop: 10, tablet: 6, mobile: 4 },
 };
+export const INITIAL_PRODUCT_VALUE = { images: [], tags: [], description: "", name: "" };
 
 export async function getProducts(page = 1, pageSize = 10, orderBy = "recent", keyword) {
   const params = { page, pageSize, orderBy, keyword };
@@ -24,7 +25,6 @@ export async function getProductDetail(productId) {
     throw new Error("상품 상세 조회에 오류가 발생했습니다.");
   }
 }
-
 export async function createProduct(value) {
   try {
     const response = await instance.post(PATH, value);
@@ -49,7 +49,6 @@ export async function deleteProduct(productId) {
     throw new Error("상품 정보 수정에 오류가 발생했습니다.");
   }
 }
-
 export async function addToFavorites(productId) {
   try {
     const response = await instance.post(`${PATH}/${productId}/favorite`);

@@ -1,0 +1,26 @@
+main#add-item {
+  max-width: 1200px;
+  margin: 24px auto 69px;
+  > .container {
+    > .input-field > #tag-list {
+      margin-top: 14px;
+      flex-wrap: wrap;
+      > #tag {
+        padding: 5px 12px 5px 16px;
+        > .icon-wrapper {
+          padding: 0;
+          width: fit-content;
+          height: fit-content;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  @media (width < 1200px) {
+    /* Tablet */
+    margin: 24px 16px 58px;
+  }
+  @media (width < 768px) {
+    /* Mobile */
+  }
+}

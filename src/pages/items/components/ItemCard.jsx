@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import IconFavorite from "../../../assets/images/items/ic_heart.svg";
+import { formatPrice } from "../../../utils/products";
 
 export default function ItemCard({ id, images = [], name, price = 0, favoriteCount = 0 }) {
   return (
@@ -13,9 +14,7 @@ export default function ItemCard({ id, images = [], name, price = 0, favoriteCou
         <Link to={`./${id}`} className="text-md text-medium">
           {name}
         </Link>
-        <div className="text-lg text-lg text-bold">
-          {new Intl.NumberFormat("ko-KR").format(price)}원
-        </div>
+        <div className="text-lg text-lg text-bold">{formatPrice(price)}원</div>
         <div className="flex display-flex justify-left gap-4">
           <img src={IconFavorite} alt="상품 좋아요 수 표시" />
           <p className="text-xs text-medium text-secondary">{favoriteCount}</p>

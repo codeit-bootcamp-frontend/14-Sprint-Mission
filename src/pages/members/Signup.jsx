@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { INITIAL_SIGNUP_VALUE, signUp } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
-import { useSetUser } from "../../contexts/UserContext";
+import InputField from "../../components/InputField";
+import { useSetUser, useUser } from "../../contexts/UserContext";
 import { checkValidation } from "../../utils/members";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
-import TextInput from "./components/TextInput";
 import "./members.scss";
 
 export default function Signup() {
-  const navigate = useNavigate();
+  const { state } = useLocation();
+  const user = useUser();
+  if (user) {
+    return <Navigate to={state || "/"} />;
+  }
+
   const setUser = useSetUser();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_SIGNUP_VALUE);
   const [errData, setErrData] = useState(INITIAL_SIGNUP_VALUE);
   const [isBtnDisabled, setBtnDisabled] = useState(true);
@@ -51,15 +57,21 @@ export default function Signup() {
         <img src={LogoImage} alt="로고 이미지" id="logo" />
       </Link>
       <form className="form-signup display-grid justify-center gap-24" onSubmit={onSignup}>
-        <TextInput value={formData.email} onChange={onInputChange}>
+        <InputField
+          labelText="이메일"
+          name="email"
+          type="email"
+          placeholder="이메일을 입력해주세요"
+          value={formData.email}
+          onChange={onInputChange}
+        >
           {errData.email?.length > 0 && (
             <p className="text-error text-md text-semibold">{errData.email}</p>
           )}
-        </TextInput>
-        <TextInput
+        </InputField>
+        <InputField
           labelText="닉네임"
           name="nickname"
-          type="text"
           placeholder="닉네임을 입력해주세요"
           value={formData.nickname}
           onChange={onInputChange}
@@ -67,7 +79,7 @@ export default function Signup() {
           {errData.nickname?.length > 0 && (
             <p className="text-error text-md text-semibold">{errData.nickname}</p>
           )}
-        </TextInput>
+        </InputField>
         <PwdInput value={formData.password} onChange={onInputChange}>
           {errData.password?.length > 0 && (
             <p className="text-error text-md text-semibold">{errData.password}</p>
