@@ -1,21 +1,46 @@
 import useForm from "../../hooks/useForm";
-import { FormField, ImageField, TagField } from "../../components";
+import { InputField, ImageField, TagField } from "../../components";
 import { addItemSchema } from "../../schema/additem";
 
 import styles from "./AddItemPage.module.css";
 
 const RegisterItemPage = () => {
-  const { isValidate, changeHandler } = useForm({
+  const {
+    formValue: { values },
+    isValidate,
+    changeHandler,
+  } = useForm({
     resolver: addItemSchema,
-    defaultValue: { title: "", introduction: "", price: "", image: null },
+    defaultValue: {
+      image: null,
+      title: "",
+      introduction: "",
+      price: "",
+      tags: [],
+    },
   });
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
+
+  const preventEnterHandler = (e) => {
+    if (e.target.type !== "textarea" && e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className={styles.main_center}>
-      <form className={styles.add_item_form}>
+      <form
+        className={styles.add_item_form}
+        onSubmit={submitHandler}
+        onKeyDown={preventEnterHandler}
+      >
         <div className={styles.title_box}>
           <p>상품 등록하기</p>
-          <button type="button" disabled={!isValidate}>
+          <button type="submit" disabled={!isValidate}>
             등록
           </button>
         </div>
@@ -27,15 +52,16 @@ const RegisterItemPage = () => {
           onChange={changeHandler}
           errorMessage="*이미지 등록은 최대 1개까지 가능합니다."
         />
-        <FormField
+        <InputField
           label="상품명"
           id="title"
           name="title"
+          type="text"
           placeholder="상품명을 입력해주세요"
           renderElement="input"
           onChange={changeHandler}
         />
-        <FormField
+        <InputField
           label="상품 소개"
           id="introduction"
           name="introduction"
@@ -44,18 +70,19 @@ const RegisterItemPage = () => {
           onChange={changeHandler}
           renderClassName={styles.introduction}
         />
-        <FormField
+        <InputField
           label="판매가격"
           id="price"
           name="price"
+          type="number"
           placeholder="판매 가격을 입력해주세요"
           renderElement="input"
           onChange={changeHandler}
         />
         <TagField
           label="태그"
-          id="tag"
-          name="tag"
+          id="tags"
+          name="tags"
           placeholder="태그를 입력해주세요"
           onChange={changeHandler}
         />

@@ -27,6 +27,11 @@
   color: var(--gray-400);
 }
 
+.field_input::-webkit-outer-spin-button,
+.field_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /** 모바일 반응형 */
 @media (min-width: 375px) and (max-width: 767px) {
 }

@@ -21,17 +21,34 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
     return initialFormValues;
   });
 
+  const getCorrectValue = (event, prevValues) => {
+    const { value, type, name } = event.target;
+
+    if (type === "file") {
+      return event.target.files[0];
+    }
+
+    if (Array.isArray(prevValues[name])) {
+      return [...prevValues[name], value];
+    }
+
+    return value;
+  };
+
   const makeInteractionHandler = useCallback(
     (configMode) => (e) => {
       const { name, value } = e.target;
 
       setFormValue((prev) => {
-        const allValues = prev.values;
-        const validatedError = prev.validators[name].validate(value, allValues);
+        const prevAllValues = prev.values;
+        const validatedError = prev.validators[name]?.validate(
+          value,
+          prevAllValues
+        );
 
         return {
           ...prev,
-          values: { ...prev.values, [name]: value },
+          values: { ...prev.values, [name]: getCorrectValue(e, prevAllValues) },
           errors:
             mode === configMode
               ? {
@@ -42,9 +59,11 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
         };
       });
 
-      setIsDirty(true);
+      if (isDirty === false) {
+        setIsDirty(true);
+      }
     },
-    [mode]
+    [mode, isDirty]
   );
 
   const changeHandler = makeInteractionHandler("onChange");

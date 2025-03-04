@@ -3,7 +3,7 @@ import WideSection from "./WideSection/WideSection";
 
 import ImageField from "./ImageField/ImageField";
 import TagField from "./TagField/TagField";
-import FormField from "./FormField/FormField";
+import InputField from "./InputField/InputField";
 import Button from "./Button/Button";
 import ConvenientSigninBox from "./ConvenientSigninBox/ConvenientSigninBox";
 import RecommendSign from "./RecommendSign/RecommendSign";
@@ -20,7 +20,7 @@ export {
   WideSection,
   TagField,
   ImageField,
-  FormField,
+  InputField,
   Button,
   ConvenientSigninBox,
   RecommendSign,

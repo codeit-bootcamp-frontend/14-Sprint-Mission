@@ -2,9 +2,9 @@ import clsx from "clsx";
 import React, { useMemo, useState } from "react";
 
 import Field from "../Field/Field";
-import styles from "./FormField.module.css";
+import styles from "./InputField.module.css";
 
-const FormField = ({
+const InputField = ({
   id,
   type = "text",
   label,
@@ -15,7 +15,7 @@ const FormField = ({
   renderDisabledIcon,
   onChange,
   onBlur,
-  renderElement: RenderComponent = "input",
+  renderElement: RenderElement = "input",
   renderClassName,
 }) => {
   const [isExistIcon, setIsExistIcon] = useState(false);
@@ -34,7 +34,7 @@ const FormField = ({
   return (
     <Field id={id} label={label} errorMessage={errorMessage}>
       <div className={styles.field_input_box}>
-        <RenderComponent
+        <RenderElement
           id={id}
           type={convertableTypeForPassword}
           name={name}
@@ -57,4 +57,4 @@ const FormField = ({
   );
 };
 
-export default FormField;
+export default InputField;

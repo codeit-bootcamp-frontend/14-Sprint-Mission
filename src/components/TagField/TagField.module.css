@@ -14,6 +14,10 @@
   resize: none;
 }
 
+.input::placeholder {
+  color: var(--gray-400);
+}
+
 .tag_box {
   display: flex;
   flex-wrap: wrap;

@@ -1,29 +1,30 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import Field from "../Field/Field";
 
 import XIcon from "../../assets/icons/ic_X.svg";
 import styles from "./TagField.module.css";
 
-const TagField = ({ id, name, label, placeholder }) => {
+const TagField = ({ id, name, label, placeholder, onChange }) => {
   const [tags, setTags] = useState([]);
-  const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState("");
 
-  const keyDownHandler = (e) => {
+  const keyUpHandler = (e) => {
     if (e.key === "Enter") {
-      const { value } = inputRef.current;
-      if (
-        value !== "" &&
-        tags.some(({ tagValue }) => tagValue === value) === false
-      ) {
+      const { value } = e.target;
+
+      if (value !== "" && !tags.some(({ tag }) => tag === value)) {
         setTags((prev) => [
           ...prev,
-          { id: new Date().toISOString(), tagValue: value },
+          { id: new Date().toISOString(), tag: value },
         ]);
-        inputRef.current.value = "";
+        setInputValue("");
+        onChange(e);
       }
     }
   };
+
+  const changeHandler = (e) => setInputValue(e.target.value);
 
   const removeTagClickHandler = (targetId) => {
     setTags((prev) => prev.filter(({ id }) => id !== targetId));
@@ -33,18 +34,19 @@ const TagField = ({ id, name, label, placeholder }) => {
     <div className={styles.field_container}>
       <Field id={id} label={label}>
         <input
-          ref={inputRef}
-          className={styles.input}
           id={id}
           name={name}
+          value={inputValue}
+          className={styles.input}
           placeholder={placeholder}
-          onKeyDown={keyDownHandler}
+          onKeyUp={keyUpHandler}
+          onChange={changeHandler}
         />
       </Field>
       <div className={styles.tag_box}>
-        {tags?.map(({ id, tagValue }) => (
+        {tags?.map(({ id, tag }) => (
           <span key={id} className={styles.tag}>
-            #{tagValue}
+            #{tag}
             <button type="button" onClick={() => removeTagClickHandler(id)}>
               <img src={XIcon} alt="제거 아이콘" />
             </button>

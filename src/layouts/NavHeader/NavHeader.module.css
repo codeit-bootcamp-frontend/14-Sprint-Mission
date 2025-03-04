@@ -58,6 +58,12 @@
 
 /** 모바일 반응형 */
 @media (min-width: 375px) and (max-width: 767px) {
+  .menu_list {
+    gap: 8px;
+    margin-left: 8px;
+    padding: 0;
+  }
+
   .main_nav {
     padding: 0 12px;
   }

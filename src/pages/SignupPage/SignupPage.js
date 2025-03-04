@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Button,
-  FormField,
+  InputField,
   RecommendSign,
   ConvenientSigninBox,
 } from "../../components";
@@ -47,7 +47,7 @@ const SigninPage = () => {
   return (
     <>
       <form className={styles.auth_form} onSubmit={submitHandler}>
-        <FormField
+        <InputField
           label="이메일"
           id="email"
           type="text"
@@ -57,7 +57,7 @@ const SigninPage = () => {
           onBlur={blurHandler}
           onChange={changeHandler}
         />
-        <FormField
+        <InputField
           label="닉네임"
           id="nickname"
           type="nickname"
@@ -67,7 +67,7 @@ const SigninPage = () => {
           onBlur={blurHandler}
           onChange={changeHandler}
         />
-        <FormField
+        <InputField
           label="비밀번호"
           id="password"
           type="password"
@@ -79,7 +79,7 @@ const SigninPage = () => {
           renderEnabledIcon={<img src={OpenEyeIcon} alt="눈 뜬 아이콘" />}
           renderDisabledIcon={<img src={CloseEyeIcon} alt="눈 감은 아이콘" />}
         />
-        <FormField
+        <InputField
           label="비밀번호 확인"
           id="repassword"
           type="password"
