@@ -20,7 +20,7 @@
             class="auth-logo-img"
         /></a>
       </div>
-      <form class="login-form">
+      <form id="signupForm" class="login-form">
         <div class="login-form__item">
           <label for="email">이메일</label>
           <input
@@ -29,6 +29,12 @@
             type="email"
             placeholder="이메일을 입력해주세요."
           />
+          <span id="emailEmptyError" class="error-message"
+            >이메일을 입력해 주세요</span
+          >
+          <span id="emailInvalidError" class="error-message"
+            >잘못된 이메일 형식입니다</span
+          >
         </div>
         <div class="login-form__item">
           <label for="nickname">닉네임</label>
@@ -38,6 +44,9 @@
             type="nickname"
             placeholder="닉네임을 입력해주세요."
           />
+          <span id="nicknameEmptyError" class="error-message"
+            >닉네임을 입력해 주세요</span
+          >
         </div>
         <div class="login-form__item">
           <label for="password">비밀번호</label>
@@ -48,33 +57,46 @@
               type="password"
               placeholder="비밀번호를 입력해주세요."
             />
-            <button type="button" class="toggle-password">
-            <img
-              src="./images/icon/eye_invisible.png"
-              alt="비밀번호 숨김"
-              width="24px"
+            <button type="button" class="password-toggle-btn">
+              <img
+                src="./images/icon/eye_invisible.png"
+                alt="비밀번호 숨김 아이콘콘"
+                class="password-toggle-icon"
+                width="24px"
               />
-          </button>
+            </button>
           </div>
-          </button>
+          <span id="passwordEmptyError" class="error-message"
+            >비밀번호를 입력해 주세요</span
+          >
+          <span id="passwordInvalidError" class="error-message"
+            >비밀번호를 8자 이상 입력해 주세요</span
+          >
         </div>
         <div class="login-form__item">
-          <label for="password">비밀번호 확인</label>
+          <label for="passwordConfirmation">비밀번호 확인</label>
           <div class="input-wrapper">
             <input
-              id="password"
-              name="password"
-              type="password"
+              id="passwordConfirmation"
+              name="passwordConfirmation"
+              type="passwordConfirmation"
               placeholder="비밀번호를 다시 입력해주세요."
             />
-            <button type="button" class="toggle-password">
-            <img
-              src="./images/icon/eye_visible.png"
-              alt="비밀번호 보임"
-              width="24px"
-            />
-          </button>
+            <button type="button" class="password-toggle-btn">
+              <img
+                src="./images/icon/eye_visible.png"
+                alt="비밀번호 보임 아이콘"
+                class="password-toggle-icon"
+                width="24px"
+              />
+            </button>
           </div>
+          <span id="passwordConfirmationInitError" class="error-message"
+            >먼저 조건에 맞는 비밀번호를 입력해 주세요</span
+          >
+          <span id="passwordConfirmationError" class="error-message"
+            >비밀번호가 일치하지 않습니다</span
+          >
         </div>
         <button type="submit" class="auth-btn btn-large btn-primary text-xl">
           회원가입
@@ -100,5 +122,6 @@
         <span>이미 회원이신가요?</span><a href="signin.html">로그인</a>
       </div>
     </div>
+    <script src="scripts/auth.js"></script>
   </body>
 </html>
