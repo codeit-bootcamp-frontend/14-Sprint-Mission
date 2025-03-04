@@ -1,27 +1,43 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { INITIAL_SIGNUP_VALUE, signUp } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
-import { useSetUser } from "../../contexts/UserContext";
+import InputField from "../../components/InputField";
+import { useSetUser, useUser } from "../../contexts/UserContext";
+import { checkValidation } from "../../utils/members";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
-import TextInput from "./components/TextInput";
 import "./members.scss";
 
 export default function Signup() {
-  const navigate = useNavigate();
+  const { state } = useLocation();
+  const user = useUser();
+  if (user) {
+    return <Navigate to={state || "/"} />;
+  }
+
   const setUser = useSetUser();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_SIGNUP_VALUE);
+  const [errData, setErrData] = useState(INITIAL_SIGNUP_VALUE);
   const [isBtnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    for (const key in formData) {
-      if (formData[key].length === 0) return;
+    for (const name in formData) {
+      if (formData[name] === "" || errData[name].length > 0) {
+        setBtnDisabled(true);
+        return;
+      }
     }
-    const errMsgs = document.querySelectorAll(".text-error");
-    if (errMsgs.length === 0) setBtnDisabled(false);
-    else setBtnDisabled(true);
-  }, [formData]);
+    setBtnDisabled(false);
+  }, [formData, errData]);
+
+  function onInputChange(name, value) {
+    const newValue = { ...formData, [name]: value };
+    const msg = checkValidation(name, newValue);
+    setErrData({ ...errData, [name]: msg });
+    setFormData(newValue);
+  }
 
   async function onSignup(e) {
     e.preventDefault();
@@ -31,7 +47,7 @@ export default function Signup() {
       setBtnDisabled(loading);
       setUser(user);
       if (user) navigate("/items");
-    }
+    } else setBtnDisabled(false);
   }
 
   return (
@@ -41,30 +57,45 @@ export default function Signup() {
         <img src={LogoImage} alt="로고 이미지" id="logo" />
       </Link>
       <form className="form-signup display-grid justify-center gap-24" onSubmit={onSignup}>
-        <TextInput
+        <InputField
+          labelText="이메일"
+          name="email"
+          type="email"
+          placeholder="이메일을 입력해주세요"
           value={formData.email}
-          onChange={(v) => setFormData({ ...formData, email: v })}
-        />
-        <TextInput
+          onChange={onInputChange}
+        >
+          {errData.email?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.email}</p>
+          )}
+        </InputField>
+        <InputField
           labelText="닉네임"
-          id="nickname"
-          type="text"
+          name="nickname"
           placeholder="닉네임을 입력해주세요"
           value={formData.nickname}
-          onChange={(v) => setFormData({ ...formData, nickname: v })}
-        />
-        <PwdInput
-          value={formData.password}
-          onChange={(v) => setFormData({ ...formData, password: v })}
-        />
+          onChange={onInputChange}
+        >
+          {errData.nickname?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.nickname}</p>
+          )}
+        </InputField>
+        <PwdInput value={formData.password} onChange={onInputChange}>
+          {errData.password?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.password}</p>
+          )}
+        </PwdInput>
         <PwdInput
           labelText="비밀번호 확인"
-          id="pwd-check"
+          name="passwordConfirmation"
           placeholder="비밀번호를 다시 한 번 입력해주세요"
           value={formData.passwordConfirmation}
-          onChange={(v) => setFormData({ ...formData, passwordConfirmation: v })}
-          isValid={formData.password === formData.passwordConfirmation}
-        />
+          onChange={onInputChange}
+        >
+          {errData.passwordConfirmation?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.passwordConfirmation}</p>
+          )}
+        </PwdInput>
         <button type="submit" id="btn-submit" disabled={isBtnDisabled}>
           회원가입
         </button>

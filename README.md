@@ -1,4 +1,4 @@
-# 스프린트 미션 5
+# 스프린트 미션 6
 
 배포 사항: https://fe-14-sprint-mission-react-lsj.netlify.app/
 
@@ -10,49 +10,43 @@
 
 ## 체크리스트 [기본]
 
-### 중고마켓
+### 상품 등록상품
 
-- [x] 중고마켓 페이지 주소는 “/items” 입니다.
-- [x] 페이지 주소가 “/items” 일때 상단네비게이션바의 '중고마켓' 버튼의 색상은 “3692FF”입니다.
-- [x] 상단 네비게이션 바는 이전 미션에서 구현한 랜딩 페이지와 동일한 스타일로 만들어 주세요.
-- [x] 상품 데이터 정보는 https://panda-market-api.vercel.app/docs/#/ 에 명세된 GET 메소드 “/products” 를 사용해주세요.
-- [x] '상품 등록하기' 버튼을 누르면 “/additem” 로 이동합니다. ( 빈 페이지 )
-- [x] 전체 상품에서 드롭 다운으로 “최신 순” 또는 “좋아요 순”을 선택해서 정렬을 할 수 있습니다.
-
-### 중고마켓 반응형
-
-- 베스트 상품
-  - [x] Desktop : 4개 보이기
-  - [x] Tablet : 2개 보이기
-  - [x] Mobile : 1개 보이기
-- 전체 상품
-  - [x] Desktop : 12개 보이기
-  - [x] Tablet : 6개 보이기
-  - [x] Mobile : 4개 보이기
+- [x] 등록 페이지 주소는 “/additem” 입니다.
+- [x] 페이지 주소가 “/additem” 일때 상단네비게이션바의 '중고마켓' 버튼의 색상은 “3692FF”입니다.
+- [x] 상품 이미지는 최대 한개 업로드가 가능합니다.
+- [x] 각 input의 placeholder 값을 정확히 입력해주세요.
+- [x] 이미지를 제외하고 input 에 모든 값을 입력하면 ‘등록' 버튼이 활성화 됩니다.
+- [x] API를 통한 상품 등록은 추후 미션에서 적용합니다.
 
 ## 체크리스트 [심화]
 
-- [x] 페이지 네이션 기능을 구현합니다.
+### 상품 등록
+
+- [x] 이미지 안의 X 버튼을 누르면 이미지가 삭제됩니다.
+- [x] 추가된 태그 안의 X 버튼을 누르면 해당 태그는 삭제됩니다.
 
 ## 변경 사항
 
-- CSS ➡ SCSS 적용 및 파일 전환
-- API 통신 시 axios 적용
-- 상품 목록 스켈레톤 UI 적용
+### 추가 구현 사항
+
+- `compressorjs` 사용한 이미지 압축 기능
+- 이미지 업로드 기능 구현 (`https://panda-market-api.vercel.app/images/upload` POST api 사용)
+- 상품 업로드 기능 구현 (`https://panda-market-api.vercel.app/products` POST api 사용)
 
 ## 구현 화면
 
 ### 1) Desktop
 
-![items-page-desktop](./src/assets/screenshot/items-page-desktop.png)
+![additem-page-desktop](./src/assets/screenshot/additem-page-desktop.png)
 
 ### 2) Tablet
 
-![items-page-tablet](./src/assets/screenshot/items-page-tablet.gif)
+![additem-page-tablet](./src/assets/screenshot/additem-page-tablet.gif)
 
 ### 3) Mobile
 
-![items-page-mobile](./src/assets/screenshot/items-page-mobile.gif)
+![additem-page-mobile](./src/assets/screenshot/additem-page-mobile.gif)
 
 ## 설치 사항
 
@@ -74,6 +68,14 @@ npm install scss
 npm install axios
 ```
 
+4. compress image file with compressorjs
+
+```
+npm install compressorjs
+```
+
 ## Q&A
 
-- 페이지네이션의 깜빡임을 개선할 수 있는 방안이 궁금합니다.
+- `NavLink` 활용을 유지하려다 보니, `/items`와는 다른 `/additem` 링크 접속 시를 알기 위해 `window.location.pathname`을 사용하여 비교했는데, 더 좋은 방법이 있을까요?
+
+  ![qna-sprint6](./src/assets/screenshot/qna-sprint6.png)

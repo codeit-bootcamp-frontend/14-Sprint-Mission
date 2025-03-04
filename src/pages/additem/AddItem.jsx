@@ -1,18 +1,84 @@
-import { Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { uploadImage } from "../../apis/images";
+import { createProduct, INITIAL_PRODUCT_VALUE } from "../../apis/products";
 import HeaderNav from "../../components/HeaderNav";
+import ImageField from "../../components/ImageField";
+import InputField from "../../components/InputField";
+import TextareaField from "../../components/TextareaField";
 import { useUser } from "../../contexts/UserContext";
+import { formatPrice } from "../../utils/products";
+import "./additem.scss";
+import TagField from "./components/TagField";
 
 export default function AddItem() {
   const user = useUser();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState(INITIAL_PRODUCT_VALUE);
 
-  return user ? (
-    <>
-      <HeaderNav />
-      <div>
-        <h1>임시 상품 등록 페이지</h1>
-      </div>
-    </>
+  const isBtnDisabled =
+    !formData.name || !formData.description || !formData.price || formData.tags.length === 0;
+  function onInputChange(name, value) {
+    const valueStr = name === "price" ? Number(value.replaceAll(/[^0-9]/g, "")) : value;
+    const newValue = { ...formData, [name]: valueStr };
+    setFormData(newValue);
+  }
+
+  async function handleAddItem() {
+    const promises = formData.imageFiles.map((file) => uploadImage(file));
+    Promise.all(promises).then(async (images) => {
+      const result = await createProduct({ ...formData, images, imageFiles: undefined });
+      if (result.id) navigate(`/items/${result.id}`);
+    });
+  }
+
+  return !user ? (
+    <Navigate to="/login" state="/additem" />
   ) : (
-    <Navigate to="/login" />
+    <>
+      <title>판다마켓 - 상품 등록</title>
+      <HeaderNav />
+      <main className="display-grid justify-stretch gap-24" id="add-item">
+        <div className="header display-flex justify-sides">
+          <h1 className="text-xl">상품 등록하기</h1>
+          <button className="small-40" disabled={isBtnDisabled} onClick={handleAddItem}>
+            등록
+          </button>
+        </div>
+        <div className="container display-grid justify-stretch gap-32">
+          <ImageField
+            labelText="상품 이미지"
+            value={formData.imageFiles || []}
+            onChange={(imageFiles) => setFormData({ ...formData, imageFiles })}
+            maxLength={1}
+          />
+          <InputField
+            labelText="상품명"
+            name="name"
+            placeholder="상품명을 입력해주세요"
+            value={formData.name}
+            onChange={onInputChange}
+          />
+          <TextareaField
+            labelText="상품소개"
+            name="description"
+            placeholder="상품소개를 입력해주세요"
+            value={formData.description}
+            onChange={onInputChange}
+          />
+          <InputField
+            labelText="판매가격"
+            name="price"
+            placeholder="판매 가격을 입력해주세요"
+            value={formData.price >= 0 ? formatPrice(formData.price) : ""}
+            onChange={onInputChange}
+          />
+          <TagField
+            tagList={formData.tags}
+            setTagList={(tags) => setFormData({ ...formData, tags })}
+          />
+        </div>
+      </main>
+    </>
   );
 }

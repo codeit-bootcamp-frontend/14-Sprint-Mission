@@ -1,34 +1,52 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { INITIAL_LOGIN_VALUE, logIn } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
-import { useSetUser } from "../../contexts/UserContext";
+import InputField from "../../components/InputField";
+import { useSetUser, useUser } from "../../contexts/UserContext";
+import { checkValidation } from "../../utils/members";
 import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
-import TextInput from "./components/TextInput";
 import "./members.scss";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const { state } = useLocation();
+  const user = useUser();
+  if (user) {
+    return <Navigate to={state || "/"} />;
+  }
+
   const setUser = useSetUser();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_LOGIN_VALUE);
+  const [errData, setErrData] = useState(INITIAL_LOGIN_VALUE);
   const [isBtnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    if (formData.email.length === 0 || formData.password.length === 0) return;
-    const errMsgs = document.querySelectorAll(".text-error");
-    if (errMsgs.length === 0) setBtnDisabled(false);
-  }, [formData]);
+    for (const name in formData) {
+      if (formData[name] === "" || errData[name].length > 0) {
+        setBtnDisabled(true);
+        return;
+      }
+    }
+    setBtnDisabled(false);
+  }, [formData, errData]);
+
+  function onInputChange(name, value) {
+    const newValue = { ...formData, [name]: value };
+    const msg = checkValidation(name, newValue);
+    setErrData({ ...errData, [name]: msg });
+    setFormData(newValue);
+  }
 
   async function onLogin(e) {
     e.preventDefault();
+    setBtnDisabled(true);
     const datas = await logIn(formData);
     if (datas) {
-      const { loading, user } = datas;
-      setBtnDisabled(loading);
-      setUser(user);
-      if (user) navigate("/items");
-    }
+      setUser(datas);
+      if (user) navigate(state || "/items");
+    } else setBtnDisabled(true);
   }
 
   return (
@@ -38,14 +56,23 @@ export default function Login() {
         <img src={LogoImage} alt="로고 이미지" id="logo" />
       </Link>
       <form className="form-login display-grid justify-center gap-24" onSubmit={onLogin}>
-        <TextInput
+        <InputField
+          labelText="이메일"
+          name="email"
+          type="email"
+          placeholder="이메일을 입력해주세요"
           value={formData.email}
-          onChange={(v) => setFormData({ ...formData, email: v })}
-        />
-        <PwdInput
-          value={formData.password}
-          onChange={(v) => setFormData({ ...formData, password: v })}
-        />
+          onChange={onInputChange}
+        >
+          {errData.email?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.email}</p>
+          )}
+        </InputField>
+        <PwdInput value={formData.password} onChange={onInputChange}>
+          {errData.password?.length > 0 && (
+            <p className="text-error text-md text-semibold">{errData.password}</p>
+          )}
+        </PwdInput>
         <button type="submit" id="btn-submit" disabled={isBtnDisabled} onClick={onLogin}>
           로그인
         </button>

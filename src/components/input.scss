@@ -1,0 +1,116 @@
+/* Input Field */
+.input-field {
+  > label {
+    margin-bottom: 16px;
+  }
+  > .input-wrapper {
+    gap: 10px;
+    padding: 16px 24px;
+    background-color: var(--cool-gray-100);
+    flex: auto 1;
+    > input {
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      height: 26px;
+    }
+    > input:focus {
+      outline: none;
+    }
+    > input::placeholder {
+      color: var(--secondary-400);
+    }
+    > .visibility {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      appearance: none;
+      background-color: transparent;
+      background-image: url("src/assets/images/login/visibility_off.svg");
+    }
+    > .visibility.checked {
+      background-image: url("src/assets/images/login/visibility_on.svg");
+    }
+  }
+  .input-wrapper:has(input:focus) {
+    border: 2px solid #3692ff;
+  }
+  > p.text-error {
+    position: relative;
+    top: 8px;
+    left: 16px;
+  }
+}
+.input-field:has(p.text-error) > .input-wrapper {
+  border: 1px solid var(--error-red);
+}
+/* Textarea Field */
+.input-field {
+  > .input-wrapper {
+    > textarea {
+      width: 100%;
+      height: 250px;
+      resize: none;
+      border: 0;
+      outline: 0;
+      background-color: transparent;
+    }
+    > textarea::placeholder {
+      color: var(--secondary-400);
+    }
+  }
+  > .input-wrapper:has(textarea:focus) {
+    border: 2px solid #3692ff;
+  }
+}
+/* Image Field */
+
+.input-field {
+  > .input-images-area {
+    > * {
+      width: 282px;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    @media (width < 1200px) {
+      gap: 10px;
+      > * {
+        width: 168px;
+      }
+    }
+    @media (width < 768px) {
+      > * {
+        max-width: 168px;
+        min-width: 100px;
+      }
+    }
+    > .input-wrapper {
+      background-image: url("../assets/images/common/img_upload.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      > input {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+    > .thumbnail-wrapper {
+      position: relative;
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      > button#delete {
+        width: fit-content;
+        height: fit-content;
+        padding: 0;
+        background-color: transparent;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+      }
+    }
+  }
+}
