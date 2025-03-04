@@ -1,4 +1,4 @@
-import { multipartInstance, STATUS_CREATED } from "./common-http";
+import { multipartInstance, HTTP_STATUS } from "./common-http";
 
 const PATH = "/images";
 
@@ -12,7 +12,7 @@ const PATH = "/images";
 export async function uploadImage(image) {
   try {
     const response = await multipartInstance.post(`${PATH}/upload`, { image });
-    if (response.status === STATUS_CREATED) return response.data?.url;
+    if (response.status === HTTP_STATUS.STATUS_CREATED) return response.data?.url;
   } catch (e) {
     console.log(e);
     throw new Error("이미지 업로드에 오류가 발생했습니다.");
