@@ -1,7 +1,9 @@
 import MainSection from "./MainSection/MainSection";
 import WideSection from "./WideSection/WideSection";
 
-import FormField from "./FormField/FormField";
+import ImageField from "./ImageField/ImageField";
+import TagField from "./TagField/TagField";
+import InputField from "./InputField/InputField";
 import Button from "./Button/Button";
 import ConvenientSigninBox from "./ConvenientSigninBox/ConvenientSigninBox";
 import RecommendSign from "./RecommendSign/RecommendSign";
@@ -16,7 +18,9 @@ import Pagination from "./Pagination/Pagination";
 export {
   MainSection,
   WideSection,
-  FormField,
+  TagField,
+  ImageField,
+  InputField,
   Button,
   ConvenientSigninBox,
   RecommendSign,

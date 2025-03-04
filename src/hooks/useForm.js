@@ -15,35 +15,58 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
         ...initialFormValues.validators,
         [key]: resolver[key],
       };
+
+      initialFormValues.errors = {
+        ...initialFormValues.errors,
+        [key]: {
+          target: key,
+          errors: [],
+        },
+      };
     }
-    initialFormValues.errors = [];
 
     return initialFormValues;
   });
+
+  const getCorrectValue = (event) => {
+    const { value, type } = event.target;
+
+    if (type === "file") {
+      return event.target.files[0];
+    }
+
+    return value;
+  };
 
   const makeInteractionHandler = useCallback(
     (configMode) => (e) => {
       const { name, value } = e.target;
 
       setFormValue((prev) => {
-        const allValues = prev.values;
+        const prevAllValues = prev.values;
+        const validatedError = prev.validators[name]?.validate(
+          value,
+          prevAllValues
+        );
 
         return {
           ...prev,
-          values: { ...prev.values, [name]: value },
+          values: { ...prev.values, [name]: getCorrectValue(e, prevAllValues) },
           errors:
             mode === configMode
               ? {
                   ...prev.errors,
-                  [name]: prev.validators[name].validate(value, allValues),
+                  [name]: validatedError,
                 }
               : { ...prev.errors },
         };
       });
 
-      setIsDirty(true);
+      if (isDirty === false) {
+        setIsDirty(true);
+      }
     },
-    [mode]
+    [mode, isDirty]
   );
 
   const changeHandler = makeInteractionHandler("onChange");
@@ -62,16 +85,23 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
   }, []);
 
   const isValidate = useMemo(() => {
-    const filtered =
-      Object.values(formValue.errors).filter(({ errors }) => errors?.length)
-        .length === 0;
-
     const isAllValueNotEmpty = Object.values(formValue.values).every(
       (value) => value !== ""
     );
 
-    return filtered && isAllValueNotEmpty;
-  }, [formValue.errors, formValue.values]);
+    let errorCount = 0;
+
+    if (isDirty) {
+      for (const key in formValue.validators) {
+        errorCount += formValue.validators[key].validate(
+          formValue.values[key],
+          formValue.values
+        ).errors.length;
+      }
+    }
+
+    return isAllValueNotEmpty && errorCount === 0;
+  }, [isDirty, formValue.values, formValue.validators]);
 
   return {
     isDirty,

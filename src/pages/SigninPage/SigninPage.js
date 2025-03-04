@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import {
   Button,
-  FormField,
+  InputField,
   RecommendSign,
   ConvenientSigninBox,
 } from "../../components";
@@ -15,12 +15,11 @@ import styles from "./SigninPage.module.css";
 
 const SigninPage = () => {
   const navigate = useNavigate();
-  const { formValue, isDirty, isValidate, blurHandler, changeHandler } =
-    useForm({
-      mode: "onBlur",
-      defaultValue: { email: "", password: "" },
-      resolver: signinSchema,
-    });
+  const { formValue, isDirty, isValidate, blurHandler } = useForm({
+    mode: "onBlur",
+    defaultValue: { email: "", password: "" },
+    resolver: signinSchema,
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -30,7 +29,7 @@ const SigninPage = () => {
   return (
     <>
       <form className={styles.auth_form} onSubmit={submitHandler}>
-        <FormField
+        <InputField
           label="이메일"
           id="email"
           type="text"
@@ -39,7 +38,7 @@ const SigninPage = () => {
           errorMessage={formValue.errors?.email?.errors[0] ?? ""}
           onBlur={blurHandler}
         />
-        <FormField
+        <InputField
           label="비밀번호"
           id="password"
           type="password"

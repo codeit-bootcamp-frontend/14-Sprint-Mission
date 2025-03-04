@@ -22,7 +22,7 @@ const ItemsPage = () => {
   return (
     <div className={styles.main_center}>
       <article className={styles.best_items_container}>
-        <p className={styles.title}>베스트 상품</p>
+        <span className={styles.title}>베스트 상품</span>
         <div className={styles.best_items_box}>
           {itemList.length > 0 ? (
             <CardItemList itemList={bestItemList} columnSize="large" />
@@ -33,7 +33,7 @@ const ItemsPage = () => {
       </article>
       <article>
         <div className={styles.all_items_container}>
-          <p className={styles.title}>전체 상품</p>
+          <span className={styles.title}>전체 상품</span>
           <div className={styles.serach_box}>
             <Input
               defaultValue={keyword}

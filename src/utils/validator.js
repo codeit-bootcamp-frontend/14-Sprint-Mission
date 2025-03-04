@@ -2,8 +2,9 @@ const MINIMUM_PASSWORD_LENGTH = 8;
 const EMAIL_REG_EXP =
   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
-const authValidator = {
-  isEmptyInput: (value) => value === "",
+const allValidators = {
+  isEmptyInput: (value) => value === null || value === "",
+  isEmptyArray: (value) => value.length === 0,
   isWrongEmailFormat: (value) => !EMAIL_REG_EXP.test(value),
   isNotMoreThanEight: (value) => value.length < MINIMUM_PASSWORD_LENGTH,
   isNotMatch: (value1, value2) => value1 !== "" && value1 !== value2,
@@ -24,28 +25,35 @@ class Validator {
 
   isEmpty(errorMessage) {
     return this.setValidator({
-      validator: authValidator.isEmptyInput,
+      validator: allValidators.isEmptyInput,
+      errorMessage,
+    });
+  }
+
+  isEmptyArray(errorMessage) {
+    return this.setValidator({
+      validator: allValidators.isEmptyArray,
       errorMessage,
     });
   }
 
   isWrongEmailFormat(errorMessage) {
     return this.setValidator({
-      validator: authValidator.isWrongEmailFormat,
+      validator: allValidators.isWrongEmailFormat,
       errorMessage,
     });
   }
 
   isMoreThanEight(errorMessage) {
     return this.setValidator({
-      validator: authValidator.isNotMoreThanEight,
+      validator: allValidators.isNotMoreThanEight,
       errorMessage,
     });
   }
 
   isMatch(errorMessage, connectField) {
     this.#field.validators.push({
-      validator: authValidator.isNotMatch,
+      validator: allValidators.isNotMatch,
       errorMessage,
       connectField,
     });
