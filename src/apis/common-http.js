@@ -21,13 +21,18 @@ instance.interceptors.request.use(async function (config) {
 instance.interceptors.response.use(
   (response) => Promise.resolve(response),
   async (error) => {
-    console.log(error);
-    if (error.response?.status === 401 && error.response?.data?.message === "jwt malformed") {
-      const refreshToken = localStorage.getItem("refreshToken");
-      if (!refreshToken) return Promise.reject(error);
-      console.log("리프레시 토큰으로 토큰 재발급 합니다");
-      const { accessToken } = await getTokenRefresh(refreshToken);
-      localStorage.setItem("accessToken", accessToken);
+    if (error.response?.status === 401) {
+      if (error.response?.data?.message === "jwt malformed") {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (!refreshToken) return Promise.reject(error);
+        console.log("리프레시 토큰으로 토큰 재발급 합니다");
+        const { accessToken } = await getTokenRefresh(refreshToken);
+        localStorage.setItem("accessToken", accessToken);
+      } else if (error.response?.data?.message === "jwt expired") {
+        alert("토큰 만료로 재로그인이 필요합니다.");
+        localStorage.clear();
+        window.location.href = "";
+      }
     }
   }
 );
