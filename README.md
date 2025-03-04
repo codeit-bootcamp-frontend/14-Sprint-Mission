@@ -38,7 +38,15 @@
 
 ### 1) Desktop
 
-![additem-page-desktop]()
+![additem-page-desktop](./src/assets/screenshot/additem-page-desktop.png)
+
+### 2) Tablet
+
+![additem-page-tablet](./src/assets/screenshot/additem-page-tablet.gif)
+
+### 3) Mobile
+
+![additem-page-mobile](./src/assets/screenshot/additem-page-mobile.gif)
 
 ## 설치 사항
 
@@ -60,6 +68,14 @@ npm install scss
 npm install axios
 ```
 
+4. compress image file with compressorjs
+
+```
+npm install compressorjs
+```
+
 ## Q&A
 
--
+- `NavLink` 활용을 유지하려다 보니, `/items`와는 다른 `/additem` 링크 접속 시를 알기 위해 `window.location.pathname`을 사용하여 비교했는데, 더 좋은 방법이 있을까요?
+
+  ![qna-sprint6](./src/assets/screenshot/qna-sprint6.png)
