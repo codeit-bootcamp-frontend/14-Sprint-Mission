@@ -75,6 +75,7 @@
 }
 
 .section-tag {
+  display: inline-block;
   font-size: var(--text-21g);
   font-weight: 700;
   line-height: var(--line-height-2lg);
@@ -82,8 +83,11 @@
   margin-bottom: 12px;
 }
 
+.section-title__span {
+  display: block;
+}
+
 .section-title div {
-  letter-spacing: 2%;
   font-weight: 700;
   font-size: 40px;
   line-height: 56px;
@@ -91,6 +95,8 @@
 
 .section-des {
   font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
   color: var(--gray-700);
   margin-top: 24px;
 }
@@ -243,6 +249,27 @@
     flex-direction: column-reverse;
   }
 
+  .section-tag {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 16px;
+  }
+
+  .section-title div {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .section-title__span {
+    display: inline;
+  }
+
+  .section-des {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
   .footer-wrapper {
     justify-content: space-evenly;
   }
@@ -289,6 +316,23 @@
   .section-wrapper {
     padding: 52px 15px 83px 15px;
     gap: 40px;
+  }
+
+  .section-tag {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+
+  .section-title div {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .section-des {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 8px;
   }
 
   .footer {
