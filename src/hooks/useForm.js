@@ -15,21 +15,24 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
         ...initialFormValues.validators,
         [key]: resolver[key],
       };
+
+      initialFormValues.errors = {
+        ...initialFormValues.errors,
+        [key]: {
+          target: key,
+          errors: [],
+        },
+      };
     }
-    initialFormValues.errors = [];
 
     return initialFormValues;
   });
 
-  const getCorrectValue = (event, prevValues) => {
-    const { value, type, name } = event.target;
+  const getCorrectValue = (event) => {
+    const { value, type } = event.target;
 
     if (type === "file") {
       return event.target.files[0];
-    }
-
-    if (Array.isArray(prevValues[name])) {
-      return [...prevValues[name], value];
     }
 
     return value;
@@ -82,16 +85,23 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
   }, []);
 
   const isValidate = useMemo(() => {
-    const filtered =
-      Object.values(formValue.errors).filter(({ errors }) => errors?.length)
-        .length === 0;
-
     const isAllValueNotEmpty = Object.values(formValue.values).every(
       (value) => value !== ""
     );
 
-    return filtered && isAllValueNotEmpty;
-  }, [formValue.errors, formValue.values]);
+    let isError = 0;
+
+    if (isDirty) {
+      for (const key in formValue.validators) {
+        isError += formValue.validators[key].validate(
+          formValue.values[key],
+          formValue.values
+        ).errors.length;
+      }
+    }
+
+    return isAllValueNotEmpty && isError === 0;
+  }, [isDirty, formValue.values, formValue.validators]);
 
   return {
     isDirty,

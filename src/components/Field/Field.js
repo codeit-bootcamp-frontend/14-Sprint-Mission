@@ -17,6 +17,7 @@ const Field = ({ children, id, label, errorMessage, className }) => {
       >
         {children}
       </div>
+      {errorMessage && <p className={styles.error_message}>{errorMessage}</p>}
     </label>
   );
 };

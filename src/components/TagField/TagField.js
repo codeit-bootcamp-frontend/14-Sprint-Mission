@@ -13,21 +13,23 @@ const TagField = ({ id, name, label, placeholder, onChange }) => {
     if (e.key === "Enter") {
       const { value } = e.target;
 
-      if (value !== "" && !tags.some(({ tag }) => tag === value)) {
-        setTags((prev) => [
-          ...prev,
-          { id: new Date().toISOString(), tag: value },
-        ]);
+      if (value !== "" && !tags.some((tag) => tag === value)) {
+        setTags((prev) => [...prev, value]);
         setInputValue("");
-        onChange(e);
+        onChange({
+          target: { name, value: [...tags, value] },
+        });
       }
     }
   };
 
   const changeHandler = (e) => setInputValue(e.target.value);
 
-  const removeTagClickHandler = (targetId) => {
-    setTags((prev) => prev.filter(({ id }) => id !== targetId));
+  const removeTagClickHandler = (targetTag) => {
+    setTags((prev) => prev.filter((tag) => tag !== targetTag));
+    onChange({
+      target: { name, value: tags.filter((tag) => tag !== targetTag) },
+    });
   };
 
   return (
@@ -44,10 +46,10 @@ const TagField = ({ id, name, label, placeholder, onChange }) => {
         />
       </Field>
       <div className={styles.tag_box}>
-        {tags?.map(({ id, tag }) => (
-          <span key={id} className={styles.tag}>
+        {tags?.map((tag) => (
+          <span key={tag} className={styles.tag}>
             #{tag}
-            <button type="button" onClick={() => removeTagClickHandler(id)}>
+            <button type="button" onClick={() => removeTagClickHandler(tag)}>
               <img src={XIcon} alt="제거 아이콘" />
             </button>
           </span>

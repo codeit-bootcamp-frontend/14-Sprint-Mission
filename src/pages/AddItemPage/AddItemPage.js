@@ -10,6 +10,7 @@ const RegisterItemPage = () => {
     isValidate,
     changeHandler,
   } = useForm({
+    mode: "onChange",
     resolver: addItemSchema,
     defaultValue: {
       image: null,

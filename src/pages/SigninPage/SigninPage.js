@@ -15,12 +15,11 @@ import styles from "./SigninPage.module.css";
 
 const SigninPage = () => {
   const navigate = useNavigate();
-  const { formValue, isDirty, isValidate, blurHandler, changeHandler } =
-    useForm({
-      mode: "onBlur",
-      defaultValue: { email: "", password: "" },
-      resolver: signinSchema,
-    });
+  const { formValue, isDirty, isValidate, blurHandler } = useForm({
+    mode: "onBlur",
+    defaultValue: { email: "", password: "" },
+    resolver: signinSchema,
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();
