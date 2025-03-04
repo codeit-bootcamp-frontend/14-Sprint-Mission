@@ -1,10 +1,16 @@
 import { Navigate, useParams } from "react-router-dom";
 import { getProductDetail } from "../../../apis/products";
+import ImageProfile from "../../../assets/images/common/profile.svg";
+import IconBack from "../../../assets/images/items/ic_back.svg";
+import IconFavoriteEmpty from "../../../assets/images/items/ic_heart.svg";
+import IconFavorite from "../../../assets/images/items/ic_heart_active.svg";
+import IconMore from "../../../assets/images/items/ic_kebab.svg";
+import ImageEmpty from "../../../assets/images/items/img_default.svg";
+import ImageCommentEmpty from "../../../assets/images/items/img_inquiry_empty.svg";
 import HeaderNav from "../../../components/HeaderNav";
+import TextareaField from "../../../components/TextareaField";
 import { useUser } from "../../../contexts/UserContext";
 import useAsync from "../../../hooks/useAsync";
-import ImageEmpty from "../../../assets/images/items/img_default.svg";
-import IconMore from "../../../assets/images/items/ic_kebab.svg";
 import { formatDate, formatPrice } from "../../../utils/products";
 import "./itemdetail.scss";
 
@@ -23,7 +29,7 @@ export default function ItemDetail() {
     <>
       <title>판다마켓 - 상품 상세</title>
       <HeaderNav />
-      <main className="display-grid justify-left gap-40" id="item-detail">
+      <main className="display-grid justify-stretch gap-40" id="item-detail">
         <article id="item-detail-area" className="display-flex justify-stretch align-upper gap-24">
           <div className="img-wrapper">
             <img src={detail.images ? detail.images[0] : ImageEmpty} alt="상품 이미지 미리보기" />
@@ -63,13 +69,55 @@ export default function ItemDetail() {
                 </div>
               </section>
             </div>
-            <div>
-              {detail.ownerNickname}
-              {formatDate(detail.createdAt)}
+            <div className="display-flex justify-stretch gap-24" id="item-detail-owner">
+              <div className="display-flex justify-left gap-16">
+                <div className="img-wrapper radius-circle">
+                  <img src={ImageProfile} alt="프로필 사진 미리보기" />
+                </div>
+                <div className="display-grid justify-left gap-2">
+                  <div className="text-secondary-600">{detail.ownerNickname}</div>
+                  <div className="text-secondary-400">{formatDate(detail.createdAt)}</div>
+                </div>
+              </div>
+              <hr />
+              <button className="icon-wrapper display-flex gap-4 text-secondary-500" id="btn-like">
+                <img
+                  src={detail.isFavorite ? IconFavorite : IconFavoriteEmpty}
+                  alt="좋아요 수 표시 이미지"
+                />
+                <span className="text-lg text-regular">{detail.favoriteCount}</span>
+              </button>
             </div>
           </div>
         </article>
-        <section id="comments-area"></section>
+        <hr />
+        <section className="display-grid justify-stretch gap-24" id="comments-area">
+          <form
+            className="display-grid justify-stretch gap-16"
+            id="comment-form"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="display-grid justify-stretch gap-10" id="comment-upper-area">
+              <h3>문의하기</h3>
+              <TextareaField />
+            </div>
+            <div className="display-flex justify-right" id="comment-btn-area">
+              <button type="submit" className="small-40">
+                등록
+              </button>
+            </div>
+          </form>
+          <article className="display-grid gap-48" id="comments-empty">
+            <div className="display-flex direction-column gap-8 text-secondary-400">
+              <img src={ImageCommentEmpty} alt="아직 문의가 없어요" />
+              아직 문의가 없어요
+            </div>
+            <button className="display-flex gap-8" id="btn-back">
+              <div>목록으로 돌아가기</div>
+              <img src={IconBack} alt="목록으로 돌아가기 버튼 아이콘" />
+            </button>
+          </article>
+        </section>
       </main>
     </>
   );

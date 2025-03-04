@@ -1,8 +1,12 @@
+hr {
+  background-color: var(--secondary-300);
+  border: 0;
+  height: 1px;
+}
 main#item-detail {
   margin: 24px auto 58px;
-  max-width: 1200px;
+  width: 1200px;
   > #item-detail-area {
-    grid-template-columns: 1fr minmax(auto, 100%);
     > .img-wrapper {
       width: 486px;
       aspect-ratio: 1;
@@ -15,16 +19,63 @@ main#item-detail {
       }
     }
     > #item-detail-right {
+      flex-grow: 1;
       > #item-detail-header {
         justify-self: stretch;
-        > hr {
-          border: 0;
-          background-color: var(--secondary-300);
-          height: 1px;
-        }
         > #item-detail-desc p {
           line-height: 26px;
         }
+      }
+      > #item-detail-owner {
+        > div {
+          flex-grow: 1;
+          justify-self: stretch;
+          > .img-wrapper {
+            width: 40px;
+          }
+        }
+        > hr {
+          width: 1px;
+          height: 34px;
+        }
+        > #btn-like {
+          height: 40px;
+          padding: 4px 12px;
+          border: 1px solid var(--secondary-300);
+        }
+      }
+    }
+  }
+  > #comments-area {
+    > form > #comment-upper-area > .input-field textarea {
+      height: 104px;
+    }
+    > #comments-empty {
+      img {
+        width: 196px;
+      }
+      > #btn-back > img {
+        width: 24px;
+      }
+    }
+  }
+  @media (width < 1200px) {
+    /* Tablet */
+    margin: 24px 24px 65px;
+    width: inherit;
+    > #item-detail-area {
+      gap: 16px;
+      > .img-wrapper {
+        width: 340px;
+      }
+    }
+  }
+  @media (width < 768px) {
+    /* Mobile */
+    > #item-detail-area {
+      flex-direction: column;
+      > .img-wrapper {
+        width: 100%;
       }
     }
   }
@@ -32,14 +83,13 @@ main#item-detail {
 
 #tag-list {
   flex-wrap: wrap;
-  height: 36px;
   > #tag {
+    height: 36px;
     display: flex;
     align-items: center;
-    height: 36px;
     background-color: var(--secondary-200);
-    border-radius: 26px;
     color: var(--secondary-900);
+    border-radius: 26px;
     padding: 5px 16px;
   }
 }
