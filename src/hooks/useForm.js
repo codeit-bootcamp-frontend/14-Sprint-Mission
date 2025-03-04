@@ -89,18 +89,18 @@ const useForm = ({ defaultValue = {}, resolver, mode = "onBlur" }) => {
       (value) => value !== ""
     );
 
-    let isError = 0;
+    let errorCount = 0;
 
     if (isDirty) {
       for (const key in formValue.validators) {
-        isError += formValue.validators[key].validate(
+        errorCount += formValue.validators[key].validate(
           formValue.values[key],
           formValue.values
         ).errors.length;
       }
     }
 
-    return isAllValueNotEmpty && isError === 0;
+    return isAllValueNotEmpty && errorCount === 0;
   }, [isDirty, formValue.values, formValue.validators]);
 
   return {
