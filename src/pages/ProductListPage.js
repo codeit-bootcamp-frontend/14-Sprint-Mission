@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/common/Navbar';
 import { getProducts } from '../api/api';
-import Product from '../components/common/Product';
+import Product from '../components/products/Product';
 import './ProductListPage.css';
 import Select from '../components/common/Select';
 import Pagination from '../components/common/Pagination';
@@ -10,6 +10,7 @@ import useWindowWidth from '../components/hooks/useWindowWidth';
 import useProducts from '../components/hooks/useProducts';
 import BestProducts from '../components/products/BestProducts';
 import AllProducts from '../components/products/AllProducts';
+import Search from '../components/common/Search';
 
 // select prop
 const selectBox = [
@@ -71,14 +72,7 @@ function ProductListPage() {
               <button className="add-item button mobile">상품 등록하기</button>
             </div>
             <div className="row">
-              <form>
-                <input
-                  className="search-bar"
-                  name="search"
-                  type="text"
-                  placeholder="검색할 상품을 입력해주세요"
-                />
-              </form>
+              <Search keyword={keyword} onSubmit={() => {}} />
               <button className="add-item button desktop">
                 <Link to={`/additem`}>상품 등록하기</Link>
               </button>

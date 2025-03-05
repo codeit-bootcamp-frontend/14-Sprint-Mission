@@ -1,4 +1,4 @@
-import Product from '../common/Product';
+import Product from './Product';
 
 function AllProducts({ products }) {
   return (
