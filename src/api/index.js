@@ -14,9 +14,9 @@ export async function addGetData({page,pageSize,orderBy,keyword}) {
   }
 }
 
-export async function addPostProductData(product){
+export async function postProduct(product){
   try {
-    const response = await fetch("https://panda-market-api.vercel.app/", {
+    const response = await fetch("https://panda-market-api.vercel.app/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

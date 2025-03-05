@@ -1,11 +1,9 @@
-import { Outlet,useLocation,useNavigate } from 'react-router-dom';
+import { Outlet,useLocation } from 'react-router-dom';
 import Nav from '../components/Nav';
 import ProductNav from '../components/Product/ProductNav'
 import Footer from '../components/Footer';
 import styles from './App.module.css';
 import './App.font.css';
-import { useState} from 'react';
-// import { addGetData, addUserData } from '../api/index';
 
 
 function App() {
