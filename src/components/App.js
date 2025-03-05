@@ -11,10 +11,9 @@ import { useState} from 'react';
 function App() {
   
   const location = useLocation();
-
   return (
     <>
-       {location.pathname === '/ItemsBox' || location.pathname === '/ItemsDetail' || location.pathname === '/Boards' ? <ProductNav className={styles.nav} /> : <Nav className={styles.nav} /> }
+       {location.pathname === '/ItemsBox' || location.pathname === '/ItemsDetail' || location.pathname === '/Boards' || location.pathname === '/ItemsBox/Additem' ? <ProductNav className={styles.nav} /> : <Nav className={styles.nav} /> }
       <div className={styles.body}><Outlet /></div>
       <Footer className={styles.footer} />
     </>

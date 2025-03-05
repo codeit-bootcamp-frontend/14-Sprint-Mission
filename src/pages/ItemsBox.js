@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Container from '../components/Container';
 import BestItems from '../components/Product/BestItems';
 import AllItems from '../components/Product/AllItems';
+import Title from '../components/Title';
 
 
 function ItemsBox() {
@@ -37,11 +38,7 @@ function ItemsBox() {
   return (
     <>
       <Container>
-        <div className={styles.bestProdListTitle}>
-          <div className='left'>
-            <div className='title'>베스트 상품</div>
-          </div>
-        </div>
+        <Title titleTag='h1' text='베스트 상품' />
       </Container>
       <BestItems screenType={screenType}/> 
       <AllItems screenType={screenType}/> 
