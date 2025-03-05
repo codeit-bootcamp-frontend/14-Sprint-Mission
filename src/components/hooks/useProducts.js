@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../../api/api";
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../api/api';
 
-function useProducts({ sortOrder, currentPage, pageSize }) {
+function useProducts({ sortOrder, currentPage, pageSize, keyword }) {
   const [products, setProducts] = useState([]);
   const [totalProductsCount, setTotalProductsCount] = useState(0);
 
@@ -12,6 +12,7 @@ function useProducts({ sortOrder, currentPage, pageSize }) {
         const result = await getProducts({
           page: currentPage,
           pageSize: pageSize,
+          keyword: keyword,
           orderBy: sortOrder,
         });
         const { list, totalCount } = result;
@@ -24,7 +25,7 @@ function useProducts({ sortOrder, currentPage, pageSize }) {
 
     handleLoad();
   }, [sortOrder, currentPage, pageSize]);
-  console.log("products", products);
+  console.log('products', products);
   return { products, totalProductsCount };
 }
 

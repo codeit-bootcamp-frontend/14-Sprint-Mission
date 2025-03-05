@@ -5,7 +5,7 @@ import Product from '../components/products/Product';
 import './ProductListPage.css';
 import Select from '../components/common/Select';
 import Pagination from '../components/common/Pagination';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import useWindowWidth from '../components/hooks/useWindowWidth';
 import useProducts from '../components/hooks/useProducts';
 import BestProducts from '../components/products/BestProducts';
@@ -30,8 +30,10 @@ const getPageSize = (width) => {
 };
 
 function ProductListPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initKeyword = searchParams.get('keyword');
   const [sortOrder, setSortOrder] = useState('recent');
-  const [keyword, setkeyword] = useState('');
+  const [keyword, setKeyword] = useState(initKeyword || '');
   const [currentPage, setCurrentPage] = useState(1);
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
@@ -39,6 +41,7 @@ function ProductListPage() {
     sortOrder,
     currentPage,
     pageSize,
+    keyword,
   });
   const { products: bestProducts } = useProducts({
     sortOrder: 'favorite',
@@ -57,6 +60,15 @@ function ProductListPage() {
     setCurrentPage(pageNumber);
   };
 
+  const handleKeyChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchParams(keyword ? { keyword } : {});
+  };
+
   return (
     <div>
       <Navbar isLoggedIn={true} />
@@ -72,7 +84,11 @@ function ProductListPage() {
               <button className="add-item button mobile">상품 등록하기</button>
             </div>
             <div className="row">
-              <Search keyword={keyword} onSubmit={() => {}} />
+              <Search
+                keyword={keyword}
+                onSubmit={handleSubmit}
+                onChange={handleKeyChange}
+              />
               <button className="add-item button desktop">
                 <Link to={`/additem`}>상품 등록하기</Link>
               </button>
