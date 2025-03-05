@@ -36,7 +36,6 @@ function Additem() {
         <Button 
           variant="roundedSS" 
           disabled = {
-            product.images.length === 0 || 
             product.name === '' ||
             product.description === '' ||
             product.price === ''
