@@ -31,10 +31,9 @@ const getPageSize = (width) => {
 
 function ProductListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initKeyword = searchParams.get('keyword');
-  const [sortOrder, setSortOrder] = useState('recent');
-  const [keyword, setKeyword] = useState(initKeyword || '');
-  const [currentPage, setCurrentPage] = useState(1);
+  const keyword = searchParams.get('keyword') || '';
+  const sortOrder = searchParams.get('orderBy') || 'recent';
+  const currentPage = Number(searchParams.get('page')) || 1;
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
   const { products, totalProductsCount } = useProducts({
@@ -52,21 +51,21 @@ function ProductListPage() {
 
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
-    setSortOrder(value);
-    setCurrentPage(1);
+    setSearchParams({ ...searchParams, orderBy: value, page: 1 });
   };
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setSearchParams({ ...searchParams, page: pageNumber });
   };
 
-  const handleKeyChange = (e) => {
-    setKeyword(e.target.value);
-  };
+  // const handleKeyChange = (keyword) => {
+  //   setSearchParams({ ...searchParams, keyword: keyword });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearchParams(keyword ? { keyword } : {});
+  const handleSubmit = (newKeyword) => {
+    setSearchParams(
+      newKeyword ? { ...searchParams, keyword: newKeyword, page: 1 } : {}
+    );
   };
 
   return (
@@ -84,11 +83,7 @@ function ProductListPage() {
               <button className="add-item button mobile">상품 등록하기</button>
             </div>
             <div className="row">
-              <Search
-                keyword={keyword}
-                onSubmit={handleSubmit}
-                onChange={handleKeyChange}
-              />
+              <Search keyword={keyword} onSubmit={handleSubmit} />
               <button className="add-item button desktop">
                 <Link to={`/additem`}>상품 등록하기</Link>
               </button>

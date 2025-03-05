@@ -4,7 +4,7 @@ import { getProducts } from '../../api/api';
 function useProducts({ sortOrder, currentPage, pageSize, keyword }) {
   const [products, setProducts] = useState([]);
   const [totalProductsCount, setTotalProductsCount] = useState(0);
-
+  console.log(sortOrder, currentPage, pageSize, keyword);
   useEffect(() => {
     //상품 받아오기
     const handleLoad = async () => {
@@ -24,8 +24,8 @@ function useProducts({ sortOrder, currentPage, pageSize, keyword }) {
     };
 
     handleLoad();
-  }, [sortOrder, currentPage, pageSize]);
-  console.log('products', products);
+    console.log(products);
+  }, [sortOrder, currentPage, pageSize, keyword]);
   return { products, totalProductsCount };
 }
 
