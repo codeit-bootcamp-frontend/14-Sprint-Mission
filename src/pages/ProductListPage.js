@@ -8,6 +8,8 @@ import Pagination from '../components/common/Pagination';
 import { Link } from 'react-router-dom';
 import useWindowWidth from '../components/hooks/useWindowWidth';
 import useProducts from '../components/hooks/useProducts';
+import BestProducts from '../components/products/BestProducts';
+import AllProducts from '../components/products/AllProducts';
 
 // select prop
 const selectBox = [
@@ -60,11 +62,7 @@ function ProductListPage() {
       <main className="market">
         <div className="best-container">
           <h2>베스트 상품</h2>
-          <div className="best-products">
-            {bestProducts?.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </div>
+          <BestProducts bestProducts={bestProducts} />
         </div>
         <div className="all-container">
           <div className="filter">
@@ -91,11 +89,7 @@ function ProductListPage() {
               />
             </div>
           </div>
-          <div className="all-products">
-            {products?.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </div>
+          <AllProducts products={products} />
         </div>
         <div className="pagination-container">
           <Pagination
