@@ -72,6 +72,7 @@
         flex-direction: column;
       }
       .heart-container {
+        box-sizing: border-box;
         width: 87px;
         height: 40px;
         border-radius: 35px;
@@ -86,6 +87,7 @@
         margin-left: auto;
         font-size: 26px;
         font-weight: 500;
+        color: rgba(107, 114, 128, 1);
 
         .heart {
           width: 32px;
@@ -94,5 +96,44 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1199px) {
+  .wrapper {
+    img {
+      width: 340px;
+      height: 340px;
+    }
+
+    .infoWrapper {
+      width: 340px;
+    }
+    .heart-container {
+      width: 79px !important;
+      height: 32px !important;
+      font-size: 16px !important;
+
+      .heart {
+        width: 24px !important;
+        height: 24px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-size: 16px !important;
+      margin-top: 24px;
+    }
+    .price {
+      font-size: 24px !important;
+    }
+   
   }
 }
