@@ -52,7 +52,7 @@
 }
 
 /* Mobile styles */
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .select-container {
     width: 42px;
     min-width: 42px;
@@ -61,6 +61,7 @@
   .selected-option {
     display: none;
   }
+
   .options {
     left: auto;
     right: 0;

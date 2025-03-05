@@ -45,7 +45,7 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  background-image: url("../assets/close.svg");
+  background-image: url('../assets/close.svg');
   background-position: center;
   background-repeat: no-repeat;
   padding: 0;
@@ -64,7 +64,7 @@
 }
 
 /* Tablet styles */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .preview-box,
   .preview-image,
   .add-file-button {
@@ -74,7 +74,7 @@
 }
 
 /* Mobile styles */
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .preview-box,
   .preview-image,
   .add-file-button {
