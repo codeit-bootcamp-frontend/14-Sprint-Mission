@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./inputField.module.scss";
+import styles from "../styles/inputField.module.scss";
 
 const InputTag = ({ label, placeholder, onChange, setState }) => {
   return (

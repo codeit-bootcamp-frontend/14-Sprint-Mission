@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import "./body.css";
+import "../styles/body.css";
 import PaginationButton from "./PaginationButton";
 
 const Pagination = ({

@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "./Header";
-import styles from "./addItem.module.scss";
-import TextInput from "./TextInput";
-import TextArea from "./TextArea";
+import Header from "../components/Header";
+import styles from "../styles/addItem.module.scss";
+import TextInput from "../components/TextInput";
+import TextArea from "../components/TextArea";
 import { IoIosAdd } from "react-icons/io";
-import InputTag from "./InputTag";
+import InputTag from "../components/InputTag";
 import {
   onNameChange,
   onPriceChange,
   onProductIntroChange,
   onTagChange,
-} from "./utils/addItemFunctions";
-import Tag from "./Tag";
+} from "../utils/addItemFunctions";
+import Tag from "../components/Tag";
 
 const AddItem = () => {
   const [preview, setPreview] = useState(null);

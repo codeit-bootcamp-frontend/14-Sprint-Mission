@@ -1,5 +1,5 @@
 import React from "react";
-import "./body.css";
+import "../styles/body.css";
 import Card from "./Card";
 import AllProductHeader from "./AllProductHeader";
 
@@ -27,6 +27,7 @@ const AllProduct = ({
                   favoriteCount={product.favoriteCount}
                   showType="전체상품"
                   productExist={true}
+                  id={product.id}
                 />
               ))
             : Array.from({ length: allPlaceHolderCount }, (_, index) => (
@@ -42,6 +43,7 @@ const AllProduct = ({
                 favoriteCount={product.favoriteCount}
                 showType="전체상품"
                 productExist={true}
+                id={product.id}
               />
             ))
           : Array.from({ length: allPlaceHolderCount }, (_, index) => (

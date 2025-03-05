@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import "./body.css";
+import "../styles/body.css";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import SearchContext from "./Context/SearchContext";
+import SearchContext from "../Context/SearchContext";
 
 const AllProductHeader = () => {
   const {

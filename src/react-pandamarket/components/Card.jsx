@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
-import "./card.css";
+import "../styles/card.css";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ images, name, price, favoriteCount, showType }) => (
+const ProductCard = ({ images, name, price, favoriteCount, showType, id }) => (
   <>
-    <img
-      src={images}
-      alt="image"
-      className={
-        showType === "전체상품" ? "card-image-allProduct" : "card-image"
-      }
-    />
+    <Link to={`/items/${id}`}>
+      <img
+        src={images}
+        alt="image"
+        className={
+          showType === "전체상품" ? "card-image-allProduct" : "card-image"
+        }
+      />
+    </Link>
     <div className="card-info">
-      <span className="product-name">{name}</span>
-      <span className="product-price">{price}</span>
+      <Link to={`/items/${id}`} className="product-name">
+        {name}
+      </Link>
+      <span className="product-price">{price}원</span>
       <div className="heart">
         <FaRegHeart className="heart-icon" />
         <span className="product-heart">{favoriteCount}</span>
@@ -46,6 +51,7 @@ const Card = ({
   favoriteCount,
   showType,
   productExist,
+  id,
 }) => {
   return (
     <div className={showType === "전체상품" ? "" : "card-wrap"}>
@@ -56,6 +62,7 @@ const Card = ({
           price={price}
           favoriteCount={favoriteCount}
           showType={showType}
+          id={id}
         />
       ) : (
         <PlaceholderCard showType={showType} />

@@ -1,5 +1,5 @@
 import React from "react";
-import "./body.css";
+import "../styles/body.css";
 import Card from "./Card";
 
 const BestProduct = ({ bestProduct, bestPlaceHolderCount }) => {
@@ -18,6 +18,7 @@ const BestProduct = ({ bestProduct, bestPlaceHolderCount }) => {
                 price={product.price}
                 favoriteCount={product.favoriteCount}
                 productExist={true}
+                id={product.id}
               />
             ))
           : Array.from({ length: bestPlaceHolderCount }, (_, index) => (

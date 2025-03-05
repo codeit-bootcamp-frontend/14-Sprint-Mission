@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./tag.module.scss";
+import styles from "../styles/tag.module.scss";
 
 const Tag = ({ tags, setTag }) => {
   const deleteTag = (index) => {

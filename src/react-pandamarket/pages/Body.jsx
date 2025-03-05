@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import BestProduct from "./BestProduct";
-import AllProduct from "./AllProduct";
-import Pagination from "./Pagination";
-import "./body.css";
+import BestProduct from "../components/BestProduct";
+import AllProduct from "../components/AllProduct";
+import Pagination from "../components/Pagination";
+import "../styles/body.css";
 import {
   getBestProduct,
   getAllProduct,
   handleOptionChange,
   searchSubmit,
-} from "./utils/productFunctions";
-import SearchContext from "./Context/SearchContext";
+} from "../utils/productFunctions";
+import SearchContext from "../Context/SearchContext";
 
 const Body = () => {
   const [bestProduct, setbestProduct] = useState([]);
