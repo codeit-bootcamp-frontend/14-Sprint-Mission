@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import { getProducts } from "../api/api";
-import Product from "../components/Product";
-import "./ProductListPage.css";
-import Select from "../components/Select";
-import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
-import useWindowWidth from "../components/hooks/useWindowWidth";
-import useProducts from "../components/hooks/useProducts";
+import { useEffect, useState } from 'react';
+import Navbar from '../components/common/Navbar';
+import { getProducts } from '../api/api';
+import Product from '../components/common/Product';
+import './ProductListPage.css';
+import Select from '../components/common/Select';
+import Pagination from '../components/common/Pagination';
+import { Link } from 'react-router-dom';
+import useWindowWidth from '../components/hooks/useWindowWidth';
+import useProducts from '../components/hooks/useProducts';
 
 // select prop
 const selectBox = [
-  { label: "최신순", value: "recent" },
-  { label: "좋아요순", value: "favorite" },
+  { label: '최신순', value: 'recent' },
+  { label: '좋아요순', value: 'favorite' },
 ];
 
 // pageSize 계산 함수
@@ -27,8 +27,8 @@ const getPageSize = (width) => {
 };
 
 function ProductListPage() {
-  const [sortOrder, setSortOrder] = useState("recent");
-  const [keyword, setkeyword] = useState("");
+  const [sortOrder, setSortOrder] = useState('recent');
+  const [keyword, setkeyword] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
@@ -38,7 +38,7 @@ function ProductListPage() {
     pageSize,
   });
   const { products: bestProducts } = useProducts({
-    sortOrder: "favorite",
+    sortOrder: 'favorite',
     currentPage: 1,
     pageSize: bestPageSize,
   });

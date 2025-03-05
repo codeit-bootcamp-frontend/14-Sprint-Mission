@@ -1,8 +1,8 @@
-import "./Footer.css";
-import facebookIcon from "../assets/social/facebook.png";
-import twitterIcon from "../assets/social/twitter.png";
-import youtubeIcon from "../assets/social/youtube.png";
-import instagramIcon from "../assets/social/instagram.png";
+import './Footer.css';
+import facebookIcon from '../../assets/social/facebook.png';
+import twitterIcon from '../../assets/social/twitter.png';
+import youtubeIcon from '../../assets/social/youtube.png';
+import instagramIcon from '../../assets/social/instagram.png';
 
 function Footer() {
   return (

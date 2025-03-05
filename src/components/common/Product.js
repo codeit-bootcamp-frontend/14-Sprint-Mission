@@ -1,11 +1,11 @@
-import "./Product.css";
-import { CiHeart } from "react-icons/ci";
-import defaultImage from "../assets/panda1.png";
-import { useState } from "react";
+import './Product.css';
+import { CiHeart } from 'react-icons/ci';
+import defaultImage from '../../assets/panda1.png';
+import { useState } from 'react';
 
 function Product({ product }) {
   const { id, images, name, price, favoriteCount } = product;
-  const formatPrice = price.toLocaleString("ko-KR");
+  const formatPrice = price.toLocaleString('ko-KR');
   const [imageSrc, setImageSrc] = useState(images[0]);
 
   // 이미지 에러시 기본 이미지 사용

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import FileInput from "../components/FileInput";
-import Navbar from "../components/Navbar";
-import Tags from "../components/Tags";
-import "./AddItemPage.css";
+import { useState } from 'react';
+import FileInput from '../components/common/FileInput';
+import Navbar from '../components/common/Navbar';
+import Tags from '../components/common/Tags';
+import './AddItemPage.css';
 
 function AddItemPage() {
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: "",
+    name: '',
+    description: '',
+    price: '',
     tags: [],
     imgFile: null,
   });
