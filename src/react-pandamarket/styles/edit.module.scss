@@ -1,0 +1,65 @@
+.wrapper {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    height: 80px;
+    border-radius: 12px;
+    border: none;
+    resize: none;
+    background-color: rgba(243, 244, 246, 1);
+    color: rgba(31, 41, 55, 1);
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .buttons {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(54, 146, 255, 1);
+      }
+    }
+    button {
+      width: 106px;
+      height: 42px;
+      border: none;
+      border-radius: 8px;
+      background-color: rgba(54, 146, 255, 1);
+      color: rgba(243, 244, 246, 1);
+      font-size: 16px;
+      font-weight: 600;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .wrapper {
+    width: 696px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    width: 344px;
+  }
+}

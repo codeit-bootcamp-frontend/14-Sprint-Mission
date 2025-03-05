@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import styles from "../styles/comment.module.scss";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import DropDownMenu from "./DropDownMenu";
+import Edit from "./Edit";
 
 const Comment = ({ comment }) => {
   const [push, setPush] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   return (
     <div className={styles["wrapper"]}>
-      <div className={styles["content-wrap"]}>
-        <span className={styles["content"]}>{comment.content}</span>
-        <BsThreeDotsVertical
-          className={styles["dots"]}
-          onClick={() => setPush((prev) => !prev)}
-        />
-        {push ? <DropDownMenu /> : <div></div>}
-      </div>
+      {edit ? (
+        <Edit content={comment.content} setEdit={setEdit} setPush={setPush}/>
+      ) : (
+        <div className={styles["content-wrap"]}>
+          <span className={styles["content"]}>{comment.content}</span>
+          <BsThreeDotsVertical
+            className={styles["dots"]}
+            onClick={() => setPush((prev) => !prev)}
+          />
+          {push && <DropDownMenu setEdit={setEdit} />}
+        </div>
+      )}
 
       <div className={styles["profile-wrap"]}>
         <div className={styles["profile"]}>
