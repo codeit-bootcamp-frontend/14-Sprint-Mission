@@ -52,7 +52,7 @@ export async function deleteProduct(productId) {
 export async function addToFavorites(productId) {
   try {
     const response = await instance.post(`${PATH}/${productId}/favorite`);
-    if (response.status === HTTP_STATUS.STATUS_CREATED) return response.data;
+    if (response.status === HTTP_STATUS.STATUS_OK) return response.data;
   } catch (e) {
     throw new Error("상품 좋아요 중 오류가 발생했습니다.");
   }
@@ -63,5 +63,22 @@ export async function removeFromFavorites(productId) {
     if (response.status === HTTP_STATUS.STATUS_OK) return response.data;
   } catch (e) {
     throw new Error("상품 좋아요 취소 중 오류가 발생했습니다.");
+  }
+}
+
+export async function createProductComment(productId, value) {
+  try {
+    const response = await instance.post(`${PATH}/${productId}/comments`, value);
+    if (response.status === HTTP_STATUS.STATUS_CREATED) return response.data;
+  } catch (e) {
+    throw new Error("상품 댓글 작성 중 오류가 발생했습니다.");
+  }
+}
+export async function getProductComments(productId) {
+  try {
+    const response = await instance.get(`${PATH}/${productId}/comments?limit=10`);
+    if (response.status === HTTP_STATUS.STATUS_OK) return response.data;
+  } catch (e) {
+    throw new Error("상품 댓글 조회 중 오류가 발생했습니다.");
   }
 }

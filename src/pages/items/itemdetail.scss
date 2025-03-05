@@ -42,19 +42,49 @@ main#item-detail {
           height: 40px;
           padding: 4px 12px;
           border: 1px solid var(--secondary-300);
+          > img {
+            width: 32px;
+            height: 32px;
+          }
+        }
+        #btn-like:hover {
+          background-color: var(--secondary-200);
         }
       }
     }
   }
   > #comments-area {
-    > form > #comment-upper-area > .input-field textarea {
-      height: 104px;
+    #comment-form {
+      > .input-field textarea {
+        height: 104px;
+      }
+    }
+    #btn-comment-update {
+      border: 0;
+      color: var(--secondary-500);
+      background-color: white;
+    }
+    #btn-comment-update:hover {
+      background-color: var(--secondary-200);
+    }
+    > div > #comment-item {
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      #btn-more-comment > img {
+        width: 24px;
+      }
+      #profile-img {
+        width: 32px;
+      }
     }
     > #comments-empty {
       img {
         width: 196px;
       }
-      > #btn-back > img {
+    }
+    #btn-back {
+      margin-top: 48px;
+      > img {
         width: 24px;
       }
     }

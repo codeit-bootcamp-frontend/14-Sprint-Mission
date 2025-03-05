@@ -8,3 +8,15 @@ export const formatDate = (dateStr) => {
     dateObj.getDate()
   ).padStart(2, "0")}`;
 };
+
+export const formatTimeBefore = (dateStr) => {
+  if (!dateStr) return "0시간 전";
+  const dateObj = new Date(dateStr);
+  const currentTime = new Date();
+  const hour = new Date(currentTime - dateObj).getTime() / (24 * 60 * 60 * 100);
+  return hour > 24
+    ? formatDate(dateStr)
+    : hour < 1
+    ? `${Math.ceil(hour * 100)}분 전`
+    : `${Math.floor(hour)}시간 전`;
+};

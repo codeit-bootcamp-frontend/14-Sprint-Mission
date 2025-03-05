@@ -1,18 +1,27 @@
-import { getProductDetail } from "../../../../apis/products";
+import { addToFavorites, getProductDetail, removeFromFavorites } from "../../../../apis/products";
 import ImageProfile from "../../../../assets/images/common/profile.svg";
 import IconFavoriteEmpty from "../../../../assets/images/items/ic_heart.svg";
 import IconFavorite from "../../../../assets/images/items/ic_heart_active.svg";
 import IconMore from "../../../../assets/images/items/ic_kebab.svg";
 import ImageEmpty from "../../../../assets/images/items/img_default.svg";
+import { useUser } from "../../../../contexts/UserContext";
 import useAsync from "../../../../hooks/useAsync";
 import { formatDate, formatPrice } from "../../../../utils/products";
 
 export default function ItemDetailPost({ productId, onTagClick }) {
-  const {
-    loading,
-    error,
-    value: detail = {},
-  } = useAsync(() => getProductDetail(productId), [productId]);
+  const user = useUser();
+  const { value: detail = {}, setValue: setDetail } = useAsync(
+    () => getProductDetail(productId),
+    [productId]
+  );
+
+  async function handleFavoriteClick() {
+    const res = detail.isFavorite
+      ? await removeFromFavorites(productId)
+      : await addToFavorites(productId);
+    if (res) setDetail(res);
+  }
+
   return (
     <article id="item-detail-area" className="display-flex justify-stretch align-upper gap-24">
       <div className="img-wrapper">
@@ -22,9 +31,11 @@ export default function ItemDetailPost({ productId, onTagClick }) {
         <div className="display-grid justify-stretch gap-24" id="item-detail-header">
           <div className="display-flex justify-sides align-upper">
             <h1 className="text-2xl">{detail.name}</h1>
-            <button className="icon-wrapper">
-              <img src={IconMore} alt="더보기 버튼 이미지" />
-            </button>
+            {user?.nickname === detail?.ownerNickname && (
+              <button className="icon-wrapper">
+                <img src={IconMore} alt="더보기 버튼 이미지" />
+              </button>
+            )}
           </div>
           <h2 className="heading">{formatPrice(detail.price)}원</h2>
           <hr />
@@ -64,12 +75,16 @@ export default function ItemDetailPost({ productId, onTagClick }) {
             </div>
           </div>
           <hr />
-          <button className="icon-wrapper display-flex gap-4 text-secondary-500" id="btn-like">
+          <button
+            className="icon-wrapper display-flex gap-4 text-secondary-500"
+            id="btn-like"
+            onClick={handleFavoriteClick}
+          >
             <img
               src={detail.isFavorite ? IconFavorite : IconFavoriteEmpty}
               alt="좋아요 수 표시 이미지"
             />
-            <span className="text-lg text-regular">{detail.favoriteCount}</span>
+            <span className="text-lg text-medium">{detail.favoriteCount}</span>
           </button>
         </div>
       </div>
