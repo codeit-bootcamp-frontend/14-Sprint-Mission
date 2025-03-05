@@ -10,7 +10,13 @@ body {
   transform: translateX(-50%);
   width: 640px;
 }
-
+.signup-container {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+}
 .login-logo {
   margin: 0 auto;
   display: flex;
@@ -33,13 +39,15 @@ body {
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-
 label {
-  display: block;
+  display: flex;
+  flex-direction: column;
   font-weight: 700;
   margin-bottom: 16px;
   font-size: 18px;
+  gap: 8px;
 }
 
 input {
@@ -47,15 +55,27 @@ input {
   background-color: var(--gray-100);
   border: none;
   border-radius: 12px;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--text-lg);
   width: 100%;
 }
 
+.login_input img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-10%);
+  cursor: pointer;
+  width: 24px;
+}
+
+.password-toggle-button {
+  color: white;
+  position: absolute;
+  right: 24px;
+}
 input::placeholder {
   color: var(--gray-400);
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--text-lg);
 }
 
 input:focus {
@@ -72,7 +92,7 @@ input:focus {
   right: 24px;
   cursor: pointer;
 }
-.login-button {
+.submit-button {
   color: var(--gray-100);
   font-size: 20px;
   font-weight: 600;
@@ -122,7 +142,14 @@ input:focus {
   height: 132px;
   width: 396px;
 }
-
+.signup_input img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-10%);
+  cursor: pointer;
+  width: 24px;
+}
 .signup-button {
   font-size: 20px;
   font-weight: 700;
@@ -133,8 +160,35 @@ input:focus {
   background-color: var(--gray-400);
 }
 
+.input:focus {
+  outline: none;
+  border: 1px solid var(--Primary-100);
+}
+.input.error {
+  border: 1px solid var(--error-red);
+}
+.error-message {
+  color: var(--error-red);
+  font-size: var(--test-sm);
+  line-height: var(--line-height-xs);
+}
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.toggle-icon img {
+  width: 24px;
+  height: 24px;
+}
+
 /* 데스크탑 */
-@media (max-width: 1919px) {
+@media (max-width: 1200px) {
   .signin-container {
     max-width: 640px;
     margin-top: 60px;
