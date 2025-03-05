@@ -1,23 +1,21 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { uploadImage } from "../../apis/images";
 import { createProduct, INITIAL_PRODUCT_VALUE } from "../../apis/products";
 import HeaderNav from "../../components/HeaderNav";
 import ImageField from "../../components/ImageField";
 import InputField from "../../components/InputField";
-import TextareaField from "../../components/TextareaField";
-import { useUser } from "../../contexts/UserContext";
 import { formatPrice } from "../../utils/products";
 import "./additem.scss";
 import TagField from "./components/TagField";
 
 export default function AddItem() {
-  const user = useUser();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_PRODUCT_VALUE);
 
   const isBtnDisabled =
     !formData.name || !formData.description || !formData.price || formData.tags.length === 0;
+
   function onInputChange(name, value) {
     const valueStr = name === "price" ? Number(value.replaceAll(/[^0-9]/g, "")) : value;
     const newValue = { ...formData, [name]: valueStr };
@@ -32,9 +30,7 @@ export default function AddItem() {
     });
   }
 
-  return !user ? (
-    <Navigate to="/login" state="/additem" />
-  ) : (
+  return (
     <>
       <title>판다마켓 - 상품 등록</title>
       <HeaderNav />
@@ -59,8 +55,9 @@ export default function AddItem() {
             value={formData.name}
             onChange={onInputChange}
           />
-          <TextareaField
+          <InputField
             labelText="상품소개"
+            type="textarea"
             name="description"
             placeholder="상품소개를 입력해주세요"
             value={formData.description}

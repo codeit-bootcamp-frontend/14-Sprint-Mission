@@ -13,40 +13,42 @@ export const instance = axios.create({
   baseURL: URL,
   headers: { "Content-Type": "application/json; charset=UTF-8" },
 });
-instance.interceptors.request.use(async function (config) {
-  const accessToken = localStorage.getItem("accessToken") || "";
-  if (accessToken) config.headers["Authorization"] = `Bearer ${accessToken}`;
-  return config;
-});
+/**
+ * 토큰 자동 재발급 설정
+ * Content-Type: application/json
+ */
 instance.interceptors.response.use(
-  (response) => Promise.resolve(response),
-  async (error) => {
-    if (error.response?.status === 401) {
-      if (error.response?.data?.message === "jwt malformed") {
-        const refreshToken = localStorage.getItem("refreshToken");
-        if (!refreshToken) return Promise.reject(error);
-        console.log("리프레시 토큰으로 토큰 재발급 합니다");
-        const { accessToken } = await getTokenRefresh(refreshToken);
-        localStorage.setItem("accessToken", accessToken);
-      } else if (error.response?.data?.message === "jwt expired") {
-        alert("토큰 만료로 재로그인이 필요합니다.");
-        localStorage.clear();
-        window.location.href = "";
-      }
-    }
-  }
+  (res) => Promise.resolve(res),
+  async (err) => checkError(err)
 );
 
 export const multipartInstance = axios.create({
   baseURL: URL,
   headers: { "Content-Type": "multipart/form-data; charset=UTF-8" },
 });
-multipartInstance.interceptors.request.use(async function (config) {
-  const accessToken = localStorage.getItem("accessToken") || "";
-  if (accessToken) config.headers["Authorization"] = `Bearer ${accessToken}`;
-  else return Promise.reject("NO_TOKEN");
-  return config;
-});
+/**
+ * 토큰 자동 재발급 처리
+ * Content-Type: multipart/form-data
+ */
+multipartInstance.interceptors.response.use(
+  (res) => Promise.resolve(res),
+  async (err) => checkError(err)
+);
+
+async function checkError(error) {
+  const refreshToken = localStorage.getItem("refreshToken");
+  if (error.response?.status !== 401 || !refreshToken) return Promise.reject(error);
+
+  if (error.response?.data?.message === "jwt expired") {
+    const { accessToken } = await getTokenRefresh(refreshToken);
+    saveTokenInfos({ accessToken, refreshToken });
+    window.location.reload();
+  } else {
+    alert("재로그인이 필요합니다.");
+    localStorage.clear();
+    window.location.href = "";
+  }
+}
 
 async function getTokenRefresh(refreshToken) {
   try {

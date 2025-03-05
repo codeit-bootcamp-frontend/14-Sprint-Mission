@@ -12,7 +12,7 @@ export default function SearchInput({ keyword = "", onSearch }) {
 
   function handleClear() {
     setValue("");
-    onSearch();
+    onSearch("");
   }
 
   return (

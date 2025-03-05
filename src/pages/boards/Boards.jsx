@@ -1,12 +1,6 @@
-import { Navigate } from "react-router-dom";
 import HeaderNav from "../../components/HeaderNav";
-import { useUser } from "../../contexts/UserContext";
 
 export default function Boards() {
-  const user = useUser();
-
-  if (!user) return <Navigate to="/login" state="/boards" />;
-
   return (
     <>
       <HeaderNav />

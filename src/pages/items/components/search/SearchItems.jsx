@@ -13,7 +13,7 @@ export default function SearchItems({ viewportSize = "desktop" }) {
 
   const currentPage = Number(searchParams.get("page") || 1);
   const order = searchParams.get("order") || "recent";
-  const keyword = searchParams.get("keyword") || undefined;
+  const keyword = searchParams.get("keyword") || "";
 
   const { loading: searchLoading, value: searchResult } = useAsync(
     () => getProducts(currentPage, PAGE_SIZE.search[viewportSize], order, keyword),
@@ -22,7 +22,7 @@ export default function SearchItems({ viewportSize = "desktop" }) {
   const SELECT_OPTIONS = { recent: "최신순", favorite: "좋아요순" };
 
   const totalPage = searchResult?.totalCount
-    ? Math.ceil(searchResult.totalCount / PAGE_SIZE.search[viewportSize])
+    ? Math.ceil((searchResult?.totalCount || 0) / PAGE_SIZE.search[viewportSize])
     : 5;
 
   function onSetSearchParams(values) {
@@ -33,13 +33,13 @@ export default function SearchItems({ viewportSize = "desktop" }) {
     setSearchParams(() => params);
   }
   function handleKeywordChange(value = "") {
-    onSetSearchParams({ keyword: value, order, page: 1 });
+    setSearchParams(() => ({ keyword: value, order, page: 1 }));
   }
   function handleOrderChange(value = "recent") {
-    onSetSearchParams({ keyword, order: value, page: 1 });
+    setSearchParams(() => ({ keyword, order: value, page: 1 }));
   }
   function handlePageChange(value = 1) {
-    onSetSearchParams({ keyword, order, page: value });
+    setSearchParams(() => ({ keyword, order, page: value }));
   }
   return (
     <>

@@ -4,7 +4,7 @@ hr {
   height: 1px;
 }
 main#item-detail {
-  margin: 24px auto 58px;
+  margin: 24px auto 120px;
   width: 1200px;
   > #item-detail-area {
     > .img-wrapper {
@@ -61,7 +61,8 @@ main#item-detail {
   }
   @media (width < 1200px) {
     /* Tablet */
-    margin: 24px 24px 65px;
+    margin-left: 24px;
+    margin-right: 24px;
     width: inherit;
     > #item-detail-area {
       gap: 16px;
@@ -91,5 +92,6 @@ main#item-detail {
     color: var(--secondary-900);
     border-radius: 26px;
     padding: 5px 16px;
+    cursor: pointer;
   }
 }
