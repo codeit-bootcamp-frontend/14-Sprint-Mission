@@ -17,33 +17,37 @@ export default function ItemDetailComments({ productId, onBackClick }) {
     if (res) setCommentDetails((prev) => ({ ...prev, list: [res, ...prev.list] }));
   }
 
-  async function handleUpdateComment(id, comment, idx) {
+  async function handleUpdateComment(id, comment) {
     const res = await updateComment(id, comment);
-    if (res)
+    if (res?.id) {
+      const idx = commentDetails.list.findIndex((el) => el.id === res.id);
       setCommentDetails((prev) => ({
         ...prev,
         list: [...prev.list.slice(0, idx), res, ...prev.list.slice(idx + 1)],
       }));
+    }
   }
-  async function handleDeleteComment(id, idx) {
+  async function handleDeleteComment(id) {
     const res = await deleteComment(id);
-    if (res)
+    if (res?.id) {
+      const idx = commentDetails.list.findIndex((el) => el.id === res.id);
       setCommentDetails((prev) => ({
         ...prev,
         list: [...prev.list.slice(0, idx), ...prev.list.slice(idx + 1)],
       }));
+    }
   }
   return (
     <section className="display-grid justify-stretch gap-24" id="comments-area">
       <CommentForm onSubmit={handleCreateComment} />
       {commentDetails?.list?.length > 0 ? (
         <div className="display-grid justify-stretch gap-24">
-          {commentDetails.list.map((comment, idx) => (
+          {commentDetails.list.map((comment) => (
             <CommentItem
               key={comment.id}
               {...comment}
-              onUpdate={(value) => handleUpdateComment(comment.id, value, idx)}
-              onDelete={() => handleDeleteComment(comment.id, idx)}
+              onUpdate={handleUpdateComment}
+              onDelete={() => handleDeleteComment(comment.id)}
             />
           ))}
         </div>

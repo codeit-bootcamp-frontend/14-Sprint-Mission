@@ -20,7 +20,7 @@ export default function CommentItem({
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdate(newComment);
+    onUpdate(id, newComment);
     setEditFg(false);
   }
 
