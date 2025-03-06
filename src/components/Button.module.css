@@ -35,6 +35,9 @@
   padding: 11px 23px;
   border-radius: 8px;
 }
+.btn:disabled {
+  background-color: #9ca3af;
+}
 
 @media (max-width: 1120px) {
   .btn.roundedM {

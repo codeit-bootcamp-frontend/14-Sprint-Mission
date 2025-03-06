@@ -1,0 +1,39 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.label span {
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.textarea,
+.input {
+  padding: 16px 24px;
+  background-color: var(--Cool_Gray_100);
+  border-radius: 12px;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+}
+
+.textarea:hover,
+.textarea:active,
+.textarea:focus,
+.input:hover,
+.input:active,
+.input:focus {
+  border: 0;
+  outline: 0;
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield;
+}

@@ -22,8 +22,8 @@ function Main() {
           <Route path="ItemsBox" >
             <Route index element={<ItemsBox />} />
             <Route path="ItemsDetail" element={<ItemsDetail />} />
+            <Route path="Additem" element={<Additem />} />  
           </Route>
-          <Route path="Additem" element={<Additem />} />  
           <Route path="Boards" element={<Boards />} />
         </Route>
         <Route path="Login" element={<Login />} />

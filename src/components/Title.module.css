@@ -1,0 +1,11 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px auto;
+}
+
+.titleTag {
+  font-size: 20px;
+  line-height: 42px;
+  font-weight: 700;
+}

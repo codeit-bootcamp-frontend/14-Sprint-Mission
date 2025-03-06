@@ -1,6 +1,6 @@
 import styles from './SelectBox.module.css';
 import Icon from '../components/Icon';
-import { useRef } from 'react';
+import { useState } from 'react';
 
 
 function SelectBoxList ( {  ItemValue, Event, ItemLabel } ) {
@@ -10,12 +10,14 @@ function SelectBoxList ( {  ItemValue, Event, ItemLabel } ) {
   );
 }
 
-function SelectBox( { options, current , ClickEvent, screenType } ) {
-  const selectBoxRef = useRef();
+function SelectBox( { options, current , clickEvent, screenType } ) {
 
+
+  const [isSelect, setIsSelect] = useState(false);
   const handleClickToggle = () => {
-    selectBoxRef.current.classList.toggle(styles.active);
+    setIsSelect((prev) => !prev);  // 현재 상태를 반전시킴
   };
+
 
   return (
     <section className={styles.selectBox}  >
@@ -29,9 +31,9 @@ function SelectBox( { options, current , ClickEvent, screenType } ) {
             </>
           }
         </button>
-        <ul ref={selectBoxRef} className={styles.selectboxOption}>
-          {options.map((Item , index) => (
-            <SelectBoxList key={index} ItemValue={Item.value} Event={ClickEvent} ItemLabel={Item.label} />
+        <ul className={`${styles.selectboxOption} ${isSelect ? styles.active : ''}`}>
+          {options.map((item , index) => (
+            <SelectBoxList key={index} ItemValue={item.value} Event={clickEvent} ItemLabel={item.label} />
           ))}
         </ul>
     </section>

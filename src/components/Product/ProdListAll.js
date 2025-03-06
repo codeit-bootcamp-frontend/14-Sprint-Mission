@@ -4,20 +4,19 @@ import ProductItem from './ProductItem'
 import styles from './ProdListAll.module.css';
 import Container from '../Container';
 
-function ProdListAll({ ItemsData, pageColumn, screenType }) {
-  const ColumnValue = (screenType === 'mobile' ? pageColumn[0] : screenType === 'tablet' ? pageColumn[1] : pageColumn[2]);
+function ProdListAll({ itemsData, pageColumn }) {
 
   return (
     <>
       <Container>
-        <ul className={classNames(styles.prodList, styles[`Column_${ColumnValue}`])}>
-          {ItemsData.map((Item) => (
+        <ul className={classNames(styles.prodList, styles[`Column_${pageColumn}`])}>
+          {itemsData.map((item) => (
             <ProductItem 
-              key={Item.id} 
-              images={Item.images} 
-              name={Item.name} 
-              price={Item.price} 
-              favoriteCount={Item.favoriteCount}
+              key={item.id} 
+              images={item.images} 
+              name={item.name} 
+              price={item.price} 
+              favoriteCount={item.favoriteCount}
             />
           ))}
         </ul>
