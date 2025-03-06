@@ -1,0 +1,73 @@
+.wrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(17, 24, 39, 1);
+  }
+  textarea {
+    resize: none;
+    height: 104px;
+    background-color: rgba(243, 244, 246, 1);
+    border: none;
+    border-radius: 12px;
+    margin-top: 9px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(156, 163, 175, 1);
+  }
+  .add-button {
+    margin-top: 16px;
+    margin-left: auto;
+    width: 72px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(156, 163, 175, 1);
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(243, 244, 246, 1);
+    cursor: pointer;
+  }
+  .add-button-active {
+    margin-top: 16px;
+    margin-left: auto;
+    width: 72px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3692ff;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(243, 244, 246, 1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .wrapper {
+    width: 696px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    width: 344px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

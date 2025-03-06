@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import BestProduct from "./BestProduct";
-import AllProduct from "./AllProduct";
-import Pagination from "./Pagination";
-import "./body.css";
+import BestProduct from "../components/BestProduct";
+import AllProduct from "../components/AllProduct";
+import Pagination from "../components/Pagination";
+import "../styles/body.css";
 import {
-  getProductFetch,
+  getBestProduct,
+  getAllProduct,
   handleOptionChange,
   searchSubmit,
-} from "./utils/productFunctions";
+} from "../utils/productFunctions";
+import SearchContext from "../Context/SearchContext";
 
 const Body = () => {
   const [bestProduct, setbestProduct] = useState([]);
@@ -20,7 +22,7 @@ const Body = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchProduct, setSearchProduct] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [option, setOption] = useState("latest");
+  const [option, setOption] = useState("recent");
   const [browserSize, setBrowseSize] = useState(window.innerWidth);
   const bestPlaceHolderCount =
     browserSize <= 767 ? 1 : browserSize <= 1199 ? 2 : 4;
@@ -32,46 +34,44 @@ const Body = () => {
       setBrowseSize(window.innerWidth);
     };
 
+    console.log("현재 페이지네이션 상태:", paginationNum);
+
     // 리스너 추가
     window.addEventListener("resize", handleResize);
-
-    getProductFetch({
-      isSearch,
-      setAllProduct,
-      option,
-      setPaginationNum,
-      pageNum,
-      searchSubmit,
-      searchValue,
-      setIsSearch,
-      setSearchValue,
-      setSearchProduct,
-      setbestProduct,
-      pageSize,
-    });
 
     // 클린업
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [browserSize]);
+  }, []);
+
+  console.log("현재 페이지네이션 상태:", paginationNum);
+  console.log("현재 검색 상태:", isSearch);
 
   useEffect(() => {
-    getProductFetch({
-      isSearch,
-      setAllProduct,
-      option,
-      setPaginationNum,
-      pageNum,
-      searchSubmit,
-      searchValue,
-      setIsSearch,
-      setSearchValue,
-      setSearchProduct,
-      setbestProduct,
-      pageSize,
-    });
-  }, [clickedPage, option]);
+    getBestProduct(bestPlaceHolderCount, setbestProduct);
+
+    if (!isSearch) {
+      getAllProduct({
+        pageSize: allPlaceHolderCount,
+        setAllProduct,
+        option,
+        setPaginationNum,
+        pageNum,
+      });
+    } else {
+      searchSubmit({
+        value: searchValue,
+        pageNum,
+        allPlaceHolderCount,
+        option,
+        setIsSearch,
+        setSearchValue,
+        setSearchProduct,
+        setPaginationNum,
+      });
+    }
+  }, [clickedPage, option, browserSize]);
 
   return (
     <div className="body">
@@ -81,23 +81,29 @@ const Body = () => {
         bestPlaceHolderCount={bestPlaceHolderCount}
       />
 
-      <AllProduct
-        pageNum={pageNum}
-        pageSize={pageSize}
-        option={option}
-        setIsSearch={setIsSearch}
-        setSearchValue={setSearchValue}
-        setSearchProduct={setSearchProduct}
-        setPaginationNum={setPaginationNum}
-        searchSubmit={searchSubmit}
-        setOption={setOption}
-        isSearch={isSearch}
-        searchProduct={searchProduct}
-        setAllProduct={setAllProduct}
-        allProduct={allProduct}
-        allPlaceHolderCount={allPlaceHolderCount}
-        handleOptionChange={handleOptionChange}
-      />
+      <SearchContext.Provider
+        value={{
+          pageNum,
+          option,
+          allPlaceHolderCount,
+          searchProduct,
+          setIsSearch,
+          setSearchValue,
+          setSearchProduct,
+          setPaginationNum,
+          searchSubmit,
+          setOption,
+          setAllProduct,
+          handleOptionChange,
+        }}
+      >
+        <AllProduct
+          isSearch={isSearch}
+          searchProduct={searchProduct}
+          allProduct={allProduct}
+          allPlaceHolderCount={allPlaceHolderCount}
+        />
+      </SearchContext.Provider>
 
       {/* 페이지네이션 컴포넌트 */}
       <Pagination

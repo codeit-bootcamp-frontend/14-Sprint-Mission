@@ -1,5 +1,5 @@
 import React from "react";
-import "./paginationButton.css";
+import "../styles/paginationButton.css";
 
 const PaginationButton = ({ pageNumber, isClicked, onClick }) => {
 
