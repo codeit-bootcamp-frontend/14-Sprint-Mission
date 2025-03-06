@@ -24,6 +24,26 @@ a {
   --Primary-200: #1967d6;
   --Primary-300: #1251aa;
   --error-red: #f74747;
+
+  /* Font sizes */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-2lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+
+  /* Line heights */
+  --line-height-xs: 1.5; /* 18px / 12px */
+  --line-height-sm: 1.69; /* 22px / 13px */
+  --line-height-md: 1.71; /* 24px / 14px */
+  --line-height-lg: 1.625; /* 26px / 16px */
+  --line-height-2lg: 1.556; /* 28px / 18px */
+  --line-height-xl: 1.6; /* 32px / 20px */
+  --line-height-2xl: 1.333; /* 32px / 24px */
+  --line-height-3xl: 1.313; /* 42px / 32px */
 }
 
 .body {
@@ -37,7 +57,7 @@ a {
   src: url("/font/ROKAF\ Sans\ Bold.ttf");
   font-weight: bold;
 }
-@media (max-width: 1919px) {
+@media (max-width: 1200px) {
   .hero-title {
     font-size: 32px;
     font-weight: 700;
@@ -64,50 +84,52 @@ a {
   font-weight: 400;
 }
 
-/* 텍스트 크기 */
+/* 아래 CSS들은 조금 편하려고 만들어 둔 것 */
 .text-3xl {
-  font-size: 32px;
-  line-height: 42px;
-  font-weight: 700;
+  font-size: var(--text-3xl);
+  line-height: var(--line-height-3xl);
 }
+
 .text-2xl {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-2xl);
 }
+
 .text-xl {
-  font-size: 20px;
-  line-height: 32px;
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
 }
+
 .text-2lg {
-  font-size: 18px;
-  line-height: 26px;
+  font-size: var(--text-2lg);
+  line-height: var(--line-height-2lg);
 }
-.tex-lg {
-  font-size: 16px;
-  line-height: 26px;
+
+.text-lg {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
 }
+
 .text-md {
-  font-size: 14px;
-  line-height: 24px;
+  font-size: var(--text-md);
+  line-height: var(--line-height-md);
 }
+
 .text-sm {
-  font-size: 13px;
-  line-height: 22px;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--line-height-sm);
 }
+
 .text-xs {
-  font-size: 12px;
-  line-height: 20px;
-}
-.text-xs.text-semibold {
-  line-height: 20px;
+  font-size: var(--text-xs);
+  line-height: var(--line-height-xs);
 }
 .logo {
   color: var(--Primary-100);
 }
 
 /* 테블릿 */
-@media (max-width: 1919px) {
+@media (max-width: 1200px) {
   .text-2xl {
     font-size: 18px;
     line-height: 26px;
@@ -207,6 +229,13 @@ a {
 }
 
 /* 버튼 */
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
 button,
 button.medium,
 .button {

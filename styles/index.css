@@ -37,7 +37,7 @@ header .nav a.button {
 .break-title {
   display: none;
 }
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   header .nav {
     margin: 0 48px;
     height: 100%;
@@ -45,8 +45,8 @@ header .nav a.button {
   .break-title {
     display: inline;
   }
-}
-@media (max-width: 1199px) {
+} */
+@media (max-width: 1200px) {
   header .nav {
     margin: 0 24px;
   }
@@ -86,7 +86,7 @@ main #bottom-panda {
   gap: 70px;
 }
 
-@media (max-width: 1919px) {
+@media (max-width: 1200px) {
   main .banner {
     padding-top: 84px;
   }
@@ -182,6 +182,9 @@ footer {
   background-color: var(--gray-900);
   color: var(--gray-400);
 }
+.site-name {
+  color: var(--gray-200);
+}
 footer .wrap {
   width: 100%;
   margin: 0 auto;
@@ -214,7 +217,7 @@ footer .wrap ul li {
   justify-content: flex-end;
   gap: 12px;
 }
-@media (max-width: 1919px) {
+@media (max-width: 1200px) {
   footer {
     padding: 32px 24px;
   }

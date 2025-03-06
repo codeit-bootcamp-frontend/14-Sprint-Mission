@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <main class="signin-container">
+    <main class="signup-container">
       <div class="login-logo">
         <a href="index.html">
           <img
@@ -26,59 +26,76 @@
           />
         </a>
       </div>
-      <form class="login-form" method="post">
-        <div class="login_input">
-          <label for="email">이메일</label>
+
+      <form class="login-form" action="#" method="post">
+        <label class="login_input" for="email">
+          <span>이메일</span>
           <input
             id="email"
             name="email"
             type="email"
+            autocomplete="email"
             placeholder="이메일을 입력해 주세요"
+            required
           />
-        </div>
-        <div class="login_input">
-          <label for="textname">닉네임</label>
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="nickname">
+          <span>닉네임</span>
           <input
-            id="textname"
-            name="textname"
+            id="nickname"
+            name="nickname"
             type="text"
             placeholder="닉네임을 입력해 주세요"
+            required
           />
-        </div>
-        <div class="login_input">
-          <label for="password">비밀번호</label>
-          <div class="input-wrap">
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="password">
+          <span>비밀번호</span>
+          <div class="input-box">
             <input
               id="password"
               name="password"
               type="password"
               placeholder="비밀번호를 입력해 주세요"
+              required
             />
             <img
-              src="images/icons/eye-invisible.svg"
-              alt="비밀번호 감추기"
-              class="hide-password"
+              src="./images/icons/eye-invisible.svg"
+              alt="eyes"
+              class="password-toggle"
             />
           </div>
-        </div>
-        <div class="login_input">
-          <label for="passwordCheck">비밀번호 확인</label>
-          <div class="input-wrap">
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="passwordCheck">
+          <span>비밀번호 확인</span>
+          <div class="input-box">
             <input
               id="passwordCheck"
               name="passwordCheck"
               type="password"
               placeholder="비밀번호를 다시 한 번 입력해 주세요"
+              required
             />
             <img
-              src="images/icons/eye-invisible.svg"
-              alt="비밀번호 감추기"
-              class="hide-password"
+              src="./images/icons/eye-invisible.svg"
+              alt="eyes"
+              class="password-toggle"
             />
           </div>
-        </div>
-        <button type="submit" class="button login-button">회원가입</button>
+          <span class="error-message"></span>
+        </label>
+
+        <button type="submit" class="submit-button button login-button">
+          회원가입
+        </button>
       </form>
+
       <div class="social-login">
         <h3>간편 로그인하기</h3>
         <div class="social-login-button">
@@ -102,5 +119,6 @@
         이미 회원이신가요? <a href="login.html">로그인</a>
       </div>
     </main>
+    <script src="script/signup.js"></script>
   </body>
 </html>
