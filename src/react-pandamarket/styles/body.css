@@ -78,7 +78,16 @@
   background-color: rgba(243, 244, 246, 1);
 }
 
+.button-option {
+  display: flex;
+  flex-direction: row;
+}
+
 .add-product-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   width: 133px;
   height: 42px;
   font-size: 16px;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
-import { getDetail, Comments } from "../utils/productDetailFunctions";
+import { getDetail, comment } from "../utils/productDetailFunctions";
 import ProductDetailInfo from "./ProductDetailInfo";
 import styles from "../styles/productDetail.module.scss";
 import Ask from "./Ask";
@@ -17,8 +17,13 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getDetail(setProductDetail, productId);
-    Comments(productId, limit, cursor, setCursor, setComment);
+    getDetail(productId).then((data) => {
+      setProductDetail(data);
+    });
+    comment(productId, limit, cursor).then((data) => {
+      setCursor(data.nextCursor);
+      setComment(data.comments);
+    });
   }, []);
 
   return (
@@ -32,7 +37,7 @@ const ProductDetail = () => {
           <Comment comment={comment} key={index} />
         ))
       ) : (
-        <div className={styles['alternative-image']}>
+        <div className={styles["alternative-image"]}>
           <img src="/productdetail_none.png" alt="문의 없는 이미지" />
           <span>아직 문의가 없어요</span>
         </div>

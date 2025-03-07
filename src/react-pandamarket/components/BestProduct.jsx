@@ -1,8 +1,15 @@
 import React from "react";
 import "../styles/body.css";
 import Card from "./Card";
+import { useProducts } from "../hooks/useProducts";
 
-const BestProduct = ({ bestProduct, bestPlaceHolderCount }) => {
+const BestProduct = ({ bestPlaceHolderCount }) => {
+   const { product: bestProduct } = useProducts({
+      page: 1,
+      orderBy: "favorite",
+      placeHolderCount: bestPlaceHolderCount,
+    });
+
   return (
     <>
       <div className="best-product-wrap">
