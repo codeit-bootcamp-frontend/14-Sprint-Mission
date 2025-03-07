@@ -37,7 +37,7 @@ export async function logIn(values) {
   }
 }
 
-function saveTokenInfos({ accessToken, refreshToken }) {
+export function saveTokenInfos({ accessToken, refreshToken }) {
   /**
    * 토큰 설정
    * Content-Type: application/json

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { saveTokenInfos } from "./auth";
 
 export const HTTP_STATUS = {
   STATUS_OK: 200,
@@ -38,12 +39,13 @@ multipartInstance.interceptors.response.use(
 async function checkError(error) {
   const refreshToken = localStorage.getItem("refreshToken");
   if (error.response?.status !== 401 || !refreshToken) return Promise.reject(error);
-
-  if (error.response?.data?.message === "jwt expired") {
+  try {
     const { accessToken } = await getTokenRefresh(refreshToken);
     saveTokenInfos({ accessToken, refreshToken });
+    alert("토큰 갱신으로 인해 새로고침이 필요합니다.");
     window.location.reload();
-  } else {
+  } catch (err) {
+    console.log(err);
     alert("재로그인이 필요합니다.");
     localStorage.clear();
     window.location.href = "";
