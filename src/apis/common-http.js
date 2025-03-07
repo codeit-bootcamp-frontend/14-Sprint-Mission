@@ -42,8 +42,7 @@ async function checkError(error) {
   try {
     const { accessToken } = await getTokenRefresh(refreshToken);
     saveTokenInfos({ accessToken, refreshToken });
-    alert("토큰 갱신으로 인해 새로고침이 필요합니다.");
-    window.location.reload();
+    alert("토큰이 갱신되었습니다. 다시 시도해주세요");
   } catch (err) {
     console.log(err);
     alert("재로그인이 필요합니다.");
