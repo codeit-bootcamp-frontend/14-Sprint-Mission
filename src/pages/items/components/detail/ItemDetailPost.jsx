@@ -1,4 +1,11 @@
-import { addToFavorites, getProductDetail, removeFromFavorites } from "../../../../apis/products";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  addToFavorites,
+  deleteProduct,
+  getProductDetail,
+  removeFromFavorites,
+} from "../../../../apis/products";
 import ImageProfile from "../../../../assets/images/common/profile.svg";
 import IconFavoriteEmpty from "../../../../assets/images/items/ic_heart.svg";
 import IconFavorite from "../../../../assets/images/items/ic_heart_active.svg";
@@ -7,13 +14,36 @@ import ImageEmpty from "../../../../assets/images/items/img_default.svg";
 import { useUser } from "../../../../contexts/UserContext";
 import useAsync from "../../../../hooks/useAsync";
 import { formatDate, formatPrice } from "../../../../utils/products";
+import MoreModal from "./MoreModal";
 
 export default function ItemDetailPost({ productId, onTagClick }) {
   const user = useUser();
+  const clickRef = useRef();
+  const navigate = useNavigate();
+  const [openFg, setOpenFg] = useState(false);
   const { value: detail = {}, setValue: setDetail } = useAsync(
     () => getProductDetail(productId),
     [productId]
   );
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (!clickRef.current?.contains(e.target)) setOpenFg(false);
+    };
+    window.addEventListener("mousedown", handleClick);
+    return () => window.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  function handleUpdateClick() {
+    const { id, images, tags, description, name, price } = detail;
+    navigate("/additem", {
+      state: { id, images, imageFiles: images, tags, description, name, price },
+    });
+  }
+  async function handleDeleteClick() {
+    const res = await deleteProduct(productId);
+    if (res) navigate("/items");
+  }
 
   async function handleFavoriteClick() {
     const res = detail.isFavorite
@@ -25,14 +55,17 @@ export default function ItemDetailPost({ productId, onTagClick }) {
   return (
     <article id="item-detail-area" className="display-flex justify-stretch align-upper gap-24">
       <div className="img-wrapper">
-        <img src={detail.images ? detail.images[0] : ImageEmpty} alt="상품 이미지 미리보기" />
+        <img
+          src={detail.images?.length > 0 ? detail.images[0] : ImageEmpty}
+          alt="상품 이미지 미리보기"
+        />
       </div>
       <div className="display-grid justify-stretch gap-64" id="item-detail-right">
         <div className="display-grid justify-stretch gap-24" id="item-detail-header">
           <div className="display-flex justify-sides align-upper">
             <h1 className="text-2xl">{detail.name}</h1>
             {user?.nickname === detail?.ownerNickname && (
-              <button className="icon-wrapper">
+              <button className="icon-wrapper" onClick={() => setOpenFg(true)}>
                 <img src={IconMore} alt="더보기 버튼 이미지" />
               </button>
             )}
@@ -88,6 +121,9 @@ export default function ItemDetailPost({ productId, onTagClick }) {
           </button>
         </div>
       </div>
+      {openFg && (
+        <MoreModal onUpdate={handleUpdateClick} onDelete={handleDeleteClick} ref={clickRef} />
+      )}
     </article>
   );
 }

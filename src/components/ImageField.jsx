@@ -3,7 +3,7 @@ import IconDelete from "../assets/images/common/ic_X.svg";
 import Compressor from "compressorjs";
 
 export default function ImageField({ labelText = "이미지", value = [], onChange, maxLength = 3 }) {
-  const [thumbnails, setThumbnails] = useState([]);
+  const [thumbnails, setThumbnails] = useState(value || []);
   const [isError, setIsError] = useState(false);
 
   function onUploadImage(e) {

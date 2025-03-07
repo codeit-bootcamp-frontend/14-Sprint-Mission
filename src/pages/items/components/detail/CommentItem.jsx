@@ -4,6 +4,7 @@ import IconMore from "../../../../assets/images/items/ic_kebab.svg";
 import InputField from "../../../../components/InputField";
 import { useUser } from "../../../../contexts/UserContext";
 import { formatTimeBefore } from "../../../../utils/products";
+import MoreModal from "./MoreModal";
 
 export default function CommentItem({
   id,
@@ -46,7 +47,7 @@ export default function CommentItem({
     setEditFg(false);
   }
 
-  function CommentItemLower() {
+  function CommentProdileArea() {
     return (
       <div className="display-flex justify-sides gap-16">
         <div className="display-flex justify-left gap-16">
@@ -61,34 +62,25 @@ export default function CommentItem({
           </div>
         </div>
         {editFg && (
-          <div className="display-flex justify-right gap-4" id="comment-btn-area">
+          <form
+            id="comment-btn-area"
+            className="display-flex justify-right gap-4"
+            onSubmit={handleSubmit}
+          >
             <button
+              id="btn-comment-update"
               type="button"
               className="small-40"
-              id="btn-comment-update"
               onClick={handleCancel}
             >
               취소
             </button>
-            <button
-              type="submit"
-              className="small-40"
-              disabled={newComment.content === content}
-              onClick={handleSubmit}
-            >
+            <button type="submit" className="small-40" disabled={newComment.content === content}>
               수정 완료
             </button>
-          </div>
+          </form>
         )}
       </div>
-    );
-  }
-  function CommentItemMore() {
-    return (
-      <ul className="display-grid surface-secondary-0 radius-8" id="feature-box" ref={clickRef}>
-        <li onClick={handleUpdateClick}>수정하기</li>
-        <li onClick={handleDeleteClick}>삭제하기</li>
-      </ul>
     );
   }
 
@@ -127,8 +119,10 @@ export default function CommentItem({
           )}
         </div>
       )}
-      <CommentItemLower />
-      {openFg && <CommentItemMore />}
+      <CommentProdileArea />
+      {openFg && (
+        <MoreModal onUpdate={handleUpdateClick} onDelete={handleDeleteClick} ref={clickRef} />
+      )}
     </article>
   );
 }
