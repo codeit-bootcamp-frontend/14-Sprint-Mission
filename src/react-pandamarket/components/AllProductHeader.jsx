@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/body.css";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
@@ -8,16 +8,13 @@ const AllProductHeader = () => {
   const {
     pageNum,
     option,
+    searchProduct,
     setIsSearch,
     setSearchValue,
-    setSearchProduct,
-    setPaginationNum,
-    searchSubmit,
     setOption,
     setAllProduct,
     handleOptionChange,
     allPlaceHolderCount,
-    searchProduct,
   } = useContext(SearchContext);
 
   return (
@@ -35,23 +32,15 @@ const AllProductHeader = () => {
               className="search-input"
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  searchSubmit({
-                    value: event.target.value,
-                    pageNum,
-                    allPlaceHolderCount,
-                    option,
-                    setIsSearch,
-                    setSearchValue,
-                    setSearchProduct,
-                    setPaginationNum,
-                  });
+                  setSearchValue(event.target.value);
+                  setIsSearch(true);
                 }
               }}
             />
           </div>
           <div className="button-option">
-            <Link to={"/additem"}>
-              <button className="add-product-button">상품 등록하기</button>
+            <Link to={"/additem"} className="add-product-button">
+              상품 등록하기
             </Link>
             <select
               name="category"

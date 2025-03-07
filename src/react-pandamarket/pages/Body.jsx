@@ -3,24 +3,15 @@ import BestProduct from "../components/BestProduct";
 import AllProduct from "../components/AllProduct";
 import Pagination from "../components/Pagination";
 import "../styles/body.css";
-import {
-  getBestProduct,
-  getAllProduct,
-  handleOptionChange,
-  searchSubmit,
-} from "../utils/productFunctions";
+import { handleOptionChange } from "../utils/productFunctions";
 import SearchContext from "../Context/SearchContext";
+import { useProducts } from "../hooks/useProducts";
 
 const Body = () => {
-  const [bestProduct, setbestProduct] = useState([]);
-  const [allProduct, setAllProduct] = useState([]);
-  const [pageSize, setPageSize] = useState(10);
   const [pageNum, setPageNum] = useState(1);
-  const [paginationNum, setPaginationNum] = useState([]);
   const [clickedPage, setClickedPage] = useState(1);
   const [showPagination, setShowPagination] = useState(0);
   const [isSearch, setIsSearch] = useState(false);
-  const [searchProduct, setSearchProduct] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [option, setOption] = useState("recent");
   const [browserSize, setBrowseSize] = useState(window.innerWidth);
@@ -28,6 +19,22 @@ const Body = () => {
     browserSize <= 767 ? 1 : browserSize <= 1199 ? 2 : 4;
   const allPlaceHolderCount =
     browserSize <= 767 ? 4 : browserSize <= 1199 ? 6 : 10;
+
+  const { bestProduct } = useProducts({
+    page: 1,
+    orderBy: "favorite",
+    placeHolderCount: bestPlaceHolderCount,
+    best: true,
+  });
+
+  const { searchProduct, allProduct, paginationNum, setAllProduct } =
+    useProducts({
+      page: pageNum,
+      orderBy: option,
+      placeHolderCount: allPlaceHolderCount,
+      best: false,
+      value: searchValue,
+    });
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,34 +52,6 @@ const Body = () => {
     };
   }, []);
 
-  console.log("현재 페이지네이션 상태:", paginationNum);
-  console.log("현재 검색 상태:", isSearch);
-
-  useEffect(() => {
-    getBestProduct(bestPlaceHolderCount, setbestProduct);
-
-    if (!isSearch) {
-      getAllProduct({
-        pageSize: allPlaceHolderCount,
-        setAllProduct,
-        option,
-        setPaginationNum,
-        pageNum,
-      });
-    } else {
-      searchSubmit({
-        value: searchValue,
-        pageNum,
-        allPlaceHolderCount,
-        option,
-        setIsSearch,
-        setSearchValue,
-        setSearchProduct,
-        setPaginationNum,
-      });
-    }
-  }, [clickedPage, option, browserSize]);
-
   return (
     <div className="body">
       {/* 베스트 상품 */}
@@ -89,9 +68,6 @@ const Body = () => {
           searchProduct,
           setIsSearch,
           setSearchValue,
-          setSearchProduct,
-          setPaginationNum,
-          searchSubmit,
           setOption,
           setAllProduct,
           handleOptionChange,
