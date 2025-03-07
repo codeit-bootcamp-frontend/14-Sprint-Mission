@@ -1,7 +1,7 @@
 import { deleteComment, updateComment } from "../../../../apis/comment";
 import { createProductComment, getProductComments } from "../../../../apis/products";
 import IconBack from "../../../../assets/images/items/ic_back.svg";
-import ImageCommentEmpty from "../../../../assets/images/items/img_inquiry_empty.svg";
+import ImageCommentEmpty from "../../../../assets/images/items/Img_inquiry_empty.svg";
 import useAsync from "../../../../hooks/useAsync";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
