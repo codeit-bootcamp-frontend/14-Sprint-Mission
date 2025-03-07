@@ -136,3 +136,24 @@ nav {
     bottom: 0;
     width: 746px;
   }
+
+  footer {
+    background-color: #111827;
+    color: #9ca3af;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 200px 108px 200px;
+    font-size: 16px;
+  }
+
+  #Menu {
+    display: flex;
+    gap: 30px;
+    color: #e5e7eb;
+  }
+  
+  #social {
+    display: flex;
+    gap: 12px;
+  }
