@@ -1,22 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "../styles/body.css";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import SearchContext from "../Context/SearchContext";
 
-const AllProductHeader = () => {
-  const {
-    pageNum,
-    option,
-    searchProduct,
-    setIsSearch,
-    setSearchValue,
-    setOption,
-    setAllProduct,
-    handleOptionChange,
-    allPlaceHolderCount,
-  } = useContext(SearchContext);
-
+const AllProductHeader = ({ setSearchValue, setOption }) => {
   return (
     <>
       {/* 전체 상품 헤더 */}
@@ -33,7 +20,6 @@ const AllProductHeader = () => {
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   setSearchValue(event.target.value);
-                  setIsSearch(true);
                 }
               }}
             />
@@ -46,17 +32,7 @@ const AllProductHeader = () => {
               name="category"
               id="category"
               className="search-option"
-              onChange={(e) =>
-                handleOptionChange({
-                  e,
-                  option,
-                  setOption,
-                  searchProduct,
-                  setAllProduct,
-                  pageNum,
-                  pageSize: allPlaceHolderCount,
-                })
-              }
+              onChange={(e) => setOption(e.target.value)}
             >
               <option value="recent">최신순</option>
               <option value="favorite">좋아요순</option>
