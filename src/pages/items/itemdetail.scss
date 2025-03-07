@@ -20,6 +20,7 @@ main#item-detail {
     }
     > #item-detail-right {
       flex-grow: 1;
+      align-self: stretch;
       > #item-detail-header {
         justify-self: stretch;
         > #item-detail-desc p {

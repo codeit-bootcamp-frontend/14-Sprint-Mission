@@ -19,7 +19,7 @@ export default function ItemDetailPost({ productId, onTagClick }) {
     const res = detail.isFavorite
       ? await removeFromFavorites(productId)
       : await addToFavorites(productId);
-    if (res) setDetail(res);
+    if (res) setDetail({ ...detail, ...res });
   }
 
   return (
