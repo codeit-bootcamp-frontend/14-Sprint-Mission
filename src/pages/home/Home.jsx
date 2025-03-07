@@ -5,13 +5,11 @@ import ImageFeature2 from "../../assets/images/home/feature2-image.png";
 import ImageFeature3 from "../../assets/images/home/feature3-image.png";
 import BannerTop from "../../assets/images/home/hero-image.png";
 import HeaderNav from "../../components/HeaderNav";
-import { useUser } from "../../contexts/UserContext";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
 import "./home.scss";
 
 export default function Home() {
-  const user = useUser();
   return (
     <>
       <HeaderNav />
@@ -22,7 +20,7 @@ export default function Home() {
               일상의 모든 물건을 <br />
               거래해 보세요
             </h1>
-            <Link to={user ? "/items" : "/login"} className="button display-flex justify-center">
+            <Link to="/items" className="button display-flex justify-center">
               구경하러 가기
             </Link>
           </div>

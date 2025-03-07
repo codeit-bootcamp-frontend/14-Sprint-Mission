@@ -1,4 +1,4 @@
-# 스프린트 미션 6
+# 스프린트 미션 7
 
 배포 사항: https://fe-14-sprint-mission-react-lsj.netlify.app/
 
@@ -10,43 +10,50 @@
 
 ## 체크리스트 [기본]
 
-### 상품 등록상품
+### 상품 상세
 
-- [x] 등록 페이지 주소는 “/additem” 입니다.
-- [x] 페이지 주소가 “/additem” 일때 상단네비게이션바의 '중고마켓' 버튼의 색상은 “3692FF”입니다.
-- [x] 상품 이미지는 최대 한개 업로드가 가능합니다.
-- [x] 각 input의 placeholder 값을 정확히 입력해주세요.
-- [x] 이미지를 제외하고 input 에 모든 값을 입력하면 ‘등록' 버튼이 활성화 됩니다.
-- [x] API를 통한 상품 등록은 추후 미션에서 적용합니다.
+- [x] 상품 상세 페이지 주소는 “/items/{productId}” 입니다.
+- [x] response 로 받은 아래의 데이터로 화면을 구현합니다
+  - favoriteCount : 하트 개수
+  - images : 상품 이미지
+  - tags : 상품태그
+  - name : 상품 이름
+  - description : 상품 설명
+- [x] 목록으로 돌아가기 버튼을 클릭하면 중고마켓 페이지 주소인 “/items” 으로 이동합니다
+
+### 문의하기
+
+- [x] 문의하기에 내용을 입력하면 등록 버튼의 색상은 “3692FF”로 변합니다.
+- [x] response 로 받은 아래의 데이터로 화면을 구현합니다
+  - image : 작성자 이미지
+  - nickname : 작성자 닉네임
+  - content : 작성자가 남긴 문구
+  - description : 상품 설명
+  - updatedAt : 문의글 마지막 업데이트 시간
 
 ## 체크리스트 [심화]
 
-### 상품 등록
-
-- [x] 이미지 안의 X 버튼을 누르면 이미지가 삭제됩니다.
-- [x] 추가된 태그 안의 X 버튼을 누르면 해당 태그는 삭제됩니다.
+- [x] 모든 버튼에 자유롭게 Hover 효과를 적용하세요.
 
 ## 변경 사항
 
 ### 추가 구현 사항
 
-- `compressorjs` 사용한 이미지 압축 기능
-- 이미지 업로드 기능 구현 (`https://panda-market-api.vercel.app/images/upload` POST api 사용)
-- 상품 업로드 기능 구현 (`https://panda-market-api.vercel.app/products` POST api 사용)
+-
 
 ## 구현 화면
 
 ### 1) Desktop
 
-![additem-page-desktop](./src/assets/screenshot/additem-page-desktop.png)
+![item-detail-page-desktop](./src/assets/screenshot/item-detail-page-desktop.png)
 
 ### 2) Tablet
 
-![additem-page-tablet](./src/assets/screenshot/additem-page-tablet.gif)
+![item-detail-page-tablet](./src/assets/screenshot/item-detail-page-tablet.gif)
 
 ### 3) Mobile
 
-![additem-page-mobile](./src/assets/screenshot/additem-page-mobile.gif)
+![item-detail-page-mobile](./src/assets/screenshot/item-detail-page-mobile.gif)
 
 ## 설치 사항
 
@@ -76,6 +83,10 @@ npm install compressorjs
 
 ## Q&A
 
-- `NavLink` 활용을 유지하려다 보니, `/items`와는 다른 `/additem` 링크 접속 시를 알기 위해 `window.location.pathname`을 사용하여 비교했는데, 더 좋은 방법이 있을까요?
+- `ItemDetail.jsx` 속 문의하기 영역인 `ItemDetailComments.jsx`에서 `CommentItem.jsx`라는 댓글 요소 컴포넌트를 사용하고 있습니다.<br />이때, 컴포넌트를 더 작게 쪼개고 싶어 `<form id="comment-form"><InputField /></form>`을 function으로 분리해보니, `<InputField />`에 `onChange` 이벤트를 발동시키는 키보드 입력마다 `input` 또는 `textarea`의 포커싱이 아웃되는 현상이 있어 아래 gif 파일처럼 입력이 제대로 되지 않는 현상이 발생했습니다.<br />입력창을 다시 한번 컴포넌트로 분리하는 것을 포기한 상태로 기능이 구현되는 현재와 같이 과제를 완료하였는데요, 아래와 같이 컴포넌트 내부에 함수형 컴포넌트로 분리하면 입력에 어려움이 있는 이유가 궁금합니다.
 
-  ![qna-sprint6](./src/assets/screenshot/qna-sprint6.png)
+![qna-sprint7-1](./src/assets/screenshot/qna-sprint7-1.png)
+
+![qna-sprint7-2](./src/assets/screenshot/qna-sprint7-2.png)
+
+![qna-sprint7-3](./src/assets/screenshot/qna-sprint7-3.gif)

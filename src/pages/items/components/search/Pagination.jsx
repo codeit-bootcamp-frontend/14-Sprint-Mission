@@ -2,9 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import IconArrow from "../../../../assets/images/items/arrow_right.svg";
 
 export default function Pagination({ current = 1, total = 0, onPageChange }) {
-  const [offset, setOffset] = useState(1);
   const [pagingList, setPageList] = useState([]);
 
+  /**
+   * 페이지네이션 깜빡임 최소화를 위한 페이지 목록 세팅 함수 메모이제이션
+   */
   const memoizePagingList = useCallback(async () => {
     if (current > total) return;
     const newArr = new Array(total >= 5 ? 5 : total)
@@ -17,7 +19,6 @@ export default function Pagination({ current = 1, total = 0, onPageChange }) {
           : current - 2 + idx
       );
     setPageList(newArr);
-    setOffset(current);
   }, [current, total]);
 
   useEffect(() => {
@@ -27,14 +28,14 @@ export default function Pagination({ current = 1, total = 0, onPageChange }) {
   return (
     <div className="display-flex justify-center gap-4" id="pagination">
       <button
-        className="surface-secondary-0"
-        onClick={() => onPageChange(offset - 1)}
-        disabled={offset === 1}
+        className="icon-wrapper surface-secondary-0"
+        onClick={() => onPageChange(current - 1)}
+        disabled={current === 1}
       >
         <img src={IconArrow} id="left" />
       </button>
       {pagingList.map((num) =>
-        num === offset ? (
+        num === current ? (
           <button key={num} className="text-invert surface-primary-100" id="page-active">
             {num}
           </button>
@@ -49,9 +50,9 @@ export default function Pagination({ current = 1, total = 0, onPageChange }) {
         )
       )}
       <button
-        className="surface-secondary-0"
-        onClick={() => onPageChange(offset + 1)}
-        disabled={offset === total}
+        className="icon-wrapper surface-secondary-0"
+        onClick={() => onPageChange(current + 1)}
+        disabled={current === total}
       >
         <img src={IconArrow} id="right" />
       </button>

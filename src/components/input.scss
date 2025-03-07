@@ -26,10 +26,10 @@
       cursor: pointer;
       appearance: none;
       background-color: transparent;
-      background-image: url("src/assets/images/login/visibility_off.svg");
+      background-image: url("../assets/images/login/visibility_off.svg");
     }
     > .visibility.checked {
-      background-image: url("src/assets/images/login/visibility_on.svg");
+      background-image: url("../assets/images/login/visibility_on.svg");
     }
   }
   .input-wrapper:has(input:focus) {
@@ -64,7 +64,6 @@
   }
 }
 /* Image Field */
-
 .input-field {
   > .input-images-area {
     > * {

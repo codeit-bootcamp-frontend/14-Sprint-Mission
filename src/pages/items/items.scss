@@ -10,7 +10,6 @@ main#items {
       grid-auto-flow: column;
       grid-template-columns: minmax(auto, 100%) auto auto auto;
       > button {
-        width: fit-content;
         height: 42px;
         padding: 0 23px;
       }
@@ -75,9 +74,8 @@ main#items {
   .img-wrapper {
     width: 100%;
     aspect-ratio: 1;
-    background-color: var(--secondary-300);
     overflow: hidden;
-    border: 1px solid var(--secondary-200);
+    border: 1px solid var(--secondary-300);
     border-radius: 16px;
     display: flex;
     justify-content: center;
@@ -133,12 +131,6 @@ main#items {
   > input:focus {
     outline: 0;
   }
-  > button {
-    padding: 0;
-    width: fit-content;
-    height: fit-content;
-    background-color: transparent;
-  }
   @media (width < 1200px) {
     /* Tablet */
     width: 242px;
@@ -151,8 +143,6 @@ main#items {
 #order-selector {
   position: relative;
   > div > button {
-    width: fit-content;
-    height: fit-content;
     padding: 9px;
     border-radius: 12px;
     background-color: white;

@@ -1,36 +1,23 @@
-import { useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { INITIAL_LOGIN_VALUE, logIn } from "../../apis/auth";
 import LogoImage from "../../assets/images/logo/panda-market-logo.png";
 import InputField from "../../components/InputField";
-import { useSetUser, useUser } from "../../contexts/UserContext";
+import { useSetUser } from "../../contexts/UserContext";
 import { checkValidation } from "../../utils/members";
-import PwdInput from "./components/PwdInput";
 import SocailLogin from "./components/SocialLogin";
 import "./members.scss";
 
 export default function Login() {
   const { state } = useLocation();
-  const user = useUser();
-  if (user) {
-    return <Navigate to={state || "/"} />;
-  }
-
   const setUser = useSetUser();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_LOGIN_VALUE);
   const [errData, setErrData] = useState(INITIAL_LOGIN_VALUE);
-  const [isBtnDisabled, setBtnDisabled] = useState(true);
 
-  useEffect(() => {
-    for (const name in formData) {
-      if (formData[name] === "" || errData[name].length > 0) {
-        setBtnDisabled(true);
-        return;
-      }
-    }
-    setBtnDisabled(false);
-  }, [formData, errData]);
+  const isBtnDisabled =
+    Object.values(formData).filter((value) => value.length === 0).length > 0 ||
+    Object.values(errData).filter((msg) => msg.length > 0).length > 0;
 
   function onInputChange(name, value) {
     const newValue = { ...formData, [name]: value };
@@ -41,12 +28,11 @@ export default function Login() {
 
   async function onLogin(e) {
     e.preventDefault();
-    setBtnDisabled(true);
     const datas = await logIn(formData);
     if (datas) {
       setUser(datas);
-      if (user) navigate(state || "/items");
-    } else setBtnDisabled(true);
+      navigate(state || "/items");
+    }
   }
 
   return (
@@ -58,22 +44,23 @@ export default function Login() {
       <form className="form-login display-grid justify-center gap-24" onSubmit={onLogin}>
         <InputField
           labelText="이메일"
-          name="email"
           type="email"
+          name="email"
           placeholder="이메일을 입력해주세요"
           value={formData.email}
+          errMsg={errData.email}
           onChange={onInputChange}
-        >
-          {errData.email?.length > 0 && (
-            <p className="text-error text-md text-semibold">{errData.email}</p>
-          )}
-        </InputField>
-        <PwdInput value={formData.password} onChange={onInputChange}>
-          {errData.password?.length > 0 && (
-            <p className="text-error text-md text-semibold">{errData.password}</p>
-          )}
-        </PwdInput>
-        <button type="submit" id="btn-submit" disabled={isBtnDisabled} onClick={onLogin}>
+        />
+        <InputField
+          labelText="비밀번호"
+          type="password"
+          name="password"
+          placeholder="비밀번호를 입력해주세요"
+          value={formData.password}
+          errMsg={errData.password}
+          onChange={onInputChange}
+        />
+        <button type="submit" id="btn-submit" disabled={isBtnDisabled}>
           로그인
         </button>
         <SocailLogin />

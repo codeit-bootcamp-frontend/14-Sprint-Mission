@@ -7,12 +7,6 @@ main#add-item {
       flex-wrap: wrap;
       > #tag {
         padding: 5px 12px 5px 16px;
-        > .icon-wrapper {
-          padding: 0;
-          width: fit-content;
-          height: fit-content;
-          background-color: transparent;
-        }
       }
     }
   }

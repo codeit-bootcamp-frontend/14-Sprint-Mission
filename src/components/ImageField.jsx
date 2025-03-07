@@ -3,7 +3,7 @@ import IconDelete from "../assets/images/common/ic_X.svg";
 import Compressor from "compressorjs";
 
 export default function ImageField({ labelText = "이미지", value = [], onChange, maxLength = 3 }) {
-  const [thumbnails, setThumbnails] = useState([]);
+  const [thumbnails, setThumbnails] = useState(value || []);
   const [isError, setIsError] = useState(false);
 
   function onUploadImage(e) {
@@ -82,7 +82,7 @@ export default function ImageField({ labelText = "이미지", value = [], onChan
           thumbnails.map((url, idx) => (
             <div key={idx} className="thumbnail-wrapper radius-12">
               <img src={url} alt={`${labelText} 미리보기`} />
-              <button onClick={() => onDeleteImage(idx)} id="delete">
+              <button className="icon-wrapper" onClick={() => onDeleteImage(idx)} id="delete">
                 <img src={IconDelete} alt={`${labelText} 삭제 버튼`} id="delete" />
               </button>
             </div>
