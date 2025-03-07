@@ -30,11 +30,12 @@ export default function ItemDetailComments({ productId, onBackClick }) {
   async function handleDeleteComment(id) {
     const res = await deleteComment(id);
     if (res?.id) {
-      const idx = commentDetails.list.findIndex((el) => el.id === res.id);
-      setCommentDetails((prev) => ({
+      const prev = commentDetails;
+      const idx = prev.list.findIndex((el) => el.id === res.id);
+      setCommentDetails({
         ...prev,
         list: [...prev.list.slice(0, idx), ...prev.list.slice(idx + 1)],
-      }));
+      });
     }
   }
   return (
@@ -47,7 +48,7 @@ export default function ItemDetailComments({ productId, onBackClick }) {
               key={comment.id}
               {...comment}
               onUpdate={handleUpdateComment}
-              onDelete={() => handleDeleteComment(comment.id)}
+              onDelete={handleDeleteComment}
             />
           ))}
         </div>

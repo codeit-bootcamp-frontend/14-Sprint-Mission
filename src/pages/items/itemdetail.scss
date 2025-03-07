@@ -68,6 +68,7 @@ main#item-detail {
       background-color: var(--secondary-200);
     }
     > div > #comment-item {
+      position: relative;
       padding-bottom: 12px;
       border-bottom: 1px solid #e5e7eb;
       #btn-more-comment > img {
@@ -75,6 +76,22 @@ main#item-detail {
       }
       #profile-img {
         width: 32px;
+      }
+      > #feature-box {
+        top: 34px;
+        right: 0;
+        position: absolute;
+        border: 1px solid var(--secondary-400);
+        padding: 4px 0;
+        > li {
+          min-width: 138px;
+          padding: 12px 18px;
+          height: 46px;
+          cursor: pointer;
+          color: #6b7280;
+          line-height: 26px;
+          text-align: center;
+        }
       }
     }
     > #comments-empty {
