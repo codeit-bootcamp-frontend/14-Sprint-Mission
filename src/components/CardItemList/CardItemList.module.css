@@ -14,6 +14,10 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
+.item_link {
+  
+}
+
 /*** 태블릿 반응형 */
 @media (max-width: 1199px) {
   .large_column {

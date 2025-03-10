@@ -56,14 +56,14 @@ const useItemPageState = () => {
   }, 300);
 
   const requestItems = useCallback(async () => {
-    const result = await getItems({
+    const { status, result } = await getItems({
       page: currentPageNumber,
       pageSize: currentPageSize,
       sortBy,
       keyword,
     });
 
-    if (result.status !== 520) {
+    if (status === 200) {
       setItemList(result.list);
       setTotalCount(result.totalCount);
     }

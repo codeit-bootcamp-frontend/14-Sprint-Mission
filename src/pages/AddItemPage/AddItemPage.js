@@ -54,30 +54,30 @@ const RegisterItemPage = () => {
           errorMessage="*이미지 등록은 최대 1개까지 가능합니다."
         />
         <InputField
-          label="상품명"
           id="title"
+          as="input"
+          label="상품명"
           name="title"
           type="text"
           placeholder="상품명을 입력해주세요"
-          renderElement="input"
           onChange={changeHandler}
         />
         <InputField
-          label="상품 소개"
           id="introduction"
+          as="textarea"
+          label="상품 소개"
           name="introduction"
           placeholder="상품 소개를 입력해주세요"
-          renderElement="textarea"
           onChange={changeHandler}
-          renderClassName={styles.introduction}
+          className={styles.introduction}
         />
         <InputField
-          label="판매가격"
           id="price"
+          as="input"
+          label="판매가격"
           name="price"
           type="number"
           placeholder="판매 가격을 입력해주세요"
-          renderElement="input"
           onChange={changeHandler}
         />
         <TagField

@@ -5,6 +5,7 @@ import {
   AddItemPage,
   HomePage,
   ItemsPage,
+  ItemPage,
   SigninPage,
   SignupPage,
 } from "./pages";
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route element={<MainLayout header={<NavHeader />} />}>
           <Route index path="/items" element={<ItemsPage />} />
+          <Route index path="/items/:productId" element={<ItemPage />} />
           <Route path="/additem" element={<AddItemPage />} />
         </Route>
         <Route element={<AuthLayout />}>

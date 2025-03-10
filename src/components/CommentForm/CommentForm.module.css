@@ -1,0 +1,16 @@
+.comment_textarea {
+  height: 104px;
+}
+
+.submit_button_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .comment_textarea {
+    height: 130px;
+  }
+}

@@ -1,0 +1,77 @@
+.comment_container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.comment_textarea_height {
+  height: 48px;
+}
+
+.modify_button_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+.modify_cancel_button {
+  padding: 14px 20px 7px;
+  color: var(--gray-500);
+  font: inherit;
+  cursor: pointer;
+}
+
+.modify_button {
+  padding: 8px 20px;
+  color: var(--gray-100);
+  background-color: var(--blue);
+  border-radius: 8px;
+  font: inherit;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+.modify_button:hover {
+  filter: brightness(110%);
+}
+
+.modify_button:active {
+  filter: brightness(90%);
+}
+
+.comment_wrapper {
+  display: flex;
+}
+
+.comment {
+  flex: 1;
+  line-height: 24px;
+  color: var(--gray-800);
+}
+
+.dropdown_button {
+  width: 100%;
+  height: 100%;
+  padding: 8px 42px;
+  line-height: 26px;
+  font-weight: 400;
+  color: var(--gray-500);
+  cursor: pointer;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .comment_container {
+    padding-bottom: 24px;
+  }
+
+  .dropdown_button {
+    padding: 12px 26px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

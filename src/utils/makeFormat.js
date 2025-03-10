@@ -5,3 +5,8 @@ export const makeParagraph = (textArray) => {
     return acc;
   }, []);
 };
+
+export const makeQueryString = (query) =>
+  Object.entries(query)
+    .map(([key, value]) => (value ? `${key}=${value}` : ""))
+    .join("&");

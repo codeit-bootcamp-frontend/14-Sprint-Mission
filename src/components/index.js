@@ -15,6 +15,14 @@ import Input from "./Input/Input";
 import Select from "./Select/Select";
 import Pagination from "./Pagination/Pagination";
 
+import ItemInfo from "./ItemInfo/ItemInfo";
+import ItemComment from "./ItemComment/ItemComment";
+import CommentForm from "./CommentForm/CommentForm";
+import CommentList from "./CommentList/CommentList";
+
+import Profile from "./Profile/Profile";
+import Dropdown from "./Dropdown/Dropdown";
+
 export {
   MainSection,
   WideSection,
@@ -29,4 +37,10 @@ export {
   Select,
   Input,
   Pagination,
+  ItemInfo,
+  ItemComment,
+  CommentForm,
+  CommentList,
+  Profile,
+  Dropdown,
 };
