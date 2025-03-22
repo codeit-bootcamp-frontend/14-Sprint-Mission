@@ -16,3 +16,13 @@ export async function getProducts({
 
   return body;
 }
+
+export async function getProductItem(productId) {
+  const res = await fetch(`${BASE_URL}/products/${productId}`);
+  if (!res.ok) {
+    throw new Error('상품을 불러오는데 실패했습니다.');
+  }
+  const body = await res.json();
+
+  return body;
+}

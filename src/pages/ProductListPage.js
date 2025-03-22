@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
 import Navbar from '../components/common/Navbar';
-import { getProducts } from '../api/api';
-import Product from '../components/products/Product';
 import './ProductListPage.css';
 import Select from '../components/common/Select';
 import Pagination from '../components/common/Pagination';

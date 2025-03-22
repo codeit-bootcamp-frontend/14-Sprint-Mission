@@ -6,6 +6,7 @@
   align-items: center;
   gap: 16px;
   color: var(--gray-800);
+  cursor: pointer;
 }
 
 .product-details {
