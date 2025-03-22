@@ -1,0 +1,17 @@
+.likeContainer {
+  width: 87px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  gap: 10px;
+  border: 1px solid #e5e5eb;
+  border-radius: 35px;
+  color: #6b7280;
+}
+
+.count {
+  font-weight: 500;
+  font-size: 16px;
+}
