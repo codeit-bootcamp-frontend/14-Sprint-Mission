@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "../api/api";
+import { getProduct } from "../api/getProduct";
 
 export const useProducts = ({ page, orderBy, placeHolderCount, value }) => {
   const [product, setProduct] = useState([]);
