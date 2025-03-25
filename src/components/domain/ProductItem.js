@@ -10,8 +10,6 @@ function ProductItem({ item }) {
     return <div>Loading...</div>;
   }
 
-  console.log('item', item);
-
   const {
     createdAt,
     description,

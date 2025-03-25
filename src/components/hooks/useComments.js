@@ -9,11 +9,11 @@ function useComments(productId, limit, cursor) {
   const handleLoad = async () => {
     setLoading(true);
     try {
-      const res = await productService.getProduct(productId, limit, cursor);
-      const data = res.data;
+      const res = await productService.getComments(productId, limit, cursor);
+      const data = res.data.list;
       setComments(data);
     } catch (error) {
-      console.error('Error fetching product:', error);
+      console.error('Error fetching comments:', error);
       setError(error);
     } finally {
       setLoading(false);
