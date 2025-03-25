@@ -1,4 +1,4 @@
-function Message() {
+function CommentList() {
   return (
     <div>
       <div></div>
@@ -6,4 +6,4 @@ function Message() {
   );
 }
 
-export default Message;
+export default CommentList;

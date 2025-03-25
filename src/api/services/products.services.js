@@ -10,6 +10,15 @@ class ProductService {
   getProduct(id) {
     return requestor.get(`/products/${id}`);
   }
+
+  getComments(productId, limit = 3, cursor = 0) {
+    return requestor.get(`/products/${productId}/comments`, {
+      params: {
+        limit,
+        cursor,
+      },
+    });
+  }
 }
 
 const productService = new ProductService();
