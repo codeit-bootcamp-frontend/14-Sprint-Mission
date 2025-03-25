@@ -10,21 +10,24 @@ function ProductItem({ item }) {
     return <div>Loading...</div>;
   }
 
+  console.log('item', item);
+
   const {
     createdAt,
     description,
     favoriteCount,
     id,
-    images,
+    images = [],
     isFavorite,
     name,
     ownerId,
     ownerNickname,
     price,
-    tags,
+    tags = [],
     updatedAt,
   } = item;
-  const formatPrice = price.toLocaleString('ko-KR');
+
+  const formatPrice = price?.toLocaleString('ko-KR');
   const createDate = formatDate(createdAt);
 
   return (
