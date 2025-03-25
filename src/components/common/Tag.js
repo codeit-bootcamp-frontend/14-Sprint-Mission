@@ -1,13 +1,15 @@
-import "./Tag.css";
-import { IoIosCloseCircle } from "react-icons/io";
+import './Tag.css';
+import { IoIosCloseCircle } from 'react-icons/io';
 
-function Tag({ name, onClick }) {
+function Tag({ name, onClick, closeFalse }) {
   return (
     <div className="tag-box">
       <span className="tag-name">#{name}</span>
-      <button className="remove-tag-button" onClick={onClick}>
-        <IoIosCloseCircle size={20} />
-      </button>
+      {closeFalse ?? (
+        <button className="remove-tag-button" onClick={onClick}>
+          <IoIosCloseCircle size={20} />
+        </button>
+      )}
     </div>
   );
 }

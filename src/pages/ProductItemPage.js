@@ -26,8 +26,8 @@ function ProductItemPage() {
   return (
     <div>
       <Navbar isLoggedIn={true} />
-      <main className="productItem">
-        <ProductItem item={item} />
+      <main className="ProductPage">
+        <ProductItem className="productItem" item={item} />
       </main>
     </div>
   );
