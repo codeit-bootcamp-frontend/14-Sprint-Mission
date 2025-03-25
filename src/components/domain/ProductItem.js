@@ -7,7 +7,7 @@ import OptionsIcon from '../../assets/icons/options.svg';
 
 function ProductItem({ item }) {
   if (!item) {
-    return <div>Loading or No Product Data</div>;
+    return <div>Loading...</div>;
   }
 
   const {
