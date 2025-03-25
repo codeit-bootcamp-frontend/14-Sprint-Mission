@@ -6,30 +6,17 @@ import Navbar from '../components/common/Navbar';
 import ProductItem from '../components/domain/ProductItem';
 import TextArea from '../components/common/TextArea';
 import Button from '../components/common/Button';
+import useProduct from '../components/hooks/useProduct';
 
 function ProductItemPage() {
   const { id } = useParams();
-  const [item, setItem] = useState();
-
-  useEffect(() => {
-    const handleLoad = async () => {
-      try {
-        const body = await getProductItem(id);
-        console.log('body', body);
-        setItem(body);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    handleLoad();
-  }, []);
+  const { product, loading, error, refetch } = useProduct(id);
 
   return (
     <div>
       <Navbar isLoggedIn={true} />
       <main className="ProductPage">
-        <ProductItem item={item} />
+        <ProductItem item={product} />
         <div className="inquiryContainer">
           <TextArea
             label="문의하기"
