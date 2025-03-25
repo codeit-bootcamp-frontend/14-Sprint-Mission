@@ -3,7 +3,6 @@
   display: flex;
   align-items: start;
   gap: 24px;
-  margin: 24px;
   padding-bottom: 45px;
   border-bottom: 1px solid var(--gray-200);
 
@@ -48,6 +47,11 @@
   position: absolute;
   right: 0;
   cursor: pointer;
+  border-radius: 100%;
+}
+
+.optionsIcon:hover {
+  background-color: var(--gray-200);
 }
 
 .productTitle {
