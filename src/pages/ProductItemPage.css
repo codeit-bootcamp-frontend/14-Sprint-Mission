@@ -17,8 +17,3 @@
   flex-direction: column;
   margin-top: 40px;
 }
-
-.buttonContainer {
-  display: flex;
-  justify-content: end;
-}

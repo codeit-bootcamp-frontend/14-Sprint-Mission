@@ -21,3 +21,18 @@ export function formatDate(isoDateString) {
     return '';
   }
 }
+
+export function getTimeDifference(updatedAt) {
+  const updatedAtDate = new Date(updatedAt);
+  const now = new Date();
+
+  const timeDifferenceInMilliseconds = now - updatedAtDate;
+  const timeDifferenceInHours = timeDifferenceInMilliseconds / (1000 * 60 * 60);
+
+  if (timeDifferenceInHours < 24) {
+    return Math.floor(timeDifferenceInHours) + '시간 전';
+  } else {
+    const timeDifferenceInDays = timeDifferenceInHours / 24;
+    return Math.floor(timeDifferenceInDays) + '일 전';
+  }
+}

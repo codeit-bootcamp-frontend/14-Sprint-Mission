@@ -1,0 +1,25 @@
+.commentDropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  right: 0;
+  top: 44px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-500);
+}
+
+.commentDropdown li {
+  padding: 12px 40px;
+}
+
+.commentDropdown li:hover {
+  background-color: var(--gray-200);
+  cursor: pointer;
+}

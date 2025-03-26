@@ -13,3 +13,8 @@
 .button:hover {
   background-color: var(--blue);
 }
+
+.button:disabled {
+  cursor: auto;
+  background-color: var(--gray-400);
+}

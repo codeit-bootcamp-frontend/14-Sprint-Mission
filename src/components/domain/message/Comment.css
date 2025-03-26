@@ -1,0 +1,59 @@
+.commentContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 12px 0;
+}
+
+.commentBox {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--gray-800);
+}
+
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nickname,
+.commentTime {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--gray-600);
+}
+
+.commentTime {
+  color: var(--gray-400);
+}
+
+.editButtonContainer {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: end;
+  gap: 4px;
+}
+
+.cancelButton {
+  width: 68px;
+  height: 47px;
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: var(--gray-500);
+  cursor: pointer;
+}

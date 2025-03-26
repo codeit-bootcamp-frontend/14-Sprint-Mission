@@ -4,6 +4,7 @@ import Navbar from '../components/common/Navbar';
 import ProductItem from '../components/domain/ProductItem';
 import useProduct from '../components/hooks/useProduct';
 import CommentList from '../components/domain/message/CommentList';
+import ReturnButton from '../components/common/ReturnButton';
 
 function ProductItemPage() {
   const { id } = useParams();
@@ -16,6 +17,7 @@ function ProductItemPage() {
         <main className="ProductPage">
           <ProductItem item={product} />
           <CommentList productId={id} />
+          <ReturnButton>목록으로 돌아가기</ReturnButton>
         </main>
       )}
     </div>
