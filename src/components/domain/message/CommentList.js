@@ -4,6 +4,7 @@ import Button from '../../common/Button';
 import TextArea from '../../common/TextArea';
 import useComments from '../../hooks/useComments';
 import Comment from './Comment';
+import NoComment from './NoComment';
 
 function CommentList({ productId }) {
   const { comments, loading, refetch } = useComments(productId);
@@ -20,7 +21,6 @@ function CommentList({ productId }) {
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
   };
-
   return (
     <div>
       <div className="inquiryContainer">
@@ -40,6 +40,7 @@ function CommentList({ productId }) {
           </Button>
         </div>
       </div>
+      {!comments.length && <NoComment />}
       {!loading &&
         comments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
