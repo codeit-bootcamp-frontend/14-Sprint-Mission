@@ -3,15 +3,16 @@ import styles from "../styles/comment.module.scss";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import DropDownMenu from "./DropDownMenu";
 import Edit from "./Edit";
+import { CommentType } from "./ProductDetail";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment }: { comment: CommentType }) => {
   const [push, setPush] = useState(false);
   const [edit, setEdit] = useState(false);
 
   return (
     <div className={styles["wrapper"]}>
       {edit ? (
-        <Edit content={comment.content} setEdit={setEdit} setPush={setPush}/>
+        <Edit content={comment.content} setEdit={setEdit} setPush={setPush} />
       ) : (
         <div className={styles["content-wrap"]}>
           <span className={styles["content"]}>{comment.content}</span>

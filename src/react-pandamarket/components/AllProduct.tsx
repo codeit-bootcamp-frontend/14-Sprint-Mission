@@ -5,7 +5,11 @@ import AllProductHeader from "./AllProductHeader";
 import { useProducts } from "../hooks/useProducts";
 import Pagination from "./Pagination";
 
-const AllProduct = ({ allPlaceHolderCount }) => {
+const AllProduct = ({
+  allPlaceHolderCount,
+}: {
+  allPlaceHolderCount: number;
+}) => {
   const [showPagination, setShowPagination] = useState(0);
   const [clickedPage, setClickedPage] = useState(1);
   const [pageNum, setPageNum] = useState(1);

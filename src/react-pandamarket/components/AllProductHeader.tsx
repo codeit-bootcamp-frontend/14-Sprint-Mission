@@ -3,7 +3,12 @@ import "../styles/body.css";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-const AllProductHeader = ({ setSearchValue, setOption }) => {
+interface Props {
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+  setOption: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const AllProductHeader = ({ setSearchValue, setOption }:Props) => {
   return (
     <>
       {/* 전체 상품 헤더 */}
@@ -17,9 +22,9 @@ const AllProductHeader = ({ setSearchValue, setOption }) => {
               type="search"
               placeholder="검색할 상품을 입력해주세요"
               className="search-input"
-              onKeyDown={(event) => {
+              onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
                 if (event.key === "Enter") {
-                  setSearchValue(event.target.value);
+                  setSearchValue(event.currentTarget.value);
                 }
               }}
             />

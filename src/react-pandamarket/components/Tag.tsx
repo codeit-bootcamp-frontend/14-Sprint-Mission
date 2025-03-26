@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "../styles/tag.module.scss";
 
-const Tag = ({ tags, setTag }) => {
-  const deleteTag = (index) => {
+interface Props {
+  tags: string[];
+  setTag: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const Tag = ({ tags, setTag }: Props) => {
+  const deleteTag = (index: number) => {
     setTag((prevtag) => prevtag.filter((_, i) => i !== index));
   };
 

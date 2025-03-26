@@ -7,21 +7,50 @@ import styles from "../styles/productDetail.module.scss";
 import Ask from "./Ask";
 import Comment from "./Comment";
 
+export interface ProductDetailType {
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: number;
+  images: string[];
+  tags: string[];
+  price: number;
+  description: string;
+  name: string;
+  id: number;
+  isFavorite: boolean;
+}
+
+export interface CommentType {
+  writer: {
+    image: string;
+    nickname: string;
+    id: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+  content: string;
+  id: number;
+}
+
 const ProductDetail = () => {
-  const { productId } = useParams();
-  const [productDetail, setProductDetail] = useState([]);
+  const { productId } = useParams<{ productId: string }>();
+  const [productDetail, setProductDetail] = useState<ProductDetailType | null>(
+    null
+  );
   const [cursor, setCursor] = useState(0);
-  const [comments, setComment] = useState([]);
+  const [comments, setComment] = useState<CommentType[]>([]);
   const [limit, setLimit] = useState(10);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!productId) return;
     getDetail(productId).then((data) => {
-      setProductDetail(data);
+      setProductDetail(data as ProductDetailType);
     });
-    comment(productId, limit, cursor).then((data) => {
-      setCursor(data.nextCursor);
+    comment({ productId, limit, cursor }).then((data) => {
+      setCursor(data.nextCursor ?? 0);
       setComment(data.comments);
     });
   }, []);

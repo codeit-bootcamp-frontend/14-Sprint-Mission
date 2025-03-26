@@ -5,7 +5,7 @@ interface Props {
   page: number;
   orderBy: string;
   placeHolderCount: number;
-  value: string;
+  value?: string;
 }
 
 export const useProducts = ({

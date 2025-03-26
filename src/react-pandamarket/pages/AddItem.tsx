@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import Header from "../components/Header";
 import styles from "../styles/addItem.module.scss";
 import TextInput from "../components/TextInput";
@@ -14,14 +14,14 @@ import {
 import Tag from "../components/Tag";
 
 const AddItem = () => {
-  const [preview, setPreview] = useState(null);
-  const fileRef = useRef(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
   const [manyImage, setManyImage] = useState(false);
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState<string[]>([]);
   const [productName, setProductName] = useState("");
   const [productIntro, setProductIntro] = useState("");
   const [productPrice, setProductPrice] = useState(0);
-  const [tag, setTag] = useState([]);
+  const [tag, setTag] = useState<string[]>([]);
   const isReady =
     productName.trim() !== "" &&
     productIntro.trim() !== "" &&
@@ -34,12 +34,13 @@ const AddItem = () => {
   console.log(` 태그: ${tag}`);
   console.log(isReady);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (image.length >= 1) {
       setManyImage(true);
       return;
     } else {
-      const file = e.target.files[0];
+      const file = e.target.files?.[0];
+      if (!file) return;
       const fileURL = URL.createObjectURL(file);
       setPreview(fileURL);
       setImage([...image, fileURL]);

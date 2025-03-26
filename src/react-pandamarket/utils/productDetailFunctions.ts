@@ -1,8 +1,5 @@
 import { ApiError, getProductDetail, Response } from "../api/getProductdetail";
-import {
-  Comment,
-  getComment,
-} from "../api/getComment";
+import { getComment } from "../api/getComment";
 
 // 상품 세부 정보 가져오기
 export async function getDetail(
@@ -27,24 +24,30 @@ interface commentReturn {
   }[];
 }
 
+interface Comment {
+  productId: string;
+  limit: number;
+  cursor: number;
+}
+
 // 문의 댓글 가져오기
 export async function comment({
   productId,
   limit,
   cursor,
 }: Comment): Promise<commentReturn> {
-  const response = await getComment({ productId, limit, cursor });
-  
+  const productIdNum = Number(productId);
+  const response = await getComment({ productId: productIdNum, limit, cursor });
+
   if (response && "list" in response) {
-     return {
-       nextCursor: response.nextCursor,
-       comments: response.list,
-     };
+    return {
+      nextCursor: response.nextCursor,
+      comments: response.list,
+    };
   }
 
-   return {
-     nextCursor: 0,
-     comments: [],
-   };
- 
+  return {
+    nextCursor: 0,
+    comments: [],
+  };
 }
