@@ -32,7 +32,7 @@
   left: 0;
   width: 240px;
   height: 48px;
-  background-color: var(--gray-400);
+  background-color: var(--blue);
   border-radius: 10rem;
   z-index: -2;
 }
@@ -44,7 +44,7 @@
   left: 0;
   width: 0%;
   height: 48px;
-  background-color: var(--blue);
+  background-color: var(--blue-100);
   transition: all 0.3s;
   border-radius: 10rem;
   z-index: -1;
