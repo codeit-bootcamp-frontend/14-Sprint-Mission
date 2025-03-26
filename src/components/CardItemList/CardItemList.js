@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 import CardItem from "../CardItem/CardItem";
 
@@ -17,7 +18,9 @@ const CardItemList = ({ itemList, columnSize = "large", className }) => {
       ])}
     >
       {itemList?.map((item) => (
-        <CardItem key={item.id} imgSrc={item.images[0]} {...item} />
+        <Link key={item.id} to={`/items/${item.id}`}>
+          <CardItem imgSrc={item.images[0]} {...item} />
+        </Link>
       ))}
     </ul>
   );

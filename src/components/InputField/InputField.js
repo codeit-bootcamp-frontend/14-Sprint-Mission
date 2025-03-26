@@ -15,8 +15,9 @@ const InputField = ({
   renderDisabledIcon,
   onChange,
   onBlur,
-  renderElement: RenderElement = "input",
-  renderClassName,
+  as: RenderElement = "input",
+  className,
+  ...props
 }) => {
   const [isExistIcon, setIsExistIcon] = useState(false);
 
@@ -38,10 +39,11 @@ const InputField = ({
           id={id}
           type={convertableTypeForPassword}
           name={name}
-          className={clsx([styles.field_input, renderClassName])}
+          className={clsx([styles.field_input, className])}
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
+          {...props}
         />
         {postfixIcon && (
           <button

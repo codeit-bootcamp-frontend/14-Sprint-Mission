@@ -5,7 +5,7 @@ import styles from "./Field.module.css";
 const Field = ({ children, id, label, errorMessage, className }) => {
   return (
     <label htmlFor={id} className={className}>
-      <span className={styles.field_label}>{label}</span>
+      {label && <span className={styles.field_label}>{label}</span>}
       <div
         className={clsx([
           styles.field_content_box,

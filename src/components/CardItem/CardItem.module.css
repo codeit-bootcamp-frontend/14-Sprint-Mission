@@ -2,7 +2,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   margin-bottom: 16px;
-  border: 1px solid var(--gray-900);
+  border: 1px solid var(--gray-200);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -11,6 +11,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover .item_image {
+  transform: scale(1.1);
 }
 
 .title {

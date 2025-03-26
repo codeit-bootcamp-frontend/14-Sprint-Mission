@@ -1,0 +1,31 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+.container .divider {
+  margin: 40px 0;
+  border: 1px solid var(--gray-200);
+}
+
+@media (max-width: 1199px) {
+  .container {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .container .divider {
+    margin: 32px 0 40px 0;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .container .divider {
+    margin: 24px 0;
+  }
+}
