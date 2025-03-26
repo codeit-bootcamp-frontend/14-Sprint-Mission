@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Children, useRef } from "react";
+import { Children } from "react";
 
 import {
   DropdownProvider,
@@ -20,8 +20,7 @@ const DropdownProviderWrapper = ({ renderButton, children }) => {
 
 const DropdownRoot = ({ children, renderButton, className }) => {
   const { setIsOpen } = useDropdownAction();
-  const buttunRef = useRef(null);
-  useOutsideClick(buttunRef, () => setIsOpen(false));
+  const buttunRef = useOutsideClick(() => setIsOpen(false));
 
   return (
     <div

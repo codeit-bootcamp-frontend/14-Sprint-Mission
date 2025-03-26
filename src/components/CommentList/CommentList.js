@@ -11,7 +11,7 @@ import styles from "./CommentList.module.css";
 const CommentList = ({ productId }) => {
   const {
     data: itemComments,
-    isLoading,
+    // isLoading,
     fetchData,
   } = useFetchData(getItemComments, {
     productId,
@@ -38,28 +38,27 @@ const CommentList = ({ productId }) => {
         )}
       />
       <ul className={styles.comment_list_container}>
-        {(!itemComments || itemComments?.list.length === 0) && (
+        {!itemComments?.list.length && (
           <div className={styles.empty_comment}>
             <img src={emptyImage} alt="empty" />
             <p>아직 문의가 없어요</p>
           </div>
         )}
 
-        {itemComments &&
-          itemComments.list.map(
-            ({ id, content, writer, createdAt, updatedAt }) => (
-              <Comment
-                key={id}
-                commentId={id}
-                content={content}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-                writerId={writer.id}
-                writerImage={writer.image}
-                writerNickname={writer.nickname}
-              />
-            )
-          )}
+        {itemComments?.list?.map(
+          ({ id, content, writer, createdAt, updatedAt }) => (
+            <Comment
+              key={id}
+              commentId={id}
+              content={content}
+              createdAt={createdAt}
+              updatedAt={updatedAt}
+              writerId={writer.id}
+              writerImage={writer.image}
+              writerNickname={writer.nickname}
+            />
+          )
+        )}
       </ul>
     </>
   );
