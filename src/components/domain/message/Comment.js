@@ -1,5 +1,5 @@
 import './Comment.css';
-import { formatDate, getTimeDifference } from '../../../utils/date';
+import { getTimeDifference } from '../../../utils/date';
 import profileImg from '../../../assets/user.png';
 import OptionsIcon from '../../../assets/icons/options.svg';
 import { useEffect, useRef, useState } from 'react';
@@ -11,9 +11,9 @@ function Comment({ comment }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const dropdownRef = useRef();
-  const { content, updatedAt, id, writer } = comment;
+  const { content, updatedAt, writer } = comment;
   const [newComment, setNewComment] = useState(content);
-  const { id: writerId, image, nickname } = writer;
+  const { image, nickname } = writer;
 
   const commentTime = getTimeDifference(updatedAt);
 

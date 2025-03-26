@@ -6,7 +6,7 @@ import useComments from '../../hooks/useComments';
 import Comment from './Comment';
 
 function CommentList({ productId }) {
-  const { comments, loading, error, refetch } = useComments(productId);
+  const { comments, loading, refetch } = useComments(productId);
   const [newComment, setNewComment] = useState('');
 
   const handleAddCommentClick = async () => {

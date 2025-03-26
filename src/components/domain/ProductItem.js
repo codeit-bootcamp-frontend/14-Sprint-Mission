@@ -14,15 +14,15 @@ function ProductItem({ item }) {
     createdAt,
     description,
     favoriteCount,
-    id,
+    // id,
     images = [],
-    isFavorite,
+    // isFavorite,
     name,
-    ownerId,
+    // ownerId,
     ownerNickname,
     price,
     tags = [],
-    updatedAt,
+    // updatedAt,
   } = item;
 
   const formatPrice = price?.toLocaleString('ko-KR');
