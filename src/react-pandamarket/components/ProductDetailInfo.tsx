@@ -3,8 +3,9 @@ import styles from "../styles/productDetailItem.module.scss";
 import tagStyles from "../styles/tag.module.scss";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
+import { ProductDetailType } from "./ProductDetail";
 
-const ShowTag = ({ tags = [] }) => {
+const ShowTag = ({ tags = [] }: { tags: string[] }) => {
   return (
     <div className={tagStyles["tag-body"]}>
       {tags.map((tag, index) => (
@@ -16,15 +17,20 @@ const ShowTag = ({ tags = [] }) => {
   );
 };
 
-const ProductDetailInfo = ({ productDetail }) => {
+interface Prop {
+  productDetail: ProductDetailType | null;
+}
+
+const ProductDetailInfo = ({ productDetail }: Prop) => {
   console.log(productDetail);
+  if (!productDetail) return;
   const date = new Date(productDetail.createdAt)
     .toLocaleDateString("ko-KR")
     .replace(/-/g, ".");
 
   return (
     <div className={styles["wrapper"]}>
-      <img src={productDetail.images} alt="상품 이미지" />
+      <img src={productDetail.images[0]} alt="상품 이미지" />
 
       <div className={styles["infoWrapper"]}>
         <div className={styles["title"]}>

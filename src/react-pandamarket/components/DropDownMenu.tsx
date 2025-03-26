@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "../styles/comment.module.scss";
 
-const DropDownMenu = ({ setEdit }) => {
+interface Prop {
+  setEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const DropDownMenu = ({ setEdit }: Prop) => {
   return (
     <div className={styles["dropdownmenu"]}>
       <div className={styles["edit"]} onClick={() => setEdit(true)}>

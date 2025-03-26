@@ -1,7 +1,13 @@
 import React from "react";
 import "../styles/paginationButton.css";
 
-const PaginationButton = ({ pageNumber, isClicked, onClick }) => {
+interface Props {
+  pageNumber:number;
+  isClicked:boolean;
+  onClick: () => void;
+}
+
+const PaginationButton = ({ pageNumber, isClicked, onClick }:Props) => {
 
   return (
     <>

@@ -3,12 +3,16 @@ import "../styles/body.css";
 import Card from "./Card";
 import { useProducts } from "../hooks/useProducts";
 
-const BestProduct = ({ bestPlaceHolderCount }) => {
-   const { product: bestProduct } = useProducts({
-      page: 1,
-      orderBy: "favorite",
-      placeHolderCount: bestPlaceHolderCount,
-    });
+const BestProduct = ({
+  bestPlaceHolderCount,
+}: {
+  bestPlaceHolderCount: number;
+}) => {
+  const { product: bestProduct } = useProducts({
+    page: 1,
+    orderBy: "favorite",
+    placeHolderCount: bestPlaceHolderCount,
+  });
 
   return (
     <>

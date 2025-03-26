@@ -4,6 +4,15 @@ import { IoIosArrowForward } from "react-icons/io";
 import "../styles/body.css";
 import PaginationButton from "./PaginationButton";
 
+interface Props {
+  setShowPagination: React.Dispatch<React.SetStateAction<number>>;
+  showPagination: number;
+  setClickedPage: React.Dispatch<React.SetStateAction<number>>;
+  setPageNum: React.Dispatch<React.SetStateAction<number>>;
+  clickedPage: number;
+  paginationNum: number[];
+}
+
 const Pagination = ({
   setShowPagination,
   showPagination,
@@ -11,7 +20,7 @@ const Pagination = ({
   setPageNum,
   clickedPage,
   paginationNum,
-}) => {
+}: Props) => {
   // 뒤로가기 버튼 클릭
   const goBack = () => {
     setShowPagination((prevNum) => Math.max(prevNum - 5, 0));
@@ -25,7 +34,7 @@ const Pagination = ({
   };
 
   // 페이지네이션 버튼 클릭해서 불러오는 값 바꾸기
-  const buttonClick = (num) => {
+  const buttonClick = (num: number) => {
     // 클릭한 버튼 색을 위한 상태 변경
     setClickedPage(() => num);
     // page 숫자를 변경해서 서버로 보내기 위한 상태 변경
