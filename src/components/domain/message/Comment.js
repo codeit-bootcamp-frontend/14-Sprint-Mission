@@ -10,46 +10,38 @@ import Button from '../../common/Button';
 function Comment({ comment }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const dropdownRef = useRef();
   const { content, updatedAt, writer } = comment;
   const [newComment, setNewComment] = useState(content);
   const { image, nickname } = writer;
-
   const commentTime = getTimeDifference(updatedAt);
+  const dropdownItems = [
+    { label: '수정하기', onClick: () => handleEditClick() },
+    { label: '삭제하기', onClick: () => handleDeleteClick() },
+  ];
 
+  // dropdown 열기/닫기
   const handleOptionClick = () => {
     setIsOptionsOpen((prev) => !prev);
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOptionsOpen(false);
-      }
-    };
-
-    if (isOptionsOpen) {
-      window.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      window.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOptionsOpen]);
-
+  // dropdown 닫기
+  const handleDropdownClose = () => {
+    setIsOptionsOpen(false);
+    console.log('close');
+  };
+  // comment 수정
   const handleEditClick = () => {
     setIsEditing(true);
     setIsOptionsOpen(false);
   };
-
+  // comment 삭제
   const handleDeleteClick = () => {
     setIsOptionsOpen(false);
   };
-
+  // comment 저장
   const handleSaveClick = () => {
     setIsEditing(false);
   };
-
+  // comment 수정 취고
   const handleCancelClick = () => {
     setIsEditing(false);
   };
@@ -92,13 +84,11 @@ function Comment({ comment }) {
           onClick={() => handleOptionClick()}
         />
       )}
-      {isOptionsOpen && (
-        <Dropdown
-          onEditClick={() => handleEditClick()}
-          onDeleteClick={() => handleDeleteClick()}
-          dropdownRef={dropdownRef}
-        />
-      )}
+      <Dropdown
+        items={dropdownItems}
+        isOpen={isOptionsOpen}
+        onClose={handleDropdownClose}
+      />
     </div>
   );
 }
