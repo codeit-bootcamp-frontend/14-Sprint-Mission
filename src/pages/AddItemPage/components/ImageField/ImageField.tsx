@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { ChangeEvent, FocusEvent, useRef, useState } from "react";
 
-import XIcon from "../../assets/icons/ic_X.svg";
-import PlusIcon from "../../assets/icons/ic_plus.svg";
+import XIcon from "@/assets/icons/ic_X.svg";
+import PlusIcon from "@/assets/icons/ic_plus.svg";
 import styles from "./ImageField.module.css";
 
 type ImageFieldProps = {

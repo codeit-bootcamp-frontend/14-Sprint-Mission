@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { WideSection, MainSection } from "@/components/index";
+import { WideSection, MainSection } from "./components/index";
 
 import HeroImage from "@/assets/imgs/img_home_top.png";
 import Home01Image from "@/assets/imgs/img_home_01.png";

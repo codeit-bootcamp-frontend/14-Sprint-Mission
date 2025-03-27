@@ -1,8 +1,9 @@
 import clsx from "clsx";
 
-import { dateFormatter } from "../../utils/formatter";
+import { dateFormatter } from "@/utils/formatter";
 
-import DefaultProfileIcon from "../../assets/icons/default_profile.svg";
+import DefaultProfileIcon from "@/assets/icons/default_profile.svg";
+
 import styles from "./Profile.module.css";
 
 type ProfileProps = {

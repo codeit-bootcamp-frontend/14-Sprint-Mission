@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
 
-import InputField from "../InputField/InputField";
+import { InputField } from "@/components/index";
 
 import styles from "./CommentForm.module.css";
 

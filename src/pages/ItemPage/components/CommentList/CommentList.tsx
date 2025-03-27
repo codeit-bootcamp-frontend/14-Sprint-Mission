@@ -1,13 +1,14 @@
-import { CommentResponseType } from "@/types/comment";
 import { getItemComments } from "@/api/comment";
+import { CommentResponseType } from "@/types/comment";
 import useFetchData from "@/hooks/useFetchData";
 import Comment from "../Comment/Comment";
 import CommentForm from "../CommentForm/CommentForm";
 
 import emptyImage from "@/assets/imgs/img_inquiry_empty.png";
+
 import styles from "./CommentList.module.css";
 
-type CommentListProps = { productId: string };
+type CommentListProps = { productId?: string };
 
 const CommentList = ({ productId }: CommentListProps) => {
   const {

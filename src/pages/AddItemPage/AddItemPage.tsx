@@ -1,8 +1,9 @@
 import { FormEvent, KeyboardEvent } from "react";
 
 import useForm from "@/hooks/useForm";
-import { InputField, ImageField, TagField } from "@/components/index";
+import { InputField } from "@/components/index";
 import { addItemSchema } from "@/schema/additem";
+import { ImageField, TagField } from "./components/index";
 
 import styles from "./AddItemPage.module.css";
 

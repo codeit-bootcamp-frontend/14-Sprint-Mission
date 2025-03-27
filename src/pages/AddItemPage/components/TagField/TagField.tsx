@@ -1,9 +1,9 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 
-import Field from "../Field/Field";
 import { ComprehensiveEvent } from "@/hooks/useForm";
+import { Field } from "@/components/index";
 
-import XIcon from "../../assets/icons/ic_X.svg";
+import XIcon from "@/assets/icons/ic_X.svg";
 
 import styles from "./TagField.module.css";
 

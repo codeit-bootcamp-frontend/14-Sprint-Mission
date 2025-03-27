@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import Profile from "../Profile/Profile";
-import Dropdown from "../Dropdown/Dropdown";
-import { CommentForm } from "@/pages/ItemPage/components";
+import { Profile, Dropdown } from "@/components/index";
+import CommentForm from "../CommentForm/CommentForm";
 
 import { ReactComponent as KebabIcon } from "@/assets/icons/ic_kebab.svg";
 

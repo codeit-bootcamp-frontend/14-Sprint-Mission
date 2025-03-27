@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
 
-import { makeParagraph } from "../../utils/makeFormat";
+import { makeParagraph } from "@/utils/makeFormat";
 
 import styles from "./MainSection.module.css";
 

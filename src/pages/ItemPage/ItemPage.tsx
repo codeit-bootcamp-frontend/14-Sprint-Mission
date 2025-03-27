@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { ItemComment, ItemInfo } from "@/components/index";
+import { ItemComment, ItemInfo } from "./components/index";
 
 import styles from "./ItemPage.module.css";
 

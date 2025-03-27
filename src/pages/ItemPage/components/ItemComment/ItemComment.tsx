@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import CommentList from "../CommentList/CommentList";
 
+import { CommentList } from "../index";
 import { ROUTE } from "@/constants/route";
 
 import { ReactComponent as ReturnIcon } from "@/assets/icons/ic_back.svg";
+
 import styles from "./ItemComment.module.css";
 
 type ItemCommentProps = { productId?: string };

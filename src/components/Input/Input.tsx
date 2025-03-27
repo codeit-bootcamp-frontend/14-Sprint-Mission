@@ -5,7 +5,7 @@ import styles from "./Input.module.css";
 
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "prefix"> {
-  prefix: ReactNode;
+  prefix?: ReactNode;
 }
 
 const Input = ({ prefix, className, ...props }: InputProps) => {

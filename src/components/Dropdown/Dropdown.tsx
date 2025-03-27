@@ -6,7 +6,7 @@ import {
   useDropdownValue,
   useDropdownAction,
 } from "./context/DropdownContext";
-import useOutsideClick from "../../hooks/useOutsideClick";
+import useOutsideClick from "@/hooks/useOutsideClick";
 
 import styles from "./Dropdown.module.css";
 

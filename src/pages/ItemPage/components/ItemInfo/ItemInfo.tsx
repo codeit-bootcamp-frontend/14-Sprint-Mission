@@ -1,13 +1,14 @@
-import { getItem } from "../../api/item";
-import useFetchData from "../../hooks/useFetchData";
-import { numberFormatter } from "../../utils/formatter";
-import Profile from "../Profile/Profile";
+import { getItem } from "@/api/item";
+import { ProductType } from "@/types/product";
+import { numberFormatter } from "@/utils/formatter";
+import useFetchData from "@/hooks/useFetchData";
+import { Profile } from "@/components/index";
 import ItemInfoSkeleton from "./ItemInfoSkeleton";
 
-import { ReactComponent as HeartIcon } from "../../assets/icons/ic_heart.svg";
-import { ReactComponent as KebabIcon } from "../../assets/icons/ic_kebab.svg";
+import { ReactComponent as HeartIcon } from "@/assets/icons/ic_heart.svg";
+import { ReactComponent as KebabIcon } from "@/assets/icons/ic_kebab.svg";
+
 import styles from "./ItemInfo.module.css";
-import { ProductType } from "@/types/product";
 
 type ItemInfoProps = { productId?: string };
 

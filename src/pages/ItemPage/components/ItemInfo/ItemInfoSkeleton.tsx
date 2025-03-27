@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import Profile from "../Profile/Profile";
+import { Profile } from "@/components/index";
 
 import { ReactComponent as KebabIcon } from "@/assets/icons/ic_kebab.svg";
 import { ReactComponent as HeartIcon } from "@/assets/icons/ic_heart.svg";

@@ -1,6 +1,6 @@
-import { numberFormatter } from "../../utils/formatter";
+import { numberFormatter } from "@/utils/formatter";
 
-import HeartIcon from "../../assets/icons/ic_heart.svg";
+import HeartIcon from "@/assets/icons/ic_heart.svg";
 
 import styles from "./CardItem.module.css";
 
