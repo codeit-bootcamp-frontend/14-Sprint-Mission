@@ -1,11 +1,13 @@
-import "./Product.css";
-import { CiHeart } from "react-icons/ci";
-import defaultImage from "../assets/panda1.png";
-import { useState } from "react";
+import './Product.css';
+import { CiHeart } from 'react-icons/ci';
+import defaultImage from '../../assets/panda1.png';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Product({ product }) {
+  const navigate = useNavigate();
   const { id, images, name, price, favoriteCount } = product;
-  const formatPrice = price.toLocaleString("ko-KR");
+  const formatPrice = price.toLocaleString('ko-KR');
   const [imageSrc, setImageSrc] = useState(images[0]);
 
   // 이미지 에러시 기본 이미지 사용
@@ -13,8 +15,12 @@ function Product({ product }) {
     setImageSrc(defaultImage);
   };
 
+  const handleClick = () => {
+    navigate(`/items/${id}`);
+  };
+
   return (
-    <div className="product">
+    <div className="product" onClick={() => handleClick()}>
       <img
         className="product-image"
         src={imageSrc}

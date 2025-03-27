@@ -1,11 +1,11 @@
-import "./Navbar.css";
-import logo from "../assets/logo.png";
-import userIcon from "../assets/user.png";
-import { Link, NavLink } from "react-router";
+import './Navbar.css';
+import logo from '../../assets/logo.png';
+import userIcon from '../../assets/user.png';
+import { Link, NavLink } from 'react-router';
 
 function getLinkStyle({ isActive }) {
   return {
-    color: isActive ? "#3692FF" : "#000",
+    color: isActive ? '#3692FF' : '#000',
   };
 }
 

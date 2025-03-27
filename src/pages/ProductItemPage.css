@@ -1,0 +1,18 @@
+.ProductPage {
+  max-width: 1200px;
+  margin: 24px auto;
+
+  @media (max-width: 1200px) {
+    margin: 24px;
+  }
+
+  @media (max-width: 767px) {
+    margin: 16px;
+  }
+}
+
+.inquiryContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}

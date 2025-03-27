@@ -1,0 +1,18 @@
+.noCommentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noCommentImg {
+  @media (max-width: 767px) {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.noCommentContainer span {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-400);
+}

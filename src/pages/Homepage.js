@@ -1,11 +1,11 @@
-import "./Homepage.css";
-import pandaImg1 from "../assets/panda1.png";
-import pandaImg2 from "../assets/panda2.png";
-import hotImg from "../assets/hot.png";
-import searchImg from "../assets/search.png";
-import registerImg from "../assets/register.png";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import './Homepage.css';
+import pandaImg1 from '../assets/panda1.png';
+import pandaImg2 from '../assets/panda2.png';
+import hotImg from '../assets/hot.png';
+import searchImg from '../assets/search.png';
+import registerImg from '../assets/register.png';
+import Navbar from '../components/common/Navbar';
+import Footer from '../components/common/Footer';
 
 function Homepage() {
   return (

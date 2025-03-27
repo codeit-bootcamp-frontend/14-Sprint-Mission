@@ -1,95 +1,69 @@
-import { useCallback, useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import { getProducts } from "../api/api";
-import Product from "../components/Product";
-import "./ProductListPage.css";
-import Select from "../components/Select";
-import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
-import useWindowWidth from "../components/hooks/useWindowWidth";
+import Navbar from '../components/common/Navbar';
+import './ProductListPage.css';
+import Select from '../components/common/Select';
+import Pagination from '../components/common/Pagination';
+import { Link, useSearchParams } from 'react-router-dom';
+import useWindowWidth from '../components/hooks/useWindowWidth';
+import useProducts from '../components/hooks/useProducts';
+import BestProducts from '../components/products/BestProducts';
+import AllProducts from '../components/products/AllProducts';
+import Search from '../components/common/Search';
 
+// select prop
 const selectBox = [
-  { label: "최신순", value: "recent" },
-  { label: "좋아요순", value: "favorite" },
+  { label: '최신순', value: 'recent' },
+  { label: '좋아요순', value: 'favorite' },
 ];
 
+// pageSize 계산 함수
+const getPageSize = (width) => {
+  if (width >= 1024) {
+    return { pageSize: 10, bestPageSize: 4 };
+  } else if (width >= 640) {
+    return { pageSize: 6, bestPageSize: 2 };
+  } else {
+    return { pageSize: 4, bestPageSize: 1 };
+  }
+};
+
 function ProductListPage() {
-  const [bestProducts, setBestProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [pageSize, setPageSize] = useState(10);
-  const [bestPageSize, setBestPageSize] = useState(4);
-  const [sortOrder, setSortOrder] = useState("recent");
-  const [keyword, setkeyword] = useState("");
-  const [totalProductsCount, setTotalProductsCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get('keyword') || '';
+  const sortOrder = searchParams.get('orderBy') || 'recent';
+  const currentPage = Number(searchParams.get('page')) || 1;
   const windowWidth = useWindowWidth();
+  const { pageSize, bestPageSize } = getPageSize(windowWidth);
+  const { products, totalProductsCount } = useProducts({
+    sortOrder,
+    currentPage,
+    pageSize,
+    keyword,
+  });
+  const { products: bestProducts } = useProducts({
+    sortOrder: 'favorite',
+    currentPage: 1,
+    pageSize: bestPageSize,
+  });
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
   const handleChange = (value) => {
-    setSortOrder(value);
-    setCurrentPage(1);
+    setSearchParams({ ...searchParams, orderBy: value, page: 1 });
   };
-
-  // 창 크기에 따라 표시되는 상품 개수 변경
-  const updateDisplayedProducts = useCallback((width) => {
-    if (width >= 1024) {
-      setPageSize(10);
-      setBestPageSize(4);
-    } else if (width >= 640) {
-      setPageSize(6);
-      setBestPageSize(2);
-    } else {
-      setPageSize(4);
-      setBestPageSize(1);
-    }
-  }, []);
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setSearchParams({ ...searchParams, page: pageNumber });
   };
 
-  // 상품 데이터 불러오기
-  useEffect(() => {
-    // 전체 상품 받아오기
-    const handleLoad = async () => {
-      try {
-        const result = await getProducts({
-          page: currentPage,
-          pageSize: pageSize,
-          orderBy: sortOrder,
-        });
-        const { list, totalCount } = result;
-        setProducts(list);
-        setTotalProductsCount(totalCount);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // const handleKeyChange = (keyword) => {
+  //   setSearchParams({ ...searchParams, keyword: keyword });
+  // };
 
-    // 베스트 상품 받아오기
-    const handleBestLoad = async () => {
-      try {
-        const bestResult = await getProducts({
-          page: 1,
-          pageSize: bestPageSize,
-          keyword: "",
-          orderBy: "favorite",
-        });
-        const { list } = bestResult;
-        setBestProducts(list);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    handleLoad();
-    handleBestLoad();
-  }, [sortOrder, currentPage, bestPageSize, pageSize]);
-
-  useEffect(() => {
-    updateDisplayedProducts(windowWidth);
-  }, [windowWidth, updateDisplayedProducts]);
+  const handleSubmit = (newKeyword) => {
+    setSearchParams(
+      newKeyword ? { ...searchParams, keyword: newKeyword, page: 1 } : {}
+    );
+  };
 
   return (
     <div>
@@ -97,11 +71,7 @@ function ProductListPage() {
       <main className="market">
         <div className="best-container">
           <h2>베스트 상품</h2>
-          <div className="best-products">
-            {bestProducts?.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </div>
+          <BestProducts bestProducts={bestProducts} />
         </div>
         <div className="all-container">
           <div className="filter">
@@ -110,14 +80,7 @@ function ProductListPage() {
               <button className="add-item button mobile">상품 등록하기</button>
             </div>
             <div className="row">
-              <form>
-                <input
-                  className="search-bar"
-                  name="search"
-                  type="text"
-                  placeholder="검색할 상품을 입력해주세요"
-                />
-              </form>
+              <Search keyword={keyword} onSubmit={handleSubmit} />
               <button className="add-item button desktop">
                 <Link to={`/additem`}>상품 등록하기</Link>
               </button>
@@ -128,11 +91,7 @@ function ProductListPage() {
               />
             </div>
           </div>
-          <div className="all-products">
-            {products?.map((product) => (
-              <Product key={product.id} product={product} />
-            ))}
-          </div>
+          <AllProducts products={products} />
         </div>
         <div className="pagination-container">
           <Pagination

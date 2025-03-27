@@ -1,0 +1,25 @@
+.textAreaContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textAreaContainer label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  margin-bottom: 9px;
+}
+
+.textAreaContainer textarea {
+  height: 104px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--gray-100);
+  margin-bottom: 16px;
+  resize: none;
+}
+.textAreaContainer textarea:focus {
+  outline: 2px solid;
+  outline-color: var(--blue);
+}

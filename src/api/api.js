@@ -1,15 +1,26 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+const BASE_URL = 'https://panda-market-api.vercel.app';
 
 export async function getProducts({
   page = 1,
   pageSize = 10,
-  keyword = "",
-  orderBy = "recent",
+  keyword = '',
+  orderBy = 'recent',
 }) {
   const query = `page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`;
+  // console.log('query', query);
   const res = await fetch(`${BASE_URL}/products?${query}`);
   if (!res.ok) {
-    throw new Error("상품을 불러오는데 실패했습니다.");
+    throw new Error('상품을 불러오는데 실패했습니다.');
+  }
+  const body = await res.json();
+
+  return body;
+}
+
+export async function getProductItem(productId) {
+  const res = await fetch(`${BASE_URL}/products/${productId}`);
+  if (!res.ok) {
+    throw new Error('상품을 불러오는데 실패했습니다.');
   }
   const body = await res.json();
 
