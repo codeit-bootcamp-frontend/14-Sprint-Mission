@@ -1,0 +1,43 @@
+@import url('~@noonnu/rokaf-sans-medium');
+
+.gnb-wrapper {
+    display: flex;
+    justify-content: center;
+    top: 0;
+    position: sticky;
+    padding: 9px 20px;
+    border-bottom: 1px solid #DFDFDF;
+    background-color: #FFFFFF;
+}
+.gnb{
+    width: 1120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+}
+.logo span{
+    color: var(--primary---100);
+    font-weight: 700;
+    font-size: 25.63px;
+    line-height: 100%;
+
+    font-family: ROKAFSansMedium;
+}
+
+@media (max-width: 1920px) {
+    .gnb-wrapper{
+        padding: 9px 0;
+    }
+    .gnb{
+        margin: 0 200px;
+    }
+}
