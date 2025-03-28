@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Search.css';
+import SearchIcon from '../../assets/icons/search-icon.svg';
 
 function Search({ keyword, onSubmit }) {
   const [newKeyword, setNewKeyword] = useState(keyword);
@@ -14,7 +15,8 @@ function Search({ keyword, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="Search" onSubmit={handleSubmit}>
+      <img className="search-icon" src={SearchIcon} alt="search" />
       <input
         className="search-bar"
         name="keyword"

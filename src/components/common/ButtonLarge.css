@@ -9,4 +9,7 @@
   border-radius: 40px;
   margin-top: 20px;
   border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
 }
