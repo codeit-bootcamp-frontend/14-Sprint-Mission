@@ -2,10 +2,9 @@ import './Product.css';
 import { CiHeart } from 'react-icons/ci';
 import defaultImage from '../../../assets/panda1.png';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Product({ product }) {
-  const navigate = useNavigate();
   const { id, images, name, price, favoriteCount } = product;
   const formatPrice = price.toLocaleString('ko-KR');
   const [imageSrc, setImageSrc] = useState(images[0]);
@@ -15,28 +14,26 @@ function Product({ product }) {
     setImageSrc(defaultImage);
   };
 
-  const handleClick = () => {
-    navigate(`/items/${id}`);
-  };
-
   return (
-    <div className="product" onClick={() => handleClick()}>
-      <img
-        className="product-image"
-        src={imageSrc}
-        alt={`${name}`}
-        width={220}
-        onError={handleImageError}
-      />
-      <div className="product-details">
-        <h2 className="product-name">{name}</h2>
-        <p className="product-price">{`${formatPrice}원`}</p>
-        <span className="product-favorite">
-          <CiHeart />
-          {favoriteCount}
-        </span>
+    <Link to={`/items/${id}`}>
+      <div className="product">
+        <img
+          className="product-image"
+          src={imageSrc}
+          alt={`${name}`}
+          width={220}
+          onError={handleImageError}
+        />
+        <div className="product-details">
+          <h2 className="product-name">{name}</h2>
+          <p className="product-price">{`${formatPrice}원`}</p>
+          <span className="product-favorite">
+            <CiHeart />
+            {favoriteCount}
+          </span>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

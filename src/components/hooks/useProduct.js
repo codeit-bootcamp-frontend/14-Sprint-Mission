@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import productService from '../../api/services/products.services';
 
 function useProduct(id) {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
