@@ -1,0 +1,75 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+/* landing top,bottom */
+.home-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:flex-end;
+
+    height: 540px;
+    background-color: #CFE5FF;
+}
+
+.home-wrapper h1{
+    font: var(--text-3xl-bold);
+    color: var(--gray---700);
+}
+.landing-text{
+    display: flex;
+    flex-direction: column;
+    width: 357px;
+    height: 160px;
+    gap: 32px;
+    margin-bottom: 100px;
+}
+
+.landing-text h1 {
+    width: 270px;
+}
+
+/* section 설명 부분 */
+.section-home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-home-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 988px;
+    height: 444px;
+    margin: 138px 0;
+    padding: 0 10px;
+    gap: 64px;
+
+    background-color: #FCFCFC;
+}
+.section-home-wrapper.reverse{
+    flex-direction: row-reverse;
+}
+.section-home-text{
+    margin: 103px 0;
+    gap: 12px;
+}
+.section-home-text span{
+    font: var(--text-2lg-bold);
+    color: var(--primary---100);
+    
+}
+
+.section-home-text h1 {
+    font: var(--text-3xl-bold);
+    color: var(--gray---700);
+}
+.section-home-text p {
+    font: var(--text-2xl-medium);
+    color: var(--gray---700);
+}

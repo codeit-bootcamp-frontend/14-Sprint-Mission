@@ -1,0 +1,53 @@
+/* login button */
+.btn-small-48 {
+    width: 128px;
+    height: 48px;
+    padding: 12px 23px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background-color: var(--primary---100);
+    color: var(--gray---100);
+    font: var(--text-lg-semibold);
+}
+
+.btn-small-40:hover {
+    background-color: var(--primary---200);
+}
+
+.btn-small-40:disabled {
+    background-color: var(--gray---400);
+}
+
+.btn-small-40:active {
+    background-color: var(--primary---300);
+}
+
+/* 구경하러 가기 btn */
+.btn-large {
+    width: 357px;
+    height: 56px;
+    padding: 16px 124px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+
+    border-radius: 40px;
+    background-color: var(--primary---100);
+    color: var(--gray---50);
+}
+
+.btn-large:hover {
+    background-color: var(--primary---200);
+}
+
+.btn-large:disabled {
+    background-color: var(--gray---400);
+}
+
+.btn-large:active {
+    background-color: var(--primary---300);
+}
