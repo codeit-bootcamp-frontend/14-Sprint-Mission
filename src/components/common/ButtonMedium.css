@@ -1,11 +1,11 @@
-.returnContainer {
+.ButtonMediumContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: max(40px, 5%);
 }
 
-.returnButton {
+.ButtonMedium {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-.returnButton::after {
+.ButtonMedium::after {
   content: '';
   position: absolute;
   top: 0;
@@ -37,7 +37,7 @@
   z-index: -2;
 }
 
-.returnButton::before {
+.ButtonMedium::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -50,11 +50,11 @@
   z-index: -1;
 }
 
-.returnButton:hover::before {
+.ButtonMedium:hover::before {
   color: #fff;
   width: 240px;
 }
 
-.returnIcon {
+.buttonIcon {
   display: inline-block;
 }

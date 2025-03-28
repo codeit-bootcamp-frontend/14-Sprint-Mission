@@ -6,6 +6,8 @@ import searchImg from '../assets/search.png';
 import registerImg from '../assets/register.png';
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
+import ButtonLarge from '../components/common/ButtonLarge';
+import { Link } from 'react-router-dom';
 
 function Homepage() {
   return (
@@ -16,9 +18,9 @@ function Homepage() {
           <div className="banner">
             <div className="hero-text">
               <h1 className="hero-title">일상의 모든 물건을 거래해 보세요</h1>
-              <a className="view-button" href="/items">
-                구경하러 가기
-              </a>
+              <Link to={'/items'}>
+                <ButtonLarge>구경하러 가기</ButtonLarge>
+              </Link>
             </div>
             <img
               className="img-panda"

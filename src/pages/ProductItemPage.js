@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './ProductItemPage.css';
 import Navbar from '../components/common/Navbar';
-import ProductItem from '../components/domain/ProductItem';
+import ProductItem from '../components/domain/products/ProductItem';
 import useProduct from '../components/hooks/useProduct';
 import CommentList from '../components/domain/message/CommentList';
-import ReturnButton from '../components/common/ReturnButton';
+import ButtonMedium from '../components/common/ButtonMedium';
+import ReturnIcon from '../assets/icons/return.svg';
 
 function ProductItemPage() {
   const { id } = useParams();
@@ -22,9 +23,13 @@ function ProductItemPage() {
         <main className="ProductPage">
           <ProductItem item={product} />
           <CommentList productId={id} />
-          <ReturnButton onClick={handleReturnClick}>
+          <ButtonMedium
+            onClick={handleReturnClick}
+            imgSrc={ReturnIcon}
+            imgAlt={'return'}
+          >
             목록으로 돌아가기
-          </ReturnButton>
+          </ButtonMedium>
         </main>
       )}
     </div>

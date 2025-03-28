@@ -1,6 +1,6 @@
 import './Product.css';
 import { CiHeart } from 'react-icons/ci';
-import defaultImage from '../../assets/panda1.png';
+import defaultImage from '../../../assets/panda1.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

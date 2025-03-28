@@ -1,9 +1,9 @@
 import './ProductItem.css';
-import profileImg from '../../assets/user.png';
-import { formatDate } from '../../utils/date';
-import Likes from '../common/Likes';
-import Tag from '../common/Tag';
-import OptionsIcon from '../../assets/icons/options.svg';
+import profileImg from '../../../assets/user.png';
+import { formatDate } from '../../../utils/date';
+import Likes from '../../common/Likes';
+import Tag from '../../common/Tag';
+import OptionsIcon from '../../../assets/icons/options.svg';
 
 function ProductItem({ item }) {
   if (!item) {

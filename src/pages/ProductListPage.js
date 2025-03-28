@@ -5,8 +5,8 @@ import Pagination from '../components/common/Pagination';
 import { Link, useSearchParams } from 'react-router-dom';
 import useWindowWidth from '../components/hooks/useWindowWidth';
 import useProducts from '../components/hooks/useProducts';
-import BestProducts from '../components/products/BestProducts';
-import AllProducts from '../components/products/AllProducts';
+import BestProducts from '../components/domain/products/BestProducts';
+import AllProducts from '../components/domain/products/AllProducts';
 import Search from '../components/common/Search';
 
 // select prop

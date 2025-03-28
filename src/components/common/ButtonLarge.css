@@ -1,0 +1,12 @@
+.ButtonLarge {
+  text-align: center;
+  display: inline-block;
+  width: 320px;
+  height: 56px;
+  background-color: var(--blue);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 40px;
+  margin-top: 20px;
+  border: none;
+}
