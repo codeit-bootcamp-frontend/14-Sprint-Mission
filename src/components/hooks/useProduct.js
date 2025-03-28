@@ -6,7 +6,7 @@ function useProduct(id) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleLoad = async () => {
+  const handleLoad = useCallback(async () => {
     setLoading(true);
     try {
       const res = await productService.getProduct(id);
@@ -18,15 +18,15 @@ function useProduct(id) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [handleLoad]);
 
   const refetch = useCallback(() => {
     handleLoad();
-  }, []);
+  }, [handleLoad]);
 
   return { product, loading, error, refetch };
 }

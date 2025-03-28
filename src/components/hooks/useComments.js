@@ -6,7 +6,7 @@ function useComments(productId, limit, cursor) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleLoad = async () => {
+  const handleLoad = useCallback(async () => {
     setLoading(true);
     try {
       const res = await productService.getComments(productId, limit, cursor);
@@ -18,15 +18,15 @@ function useComments(productId, limit, cursor) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [cursor, limit, productId]);
 
   useEffect(() => {
     handleLoad();
-  }, []);
+  }, [handleLoad]);
 
   const refetch = useCallback(() => {
     handleLoad();
-  }, []);
+  }, [handleLoad]);
 
   return { comments, loading, error, refetch };
 }
