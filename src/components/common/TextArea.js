@@ -2,7 +2,7 @@ import './TextArea.css';
 
 function TextArea({ label, id, value, type, onChange, placeholder }) {
   return (
-    <div className="textAreaContainer">
+    <div className="TextAreaContainer">
       <label>{label}</label>
       <textarea
         id={id}
