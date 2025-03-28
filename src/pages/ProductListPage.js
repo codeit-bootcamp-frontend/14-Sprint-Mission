@@ -81,9 +81,9 @@ function ProductListPage() {
             </div>
             <div className="row">
               <Search keyword={keyword} onSubmit={handleSubmit} />
-              <button className="add-item button desktop">
-                <Link to={`/additem`}>상품 등록하기</Link>
-              </button>
+              <Link className="add-item button desktop" to={`/additem`}>
+                상품 등록하기
+              </Link>
               <Select
                 className="select"
                 selectBox={selectBox}
