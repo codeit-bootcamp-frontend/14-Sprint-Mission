@@ -1,5 +1,4 @@
-//
-const showError = (element, errorMessage) => {
+export const showError = (element, errorMessage) => {
   const { error, input } = element;
   if (!error || !input) return;
   error.textContent = errorMessage;
@@ -7,7 +6,7 @@ const showError = (element, errorMessage) => {
   input.style.border = "1px solid red";
 };
 
-const hideError = (element) => {
+export const hideError = (element) => {
   const { error, input } = element;
   if (!error || !input) return;
   error.style.display = "none";
@@ -20,22 +19,10 @@ export const addErrorEvent = (element) => {
     const value = input.value.trim();
     if (!value) {
       showError(element, emptyMessage);
-    } else if (!regex.test(value)) {
+    } else if (regex && !regex.test(value)) {
       showError(element, invalidMessage);
     } else {
       hideError(element);
     }
   });
 };
-
-// email.addEventListener("focusout", () => {
-//   const emailError = document.getElementById("emailErrorMessage");
-//   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-//   if (!email.value) {
-//     showError(emailError, "이메일을 입력해주세요", email);
-//   } else if (!emailRegex.test(email.value)) {
-//     showError(emailError, "잘못된 이메일 형식입니다", email);
-//   } else {
-//     hideError(emailError, email);
-//   }
-// });
