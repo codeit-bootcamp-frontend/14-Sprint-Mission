@@ -1,0 +1,12 @@
+.logo {
+  width: 153px;
+  cursor: pointer;
+}
+
+#linkToLogin {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11px 43px;
+}

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+:root {
+  /* color */
+  --primary100: #3692ff;
+  --primary200: #1967d6;
+  --primary300: #1251aa;
+
+  --gray50: #f9fafb;
+  --gray100: #f3f4f6;
+  --gray200: #e5e7eb;
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray600: #4b5563;
+  --gray700: #374151;
+  --gray800: #1f2937;
+  --gray900: #111827;
+
+  --error: #f74747;
+
+  /* font-size */
+  --font-size-3xl: 32px;
+  --font-size-2xl: 24px;
+  --font-size-xl: 20px;
+  --font-size-2lg: 18px;
+  --font-size-lg: 16px;
+  --font-size-md: 14px;
+  --font-size-sm: 13px;
+  --font-size-xs: 12px;
+
+  /* line-height */
+  --line-height-3xl: 1.313;
+  --line-height-2xl: 1.333;
+  --line-height-xl: 1.6;
+  --line-height-2lg: 1.444;
+  --line-height-lg: 1.625;
+  --line-height-md: 1.714;
+  --line-height-sm: 1.692;
+  --line-height-xs: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0.02em;
+}
+
+/*  -------------------------------------  */
+
+body {
+  color: var(--gray700);
+  word-break: keep-all;
+  font-family: "Pretendard", sans-serif;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  padding: 0 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.button {
+  background-color: var(--primary100);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primary200);
+}
+
+.button:focus {
+  background-color: var(--primary300);
+}
+
+.button:disabled {
+  background-color: var(--gray400);
+  cursor: default;
+  pointer-events: none;
+}
