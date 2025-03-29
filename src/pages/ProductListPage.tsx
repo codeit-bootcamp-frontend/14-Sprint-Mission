@@ -8,14 +8,7 @@ import useProducts from '../components/hooks/useProducts';
 import BestProducts from '../components/domain/products/BestProducts';
 import AllProducts from '../components/domain/products/AllProducts';
 import Search from '../components/common/Search';
-import { SortOrder } from '../types/types';
-import { ChangeEvent } from 'react';
-
-// select prop
-type SelectBoxValue = {
-  label: '최신순' | '좋아요순';
-  value: 'recent' | 'favorite';
-};
+import { SortOrder, SelectBoxValue } from '../types/types';
 
 const selectBox: SelectBoxValue[] = [
   { label: '최신순', value: 'recent' },
@@ -56,21 +49,21 @@ function ProductListPage() {
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
-  const handleChange = (value: ChangeEvent): void => {
-    setSearchParams({ ...searchParams, orderBy: value, page: 1 });
+  const handleChange = (value: SelectBoxValue['value']): void => {
+    setSearchParams({ ...searchParams, orderBy: value, page: '1' });
   };
 
-  const handlePageChange = (pageNumber: ChangeEvent): void => {
-    setSearchParams({ ...searchParams, page: pageNumber });
+  const handlePageChange = (pageNumber: number): void => {
+    setSearchParams({ ...searchParams, page: pageNumber.toString() });
   };
 
   // const handleKeyChange = (keyword) => {
   //   setSearchParams({ ...searchParams, keyword: keyword });
   // };
 
-  const handleSubmit = (newKeyword) => {
+  const handleSubmit = (newKeyword: string): void => {
     setSearchParams(
-      newKeyword ? { ...searchParams, keyword: newKeyword, page: 1 } : {}
+      newKeyword ? { ...searchParams, keyword: newKeyword, page: '1' } : {}
     );
   };
 
@@ -93,11 +86,7 @@ function ProductListPage() {
               <Link className="add-item button desktop" to={`/additem`}>
                 상품 등록하기
               </Link>
-              <Select
-                className="select"
-                selectBox={selectBox}
-                onSelect={handleChange}
-              />
+              <Select selectBox={selectBox} onSelect={handleChange} />
             </div>
           </div>
           <AllProducts products={products} />

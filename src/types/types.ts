@@ -12,7 +12,15 @@ export interface Product {
   isFavorite: boolean;
 }
 
+// SortOrder 타입
 export type SortOrder = 'recent' | 'favorite';
+export type Label = '최신순' | '좋아요순';
+
+// select prop
+export type SelectBoxValue = {
+  label: Label;
+  value: SortOrder;
+};
 
 export interface UseProductProps {
   sortOrder: SortOrder;

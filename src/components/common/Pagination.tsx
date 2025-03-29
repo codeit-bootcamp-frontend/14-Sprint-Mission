@@ -1,8 +1,18 @@
-import { useEffect } from "react";
-import "./Pagination.css";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useEffect } from 'react';
+import './Pagination.css';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-function Pagination({ currentPage, totalPages, onPageChange }) {
+interface PaginationValue {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (e: number) => void;
+}
+
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationValue) {
   const pageNumbers = [];
   const pagesPerGroup = 5;
 
@@ -37,7 +47,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         <button
           key={number}
           onClick={() => onPageChange(number)}
-          className={currentPage === number ? "active" : ""}
+          className={currentPage === number ? 'active' : ''}
         >
           {number}
         </button>

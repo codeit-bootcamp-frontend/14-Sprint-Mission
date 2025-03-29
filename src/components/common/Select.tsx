@@ -1,8 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import "./Select.css";
-import { FaCaretDown, FaSortAmountDown } from "react-icons/fa";
+import { useEffect, useRef, useState } from 'react';
+import './Select.css';
+import { FaCaretDown, FaSortAmountDown } from 'react-icons/fa';
+import { SelectBoxValue, SortOrder } from '../../types/types';
 
-function Select({ onSelect, selectBox }) {
+interface SelectValue {
+  onSelect: (e: SortOrder) => void;
+  selectBox: SelectBoxValue[];
+}
+
+function Select({ onSelect, selectBox }: SelectValue) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selectBox[0].label);
   const selectRef = useRef(null);
@@ -25,9 +31,9 @@ function Select({ onSelect, selectBox }) {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [selectRef]);
 
@@ -38,7 +44,7 @@ function Select({ onSelect, selectBox }) {
         <FaCaretDown size={24} />
       </div>
       <FaSortAmountDown className="sort-icon" />
-      <ul className={`options ${isOpen ? "show" : ""}`}>
+      <ul className={`options ${isOpen ? 'show' : ''}`}>
         {selectBox.map((select) => (
           <li
             key={select.label}
