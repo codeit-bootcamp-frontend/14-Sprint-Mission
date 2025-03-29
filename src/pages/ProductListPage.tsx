@@ -8,15 +8,22 @@ import useProducts from '../components/hooks/useProducts';
 import BestProducts from '../components/domain/products/BestProducts';
 import AllProducts from '../components/domain/products/AllProducts';
 import Search from '../components/common/Search';
+import { SortOrder } from '../types/types';
+import { ChangeEvent } from 'react';
 
 // select prop
-const selectBox = [
+type SelectBoxValue = {
+  label: '최신순' | '좋아요순';
+  value: 'recent' | 'favorite';
+};
+
+const selectBox: SelectBoxValue[] = [
   { label: '최신순', value: 'recent' },
   { label: '좋아요순', value: 'favorite' },
 ];
 
 // pageSize 계산 함수
-const getPageSize = (width) => {
+const getPageSize = (width: number) => {
   if (width >= 1024) {
     return { pageSize: 10, bestPageSize: 4 };
   } else if (width >= 640) {
@@ -28,8 +35,10 @@ const getPageSize = (width) => {
 
 function ProductListPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const orderParams = searchParams.get('orderBy');
+  const sortOrder: SortOrder =
+    orderParams === 'favorite' ? 'favorite' : 'recent';
   const keyword = searchParams.get('keyword') || '';
-  const sortOrder = searchParams.get('orderBy') || 'recent';
   const currentPage = Number(searchParams.get('page')) || 1;
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
@@ -47,11 +56,11 @@ function ProductListPage() {
   const totalPages = Math.ceil(totalProductsCount / pageSize);
 
   // 상품 정렬 기준 변경
-  const handleChange = (value) => {
+  const handleChange = (value: ChangeEvent): void => {
     setSearchParams({ ...searchParams, orderBy: value, page: 1 });
   };
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: ChangeEvent): void => {
     setSearchParams({ ...searchParams, page: pageNumber });
   };
 

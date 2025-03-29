@@ -2,9 +2,8 @@ import requestor from '../client/requestor';
 
 class ProductService {
   getProducts({ page = 1, pageSize = 10, keyword = '', orderBy = 'recent' }) {
-    return requestor.get(
-      `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`
-    );
+    const query = `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`;
+    return requestor.get(query);
   }
 
   getProduct(id) {

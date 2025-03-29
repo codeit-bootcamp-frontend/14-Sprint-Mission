@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../api/api';
 import productService from '../../api/services/products.services';
+import { Product, UseProductProps } from '../../types/types';
 
-function useProducts({ sortOrder, currentPage, pageSize, keyword }) {
-  const [products, setProducts] = useState([]);
-  const [totalProductsCount, setTotalProductsCount] = useState(0);
-  // console.log(sortOrder, currentPage, pageSize, keyword);
+function useProducts({
+  sortOrder,
+  currentPage,
+  pageSize,
+  keyword,
+}: UseProductProps) {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [totalProductsCount, setTotalProductsCount] = useState<number>(0);
+
   useEffect(() => {
     //상품 받아오기
     const handleLoad = async () => {
@@ -17,7 +22,6 @@ function useProducts({ sortOrder, currentPage, pageSize, keyword }) {
           orderBy: sortOrder,
         });
         const data = result.data;
-        console.log('data', data);
         const { list, totalCount } = data;
         setProducts(list);
         setTotalProductsCount(totalCount);
