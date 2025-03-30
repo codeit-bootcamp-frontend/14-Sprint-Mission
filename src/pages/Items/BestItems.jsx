@@ -6,6 +6,7 @@ import HeartInactive from '../../assets/image/HeartInactive.png'
 const Bone = styled.div`
   height: 26.625rem;
   width: auto;
+  margin-bottom: 2.5rem;
 `
 const Title = styled.div`
   ${(props) => textStyle(20, 700)(props)}
@@ -64,12 +65,14 @@ const BestItems = ({ products }) => {
       <Title>베스트 상품</Title>
 
       <BestItemsDisplay>
-        {list.map((product) => (
+        {/*처음에 10개를 불러왔으니 slice를 써서 4개만 불러오게 함*/}
+        {list.slice(0, 4).map((product) => (
           <BestItem key={product.id}>
             <BestItemImage src={product.images} alt={product.name} />
             <ProductDescription>
               <ProductName>{product.name}</ProductName>
               <ProductPrice>{product.price}원</ProductPrice>
+              {/*고치기: 화폐 세자리수 , 삽입 해야함*/}
               <ProductFavoriteCount>
                 <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
                 {product.favoriteCount}

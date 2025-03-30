@@ -39,11 +39,12 @@ const ButtonSize = {
     padding: '11px 71px',
     borderRadius: '40px',
   },
+
   42.5: {
     height: '42px',
     fontSize: '16px',
     fontWeight: 600,
-    padding: '8px 23px',
+    padding: '9px 20px',
     borderRadius: '8px',
   },
   48.5: {
