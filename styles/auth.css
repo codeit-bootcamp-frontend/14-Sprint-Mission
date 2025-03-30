@@ -114,3 +114,14 @@ button {
 .form-move a {
   color: var(--blue);
 }
+
+@media (max-width: 767px) {
+  main {
+    max-width: 400px;
+    padding: 0 16px;
+  }
+
+  .main-logo {
+    width: 198px;
+  }
+}
