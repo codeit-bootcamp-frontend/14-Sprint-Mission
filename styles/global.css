@@ -35,7 +35,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px 0;
   margin: 0 auto;
 }
 
@@ -54,6 +54,7 @@ main {
 footer {
   background-color: var(--gray-900);
   height: 160px;
+  padding: 0 20px;
 }
 
 a {
@@ -101,19 +102,33 @@ a {
   height: 20px;
 }
 
-footer {
-  padding: 0 20px;
-}
-
-@media (max-width: 1120px) {
-  .footer-brand,
-  .footer-link a {
-    font-size: 14px;
+@media (max-width: 1199px) {
+  header {
+    padding: 0 24px;
   }
 }
 
-@media (max-width: 800px) {
-  footer {
-    height: 130px;
+@media (max-width: 767px) {
+  header {
+    padding: 0 16px;
+  }
+
+  .footer-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .footer-link,
+  .footer-sns {
+    order: 1;
+    align-items: center;
+  }
+
+  .footer-brand {
+    order: 2;
+    width: 100%;
   }
 }
