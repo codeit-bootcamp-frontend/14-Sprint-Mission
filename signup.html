@@ -9,17 +9,17 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/auth.css" />
     <title>판다마켓</title>
   </head>
   <body>
-    <div class="container">
+    <main>
       <a href="/">
-        <img src="/images/logo.png" alt="logo" class="logo" />
+        <img src="/images/logo.png" alt="logo" class="main-logo" />
       </a>
       <form>
-        <div class="form">
+        <div class="form-input">
           <label for="email">이메일</label>
           <input
             id="email"
@@ -28,17 +28,17 @@
             type="email"
           />
         </div>
-        <div class="form">
-          <label for="nickname">닉네임임</label>
+        <div class="form-input">
+          <label for="nickname">닉네임</label>
           <input
             id="nickname"
             name="nickname"
             placeholder="닉네임을 입력해주세요"
           />
         </div>
-        <div class="form">
+        <div class="form-input">
           <label for="password">비밀번호</label>
-          <div class="input-wrap">
+          <div class="form-input-wrap">
             <input
               id="password"
               name="password"
@@ -52,9 +52,9 @@
             />
           </div>
         </div>
-        <div class="form">
+        <div class="form-input">
           <label for="password-confirm">비밀번호 확인</label>
-          <div class="input-wrap">
+          <div class="form-input-wrap">
             <input
               id="password-confirm"
               name="password-confirm"
@@ -71,8 +71,8 @@
         <button>회원가입</button>
       </form>
       <div class="sns-container">
-        <div class="snslogin">간편 로그인하기</div>
-        <div class="sns">
+        <div class="sns-container-text">간편 로그인하기</div>
+        <div class="sns-container-list">
           <a href="https://www.google.com">
             <img src="/images/sns/google.png" alt="구글 로고" />
           </a>
@@ -81,10 +81,10 @@
           </a>
         </div>
       </div>
-      <div class="move">
+      <div class="form-move">
         판다마켓이 처음이신가요?
         <a href="signin.html">로그인</a>
       </div>
-    </div>
+    </main>
   </body>
 </html>
