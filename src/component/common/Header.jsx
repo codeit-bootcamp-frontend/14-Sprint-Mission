@@ -1,32 +1,33 @@
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
   return (
     <header className="item-header">
       <div className="item-header-div">
-        <a href="/">
-          <div className="logo" alt="로고이미지" />
-        </a>
+        <Link to="/" className="logo" alt="로고이미지" />
         <div>
-          <a href="/" className="tap">
+          <NavLink to="/" className="tap">
             자유게시판
-          </a>
-          <a
-            href="/items.html"
+          </NavLink>
+          <NavLink
+            to="/items"
             className={`${
-              location.pathname === "/items" ? "tap tap-blue" : "tap"
+              location.pathname === "/items" || "/additems"
+                ? "tap tap-blue"
+                : "tap"
             }`}
           >
             중고마켓
-          </a>
+          </NavLink>
         </div>
-        <a>
+        <Link>
           <img
             src="image/profile.png"
             className="profile-icon"
             alt="프로필아이콘"
           />
-        </a>
+        </Link>
       </div>
     </header>
   );

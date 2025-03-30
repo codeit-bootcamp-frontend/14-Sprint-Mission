@@ -1,5 +1,5 @@
-import AllItemList from "../component/AllItemList";
-import BestItemList from "../component/BestItemList";
+import AllItemList from "../../component/item/AllItemList";
+import BestItemList from "../../component/item/BestItemList";
 import "./ItemPage.css";
 
 function ItemPage() {

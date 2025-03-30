@@ -1,0 +1,31 @@
+.add-item-input-div {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.add-item-input {
+  width: 100%;
+  height: 56px;
+  background-color: var(--gray100);
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  font-size: 16px;
+}
+
+.add-item-input::placeholder {
+  color: var(--gray400);
+}
+
+.add-item-textarea {
+  font-family: inherit;
+  height: 282px;
+  resize: none;
+  padding-top: 16px;
+}
+
+.add-item-tag {
+  margin-bottom: 14px;
+}
