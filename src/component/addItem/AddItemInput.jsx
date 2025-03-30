@@ -72,7 +72,7 @@ function AddItemInput({ isInputValueEmpty }) {
         <label htmlFor="add-item-detail">상품 소개</label>
       </div>
       <textarea
-        className="add-item-input add-item-textarea"
+        className="add-item-textarea"
         id="add-item-detail"
         name="item-detail"
         value={detailInput.value}
