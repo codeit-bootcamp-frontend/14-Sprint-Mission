@@ -1,16 +1,22 @@
+import { UseProductProps, UseCommentsProps, Product } from '../../types/types';
 import requestor from '../client/requestor';
 
 class ProductService {
-  getProducts({ page = 1, pageSize = 10, keyword = '', orderBy = 'recent' }) {
-    const query = `/products?page=${page}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${orderBy}`;
+  getProducts({
+    currentPage = 1,
+    pageSize = 10,
+    keyword = '',
+    sortOrder = 'recent',
+  }: UseProductProps) {
+    const query = `/products?page=${currentPage}&pageSize=${pageSize}&keyword=${keyword}&orderBy=${sortOrder}`;
     return requestor.get(query);
   }
 
-  getProduct(id) {
-    return requestor.get(`/products/${id}`);
+  getProduct(id: string) {
+    return requestor.get<Product>(`/products/${id}`);
   }
 
-  getComments(productId, limit = 3, cursor = 0) {
+  getComments({ productId, limit = 3, cursor = 0 }: UseCommentsProps) {
     return requestor.get(`/products/${productId}/comments`, {
       params: {
         limit,

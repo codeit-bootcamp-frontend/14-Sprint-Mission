@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './Select.css';
 import { FaCaretDown, FaSortAmountDown } from 'react-icons/fa';
-import { SelectBoxValue, SortOrder } from '../../types/types';
+import { Label, SelectBoxValue, SortOrder } from '../../types/types';
 
 interface SelectValue {
   onSelect: (e: SortOrder) => void;
@@ -9,15 +9,17 @@ interface SelectValue {
 }
 
 function Select({ onSelect, selectBox }: SelectValue) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(selectBox[0].label);
-  const selectRef = useRef(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState<Label>(
+    selectBox[0].label
+  );
+  const selectRef = useRef<HTMLDivElement>(null);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (option) => {
+  const handleOptionClick = (option: SelectBoxValue) => {
     setSelectedOption(option.label);
     console.log(selectedOption);
     setIsOpen(false);
@@ -25,8 +27,11 @@ function Select({ onSelect, selectBox }: SelectValue) {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };

@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import productService from '../../api/services/products.services';
+import { Product } from '../../types/types';
 
-function useProduct(id) {
-  const [product, setProduct] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+function useProduct(id: string) {
+  const [product, setProduct] = useState<Product>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error>();
 
   const handleLoad = useCallback(async () => {
     setLoading(true);
@@ -14,7 +15,7 @@ function useProduct(id) {
       setProduct(data);
     } catch (error) {
       console.error('Error fetching product:', error);
-      setError(error);
+      setError(error as Error);
     } finally {
       setLoading(false);
     }

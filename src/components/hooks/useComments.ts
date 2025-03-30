@@ -1,20 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
 import productService from '../../api/services/products.services';
+import { Comment, UseCommentsProps } from '../../types/types';
 
-function useComments(productId, limit, cursor) {
-  const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+function useComments({ productId, limit, cursor }: UseCommentsProps) {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error>();
 
   const handleLoad = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await productService.getComments(productId, limit, cursor);
+      const res = await productService.getComments({
+        productId,
+        limit,
+        cursor,
+      });
       const data = res.data.list;
       setComments(data);
     } catch (error) {
       console.error('Error fetching comments:', error);
-      setError(error);
+      setError(error as Error);
     } finally {
       setLoading(false);
     }

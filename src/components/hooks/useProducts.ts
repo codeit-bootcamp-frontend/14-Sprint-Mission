@@ -16,10 +16,10 @@ function useProducts({
     const handleLoad = async () => {
       try {
         const result = await productService.getProducts({
-          page: currentPage,
+          currentPage: currentPage,
           pageSize: pageSize,
           keyword: keyword,
-          orderBy: sortOrder,
+          sortOrder: sortOrder,
         });
         const data = result.data;
         const { list, totalCount } = data;

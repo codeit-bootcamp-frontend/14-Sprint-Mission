@@ -1,4 +1,4 @@
-export interface Product {
+export type Product = {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;
@@ -9,8 +9,22 @@ export interface Product {
   description: string;
   name: string;
   id: number;
-  isFavorite: boolean;
-}
+  // isFavorite: boolean;
+};
+
+export type Comment = {
+  writer: Writer;
+  updatedAt: string;
+  createdAt: string;
+  content: string;
+  id: number;
+};
+
+export type Writer = {
+  image: string;
+  nickname: string;
+  id: string;
+};
 
 // SortOrder 타입
 export type SortOrder = 'recent' | 'favorite';
@@ -22,6 +36,7 @@ export type SelectBoxValue = {
   value: SortOrder;
 };
 
+// useProduct hook
 export interface UseProductProps {
   sortOrder: SortOrder;
   currentPage: number;
@@ -32,4 +47,13 @@ export interface UseProductProps {
 export interface UseProductsValue {
   products: Product[];
   totalCount: number;
+}
+
+//  useProducts hook
+
+// message
+export interface UseCommentsProps {
+  productId: number;
+  limit: number;
+  cursor: number;
 }

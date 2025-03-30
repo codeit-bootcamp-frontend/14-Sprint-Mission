@@ -7,8 +7,12 @@ import CommentList from '../components/domain/message/CommentList';
 import ButtonMedium from '../components/common/ButtonMedium';
 import ReturnIcon from '../assets/icons/return.svg';
 
+type Params = {
+  id: string;
+};
+
 function ProductItemPage() {
-  const { id } = useParams();
+  const { id } = useParams() as Params;
   const { product, loading, error, refetch } = useProduct(id);
   const navigate = useNavigate();
 

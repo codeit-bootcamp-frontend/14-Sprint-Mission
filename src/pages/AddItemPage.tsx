@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import FileInput from '../components/common/FileInput';
 import Navbar from '../components/common/Navbar';
 import Tags from '../components/common/Tags';
 import './AddItemPage.css';
+import { Product } from '../types/types';
 
 function AddItemPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Product>({
     name: '',
     description: '',
-    price: '',
+    price: 0,
     tags: [],
-    imgFile: null,
+    images: [],
+    createdAt: new Date().toString(),
+    favoriteCount: 0,
+    ownerId: 1, // 로그인시 받아야 할 값
+    ownerNickname: '',
+    id: 123, // 나중에 id 변경
   });
 
   // 폼 입력시 버튼 활성화
   const isEnabled =
     formData.name && formData.description && formData.price && formData.tags[0];
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -25,14 +33,15 @@ function AddItemPage() {
     }));
   };
 
-  const handleInputChange = (name, value) => {
+  const handleInputChange = (name: string, value: any) => {
+    // any말고는 생각나는게 없네요
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
 
@@ -48,7 +57,7 @@ function AddItemPage() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="product-details">
-            <FileInput value={formData.imgFile} onChange={handleInputChange} />
+            <FileInput value={formData.images} onChange={handleInputChange} />
             <label htmlFor="name">상품명</label>
             <input
               id="name"

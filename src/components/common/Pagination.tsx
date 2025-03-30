@@ -13,8 +13,8 @@ function Pagination({
   totalPages,
   onPageChange,
 }: PaginationValue) {
-  const pageNumbers = [];
-  const pagesPerGroup = 5;
+  const pageNumbers: number[] = [];
+  const pagesPerGroup: number = 5;
 
   // totalPages 유효성 검사 및 초기값 처리
   if (totalPages && totalPages > 0 && totalPages < Number.MAX_SAFE_INTEGER) {
