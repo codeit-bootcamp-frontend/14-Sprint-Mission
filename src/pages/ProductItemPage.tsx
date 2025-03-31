@@ -25,7 +25,7 @@ function ProductItemPage() {
       <Navbar isLoggedIn={true} />
       {!loading && (
         <main className="ProductPage">
-          <ProductItem item={product} />
+          <ProductItem product={product} />
           <CommentList productId={id} />
           <ButtonMedium
             onClick={handleReturnClick}

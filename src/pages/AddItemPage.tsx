@@ -1,12 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import FileInput from '../components/common/FileInput';
 import Navbar from '../components/common/Navbar';
-import Tags from '../components/common/Tags';
+import TagsInput from '../components/common/TagsInput';
 import './AddItemPage.css';
-import { Product } from '../types/types';
+import { ProductType } from '../types/types';
 
 function AddItemPage() {
-  const [formData, setFormData] = useState<Product>({
+  const [formData, setFormData] = useState<ProductType>({
     name: '',
     description: '',
     price: 0,
@@ -57,7 +57,10 @@ function AddItemPage() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="product-details">
-            <FileInput value={formData.images} onChange={handleInputChange} />
+            <FileInput
+              value={formData.images[0]}
+              onChange={handleInputChange}
+            />
             <label htmlFor="name">상품명</label>
             <input
               id="name"
@@ -84,7 +87,7 @@ function AddItemPage() {
               onChange={handleChange}
               placeholder="판매 가격을 입력해주세요"
             />
-            <Tags tags={formData.tags} onChange={handleInputChange} />
+            <TagsInput tags={formData.tags} onChange={handleInputChange} />
           </div>
         </form>
       </div>

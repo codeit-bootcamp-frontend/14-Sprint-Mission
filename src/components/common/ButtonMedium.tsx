@@ -1,6 +1,20 @@
 import './ButtonMedium.css';
+import { MouseEvent, ReactNode } from 'react';
 
-function ButtonMedium({ children, onClick, imgSrc, imgAlt, ...rest }) {
+interface ButtonMediumProps {
+  children: ReactNode;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  imgSrc: string;
+  imgAlt: string;
+}
+
+function ButtonMedium({
+  children,
+  onClick,
+  imgSrc,
+  imgAlt,
+  ...rest
+}: ButtonMediumProps) {
   return (
     <div className="ButtonMediumContainer">
       <button className="ButtonMedium" onClick={onClick}>

@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductType = {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;
@@ -12,7 +12,11 @@ export type Product = {
   // isFavorite: boolean;
 };
 
-export type Comment = {
+export interface ProductItemProps {
+  product: ProductType | undefined;
+}
+
+export type CommentType = {
   writer: Writer;
   updatedAt: string;
   createdAt: string;
@@ -44,16 +48,23 @@ export interface UseProductProps {
   keyword?: string;
 }
 
-export interface UseProductsValue {
-  products: Product[];
+export interface ProductsResponse {
+  products: ProductType[];
   totalCount: number;
 }
 
-//  useProducts hook
+export interface ProductResponse {
+  data: ProductType;
+}
 
 // message
 export interface UseCommentsProps {
-  productId: number;
-  limit: number;
-  cursor: number;
+  productId: string;
+  limit?: number;
+  cursor?: number;
+}
+
+export interface CommentsResponse {
+  list: CommentType[];
+  nextCursor: number;
 }

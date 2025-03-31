@@ -1,15 +1,15 @@
 import './Navbar.css';
-import logo from '../../assets/logo.png';
-import userIcon from '../../assets/user.png';
+import logo from '../../assets/images/logo.png';
+import userIcon from '../../assets/images/user.png';
 import { Link, NavLink } from 'react-router';
 
-function getLinkStyle({ isActive }) {
+function getLinkStyle({ isActive }: { isActive: boolean }) {
   return {
     color: isActive ? '#3692FF' : '#000',
   };
 }
 
-function Navbar({ isLoggedIn }) {
+function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <nav>
       <div className="header">

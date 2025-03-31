@@ -1,6 +1,14 @@
+import { ChangeEvent } from 'react';
 import './Input.css';
 
-function Input({ label, id, value, onChange, ...rest }) {
+interface InputProps {
+  label: string;
+  id: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+function Input({ label, id, value, onChange, ...rest }: InputProps) {
   return (
     <div className="inputContainer">
       <label>{label}</label>

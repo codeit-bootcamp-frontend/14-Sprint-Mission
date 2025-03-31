@@ -1,16 +1,27 @@
 import { useEffect, useRef } from 'react';
 import './Dropdown.css';
 
-function Dropdown({ items, isOpen, onClose }) {
+interface DropdownItem {
+  label: string;
+  onClick: () => void;
+}
+
+interface DropdownProps {
+  items: DropdownItem[];
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function Dropdown({ items, isOpen, onClose }: DropdownProps) {
   console.log(isOpen);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         isOpen &&
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         onClose();
       }
@@ -26,7 +37,8 @@ function Dropdown({ items, isOpen, onClose }) {
   }, [isOpen, onClose]);
 
   return (
-    isOpen && (
+    <>
+      isOpen && (
       <ul className="commentDropdown" ref={dropdownRef}>
         {items.map((item, index) => (
           <li key={index} onClick={item.onClick}>
@@ -34,7 +46,8 @@ function Dropdown({ items, isOpen, onClose }) {
           </li>
         ))}
       </ul>
-    )
+      )
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import './NoComment.css';
-import NoCommentImg from '../../../assets/noComment.png';
+import NoCommentImg from '../../../assets/images/noComment.png';
 
 function NoComment() {
   return (

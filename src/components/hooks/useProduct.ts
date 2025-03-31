@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import productService from '../../api/services/products.services';
-import { Product } from '../../types/types';
+import { ProductType } from '../../types/types';
 
 function useProduct(id: string) {
-  const [product, setProduct] = useState<Product>();
+  const [product, setProduct] = useState<ProductType>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error>();
 

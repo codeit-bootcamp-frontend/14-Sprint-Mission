@@ -1,13 +1,21 @@
+import { ChangeEvent } from 'react';
 import './TextArea.css';
 
-function TextArea({ label, id, value, type, onChange, placeholder }) {
+interface TextAreaProps {
+  label?: string;
+  id?: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  placeholder?: string;
+}
+
+function TextArea({ label, id, value, onChange, placeholder }: TextAreaProps) {
   return (
     <div className="TextAreaContainer">
       <label>{label}</label>
       <textarea
         id={id}
         value={value}
-        type={type}
         placeholder={placeholder}
         onChange={onChange}
       />

@@ -35,7 +35,7 @@ function ProductListPage() {
   const currentPage = Number(searchParams.get('page')) || 1;
   const windowWidth = useWindowWidth();
   const { pageSize, bestPageSize } = getPageSize(windowWidth);
-  const { products, totalProductsCount } = useProducts({
+  const { products, totalCount } = useProducts({
     sortOrder,
     currentPage,
     pageSize,
@@ -46,7 +46,8 @@ function ProductListPage() {
     currentPage: 1,
     pageSize: bestPageSize,
   });
-  const totalPages = Math.ceil(totalProductsCount / pageSize);
+  console.log('bestProducts', bestProducts);
+  const totalPages = Math.ceil(totalCount / pageSize);
 
   // 상품 정렬 기준 변경
   const handleChange = (value: SelectBoxValue['value']): void => {
@@ -89,7 +90,7 @@ function ProductListPage() {
               <Select selectBox={selectBox} onSelect={handleChange} />
             </div>
           </div>
-          <AllProducts products={products} />
+          <AllProducts allProducts={products} />
         </div>
         <div className="pagination-container">
           <Pagination

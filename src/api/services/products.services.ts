@@ -1,4 +1,10 @@
-import { UseProductProps, UseCommentsProps, Product } from '../../types/types';
+import {
+  UseProductProps,
+  UseCommentsProps,
+  ProductType,
+  CommentsResponse,
+  ProductResponse,
+} from '../../types/types';
 import requestor from '../client/requestor';
 
 class ProductService {
@@ -12,11 +18,15 @@ class ProductService {
     return requestor.get(query);
   }
 
-  getProduct(id: string) {
-    return requestor.get<Product>(`/products/${id}`);
+  getProduct(id: string): Promise<ProductResponse> {
+    return requestor.get<ProductType>(`/products/${id}`);
   }
 
-  getComments({ productId, limit = 3, cursor = 0 }: UseCommentsProps) {
+  getComments({
+    productId,
+    limit = 3,
+    cursor = 0,
+  }: UseCommentsProps): Promise<CommentsResponse> {
     return requestor.get(`/products/${productId}/comments`, {
       params: {
         limit,

@@ -1,9 +1,14 @@
+import { ProductType } from '../../../types/types';
 import Product from './Product';
 
-function AllProducts({ products }) {
+interface AllProductsProps {
+  allProducts: ProductType[];
+}
+
+function AllProducts({ allProducts }: AllProductsProps) {
   return (
     <div className="all-products">
-      {products?.map((product) => (
+      {allProducts?.map((product) => (
         <Product key={product.id} product={product} />
       ))}
     </div>

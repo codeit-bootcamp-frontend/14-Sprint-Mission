@@ -1,6 +1,7 @@
 .ButtonLarge {
-  text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 320px;
   height: 56px;
   background-color: var(--blue);

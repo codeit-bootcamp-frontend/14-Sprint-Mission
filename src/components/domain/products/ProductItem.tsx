@@ -1,12 +1,13 @@
 import './ProductItem.css';
-import profileImg from '../../../assets/user.png';
+import profileImg from '../../../assets/images/user.png';
 import { formatDate } from '../../../utils/date';
 import Likes from '../../common/Likes';
 import Tag from '../../common/Tag';
 import OptionsIcon from '../../../assets/icons/options.svg';
+import { ProductItemProps } from '../../../types/types';
 
-function ProductItem({ item }) {
-  if (!item) {
+function ProductItem({ product }: ProductItemProps) {
+  if (!product) {
     return <div>Loading...</div>;
   }
 
@@ -23,7 +24,7 @@ function ProductItem({ item }) {
     price,
     tags = [],
     // updatedAt,
-  } = item;
+  } = product;
 
   const formatPrice = price?.toLocaleString('ko-KR');
   const createDate = formatDate(createdAt);
@@ -48,7 +49,7 @@ function ProductItem({ item }) {
           <h2>상품 태그</h2>
           <div className="productTagContainer">
             {tags.map((tag, i) => (
-              <Tag key={i} name={tag} closeFalse />
+              <Tag key={i} name={tag} hasDeleteButton={false} />
             ))}
           </div>
         </div>

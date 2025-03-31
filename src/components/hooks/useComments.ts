@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import productService from '../../api/services/products.services';
-import { Comment, UseCommentsProps } from '../../types/types';
+import { CommentType, UseCommentsProps } from '../../types/types';
 
 function useComments({ productId, limit, cursor }: UseCommentsProps) {
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error>();
 
@@ -15,7 +15,7 @@ function useComments({ productId, limit, cursor }: UseCommentsProps) {
         limit,
         cursor,
       });
-      const data = res.data.list;
+      const data = res.list;
       setComments(data);
     } catch (error) {
       console.error('Error fetching comments:', error);

@@ -1,9 +1,9 @@
 import './Homepage.css';
-import pandaImg1 from '../assets/image/panda1.png';
-import pandaImg2 from '../assets/image/panda2.png';
-import hotImg from '../assets/image/hot.png';
-import searchImg from '../assets/image/search.png';
-import registerImg from '../assets/image/register.png';
+import pandaImg1 from '../assets/images/panda1.png';
+import pandaImg2 from '../assets/images/panda2.png';
+import hotImg from '../assets/images/hot.png';
+import searchImg from '../assets/images/search.png';
+import registerImg from '../assets/images/register.png';
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import ButtonLarge from '../components/common/ButtonLarge';

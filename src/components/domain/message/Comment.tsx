@@ -1,13 +1,18 @@
 import './Comment.css';
 import { getTimeDifference } from '../../../utils/date';
-import profileImg from '../../../assets/user.png';
+import profileImg from '../../../assets/images/user.png';
 import OptionsIcon from '../../../assets/icons/options.svg';
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Dropdown from '../../common/Dropdown';
 import TextArea from '../../common/TextArea';
 import Button from '../../common/Button';
+import { CommentType } from '../../../types/types';
 
-function Comment({ comment }) {
+interface CommentProps {
+  comment: CommentType;
+}
+
+function Comment({ comment }: CommentProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const { content, updatedAt, writer } = comment;
@@ -46,7 +51,7 @@ function Comment({ comment }) {
     setIsEditing(false);
   };
 
-  const handleCommentChange = (e) => {
+  const handleCommentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setNewComment(e.target.value);
   };
 
@@ -55,11 +60,7 @@ function Comment({ comment }) {
       {!isEditing ? (
         <div className="commentBox">{content}</div>
       ) : (
-        <TextArea
-          type="text"
-          value={newComment}
-          onChange={handleCommentChange}
-        />
+        <TextArea value={newComment} onChange={handleCommentChange} />
       )}
       <div className="userBox">
         <img src={image || profileImg} alt="profile" width={40} />

@@ -1,6 +1,11 @@
+import { ProductType } from '../../../types/types';
 import Product from './Product';
 
-function BestProducts({ bestProducts }) {
+interface BestProductsProps {
+  bestProducts: ProductType[];
+}
+
+function BestProducts({ bestProducts }: BestProductsProps) {
   return (
     <div className="best-products">
       {bestProducts?.map((product) => (

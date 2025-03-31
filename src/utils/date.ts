@@ -4,7 +4,7 @@
  * @param {string} isoDateString
  * @returns {string}
  */
-export function formatDate(isoDateString) {
+export function formatDate(isoDateString: string): string {
   if (!isoDateString) {
     return '';
   }
@@ -22,11 +22,11 @@ export function formatDate(isoDateString) {
   }
 }
 
-export function getTimeDifference(updatedAt) {
+export function getTimeDifference(updatedAt: string): string {
   const updatedAtDate = new Date(updatedAt);
   const now = new Date();
 
-  const timeDifferenceInMilliseconds = now - updatedAtDate;
+  const timeDifferenceInMilliseconds = now.getTime() - updatedAtDate.getTime();
   const timeDifferenceInHours = timeDifferenceInMilliseconds / (1000 * 60 * 60);
 
   if (timeDifferenceInHours < 24) {
