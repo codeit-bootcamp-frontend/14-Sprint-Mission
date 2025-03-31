@@ -57,6 +57,13 @@ const ButtonSize = {
       744: {},
     },
   },
+  0: {
+    height: '40px',
+    width: '40px',
+    fontSize: '16px',
+    fontWeight: 600,
+    borderRadius: '40px',
+  },
 }
 
 const Button = ({ size = 43, width, onClick, disabled, children }) => {

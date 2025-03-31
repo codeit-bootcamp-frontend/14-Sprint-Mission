@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 import HeartInactive from '../../assets/image/HeartInactive.png'
-
+import NoImage from '../../assets/image/NoImage.png'
 const RecentItem = styled.div`
   height: 42.125rem;
+  @media (max-width: 743px) {
+    height: 35rem;
+  }
 `
 const RecentItemKey = styled.div`
   display: flex;
@@ -13,6 +16,10 @@ const RecentItemKey = styled.div`
   width: 13.8125rem;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 743px) {
+    height: 16.5rem;
+    width: 10.5rem;
+  }
 `
 const RecentItemImage = styled.img`
   width: inherit;
@@ -27,6 +34,9 @@ const RecentItemsDisplay = styled.div`
   flex-wrap: wrap;
   align-content: flex-start;
   row-gap: 2.5rem;
+  @media (max-width: 743px) {
+    row-gap: 2rem;
+  }
 `
 const ProductDescription = styled.div`
   width: 100%;
@@ -55,13 +65,41 @@ const HeartInactiveImage = styled.img`
   height: 1rem;
 `
 const RecentItems = ({ products }) => {
+  const [itemsDisplay, setItemsDisplay] = useState(1)
+
+  useEffect(() => {
+    const handleReasize = () => {
+      console.log('Current width:', window.innerWidth)
+      if (window.innerWidth <= 743) {
+        setItemsDisplay(4)
+      } else if (744 < window.innerWidth <= 1199) {
+        setItemsDisplay(6)
+      } else {
+        setItemsDisplay(10)
+      }
+    }
+    handleReasize()
+    window.addEventListener('resize', handleReasize)
+
+    return () => window.removeEventListener('resize', handleReasize)
+  }, [])
+
+  console.log('Items to display:', itemsDisplay) // 상태가 변경될 때마다 로그 찍기
   return (
     <>
       <RecentItem>
         <RecentItemsDisplay>
-          {products.slice(0, 10).map((product) => (
+          {products.slice(0, itemsDisplay).map((product) => (
             <RecentItemKey key={product.id}>
-              <RecentItemImage src={product.images} alt={product.name} />
+              <RecentItemImage
+                src={
+                  product.images?.length > 0 &&
+                  !product.images.includes('https://via.placeholder.com/300')
+                    ? product.images[0]
+                    : NoImage
+                }
+                alt={product.name}
+              />
               <ProductDescription>
                 <ProductName>{product.name}</ProductName>
                 <ProductPrice>{product.price}원</ProductPrice>

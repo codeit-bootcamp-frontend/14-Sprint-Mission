@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
@@ -7,6 +7,12 @@ const Bone = styled.div`
   height: 26.625rem;
   width: auto;
   margin-bottom: 2.5rem;
+  @media (max-width: 1199px) {
+    height: 27.125rem;
+  }
+  @media (max-width: 743px) {
+    margin-bottom: 1.5rem;
+  }
 `
 const Title = styled.div`
   ${(props) => textStyle(20, 700)(props)}
@@ -17,7 +23,7 @@ const Title = styled.div`
 const BestItem = styled.div`
   display: flex;
   height: 23.625rem;
-  width: 17.625rem;
+
   justify-content: center;
   flex-direction: column;
 `
@@ -25,6 +31,10 @@ const BestItemImage = styled.img`
   width: 17.625rem;
   height: 17.625rem;
   border-radius: 1rem;
+  @media (max-width: 1199px) {
+    height: 21.437rem;
+    width: 21.437rem;
+  }
 `
 const BestItemsDisplay = styled.div`
   display: flex;
@@ -38,6 +48,9 @@ const ProductDescription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 1199px) {
+    margin-top: 0.625rem;
+  }
 `
 const ProductName = styled.div`
   ${(props) => textStyle(14, 500)(props)}
@@ -58,21 +71,38 @@ const HeartInactiveImage = styled.img`
   height: 1rem;
 `
 const BestItems = ({ products }) => {
+  const [itemsDisplay, setItemsDisplay] = useState(1)
   const list = products?.list || [] // list가 없을 수도 있으니 옵셔널체이닝으로  list가 없을 때 빈배열을 출력하여 map에 이상이 없도록 함
+  useEffect(() => {
+    const handleReasize = () => {
+      console.log('Current width:', window.innerWidth)
+      if (window.innerWidth <= 743) {
+        setItemsDisplay(1)
+      } else if (744 < window.innerWidth <= 1199) {
+        setItemsDisplay(2)
+      } else {
+        setItemsDisplay(4)
+      }
+    }
+    handleReasize()
+    window.addEventListener('resize', handleReasize)
+
+    return () => window.removeEventListener('resize', handleReasize)
+  }, [])
+
+  console.log('Items to display:', itemsDisplay) // 상태가 변경될 때마다 로그 찍기
 
   return (
     <Bone>
       <Title>베스트 상품</Title>
 
       <BestItemsDisplay>
-        {/*처음에 10개를 불러왔으니 slice를 써서 4개만 불러오게 함*/}
-        {list.slice(0, 4).map((product) => (
+        {list.slice(0, itemsDisplay).map((product) => (
           <BestItem key={product.id}>
             <BestItemImage src={product.images} alt={product.name} />
             <ProductDescription>
               <ProductName>{product.name}</ProductName>
-              <ProductPrice>{product.price}원</ProductPrice>
-              {/*고치기: 화폐 세자리수 , 삽입 해야함*/}
+              <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
               <ProductFavoriteCount>
                 <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
                 {product.favoriteCount}

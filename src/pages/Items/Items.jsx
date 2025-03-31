@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 import ItemsNavVar from './ItemsNavVar'
@@ -10,11 +10,19 @@ import DropDown from '../../component/common/DropDown'
 import productService from '../../api/services/productService'
 import Button from '../../component/common/Button'
 import Search from '../../assets/svg/Search.svg'
-
+import ArrowLeft from '../../assets/svg/ArrowLeft.svg'
+import ArrowRight from '../../assets/svg/ArrowRight.svg'
 const Bone = styled.div`
-  height: 75.375rem;
   width: 75rem;
   margin: 1.5rem auto;
+  @media (max-width: 1199px) {
+    width: 43.5rem;
+    margin: 1.5rem 1.5rem 2.5rem 1.5rem;
+  }
+  @media (max-width: 743px) {
+    width: 21.437rem;
+    margin: 1rem;
+  }
 `
 const NavVAr = styled.div`
   height: 2.625rem;
@@ -23,21 +31,39 @@ const NavVAr = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 743px) {
+    flex-wrap: wrap;
+    margin: 1.5rem auto 4.5rem;
+  }
 `
 const NavTitle = styled.div`
   ${(props) => textStyle(20, 700)(props)}
   color: ${theme.colors.SecondaryGray[900]};
+  @media (max-width: 743px) {
+    height: 2.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 const NavRightWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  @media (max-width: 743px) {
+    flex-wrap: wrap;
+  }
 `
 const SearchIcon = styled.img`
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
   right: -38px;
+  @media (max-width: 743px) {
+    left: 8px;
+    z-index: 1;
+    top: 10px;
+  }
 `
 const NavSearch = styled.input`
   width: 20.313rem;
@@ -49,43 +75,138 @@ const NavSearch = styled.input`
   background-color: ${theme.colors.SecondaryGray[100]};
   border: none;
   margin-right: 1.3333rem;
+  @media (max-width: 1199px) {
+    width: 15.125rem;
+    padding: 9px 24px 9px 44px;
+  }
+  @media (max-width: 743px) {
+    position: relative;
+    left: -28px;
+    top: 10px;
+  }
 `
 const ButtonWrapper = styled.div`
   margin-right: 1.3333rem;
+  @media (max-width: 743px) {
+    position: absolute;
+    top: 546px;
+    left: 226px;
+  }
+`
+const Pagenation = styled.div`
+  width: 19rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.688rem auto 0 auto;
+  @media (max-width: 1199px) {
+    margin: 2.5rem auto 0 auto;
+  }
+`
+const LeftButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid ${theme.colors.SecondaryGray[200]};
+  background: #ffffff;
+  color: ${({ theme }) => theme.colors.SecondaryGray[600]};
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
+  padding: 12px;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
+  }
+
+  &:disabled {
+    background: ${({ theme }) => theme.colors.SecondaryGray[400]};
+    cursor: not-allowed;
+  }
+`
+
+const PageButton = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid ${theme.colors.SecondaryGray[100]};
+  &:hover {
+    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
+  }
+
+  ${({ $isActive, theme }) =>
+    $isActive &&
+    css`
+      background-color: ${theme.colors.PrimaryBlue[100]};
+      color: ${theme.colors.SecondaryGray[50]};
+    `}
 `
 
 const Items = () => {
   const navigate = useNavigate()
   const [bestProducts, setBestProducts] = useState([])
   const [sortedProducts, setSortedProducts] = useState([])
+  const [totalItems, setTotalItems] = useState(0) // 전체 상품 개수 저장
   const selectList = [
     { value: 'recent', name: '최신순' },
-    { value: 'favorite', name: '좋아요 순' },
+    { value: 'favorite', name: '좋아요순' },
   ]
-  const [selectedOption, setSelectedOption] = useState(selectList[0].value)
 
+  const [selectedOption, setSelectedOption] = useState(selectList[0].value)
+  // 페이지 네이션
+  const itemsPerPage = 10
+  const [currentPage, setCurrentPage] = useState(1)
+
+  //
   const handleAdditem = () => {
-    navigate(`/items`)
+    navigate(`/additem`)
   }
   // BestItems 데이터 불러오기, bestProducts
   useEffect(() => {
     productService.getProduct(1, 10, 'favorite', '').then((response) => {
       setBestProducts(response.data)
-      console.log(response.data)
     })
   }, [])
-  // 셀렉트 박스 정렬 useEffect
+
+  // 페이지네이션
   useEffect(() => {
-    const sorted = [...(bestProducts?.list || [])].sort((a, b) => {
-      if (selectedOption === 'recent') {
-        return new Date(b.createdAt) - new Date(a.createdAt)
-      } else if (selectedOption === 'favorite') {
-        return b.favoriteCount - a.favoriteCount
-      }
-      return 0
-    })
-    setSortedProducts(sorted)
-  }, [bestProducts, selectedOption])
+    productService
+      .getProduct(currentPage, itemsPerPage, selectedOption, '')
+      .then((response) => {
+        const sorted = [...(response.data.list || [])].sort((a, b) => {
+          if (selectedOption === 'recent') {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+          } else if (selectedOption === 'favorite') {
+            return b.favoriteCount - a.favoriteCount
+          }
+          return 0
+        })
+        setSortedProducts(sorted)
+        setTotalItems(response.data.totalCount)
+      })
+  }, [currentPage, selectedOption])
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+  const handleNextPage = () => {
+    setCurrentPage((prev) => prev + 1)
+  }
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => (prev > 1 ? prev - 1 : 1))
+  }
+  // 페이지 버튼
+  const pages = (() => {
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1)
+    }
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, 5]
+    }
+    if (currentPage >= totalPages - 2) {
+      return Array.from({ length: 5 }, (_, i) => totalPages - 4 + i)
+    }
+    return Array.from({ length: 5 }, (_, i) => currentPage - 2 + i)
+  })()
 
   return (
     <>
@@ -116,6 +237,23 @@ const Items = () => {
           </NavRightWrapper>
         </NavVAr>
         <RecentItems products={sortedProducts} />
+        <Pagenation>
+          <LeftButton onClick={handlePrevPage}>
+            <img src={ArrowLeft} />
+          </LeftButton>
+          {pages.map((page) => (
+            <PageButton
+              key={page}
+              $isActive={currentPage === page}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </PageButton>
+          ))}
+          <LeftButton onClick={handleNextPage}>
+            <img src={ArrowRight} />
+          </LeftButton>
+        </Pagenation>
       </Bone>
     </>
   )

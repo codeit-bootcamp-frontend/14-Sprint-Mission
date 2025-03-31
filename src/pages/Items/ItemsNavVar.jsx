@@ -13,6 +13,12 @@ const Bone = styled.div`
   justify-content: space-between;
   margin: auto 12.5rem auto 12.5rem;
   position: sticky;
+  @media (max-width: 1199px) {
+    margin: auto 1.5rem;
+  }
+  @media (max-width: 743px) {
+    margin: auto 1rem;
+  }
 `
 const LeftWrapper = styled.div`
   display: flex;
@@ -21,6 +27,21 @@ const LeftWrapper = styled.div`
   width: 24.125rem;
   ${(props) => textStyle(18, 700)(props)}
   color: ${theme.colors.SecondaryGray[600]};
+  @media (max-width: 1199px) {
+    width: 23.375rem;
+  }
+  @media (max-width: 743px) {
+    width: 16rem;
+  }
+`
+const HeaderLogo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 743px) {
+    position: relative;
+    left: -8px;
+  }
 `
 const NavContent = styled.div`
   display: flex;
@@ -32,10 +53,21 @@ const LogoFaceImage = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.537rem;
+  @media (max-width: 743px) {
+    width: 0;
+    height: 0;
+  }
 `
 const LogoImage = styled.img`
   width: 6.438rem;
   height: 2.188rem;
+  @media (max-width: 743px) {
+    width: 5.062rem;
+    height: 1.3125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 const ProfileIconImage = styled.img`
   width: 2.5rem;
@@ -47,10 +79,14 @@ const ItemsNavVar = () => {
     <>
       <Bone>
         <LeftWrapper>
-          <div>
-            <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
-            <LogoImage src={Logo} alt="판다마켓 로고 사진" />
-          </div>
+          <HeaderLogo>
+            <a href="./" target="_self">
+              <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
+            </a>
+            <a href="./" target="_self">
+              <LogoImage src={Logo} alt="판다마켓 로고 사진" />
+            </a>
+          </HeaderLogo>
           <NavContent>
             <div>자유게시판</div>
             <div>중고마켓</div>
