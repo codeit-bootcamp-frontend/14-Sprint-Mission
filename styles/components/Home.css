@@ -13,7 +13,7 @@ main{
     background-color: #CFE5FF;
 }
 
-.home-wrapper h1{
+.home-wrapper h2{
     font: var(--text-3xl-bold);
     color: var(--gray---700);
 }
@@ -26,7 +26,7 @@ main{
     margin-bottom: 100px;
 }
 
-.landing-text h1 {
+.landing-text h2 {
     width: 270px;
 }
 
@@ -65,7 +65,7 @@ main{
     
 }
 
-.section-home-text h1 {
+.section-home-text h2 {
     font: var(--text-3xl-bold);
     color: var(--gray---700);
 }
