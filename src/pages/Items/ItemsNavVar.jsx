@@ -49,6 +49,16 @@ const NavContent = styled.div`
   justify-content: space-around;
   width: 12.438rem;
 `
+const FreeMarketButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 21px 15px;
+  &:hover {
+    background: ${({ theme }) => theme.colors.SecondaryGray[600]};
+  }
+`
+
 const LogoFaceImage = styled.img`
   width: 2.5rem;
   height: 2.5rem;
@@ -88,8 +98,8 @@ const ItemsNavVar = () => {
             </a>
           </HeaderLogo>
           <NavContent>
-            <div>자유게시판</div>
-            <div>중고마켓</div>
+            <FreeMarketButton>자유게시판</FreeMarketButton>
+            <FreeMarketButton>중고마켓</FreeMarketButton>
           </NavContent>
         </LeftWrapper>
         <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />
