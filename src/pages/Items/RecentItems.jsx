@@ -72,7 +72,7 @@ const RecentItems = ({ products }) => {
       console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(4)
-      } else if (744 < window.innerWidth <= 1199) {
+      } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
         setItemsDisplay(6)
       } else {
         setItemsDisplay(10)

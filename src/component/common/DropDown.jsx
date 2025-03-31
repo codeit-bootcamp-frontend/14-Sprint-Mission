@@ -9,7 +9,7 @@ const SelectBox = styled.div`
   width: 8.125rem;
   height: 100%;
   cursor: pointer;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border: 1px solid ${theme.colors.SecondaryGray[200]};
   border-radius: 0.75rem;
   background-color: white;

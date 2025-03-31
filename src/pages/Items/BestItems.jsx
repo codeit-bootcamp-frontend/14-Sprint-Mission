@@ -78,7 +78,7 @@ const BestItems = ({ products }) => {
       console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(1)
-      } else if (744 < window.innerWidth <= 1199) {
+      } else if (window.innerWidth > 743 && window.innerWidth <= 1199) {
         setItemsDisplay(2)
       } else {
         setItemsDisplay(4)
