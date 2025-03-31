@@ -1,0 +1,263 @@
+.banner {
+  height: 540px;
+  display: flex;
+  align-items: end;
+  background-color: var(--blue-400);
+}
+
+.banner-contents {
+  display: flex;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.banner-img {
+  width: 746px;
+  height: 340px;
+}
+
+.banner-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--gray-700);
+}
+
+.banner-button {
+  text-decoration: none;
+  background-color: var(--blue);
+  padding: 16px 124px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gray-50);
+  margin-bottom: 60px;
+}
+
+.banner-text {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature {
+  background-color: #ffffff;
+  height: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-block {
+  width: 988px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+}
+
+.feature-block img {
+  width: 579px;
+  border-radius: 0px;
+}
+
+.feature-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.feature-left {
+  padding-right: 24px;
+}
+
+.feature-right {
+  text-align: right;
+  padding-left: 24px;
+}
+
+.feature-tag {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.feature-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--gray-700);
+}
+
+.feature-description {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--gray-700);
+}
+
+@media (max-width: 1199px) {
+  .banner {
+    height: 771px;
+  }
+
+  .banner-contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .banner-text {
+    gap: 24px;
+  }
+
+  .banner-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .no-break-in-tablet {
+    display: none;
+  }
+
+  .break-in-desktop {
+    display: none;
+  }
+
+  .banner-button {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+    width: 357px;
+    padding: 16px 124px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .banner-img {
+    margin-top: 180px;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    padding: 80px 0;
+  }
+
+  .feature-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    gap: 24px;
+    background-color: #ffffff;
+    border-radius: 0;
+  }
+
+  .feature-block .feature-right {
+    order: 2;
+  }
+
+  .feature-block img {
+    width: 696px;
+    height: 524px;
+  }
+
+  .feature-text-container {
+    width: 100%;
+    justify-content: start;
+  }
+
+  .feature-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.3125;
+    color: var(--gray-700);
+  }
+
+  .feature-description {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44;
+    color: var(--gray-700);
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    height: 540px;
+    overflow: hidden;
+  }
+
+  .banner-text {
+    gap: 18px;
+  }
+
+  .banner-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .no-break-in-tablet {
+    display: inline;
+  }
+
+  .banner-button {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.44;
+    width: 240px;
+    padding: 12px 71px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .banner-img {
+    width: 448px;
+    height: 204px;
+    margin-top: 120px;
+  }
+
+  .wrapper {
+    gap: 40px;
+  }
+
+  .feature {
+    height: 417px;
+  }
+
+  .feature-block img {
+    width: 344px;
+    height: 259px;
+  }
+
+  .feature-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.33;
+    color: var(--gray-700);
+  }
+
+  .feature-description {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.625;
+    color: var(--gray-700);
+  }
+}
