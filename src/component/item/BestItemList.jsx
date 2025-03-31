@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import { getItem } from "../api";
+import { getItem } from "../../api/api";
 import "./BestItemList.css";
 
 function BestItemList() {

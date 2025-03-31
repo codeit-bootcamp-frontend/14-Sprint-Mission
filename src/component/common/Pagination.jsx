@@ -30,33 +30,17 @@ function PageNum({ totalPage, currentPage, setPage }) {
 }
 
 function Pagination({ totalPage, currentPage, setPage }) {
-  const [isNext, setIsNext] = useState(true);
-  const [isPrev, setIsPrev] = useState(true);
-
-  // 이전, 다음 버튼 활성화 여부
-  const visiblePaginationBtn = () => {
-    if (currentPage === 1) {
-      setIsPrev(false);
-    } else if (currentPage === totalPage) {
-      setIsNext(false);
-    } else {
-      setIsNext(true);
-      setIsPrev(true);
-    }
-  };
-
-  useEffect(() => {
-    visiblePaginationBtn();
-  }, [currentPage]);
+  const isPrev = currentPage > 1;
+  const isNext = currentPage < totalPage;
 
   // 다음 페이지 버튼 클릭릭
   const paginationRightBtnClick = () => {
-    setPage(currentPage + 1);
+    if (isNext) setPage(currentPage + 1);
   };
 
   // 이전 페이지 버튼 클릭
   const paginationLeftBtnClick = () => {
-    setPage(currentPage - 1);
+    if (isPrev) setPage(currentPage - 1);
   };
 
   return (
