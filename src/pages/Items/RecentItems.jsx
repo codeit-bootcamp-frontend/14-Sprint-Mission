@@ -102,8 +102,8 @@ const RecentItems = ({ products }) => {
               />
               <ProductDescription>
                 <ProductName>{product.name}</ProductName>
-                <ProductPrice>{product.price}원</ProductPrice>
-                {/*고치기: 화폐 세자리수 , 삽입 해야함*/}
+                <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
+
                 <ProductFavoriteCount>
                   <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
                   {product.favoriteCount}
