@@ -9,6 +9,7 @@ import NoComment from './NoComment';
 function CommentList({ productId }: { productId: string }) {
   const { comments, loading, refetch } = useComments({ productId });
   const [newComment, setNewComment] = useState('');
+  console.log(comments);
 
   const handleAddCommentClick = async () => {
     // const { comment } = await productService.createMessage(
@@ -21,6 +22,7 @@ function CommentList({ productId }: { productId: string }) {
   const handleCommentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setNewComment(e.target.value);
   };
+
   return (
     <div>
       <div className="inquiryContainer">
@@ -39,8 +41,9 @@ function CommentList({ productId }: { productId: string }) {
           </Button>
         </div>
       </div>
-      {!comments.length && <NoComment />}
-      {!loading &&
+      {comments && !comments.length && <NoComment />}
+      {comments &&
+        !loading &&
         comments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}

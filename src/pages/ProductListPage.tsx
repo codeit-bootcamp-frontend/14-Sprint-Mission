@@ -46,7 +46,7 @@ function ProductListPage() {
     currentPage: 1,
     pageSize: bestPageSize,
   });
-  console.log('bestProducts', bestProducts);
+  // console.log('bestProducts', bestProducts);
   const totalPages = Math.ceil(totalCount / pageSize);
 
   // 상품 정렬 기준 변경

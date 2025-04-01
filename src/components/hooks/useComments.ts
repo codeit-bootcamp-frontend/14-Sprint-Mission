@@ -15,7 +15,7 @@ function useComments({ productId, limit, cursor }: UseCommentsProps) {
         limit,
         cursor,
       });
-      const data = res.list;
+      const data = res.data.list;
       setComments(data);
     } catch (error) {
       console.error('Error fetching comments:', error);

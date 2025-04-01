@@ -37,7 +37,7 @@ function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
         {isLoggedIn ? (
           <img src={userIcon} alt="user icon" width={40}></img>
         ) : (
-          <Link className="login-button" to="/signin">
+          <Link className="login-button" to="/login">
             로그인
           </Link>
         )}

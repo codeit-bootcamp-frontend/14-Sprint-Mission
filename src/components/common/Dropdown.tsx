@@ -38,15 +38,15 @@ function Dropdown({ items, isOpen, onClose }: DropdownProps) {
 
   return (
     <>
-      isOpen && (
-      <ul className="commentDropdown" ref={dropdownRef}>
-        {items.map((item, index) => (
-          <li key={index} onClick={item.onClick}>
-            {item.label}
-          </li>
-        ))}
-      </ul>
-      )
+      {isOpen && (
+        <ul className="commentDropdown" ref={dropdownRef}>
+          {items.map((item, index) => (
+            <li key={index} onClick={item.onClick}>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

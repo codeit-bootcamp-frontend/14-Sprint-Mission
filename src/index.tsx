@@ -7,6 +7,8 @@ import Homepage from './pages/Homepage';
 import ProductListPage from './pages/ProductListPage';
 import AddItemPage from './pages/AddItemPage';
 import ProductItem from './pages/ProductItemPage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +24,8 @@ root.render(
           </Route>
           <Route path="additem" element={<AddItemPage />} />
           <Route path="items/:id" element={<ProductItem />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignUpPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

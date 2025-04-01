@@ -65,6 +65,8 @@ export interface UseCommentsProps {
 }
 
 export interface CommentsResponse {
-  list: CommentType[];
-  nextCursor: number;
+  data: {
+    list: CommentType[];
+    nextCursor: number;
+  };
 }
