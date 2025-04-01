@@ -91,7 +91,7 @@ header {
 }
 
 .container {
-  max-width: 1920px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
@@ -103,6 +103,14 @@ header {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.btn-round {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: 600;
+  padding: 16px 124px;
+  border-radius: 9999px;
 }
 
 .button:hover {
