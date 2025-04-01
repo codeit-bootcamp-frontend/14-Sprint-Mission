@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import Button from '../../component/common/Button'
 import * as S from './Home.style'
 import Logo from '../../assets/image/Logo.png'
 import LogoFace from '../../assets/image/LogoFace.png'
@@ -11,8 +13,6 @@ import Facebook from '../../assets/svg/facebook.svg'
 import Instagram from '../../assets/svg/instagram.svg'
 import Twitter from '../../assets/svg/twitter.svg'
 import Youtube from '../../assets/svg/youtube.svg'
-import Button from '../../component/common/Button'
-import { useNavigate } from 'react-router-dom'
 
 function Home() {
   const navigate = useNavigate()
@@ -28,12 +28,12 @@ function Home() {
       <S.HeaderTop>
         <S.HeaderNav>
           <S.HeaderLogo>
-            <a href="./" target="_self">
+            <Link to="/">
               <S.HeaderLogoFace src={LogoFace} alt="판다마켓 로고 사진" />
-            </a>
-            <a href="./" target="_self">
+            </Link>
+            <Link to="/">
               <S.HeaderLogoName src={Logo} alt="판다마켓 로고 사진" />
-            </a>
+            </Link>
           </S.HeaderLogo>
           <S.ButtonWrapper>
             <Button
@@ -145,6 +145,7 @@ function Home() {
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
               <S.Privacy href="./pages/privacy.html" target="_blank">
+                {/*여기 고쳐야 함*/}
                 Privacy Policy
               </S.Privacy>
               <S.Faq href="./pages/faq.html" target="_blank">

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 import HeartInactive from '../../assets/image/HeartInactive.png'
+import styled from 'styled-components'
+
 const Bone = styled.div`
   height: 26.625rem;
   width: auto;
@@ -33,13 +34,16 @@ const BestItemImage = styled.img`
   border-radius: 1rem;
   @media (max-width: 1199px) {
     height: 21.437rem;
-    width: 21.437rem;
+    width: 100%;
   }
 `
 const BestItemsDisplay = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 1199px) {
+    gap: 10px;
+  }
 `
 const ProductDescription = styled.div`
   width: 100%;
@@ -73,12 +77,13 @@ const HeartInactiveImage = styled.img`
 const BestItems = ({ products }) => {
   const [itemsDisplay, setItemsDisplay] = useState(1)
   const list = products?.list || [] // list가 없을 수도 있으니 옵셔널체이닝으로  list가 없을 때 빈배열을 출력하여 map에 이상이 없도록 함
+
   useEffect(() => {
     const handleReasize = () => {
       console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(1)
-      } else if (window.innerWidth > 743 && window.innerWidth <= 1199) {
+      } else if (window.innerWidth >= 743 && window.innerWidth <= 1199) {
         setItemsDisplay(2)
       } else {
         setItemsDisplay(4)

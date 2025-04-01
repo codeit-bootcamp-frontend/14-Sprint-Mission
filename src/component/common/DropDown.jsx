@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
@@ -91,6 +91,7 @@ const Option = styled.li`
 const DropDown = ({ selectList, selected, onChange }) => {
   const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef(null)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -101,10 +102,21 @@ const DropDown = ({ selectList, selected, onChange }) => {
     setIsOpen(false)
   }
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  console.log('Items to display:', windowWidth) // 상태가 변경될 때마다 로그 찍기
+
   return (
     <div style={{ position: 'relative' }}>
       <SelectBox ref={selectRef} onClick={toggleDropdown}>
-        {window.innerWidth <= 375 ? (
+        {window.innerWidth <= 743 ? (
           <SortImage src={Sort} alt="Sort" />
         ) : (
           selectList.find((item) => item.value === selected)?.name

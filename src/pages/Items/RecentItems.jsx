@@ -4,6 +4,7 @@ import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 import HeartInactive from '../../assets/image/HeartInactive.png'
 import NoImage from '../../assets/image/NoImage.png'
+
 const RecentItem = styled.div`
   height: 42.125rem;
   @media (max-width: 743px) {
@@ -103,7 +104,6 @@ const RecentItems = ({ products }) => {
               <ProductDescription>
                 <ProductName>{product.name}</ProductName>
                 <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
-
                 <ProductFavoriteCount>
                   <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
                   {product.favoriteCount}

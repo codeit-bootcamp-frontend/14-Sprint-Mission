@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import LoginField from './LoginField'
+import Button from '../../component/common/Button'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 import styled from 'styled-components'
 import Logo from '../../assets/image/Logo.png'
 import LogoFace from '../../assets/image/LogoFace.png'
@@ -6,11 +11,6 @@ import Google from '../../assets/svg/Google.svg'
 import Kakao from '../../assets/svg/Kakao.svg'
 import VisibillityOff from '../../assets/svg/btn_visibillity_off.svg'
 import Visibillity from '../../assets/svg/btn_visibillity.svg'
-import LoginField from './LoginField'
-import Button from '../../component/common/Button'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
-import { useNavigate } from 'react-router-dom'
 
 const Bone = styled.div`
   display: flex;
@@ -160,12 +160,12 @@ const Signup = () => {
   return (
     <Bone>
       <LogoContainer>
-        <a href="./" target="_self">
+        <Link href="./" target="_self">
           <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
-        </a>
-        <a href="./" target="_self">
+        </Link>
+        <Link href="./" target="_self">
           <LogoImage src={Logo} alt="판다마켓 로고 사진" />
-        </a>
+        </Link>
       </LogoContainer>
       <LoginField
         label="이메일"
@@ -237,9 +237,9 @@ const Signup = () => {
       <FooterContainer>
         <First>이미 회원이신가요? &nbsp;</First>
         <Register>
-          <a href="./login" target="_blank">
+          <Link href="./login" target="_blank">
             로그인
-          </a>
+          </Link>
         </Register>
       </FooterContainer>
     </Bone>

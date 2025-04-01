@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import React, { useState } from 'react'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
+import styled from 'styled-components'
 
 const PlaceholderWrapper = styled.div`
   height: 3.75rem;
