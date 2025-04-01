@@ -79,3 +79,15 @@
 .content:nth-child(even) .content-description {
   text-align: right;
 }
+
+/* footer */
+.footer-menu {
+  display: flex;
+  gap: 30px;
+  color: var(--gray200);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
