@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import ItemsNavVar from './ItemsNavVar'
+import ItemsNavVar from '../../component/common/ItemsNavVar'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
 import DropDown from '../../component/common/DropDown'
@@ -162,7 +162,8 @@ const Items = () => {
   const itemsPerPage = 10 // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(1)
 
-  const isItemsPage = location.pathname === '/items'
+  const isItemsPage =
+    location.pathname === '/items' || location.pathname === '/additem'
   const isBoardsPage = location.pathname === '/boards'
 
   useEffect(() => {

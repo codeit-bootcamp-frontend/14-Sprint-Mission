@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/LoginAndSignup/Login'
 import Signup from './pages/LoginAndSignup/Signup'
 import Items from './pages/Items/Items'
+import AddItem from './pages/AddItem/AddItem'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/additem" element={<AddItem />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
