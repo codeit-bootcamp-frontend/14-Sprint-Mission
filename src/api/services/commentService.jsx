@@ -11,10 +11,13 @@ class CommentService {
   }
 
   getProductComment(productId, limit, cursor) {
-    // 틀릴 수도
-    return requestor.get(
-      `/products/${productId}/comments?limit=${limit}&cursor=${cursor}`
-    )
+    let url = `/products/${productId}/comments?limit=${limit}`
+
+    if (cursor) {
+      url += `&cursor=${cursor}`
+    }
+
+    return requestor.get(url)
   }
 
   postArticleComment(articleId, body) {

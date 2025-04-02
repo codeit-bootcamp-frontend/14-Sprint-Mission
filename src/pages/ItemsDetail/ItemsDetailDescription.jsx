@@ -18,6 +18,8 @@ const Bone = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid ${theme.colors.SecondaryGray[200]};
 `
 const ProductImage = styled.img`
   width: 30.375rem;
@@ -99,8 +101,8 @@ const ItemsDetailDescription = () => {
   const location = useLocation() // product 데어터 받기
   const [productsId, setProductsId] = useState([])
   const product = location.state?.product
-  console.log(product)
-  console.log(productsId)
+  //console.log(product)
+  //console.log(productsId)
 
   useEffect(() => {
     productService.getProductId(product.id).then((response) => {
@@ -133,7 +135,7 @@ const ItemsDetailDescription = () => {
             <img src={ProfileIcon} alt="프로필아이콘" />
             <div>
               <OwnerNickname>{productsId.ownerNickname}</OwnerNickname>
-              <UpdatedAt>{formatDate(productsId.updatedAt)}</UpdatedAt>
+              <UpdatedAt>{formatDate(productsId.createdAt)}</UpdatedAt>
             </div>
           </ProductFooterLeft>
           <ProductFooterRight>

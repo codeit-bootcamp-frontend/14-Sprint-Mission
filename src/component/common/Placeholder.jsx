@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
-const Bone = styled.input`
+const Bone = styled.textarea`
   width: 100%;
   height: ${(props) => props.height || '56px'};
   background-color: ${theme.colors.SecondaryGray[100]};
@@ -12,6 +12,7 @@ const Bone = styled.input`
   border-radius: 12px;
   border: none;
   padding: ${(props) => props.padding || '15px 24px'};
+  resize: none;
   ::placeholder {
     color: ${theme.colors.SecondaryGray[400]}; 
 `
