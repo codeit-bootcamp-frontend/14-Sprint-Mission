@@ -19,27 +19,20 @@ const Text = styled.div`
   color: ${theme.colors.SecondaryGray[800]};
   margin-right: 0.5rem;
 `
+const DeleteIcon = styled.img`
+  width: fit-content;
+  height: fit-content;
+`
 
-const Tag = ({ tags, handleDeleteTag }) => {
-  const handleDeleteTag = (tag) => {
-    setTags(tags.filter((tag) => tag !== tagToDelete))
-  }
+const Tag = ({ tags, onClick }) => {
   return (
     <>
-      {tags && tags.length > 0 && (
-        <div>
-          {tags.map((tag, index) => (
-            <Bone key={index}>
-              <Text>#{tag}</Text>
-              <DeleteIcon
-                src={Delete}
-                alt="삭제"
-                onClick={() => handleDeleteTag(tag)}
-              />
-            </Bone>
-          ))}
-        </div>
-      )}
+      <div>
+        <Bone>
+          <Text>#{tags}</Text>
+          <DeleteIcon src={Delete} alt="삭제" onClick={() => onClick(tags)} />
+        </Bone>
+      </div>
     </>
   )
 }

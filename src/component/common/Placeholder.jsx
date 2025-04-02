@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
@@ -14,19 +14,23 @@ const Bone = styled.input`
   padding: ${(props) => props.padding || '15px 24px'};
 `
 
-const Placeholder = ({ placeholder, height, padding }) => {
-  const [inputValue, setInputValue] = useState('')
-  const handleChange = (event) => {
-    setInputValue(event.target.value)
-  }
+const Placeholder = ({
+  placeholder,
+  height,
+  padding,
+  value,
+  onChange,
+  onKeyDown,
+}) => {
   return (
     <Bone
       placeholder={placeholder}
       height={height}
       padding={padding}
-      value={inputValue}
-      onChange={handleChange}
-    ></Bone>
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+    />
   )
 }
 

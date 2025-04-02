@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ItemsNavVar from '../../component/common/ItemsNavVar'
 import Button from '../../component/common/Button'
 import ButtonImage from '../../component/common/ButtonImage'
@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 import Tag from '../../component/common/Tag'
+
 const Bone = styled.div`
   width: 75rem;
   display: flex;
@@ -14,10 +15,10 @@ const Bone = styled.div`
   margin: 1.5rem auto auto auto;
   flex-direction: column;
   @media (max-width: 1199px) {
-    margin: auto 1.5rem;
+    width: 43.5rem;
   }
   @media (max-width: 743px) {
-    margin: auto 1rem;
+    width: 21.625rem;
   }
 `
 const Header = styled.div`
@@ -33,15 +34,22 @@ const ProductRegister = styled.div`
 `
 const Main = styled.div`
   width: 100%;
+  margin-bottom: 78px;
 `
 const ProductImage = styled.div`
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 14px;
 `
 const ProductText = styled.div`
   ${(props) => textStyle(18, 700)(props)}
   color: ${theme.colors.SecondaryGray[800]};
   margin-bottom: 1rem;
+`
+const TagDisplay = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  flex-wrap: wrap;
 `
 const AddItem = () => {
   const [name, setName] = useState('')
@@ -49,13 +57,15 @@ const AddItem = () => {
   const [price, setPrice] = useState('')
   const [tagInput, setTagInput] = useState('')
   const [tags, setTags] = useState([])
+  const [isState, setIsState] = useState(false)
   const isItemsPage =
     location.pathname === '/items' || location.pathname === '/additem'
   const isBoardsPage = location.pathname === '/boards'
 
   const handleAddTag = () => {
-    if (tagInput && !tags.includes(tagInput)) {
-      setTags([...tags, tagInput])
+    const trimmedInput = tagInput.trim()
+    if (trimmedInput && !tags.includes(trimmedInput)) {
+      setTags([...tags, trimmedInput])
       setTagInput('')
     }
   }
@@ -69,13 +79,23 @@ const AddItem = () => {
       handleAddTag()
     }
   }
+
+  useEffect(() => {
+    const valid =
+      name.length >= 1 &&
+      description.length >= 1 &&
+      price.length >= 1 &&
+      tagInput.length >= 1
+    setIsState(valid)
+  }, [name, description, price, tagInput])
+
   return (
     <>
       <ItemsNavVar isItemsPage={isItemsPage} isBoardsPage={isBoardsPage} />
       <Bone>
         <Header>
           <ProductRegister>싱품 등록하기</ProductRegister>
-          <Button size={42.5} width={74}>
+          <Button size={42.5} width={74} disabled={!isState}>
             등록
           </Button>
         </Header>
@@ -119,15 +139,15 @@ const AddItem = () => {
               onKeyDown={handleEnterDown}
             />
           </ProductImage>
-          <div>
+          <TagDisplay>
             {tags.map((tag, index) => (
               <Tag
                 key={index}
-                tagInput={tag}
-                onDelete={() => handleDeleteTag(tag)}
+                tags={tag}
+                onClick={() => handleDeleteTag(tag)}
               />
             ))}
-          </div>
+          </TagDisplay>
         </Main>
       </Bone>
     </>

@@ -32,7 +32,7 @@ const LeftWrapper = styled.div`
     width: 23.375rem;
   }
   @media (max-width: 743px) {
-    width: 16rem;
+    width: 14rem;
   }
 `
 const HeaderLogo = styled.div`
@@ -49,6 +49,10 @@ const NavContent = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 12.438rem;
+  @media (max-width: 743px) {
+    width: 8.4375rem;
+    justify-content: space-between;
+  }
 `
 const MarketButton = styled.button`
   display: flex;
@@ -61,6 +65,10 @@ const MarketButton = styled.button`
   }
   color: ${({ isActive, theme }) =>
     isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  @media (max-width: 743px) {
+    ${(props) => textStyle(16, 700)(props)}
+    padding: 21px 0px;
+  }
 `
 const FreeButton = styled.button`
   display: flex;
@@ -73,6 +81,10 @@ const FreeButton = styled.button`
   }
   color: ${({ isActive, theme }) =>
     isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  @media (max-width: 743px) {
+    ${(props) => textStyle(16, 700)(props)}
+    padding: 21px 0px;
+  }
 `
 const LogoFaceImage = styled.img`
   width: 2.5rem;
