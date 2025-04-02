@@ -19,4 +19,5 @@
 
 .select-option:hover {
   background-color: var(--gray200);
+  border-radius: 12px;
 }
