@@ -7,7 +7,9 @@ function ItemInfo({ name, price, selectOpen, toggleSelect }) {
     <section className={styles.itemInfo}>
       <div>
         <div className={styles.itemName}>{name}</div>
-        <div className={styles.itemPrice}>{price}원</div>
+        <div className={styles.itemPrice}>
+          {price.toLocaleString("ko-KR")}원
+        </div>
       </div>
       <img src={moreIcon} alt="더보기 아이콘" onClick={toggleSelect} />
       {selectOpen && (
