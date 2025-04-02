@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
@@ -31,7 +32,7 @@ const LeftWrapper = styled.div`
     width: 23.375rem;
   }
   @media (max-width: 743px) {
-    width: 16rem;
+    width: 14rem;
   }
 `
 const HeaderLogo = styled.div`
@@ -48,17 +49,43 @@ const NavContent = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 12.438rem;
+  @media (max-width: 743px) {
+    width: 8.4375rem;
+    justify-content: space-between;
+  }
 `
-const FreeMarketButton = styled.button`
+const MarketButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 21px 15px;
+  ${(props) => textStyle(18, 700)(props)}
   &:hover {
-    background: ${({ theme }) => theme.colors.SecondaryGray[600]};
+    color: ${({ theme }) => theme.colors.SecondaryGray[600]};
+  }
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  @media (max-width: 743px) {
+    ${(props) => textStyle(16, 700)(props)}
+    padding: 21px 0px;
   }
 `
-
+const FreeButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 21px 15px;
+  ${(props) => textStyle(18, 700)(props)}
+  &:hover {
+    color: ${({ theme }) => theme.colors.SecondaryGray[600]};
+  }
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  @media (max-width: 743px) {
+    ${(props) => textStyle(16, 700)(props)}
+    padding: 21px 0px;
+  }
+`
 const LogoFaceImage = styled.img`
   width: 2.5rem;
   height: 2.5rem;
@@ -84,22 +111,22 @@ const ProfileIconImage = styled.img`
   height: 2.5rem;
 `
 
-const ItemsNavVar = () => {
+const ItemsNavVar = ({ isItemsPage, isBoardsPage }) => {
   return (
     <>
       <Bone>
         <LeftWrapper>
           <HeaderLogo>
-            <a href="./" target="_self">
+            <Link to="/">
               <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
-            </a>
-            <a href="./" target="_self">
+            </Link>
+            <Link to="/">
               <LogoImage src={Logo} alt="판다마켓 로고 사진" />
-            </a>
+            </Link>
           </HeaderLogo>
           <NavContent>
-            <FreeMarketButton>자유게시판</FreeMarketButton>
-            <FreeMarketButton>중고마켓</FreeMarketButton>
+            <FreeButton isActive={isBoardsPage}>자유게시판</FreeButton>
+            <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
           </NavContent>
         </LeftWrapper>
         <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />

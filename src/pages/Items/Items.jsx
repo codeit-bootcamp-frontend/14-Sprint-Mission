@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
-import ItemsNavVar from './ItemsNavVar'
+import { useNavigate, useLocation } from 'react-router-dom'
+import ItemsNavVar from '../../component/common/ItemsNavVar'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
 import DropDown from '../../component/common/DropDown'
 import productService from '../../api/services/productService'
 import Button from '../../component/common/Button'
+import styled, { css } from 'styled-components'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 import Search from '../../assets/svg/Search.svg'
 import ArrowLeft from '../../assets/svg/ArrowLeft.svg'
 import ArrowRight from '../../assets/svg/ArrowRight.svg'
+
 const Bone = styled.div`
   width: 75rem;
   margin: 1.5rem auto;
@@ -146,20 +147,38 @@ const PageButton = styled.button`
 
 const Items = () => {
   const navigate = useNavigate()
+  const location = useLocation() // location을 써서 url 주소를 가져와 선택된 옵션에 맞게 변경경
+
   const [bestProducts, setBestProducts] = useState([])
   const [sortedProducts, setSortedProducts] = useState([])
   const [totalItems, setTotalItems] = useState(0) // 전체 상품 개수 저장
+
   const selectList = [
     { value: 'recent', name: '최신순' },
     { value: 'favorite', name: '좋아요순' },
   ]
 
   const [selectedOption, setSelectedOption] = useState(selectList[0].value)
-  // 페이지 네이션
-  const itemsPerPage = 10
+  const itemsPerPage = 10 // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(1)
 
-  //
+  const isItemsPage =
+    location.pathname === '/items' || location.pathname === '/additem'
+  const isBoardsPage = location.pathname === '/boards'
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    const orderBy = queryParams.get('orderBy') || 'recent'
+    const page = parseInt(queryParams.get('page'), 10) || 1
+
+    setSelectedOption(orderBy)
+    setCurrentPage(page)
+  }, [location.search])
+
+  const updateURL = (orderBy, page) => {
+    navigate(`?orderBy=${orderBy}&page=${page}`)
+  }
+
   const handleAdditem = () => {
     navigate(`/additem`)
   }
@@ -173,7 +192,7 @@ const Items = () => {
   // 페이지네이션
   useEffect(() => {
     productService
-      .getProduct(currentPage, itemsPerPage, selectedOption, '')
+      .getProduct(currentPage, 10, selectedOption, '')
       .then((response) => {
         const sorted = [...(response.data.list || [])].sort((a, b) => {
           if (selectedOption === 'recent') {
@@ -187,14 +206,9 @@ const Items = () => {
         setTotalItems(response.data.totalCount)
       })
   }, [currentPage, selectedOption])
+
   const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const handleNextPage = () => {
-    setCurrentPage((prev) => prev + 1)
-  }
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => (prev > 1 ? prev - 1 : 1))
-  }
-  // 페이지 버튼
+
   const pages = (() => {
     if (totalPages <= 5) {
       return Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -208,9 +222,27 @@ const Items = () => {
     return Array.from({ length: 5 }, (_, i) => currentPage - 2 + i)
   })()
 
+  const handleNextPage = () => {
+    setCurrentPage((prev) => {
+      const nextPage = prev + 1
+      updateURL(selectedOption, nextPage)
+      return nextPage
+    })
+  }
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => {
+      const prevPage = prev > 1 ? prev - 1 : 1
+      updateURL(selectedOption, prevPage)
+      return prevPage
+    })
+  }
+  // 페이지 버튼
+
   return (
     <>
-      <ItemsNavVar />
+      <ItemsNavVar isItemsPage={isItemsPage} isBoardsPage={isBoardsPage} />
+
       <Bone>
         <BestItems products={bestProducts} />
 
@@ -232,11 +264,16 @@ const Items = () => {
             <DropDown
               selectList={selectList}
               selected={selectedOption}
-              onChange={(value) => setSelectedOption(value)}
+              onChange={(value) => {
+                setSelectedOption(value)
+                updateURL(value, currentPage)
+              }}
             />
           </NavRightWrapper>
         </NavVAr>
+
         <RecentItems products={sortedProducts} />
+
         <Pagenation>
           <LeftButton onClick={handlePrevPage}>
             <img src={ArrowLeft} />
@@ -245,7 +282,10 @@ const Items = () => {
             <PageButton
               key={page}
               $isActive={currentPage === page}
-              onClick={() => setCurrentPage(page)}
+              onClick={() => {
+                setCurrentPage(page)
+                updateURL(selectedOption, page)
+              }}
             >
               {page}
             </PageButton>
