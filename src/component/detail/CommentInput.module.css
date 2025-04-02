@@ -1,0 +1,66 @@
+.commentsSection {
+  width: 343px;
+  margin: 24px auto 34px;
+}
+
+.commentsSectionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.commentsTextarea {
+  font-family: "Pretendard";
+  width: 100%;
+  height: 129px;
+  resize: none;
+  background-color: var(--gray100);
+  border-radius: 12px;
+  border: none;
+  padding: 16px 24px;
+  margin-bottom: 16px;
+}
+
+.commentsTextarea::placeholder {
+  font-size: 13px;
+  line-height: 24px;
+  color: var(--gray400);
+}
+
+.commentsTextarea:focus {
+  outline: solid 1px var(--blue);
+}
+
+.submitBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.commentsSubmitBtn {
+  width: 74px;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  background-color: var(--blue);
+  font-size: 16px;
+  cursor: pointer;
+}
+.commentsSubmitBtn:disabled {
+  background-color: var(--gray400);
+  cursor: auto;
+}
+
+@media (min-width: 768px) {
+  .commentsSection {
+    width: 696px;
+    margin: 40px auto 34px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .commentsSection {
+    width: 1200px;
+    margin: 40px auto 34px;
+  }
+}

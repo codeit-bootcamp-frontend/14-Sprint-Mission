@@ -19,17 +19,14 @@ function AddItemInput({ isInputValueEmpty }) {
   const [tag, setTag] = useState([]);
 
   const handleTagBlur = () => {
-    tag.forEach((value) => {
-      if (tagInput.value === value) {
-        setTag((prevTag) => prevTag.filter((tag) => tag !== value));
-      }
-    });
-    setTag((prevTag) => [...prevTag, tagInput.value]);
-
+    const newTag = tagInput;
+    if (newTag) {
+      setTag((prevTag) => [...new Set([...prevTag, newTag])]);
+    }
     tagInput.onChange({ target: { value: "" } });
   };
 
-  const handleEnterKey = (event) => {
+  const handleTagEnterKey = (event) => {
     if (event.key === "Enter") {
       handleTagBlur();
     }
@@ -102,7 +99,7 @@ function AddItemInput({ isInputValueEmpty }) {
         value={tagInput.value}
         onChange={tagInput.onChange}
         onBlur={handleTagBlur}
-        onKeyDown={handleEnterKey}
+        onKeyDown={handleTagEnterKey}
         onFocus={(e) => {
           e.target.value = "";
         }}

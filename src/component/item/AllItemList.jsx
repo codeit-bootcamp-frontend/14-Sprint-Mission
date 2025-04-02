@@ -1,52 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import ItemList from "./ItemList";
 import { getItem } from "../../api/api";
 import Pagination from "../../component/common/Pagination";
 import "./AllItemList.css";
 import { Link } from "react-router-dom";
-
-function usePageSize() {
-  const [pageSize, setPageSize] = useState(() => {
-    const width = window.innerWidth;
-    if (width < 768) return 4;
-    if (width < 1200) return 6;
-    return 10;
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setPageSize(() => {
-        const width = window.innerWidth;
-        if (width < 768) return 4;
-        if (width < 1200) return 6;
-        return 10;
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return pageSize;
-}
-
-function useItems(orderBy, page, pageSize) {
-  const [items, setItems] = useState([]);
-  const [totalPage, setTotalPage] = useState(0);
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      const { list, totalCount } = await getItem({ orderBy, page, pageSize });
-      setTotalPage(Math.ceil(totalCount / pageSize));
-      setItems(list);
-    };
-
-    fetchItems();
-  }, [orderBy, page, pageSize]);
-
-  return { items, totalPage };
-}
+import ItemList from "../item/ItemList";
+import usePageSize from "../../hooks/usePageSize";
+import useItems from "../../hooks/useItems";
 
 function AllItemList() {
   const [searchParams, setSearchParams] = useSearchParams();

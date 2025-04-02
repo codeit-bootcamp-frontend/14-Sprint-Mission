@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ItemList.css";
 
 function Item({ item }) {
@@ -20,7 +21,12 @@ function ItemList({ items, className }) {
       {items.map((item) => {
         return (
           <div key={item.id}>
-            <Item item={item} />
+            <Link
+              to={`/items/${item.id}`}
+              style={{ textDecoration: "none", color: "var(--gray800)" }}
+            >
+              <Item item={item} />
+            </Link>
           </div>
         );
       })}

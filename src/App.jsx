@@ -1,16 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./component/common/Header";
-import ItemPage from "./pages/item/ItemPage";
-import AddItemPage from "./pages/addItem/AddItemPage";
+import ItemPage from "./pages/itemPage/ItemPage";
+import AddItemPage from "./pages/addItemPage/AddItemPage";
+import ItemDetailPage from "./pages/itemDetail/container/ItemDetailPage";
 import "/root.css";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="items" element={<ItemPage />} />
         <Route path="additem" element={<AddItemPage />} />
+        <Route path="items/:productId" element={<ItemDetailPage />} />
       </Routes>
     </BrowserRouter>
   );

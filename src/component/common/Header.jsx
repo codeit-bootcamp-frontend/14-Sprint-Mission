@@ -1,7 +1,9 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
+import profileImg from "../../../image/profile.png";
 
 function Header() {
+  const location = useLocation();
   return (
     <header className="item-header">
       <div className="item-header-div">
@@ -13,8 +15,8 @@ function Header() {
           <NavLink
             to="/items"
             className={`${
-              location.pathname === "/items" || "/additems"
-                ? "tap tap-blue"
+              location.pathname === "/items" || location.pathname === "/additem"
+                ? "tap-blue"
                 : "tap"
             }`}
           >
@@ -22,11 +24,7 @@ function Header() {
           </NavLink>
         </div>
         <Link>
-          <img
-            src="image/profile.png"
-            className="profile-icon"
-            alt="프로필아이콘"
-          />
+          <img src={profileImg} className="profile-icon" alt="프로필아이콘" />
         </Link>
       </div>
     </header>
