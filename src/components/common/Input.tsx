@@ -1,4 +1,4 @@
-import { ChangeEvent, Ref, RefAttributes } from 'react';
+import { ChangeEvent, FocusEventHandler, Ref } from 'react';
 import './Input.css';
 
 interface InputProps {
@@ -9,13 +9,20 @@ interface InputProps {
   placeholder?: string;
   ref?: Ref<HTMLInputElement>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
 }
 
-function Input({ label, id, value, onChange, ...rest }: InputProps) {
+function Input({ label, id, value, onChange, onBlur, ...rest }: InputProps) {
   return (
     <div className="inputContainer">
       <label>{label}</label>
-      <input id={id} value={value} onChange={onChange} {...rest} />
+      <input
+        id={id}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        {...rest}
+      />
     </div>
   );
 }

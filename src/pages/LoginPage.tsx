@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './LoginPage.css';
 import { Link } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.png';
@@ -20,6 +20,9 @@ function LoginPage() {
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const [emailError, setEmailError] = useState<string | null>();
+  const [passwordError, setPasswordError] = useState<string | null>();
+  const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
@@ -32,6 +35,43 @@ function LoginPage() {
       [id]: value,
     }));
   };
+
+  const handleEmailBlur = () => {
+    if (!inputData.email) {
+      setEmailError('이메일을 입력해주세요.');
+    } else if (!isValidEmail(inputData.email)) {
+      setEmailError('잘못된 이메일 형식입니다.');
+    } else {
+      setEmailError(null);
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    if (!inputData.password) {
+      setPasswordError('비밀번호를 입력해주세요.');
+    } else if (inputData.password.trim().length < 8) {
+      setPasswordError('비밀번호를 8자 이상 입력해주세요.');
+    }
+  };
+
+  // 이메일 유효성 검사
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  useEffect(() => {
+    if (
+      inputData.email &&
+      inputData.password &&
+      !emailError &&
+      !passwordError
+    ) {
+      setIsButtonEnabled(true);
+    } else {
+      setIsButtonEnabled(false);
+    }
+  }, [inputData, emailError, passwordError]);
 
   return (
     <>
@@ -56,7 +96,9 @@ function LoginPage() {
                 type="email"
                 placeholder="이메일을 입력해주세요"
                 onChange={handleChange}
+                onBlur={handleEmailBlur}
               />
+              {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <div className="input-box">
               <Input
@@ -67,7 +109,11 @@ function LoginPage() {
                 placeholder="비밀번호를 입력해주세요"
                 onChange={handleChange}
                 ref={passwordInputRef}
+                onBlur={handlePasswordBlur}
               />
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
               {!showPassword ? (
                 <img
                   className="hide-password-icon"
@@ -84,7 +130,11 @@ function LoginPage() {
                 />
               )}
             </div>
-            <button type="button" className="login-btn" disabled>
+            <button
+              type="button"
+              className="login-btn"
+              disabled={!isButtonEnabled}
+            >
               로그인
             </button>
           </form>

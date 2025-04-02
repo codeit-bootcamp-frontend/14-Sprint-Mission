@@ -10,6 +10,7 @@ a {
   padding: 16px;
   max-width: 640px;
   gap: 40px;
+  margin-bottom: 120px;
 }
 
 .brand {
@@ -77,7 +78,7 @@ a {
   position: absolute;
   width: 20px;
   right: 16px;
-  top: 40px;
+  top: 55px;
   cursor: pointer;
 }
 
