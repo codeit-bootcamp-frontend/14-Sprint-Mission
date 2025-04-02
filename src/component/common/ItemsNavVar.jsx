@@ -12,8 +12,9 @@ const Bone = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: auto 12.5rem auto 12.5rem;
+  padding: 0 12.5rem 0 12.5rem;
   position: sticky;
+  border-bottom: 1px solid #dfdfdf;
   @media (max-width: 1199px) {
     margin: auto 1.5rem;
   }

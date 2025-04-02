@@ -202,6 +202,7 @@ const Items = () => {
           }
           return 0
         })
+        console.log(sorted)
         setSortedProducts(sorted)
         setTotalItems(response.data.totalCount)
       })
@@ -237,7 +238,6 @@ const Items = () => {
       return prevPage
     })
   }
-  // 페이지 버튼
 
   return (
     <>

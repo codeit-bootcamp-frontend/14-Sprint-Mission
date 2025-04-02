@@ -24,13 +24,19 @@ const DeleteIcon = styled.img`
   height: fit-content;
 `
 
-const Tag = ({ tags, onClick }) => {
+const Tag = ({ tags, onClick, showDelete = false }) => {
   return (
     <>
       <div>
         <Bone>
           <Text>#{tags}</Text>
-          <DeleteIcon src={Delete} alt="삭제" onClick={() => onClick(tags)} />
+          {showDelete && (
+            <DeleteIcon
+              src={Delete}
+              alt="삭제"
+              onClick={() => onClick?.(tags)}
+            />
+          )}
         </Bone>
       </div>
     </>

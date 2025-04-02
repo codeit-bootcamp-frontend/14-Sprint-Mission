@@ -111,8 +111,6 @@ const DropDown = ({ selectList, selected, onChange }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  console.log('Items to display:', windowWidth) // 상태가 변경될 때마다 로그 찍기
-
   return (
     <div style={{ position: 'relative' }}>
       <SelectBox ref={selectRef} onClick={toggleDropdown}>

@@ -144,6 +144,7 @@ const AddItem = () => {
               <Tag
                 key={index}
                 tags={tag}
+                showDelete={true}
                 onClick={() => handleDeleteTag(tag)}
               />
             ))}

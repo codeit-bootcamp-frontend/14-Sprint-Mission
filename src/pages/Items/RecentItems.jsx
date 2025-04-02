@@ -70,7 +70,6 @@ const RecentItems = ({ products }) => {
 
   useEffect(() => {
     const handleReasize = () => {
-      console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(4)
       } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
@@ -84,8 +83,6 @@ const RecentItems = ({ products }) => {
 
     return () => window.removeEventListener('resize', handleReasize)
   }, [])
-
-  console.log('Items to display:', itemsDisplay) // 상태가 변경될 때마다 로그 찍기
   return (
     <>
       <RecentItem>
