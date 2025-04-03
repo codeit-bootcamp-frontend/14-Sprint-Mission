@@ -17,11 +17,15 @@ export const validateField = (field) => {
 
   if (!value) {
     showError(error, input, emptyMessage);
+    field.isValid = false;
   } else if (regex && !regex.test(value)) {
     showError(error, input, invalidMessage);
+    field.isValid = false;
   } else {
     hideError(error, input);
+    field.isValid = true;
   }
+  console.log(field.isValid);
 };
 
 export const validatePasswordConfirm = (passwordField, confirmField) => {
@@ -34,13 +38,16 @@ export const validatePasswordConfirm = (passwordField, confirmField) => {
       confirmField.input,
       confirmField.emptyMessage
     );
+    confirmField.isValid = false;
   } else if (passwordValue !== confirmValue) {
     showError(
       confirmField.error,
       confirmField.input,
       confirmField.invalidMessage
     );
+    confirmField.isValid = false;
   } else {
     hideError(confirmField.error, confirmField.input);
+    confirmField.isValid = true;
   }
 };
