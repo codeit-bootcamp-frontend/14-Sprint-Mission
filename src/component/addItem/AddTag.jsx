@@ -47,3 +47,6 @@ function AddTag({ tagArr, setTagArr }) {
 }
 
 export default AddTag;
+
+export const renderTags = (tagArr) =>
+  tagArr.map((tag) => <TagSpan key={tag}>#{tag}</TagSpan>);

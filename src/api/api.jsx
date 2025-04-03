@@ -1,4 +1,4 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
+import { BASE_URL } from "./constants/baseURL";
 
 export async function getItem({
   orderBy = "recent",
@@ -30,4 +30,13 @@ export async function uploadImg(image) {
   } catch (error) {
     console.log("이미지 POST 요청 실패", error);
   }
+}
+
+export async function getItemDetail(id) {
+  const response = await fetch(`${BASE_URL}/products/${id}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch item detail: ${response.status}`);
+  }
+  const body = await response.json();
+  return body;
 }

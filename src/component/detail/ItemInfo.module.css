@@ -1,0 +1,21 @@
+.itemInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+.itemInfo img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.itemName {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.itemPrice {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}

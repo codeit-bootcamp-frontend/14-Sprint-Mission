@@ -34,9 +34,7 @@ function AddItemImg() {
 
   return (
     <>
-      <div className="add-item-input-div">
-        <label htmlFor="add-item-img">상품 이미지</label>
-      </div>
+      <div className="add-item-input-div">상품 이미지</div>
       <div className="add-item-img-container">
         <label
           htmlFor="add-item-img"

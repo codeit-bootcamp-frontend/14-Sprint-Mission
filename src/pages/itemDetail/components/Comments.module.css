@@ -1,0 +1,26 @@
+.commentEmptyContainer {
+  width: 196px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.commentEmptyImg {
+  width: 140px;
+  height: 140px;
+}
+
+.commentEmptyDiv {
+  font-size: 16px;
+  color: var(--gray400);
+}
+
+@media (min-width: 1200px) {
+  .commentEmptyImg {
+    width: 196px;
+    height: 196px;
+  }
+}

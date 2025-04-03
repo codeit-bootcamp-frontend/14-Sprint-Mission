@@ -1,0 +1,84 @@
+.itemOwner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.itemOwnerImage {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
+.itemOwnerInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemOwnerName {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.itemDate {
+  font-size: 14px;
+  color: var(--gray400);
+  line-height: 24px;
+}
+.favoriteIcon {
+  width: 20px;
+  height: 17px;
+}
+
+.itemFavorites {
+  height: 32px;
+  border-radius: 35px;
+  border: 1px solid var(--gray200);
+  padding: 4px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: var(--gray500);
+  margin-left: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.animatedHeart {
+  width: 20px;
+  height: 17px;
+  position: absolute;
+  left: 12px;
+  animation: bounceUp 0.8s ease infinite;
+}
+@keyframes bounceUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.9;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-20px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+.ownerDivider {
+  border-left: thin solid var(--gray200);
+  height: 34px;
+  border-radius: 2px;
+}

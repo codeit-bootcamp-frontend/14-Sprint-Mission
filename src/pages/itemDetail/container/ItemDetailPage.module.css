@@ -1,0 +1,33 @@
+.itemDetail {
+  display: flex;
+  flex-direction: column;
+  width: 344px;
+  margin: 16px auto 65px;
+}
+
+.itemDetailInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .itemDetail {
+    width: 696px;
+    margin: 24px auto 65px;
+  }
+  .itemDetailInfo {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .itemDetail {
+    width: 1200px;
+    margin: 24px auto 65px;
+  }
+  .itemDetailInfo {
+    flex-direction: row;
+    gap: 24px;
+  }
+}

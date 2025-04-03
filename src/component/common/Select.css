@@ -1,0 +1,23 @@
+.select-container {
+  width: 102px;
+  border-radius: 12px;
+  border: 1px solid var(--gray200);
+  text-align: center;
+  background-color: var(--white);
+  position: absolute;
+  right: 5px;
+  top: 25px;
+  z-index: 1000;
+}
+
+.select-option {
+  font-size: 14px;
+  color: var(--gray500);
+  padding: 16px 0 12px;
+  cursor: pointer;
+}
+
+.select-option:hover {
+  background-color: var(--gray200);
+  border-radius: 12px;
+}

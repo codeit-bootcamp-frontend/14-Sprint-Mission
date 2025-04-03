@@ -1,0 +1,60 @@
+.moreLoadBtn {
+  width: 94px;
+  margin: 20px auto 0;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 12px;
+  color: var(--gray600);
+  cursor: pointer;
+}
+
+.moreLoadBtn:hover {
+  background-color: var(--gray200);
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.backToListBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  border: none;
+  background-color: var(--blue);
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+  cursor: pointer;
+}
+.backToListBtn img {
+  width: 24px;
+  height: 24px;
+}
+
+.backToListBtn:hover {
+  background: linear-gradient(-45deg, var(--blue), #69a0f3, var(--blue));
+  background-size: 400% 400%;
+  animation: colorChange 3s ease infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
