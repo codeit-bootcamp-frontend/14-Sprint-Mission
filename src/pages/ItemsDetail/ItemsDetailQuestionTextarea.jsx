@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import commentService from '../../api/services/commentService'
-import Placeholder from '../../component/common/TextInputPlaceholder'
+import TextInputPlaceholder from '../../component/common/TextInputPlaceholder'
 import Button from '../../component/common/Button'
 
 import InquiryEmpty from '../../assets/svg/InquiryEmpty.svg'
@@ -125,7 +125,7 @@ const ItemsDetailQuestionTextarea = () => {
     <Bone>
       <ProductQuestionWrapper>
         <ProductQuestionText>문의하기</ProductQuestionText>
-        <Placeholder
+        <TextInputPlaceholder
           placeholder={
             '개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
           }
