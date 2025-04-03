@@ -35,8 +35,8 @@ class CommentService {
     )
   }
 
-  patchComment(commentId) {
-    return requestor.patch(`/comments/${commentId}`)
+  patchComment(commentId, body) {
+    return requestor.patch(`/comments/${commentId}`, body)
   }
 
   deleteComment(commentId) {

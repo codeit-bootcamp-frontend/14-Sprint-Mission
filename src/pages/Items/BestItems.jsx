@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
+import HeartInactive from '../../assets/image/HeartInactive.png'
+
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
-import HeartInactive from '../../assets/image/HeartInactive.png'
 import styled from 'styled-components'
 
 const Bone = styled.div`

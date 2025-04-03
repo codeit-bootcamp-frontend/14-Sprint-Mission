@@ -13,7 +13,10 @@ const ButtonWrapper = styled.button`
   height: ${({ size }) => (size === 43 ? '48px' : 'auto')};
   width: ${({ width }) => (width ? `${width}px` : '100%')};
   font-size: ${({ size }) => ButtonSize[size]?.fontSize || '16px'};
-  padding: ${({ size }) => ButtonSize[size]?.padding || '16px'};
+  padding: ${({ paddingHeight, paddingWidth }) =>
+    paddingHeight && paddingWidth
+      ? `${paddingHeight}px ${paddingWidth}px`
+      : `16px`};
 
   &:hover {
     background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
@@ -66,13 +69,23 @@ const ButtonSize = {
   },
 }
 
-const Button = ({ size = 43, width, onClick, disabled, children }) => {
+const Button = ({
+  size = 43,
+  width,
+  onClick,
+  disabled,
+  children,
+  paddingHeight,
+  paddingWidth,
+}) => {
   return (
     <ButtonWrapper
       size={size}
       width={width}
       onClick={onClick}
       disabled={disabled}
+      paddingHeight={paddingHeight}
+      paddingWidth={paddingWidth}
     >
       {children}
     </ButtonWrapper>

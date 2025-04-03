@@ -40,6 +40,8 @@ function Home() {
               variant="primary"
               size={48.5}
               width={128}
+              paddingHeight={11}
+              paddingWidth={43}
               onClick={goToPostId}
             >
               로그인
@@ -59,6 +61,8 @@ function Home() {
               size={56}
               width={364}
               onClick={goToPostItems}
+              paddingHeight={12}
+              paddingWidth={124}
             >
               구경하러 가기
             </Button>

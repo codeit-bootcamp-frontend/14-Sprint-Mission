@@ -254,9 +254,11 @@ const Items = () => {
             <ButtonWrapper>
               <Button
                 variant="primary"
-                width={133}
+                width={139}
                 size={42.5}
                 onClick={handleAdditem}
+                paddingHeight={8}
+                paddingWidth={23}
               >
                 상품 등록하기
               </Button>
