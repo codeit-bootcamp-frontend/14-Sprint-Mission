@@ -1,6 +1,7 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .inputContainer label {
