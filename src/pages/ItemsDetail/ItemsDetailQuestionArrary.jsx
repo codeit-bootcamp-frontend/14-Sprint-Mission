@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+import Button from '../../component/common/Button'
+import Placeholder from '../../component/common/Placeholder'
+import commentService from '../../api/services/commentService'
 import { diffDate } from '../../styles/datetime'
 import { formatDate } from '../../styles/datetime'
 
@@ -9,6 +12,33 @@ import ProfileIcon from '../../assets/svg/ProfileIcon.svg'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
+
+const EditBone = styled.div`
+  position: relative;
+  margin: 1rem 0 7rem;
+  z-index: 1;
+`
+const EditingWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: -194px;
+`
+
+const ButtonEditWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 1rem 0 1.5rem;
+`
+const EditCalcelButton = styled.button`
+  ${(props) => textStyle(16, 600)(props)}
+  color: ${theme.colors.SecondaryGray[500]};
+  width: 68px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const Bone = styled.div`
   border-bottom: 1px solid ${theme.colors.SecondaryGray[200]};
@@ -73,7 +103,7 @@ const SettingButton = styled.img`
 const SelectOption = styled.ul`
   position: absolute;
   top: 1.8rem;
-  left: -114px;
+  left: -124px;
   border: 1px solid #cccccc;
   border-radius: 12px;
   background-color: #ffffff;
@@ -92,8 +122,8 @@ const SelectOption = styled.ul`
   justify-content: space-around;
   @media (max-width: 743px) {
     position: absolute;
-    top: 62px;
-    left: -72px;
+    top: 30px;
+    left: -110px;
     z-index: 1;
     width: 130px;
     height: 84px;
@@ -111,18 +141,29 @@ const Option = styled.li`
     padding: 7px 35px;
   }
 `
-const ItemsDetailQuestionArrary = ({ productQuestion, setIsEditing }) => {
+const ItemsDetailQuestionArrary = ({ productQuestion }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
   const dropDownRef = useRef(null)
-
+  const [userComment, setUserComment] = useState(productQuestion.content)
+  const [isEditing, setIsEditing] = useState(false)
   // 수정 삭제 버튼
   const handleSettingClick = () => {
     setIsDropDownOpen((prev) => !prev)
   }
+  const handleEditSuccessClick = async () => {
+    await commentService.patchComment(productQuestion.id, {
+      content: userComment,
+    })
+    setIsEditing(false)
+  }
 
+  const handleEditCancle = () => {
+    setIsEditing(false)
+  }
   // 수정하기 눌렀을 때 버튼
   const handleEditClick = () => {
     setIsEditing(true)
+    setIsDropDownOpen((prev) => !prev)
   }
   // 다른 곳 클릭시 수정삭제 버튼이 닫힘
   useEffect(() => {
@@ -141,6 +182,36 @@ const ItemsDetailQuestionArrary = ({ productQuestion, setIsEditing }) => {
 
   return (
     <>
+      {isEditing ? (
+        <EditBone>
+          <EditingWrapper>
+            {/*로그인을 하지 않아 토큰?전달이 되지 않은 상태*/}
+            <Placeholder
+              height="108px"
+              value={userComment}
+              padding="16px 24px 40px 24px"
+              onChange={(e) => setUserComment(e.target.value)}
+            />
+            <ButtonEditWrapper>
+              <EditCalcelButton onClick={handleEditCancle}>
+                취소
+              </EditCalcelButton>
+              <Button
+                size={42.5}
+                width={106}
+                paddingHeight={8}
+                paddingWidth={23}
+                onClick={handleEditSuccessClick}
+              >
+                수정완료
+              </Button>
+            </ButtonEditWrapper>
+          </EditingWrapper>
+        </EditBone>
+      ) : (
+        <></>
+      )}
+
       <Bone>
         <div>
           <QuestionContent isDropDownOpen={isDropDownOpen}>

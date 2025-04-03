@@ -17,6 +17,7 @@ const Bone = styled.div`
   border-bottom: 1px solid #dfdfdf;
   @media (max-width: 1199px) {
     margin: auto 1.5rem;
+    padding: 0;
   }
   @media (max-width: 743px) {
     margin: auto 1rem;

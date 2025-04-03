@@ -15,9 +15,18 @@ import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
 const Bone = styled.div`
   width: 75rem;
   margin: 2.5rem auto 0;
+  @media (max-width: 1199px) {
+    width: 43.5rem;
+  }
+  @media (max-width: 743px) {
+    width: 21.5rem;
+  }
 `
 const ProductQuestionWrapper = styled.div`
   margin: 2.5rem auto 1.5rem;
+  @media (max-width: 743px) {
+    margin: 2.5rem auto;
+  }
 `
 const ProductQuestionText = styled.div`
   ${(props) => textStyle(16, 600)(props)}
@@ -39,6 +48,8 @@ const ButtonWrapper = styled.div`
 `
 const ItemsQuestionWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
 `
 const ButtonEditWrapper = styled.div`
   display: flex;
@@ -68,26 +79,18 @@ const InquiryEmptyText = styled.div`
 `
 const ItemsDetailQuestionTextarea = () => {
   const location = useLocation() // product 데어터 받기
+  const [isEditing, setIsEditing] = useState(false)
   const [productQuestion, setProductQuestion] = useState({
     list: [],
     nextCursor: null,
   })
   const [questionText, setQuestionText] = useState('')
   const [isState, setIsState] = useState(false)
-  const [userComment, setUserComment] = useState(productQuestion.content)
-  const [isEditing, setIsEditing] = useState(false)
+  const [textareaStyle, setTextareaStyle] = useState({
+    height: '84px',
+  })
   const product = location.state?.product
 
-  const handleEditSuccessClick = async () => {
-    await commentService.patchComment(productQuestion.id, {
-      content: userComment,
-    })
-    setIsEditing(false)
-  }
-
-  const handleEditCancle = () => {
-    setIsEditing(false)
-  }
   // 서버데이터 불러옴
   useEffect(() => {
     commentService.getProductComment(product.id, 3).then((response) => {
@@ -97,6 +100,20 @@ const ItemsDetailQuestionTextarea = () => {
       })
     })
   }, [product])
+  const handleResize = () => {
+    if (window.innerWidth < 375) {
+      setTextareaStyle({ height: '129px' })
+    } else if (window.innerWidth < 744) {
+      setTextareaStyle({ height: '84px' })
+    }
+  }
+
+  // placeholder useEffect 적용
+  useEffect(() => {
+    handleResize() // 초기 실행
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize) // 클린업
+  }, [window.innerWidth])
 
   //문의하기 등록 버튼
   useEffect(() => {
@@ -112,8 +129,8 @@ const ItemsDetailQuestionTextarea = () => {
           placeholder={
             '개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
           }
-          height={'104px'}
-          padding="16px 24px"
+          height={textareaStyle.height}
+          padding={'16px 24px'}
           value={questionText}
           onChange={(e) => setQuestionText(e.target.value)}
         />
@@ -129,32 +146,7 @@ const ItemsDetailQuestionTextarea = () => {
           </Button>
         </ButtonWrapper>
       </ProductQuestionWrapper>
-      {isEditing ? (
-        <>
-          {/*로그인을 하지 않아 토큰?전달이 되지 않은 상태*/}
-          <Placeholder
-            placeholder={'수정사항을 입력해주세요'}
-            height="82px"
-            value={userComment}
-            padding="16px 24px 40px 24px"
-            onChange={(e) => setUserComment(e.target.value)}
-          />
-          <ButtonEditWrapper>
-            <EditCalcelButton onClick={handleEditCancle}>취소</EditCalcelButton>
-            <Button
-              size={42.5}
-              width={106}
-              paddingHeight={8}
-              paddingWidth={23}
-              onClick={handleEditSuccessClick}
-            >
-              수정완료
-            </Button>
-          </ButtonEditWrapper>
-        </>
-      ) : (
-        <></>
-      )}
+
       {productQuestion.list.length === 0 ? (
         <InquiryEmptyWrapper>
           <img src={InquiryEmpty} alt="문의가 없습니다" />
@@ -168,6 +160,7 @@ const ItemsDetailQuestionTextarea = () => {
                 key={index}
                 productQuestion={question}
                 setIsEditing={setIsEditing}
+                isEditing={isEditing}
               />
             ))}
           </ItemsQuestionWrapper>

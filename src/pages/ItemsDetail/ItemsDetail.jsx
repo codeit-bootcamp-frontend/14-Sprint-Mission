@@ -30,6 +30,12 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 4.6875rem;
+  @media (max-width: 1199px) {
+    margin: 3.5rem auto 10.4375rem auto;
+  }
+  @media (max-width: 743px) {
+    margin: 2.5rem auto 2.5rem auto;
+  }
 `
 const ButtonInner = styled.div`
   display: flex;

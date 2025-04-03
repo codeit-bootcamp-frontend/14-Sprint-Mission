@@ -13,14 +13,18 @@ const Bone = styled.textarea`
   border: none;
   padding: ${(props) => props.padding || '15px 24px'};
   resize: none;
-  box-sizing: border-box; 
-  display: block;   
+  box-sizing: border-box;
+  display: block;
   cursor: text;
-    word-break: break-word; 
+  word-break: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
   ::placeholder {
-    color: ${theme.colors.SecondaryGray[400]}; 
+    color: ${theme.colors.SecondaryGray[400]};
+  }
+  @media (max-width: 743px) {
+    ${(props) => textStyle(14, 400)(props)}
+  }
 `
 
 const Placeholder = ({
