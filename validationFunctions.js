@@ -1,28 +1,46 @@
-export const showError = (element, errorMessage) => {
-  const { error, input } = element;
-  if (!error || !input) return;
-  error.textContent = errorMessage;
-  error.style.display = "block";
-  input.style.border = "1px solid red";
+const showError = (errorElement, inputElement, errorMessage) => {
+  if (!errorElement || !inputElement) return;
+  errorElement.textContent = errorMessage;
+  errorElement.style.display = "block";
+  inputElement.style.border = "1px solid red";
 };
 
-export const hideError = (element) => {
-  const { error, input } = element;
-  if (!error || !input) return;
-  error.style.display = "none";
-  input.style.border = "none";
+const hideError = (errorElement, inputElement) => {
+  if (!errorElement || !inputElement) return;
+  errorElement.style.display = "none";
+  inputElement.style.border = "none";
 };
 
-export const addErrorEvent = (element) => {
-  const { input, error, regex, emptyMessage, invalidMessage } = element;
-  input.addEventListener("focusout", () => {
-    const value = input.value.trim();
-    if (!value) {
-      showError(element, emptyMessage);
-    } else if (regex && !regex.test(value)) {
-      showError(element, invalidMessage);
-    } else {
-      hideError(element);
-    }
-  });
+export const validateField = (field) => {
+  const { input, error, regex, emptyMessage, invalidMessage } = field;
+  const value = input.value.trim();
+
+  if (!value) {
+    showError(error, input, emptyMessage);
+  } else if (regex && !regex.test(value)) {
+    showError(error, input, invalidMessage);
+  } else {
+    hideError(error, input);
+  }
+};
+
+export const validatePasswordConfirm = (passwordField, confirmField) => {
+  const passwordValue = passwordField.input.value;
+  const confirmValue = confirmField.input.value;
+
+  if (!confirmValue) {
+    showError(
+      confirmField.error,
+      confirmField.input,
+      confirmField.emptyMessage
+    );
+  } else if (passwordValue !== confirmValue) {
+    showError(
+      confirmField.error,
+      confirmField.input,
+      confirmField.invalidMessage
+    );
+  } else {
+    hideError(confirmField.error, confirmField.input);
+  }
 };
