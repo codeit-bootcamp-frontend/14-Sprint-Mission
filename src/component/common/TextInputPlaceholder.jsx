@@ -27,7 +27,7 @@ const Bone = styled.textarea`
   }
 `
 
-const Placeholder = ({
+const TextInputPlaceholder = ({
   placeholder,
   height,
   padding,
@@ -47,4 +47,4 @@ const Placeholder = ({
   )
 }
 
-export default Placeholder
+export default TextInputPlaceholder

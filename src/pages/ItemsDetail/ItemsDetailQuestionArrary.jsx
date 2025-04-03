@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import Button from '../../component/common/Button'
-import Placeholder from '../../component/common/Placeholder'
+import Placeholder from '../../component/common/TextInputPlaceholder'
 import commentService from '../../api/services/commentService'
 import { diffDate } from '../../styles/datetime'
 import { formatDate } from '../../styles/datetime'

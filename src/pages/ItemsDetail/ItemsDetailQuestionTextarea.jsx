@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import commentService from '../../api/services/commentService'
-import Placeholder from '../../component/common/Placeholder'
+import Placeholder from '../../component/common/TextInputPlaceholder'
 import Button from '../../component/common/Button'
 
 import InquiryEmpty from '../../assets/svg/InquiryEmpty.svg'
@@ -110,9 +110,9 @@ const ItemsDetailQuestionTextarea = () => {
 
   // placeholder useEffect 적용
   useEffect(() => {
-    handleResize() // 초기 실행
+    handleResize()
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize) // 클린업
+    return () => window.removeEventListener('resize', handleResize)
   }, [window.innerWidth])
 
   //문의하기 등록 버튼

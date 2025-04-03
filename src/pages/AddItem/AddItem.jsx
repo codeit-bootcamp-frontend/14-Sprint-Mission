@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ItemsNavVar from '../../component/common/ItemsNavVar'
 import Button from '../../component/common/Button'
 import ButtonImage from '../../component/common/ButtonImage'
-import Placeholder from '../../component/common/Placeholder'
+import Placeholder from '../../component/common/TextInputPlaceholder'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
@@ -36,9 +36,12 @@ const Main = styled.div`
   width: 100%;
   margin-bottom: 78px;
 `
-const ProductImage = styled.div`
+const DisplayWrapper = styled.div`
   width: 100%;
-  margin-bottom: 14px;
+  margin-bottom: 2rem;
+  @media (max-width: 743px) {
+    margin-bottom: 1.5rem;
+  }
 `
 const ProductText = styled.div`
   ${(props) => textStyle(18, 700)(props)}
@@ -52,26 +55,26 @@ const TagDisplay = styled.div`
   flex-wrap: wrap;
 `
 const AddItem = () => {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
+  const [productName, setProductName] = useState('')
+  const [productDescription, setProductDescription] = useState('')
+  const [productPrice, setProductPrice] = useState('')
   const [tagInput, setTagInput] = useState('')
-  const [tags, setTags] = useState([])
-  const [isState, setIsState] = useState(false)
+  const [productTags, setProductTags] = useState([])
+
   const isItemsPage =
     location.pathname === '/items' || location.pathname === '/additem'
   const isBoardsPage = location.pathname === '/boards'
 
   const handleAddTag = () => {
     const trimmedInput = tagInput.trim()
-    if (trimmedInput && !tags.includes(trimmedInput)) {
-      setTags([...tags, trimmedInput])
+    if (trimmedInput && !productTags.includes(trimmedInput)) {
+      setProductTags([...productTags, trimmedInput])
       setTagInput('')
     }
   }
 
   const handleDeleteTag = (tagToDelete) => {
-    setTags(tags.filter((tag) => tag !== tagToDelete))
+    setProductTags(productTags.filter((tag) => tag !== tagToDelete))
   }
   const handleEnterDown = (e) => {
     if (e.key === 'Enter') {
@@ -80,14 +83,11 @@ const AddItem = () => {
     }
   }
 
-  useEffect(() => {
-    const valid =
-      name.length >= 1 &&
-      description.length >= 1 &&
-      price.length >= 1 &&
-      tagInput.length >= 1
-    setIsState(valid)
-  }, [name, description, price, tagInput])
+  const isState =
+    productName.length >= 1 &&
+    productDescription.length >= 1 &&
+    productPrice.length >= 1 &&
+    tagInput.length >= 1
 
   return (
     <>
@@ -95,42 +95,48 @@ const AddItem = () => {
       <Bone>
         <Header>
           <ProductRegister>싱품 등록하기</ProductRegister>
-          <Button size={42.5} width={74} disabled={!isState}>
+          <Button
+            size={42.5}
+            width={74}
+            paddingHeight={8}
+            paddingWidth={23}
+            disabled={!isState}
+          >
             등록
           </Button>
         </Header>
         <Main>
-          <ProductImage>
+          <DisplayWrapper>
             <ProductText>상품 이미지</ProductText>
             <ButtonImage />
-          </ProductImage>
-          <ProductImage>
+          </DisplayWrapper>
+          <DisplayWrapper>
             <ProductText>상품명</ProductText>
             <Placeholder
               placeholder={'상품명을 입력해주세요'}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
             />
-          </ProductImage>
-          <ProductImage>
+          </DisplayWrapper>
+          <DisplayWrapper>
             <ProductText>상품 소개</ProductText>
             <Placeholder
               placeholder={'상품 소개를 입력해주세요'}
               height="282px"
               padding="16px 24px 240px 24px"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={productDescription}
+              onChange={(e) => setProductDescription(e.target.value)}
             />
-          </ProductImage>
-          <ProductImage>
+          </DisplayWrapper>
+          <DisplayWrapper>
             <ProductText>판매 가격</ProductText>
             <Placeholder
               placeholder={'판매 가격을 입력해주세요'}
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              value={productPrice}
+              onChange={(e) => setProductPrice(e.target.value)}
             />
-          </ProductImage>
-          <ProductImage>
+          </DisplayWrapper>
+          <DisplayWrapper>
             <ProductText>태그</ProductText>
             <Placeholder
               placeholder={'태그를 입력해주세요'}
@@ -138,12 +144,12 @@ const AddItem = () => {
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={handleEnterDown}
             />
-          </ProductImage>
+          </DisplayWrapper>
           <TagDisplay>
-            {tags.map((tag, index) => (
+            {productTags.map((tag, index) => (
               <Tag
                 key={index}
-                tags={tag}
+                productTags={tag}
                 showDelete={true}
                 onClick={() => handleDeleteTag(tag)}
               />

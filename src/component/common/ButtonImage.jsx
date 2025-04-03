@@ -24,6 +24,9 @@ const Bone = styled.div`
   background-color: #e5e7eb;
   border-radius: 12px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 1199px) {
     width: 10.5rem;
     height: 10.5rem;
@@ -40,20 +43,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  position: relative;
-  top: 98px;
-  left: 104px;
-  @media (max-width: 1199px) {
-    top: 41px;
-    left: 47px;
-  }
 `
 const ImageInput = styled.input`
-  width: 17.625rem;
-  height: 17.625rem;
-  background-color: ${theme.colors.SecondaryGray[200]};
-  border-radius: 12px;
-  cursor: pointer;
   display: none;
 `
 const Text = styled.div`
@@ -69,22 +60,14 @@ const PreviewImage = styled.img`
     width: 10.5rem;
     height: 10.5rem;
   }
-  @media (max-width: 743px) {
-    position: absolute;
-    left: 178px;
-  }
 `
 const DeleteIcon = styled.img`
   width: 1.375rem;
   height: 1.5rem;
-  position: relative;
-  left: -3.75rem;
+  position: absolute;
+  right: 0.75rem;
   top: 0.75rem;
   cursor: pointer;
-  @media (max-width: 743px) {
-    position: absolute;
-    left: 312px;
-  }
 `
 const ErrorMessage = styled.div`
   ${(props) => textStyle(16, 400)(props)}
@@ -127,14 +110,16 @@ const ButtonImage = () => {
           </Container>
         </Bone>
         {imagePreview && (
-          <>
+          <div>
             <PreviewImage src={imagePreview} alt="미리보기 이미지" />
-            <DeleteIcon
-              src={Delete}
-              alt="삭제버튼"
-              onClick={handleDeleteClick}
-            />
-          </>
+            <>
+              <DeleteIcon
+                src={Delete}
+                alt="삭제버튼"
+                onClick={handleDeleteClick}
+              />
+            </>
+          </div>
         )}
       </ImageWrapper>
       {errorMeassage && <ErrorMessage>{errorMeassage}</ErrorMessage>}
