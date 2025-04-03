@@ -48,13 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isUsernameValid = valid(fields.username);
     const isPasswordValid = valid(fields.password);
     const isPasswordConfirmValid = valid(fields.passwordConfirm);
-    console.log(
-      isEmailValid,
-      isUsernameValid,
-      isPasswordValid,
-      isPasswordConfirmValid
-    );
-    // 모든 필드가 유효하면 버튼 활성화
+    
     submitButton.disabled = !(
       isEmailValid &&
       isUsernameValid &&
@@ -76,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   form.addEventListener("submit", (e) => {
     validateForm();
-    console.log(submitButton.disabled);
     if (submitButton.disabled) {
       e.preventDefault();
       alert("유효하지 않은 값을 입력하셨습니다.");
