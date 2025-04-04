@@ -1,0 +1,93 @@
+/* header */
+.logo {
+  width: 153px;
+  cursor: pointer;
+}
+
+#linkToLogin {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 11px 43px;
+}
+
+/* banner */
+.banner {
+  height: 540px;
+  background-color: #cfe5ff;
+  background-repeat: no-repeat;
+  background-position: 70% bottom;
+  background-size: 50%;
+  display: flex;
+  align-items: center;
+}
+
+#banner-top {
+  background-image: url("/images/home/Img_banner_top.png");
+}
+
+#banner-bottom {
+  background-image: url("/images/home/Img_banner_bottom.png");
+}
+
+.banner-title {
+  margin-bottom: 32px;
+}
+.banner-title span {
+  display: block;
+}
+
+/* contents */
+#contents {
+  margin-bottom: 138px;
+}
+
+.content {
+  padding: 138px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+}
+
+.content-description p {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  margin-top: 24px;
+}
+
+.content-tag {
+  color: var(--primary100);
+  font-size: var(--font-size-2lg);
+  line-height: var(--line-height-2lg);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.content-title span {
+  display: block;
+}
+
+.content-img {
+  width: 579px;
+}
+
+.content:nth-child(odd) .content-description {
+  text-align: left;
+}
+.content:nth-child(even) .content-description {
+  text-align: right;
+}
+
+/* footer */
+.footer-menu {
+  display: flex;
+  gap: 30px;
+  color: var(--gray200);
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
