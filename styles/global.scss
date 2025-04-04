@@ -146,7 +146,11 @@ h1, h2 {font: 700 40px/140% "Pretendard";}
     &-bottom { align-items: flex-end; }
 
     &-column { flex-direction: column; }
+    &-wrap { flex-wrap: wrap; }
+    &-grow { flex-grow: 1; }
 }
+
+.middle { margin: 0 auto; }
 
 .gap-12 { gap: 12px; }
 .gap-24 { gap: 24px; }
