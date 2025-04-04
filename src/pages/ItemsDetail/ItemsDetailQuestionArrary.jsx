@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Button from '../../component/common/Button'
 import Placeholder from '../../component/common/TextInputPlaceholder'
 import commentService from '../../api/services/commentService'
-import { diffDate } from '../../styles/datetime'
-import { formatDate } from '../../styles/datetime'
+import { diffDate } from '../../utils/datetime'
+import { formatDate } from '../../utils/datetime'
 
 import Setting from '../../assets/svg/Setting.svg'
 import ProfileIcon from '../../assets/svg/ProfileIcon.svg'
@@ -29,19 +29,6 @@ const ButtonEditWrapper = styled.div`
   align-items: center;
   justify-content: end;
   margin: 1rem 0 1.5rem;
-`
-const ButtonWrapper = styled.div`
-  button {
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
 `
 const EditCalcelButton = styled.button`
   ${(props) => textStyle(16, 600)(props)}
@@ -209,17 +196,15 @@ const ItemsDetailQuestionArrary = ({ productQuestion }) => {
               <EditCalcelButton onClick={handleEditCancle}>
                 취소
               </EditCalcelButton>
-              <ButtonWrapper>
-                <Button
-                  size={42.5}
-                  width={106}
-                  paddingHeight={8}
-                  paddingWidth={23}
-                  onClick={handleEditSuccessClick}
-                >
-                  수정완료
-                </Button>
-              </ButtonWrapper>
+
+              <Button
+                size={42.5}
+                paddingHeight={8}
+                paddingWidth={23}
+                onClick={handleEditSuccessClick}
+              >
+                수정완료
+              </Button>
             </ButtonEditWrapper>
           </EditingWrapper>
         </EditBone>

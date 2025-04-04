@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import productService from '../../api/services/productService'
+import { useGetProductId } from '../../hooks/useProductService'
 import Tag from '../../component/common/Tag'
-import { formatDate } from './../../styles/datetime'
+import { formatDate } from '../../utils/datetime'
 
 import Setting from '../../assets/svg/Setting.svg'
 import ProfileIcon from '../../assets/svg/ProfileIcon.svg'
@@ -159,16 +159,9 @@ const UpdatedAt = styled.div`
 `
 const ItemsDetailDescription = () => {
   const location = useLocation() // product 데어터 받기
-  const [productsId, setProductsId] = useState([])
+  // useGetProductId 이용
   const product = location.state?.product
-  //console.log(product)
-  //console.log(productsId)
-
-  useEffect(() => {
-    productService.getProductId(product.id).then((response) => {
-      setProductsId(response.data)
-    })
-  }, [])
+  const productsId = useGetProductId(product.id)
 
   return (
     <Bone>

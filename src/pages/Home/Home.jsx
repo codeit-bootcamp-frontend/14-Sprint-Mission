@@ -26,7 +26,7 @@ function Home() {
   const handleResize = () => {
     if (window.innerWidth < 375) {
       setButtonStyle({ width: '258', paddingWidth: '71' })
-    } else if (window.innerWidth < 744) {
+    } else {
       setButtonStyle({ width: '364', paddingWidth: '124' })
     }
   }
@@ -50,19 +50,16 @@ function Home() {
               <S.HeaderLogoName src={Logo} alt="판다마켓 로고 사진" />
             </Link>
           </S.HeaderLogo>
-          <Link to="/login">
-            <S.ButtonWrapper>
-              <Button
-                variant="primary"
-                size={48.5}
-                width={128}
-                paddingHeight={11}
-                paddingWidth={43}
-              >
-                로그인
-              </Button>
-            </S.ButtonWrapper>
-          </Link>
+          <Button
+            as={Link}
+            to="/login"
+            variant="primary"
+            size={48.5}
+            paddingHeight={11}
+            paddingWidth={43}
+          >
+            로그인
+          </Button>
         </S.HeaderNav>
       </S.HeaderTop>
       <S.HeaderMain>
@@ -71,17 +68,15 @@ function Home() {
             <S.HeaderTitleFont>
               일상의 모든 물건을 거래해 보세요
             </S.HeaderTitleFont>
-            <Link to="/items">
-              <Button
-                variant="primary"
-                size={56}
-                width={buttonStyle.width}
-                paddingHeight={12}
-                paddingWidth={buttonStyle.paddingWidth}
-              >
-                구경하러 가기
-              </Button>
-            </Link>
+            <Button
+              as={Link}
+              to="/items"
+              variant="primary"
+              paddingHeight={12}
+              paddingWidth={buttonStyle.paddingWidth}
+            >
+              구경하러 가기
+            </Button>
           </S.HeaderMainTitle>
           <img src={HomeTop} alt="판다마켓 백그라운드사진" />
         </S.HeaderMainContainer>

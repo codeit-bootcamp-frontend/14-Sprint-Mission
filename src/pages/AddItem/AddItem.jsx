@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
 
-import ItemsNavVar from '../../component/common/ItemsNavVar'
 import Button from '../../component/common/Button'
 import ButtonImage from '../../component/common/ButtonImage'
 import Placeholder from '../../component/common/TextInputPlaceholder'
@@ -35,19 +33,7 @@ const ProductRegister = styled.div`
   ${(props) => textStyle(20, 700)(props)}
   color: ${theme.colors.SecondaryGray[800]};
 `
-const ButtonWrapper = styled.div`
-  button {
-    transition: all 0.3s ease-in-out;
 
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-`
 const Main = styled.div`
   width: 100%;
   margin-bottom: 78px;
@@ -77,14 +63,6 @@ const AddItem = () => {
   const [tagInput, setTagInput] = useState('')
   const [productTags, setProductTags] = useState([])
 
-  const location = useLocation()
-  const isItemsPage =
-    location.pathname === '/items' ||
-    location.pathname === '/additem' ||
-    location.pathname.startsWith('/items')
-
-  const isBoardsPage = location.pathname === '/boards'
-
   const handleAddTag = () => {
     const trimmedInput = tagInput.trim()
     if (trimmedInput && !productTags.includes(trimmedInput)) {
@@ -111,21 +89,18 @@ const AddItem = () => {
 
   return (
     <>
-      <ItemsNavVar isItemsPage={isItemsPage} isBoardsPage={isBoardsPage} />
       <Bone>
         <Header>
           <ProductRegister>싱품 등록하기</ProductRegister>
-          <ButtonWrapper>
-            <Button
-              size={42.5}
-              width={74}
-              paddingHeight={8}
-              paddingWidth={23}
-              disabled={!isState}
-            >
-              등록
-            </Button>
-          </ButtonWrapper>
+
+          <Button
+            size={42.5}
+            paddingHeight={8}
+            paddingWidth={23}
+            disabled={!isState}
+          >
+            등록
+          </Button>
         </Header>
         <Main>
           <DisplayWrapper>

@@ -58,7 +58,7 @@ const NavContent = styled.div`
     justify-content: space-between;
   }
 `
-const MarketButton = styled.button`
+const MarketLink = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -74,7 +74,7 @@ const MarketButton = styled.button`
     padding: 21px 0px;
   }
 `
-const FreeButton = styled.button`
+const FreeBordLink = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -129,10 +129,10 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }) => {
             </Link>
           </HeaderLogo>
           <NavContent>
-            <FreeButton isActive={isBoardsPage}>자유게시판</FreeButton>
+            <FreeBordLink isActive={isBoardsPage}>자유게시판</FreeBordLink>
 
             <Link to="/items">
-              <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
+              <MarketLink isActive={isItemsPage}>중고마켓</MarketLink>
             </Link>
           </NavContent>
         </LeftWrapper>

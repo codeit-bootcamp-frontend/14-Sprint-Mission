@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import commentService from '../../api/services/commentService'
+import { useGetCommentService } from '../../hooks/useCommentService'
+import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
 import TextInputPlaceholder from '../../component/common/TextInputPlaceholder'
 import Button from '../../component/common/Button'
 
@@ -10,7 +11,6 @@ import InquiryEmpty from '../../assets/svg/InquiryEmpty.svg'
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
-import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
 
 const Bone = styled.div`
   width: 75rem;
@@ -37,35 +37,13 @@ const ProductQuestionText = styled.div`
 const ButtonWrapper = styled.div`
   width: fit-content;
   margin: 1rem 0 0 auto;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: ${(props) => (props.$isState ? 'scale(1.05)' : 'scale(1)')};
-  }
-
-  &:active {
-    transform: ${(props) => (props.$isState ? 'scale(0.95)' : 'scale(1)')};
-  }
 `
 const ItemsQuestionWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
 `
-// const ButtonEditWrapper = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: end;
-//   margin: 1rem 0 1.5rem;
-// `
-// const EditCalcelButton = styled.button`
-//   ${(props) => textStyle(16, 600)(props)}
-//   color: ${theme.colors.SecondaryGray[500]};
-//   width: 68px;
-//   height: 47px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `
+
 const InquiryEmptyWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -80,26 +58,15 @@ const InquiryEmptyText = styled.div`
 const ItemsDetailQuestionTextarea = () => {
   const location = useLocation() // product 데어터 받기
   const [isEditing, setIsEditing] = useState(false)
-  const [productQuestion, setProductQuestion] = useState({
-    list: [],
-    nextCursor: null,
-  })
   const [questionText, setQuestionText] = useState('')
   const [isState, setIsState] = useState(false)
   const [textareaStyle, setTextareaStyle] = useState({
     height: '84px',
   })
+  // useProductComments 훅 이용
   const product = location.state?.product
+  const productQuestion = useGetCommentService(product.id)
 
-  // 서버데이터 불러옴
-  useEffect(() => {
-    commentService.getProductComment(product.id, 3).then((response) => {
-      setProductQuestion({
-        list: response.data.list,
-        nextCursor: response.data.nextCursor,
-      })
-    })
-  }, [product])
   const handleResize = () => {
     if (window.innerWidth < 375) {
       setTextareaStyle({ height: '129px' })
@@ -113,13 +80,7 @@ const ItemsDetailQuestionTextarea = () => {
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [window.innerWidth])
-
-  //문의하기 등록 버튼
-  useEffect(() => {
-    const valid = questionText.length >= 1
-    setIsState(valid)
-  }, [questionText])
+  }, [])
 
   return (
     <Bone>
@@ -134,13 +95,12 @@ const ItemsDetailQuestionTextarea = () => {
           value={questionText}
           onChange={(e) => setQuestionText(e.target.value)}
         />
-        <ButtonWrapper $isState={isState}>
+        <ButtonWrapper>
           <Button
             size={42.5}
-            width={74}
             paddingHeight={8}
             paddingWidth={23}
-            disabled={!isState}
+            disabled={questionText.trim().length === 0}
           >
             등록
           </Button>

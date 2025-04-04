@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
 import { Link, useNavigate } from 'react-router-dom'
+
 import LoginField from './LoginField'
 import Button from '../../component/common/Button'
-import styled from 'styled-components'
+
 import Logo from '../../assets/image/Logo.png'
 import LogoFace from '../../assets/image/LogoFace.png'
 import Google from '../../assets/svg/Google.svg'
 import Kakao from '../../assets/svg/Kakao.svg'
 import VisibillityOff from '../../assets/svg/btn_visibillity_off.svg'
 import Visibillity from '../../assets/svg/btn_visibillity.svg'
+
+import styled from 'styled-components'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const Bone = styled.div`
   display: flex;

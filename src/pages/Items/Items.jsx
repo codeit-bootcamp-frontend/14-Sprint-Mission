@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import ItemsNavVar from '../../component/common/ItemsNavVar'
+
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
 import DropDown from '../../component/common/DropDown'
 import productService from '../../api/services/productService'
 import Button from '../../component/common/Button'
-import styled, { css } from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+
 import Search from '../../assets/svg/Search.svg'
 import ArrowLeft from '../../assets/svg/ArrowLeft.svg'
 import ArrowRight from '../../assets/svg/ArrowRight.svg'
+
+import styled, { css } from 'styled-components'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const Bone = styled.div`
   width: 75rem;
@@ -173,10 +175,6 @@ const Items = () => {
   const itemsPerPage = 10 // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(1)
 
-  const isItemsPage =
-    location.pathname === '/items' || location.pathname === '/additem'
-  const isBoardsPage = location.pathname === '/boards'
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
     const orderBy = queryParams.get('orderBy') || 'recent'
@@ -252,8 +250,6 @@ const Items = () => {
 
   return (
     <>
-      <ItemsNavVar isItemsPage={isItemsPage} isBoardsPage={isBoardsPage} />
-
       <Bone>
         <BestItems products={bestProducts} />
 
@@ -265,7 +261,6 @@ const Items = () => {
             <ButtonWrapper>
               <Button
                 variant="primary"
-                width={139}
                 size={42.5}
                 onClick={handleAdditem}
                 paddingHeight={8}

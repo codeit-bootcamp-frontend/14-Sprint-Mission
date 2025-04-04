@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ItemsNavVar from '../../component/common/ItemsNavVar'
 import ItemsDetailDescription from './ItemsDetailDescription'
 import ItemsDetailQuestionTextarea from './ItemsDetailQuestionTextarea'
 import Button from '../../component/common/Button'
@@ -30,6 +29,8 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 4.6875rem;
+  ${(props) => textStyle(18, 600)(props)}
+  color: ${theme.colors.SecondaryGray[100]};
   @media (max-width: 1199px) {
     margin: 3.5rem auto 10.4375rem auto;
   }
@@ -37,38 +38,26 @@ const ButtonWrapper = styled.div`
     margin: 2.5rem auto 2.5rem auto;
   }
 `
-const ButtonInner = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-`
-const ButtonText = styled.div`
-  ${(props) => textStyle(18, 600)(props)}
-  color: ${theme.colors.SecondaryGray[100]};
-`
+
 const ItemsDetail = () => {
   return (
     <>
-      <ItemsNavVar />
       <Bone>
         <ItemsDetailDescription />
         <ItemsDetailQuestionTextarea />
-        <Link to="/items">
-          <ButtonWrapper>
-            <Button size={48} width={250} paddingHeight={11} paddingWidth={40}>
-              <ButtonInner>
-                <ButtonText>목록으로 돌아가기</ButtonText>
-                <img src={BackIcon} alt="BackIcon" />
-              </ButtonInner>
-            </Button>
-          </ButtonWrapper>
-        </Link>
+
+        <ButtonWrapper>
+          <Button
+            as={Link}
+            to="/items"
+            size={48}
+            paddingHeight={11}
+            paddingWidth={40}
+            suffix={<img src={BackIcon} alt="뒤로가기 아이콘" />}
+          >
+            목록으로 돌아가기
+          </Button>
+        </ButtonWrapper>
       </Bone>
     </>
   )

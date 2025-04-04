@@ -30,18 +30,6 @@ const BestItem = styled.div`
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
-
-  .button {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
 `
 const BestItemImage = styled.img`
   width: 17.625rem;

@@ -128,25 +128,6 @@ export const HeaderTitleFont = styled.h1`
   }
 `
 
-export const ButtonWrapper = styled.div`
-  @media (max-width: 744px) {
-    width: 8rem;
-  }
-  @media (max-width: 375px) {
-  }
-  button {
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-`
-
 export const HeaderItems = styled.a`
   width: 7.25rem;
   background-color: ${theme.colors.PrimaryBlue[100]};

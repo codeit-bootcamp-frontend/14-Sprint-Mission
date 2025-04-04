@@ -160,10 +160,10 @@ const Signup = () => {
   return (
     <Bone>
       <LogoContainer>
-        <Link href="./" target="_self">
+        <Link to="/">
           <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
         </Link>
-        <Link href="./" target="_self">
+        <Link to="/">
           <LogoImage src={Logo} alt="판다마켓 로고 사진" />
         </Link>
       </LogoContainer>
