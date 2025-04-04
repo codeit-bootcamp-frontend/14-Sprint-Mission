@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import Button from '../../component/common/Button'
-import * as S from './Home.style'
+
 import Logo from '../../assets/image/Logo.png'
 import LogoFace from '../../assets/image/LogoFace.png'
 import HomeTop from '../../assets/image/home_top.png'
@@ -14,15 +15,29 @@ import Instagram from '../../assets/svg/instagram.svg'
 import Twitter from '../../assets/svg/twitter.svg'
 import Youtube from '../../assets/svg/youtube.svg'
 
-function Home() {
-  const navigate = useNavigate()
+import * as S from './Home.style'
 
-  function goToPostId() {
-    navigate(`/login`)
+function Home() {
+  const [buttonStyle, setButtonStyle] = useState({
+    width: '364',
+    paddingWidth: '43',
+  })
+
+  const handleResize = () => {
+    if (window.innerWidth < 375) {
+      setButtonStyle({ width: '258', paddingWidth: '71' })
+    } else if (window.innerWidth < 744) {
+      setButtonStyle({ width: '364', paddingWidth: '124' })
+    }
   }
-  function goToPostItems() {
-    navigate(`/items`)
-  }
+
+  // placeholder useEffect 적용
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <>
       <S.HeaderTop>
@@ -35,16 +50,19 @@ function Home() {
               <S.HeaderLogoName src={Logo} alt="판다마켓 로고 사진" />
             </Link>
           </S.HeaderLogo>
-          <S.ButtonWrapper>
-            <Button
-              variant="primary"
-              size={48.5}
-              width={128}
-              onClick={goToPostId}
-            >
-              로그인
-            </Button>
-          </S.ButtonWrapper>
+          <Link to="/login">
+            <S.ButtonWrapper>
+              <Button
+                variant="primary"
+                size={48.5}
+                width={128}
+                paddingHeight={11}
+                paddingWidth={43}
+              >
+                로그인
+              </Button>
+            </S.ButtonWrapper>
+          </Link>
         </S.HeaderNav>
       </S.HeaderTop>
       <S.HeaderMain>
@@ -53,15 +71,17 @@ function Home() {
             <S.HeaderTitleFont>
               일상의 모든 물건을 거래해 보세요
             </S.HeaderTitleFont>
-
-            <Button
-              variant="primary"
-              size={56}
-              width={364}
-              onClick={goToPostItems}
-            >
-              구경하러 가기
-            </Button>
+            <Link to="/items">
+              <Button
+                variant="primary"
+                size={56}
+                width={buttonStyle.width}
+                paddingHeight={12}
+                paddingWidth={buttonStyle.paddingWidth}
+              >
+                구경하러 가기
+              </Button>
+            </Link>
           </S.HeaderMainTitle>
           <img src={HomeTop} alt="판다마켓 백그라운드사진" />
         </S.HeaderMainContainer>
@@ -144,13 +164,12 @@ function Home() {
           <S.FooterNavMain>
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
-              <S.Privacy href="./pages/privacy.html" target="_blank">
-                {/*여기 고쳐야 함*/}
-                Privacy Policy
-              </S.Privacy>
-              <S.Faq href="./pages/faq.html" target="_blank">
-                FAQ
-              </S.Faq>
+              <Link to="/privacy">
+                <S.Privacy>Privacy Policy</S.Privacy>
+              </Link>
+              <Link to="/faq">
+                <S.Faq>FAQ</S.Faq>
+              </Link>
             </S.PrivacyFaq>
             <S.Social>
               <a href="https://www.facebook.com/" target="_blank">

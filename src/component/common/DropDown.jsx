@@ -64,7 +64,7 @@ const SelectOption = styled.ul`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 84px;
+
   justify-content: space-around;
   @media (max-width: 743px) {
     position: absolute;
@@ -78,7 +78,7 @@ const SelectOption = styled.ul`
 
 const Option = styled.li`
   ${(props) => textStyle(16, 400)(props)}
-
+  padding: 8px 35px;
   cursor: pointer;
   &:hover {
     background-color: #f6f6f6;
@@ -110,8 +110,6 @@ const DropDown = ({ selectList, selected, onChange }) => {
     window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  console.log('Items to display:', windowWidth) // 상태가 변경될 때마다 로그 찍기
 
   return (
     <div style={{ position: 'relative' }}>

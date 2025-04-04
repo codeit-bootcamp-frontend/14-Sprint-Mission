@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import HeartInactive from '../../assets/image/HeartInactive.png'
+import NoImage from '../../assets/image/NoImage.png'
+
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
-import HeartInactive from '../../assets/image/HeartInactive.png'
-import NoImage from '../../assets/image/NoImage.png'
 
 const RecentItem = styled.div`
   height: 42.125rem;
@@ -70,7 +73,6 @@ const RecentItems = ({ products }) => {
 
   useEffect(() => {
     const handleReasize = () => {
-      console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(4)
       } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
@@ -84,32 +86,41 @@ const RecentItems = ({ products }) => {
 
     return () => window.removeEventListener('resize', handleReasize)
   }, [])
-
-  console.log('Items to display:', itemsDisplay) // 상태가 변경될 때마다 로그 찍기
   return (
     <>
       <RecentItem>
         <RecentItemsDisplay>
           {products.slice(0, itemsDisplay).map((product) => (
-            <RecentItemKey key={product.id}>
-              <RecentItemImage
-                src={
-                  product.images?.length > 0 &&
-                  !product.images.includes('https://via.placeholder.com/300')
-                    ? product.images[0]
-                    : NoImage
-                }
-                alt={product.name}
-              />
-              <ProductDescription>
-                <ProductName>{product.name}</ProductName>
-                <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
-                <ProductFavoriteCount>
-                  <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
-                  {product.favoriteCount}
-                </ProductFavoriteCount>
-              </ProductDescription>
-            </RecentItemKey>
+            <Link
+              key={product.id}
+              to={`/items/${product.id}`}
+              state={{ product }}
+            >
+              <RecentItemKey key={product.id}>
+                <RecentItemImage
+                  src={
+                    product.images?.length > 0 &&
+                    !product.images.includes('https://via.placeholder.com/300')
+                      ? product.images[0]
+                      : NoImage
+                  }
+                  alt={product.name}
+                />
+                <ProductDescription>
+                  <ProductName>{product.name}</ProductName>
+                  <ProductPrice>
+                    {product.price.toLocaleString('ko-KR')}원
+                  </ProductPrice>
+                  <ProductFavoriteCount>
+                    <HeartInactiveImage
+                      src={HeartInactive}
+                      alt="HeartInactive"
+                    />
+                    {product.favoriteCount}
+                  </ProductFavoriteCount>
+                </ProductDescription>
+              </RecentItemKey>
+            </Link>
           ))}
         </RecentItemsDisplay>
       </RecentItem>

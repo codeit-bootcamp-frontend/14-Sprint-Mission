@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/LoginAndSignup/Login'
 import Signup from './pages/LoginAndSignup/Signup'
 import Items from './pages/Items/Items'
+import ItemsDetail from './pages/ItemsDetail/ItemsDetail'
 import AddItem from './pages/AddItem/AddItem'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/items/:productId" element={<ItemsDetail />} />
           <Route path="/additem" element={<AddItem />} />
         </Routes>
       </BrowserRouter>

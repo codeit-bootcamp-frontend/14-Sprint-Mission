@@ -93,6 +93,17 @@ const ButtonWrapper = styled.div`
     top: 546px;
     left: 226px;
   }
+  button {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 `
 const Pagenation = styled.div`
   width: 19rem;
@@ -202,6 +213,7 @@ const Items = () => {
           }
           return 0
         })
+        console.log(sorted)
         setSortedProducts(sorted)
         setTotalItems(response.data.totalCount)
       })
@@ -237,7 +249,6 @@ const Items = () => {
       return prevPage
     })
   }
-  // 페이지 버튼
 
   return (
     <>
@@ -254,9 +265,11 @@ const Items = () => {
             <ButtonWrapper>
               <Button
                 variant="primary"
-                width={133}
+                width={139}
                 size={42.5}
                 onClick={handleAdditem}
+                paddingHeight={8}
+                paddingWidth={23}
               >
                 상품 등록하기
               </Button>

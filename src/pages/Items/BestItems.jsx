@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import HeartInactive from '../../assets/image/HeartInactive.png'
+
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
-import HeartInactive from '../../assets/image/HeartInactive.png'
 import styled from 'styled-components'
 
 const Bone = styled.div`
@@ -24,9 +27,21 @@ const Title = styled.div`
 const BestItem = styled.div`
   display: flex;
   height: 23.625rem;
-
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
+
+  .button {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 `
 const BestItemImage = styled.img`
   width: 17.625rem;
@@ -80,7 +95,6 @@ const BestItems = ({ products }) => {
 
   useEffect(() => {
     const handleReasize = () => {
-      console.log('Current width:', window.innerWidth)
       if (window.innerWidth <= 743) {
         setItemsDisplay(1)
       } else if (window.innerWidth >= 743 && window.innerWidth <= 1199) {
@@ -95,25 +109,31 @@ const BestItems = ({ products }) => {
     return () => window.removeEventListener('resize', handleReasize)
   }, [])
 
-  console.log('Items to display:', itemsDisplay) // 상태가 변경될 때마다 로그 찍기
-
   return (
     <Bone>
       <Title>베스트 상품</Title>
 
       <BestItemsDisplay>
         {list.slice(0, itemsDisplay).map((product) => (
-          <BestItem key={product.id}>
-            <BestItemImage src={product.images} alt={product.name} />
-            <ProductDescription>
-              <ProductName>{product.name}</ProductName>
-              <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
-              <ProductFavoriteCount>
-                <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
-                {product.favoriteCount}
-              </ProductFavoriteCount>
-            </ProductDescription>
-          </BestItem>
+          <Link
+            key={product.id}
+            to={`/items/${product.id}`}
+            state={{ product }}
+          >
+            <BestItem key={product.id}>
+              <BestItemImage src={product.images} alt={product.name} />
+              <ProductDescription>
+                <ProductName>{product.name}</ProductName>
+                <ProductPrice>
+                  {product.price.toLocaleString('ko-KR')}원
+                </ProductPrice>
+                <ProductFavoriteCount>
+                  <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
+                  {product.favoriteCount}
+                </ProductFavoriteCount>
+              </ProductDescription>
+            </BestItem>
+          </Link>
         ))}
       </BestItemsDisplay>
     </Bone>

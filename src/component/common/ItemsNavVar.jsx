@@ -1,21 +1,25 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+
 import LogoFace from '../../assets/image/LogoFace.png'
 import Logo from '../../assets/image/Logo.png'
 import ProfileIcon from '../../assets/svg/ProfileIcon.svg'
+
+import styled from 'styled-components'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const Bone = styled.div`
   height: 4.375rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: auto 12.5rem auto 12.5rem;
+  padding: 0 12.5rem 0 12.5rem;
   position: sticky;
+  border-bottom: 1px solid #dfdfdf;
   @media (max-width: 1199px) {
     margin: auto 1.5rem;
+    padding: 0;
   }
   @media (max-width: 743px) {
     margin: auto 1rem;
@@ -126,7 +130,10 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }) => {
           </HeaderLogo>
           <NavContent>
             <FreeButton isActive={isBoardsPage}>자유게시판</FreeButton>
-            <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
+
+            <Link to="/items">
+              <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
+            </Link>
           </NavContent>
         </LeftWrapper>
         <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />
