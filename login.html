@@ -17,7 +17,7 @@
 
   <body>
     <section>
-      <form action="." class="form">
+      <form action="./items.html" class="form">
         <h1 class="form__logo">
           <a href="/"
             ><img src="./images/logo/panda-market-logo.png" alt="판다마켓 홈"
@@ -31,6 +31,7 @@
             placeholder="이메일을 입력해주세요"
             required
           />
+          <p id="emailErrorMessage" class="form__error form__error--email"></p>
         </div>
         <div class="form__group">
           <label for="password">비밀번호</label>
@@ -48,6 +49,10 @@
               />
             </button>
           </div>
+          <p
+            id="passwordErrorMessage"
+            class="form__error form__error--password"
+          ></p>
         </div>
         <button class="form__button">로그인</button>
         <div class="form__social-login">
@@ -60,9 +65,10 @@
           /></a>
         </div>
         <div class="form__signup-link">
-          <p>판다마켓이 처음이신가요? <a href="/signup.html">회원가입</a></p>
+          <p>판다마켓이 처음이신가요? <a href="signup.html">회원가입</a></p>
         </div>
       </form>
     </section>
+    <script type="module" src="loginValidation.js"></script>
   </body>
 </html>

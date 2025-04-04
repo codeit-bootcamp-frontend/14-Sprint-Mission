@@ -17,7 +17,7 @@
 
   <body>
     <section>
-      <form action="." class="form">
+      <form action="login.html" class="form">
         <h1 class="form__logo">
           <a href="/"
             ><img src="./images/logo/panda-market-logo.png" alt="판다마켓 홈"
@@ -31,6 +31,7 @@
             placeholder="이메일을 입력해주세요"
             required
           />
+          <p id="emailErrorMessage" class="form__error"></p>
         </div>
         <div class="form__group">
           <label for="username">닉네임</label>
@@ -40,6 +41,7 @@
             placeholder="닉네임을 입력해주세요"
             required
           />
+          <p id="usernameErrorMessage" class="form__error"></p>
         </div>
         <div class="form__group">
           <label for="password">비밀번호</label>
@@ -57,13 +59,14 @@
               />
             </button>
           </div>
+          <p id="passwordErrorMessage" class="form__error"></p>
         </div>
         <div class="form__group">
           <label for="password">비밀번호 확인</label>
           <div class="form__password">
             <input
               type="password"
-              id="password"
+              id="passwordConfirm"
               placeholder="비밀번호를 다시 한 번 입력해주세요"
               required
             />
@@ -74,6 +77,7 @@
               />
             </button>
           </div>
+          <p id="passwordConfirmError" class="form__error"></p>
         </div>
         <button class="form__button">회원가입</button>
         <div class="form__social-login">
@@ -90,5 +94,6 @@
         </div>
       </form>
     </section>
+    <script type="module" src="signUpValidation.js"></script>
   </body>
 </html>
