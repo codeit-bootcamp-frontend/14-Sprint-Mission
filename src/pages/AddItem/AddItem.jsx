@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+
 import ItemsNavVar from '../../component/common/ItemsNavVar'
 import Button from '../../component/common/Button'
 import ButtonImage from '../../component/common/ButtonImage'
 import Placeholder from '../../component/common/TextInputPlaceholder'
+import Tag from '../../component/common/Tag'
+
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
-import Tag from '../../component/common/Tag'
 
 const Bone = styled.div`
   width: 75rem;
@@ -31,6 +34,19 @@ const Header = styled.div`
 const ProductRegister = styled.div`
   ${(props) => textStyle(20, 700)(props)}
   color: ${theme.colors.SecondaryGray[800]};
+`
+const ButtonWrapper = styled.div`
+  button {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 `
 const Main = styled.div`
   width: 100%;
@@ -61,8 +77,12 @@ const AddItem = () => {
   const [tagInput, setTagInput] = useState('')
   const [productTags, setProductTags] = useState([])
 
+  const location = useLocation()
   const isItemsPage =
-    location.pathname === '/items' || location.pathname === '/additem'
+    location.pathname === '/items' ||
+    location.pathname === '/additem' ||
+    location.pathname.startsWith('/items')
+
   const isBoardsPage = location.pathname === '/boards'
 
   const handleAddTag = () => {
@@ -95,15 +115,17 @@ const AddItem = () => {
       <Bone>
         <Header>
           <ProductRegister>싱품 등록하기</ProductRegister>
-          <Button
-            size={42.5}
-            width={74}
-            paddingHeight={8}
-            paddingWidth={23}
-            disabled={!isState}
-          >
-            등록
-          </Button>
+          <ButtonWrapper>
+            <Button
+              size={42.5}
+              width={74}
+              paddingHeight={8}
+              paddingWidth={23}
+              disabled={!isState}
+            >
+              등록
+            </Button>
+          </ButtonWrapper>
         </Header>
         <Main>
           <DisplayWrapper>

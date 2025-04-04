@@ -109,7 +109,7 @@ const RecentItems = ({ products }) => {
                 <ProductDescription>
                   <ProductName>{product.name}</ProductName>
                   <ProductPrice>
-                    {product.price.toLocaleString()}원
+                    {product.price.toLocaleString('ko-KR')}원
                   </ProductPrice>
                   <ProductFavoriteCount>
                     <HeartInactiveImage

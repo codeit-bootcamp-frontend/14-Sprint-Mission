@@ -30,6 +30,18 @@ const BestItem = styled.div`
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
+
+  .button {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 `
 const BestItemImage = styled.img`
   width: 17.625rem;
@@ -112,7 +124,9 @@ const BestItems = ({ products }) => {
               <BestItemImage src={product.images} alt={product.name} />
               <ProductDescription>
                 <ProductName>{product.name}</ProductName>
-                <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
+                <ProductPrice>
+                  {product.price.toLocaleString('ko-KR')}원
+                </ProductPrice>
                 <ProductFavoriteCount>
                   <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
                   {product.favoriteCount}

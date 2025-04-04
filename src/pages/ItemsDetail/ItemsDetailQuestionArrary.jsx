@@ -30,6 +30,19 @@ const ButtonEditWrapper = styled.div`
   justify-content: end;
   margin: 1rem 0 1.5rem;
 `
+const ButtonWrapper = styled.div`
+  button {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+`
 const EditCalcelButton = styled.button`
   ${(props) => textStyle(16, 600)(props)}
   color: ${theme.colors.SecondaryGray[500]};
@@ -196,15 +209,17 @@ const ItemsDetailQuestionArrary = ({ productQuestion }) => {
               <EditCalcelButton onClick={handleEditCancle}>
                 취소
               </EditCalcelButton>
-              <Button
-                size={42.5}
-                width={106}
-                paddingHeight={8}
-                paddingWidth={23}
-                onClick={handleEditSuccessClick}
-              >
-                수정완료
-              </Button>
+              <ButtonWrapper>
+                <Button
+                  size={42.5}
+                  width={106}
+                  paddingHeight={8}
+                  paddingWidth={23}
+                  onClick={handleEditSuccessClick}
+                >
+                  수정완료
+                </Button>
+              </ButtonWrapper>
             </ButtonEditWrapper>
           </EditingWrapper>
         </EditBone>

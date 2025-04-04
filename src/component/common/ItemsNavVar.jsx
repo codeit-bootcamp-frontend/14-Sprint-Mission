@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+
 import LogoFace from '../../assets/image/LogoFace.png'
 import Logo from '../../assets/image/Logo.png'
 import ProfileIcon from '../../assets/svg/ProfileIcon.svg'
+
+import styled from 'styled-components'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const Bone = styled.div`
   height: 4.375rem;
@@ -128,7 +130,10 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }) => {
           </HeaderLogo>
           <NavContent>
             <FreeButton isActive={isBoardsPage}>자유게시판</FreeButton>
-            <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
+
+            <Link to="/items">
+              <MarketButton isActive={isItemsPage}>중고마켓</MarketButton>
+            </Link>
           </NavContent>
         </LeftWrapper>
         <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />

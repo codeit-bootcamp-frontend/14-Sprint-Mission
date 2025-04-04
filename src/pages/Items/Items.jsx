@@ -93,6 +93,17 @@ const ButtonWrapper = styled.div`
     top: 546px;
     left: 226px;
   }
+  button {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 `
 const Pagenation = styled.div`
   width: 19rem;

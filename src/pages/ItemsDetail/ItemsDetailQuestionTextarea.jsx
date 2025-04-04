@@ -51,21 +51,21 @@ const ItemsQuestionWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-const ButtonEditWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 1rem 0 1.5rem;
-`
-const EditCalcelButton = styled.button`
-  ${(props) => textStyle(16, 600)(props)}
-  color: ${theme.colors.SecondaryGray[500]};
-  width: 68px;
-  height: 47px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+// const ButtonEditWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: end;
+//   margin: 1rem 0 1.5rem;
+// `
+// const EditCalcelButton = styled.button`
+//   ${(props) => textStyle(16, 600)(props)}
+//   color: ${theme.colors.SecondaryGray[500]};
+//   width: 68px;
+//   height: 47px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `
 const InquiryEmptyWrapper = styled.div`
   display: flex;
   align-items: center;

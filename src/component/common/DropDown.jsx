@@ -64,7 +64,7 @@ const SelectOption = styled.ul`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 84px;
+
   justify-content: space-around;
   @media (max-width: 743px) {
     position: absolute;
@@ -78,7 +78,7 @@ const SelectOption = styled.ul`
 
 const Option = styled.li`
   ${(props) => textStyle(16, 400)(props)}
-
+  padding: 8px 35px;
   cursor: pointer;
   &:hover {
     background-color: #f6f6f6;
