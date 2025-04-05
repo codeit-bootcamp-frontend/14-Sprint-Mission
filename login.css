@@ -57,10 +57,12 @@ main {
   padding-right: 60px;
 }
 
+//리뷰 반영 : absoulte로 가운데 정렬을 할 때는 50%와 transform을 같이 씁니다~!
 .btn_visibility {
   position: absolute;
   right: 16px;
-  top: 25%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .swith_to_otherpage {
