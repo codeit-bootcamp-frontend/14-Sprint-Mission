@@ -1,63 +1,90 @@
+/* Default styles (Mobile: 375px ~ 767px) */
 main {
-  max-width: 640px;
+  max-width: 100%;
   margin: 0 auto;
+  padding: 0 16px; /* 좌우 여백 16px 유지 */
 }
 
 .login_homebutton_logo {
   display: block;
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  width: 100%; /* 전체 너비 차지 */
+  max-width: 400px; /* 최대 너비 400px 제한 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login_homebutton_logo img {
+  width: 280px;
+  height: auto;
 }
 
 .input_item {
   margin-bottom: 24px;
+  width: 100%; /* 전체 너비 차지 */
+  max-width: 400px; /* 최대 너비 400px 제한 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .input_item label {
   display: block;
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .input_item input {
-  padding: 16px 24px;
+  padding: 14px 20px;
   background-color: #f3f4f6;
   border: none;
   border-radius: 12px;
-  font-size: 16px;
-  line-height: 24px;
-  width: 100%;
-}
-
-.pill-button {
-  font-size: 20px;
-  font-weight: 700;
-  border-radius: 999px;
-  padding: 16px 124px;
-  width: 100%;
-}
-
-.social_login {
-  background-color: #e6f2ff;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 23px;
-  margin: 24px 0;
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%; /* input도 부모 너비를 따름 */
+  box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
 .input_with_icon {
   position: relative;
+  width: 100%; /* 부모(.input_item)와 동일한 너비 */
 }
 
 .input_with_icon input {
-  padding-right: 60px;
+  padding: 14px 50px 14px 20px; /* 오른쪽 패딩을 아이콘 공간으로 설정 */
+  width: 100%; /* 부모(.input_with_icon)와 동일한 너비 */
+  box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
-/* 리뷰 반영 : absoulte로 가운데 정렬을 할 때는 50%와 transform을 같이 씁니다~! */
+.pill-button {
+  display: block; /* 블록 요소로 설정 */
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 14px 0;
+  width: 100%; /* 전체 너비 차지 */
+  max-width: 400px; /* 최대 너비 400px 제한 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
+
+.social_login {
+  display: block; /* 블록 요소로 설정 */
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  padding: 14px 20px; /* .input_item input과 동일한 패딩 */
+  margin: 16px 0; /* 마진 줄임 (기존 20px -> 16px) */
+  width: 100%; /* 전체 너비 차지 */
+  max-width: 400px; /* 최대 너비 400px 제한 */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
 .btn_visibility {
   position: absolute;
   right: 16px;
@@ -68,9 +95,166 @@ main {
 .swith_to_otherpage {
   display: block;
   text-align: center;
+  font-size: 14px;
+  width: 100%; /* 전체 너비 차지 */
+  max-width: 400px; /* 최대 너비 400px 제한 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
   text-decoration: underline;
   color: #3182f6;
+}
+
+/* Tablet: 768px ~ 1199px */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  main {
+    max-width: 640px;
+    padding: 0 24px;
+  }
+
+  .login_homebutton_logo {
+    margin-top: 50px;
+    margin-bottom: 36px;
+  }
+
+  .login_homebutton_logo img {
+    width: 340px;
+  }
+
+  .input_item {
+    margin-bottom: 24px;
+    width: 100%; /* 전체 너비 차지 */
+    max-width: 592px; /* 태블릿 최대 너비 (640px - 24px * 2) */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .input_item label {
+    font-size: 17px;
+  }
+
+  .input_item input {
+    padding: 15px 22px;
+    font-size: 15px;
+    line-height: 22px;
+    width: 100%;
+  }
+
+  .input_with_icon {
+    width: 100%;
+  }
+
+  .input_with_icon input {
+    padding: 15px 50px 15px 22px; /* 오른쪽 패딩을 아이콘 공간으로 설정 */
+    width: 100%;
+  }
+
+  .pill-button {
+    display: block;
+    font-size: 19px;
+    padding: 15px 0;
+    width: 100%;
+    max-width: 592px; /* 태블릿 최대 너비 */
+    margin: 0 auto;
+  }
+
+  .social_login {
+    display: block;
+    padding: 15px 22px; /* .input_item input과 동일한 패딩 */
+    margin: 18px 0; /* 마진 줄임 (기존 22px -> 18px) */
+    width: 100%;
+    max-width: 592px; /* 태블릿 최대 너비 */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .swith_to_otherpage {
+    font-size: 15px;
+    width: 100%;
+    max-width: 592px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* PC: 1200px 이상 */
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 640px;
+    padding: 0;
+  }
+
+  .login_homebutton_logo {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .login_homebutton_logo img {
+    width: 396px;
+  }
+
+  .input_item {
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 640px; /* PC 최대 너비 */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .input_item label {
+    font-size: 18px;
+  }
+
+  .input_item input {
+    padding: 16px 24px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+  }
+
+  .input_with_icon {
+    width: 100%;
+  }
+
+  .input_with_icon input {
+    padding: 16px 50px 16px 24px; /* 오른쪽 패딩을 아이콘 공간으로 설정 */
+    width: 100%;
+  }
+
+  .pill-button {
+    display: block;
+    font-size: 20px;
+    padding: 16px 0;
+    width: 100%;
+    max-width: 640px; /* PC 최대 너비 */
+    margin: 0 auto;
+  }
+
+  .social_login {
+    display: block;
+    padding: 16px 24px; /* .input_item input과 동일한 패딩 */
+    margin: 20px 0; /* 마진 줄임 (기존 24px -> 20px) */
+    width: 100%;
+    max-width: 640px; /* PC 최대 너비 */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .swith_to_otherpage {
+    font-size: 16px;
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

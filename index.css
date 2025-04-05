@@ -1,14 +1,14 @@
-/* Index page specific styles */
+/* Default styles (Mobile: 375px ~ 767px) */
 .wrap {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  width: 100%;
+  padding: 0 16px;
 }
 
 .section_sub1,
 .section_sub3 {
   width: 100%;
-  height: 540px;
+  height: 400px;
   background-color: #cfe5ff;
 }
 
@@ -19,14 +19,24 @@
   align-items: center;
   background-repeat: no-repeat;
   background-position: 80% bottom;
-  background-size: 55%;
+  background-size: 65%;
 }
 
-.sub1_descrip {
+.sub1_descrip,
+.sub3_descrip {
   position: absolute;
-  left: 200px;
-  bottom: 20%;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
   align-items: center;
+  text-align: center;
+}
+
+.sub1_descrip h1,
+.sub3_descrip h1,
+.sub1_descrip .button,
+.sub3_descrip .button {
+  white-space: nowrap;
 }
 
 .section_sub3 {
@@ -35,43 +45,221 @@
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
-  background-position: 80% bottom;
-  background-size: 55%;
-}
-
-.sub3_descrip {
-  position: absolute;
-  left: 200px;
-  bottom: 30%;
-  align-items: center;
+  background-position: center bottom; /* 모바일에서 가운데 정렬 */
+  background-size: 65%;
 }
 
 .section_sub2,
 .section_sub3,
 .section_sub4 {
   width: 100%;
-  height: 720px;
+  height: 500px;
 }
 
 .descrip {
-  padding: 138px 0;
+  padding: 80px 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5%;
+  gap: 24px;
+}
+
+/* 검색 섹션 특별 스타일 */
+.section_sub2 .descrip {
+  text-align: left;
+}
+
+.section_sub2:first-of-type .descrip {
+  text-align: right;
+}
+
+@media screen and (max-width: 1199px) {
+  .section_sub2:first-of-type .descrip {
+    flex-direction: column-reverse;
+  }
+}
+
+.descrip:nth-child(odd) {
+  text-align: left;
+}
+
+.descrip:nth-child(even) {
+  text-align: right;
 }
 
 .item-tag {
   color: #3692ff;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 22px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .item-description {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 120%;
   letter-spacing: 0.08em;
-  margin-top: 24px;
+  margin-top: 20px;
+}
+
+/* 검색 섹션 스타일 수정: 모든 해상도에서 우측 정렬 */
+.search-section {
+  text-align: right; /* 기본적으로 우측 정렬 */
+}
+
+.search-section .item-summary {
+  text-align: right; /* 텍스트 우측 정렬 */
+}
+
+/* Tablet: 768px ~ 1199px */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .wrap {
+    max-width: 960px;
+    padding: 0 40px;
+  }
+
+  .section_sub1,
+  .section_sub3 {
+    height: 480px;
+  }
+
+  .section_sub2,
+  .section_sub3,
+  .section_sub4 {
+    height: 600px;
+  }
+
+  .descrip {
+    padding: 100px 0;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .item-tag {
+    font-size: 17px;
+    line-height: 24px;
+    margin-bottom: 11px;
+  }
+
+  .item-description {
+    font-size: 22px;
+    margin-top: 22px;
+  }
+
+  .sub1_descrip,
+  .sub3_descrip {
+    top: 20%;
+    width: 100%;
+  }
+
+  .sub1_descrip h1,
+  .sub3_descrip h1 {
+    white-space: normal; /* 태블릿에서 <br> 무시하고 한 줄로 표시 */
+  }
+
+  /* 검색 섹션 스타일 수정: 태블릿에서 우측 정렬 유지 */
+  .search-section {
+    text-align: right;
+    flex-direction: column-reverse; /* 기존 스타일 유지 */
+  }
+
+  .search-section .item-summary {
+    text-align: right;
+  }
+
+  /* .section_sub3 이미지 가운데 정렬 */
+  .section_sub3 {
+    background-position: center bottom; /* 태블릿에서 가운데 정렬 */
+  }
+}
+
+/* PC: 1200px 이상 */
+@media screen and (min-width: 1200px) {
+  .wrap {
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  .section_sub1,
+  .section_sub3 {
+    height: 540px;
+    background-size: 55%;
+  }
+
+  .sub1_descrip {
+    left: 200px;
+    bottom: 20%;
+    top: auto;
+    transform: none;
+    text-align: left;
+    width: auto;
+  }
+
+  .sub3_descrip {
+    left: 200px;
+    bottom: 30%;
+    top: auto;
+    transform: none;
+    text-align: left;
+    width: auto;
+  }
+
+  .sub1_descrip h1,
+  .sub3_descrip h1 {
+    white-space: normal;
+  }
+
+  .section_sub2,
+  .section_sub3,
+  .section_sub4 {
+    height: 720px;
+  }
+
+  .descrip {
+    padding: 138px 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+  }
+
+  .descrip:nth-child(odd) {
+    text-align: left;
+  }
+
+  .descrip:nth-child(even) {
+    text-align: right;
+  }
+
+  .item-tag {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 12px;
+  }
+
+  .item-description {
+    font-size: 24px;
+    margin-top: 24px;
+  }
+
+  /* 검색 섹션 스타일 수정: PC에서 우측 정렬 유지 */
+  .search-section {
+    text-align: right;
+  }
+
+  .search-section .item-summary {
+    text-align: right;
+  }
+
+  /* .section_sub3 이미지 우측 정렬 유지 */
+  .section_sub3 {
+    background-position: 80% bottom; /* PC에서는 기존 우측 정렬 유지 */
+  }
+}
+
+/* 검색 섹션 특별 스타일 */
+@media screen and (max-width: 1199px) {
+  .search-section {
+    flex-direction: column-reverse;
+  }
 }
