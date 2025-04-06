@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* color */
+:root {
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #375151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --Primary-100: #3692ff;
+  --Primary-200: #1967d6;
+  --Primary-300: #1251aa;
+  --error-red: #f74747;
+
+  /* Font sizes */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-2lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+
+  /* Line heights */
+  --line-height-xs: 1.5; /* 18px / 12px */
+  --line-height-sm: 1.69; /* 22px / 13px */
+  --line-height-md: 1.71; /* 24px / 14px */
+  --line-height-lg: 1.625; /* 26px / 16px */
+  --line-height-2lg: 1.556; /* 28px / 18px */
+  --line-height-xl: 1.6; /* 32px / 20px */
+  --line-height-2xl: 1.333; /* 32px / 24px */
+  --line-height-3xl: 1.313; /* 42px / 32px */
+}
+
+.body {
+  background: #ffffff;
+  font-family: "Pretendard", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+}
+/* font */
+@font-face {
+  font-family: "ROKAF Sans";
+  src: url("/font/ROKAF\ Sans\ Bold.ttf");
+  font-weight: bold;
+}
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.text-bold {
+  font-weight: 700;
+}
+.text-semibold {
+  font-weight: 600;
+}
+.text-medium {
+  font-weight: 500;
+}
+.text-regular {
+  font-weight: 400;
+}
+
+/* 아래 CSS들은 조금 편하려고 만들어 둔 것 */
+.text-3xl {
+  font-size: var(--text-3xl);
+  line-height: var(--line-height-3xl);
+}
+
+.text-2xl {
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+.text-xl {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+}
+
+.text-2lg {
+  font-size: var(--text-2lg);
+  line-height: var(--line-height-2lg);
+}
+
+.text-lg {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+}
+
+.text-md {
+  font-size: var(--text-md);
+  line-height: var(--line-height-md);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-sm);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+  line-height: var(--line-height-xs);
+}
+.logo {
+  color: var(--Primary-100);
+}
+
+/* 테블릿 */
+@media (max-width: 1200px) {
+  .text-2xl {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-2xl {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* 레이아웃 - Flex */
+.flex {
+  display: flex;
+}
+.flex-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-sides {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+}
+.grid {
+  display: grid;
+}
+.grid-center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 레이아웃 - Spacing */
+.gap-4 {
+  gap: 4px;
+}
+.gap-8 {
+  gap: 8px;
+}
+.gap-12 {
+  gap: 12px;
+}
+.gap-16 {
+  gap: 16px;
+}
+.gap-24 {
+  gap: 24px;
+}
+.gap-32 {
+  gap: 32px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.gap-64 {
+  gap: 64px;
+}
+
+/* Radius */
+.radius-8 {
+  border-radius: 8px;
+}
+.radius-12 {
+  border-radius: 12px;
+}
+.radius-16 {
+  border-radius: 16px;
+}
+.radius-24 {
+  border-radius: 24px;
+}
+.radius-32 {
+  border-radius: 32px;
+}
+.radius-40 {
+  border-radius: 40px;
+}
+.radius-64 {
+  border-radius: 64px;
+}
+
+/* 버튼 */
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+button,
+button.medium,
+.button {
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  background-color: var(--Primary-100);
+  border: 0;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+button.large,
+.button.large {
+  min-width: 357px;
+  height: 56px;
+  font-size: 20px;
+  line-height: 32px;
+}
+button.small-40,
+.button.small-40 {
+  min-width: 88px;
+  height: 42px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button.small-48,
+.button.small-48 {
+  min-width: 88px;
+  height: 48px;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: var(--Primary-200);
+  cursor: pointer;
+}
+button:active {
+  background-color: var(--Primary-300);
+}
+button:disabled {
+  background-color: var(--gray-400);
+  cursor: not-allowed;
+}
