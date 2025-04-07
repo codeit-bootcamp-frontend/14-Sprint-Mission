@@ -13,6 +13,57 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
+const ItemsDetailDescription = () => {
+  const location = useLocation() // product 데어터 받기
+  // useGetProductId 이용
+  const product = location.state?.product
+  const productsId = useGetProductId(product.id)
+  if (!productsId) {
+    return <div>상품 정보를 불러오는 중입니다...</div>
+  }
+  return (
+    <Bone>
+      <ProductImage src={productsId.images[0]} alt={productsId.name} />
+      <TitleDescription>
+        <ProductTitleWrapper>
+          <ProductTitle>
+            <ProductName>{productsId.name}</ProductName>
+            <img src={Setting} alt="상품설정버튼" />
+          </ProductTitle>
+          <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
+        </ProductTitleWrapper>
+        <ProductDescriptionWrapper>
+          <ProductDescriptionText>상품 소개</ProductDescriptionText>
+          <ProductDescription>{productsId.description}</ProductDescription>
+        </ProductDescriptionWrapper>
+        <ProductTagWrapper>
+          <ProductDescriptionText>상품 태그</ProductDescriptionText>
+          <ProductTag>
+            {productsId.tags?.map((tag, index) => (
+              <Tag key={index} tags={tag} />
+            ))}
+          </ProductTag>
+        </ProductTagWrapper>
+        <ProductFooter>
+          <ProductFooterLeft>
+            <img src={ProfileIcon} alt="프로필아이콘" />
+            <div>
+              <OwnerNickname>{productsId.ownerNickname}</OwnerNickname>
+              <UpdatedAt>{formatDate(productsId.createdAt)}</UpdatedAt>
+            </div>
+          </ProductFooterLeft>
+          <ProductFooterRight>
+            <img src={HeartInactive} />
+            <div>{productsId.favoriteCount}</div>
+          </ProductFooterRight>
+        </ProductFooter>
+      </TitleDescription>
+    </Bone>
+  )
+}
+
+export default ItemsDetailDescription
+
 const Bone = styled.div`
   width: 100%;
   height: 100%;
@@ -157,51 +208,3 @@ const UpdatedAt = styled.div`
   ${(props) => textStyle(14, 400)(props)}
   color: ${theme.colors.SecondaryGray[400]};
 `
-const ItemsDetailDescription = () => {
-  const location = useLocation() // product 데어터 받기
-  // useGetProductId 이용
-  const product = location.state?.product
-  const productsId = useGetProductId(product.id)
-
-  return (
-    <Bone>
-      <ProductImage src={productsId.images} alt={productsId.name} />
-      <TitleDescription>
-        <ProductTitleWrapper>
-          <ProductTitle>
-            <ProductName>{productsId.name}</ProductName>
-            <img src={Setting} alt="상품설정버튼" />
-          </ProductTitle>
-          <ProductPrice>{product.price.toLocaleString()}원</ProductPrice>
-        </ProductTitleWrapper>
-        <ProductDescriptionWrapper>
-          <ProductDescriptionText>상품 소개</ProductDescriptionText>
-          <ProductDescription>{productsId.description}</ProductDescription>
-        </ProductDescriptionWrapper>
-        <ProductTagWrapper>
-          <ProductDescriptionText>상품 태그</ProductDescriptionText>
-          <ProductTag>
-            {productsId.tags?.map((tag, index) => (
-              <Tag key={index} tags={tag} />
-            ))}
-          </ProductTag>
-        </ProductTagWrapper>
-        <ProductFooter>
-          <ProductFooterLeft>
-            <img src={ProfileIcon} alt="프로필아이콘" />
-            <div>
-              <OwnerNickname>{productsId.ownerNickname}</OwnerNickname>
-              <UpdatedAt>{formatDate(productsId.createdAt)}</UpdatedAt>
-            </div>
-          </ProductFooterLeft>
-          <ProductFooterRight>
-            <img src={HeartInactive} />
-            <div>{productsId.favoriteCount}</div>
-          </ProductFooterRight>
-        </ProductFooter>
-      </TitleDescription>
-    </Bone>
-  )
-}
-
-export default ItemsDetailDescription

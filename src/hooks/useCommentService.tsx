@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import commentService from '../api/services/commentService'
 
-export const useGetCommentService = (productId, limit = 3) => {
+export const useGetCommentService = (productId: number, limit = 3) => {
   const [productQuestion, setProductQuestion] = useState({
     list: [],
     nextCursor: null,

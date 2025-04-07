@@ -28,7 +28,8 @@ const Bone = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 4.6875rem;
+  margin: 4.6875rem auto;
+  width: max-content;
   ${(props) => textStyle(18, 600)(props)}
   color: ${theme.colors.SecondaryGray[100]};
   @media (max-width: 1199px) {

@@ -1,0 +1,16 @@
+interface GetCommentType {
+  nextCursor: number
+  list: Comment[]
+}
+
+export interface PostCommentType {
+  id: number
+  content: string
+  createdAt: string
+  updatedAt: string
+  writer: {
+    id: number
+    nickname: string
+    image: string
+  }
+}

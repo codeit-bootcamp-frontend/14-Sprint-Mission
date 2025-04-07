@@ -116,13 +116,13 @@ const Login = () => {
     setShowPassword((prev) => !prev)
   }
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     if (!email) return '이메일을 입력해주세요.'
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email) ? '' : '잘못된 이메일 형식입니다.'
   }
 
-  const validatePassword = (password) => {
+  const validatePassword = (password: string) => {
     if (!password || password === '') {
       return '비밀번호를 입력해주세요.'
     }
@@ -185,8 +185,8 @@ const Login = () => {
       />
       <ButtonWrapper>
         <Button
-          variant="primary"
           size={56}
+          paddingHeight={12}
           onClick={handleLogin}
           disabled={!isState}
         >

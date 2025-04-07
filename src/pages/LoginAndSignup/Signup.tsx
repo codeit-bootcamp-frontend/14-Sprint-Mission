@@ -102,6 +102,7 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [name, setName] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [passwordConfirmError, setPasswordConfirmError] = useState('')
@@ -111,20 +112,20 @@ const Signup = () => {
     confirmPassword: false,
   })
 
-  const togglePasswordVisibility = (field) => {
+  const togglePasswordVisibility = (field: keyof typeof passwordVisibility) => {
     setPasswordVisibility((prev) => ({
       ...prev,
       [field]: !prev[field],
     }))
   }
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     if (!email) return '이메일을 입력해주세요.'
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email) ? '' : '잘못된 이메일 형식입니다.'
   }
 
-  const validatePassword = (password) => {
+  const validatePassword = (password: string) => {
     if (!password || password === '') {
       return '비밀번호를 입력해주세요.'
     }
@@ -133,7 +134,7 @@ const Signup = () => {
     }
     return ''
   }
-  const validatePasswordConfirm = (passwordConfirm) => {
+  const validatePasswordConfirm = (passwordConfirm: string) => {
     if (passwordConfirm !== password) {
       return '비밀번호가 일치하지 않습니다.'
     }
@@ -184,6 +185,7 @@ const Signup = () => {
         type="name"
         placeholder="닉네임을 입력해주세요"
         id="name"
+        value={name}
       ></LoginField>
       <LoginField
         label="비밀번호"
@@ -214,12 +216,7 @@ const Signup = () => {
         error={passwordConfirmError}
       />
       <ButtonWrapper>
-        <Button
-          variant="primary"
-          size={56}
-          onClick={handleLogin}
-          disabled={!isState}
-        >
+        <Button size={56} onClick={handleLogin} disabled={!isState}>
           회원가입
         </Button>
       </ButtonWrapper>
@@ -237,7 +234,7 @@ const Signup = () => {
       <FooterContainer>
         <First>이미 회원이신가요? &nbsp;</First>
         <Register>
-          <Link href="./login" target="_blank">
+          <Link to="/login" target="_blank">
             로그인
           </Link>
         </Register>

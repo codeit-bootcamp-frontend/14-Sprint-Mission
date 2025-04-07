@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import * as S from './Home.style'
 import Button from '../../component/common/Button'
 
 import Logo from '../../assets/image/Logo.png'
@@ -15,19 +16,17 @@ import Instagram from '../../assets/svg/instagram.svg'
 import Twitter from '../../assets/svg/twitter.svg'
 import Youtube from '../../assets/svg/youtube.svg'
 
-import * as S from './Home.style'
-
 function Home() {
   const [buttonStyle, setButtonStyle] = useState({
-    width: '364',
-    paddingWidth: '43',
+    width: 364,
+    paddingWidth: 43,
   })
 
   const handleResize = () => {
     if (window.innerWidth < 375) {
-      setButtonStyle({ width: '258', paddingWidth: '71' })
+      setButtonStyle({ width: 258, paddingWidth: 71 })
     } else {
-      setButtonStyle({ width: '364', paddingWidth: '124' })
+      setButtonStyle({ width: 364, paddingWidth: 124 })
     }
   }
 
@@ -50,16 +49,17 @@ function Home() {
               <S.HeaderLogoName src={Logo} alt="판다마켓 로고 사진" />
             </Link>
           </S.HeaderLogo>
-          <Button
-            as={Link}
-            to="/login"
-            variant="primary"
-            size={48.5}
-            paddingHeight={11}
-            paddingWidth={43}
-          >
-            로그인
-          </Button>
+          <S.ButtonWrapper>
+            <Button
+              as={Link}
+              to="/login"
+              size={48.5}
+              paddingHeight={11}
+              paddingWidth={43}
+            >
+              로그인
+            </Button>
+          </S.ButtonWrapper>
         </S.HeaderNav>
       </S.HeaderTop>
       <S.HeaderMain>
@@ -68,15 +68,17 @@ function Home() {
             <S.HeaderTitleFont>
               일상의 모든 물건을 거래해 보세요
             </S.HeaderTitleFont>
-            <Button
-              as={Link}
-              to="/items"
-              variant="primary"
-              paddingHeight={12}
-              paddingWidth={buttonStyle.paddingWidth}
-            >
-              구경하러 가기
-            </Button>
+            <S.ButtonWrapper>
+              <Button
+                as={Link}
+                to="/items"
+                size={56}
+                paddingHeight={12}
+                paddingWidth={buttonStyle.paddingWidth}
+              >
+                구경하러 가기
+              </Button>
+            </S.ButtonWrapper>
           </S.HeaderMainTitle>
           <img src={HomeTop} alt="판다마켓 백그라운드사진" />
         </S.HeaderMainContainer>

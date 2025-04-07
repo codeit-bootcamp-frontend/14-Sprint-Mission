@@ -1,5 +1,8 @@
 import requestor from '../client/requestor'
 
+import { Comment } from '../../types/comment'
+import { Axios, AxiosResponse } from 'axios'
+
 class CommentService {
   // 틀릴 수도
   postProductComment(productId, body) {
@@ -10,7 +13,11 @@ class CommentService {
     return requestor.post(`/products/${productId}/comments`, requestBody)
   }
 
-  getProductComment(productId, limit, cursor) {
+  getProductComment(
+    productId: number,
+    limit: number,
+    cursor?: number
+  ): Promise<AxiosResponse<Comment>> {
     let url = `/products/${productId}/comments?limit=${limit}`
 
     if (cursor) {

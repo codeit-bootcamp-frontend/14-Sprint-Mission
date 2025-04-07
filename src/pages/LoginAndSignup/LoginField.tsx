@@ -10,8 +10,10 @@ const Field = styled.span`
   display: inline-block;
   margin-bottom: 1rem;
 `
-
-const Input = styled.input`
+interface InputProps {
+  $isError?: boolean
+}
+const Input = styled.input<InputProps>`
   width: 100%;
   padding: 1rem 1.5rem;
   border: none;
@@ -29,7 +31,7 @@ const Input = styled.input`
         $isError ? theme.colors.error : theme.colors.PrimaryBlue[100]};
   }
 `
-const InputWrapper = styled.div`
+const InputWrapper = styled.label`
   width: 100%;
   height: 6.125rem;
   margin-bottom: 3rem;
@@ -53,8 +55,19 @@ const ErrorMessage = styled.div`
   ${(props) => textStyle(14, 600)(props)}
   margin: 0.5rem 1rem;
 `
-
-const LoginField = ({
+interface LoginFieldtProps {
+  label: string
+  type: string
+  id: string
+  placeholder: string
+  icon?: string
+  onIconClick?: () => void
+  validate?: (value: string) => string
+  value: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  error?: string
+}
+const LoginField: React.FC<LoginFieldtProps> = ({
   // 부모에게 받음
   label,
   type = 'text',
@@ -81,7 +94,6 @@ const LoginField = ({
         <Field>{label}</Field>
         <PlaceholderWrapper>
           <Input
-            label={label}
             type={type}
             name={id}
             placeholder={placeholder}

@@ -59,7 +59,6 @@ const ItemsDetailQuestionTextarea = () => {
   const location = useLocation() // product 데어터 받기
   const [isEditing, setIsEditing] = useState(false)
   const [questionText, setQuestionText] = useState('')
-  const [isState, setIsState] = useState(false)
   const [textareaStyle, setTextareaStyle] = useState({
     height: '84px',
   })

@@ -32,6 +32,14 @@ export const HeaderLogo = styled.div`
   align-items: center;
 `
 
+export const ButtonWrapper = styled.div`
+  width: auto;
+  height: auto;
+  @media (max-width: 744px) {
+    width: max-content;
+  }
+`
+
 export const HeaderLogoFace = styled.img`
   width: 2.5rem;
   height: 2.5rem;
@@ -436,7 +444,7 @@ export const Social = styled.div`
   }
 `
 
-export const Privacy = styled.a`
+export const Privacy = styled.div`
   margin: auto 2rem auto 0;
   color: ${theme.colors.SecondaryGray[200]};
   text-decoration: none;
@@ -445,7 +453,7 @@ export const Privacy = styled.a`
   }
 `
 
-export const Faq = styled.a`
+export const Faq = styled.div`
   color: ${theme.colors.SecondaryGray[200]};
   text-decoration: none;
   margin: auto 0;

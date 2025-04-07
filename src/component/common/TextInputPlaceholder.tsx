@@ -3,7 +3,38 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
-const Bone = styled.textarea`
+interface TextInputPlaceholderProps {
+  placeholder?: string
+  height: string
+  padding: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+  onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>
+}
+
+const TextInputPlaceholder: React.FC<TextInputPlaceholderProps> = ({
+  placeholder,
+  height,
+  padding,
+  value,
+  onChange,
+  onKeyDown,
+}) => {
+  return (
+    <Bone
+      placeholder={placeholder}
+      height={height}
+      padding={padding}
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+    />
+  )
+}
+
+export default TextInputPlaceholder
+
+const Bone = styled.textarea<{ height: string; padding: string }>`
   width: 100%;
   height: ${(props) => props.height || '56px'};
   background-color: ${theme.colors.SecondaryGray[100]};
@@ -26,25 +57,3 @@ const Bone = styled.textarea`
     ${(props) => textStyle(14, 400)(props)}
   }
 `
-
-const TextInputPlaceholder = ({
-  placeholder,
-  height,
-  padding,
-  value,
-  onChange,
-  onKeyDown,
-}) => {
-  return (
-    <Bone
-      placeholder={placeholder}
-      height={height}
-      padding={padding}
-      value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-    />
-  )
-}
-
-export default TextInputPlaceholder

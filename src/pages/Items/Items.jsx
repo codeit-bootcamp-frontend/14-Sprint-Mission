@@ -92,6 +92,7 @@ const ButtonWrapper = styled.div`
   margin-right: 1.3333rem;
   @media (max-width: 743px) {
     position: absolute;
+    width: max-content;
     top: 546px;
     left: 226px;
   }

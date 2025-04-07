@@ -1,8 +1,10 @@
+import { Axios, AxiosResponse } from 'axios'
 import requestor from '../client/requestor'
+import { Product } from '../../types/product'
 
 class ProductService {
   //틀릴 수도
-  postProduct(body) {
+  postProduct(body: Product) {
     const requestBody = {
       ...body,
     }
@@ -15,7 +17,7 @@ class ProductService {
     )
   }
 
-  getProductId(productId) {
+  getProductId(productId: number): Promise<AxiosResponse<Product>> {
     return requestor.get(`/products/${productId}`)
   }
 
