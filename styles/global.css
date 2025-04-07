@@ -88,6 +88,10 @@ header {
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #dfdfdf;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 footer {
