@@ -11,19 +11,22 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <header>
-      <a href="/">
-        <img
-          src="images/panda home.png"
-          alt="판다마켓 홈"
-          width="153"
-          height="51"
-        />
-      </a>
-      <a href="login.html" id="loginButton" class="button">로그인</a>
+      <div class="header-container">
+        <a href="/">
+          <img
+            src="images/panda home.png"
+            alt="판다마켓 홈"
+            width="153"
+            height="51"
+          />
+        </a>
+        <a href="login.html" id="loginButton" class="button">로그인</a>
+      </div>
     </header>
 
     <main>
@@ -50,7 +53,7 @@
         </div>
       </section>
       <section class="section_sub2 wrap">
-        <div class="descrip">
+        <div class="descrip search-section">
           <div class="item-summary">
             <h2 class="item-tag">Search</h2>
             <h1>구매를 원하는 <br />상품을 검색하세요</h1>
