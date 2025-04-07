@@ -75,3 +75,7 @@ main{
     font: var(--text-2xl-medium);
     color: var(--gray---700);
 }
+
+.section-home-text.reverse {
+    text-align: right;
+}
