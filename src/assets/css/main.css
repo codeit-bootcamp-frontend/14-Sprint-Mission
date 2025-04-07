@@ -242,7 +242,7 @@ img {
   }
   .main-kv__slogan {
     width: 100%;
-    top: 83px;
+    top: 174px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -258,15 +258,12 @@ img {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .mov {
     display: none;
   }
   .header {
     padding: 0 20px;
-  }
-  .main-kv__slogan {
-    top: 48px;
   }
   .main-kv__slogan h2 {
     font-size: 32px;
@@ -311,12 +308,18 @@ img {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .mov2 {
     display: block;
   }
+  .header {
+    padding: 0 16px;
+  }
   .main-kv {
-    height: 540px;
+    height: 610px;
+  }
+  .main-kv__slogan {
+    top: 124px;
   }
   .btn--kv {
     width: 240px;
@@ -324,6 +327,9 @@ img {
   }
   .main-kv__wrap {
     background-size: 448px 204px;
+  }
+  .main-kv__contents h2 {
+    font-size: 25px;
   }
   .main-section {
     padding: 20px 16px 20px 16px;
