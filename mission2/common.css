@@ -1,0 +1,195 @@
+/* Common styles for all pages */
+
+/* Default styles (Mobile: 375px ~ 767px) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  left: 0; /* 화면 전체를 덮도록 좌측 고정 */
+  right: 0; /* 화면 전체를 덮도록 우측 고정 */
+  z-index: 10;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px; /* 모바일 여백 16px */
+  max-width: 375px; /* 모바일 최대 너비 */
+  margin: 0 auto; /* 가운데 정렬 */
+  height: 100%; /* 헤더 높이 전체 사용 */
+}
+
+footer {
+  background-color: #111827;
+  color: #9ca3af;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 16px 60px;
+  font-size: 14px;
+}
+
+#footerMenu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #e5e7eb;
+}
+
+#footerMenu > a {
+  color: #e5e7eb;
+}
+
+#socialMedia {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Common button styles */
+.button {
+  background-color: #3692ff;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #1967d6;
+}
+
+.button:focus {
+  background-color: #1251aa;
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: default;
+  pointer-events: none;
+}
+
+#loginButton {
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+#pill-button {
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 12px 80px;
+}
+
+/* Tablet: 768px ~ 1199px */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  header {
+    height: 65px;
+  }
+
+  .header-container {
+    padding: 0 24px; /* 태블릿 여백 24px */
+    max-width: 960px; /* 태블릿 최대 너비 */
+    margin: 0 auto;
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 28px 40px 80px;
+    font-size: 15px;
+  }
+
+  #footerMenu {
+    gap: 25px;
+  }
+
+  #socialMedia {
+    justify-content: flex-end;
+  }
+
+  #loginButton {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  #pill-button {
+    font-size: 18px;
+    padding: 14px 100px;
+  }
+}
+
+/* PC: 1200px 이상 */
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  header {
+    height: 70px;
+  }
+
+  .header-container {
+    padding: 0; /* PC에서는 패딩 제거 */
+    max-width: 1200px; /* PC 최대 너비 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* 양 끝으로 벌어짐 */
+  }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 200px 108px;
+    font-size: 16px;
+  }
+
+  #footerMenu {
+    gap: 30px;
+  }
+
+  #socialMedia {
+    justify-content: flex-end;
+  }
+
+  #loginButton {
+    font-size: 16px;
+    padding: 11.5px 23px;
+  }
+
+  #pill-button {
+    font-size: 20px;
+    padding: 16px 124px;
+  }
+}
