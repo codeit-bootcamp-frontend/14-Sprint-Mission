@@ -1,9 +1,9 @@
 import Card from "@/pages/items/Card";
-import useArticles from "./useArticles";
-import "../../../styles/global.scss";
+import useArticles from "@/hooks/useArticles";
+import "../../../../styles/global.scss";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useWinSize } from "../../contexts/winSizeContext";
+import { useWinSize } from "../../../contexts/winSizeContext";
 
 const Container = styled.div`
   margin-top: 24px;

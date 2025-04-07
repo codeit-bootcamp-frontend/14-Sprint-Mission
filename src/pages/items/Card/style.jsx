@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import DefaultImage from "../../../images/img_item_default.svg";
-import Heart from "../../../images/ico_heart.svg";
 
-const Article = styled.article`
+export const Article = styled.article`
   display: inline-flex;
   background: white;
   flex-direction: column;
@@ -55,7 +53,7 @@ const Article = styled.article`
   }
 `;
 
-const Figure = styled.figure`
+export const Figure = styled.figure`
   width: 100%;
   aspect-ratio: 1/1;
 
@@ -65,7 +63,7 @@ const Figure = styled.figure`
   z-index: 1;
 `;
 
-const ImageContainer = styled.div`
+export const ImageContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -82,32 +80,3 @@ const ImageContainer = styled.div`
     transform: translateX(-50%) translateY(-50%);
   }
 `;
-
-function Card({
-  name,
-  price,
-  favoriteCount,
-  isLoading = true,
-  images,
-  width = "220px",
-  height = "318px",
-}) {
-  return (
-    <Article width={width} height={height}>
-      <ImageContainer>
-        <Figure images={images} />
-        <img src={DefaultImage} />
-      </ImageContainer>
-      <section>
-        <h2>{name}</h2>
-        <h3>{price.toLocaleString()}원</h3>
-        <div className="likes">
-          <img src={Heart} />
-          {favoriteCount.toLocaleString()}
-        </div>
-      </section>
-    </Article>
-  );
-}
-
-export default Card;

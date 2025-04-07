@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Signup from "./pages/sign/Signup";
-import Items from "./pages/items/Items";
+import Items from "./pages/items";
 import GNB from "@/components/GNB";
 import { WinSizeProvider } from "./contexts/winSizeContext";
 
