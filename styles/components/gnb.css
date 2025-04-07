@@ -1,5 +1,3 @@
-@import url('~@noonnu/rokaf-sans-medium');
-
 .gnb-wrapper {
     display: flex;
     justify-content: center;
@@ -21,17 +19,6 @@
     align-items: center;
 }
 
-.logo img {
-    width: 40px;
-}
-.logo span{
-    color: var(--primary---100);
-    font-weight: 700;
-    font-size: 25.63px;
-    line-height: 100%;
-
-    font-family: ROKAFSansMedium;
-}
 
 @media (max-width: 1920px) {
     .gnb-wrapper{
