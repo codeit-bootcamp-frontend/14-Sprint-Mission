@@ -1,3 +1,7 @@
+button {
+    cursor: pointer;
+    border: none;
+}
 /* login button */
 .btn-small-48 {
     width: 128px;
@@ -33,11 +37,13 @@
     padding: 16px 124px;
     gap: 10px;
     display: flex;
+    justify-content: center;
     align-items: center;
 
     border-radius: 40px;
     background-color: var(--primary---100);
     color: var(--gray---50);
+    font: var(--text-xl-semibold);
 }
 
 .btn-large:hover {
@@ -50,4 +56,8 @@
 
 .btn-large:active {
     background-color: var(--primary---300);
+}
+
+.full-width {
+    width: 100%;
 }
