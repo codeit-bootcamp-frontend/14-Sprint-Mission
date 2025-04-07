@@ -17,8 +17,7 @@
   height: 540px;
   background-color: #cfe5ff;
   background-repeat: no-repeat;
-  background-position: 70% bottom;
-  background-size: 50%;
+  background-position: calc(100% - 30%) bottom;
   display: flex;
   align-items: center;
 }
