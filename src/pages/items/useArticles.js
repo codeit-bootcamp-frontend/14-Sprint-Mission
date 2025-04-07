@@ -25,7 +25,7 @@ function useArticles(page = 1, pageSize = 10, order = "recent", keyword='') {
     }
 
     fetchData();
-  }, [page, keyword, order]);
+  }, [page, keyword, order, pageSize]);
 
   return { articles, isLoading, count };
 }
