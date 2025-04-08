@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
+import * as S from "./style";
+
+import LandingTop from "@/assets/images/landing_top.svg";
+import LandingBottom from "@/assets/images/landing_bottom.svg";
+import Landing01 from "@/assets/images/landing_01.svg";
+import Landing02 from "@/assets/images/landing_02.svg";
+import Landing03 from "@/assets/images/landing_03.svg";
+import Button from "../../components/Button";
+import IcoFacebook from "@/assets/icons/ico_facebook.svg";
+import IcoTwitter from "@/assets/icons/ico_twitter.svg";
+import IcoYoutube from "@/assets/icons/ico_youtube.svg";
+import IcoInstagram from "@/assets/icons/ico_instagram.svg";
 
 function Home() {
   return (
-    <>
+    <S.Container>
       <main className="flex flex-column">
         <section className="section section--extend flex flex-center flex-bottom">
           <div className="section__container">
@@ -12,14 +24,16 @@ function Home() {
                 거래해 보세요
               </h1>
               <Link to="/items" className="button button--large">
-                구경하러 가기
+                <Button round width="358px" height="56px">
+                  구경하러 가기
+                </Button>
               </Link>
             </div>
-            <img src="/images/landing_top.svg" alt="판다마켓 랜딩 이미지" />
+            <img src={LandingTop} alt="판다마켓 랜딩 이미지" />
           </div>
         </section>
         <section className="section section--normal flex flex-left gap-64">
-          <img src="/images/landing_01.svg" alt="판다마켓 랜딩 이미지" />
+          <img src={Landing01} alt="판다마켓 랜딩 이미지" />
           <div className="text-left">
             <h3 className="section__tag">Hot item</h3>
             <h2>
@@ -46,10 +60,10 @@ function Home() {
               쉽게 찾아보세요
             </p>
           </div>
-          <img src="/images/landing_02.svg" alt="판다마켓 랜딩 이미지" />
+          <img src={Landing02} alt="판다마켓 랜딩 이미지" />
         </section>
         <section className="section section--normal flex flex-left gap-64">
-          <img src="/images/landing_03.svg" alt="판다마켓 랜딩 이미지" />
+          <img src={Landing03} alt="판다마켓 랜딩 이미지" />
           <div className="text-left">
             <h3 className="section__tag">Register</h3>
             <h2>
@@ -72,7 +86,7 @@ function Home() {
                 판다마켓 중고 거래
               </h2>
             </div>
-            <img src="/images/landing_bottom.svg" alt="판다마켓 랜딩 이미지" />
+            <img src={LandingBottom} alt="판다마켓 랜딩 이미지" />
           </div>
         </section>
       </main>
@@ -88,32 +102,32 @@ function Home() {
             aria-label="페이스북 계정 방문하기"
             href="https://www.facebook.com"
             target="_blank"
-            style={{ backgroundImage: "url(/images/ico_facebook.svg)" }}
+            style={{ backgroundImage: `url(${IcoFacebook})` }}
           ></a>
           <a
             className="icon icon--18"
             aria-label="트위터 계정 방문하기"
             href="https://www.twitter.com"
             target="_blank"
-            style={{ backgroundImage: "url(/images/ico_twitter.svg)" }}
+            style={{ backgroundImage: `url(${IcoTwitter})` }}
           ></a>
           <a
             className="icon icon--18"
             aria-label="유튜브 채널 방문하기"
             href="https://www.youtube.com"
             target="_blank"
-            style={{ backgroundImage: "url(/images/ico_youtube.svg)" }}
+            style={{ backgroundImage: `url(${IcoYoutube})` }}
           ></a>
           <a
             className="icon icon--18"
             aria-label="인스타그램 계정 방문하기"
             href="https://www.instagram.com"
             target="_blank"
-            style={{ backgroundImage: "url(/images/ico_instagram.svg)" }}
+            style={{ backgroundImage: `url(${IcoInstagram})` }}
           ></a>
         </div>
       </footer>
-    </>
+    </S.Container>
   );
 }
 

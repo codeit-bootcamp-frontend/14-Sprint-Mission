@@ -6,6 +6,10 @@ export const TitleBar = styled.div`
   gap: 12px;
   transition: all 0.05s ease-out;
 
+  .flex-grow {
+    flex-grow: 1;
+  }
+
   .container {
     width: 100%;
     gap: 8px;
@@ -54,6 +58,7 @@ export const TitleBar = styled.div`
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
+      box-sizing: border-box;
 
       &:hover {
         background: #efefef;

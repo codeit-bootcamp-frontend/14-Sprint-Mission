@@ -1,6 +1,5 @@
 import Card from "@/pages/items/Card";
 import useArticles from "@/hooks/useArticles";
-import "../../../../styles/global.scss";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useWinSize } from "../../../contexts/winSizeContext";
@@ -49,7 +48,7 @@ function BestProducts() {
             favoriteCount={e.favoriteCount}
             isLoading={isLoading}
             images={e.images[0]}
-            width={winSize === "desktop" ? "282px" : "342px"}
+            width={winSize === "desktop" ? "280px" : "340px"}
             height={winSize === "desktop" ? "378px" : "434px"}
             key={e.id}
           />

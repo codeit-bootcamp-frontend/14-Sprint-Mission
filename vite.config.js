@@ -9,4 +9,7 @@ export default defineConfig({
       { find: "@", replacement: "/src" },
     ],
   },
+  build: {
+    assetsInlineLimit: 0 // <--- 모든 에셋 인라이닝 비활성화
+  }
 })

@@ -18,7 +18,6 @@ function TitleBar({ winSize, keywords, pages, orders }) {
     if (page != 1) {
       setPage(1);
     }
-    console.log(e.target.value);
   };
 
   return (
@@ -27,7 +26,7 @@ function TitleBar({ winSize, keywords, pages, orders }) {
         <div className="container">
           <div className="top-container">
             <span className="flex-grow">전체 상품</span>
-            <Button>
+            <Button width="132px">
               <Link to="/additem" className="link">
                 상품 등록하기
               </Link>
@@ -71,7 +70,7 @@ function TitleBar({ winSize, keywords, pages, orders }) {
               style={{ width: "324px" }}
             />
           </label>
-          <Button>
+          <Button width="132px" outline={true}>
             <Link to="/additem" className="link">
               상품 등록하기
             </Link>

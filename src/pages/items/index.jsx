@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import BestProducts from "./BestItems";
 import Products from "./Products";
-import "../../../styles/global.scss";
 
 const ItemsContainer = styled.div`
   display: flex;

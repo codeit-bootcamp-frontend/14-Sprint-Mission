@@ -1,13 +1,19 @@
-import "../../../styles/sign.scss";
+import * as S from "../style";
 import { Link } from "react-router-dom";
-import SignInput from "./SignInput";
-import useInputConfirm from "../../hooks/useInputConfirm";
+
+import SignInput from "../SignInput";
+import useInputConfirm from "@/hooks/useInputConfirm";
+import Logo from "@/assets/images/logo.svg";
+import Button from "../../../components/Button";
+
+import Kakao from "@/assets/icons/ico_kakao.svg";
+import Google from "@/assets/icons/ico_google.svg";
 
 function Signup() {
-  const email = useInputConfirm("");
-  const nickname = useInputConfirm("");
-  const pw = useInputConfirm("");
-  const confirmPw = useInputConfirm("");
+  const email = useInputConfirm();
+  const nickname = useInputConfirm();
+  const pw = useInputConfirm();
+  const confirmPw = useInputConfirm(pw.value);
 
   function passInputs() {
     if (email.msg || nickname.msg || pw.msg || confirmPw.msg) {
@@ -18,10 +24,10 @@ function Signup() {
   }
 
   return (
-    <div className="sign">
+    <S.Container>
       <div className="sign-container">
         <a href="/" className="logo">
-          <img src="/images/logo.svg" />
+          <img src={Logo} />
         </a>
         <form className="sign-form" action="">
           <SignInput
@@ -51,6 +57,8 @@ function Signup() {
             autoComplete={"new-password"}
             id={"password"}
             pw={confirmPw.value}
+            value={pw.value}
+            onChange={pw.onChange}
           />
           <SignInput
             inputState={confirmPw}
@@ -62,33 +70,34 @@ function Signup() {
             id={"confirm-password"}
             pw={pw.value}
           />
-
-          <input
+          <Button
             disabled={!passInputs()}
-            className="button button--wide"
+            round={true}
+            height="56px"
             type="submit"
             id="submit"
-            value="회원가입"
-          />
+          >
+            회원가입
+          </Button>
         </form>
         <div className="social-log-wrap">
           <p className="social-log-wrap__title">간편 로그인하기</p>
           <a
-            className="icon icon--42"
+            className="icon"
             href="https://www.google.com"
-            style={{ backgroundImage: "url(images/ico_google.svg)" }}
+            style={{ backgroundImage: `url(${Google})` }}
           ></a>
           <a
-            className="icon icon--42"
+            className="icon"
             href="https://www.kakaocorp.com"
-            style={{ backgroundImage: "url(images/ico_kakao.svg)" }}
+            style={{ backgroundImage: `url(${Kakao})` }}
           ></a>
         </div>
         <footer>
           이미 회원이신가요? <Link to="/login">로그인</Link>
         </footer>
       </div>
-    </div>
+    </S.Container>
   );
 }
 

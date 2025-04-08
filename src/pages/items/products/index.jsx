@@ -1,7 +1,6 @@
 import Card from "@/pages/items/Card";
 import useArticles from "@/hooks/useArticles";
 import { useEffect, useState } from "react";
-import "../../../../styles/global.scss";
 import { useWinSize } from "../../../contexts/winSizeContext";
 import * as S from "./style";
 

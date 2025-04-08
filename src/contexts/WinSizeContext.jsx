@@ -8,10 +8,8 @@ function WinSizeProvider({ children }) {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
-        console.log("mobile");
         setWinSize("mobile");
       } else if (window.innerWidth <= 1200) {
-        console.log("tablet");
         setWinSize("tablet");
       } else {
         setWinSize("desktop");

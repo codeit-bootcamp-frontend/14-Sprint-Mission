@@ -1,13 +1,18 @@
 import { useState } from "react";
 
-function useInputConfirm() {
+function useInputConfirm(compareToValue = null) {
   const [msg, setMsg] = useState("");
+  const [value, setValue] = useState("");
 
+  function onChange(e) {
+    setValue(e.target.value);
+    if (msg) {
+      setMsg("");
+    }
+  }
   function onBlur(e) {
     const regEmail =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
-    setMsg("");
 
     if (e.target.id === "email") {
       if (!e.target.value) {
@@ -32,13 +37,13 @@ function useInputConfirm() {
     }
 
     if (e.target.id === "confirm-password") {
-      if (e.target.value !== e.target.pw) {
+      if (e.target.value !== compareToValue) {
         setMsg("비밀번호가 일치하지 않습니다");
       }
     }
   }
 
-  return { onBlur, msg };
+  return { onBlur, msg, value, onChange };
 }
 
 export default useInputConfirm;
