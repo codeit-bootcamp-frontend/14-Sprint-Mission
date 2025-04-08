@@ -13,28 +13,25 @@ interface DropdownProps {
 }
 
 function Dropdown({ items, isOpen, onClose }: DropdownProps) {
-  console.log(isOpen);
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        isOpen &&
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
+        console.log('close');
         onClose();
       }
     };
 
-    if (isOpen) {
-      window.addEventListener('mousedown', handleClickOutside);
-    }
+    window.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
   return (
     <>

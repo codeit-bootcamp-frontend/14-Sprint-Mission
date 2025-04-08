@@ -1,10 +1,11 @@
 import './TagsInput.css';
 import Tag from './Tag';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { ProductType } from '../../types/types';
 
 interface TagsProps {
   tags: string[];
-  onChange: (name: string, value: any) => void;
+  onChange: (name: string, value: string[]) => void;
 }
 
 function Tags({ tags, onChange }: TagsProps) {

@@ -28,11 +28,7 @@ function Comment({ comment }: CommentProps) {
   const handleOptionClick = () => {
     setIsOptionsOpen((prev) => !prev);
   };
-  // dropdown 닫기
-  const handleDropdownClose = () => {
-    setIsOptionsOpen(false);
-    console.log('close');
-  };
+
   // comment 수정
   const handleEditClick = () => {
     setIsEditing(true);
@@ -82,13 +78,13 @@ function Comment({ comment }: CommentProps) {
           className="optionsIcon"
           src={OptionsIcon}
           alt="options"
-          onClick={() => handleOptionClick()}
+          onClick={handleOptionClick}
         />
       )}
       <Dropdown
         items={dropdownItems}
         isOpen={isOptionsOpen}
-        onClose={handleDropdownClose}
+        onClose={() => setIsOptionsOpen(false)}
       />
     </div>
   );
