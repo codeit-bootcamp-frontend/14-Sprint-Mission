@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { MouseEventHandler, useEffect, useRef } from 'react';
 import './Dropdown.css';
 
 interface DropdownItem {
   label: string;
-  onClick: () => void;
+  onClick: MouseEventHandler;
 }
 
 interface DropdownProps {
