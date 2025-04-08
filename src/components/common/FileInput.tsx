@@ -3,7 +3,7 @@ import './FileInput.css';
 import PlusIcon from '../../assets/icons/plus-icon.svg';
 
 interface FileInputProps {
-  value: string | null | File | null;
+  value: string | File | null;
   onChange: (name: string, value: File | null) => void;
 }
 

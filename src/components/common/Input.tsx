@@ -1,14 +1,14 @@
-import { ChangeEvent, FocusEventHandler, Ref } from 'react';
+import {
+  ChangeEvent,
+  FocusEventHandler,
+  InputHTMLAttributes,
+  Ref,
+} from 'react';
 import './Input.css';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id: string;
-  value: string;
-  type: string;
-  placeholder?: string;
   ref?: Ref<HTMLInputElement>;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: FocusEventHandler<HTMLInputElement>;
 }
 

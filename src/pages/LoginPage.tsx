@@ -51,6 +51,8 @@ function LoginPage() {
       setPasswordError('비밀번호를 입력해주세요.');
     } else if (inputData.password.trim().length < 8) {
       setPasswordError('비밀번호를 8자 이상 입력해주세요.');
+    } else {
+      setPasswordError(null);
     }
   };
 
