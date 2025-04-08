@@ -1,6 +1,6 @@
-interface GetCommentType {
+export interface GetCommentType {
   nextCursor: number
-  list: Comment[]
+  list: PostCommentType[]
 }
 
 export interface PostCommentType {

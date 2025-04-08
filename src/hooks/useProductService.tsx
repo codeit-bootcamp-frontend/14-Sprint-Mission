@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import productService from '../api/services/productService'
-import { Product } from '../types/product'
+import { GetProductIdTypes } from '../types/product'
 
 export const useGetProductId = (productId: number) => {
-  const [productsId, setProductsId] = useState<Product>()
+  const [productsId, setProductsId] = useState<GetProductIdTypes>()
 
   useEffect(() => {
     const getProductsComments = async () => {

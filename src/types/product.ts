@@ -1,4 +1,11 @@
-export interface Product {
+export interface GetProductType {
+  products: {
+    list: GetProductIdTypes[]
+    totalCount: number
+  }
+}
+
+export interface GetProductIdTypes {
   createdAt: string
   favoriteCount: number
   ownerNickname: string

@@ -5,22 +5,26 @@ import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
 interface TagProps {
-  tags: string
+  productTags: string
   onClick?: (tag: string) => void
   showDelete?: boolean
 }
 
-const Tag: React.FC<TagProps> = ({ tags, onClick, showDelete = false }) => {
+const Tag: React.FC<TagProps> = ({
+  productTags,
+  onClick,
+  showDelete = false,
+}) => {
   return (
     <>
       <div>
         <Bone>
-          <Text>#{tags}</Text>
+          <Text>#{productTags}</Text>
           {showDelete && (
             <DeleteIcon
               src={Delete}
               alt="삭제"
-              onClick={() => onClick?.(tags)}
+              onClick={() => onClick?.(productTags)}
             />
           )}
         </Bone>

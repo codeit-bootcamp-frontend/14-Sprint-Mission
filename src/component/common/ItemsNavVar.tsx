@@ -9,6 +9,40 @@ import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
+interface ItemsNavVarProps {
+  isItemsPage: boolean
+  isBoardsPage: boolean
+}
+
+const ItemsNavVar = ({ isItemsPage, isBoardsPage }: ItemsNavVarProps) => {
+  return (
+    <>
+      <Bone>
+        <LeftWrapper>
+          <HeaderLogo>
+            <Link to="/">
+              <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
+            </Link>
+            <Link to="/">
+              <LogoImage src={Logo} alt="판다마켓 로고 사진" />
+            </Link>
+          </HeaderLogo>
+          <NavContent>
+            <FreeBordLink $isActive={isBoardsPage}>자유게시판</FreeBordLink>
+
+            <Link to="/items">
+              <MarketLink $isActive={isItemsPage}>중고마켓</MarketLink>
+            </Link>
+          </NavContent>
+        </LeftWrapper>
+        <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />
+      </Bone>
+    </>
+  )
+}
+
+export default ItemsNavVar
+
 const Bone = styled.div`
   height: 4.375rem;
   display: flex;
@@ -58,7 +92,10 @@ const NavContent = styled.div`
     justify-content: space-between;
   }
 `
-const MarketLink = styled.div`
+interface LinkProps {
+  $isActive: boolean
+}
+const MarketLink = styled.div<LinkProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -67,14 +104,16 @@ const MarketLink = styled.div`
   &:hover {
     color: ${({ theme }) => theme.colors.SecondaryGray[600]};
   }
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  color: ${({ $isActive, theme }) =>
+    $isActive
+      ? theme.colors.PrimaryBlue[100]
+      : theme.colors.SecondaryGray[600]};
   @media (max-width: 743px) {
     ${(props) => textStyle(16, 700)(props)}
     padding: 21px 0px;
   }
 `
-const FreeBordLink = styled.div`
+const FreeBordLink = styled.div<LinkProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -83,8 +122,10 @@ const FreeBordLink = styled.div`
   &:hover {
     color: ${({ theme }) => theme.colors.SecondaryGray[600]};
   }
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.PrimaryBlue[100] : theme.colors.SecondaryGray[600]};
+  color: ${({ $isActive, theme }) =>
+    $isActive
+      ? theme.colors.PrimaryBlue[100]
+      : theme.colors.SecondaryGray[600]};
   @media (max-width: 743px) {
     ${(props) => textStyle(16, 700)(props)}
     padding: 21px 0px;
@@ -114,32 +155,3 @@ const ProfileIconImage = styled.img`
   width: 2.5rem;
   height: 2.5rem;
 `
-
-const ItemsNavVar = ({ isItemsPage, isBoardsPage }) => {
-  return (
-    <>
-      <Bone>
-        <LeftWrapper>
-          <HeaderLogo>
-            <Link to="/">
-              <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
-            </Link>
-            <Link to="/">
-              <LogoImage src={Logo} alt="판다마켓 로고 사진" />
-            </Link>
-          </HeaderLogo>
-          <NavContent>
-            <FreeBordLink isActive={isBoardsPage}>자유게시판</FreeBordLink>
-
-            <Link to="/items">
-              <MarketLink isActive={isItemsPage}>중고마켓</MarketLink>
-            </Link>
-          </NavContent>
-        </LeftWrapper>
-        <ProfileIconImage src={ProfileIcon} alt="프로필 아이콘" />
-      </Bone>
-    </>
-  )
-}
-
-export default ItemsNavVar

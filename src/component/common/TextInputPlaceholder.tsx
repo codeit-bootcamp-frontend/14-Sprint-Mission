@@ -4,12 +4,12 @@ import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
 
 interface TextInputPlaceholderProps {
-  placeholder?: string
-  height: string
-  padding: string
+  placeholder: string
+  height?: string
+  padding?: string
   value: string
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
-  onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>
 }
 
 const TextInputPlaceholder: React.FC<TextInputPlaceholderProps> = ({

@@ -1,12 +1,76 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { GetProductType } from '../../types/product'
+
 import HeartInactive from '../../assets/image/HeartInactive.png'
 import NoImage from '../../assets/image/NoImage.png'
 
 import styled from 'styled-components'
 import { theme } from '../../styles/theme'
 import { textStyle } from '../../styles/textStyle'
+
+const RecentItems = ({ products }: GetProductType) => {
+  const [itemsDisplay, setItemsDisplay] = useState(1)
+
+  useEffect(() => {
+    const handleReasize = () => {
+      if (window.innerWidth <= 743) {
+        setItemsDisplay(4)
+      } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
+        setItemsDisplay(6)
+      } else {
+        setItemsDisplay(10)
+      }
+    }
+    handleReasize()
+    window.addEventListener('resize', handleReasize)
+
+    return () => window.removeEventListener('resize', handleReasize)
+  }, [])
+  return (
+    <>
+      <RecentItem>
+        <RecentItemsDisplay>
+          {products.slice(0, itemsDisplay).map((product) => (
+            <Link
+              key={product.id}
+              to={`/items/${product.id}`}
+              state={{ product }}
+            >
+              <RecentItemKey key={product.id}>
+                <RecentItemImage
+                  src={
+                    product.images?.length > 0 &&
+                    !product.images.includes('https://via.placeholder.com/300')
+                      ? product.images[0]
+                      : NoImage
+                  }
+                  alt={product.name}
+                />
+                <ProductDescription>
+                  <ProductName>{product.name}</ProductName>
+                  <ProductPrice>
+                    {product.price.toLocaleString('ko-KR')}원
+                  </ProductPrice>
+                  <ProductFavoriteCount>
+                    <HeartInactiveImage
+                      src={HeartInactive}
+                      alt="HeartInactive"
+                    />
+                    {product.favoriteCount}
+                  </ProductFavoriteCount>
+                </ProductDescription>
+              </RecentItemKey>
+            </Link>
+          ))}
+        </RecentItemsDisplay>
+      </RecentItem>
+    </>
+  )
+}
+
+export default RecentItems
 
 const RecentItem = styled.div`
   height: 42.125rem;
@@ -68,64 +132,3 @@ const HeartInactiveImage = styled.img`
   width: 1rem;
   height: 1rem;
 `
-const RecentItems = ({ products }) => {
-  const [itemsDisplay, setItemsDisplay] = useState(1)
-
-  useEffect(() => {
-    const handleReasize = () => {
-      if (window.innerWidth <= 743) {
-        setItemsDisplay(4)
-      } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
-        setItemsDisplay(6)
-      } else {
-        setItemsDisplay(10)
-      }
-    }
-    handleReasize()
-    window.addEventListener('resize', handleReasize)
-
-    return () => window.removeEventListener('resize', handleReasize)
-  }, [])
-  return (
-    <>
-      <RecentItem>
-        <RecentItemsDisplay>
-          {products.slice(0, itemsDisplay).map((product) => (
-            <Link
-              key={product.id}
-              to={`/items/${product.id}`}
-              state={{ product }}
-            >
-              <RecentItemKey key={product.id}>
-                <RecentItemImage
-                  src={
-                    product.images?.length > 0 &&
-                    !product.images.includes('https://via.placeholder.com/300')
-                      ? product.images[0]
-                      : NoImage
-                  }
-                  alt={product.name}
-                />
-                <ProductDescription>
-                  <ProductName>{product.name}</ProductName>
-                  <ProductPrice>
-                    {product.price.toLocaleString('ko-KR')}원
-                  </ProductPrice>
-                  <ProductFavoriteCount>
-                    <HeartInactiveImage
-                      src={HeartInactive}
-                      alt="HeartInactive"
-                    />
-                    {product.favoriteCount}
-                  </ProductFavoriteCount>
-                </ProductDescription>
-              </RecentItemKey>
-            </Link>
-          ))}
-        </RecentItemsDisplay>
-      </RecentItem>
-    </>
-  )
-}
-
-export default RecentItems
