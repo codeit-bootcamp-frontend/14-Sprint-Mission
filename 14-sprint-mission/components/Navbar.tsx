@@ -1,15 +1,14 @@
-import './Navbar.css';
-import logo from '@/public/logo.png';
-import userIcon from '@/assets/images/user.png';
+import logo from '@/public/assets/images/logo.png';
+import userIcon from '@/public/assets/icons/user-icon.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 
 function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <nav>
-      <div className="header">
-        <div className="header-links">
-          <Link className="brand-name" href="/">
+      <div className="flex items-center justify-between h-[70px] px-[200px] py-0 border-b border-[#dfdfdf]">
+        <div className="flex items-center gap-8">
+          <Link className="flex items-center font-rokaf gap-[8px]" href="/">
             <Image
               className="logo"
               src={logo}
@@ -17,10 +16,10 @@ function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
               width={40}
               height={40}
             />
-            판다마켓
+            <div className="text-[26px] font-[700] text-blue">판다마켓</div>
           </Link>
           {isLoggedIn && (
-            <ul className="link-list">
+            <ul className="flex list-none gap-[30px]">
               <li>
                 <Link href={`/community`}>자유게시판</Link>
               </li>

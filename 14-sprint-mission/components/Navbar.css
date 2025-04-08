@@ -12,16 +12,6 @@ a {
   color: black;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  margin: 0 auto;
-  padding: 0 200px;
-  border-bottom: 1px solid #dfdfdf;
-}
-
 .header-links {
   display: flex;
   align-items: center;
