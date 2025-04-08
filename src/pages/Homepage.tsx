@@ -6,7 +6,7 @@ import searchImg from '../assets/images/search.png';
 import registerImg from '../assets/images/register.png';
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
-import ButtonLarge from '../components/common/ButtonLarge';
+import LinkButton from '../components/common/LinkButton';
 
 function Homepage() {
   return (
@@ -17,7 +17,7 @@ function Homepage() {
           <div className="banner">
             <div className="hero-text">
               <h1 className="hero-title">일상의 모든 물건을 거래해 보세요</h1>
-              <ButtonLarge to="/items">구경하러 가기</ButtonLarge>
+              <LinkButton to="/items">구경하러 가기</LinkButton>
             </div>
             <img
               className="img-panda"

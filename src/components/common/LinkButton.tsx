@@ -1,25 +1,24 @@
-import { MouseEvent, ReactNode } from 'react';
-import './ButtonLarge.css';
+import { MouseEvent, PropsWithChildren } from 'react';
+import './LinkButton.css';
 import { Link } from 'react-router-dom';
 
-interface ButtonLargeValue {
-  children: ReactNode;
+interface LinkButtonValue {
   onClick?: (e: MouseEvent) => void;
   imgSrc?: string;
   imgAlt?: string;
   to: string;
 }
 
-function ButtonLarge({
+function LinkButton({
   children,
   onClick,
   imgSrc,
   imgAlt,
   to,
   ...rest
-}: ButtonLargeValue) {
+}: PropsWithChildren<LinkButtonValue>) {
   return (
-    <Link to={to} className="ButtonLarge" onClick={onClick} {...rest}>
+    <Link to={to} className="LinkButton" onClick={onClick} {...rest}>
       {children}
       {imgSrc && (
         <img
@@ -34,4 +33,4 @@ function ButtonLarge({
   );
 }
 
-export default ButtonLarge;
+export default LinkButton;
