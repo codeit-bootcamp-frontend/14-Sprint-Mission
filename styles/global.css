@@ -29,14 +29,14 @@
   --font-size-xs: 12px;
 
   /* line-height */
-  --line-height-3xl: 1.313;
-  --line-height-2xl: 1.333;
-  --line-height-xl: 1.6;
-  --line-height-2lg: 1.444;
-  --line-height-lg: 1.625;
-  --line-height-md: 1.714;
-  --line-height-sm: 1.692;
-  --line-height-xs: 1.5;
+  --line-height-3xl: 1.313; /* 32px / 42px */
+  --line-height-2xl: 1.333; /* 24px / 32px */
+  --line-height-xl: 1.6; /* 20px / 32px */
+  --line-height-2lg: 1.444; /* 18px / 26px */
+  --line-height-lg: 1.625; /* 16px / 26px */
+  --line-height-md: 1.714; /* 14px / 24px */
+  --line-height-sm: 1.692; /* 13px / 22px */
+  --line-height-xs: 1.5; /* 12px / 18px */
 }
 
 *,
@@ -58,6 +58,10 @@ button {
   outline: none;
   box-shadow: none;
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 }
 
 img {
@@ -122,7 +126,6 @@ footer {
 
 .btn-round {
   font-size: var(--font-size-xl);
-  line-height: var(--line-height-xl);
   font-weight: 600;
   padding: 16px 124px;
   border-radius: 9999px;

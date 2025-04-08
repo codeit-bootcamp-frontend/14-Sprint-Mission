@@ -1,9 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓 - login</title>
+    <link rel="icon" href="images/logo/favicon.ico" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/auth.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="auth-container">
+      <div class="logo-wrapper">
+        <a href="/index.html">
+          <img
+            src="/images/logo/pandaMarket-Logo.png"
+            alt="판다마켓 logo"
+            width="396"
+          />
+        </a>
+      </div>
+      <form method="post">
+        <div class="input-form">
+          <label for="email">이메일</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="이메일을 입력해주세요"
+          />
+        </div>
+        <div class="input-form">
+          <label for="password">비밀번호</label>
+          <div class="input-form-wrapper">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="비밀번호를 입력해주세요"
+            />
+            <img
+              src="/images/icon/auth/eye-invisible.svg"
+              alt="비밀번호 숨김"
+              class="password-show"
+              width="24"
+            />
+          </div>
+        </div>
+        <a href="#" id="signIn-button" class="button btn-round">로그인</a>
+      </form>
+      <div class="login-simple">
+        <div class="login-simple-title">간편 로그인 하기</div>
+        <div class="login-simple-social">
+          <a href="https://www.google.com/"
+            ><img
+              src="/images/icon/sns/google.png"
+              alt="google login"
+              width="42"
+          /></a>
+          <a href="https://www.kakaocorp.com/page/"
+            ><img src="/images/icon/sns/kakao.png" alt="kakao login" width="42"
+          /></a>
+        </div>
+      </div>
+      <div class="switch-auth-wrapper">
+        판다마켓이 처음이신가요?
+        <a href="signup.html" class="switch-auth">회원가입</a>
+      </div>
+    </div>
+  </body>
 </html>
