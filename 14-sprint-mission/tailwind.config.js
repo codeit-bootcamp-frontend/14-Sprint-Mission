@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         rokaf: ['ROKAF Sans', 'sans-serif'],
+        pretendard: ['Pretendard'],
       },
       colors: {
         gray: {
