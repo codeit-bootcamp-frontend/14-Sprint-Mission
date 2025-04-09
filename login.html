@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판다마켓</title>
+    <link rel="icon" href="./styles/assets/icons/icon/panda.svg" />
+
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/components/sign.css" />
+    <link rel="stylesheet" href="./styles/components/buttons.css" />
+    <link rel="stylesheet" href="./styles/components/footer.css" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            <a class="logo" href="/">
+                <img src="styles/assets/icons/icon/panda-lg.svg" alt="logo"/>
+            </a>
+        </div>
+        <form method="post" class="login-form">
+            <div class="input-item">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요" />
+            </div>
+            <div class="input-item">
+                <label for="password">비밀번호</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요" />
+                    <img src="styles/assets/icons/icon/eyes_off.svg" alt="toggle-password" class="toggle-password" />
+                </div>
+            </div>
+            <button type="submit" class="btn-large full-width">로그인</button>
+        </form>
+        <div class="social-login-container">
+            <h3>간편 로그인하기</h3>
+            <div class="social-login-wrapper">
+                <a href="https://www.google.com" target="_blank">
+                    <img src="styles/assets/icons/sns/Google.svg" alt="google-login"/>
+                </a>
+                <a href="https://www.kakaocrop.com/page/" target="_blank">
+                    <img src="styles/assets/icons/sns/Kakao.svg" alt="kakao-login"/>
+                </a>
+            </div>
+        </div>
+        <div class="login-footer">
+            <p>
+                판다마켓이 처음이신가요? <a href="/signup.html">회원가입</a> 
+            </p> 
+        </div>
+    </div>
+</body>
+</html>
