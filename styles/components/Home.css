@@ -65,12 +65,12 @@
     margin: 103px 0;
     gap: 12px;
 }
-.section-home-text {
+.section-home-text .blue {
     font: var(--text-2lg-bold);
     color: var(--primary---100);
 }
 
-.section-home-text h2 {
+.section-home-text span {
     font: var(--text-3xl-bold);
     color: var(--gray---700);
 }
@@ -132,7 +132,10 @@
     .section-home-text {
         margin: 24px 0;
     }
-    .section-home-text h2 br {
+    .section-home-text p {
+        font: var(--text-2lg-medium);
+    }
+    .section-home-text span br {
         display: none;
     }
 }
@@ -147,5 +150,14 @@
     }
     .section-home-wrapper {
         margin: 20px 0;
+    }
+    .section-home-text .blue {
+        font: var(--text-lg-bold);
+    }
+    .section-home-text span {
+        font: var(--text-2xl-bold);
+    }
+    .section-home-text p {
+        font: var(--text-lg-medium);
     }
 }
