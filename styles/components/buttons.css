@@ -61,3 +61,12 @@ button {
 .full-width {
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .btn-large {
+        width: 100%;
+        padding: 16px 71px;
+        font: var(--text-2lg-semibold);
+        transition: 0.5s;
+    }
+}

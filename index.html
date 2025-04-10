@@ -1,113 +1,166 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판다마켓</title>
-    <link rel="icon" href="./styles/assets/icons/icon/panda.svg" />
-      <!-- reset, normalize 파일 먼저 -->
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/normalize.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>판다마켓</title>
+        <link rel="icon" href="./styles/assets/icons/icon/panda.svg" />
 
-    <!-- components 폴더의 CSS들(순서는 사용 상황/우선순위에 맞게) -->
-    <link rel="stylesheet" href="./styles/components/Home.css" />
-    <link rel="stylesheet" href="./styles/components/buttons.css" />
-    <link rel="stylesheet" href="./styles/components/footer.css" />
-    <link rel="stylesheet" href="./styles/components/gnb.css" />
+        <!-- Open Graph (OG) 메타 태그 -->
+        <meta property="og:title" content="판다마켓" />
+        <meta
+            property="og:description"
+            content="일상의 모든 물건을 거래해 보세요."
+        />
+        <meta
+            property="og:image"
+            content="https://www.google.com/imgres?q=%ED%8C%90%EB%8B%A4&imgurl=https%3A%2F%2Fi.namu.wiki%2Fi%2FN7XtnLu7mENPBU1wMlAoOo5_w13roksendvuswR8gkFw_8SilcxCpT3kTTdzaP42jSpZAQ2-R4x3aNxaj6A3JA.webp&imgrefurl=https%3A%2F%2Fnamu.wiki%2Fw%2F%25ED%258C%2590%25EB%258B%25A4&docid=5YXeSdnyXQW-OM&tbnid=L95TdOcl4sN4TM&vet=12ahUKEwiptZXLvcyMAxU7sVYBHUTEITMQM3oECG4QAA..i&w=578&h=385&hcb=2&ved=2ahUKEwiptZXLvcyMAxU7sVYBHUTEITMQM3oECG4QAA"
+        />
+        <meta
+            property="og:url"
+            content="https://namu.wiki/w/%ED%8C%90%EB%8B%A4/"
+        />
+        <meta property="og:type" content="website" />
 
-    <!-- 마지막으로 전체 스타일 -->
-    <link rel="stylesheet" href="./styles/style.css" />
-</head>
-<body>
-    <div>
-        <header class="gnb-wrapper">
-          <div class="gnb">
-            <a class="logo" href="/">
-                <img src="styles/assets/icons/icon/panda-sm.svg" alt="logo"/>
-            </a>
-            <a class="btn-small-48" href="/login.html">로그인</a>
-          </div>
-        </header>
-        
-        <main>
-            <section class="home-wrapper">
-                <div class="landing-text">
-                  <h2>일상의 모든 물건을 거래해 보세요</h2>
-                  <a class="btn-large" href="/items">구경하러가기</a>
-                </div>
-                <img src="/styles/assets/images/Home/Img_home_top.svg" alt="home-top"/></div>
-            </section>
-            <section class="section-home-container">
-              <div class="section-home-wrapper">
-                <img src="/styles/assets/images/Home/Img_home_01.png" alt="section"/>
-                <div class="section-home-text">
-                  <span>Hot item</span>
-                  <h2>인기 상품을 <br />확인해 보세요</h2>
-                  <p>
-                    가장 HOT한 중고거래 물품을<br />
-                    판다 마켓에서 확인해 보세요
-                  </p>
-                </div>
-              </div>
-              <div class="section-home-wrapper reverse">
-                <img src="/styles/assets/images/Home/Img_home_02.png" alt="section"/>
-                <div class="section-home-text reverse">
-                  <span>Search</span>
-                  <h2>구매를 원하는 <br />
-                    상품을 검색하세요</h2>
-                  <p>
-                    구매하고 싶은 물품은 검색해서 <br />
-                    쉽게 찾아보세요
-                  </p>
-                </div>
-              </div>
-              <div class="section-home-wrapper">
-                <img src="/styles/assets/images/Home/Img_home_03.png" alt="section"/>
-                <div class="section-home-text">
-                  <span>Register</span>
-                  <h2>판매를 원하는 <br />상품을 등록하세요</h2>
-                  <p>
-                    어떤 물건이든 판매하고 싶은 상품을 <br />
-                    쉽게 등록하세요
-                  </p>
-                </div>
-              </div>
-            </section>
-            <section class="home-wrapper">
-              <div class="landing-text">
-                <h2>믿을 수 있는 <br/> 판다마켓 중고거래</h2>
-              </div>
-              <img src="/styles/assets/images/Home/Img_home_bottom.svg" alt="home-bottom"/>
-            </section>
+        <!-- reset, normalize 파일 먼저 -->
+        <link rel="stylesheet" href="./styles/reset.css" />
+        <link rel="stylesheet" href="./styles/normalize.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
 
-        </main>
-    
-        <footer>
-            <div class="footer-wrapper">
-              <span class="footer-info">
-                  @codeit-2025
-              </span>
-              <div class="footer-links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/faq">FAQ</a>
-              </div>
-              <div class="sns-links">
-                  <a href="https://www.facebook.com" target="_blank">
-                    <img src="/styles/assets/icons/sns/ic_facebook.svg" alt="facebook" rel="noopener noreferrer"/>
-                  </a>
-                  <a href="https://twitter.com" target="_blank">
-                    <img src="/styles/assets/icons/sns/ic_twitter.svg" alt="twitter" rel="noopener noreferrer"/>
-                  </a>
-                  <a href="https://youtube.com" target="_blank">
-                    <img src="/styles/assets/icons/sns/ic_youtube.svg" alt="youtube" rel="noopener noreferrer"/>
-                  </a>
-                  <a href="https://instagram.com" target="_blank">
-                    <img src="/styles/assets/icons/sns/ic_instagram.svg" alt="instagram" rel="noopener noreferrer"/>
-                  </a>
-              </div>
+        <!-- components 폴더의 CSS들(순서는 사용 상황/우선순위에 맞게) -->
+        <link rel="stylesheet" href="./styles/components/Home.css" />
+        <link rel="stylesheet" href="./styles/components/buttons.css" />
+        <link rel="stylesheet" href="./styles/components/footer.css" />
+        <link rel="stylesheet" href="./styles/components/gnb.css" />
+
+        <!-- 마지막으로 전체 스타일 -->
+        <link rel="stylesheet" href="./styles/style.css" />
+    </head>
+    <body>
+        <div>
+            <header class="gnb-wrapper">
+                <div class="gnb">
+                    <a class="logo" href="/">
+                        <img
+                            src="styles/assets/icons/icon/panda-sm.svg"
+                            alt="logo"
+                        />
+                    </a>
+                    <a class="btn-small-48" href="/login.html">로그인</a>
+                </div>
+            </header>
+
+            <div class="home-container">
+                <section class="home-wrapper">
+                    <div class="landing-text top">
+                        <h2>일상의 모든 물건을 거래해 보세요</h2>
+                        <a class="btn-large" href="/items">구경하러가기</a>
+                    </div>
+                    <img
+                        src="/styles/assets/images/Home/Img_home_top.svg"
+                        alt="home-top"
+                    />
+                </section>
+                <section class="section-home-container">
+                    <div class="section-home-wrapper">
+                        <img
+                            src="/styles/assets/images/Home/Img_home_01.png"
+                            alt="home-card01"
+                        />
+                        <div class="section-home-text">
+                            <h1>Hot item</h1>
+                            <h2>인기 상품을 <br />확인해 보세요</h2>
+                            <p>
+                                가장 HOT한 중고거래 물품을<br />
+                                판다 마켓에서 확인해 보세요
+                            </p>
+                        </div>
+                    </div>
+                    <div class="section-home-wrapper reverse">
+                        <img
+                            src="/styles/assets/images/Home/Img_home_02.png"
+                            alt="home-card02"
+                        />
+                        <div class="section-home-text reverse">
+                            <h1>Search</h1>
+                            <h2>
+                                구매를 원하는 <br />
+                                상품을 검색하세요
+                            </h2>
+                            <p>
+                                구매하고 싶은 물품은 검색해서 <br />
+                                쉽게 찾아보세요
+                            </p>
+                        </div>
+                    </div>
+                    <div class="section-home-wrapper">
+                        <img
+                            src="/styles/assets/images/Home/Img_home_03.png"
+                            alt="home-card03"
+                        />
+                        <div class="section-home-text">
+                            <h1>Register</h1>
+                            <h2>판매를 원하는 <br />상품을 등록하세요</h2>
+                            <p>
+                                어떤 물건이든 판매하고 싶은 상품을 <br />
+                                쉽게 등록하세요
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="home-wrapper">
+                    <div class="landing-text">
+                        <h2>
+                            믿을 수 있는 <br />
+                            판다마켓 중고거래
+                        </h2>
+                    </div>
+                    <img
+                        src="/styles/assets/images/Home/Img_home_bottom.svg"
+                        alt="home-bottom"
+                    />
+                </section>
             </div>
-        </footer>
-      </div>
-</body>
+
+            <footer>
+                <div class="footer-wrapper">
+                    <span class="footer-info"> @codeit-2025 </span>
+                    <div class="footer-links">
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/faq">FAQ</a>
+                    </div>
+                    <div class="sns-links">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img
+                                src="/styles/assets/icons/sns/ic_facebook.svg"
+                                alt="facebook"
+                                rel="noopener noreferrer"
+                            />
+                        </a>
+                        <a href="https://twitter.com" target="_blank">
+                            <img
+                                src="/styles/assets/icons/sns/ic_twitter.svg"
+                                alt="twitter"
+                                rel="noopener noreferrer"
+                            />
+                        </a>
+                        <a href="https://youtube.com" target="_blank">
+                            <img
+                                src="/styles/assets/icons/sns/ic_youtube.svg"
+                                alt="youtube"
+                                rel="noopener noreferrer"
+                            />
+                        </a>
+                        <a href="https://instagram.com" target="_blank">
+                            <img
+                                src="/styles/assets/icons/sns/ic_instagram.svg"
+                                alt="instagram"
+                                rel="noopener noreferrer"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
 </html>

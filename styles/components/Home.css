@@ -1,23 +1,23 @@
-main{
+.home-container {
     display: flex;
     flex-direction: column;
 }
 /* landing top,bottom */
-.home-wrapper{
+.home-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items:flex-end;
+    align-items: flex-end;
 
     height: 540px;
-    background-color: #CFE5FF;
+    background-color: #cfe5ff;
 }
 
-.home-wrapper h2{
+.home-wrapper h2 {
     font: var(--text-3xl-bold);
     color: var(--gray---700);
 }
-.landing-text{
+.landing-text {
     display: flex;
     flex-direction: column;
     width: 357px;
@@ -31,14 +31,16 @@ main{
 }
 
 /* section 설명 부분 */
-.section-home-container{
+.section-home-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: #fcfcfc;
 }
 
-.section-home-wrapper{
+.section-home-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -50,21 +52,22 @@ main{
     padding: 0 10px;
     gap: 64px;
 
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
 }
-.section-home-wrapper.reverse{
+.section-home-wrapper.reverse {
     flex-direction: row-reverse;
 }
-.section-home-text{
+
+/* home section 글자 부분 */
+.section-home-text {
     display: flex;
     flex-direction: column;
     margin: 103px 0;
     gap: 12px;
 }
-.section-home-text span{
+.section-home-text {
     font: var(--text-2lg-bold);
     color: var(--primary---100);
-    
 }
 
 .section-home-text h2 {
@@ -78,4 +81,71 @@ main{
 
 .section-home-text.reverse {
     text-align: right;
+}
+
+@media (max-width: 1200px) {
+    .home-wrapper {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-top: 80px;
+    }
+    .home-wrapper img {
+        width: 100%;
+        height: auto;
+    }
+    .landing-text {
+        align-items: center;
+        transition: 0.5s;
+    }
+    .landing-text h2 {
+        text-align: center;
+    }
+    .landing-text.top {
+        width: auto;
+    }
+    .landing-text.top h2 {
+        width: 100%;
+    }
+    /* section */
+    .section-home-container {
+        width: 100%;
+        padding: 0 24px;
+    }
+    .section-home-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        width: 100%;
+        height: auto;
+        /* height의 중요성!! */
+        padding: 0;
+        margin: 26px 0;
+    }
+    .section-home-wrapper.reverse {
+        flex-direction: column;
+    }
+    .section-home-wrapper img {
+        width: 100%;
+    }
+    .section-home-text {
+        margin: 24px 0;
+    }
+    .section-home-text h2 br {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .landing-text.top {
+        width: 240px;
+        transition: 0.5s;
+    }
+    .section-home-container {
+        padding: 32px 16px;
+    }
+    .section-home-wrapper {
+        margin: 20px 0;
+    }
 }
