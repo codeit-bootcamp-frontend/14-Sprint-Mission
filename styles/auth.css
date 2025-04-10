@@ -1,0 +1,91 @@
+.auth-container {
+  max-width: 640px;
+  margin: 60px auto;
+  color: var(--gray800);
+}
+
+/* 로고 */
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* 로그인 폼 */
+.input-form {
+  margin-bottom: 24px;
+}
+
+.input-form label {
+  display: block;
+  font-weight: 700;
+  font-size: var(--font-size-2lg);
+  line-height: var(--line-height-2lg);
+  margin-bottom: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray100);
+}
+
+input:focus {
+  outline-color: var(--primary100);
+}
+
+.input-form-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-show {
+  position: absolute;
+  right: 24px;
+  cursor: pointer;
+}
+
+#auth-button {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* 간편 로그인하기 */
+.login-simple {
+  width: 100%;
+  height: 74px;
+  padding: 16px 23px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-simple-title {
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+}
+
+.login-simple-social {
+  display: flex;
+  gap: 16px;
+}
+
+/* 회원가입 바로가기 */
+.switch-auth-wrapper {
+  text-align: center;
+  font-weight: 500;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+}
+
+.switch-auth {
+  color: var(--primary100);
+  text-decoration: underline;
+}
