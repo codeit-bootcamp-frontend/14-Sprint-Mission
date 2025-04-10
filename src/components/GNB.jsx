@@ -101,11 +101,9 @@ function GNB() {
             <Link className="link link-market">중고마켓</Link>
           </div>
         )}
-        <Link to="/login" className="sign-button">
-          <Button width="128px" height="48px">
-            로그인
-          </Button>
-        </Link>
+        <Button width="128px" height="48px" to="/login" className="sign-button">
+          로그인
+        </Button>
       </div>
     </GNBContainer>
   );

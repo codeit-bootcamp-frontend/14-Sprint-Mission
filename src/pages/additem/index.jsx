@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import IcoClose from "@/assets/icons/ico_close.svg";
-import Button from "../../components/Button";
+import Button from "@/components/Button";
 import FileInput from "./FileInput";
 
 import * as S from "./style";
