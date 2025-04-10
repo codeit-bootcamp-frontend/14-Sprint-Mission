@@ -1,5 +1,5 @@
 import getArticles from "@/services/getArticles";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export interface Articles {
   id: number;
@@ -23,21 +23,46 @@ interface Props {
 const useArticle = ({ setArticleResults, basis }: Props) => {
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState("");
-  let orderBy;
+  const [loading, setLoading] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 30
+    ) {
+      setLoading(true);
+      setPage((prev) => prev + 1);
+      console.log(`page: ${page}`);
+    }
+  }, [loading]);
 
   useEffect(() => {
-    const fetchArticels = async () => {
-      orderBy = basis === "최신순" ? "recent" : "like";
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    const fetchArticls = async () => {
+      const orderBy = basis === "최신순" ? "recent" : "like";
       const res = await getArticles({ pageSize: 10, page, orderBy, keyword });
-      setArticleResults(res?.list ?? []);
+      setLoading(false);
+      console.log(`page:${page}`);
+      setArticleResults((prev) => {
+        const newArticles = res?.list ?? [];
+        if (page === 1) return newArticles;
+        if (!prev) return newArticles;
+        return [...prev, ...newArticles];
+      });
     };
-    fetchArticels();
-  }, [basis, orderBy]);
+    fetchArticls();
+  }, [basis, page, keyword]);
 
   return {
-    page,
     keyword,
     setKeyword,
+    loading,
+    setPage,
   };
 };
 

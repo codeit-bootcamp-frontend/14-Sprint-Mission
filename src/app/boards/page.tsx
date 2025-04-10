@@ -4,17 +4,19 @@ import BestArticle from "@/components/BestArticle";
 import Search from "@/components/Search";
 import useArticle, { Articles } from "@/hooks/useArticle";
 import useBestArticle from "@/hooks/useBestArticle";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Boards() {
   const [articleResults, setArticleResults] = useState<Articles[] | null>(null);
   const [basis, setBasis] = useState("최신순");
   const { bestArticles } = useBestArticle();
-  const { page, keyword, setKeyword } = useArticle({
+  const { setPage, loading, keyword, setKeyword } = useArticle({
     setArticleResults,
     basis,
   });
 
+  console.log(articleResults);
   return (
     <div className="flex flex-col justify-center lg:px-[360px] lg:pt-[24px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
       <div className="flex flex-col items-start">
@@ -37,16 +39,31 @@ export default function Boards() {
         <Search
           setKeyword={setKeyword}
           keyword={keyword}
-          page={page}
-          setArticleResults={setArticleResults}
           basis={basis}
           setBasis={setBasis}
+          setPage={setPage}
         />
 
         {articleResults?.map((article, index) => (
           <Article key={index} article={article} />
         ))}
       </div>
+
+      {loading ?? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="flex justify-center mt-[30px]"
+        >
+          <motion.div
+            initial={{ rotate: 0 }}
+            animate={{ rotate: 360 }}
+            transition={{ ease: "linear", duration: 1, repeat: Infinity }}
+            className="w-[30px] h-[30px] border-[#F3F4F6] border-[3px] rounded-full border-t-transparent"
+          />
+        </motion.div>
+      )}
     </div>
   );
 }

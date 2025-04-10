@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       "sprint-fe-project.s3.ap-northeast-2.amazonaws.com",
       "example.com",
       "www.kjcnews.co.kr",
+      "mblogthumb-phinf.pstatic.net",
     ],
   },
 };

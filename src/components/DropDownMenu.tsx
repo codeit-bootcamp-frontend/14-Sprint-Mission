@@ -4,12 +4,14 @@ type Props = {
   setClick: React.Dispatch<React.SetStateAction<boolean>>;
   click: boolean;
   setBasis: React.Dispatch<React.SetStateAction<string>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const DropDownMenu = ({ setClick, click, setBasis }: Props) => {
+const DropDownMenu = ({ setClick, click, setBasis, setPage }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     setClick(!click);
     setBasis(e.currentTarget.innerText);
+    setPage(1);
   };
 
   return (

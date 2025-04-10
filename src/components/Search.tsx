@@ -4,19 +4,16 @@ import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import DropDownMenu from "./DropDownMenu";
-import useSearch from "@/hooks/useSearch";
-import { Articles } from "@/hooks/useArticle";
 
 type Props = {
-  page: number;
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
-  setArticleResults: React.Dispatch<React.SetStateAction<Articles[] | null>>;
   basis: string;
   setBasis: React.Dispatch<React.SetStateAction<string>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Search = ({ page, keyword, setKeyword, setArticleResults, basis, setBasis }: Props) => {
+const Search = ({ keyword, setKeyword, basis, setBasis, setPage }: Props) => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
@@ -27,14 +24,9 @@ const Search = ({ page, keyword, setKeyword, setArticleResults, basis, setBasis 
     setKeyword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    useSearch({ basis, keyword, page, setArticleResults });
-  };
-
   return (
     <div className="flex relative flex-row items-center mt-[24px] justify-between">
-      <form className="relative" onSubmit={handleSubmit}>
+      <form className="relative">
         <input
           type="text"
           className="lg:w-[1054px] lg:h-[42px] md:w-[560px] md:h-[42px] w-[288px] h-[42px] rounded-xl bg-[#F3F4F6] text-[16px] text-[#9CA3AF] font-normal pr-[16px] pl-[44px]"
@@ -59,7 +51,12 @@ const Search = ({ page, keyword, setKeyword, setArticleResults, basis, setBasis 
 
       <div className="absolute top-[62px] right-0">
         {click && (
-          <DropDownMenu setClick={setClick} click={click} setBasis={setBasis} />
+          <DropDownMenu
+            setClick={setClick}
+            click={click}
+            setBasis={setBasis}
+            setPage={setPage}
+          />
         )}
       </div>
     </div>
