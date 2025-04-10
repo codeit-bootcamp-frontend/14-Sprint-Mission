@@ -45,7 +45,7 @@ const GNBContainer = styled.header`
 
       &-market {
         color: ${(props) =>
-          props.currentPath === "/items"
+          props.currentPath === "/items" || props.currentPath === "/additem"
             ? color("primary100")
             : color("secondary600")};
       }
@@ -94,7 +94,8 @@ function GNB() {
             <img src={LogoTypoOnly} alt="판다마켓 로고" />
           </picture>
         </Link>
-        {location.pathname === "/items" && (
+        {(location.pathname === "/items" ||
+          location.pathname === "/additem") && (
           <div className="link-container">
             <Link className="link link-board">자유게시판</Link>
             <Link className="link link-market">중고마켓</Link>

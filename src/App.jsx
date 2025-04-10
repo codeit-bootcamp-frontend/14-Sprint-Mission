@@ -5,6 +5,7 @@ import Items from "./pages/items";
 import GNB from "@/components/GNB";
 import { WinSizeProvider } from "./contexts/winSizeContext";
 import Login from "./pages/sign/LogIn";
+import AddItem from "./pages/additem";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/items" element={<Items />}>
               {/* <Route index element={<Items />} /> */}
             </Route>
+            <Route path="/additem" element={<AddItem />} />
           </Routes>
         </BrowserRouter>
       </WinSizeProvider>

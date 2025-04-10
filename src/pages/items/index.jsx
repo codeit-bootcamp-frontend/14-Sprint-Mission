@@ -18,7 +18,7 @@ const ItemsContainer = styled.div`
 
 function Items() {
   return (
-    <ItemsContainer style={{}}>
+    <ItemsContainer>
       <BestProducts />
       <Products />
     </ItemsContainer>
