@@ -9,8 +9,8 @@ const Button = styled.button`
   border: none;
   right: 24px;
   left: auto;
-  top: 64%;
-  transform: translateY(-65%);
+  top: 50%;
+  transform: translateY(-50%);
   background-image: url(${EyeOpen});
   width: 24px;
   height: 24px;
@@ -20,30 +20,27 @@ const Button = styled.button`
   }
 `;
 
-function ShowPassword() {
+function ShowPassword({ setShowPw }) {
   const btnRef = useRef(null);
 
   btnRef.current?.addEventListener("mousedown", (e) => {
-    const sibling = e.target.previousElementSibling;
     e.target.classList.remove("password-hide");
-    sibling.type = "text";
+    setShowPw(true);
   });
 
   btnRef.current?.addEventListener("mouseup", (e) => {
-    const sibling = e.target.previousElementSibling;
     e.target.classList.add("password-hide");
-    sibling.type = "password";
+    setShowPw(false);
   });
 
   btnRef.current?.addEventListener("mouseleave", (e) => {
-    const sibling = e.target.previousElementSibling;
     e.target.classList.add("password-hide");
-    sibling.type = "password";
+    setShowPw(false);
   });
 
   return (
     <Button
-      class="show-password password-hide"
+      className="show-password password-hide"
       type="button"
       ref={btnRef}
     ></Button>

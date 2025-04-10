@@ -8,8 +8,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  .password-container {
+  .input-container {
     position: relative;
+    margin-bottom: 8px;
   }
 
   .sign {
@@ -42,7 +43,6 @@ export const Container = styled.div`
           border: none;
           border-radius: 12px;
           background: ${color("secondary200")};
-          margin-bottom: 8px;
 
           &--error {
             outline: none;

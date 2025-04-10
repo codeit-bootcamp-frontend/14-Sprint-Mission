@@ -1,55 +1,53 @@
 import styled from "styled-components";
 import color from "../utils/color";
+import { Link } from "react-router-dom";
 
-const ButtonContainer = styled.button`
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: ${color("primary100")};
-  color: ${color("secondary200")};
-  font: 500 20px/32px "Pretendard";
-  cursor: pointer;
-  transition: all 0.05s ease-out;
-  text-align: center;
-  text-decoration: none;
-  border-radius: ${(props) => (props.round ? "40px" : "8px")};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  line-height: ${(props) => props.height};
-  display: block;
-  padding: 0 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  font-size: ${(props) =>
-    props.round ? (props.height > "48px" ? "20px" : "18px") : "16px"};
-
-  .link {
+const ButtonContainer = styled.div`
+  .btn {
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: ${color("primary100")};
+    color: ${color("secondary200")};
+    font: 500 20px/32px "Pretendard";
+    cursor: pointer;
+    transition: all 0.05s ease-out;
+    text-align: center;
     text-decoration: none;
-    color: white;
-  }
+    border-radius: ${(props) => (props.round ? "40px" : "8px")};
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+    line-height: ${(props) => props.height};
+    display: block;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-  &:hover {
-    background: #1967d6;
-  }
+    font-size: ${(props) =>
+      props.round ? (props.height > "48px" ? "20px" : "18px") : "16px"};
 
-  &:active {
-    background: ${color("primary300")};
-  }
+    &:hover {
+      background: #1967d6;
+    }
 
-  &[disabled] {
-    background: ${color("secondary400")};
-    cursor: not-allowed;
-  }
+    &:active {
+      background: ${color("primary300")};
+    }
 
-  ${(props) =>
-    props.outline &&
-    `
+    &[disabled] {
+      background: ${color("secondary400")};
+      cursor: not-allowed;
+    }
+
+    ${(props) =>
+      props.outline &&
+      `
       background: ${color("secondary10")};
       color: ${color("primary100")};
       border: 1px solid ${color("primary100")};
     `}
+  }
 `;
 
 function Button({
@@ -58,6 +56,8 @@ function Button({
   height = "42px",
   round = false,
   outline = false,
+  to,
+  disabled = false,
   ...rest
 }) {
   return (
@@ -67,8 +67,17 @@ function Button({
       height={height}
       round={round}
       outline={outline}
+      to={to}
     >
-      {children}
+      {to ? (
+        <Link className="btn" to={to} disabled={disabled}>
+          {children}
+        </Link>
+      ) : (
+        <button className="btn" disabled={disabled}>
+          {children}
+        </button>
+      )}
     </ButtonContainer>
   );
 }

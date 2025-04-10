@@ -1,7 +1,6 @@
 import Card from "@/pages/items/Card";
 import useArticles from "@/hooks/useArticles";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { useWinSize } from "../../../contexts/winSizeContext";
 
 const Container = styled.div`
@@ -19,20 +18,20 @@ const TitleBar = styled.div`
   margin-bottom: 16px;
 `;
 
-function BestProducts() {
-  const [quantity, setQuantity] = useState(4);
-  const { articles, isLoading } = useArticles(1, quantity, "favorite");
-  const { winSize } = useWinSize();
+const getQuantity = (winSize) => {
+  if (winSize === "mobile") {
+    return 1;
+  } else if (winSize === "tablet") {
+    return 2;
+  } else {
+    return 4;
+  }
+};
 
-  useEffect(() => {
-    if (winSize === "mobile") {
-      setQuantity(1);
-    } else if (winSize === "tablet") {
-      setQuantity(2);
-    } else {
-      setQuantity(4);
-    }
-  }, [winSize]);
+function BestProducts() {
+  const { winSize } = useWinSize();
+  const quantity = getQuantity(winSize);
+  const { articles, isLoading } = useArticles(1, quantity, "favorite");
 
   return (
     <Container>

@@ -23,11 +23,15 @@ function Home() {
                 일상의 모든 물건을 <br />
                 거래해 보세요
               </h1>
-              <Link to="/items" className="button button--large">
-                <Button round width="358px" height="56px">
-                  구경하러 가기
-                </Button>
-              </Link>
+              <Button
+                round
+                width="358px"
+                height="56px"
+                to="/items"
+                className="button button--large"
+              >
+                구경하러 가기
+              </Button>
             </div>
             <img src={LandingTop} alt="판다마켓 랜딩 이미지" />
           </div>

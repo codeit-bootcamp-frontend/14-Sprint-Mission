@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import * as S from "./style";
 
@@ -26,10 +25,8 @@ function TitleBar({ winSize, keywords, pages, orders }) {
         <div className="container">
           <div className="top-container">
             <span className="flex-grow">전체 상품</span>
-            <Button width="132px">
-              <Link to="/additem" className="link">
-                상품 등록하기
-              </Link>
+            <Button width="132px" to="/additem">
+              상품 등록하기
             </Button>
           </div>
           <div className="bottom-container">
@@ -70,10 +67,8 @@ function TitleBar({ winSize, keywords, pages, orders }) {
               style={{ width: "324px" }}
             />
           </label>
-          <Button width="132px" outline={true}>
-            <Link to="/additem" className="link">
-              상품 등록하기
-            </Link>
+          <Button width="132px" to="/additem">
+            상품 등록하기
           </Button>
           <div
             className="select-order"
