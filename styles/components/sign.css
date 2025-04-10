@@ -67,12 +67,14 @@
 .input-wrapper {
     position: relative;
 }
-.toggle-password {
+.toggle-password-btn {
     position: absolute;
     right: 24px;
     top: 50%;
-    transform: translateY(-80%);
+    transform: translateY(-45%);
     cursor: pointer;
+
+    background-color: var(--gray---100);
 }
 
 /* -----------------social login--------------------- */
@@ -121,6 +123,9 @@
     .login-form {
         width: 100%;
         gap: 16px;
+    }
+    .input-item label {
+        font: var(--text-lg-bold);
     }
     .social-login-container {
         width: 100%;
