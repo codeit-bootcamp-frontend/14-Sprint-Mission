@@ -26,11 +26,23 @@ interface Props {
   keyword?: string;
 }
 
-export default async function getArticles({ pageSize }: Props) {
-  const query = `page=1&pageSize=${pageSize}&orderBy=like`;
+export default async function getArticles({
+  pageSize,
+  page = 1,
+  orderBy,
+  keyword,
+}: Props) {
+  let query;
+  if (keyword && keyword != "") {
+    query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
+  } else {
+    query = `page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`;
+  }
+  console.log(query);
   try {
     const response = await axios.get<Article>(`${Base_URL}/articles?${query}`);
     console.log("success");
+    console.log(response);
     return response.data;
   } catch (error: any) {
     if (error.response) {

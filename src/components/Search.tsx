@@ -4,13 +4,20 @@ import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import DropDownMenu from "./DropDownMenu";
+import useSearch from "@/hooks/useSearch";
+import { Articles } from "@/hooks/useArticle";
 
-type Props = {};
+type Props = {
+  page: number;
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  setArticleResults: React.Dispatch<React.SetStateAction<Articles[] | null>>;
+  basis: string;
+  setBasis: React.Dispatch<React.SetStateAction<string>>;
+};
 
-const Search = (props: Props) => {
-  const [basis, setBasis] = useState("최신순");
+const Search = ({ page, keyword, setKeyword, setArticleResults, basis, setBasis }: Props) => {
   const [click, setClick] = useState(false);
-  const [keyword, setKeyword] = useState("");
 
   const handleClick = () => {
     setClick(!click);
@@ -20,16 +27,17 @@ const Search = (props: Props) => {
     setKeyword(e.target.value);
   };
 
-  const handleSubmit = () => {
-
-  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    useSearch({ basis, keyword, page, setArticleResults });
+  };
 
   return (
     <div className="flex relative flex-row items-center mt-[24px] justify-between">
       <form className="relative" onSubmit={handleSubmit}>
         <input
           type="text"
-          className="w-[1054px] h-[42px] rounded-xl bg-[#F3F4F6] text-[16px] font-normal pr-[16px] pl-[44px]"
+          className="lg:w-[1054px] lg:h-[42px] md:w-[560px] md:h-[42px] w-[288px] h-[42px] rounded-xl bg-[#F3F4F6] text-[16px] text-[#9CA3AF] font-normal pr-[16px] pl-[44px]"
           placeholder="검색할 상품을 입력해주세요"
           value={keyword}
           onChange={handleChange}

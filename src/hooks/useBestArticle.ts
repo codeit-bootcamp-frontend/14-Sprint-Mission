@@ -34,15 +34,15 @@ const useBestArticle = () => {
 
   useEffect(() => {
     const getPageSize = () => {
-      if (windowSize <= 768) return 1; // 모바일
-      else if (windowSize <= 1024) return 2; // 태블릿
+      if (windowSize < 768) return 1; // 모바일
+      else if (windowSize < 1199) return 2; // 태블릿
       else return 3;
     };
 
     const fetchBestArticles = async () => {
       const pageSize = getPageSize();
       console.log(pageSize);
-      const res = await getArticles({ pageSize });
+      const res = await getArticles({ pageSize, orderBy:'like' });
       console.log(res?.list);
       setArticles(res?.list ?? []);
     };

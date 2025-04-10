@@ -2,15 +2,21 @@
 import Article from "@/components/Article";
 import BestArticle from "@/components/BestArticle";
 import Search from "@/components/Search";
-import useArticle from "@/hooks/useArticle";
+import useArticle, { Articles } from "@/hooks/useArticle";
 import useBestArticle from "@/hooks/useBestArticle";
+import { useState } from "react";
 
 export default function Boards() {
+  const [articleResults, setArticleResults] = useState<Articles[] | null>(null);
+  const [basis, setBasis] = useState("최신순");
   const { bestArticles } = useBestArticle();
-  const { articles } = useArticle();
+  const { page, keyword, setKeyword } = useArticle({
+    setArticleResults,
+    basis,
+  });
 
   return (
-    <div className="flex flex-col justify-center px-[360px] pt-[24px]">
+    <div className="flex flex-col justify-center lg:px-[360px] lg:pt-[24px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
       <div className="flex flex-col items-start">
         <p className="text-[20px] font-bold mb-[24px]">베스트 게시글</p>
         <div className="flex flex-row">
@@ -28,9 +34,16 @@ export default function Boards() {
           </button>
         </div>
 
-        <Search />
+        <Search
+          setKeyword={setKeyword}
+          keyword={keyword}
+          page={page}
+          setArticleResults={setArticleResults}
+          basis={basis}
+          setBasis={setBasis}
+        />
 
-        {articles.map((article, index) => (
+        {articleResults?.map((article, index) => (
           <Article key={index} article={article} />
         ))}
       </div>

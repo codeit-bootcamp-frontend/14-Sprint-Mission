@@ -28,12 +28,14 @@ const Article = ({ article }: Articles) => {
     .replace(/\.$/, "");
 
   return (
-    <div className="flex flex-col mt-[24px] p-[10px] bg-[#E5E7EB] w-[1200px] h-[138px] rounded-xl">
+    <div className="flex flex-col mt-[24px] p-[10px] bg-[#FCFCFC] lg:w-[1200px] lg:h-[138px] md:w-[696px] md:h-[138px] w-[435px] h-[136px] rounded-xl">
       <div className="flex flex-row justify-between">
         <p className="text-[20px] text-[#1F2937] font-semibold">
           {article.title}
         </p>
-        <Image width={72} height={72} alt="image" src={article.image} />
+        {article.image && (
+          <Image width={72} height={72} alt="image" src={article.image} />
+        )}
       </div>
 
       <div className="mt-[16px] flex flex-row items-center justify-between">

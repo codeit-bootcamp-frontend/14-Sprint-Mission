@@ -1,7 +1,7 @@
 import getArticles from "@/services/getArticles";
 import { useEffect, useState } from "react";
 
-interface Articles {
+export interface Articles {
   id: number;
   title: string;
   content: string;
@@ -15,22 +15,29 @@ interface Articles {
   };
 }
 
-const useArticle = () => {
+interface Props {
+  setArticleResults: React.Dispatch<React.SetStateAction<Articles[] | null>>;
+  basis: string;
+}
+
+const useArticle = ({ setArticleResults, basis }: Props) => {
   const [page, setPage] = useState(1);
-  const [orderBy, setOrderBy] = useState("recent");
   const [keyword, setKeyword] = useState("");
-  const [articles, setArticles] = useState<Articles[]>([]);
+  let orderBy;
 
   useEffect(() => {
     const fetchArticels = async () => {
+      orderBy = basis === "최신순" ? "recent" : "like";
       const res = await getArticles({ pageSize: 10, page, orderBy, keyword });
-      setArticles(res?.list ?? []);
+      setArticleResults(res?.list ?? []);
     };
     fetchArticels();
-  }, [page, orderBy, keyword]);
+  }, [basis, orderBy]);
 
   return {
-    articles,
+    page,
+    keyword,
+    setKeyword,
   };
 };
 

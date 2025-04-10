@@ -4,7 +4,7 @@ import React from "react";
 const Header = () => {
   return (
     <>
-      <div className="px-[200px] py-[15px] flex items-center justify-between border-b border-gray-200">
+      <div className="lg:px-[200px] lg:py-[15px] md:px-[24px] md:py-[10px] px-[16px] py-[10px]  flex items-center justify-between border-b border-gray-200">
         <div className="flex items-center">
           <Image
             width={40}
@@ -14,11 +14,15 @@ const Header = () => {
             className="mr-[8.6px]"
           />
 
-          <p className="text-[25.36px] text-[#3692FF] font-bold mr-[47px]">
+          <p className="lg:text-[25.36px] text-[#3692FF] text-[20px] mr-[8px] md:mr-[40px] font-bold lg:mr-[47px]">
             판다마켓
           </p>
-          <p className="text-[18px] font-bold mr-[30px]">자유게시판</p>
-          <p className="text-[18px] font-bold mr-[30px]">중고마켓</p>
+          <p className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
+            자유게시판
+          </p>
+          <p className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
+            중고마켓
+          </p>
         </div>
 
         <div className=" relative w-[40px] h-[40px] rounded-full bg-gray-400">
