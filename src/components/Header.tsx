@@ -14,15 +14,15 @@ const Header = () => {
             className="mr-[8.6px]"
           />
 
-          <p className="lg:text-[25.36px] text-[#3692FF] text-[20px] mr-[8px] md:mr-[40px] font-bold lg:mr-[47px]">
+          <span className="lg:text-[25.36px] text-[#3692FF] text-[20px] mr-[8px] md:mr-[40px] font-bold lg:mr-[47px]">
             판다마켓
-          </p>
-          <p className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
+          </span>
+          <span className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
             자유게시판
-          </p>
-          <p className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
+          </span>
+          <span className="text-[18px] font-bold lg:mr-[30px] md:mr-[30px] mr-[8px]">
             중고마켓
-          </p>
+          </span>
         </div>
 
         <div className=" relative w-[40px] h-[40px] rounded-full bg-gray-400">

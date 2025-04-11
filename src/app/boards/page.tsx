@@ -20,7 +20,7 @@ export default function Boards() {
   return (
     <div className="flex flex-col justify-center lg:px-[360px] lg:pt-[24px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
       <div className="flex flex-col items-start">
-        <p className="text-[20px] font-bold mb-[24px]">베스트 게시글</p>
+        <span className="text-[20px] font-bold mb-[24px]">베스트 게시글</span>
         <div className="flex flex-row">
           {bestArticles.map((article, index) => (
             <BestArticle key={index} article={article} />
@@ -30,7 +30,7 @@ export default function Boards() {
 
       <div className=" mt-[40px] flex flex-col">
         <div className="flex flex-row justify-between">
-          <p className="text-[20px] font-bold mb-[24px]">게시글</p>
+          <span className="text-[20px] font-bold mb-[24px]">게시글</span>
           <button className="w-[88px] h-[42px] rounded-lg bg-[#3692FF] text-[#FFFFFF] text-[16px] font-semibold cursor-pointer">
             글쓰기
           </button>

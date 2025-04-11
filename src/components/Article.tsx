@@ -30,9 +30,9 @@ const Article = ({ article }: Articles) => {
   return (
     <div className="flex flex-col mt-[24px] p-[10px] bg-[#FCFCFC] lg:w-[1200px] lg:h-[138px] md:w-[696px] md:h-[138px] w-[435px] h-[136px] rounded-xl">
       <div className="flex flex-row justify-between">
-        <p className="text-[20px] text-[#1F2937] font-semibold">
+        <span className="text-[20px] text-[#1F2937] font-semibold">
           {article.title}
-        </p>
+        </span>
         {article.image && (
           <Image width={72} height={72} alt="image" src={article.image} />
         )}
@@ -44,20 +44,20 @@ const Article = ({ article }: Articles) => {
             <Image fill src="/profile.svg" alt="profile" />
           </div>
 
-          <p className="text-[14px text-[#4B5563] font-normal mr-[8px]">
+          <span className="text-[14px] text-[#4B5563] font-normal mr-[8px]">
             {article.writer.nickname}
-          </p>
+          </span>
 
-          <p className="text-[14px] font-normal text-[#9CA3AF]">
+          <span className="text-[14px] font-normal text-[#9CA3AF]">
             {formattedDate}
-          </p>
+          </span>
         </div>
 
         <div className="flex flex-row">
           <IoMdHeartEmpty size={24} color="#6B7280" />
-          <p className="text-[16px] text-[#6B7280] font-normal ml-[8px]">
+          <span className="text-[16px] text-[#6B7280] font-normal ml-[8px]">
             {article.likeCount}
-          </p>
+          </span>
         </div>
       </div>
     </div>

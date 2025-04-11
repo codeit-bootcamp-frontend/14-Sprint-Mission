@@ -31,31 +31,31 @@ const BestArticle = ({ article }: Props) => {
     <div className=" flex flex-col lg:h-[169px] lg:w-[384px] md:w-[340px] md:h-[198px] w-[343px] h-[198px] bg-[#F9FAFB] lg:mr-[24px] md:mr-[16px] rounded-lg px-[24px] pb-[9px]">
       <div className="flex items-center justify-center bg-[#3692FF] w-[102px] h-[30px] rounded-b-xl">
         <Image width={16} height={16} src="/medal.svg" alt="medal" />
-        <p className="text-[#FFFFFF] font-semibold text-[16px]">Best</p>
+        <span className="text-[#FFFFFF] font-semibold text-[16px]">Best</span>
       </div>
 
       <div className="flex flex-row justify-between items-center mt-[16px] mb-[26px]">
-        <p className="text-[#1F2937] text-[20px] font-semibold md:mr-[40px] mr-[40px] break-words">
+        <span className="text-[#1F2937] text-[20px] font-semibold md:mr-[40px] mr-[40px] break-words">
           {article.title}
-        </p>
+        </span>
         <Image width={72} height={72} alt="thumbnail" src={article.image} />
       </div>
 
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center">
-          <p className="text-[#4B5563] text-[14px] font-normal mr-[8px]">
+          <span className="text-[#4B5563] text-[14px] font-normal mr-[8px]">
             {article.writer.nickname}
-          </p>
+          </span>
           <IoMdHeartEmpty size={16} color="#6B7280" />
-          <p className="text-[#6B7280] text-[14px] font-normal ml-[4px]">
+          <span className="text-[#6B7280] text-[14px] font-normal ml-[4px]">
             {article.likeCount}
-          </p>
+          </span>
         </div>
 
         <div>
-          <p className="text-[#6B7280] text-[14px] font-normal">
+          <span className="text-[#6B7280] text-[14px] font-normal">
             {formattedDate}
-          </p>
+          </span>
         </div>
       </div>
     </div>
