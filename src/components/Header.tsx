@@ -4,7 +4,7 @@ import React from "react";
 const Header = () => {
   return (
     <>
-      <div className="lg:px-[200px] lg:py-[15px] md:px-[24px] md:py-[10px] px-[16px] py-[10px]  flex items-center justify-between border-b border-gray-200">
+      <div className="fixed right-0 left-0 z-50 bg-[var(--background)]  lg:px-[200px] lg:py-[15px] md:px-[24px] md:py-[10px] px-[16px] py-[10px]  flex items-center justify-between border-b border-gray-200">
         <div className="flex items-center">
           <Image
             width={40}
