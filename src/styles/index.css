@@ -1,68 +1,60 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Primary color */
+  --primary-100: #3692ff;
+  --primary-200: #1967d6;
+  --primary-300: #1251aa;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Secondary color */
+  --gray-900: #111827; /* gray900 */
+  --gray-800: #1f2937; /* gray800 */
+  --gray-700: #374151; /* gray700 */
+  --gray-600: #4b5563; /* gray600 */
+  --gray-500: #6b7280; /* gray500 */
+  --gray-400: #9ca3af; /* gray400 */
+  --gray-200: #e5e7eb; /* gray200 */
+  --gray-100: #f3f4f6; /* gray100 */
+  --gray-50: #f9fafb; /* gray50 */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Error */
+  --error: #f74747;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  /* 3xl */
+  --font-3xl-size: 32px;
+  --font-3xl-line-height: 42px;
+
+  /* 2xl */
+  --font-2xl-size: 28px;
+  --font-2xl-line-height: 38px;
+
+  /* xl */
+  --font-xl-size: 24px;
+  --font-xl-line-height: 34px;
+
+  /* lg */
+  --font-lg-size: 20px;
+  --font-lg-line-height: 30px;
+
+  /* md */
+  --font-md-size: 18px;
+  --font-md-line-height: 28px;
+
+  /* sm */
+  --font-sm-size: 16px;
+  --font-sm-line-height: 26px;
+
+  /* xs */
+  --font-xs-size: 14px;
+  --font-xs-line-height: 24px;
+
+  /* font-weight */
+  --weight-bold: 700;
+  --weight-semibold: 600;
+  --weight-medium: 500;
+  --weight-regular: 400;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
