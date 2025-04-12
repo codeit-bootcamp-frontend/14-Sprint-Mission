@@ -52,6 +52,9 @@
   --weight-medium: 500;
   --weight-regular: 400;
 }
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system,
