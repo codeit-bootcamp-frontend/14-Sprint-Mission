@@ -144,3 +144,15 @@ body {
   text-decoration-line: underline;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .auth__logo {
+    width: 198px;
+    height: 66px;
+  }
+
+  .auth__wrapper {
+    padding: 0 16px;
+    max-width: 400px;
+  }
+}
