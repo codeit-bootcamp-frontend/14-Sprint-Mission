@@ -24,7 +24,9 @@ export default function Boards() {
         <span className="text-[20px] font-bold mb-[24px]">베스트 게시글</span>
         <div className="flex flex-row">
           {bestArticles.map((article, index) => (
-            <BestArticle key={index} article={article} />
+            <Link href={`/board/${article.id}`} key={index}>
+              <BestArticle key={index} article={article} />
+            </Link>
           ))}
         </div>
       </div>
@@ -49,7 +51,9 @@ export default function Boards() {
         />
 
         {articleResults?.map((article, index) => (
-          <Article key={index} article={article} />
+          <Link key={index} href={`/board/${article.id}`}>
+            <Article key={index} article={article} />
+          </Link>
         ))}
       </div>
 
