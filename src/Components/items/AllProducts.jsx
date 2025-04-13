@@ -5,6 +5,7 @@ import useAllProductsController from "./useAllProductsController";
 import Loading from "../Common/Loading";
 
 const AllProducts = () => {
+
   const {
     sortOption,
     setSortOption,
@@ -50,3 +51,4 @@ const AllProducts = () => {
 };
 
 export default AllProducts;
+

@@ -12,6 +12,7 @@ const BestProducts = () => {
     pageSize: visibleCount,
   });
 
+
   return (
     <div className="mx-[16px] mt-[24px]">
       <div className="w-[343px] mx-auto tablet:mx-auto tablet:w-[696px] pc:w-[1200px] ">
