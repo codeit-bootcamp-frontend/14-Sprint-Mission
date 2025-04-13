@@ -1,73 +1,77 @@
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 
 import Nav from "../Components/Common/Nav";
-import addItem from "../assets/add-item.png";
-import xIcon from "../assets/x-icon.png";
+import TagInput from "../Components/Additem/TagInput";
+import ImageUploader from "../Components/Additem/ImageUploader";
+import FormHeader from "../Components/Additem/FormHeader";
+import FormField from "../Components/Additem/FormField";
 
 const AddItemPage = () => {
   const [previewUrl, setPreviewUrl] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
   const imageInputRef = useRef(null);
+  const [tags, setTags] = useState([]);
+  const { register, handleSubmit, watch } = useForm({ mode: "onChange" });
 
-  const handleUploadClick = () => {
-    imageInputRef.current.click();
+  const values = watch();
+
+  const allFieldsFilled =
+    values.productName && values.description && values.price && tags.length > 0;
+
+  const onSubmit = (data) => {
+    console.log({ ...data, image: previewUrl, tags: tags });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-    e.target.value = "";
-  };
   return (
     <div>
       <Nav />
       <div className="mx-[16px]">
         <div className="flex justify-between mt-[24px] tablet:mt-[16px] pc:mt-[24px]">
-          <div className="text-[20px] font-[700] text-[#1F2937]">
-            상품 등록하기
-          </div>
-          <button className="rounded-[8px] w-[74px] h-[42px] bg-[#9CA3AF] text-[#FFFFFF]">
-            등록
-          </button>
-        </div>
-        <div>상품 이미지</div>
-        <div className="flex gap-[10px] ">
-          <input
-            type="file"
-            accept="image/*"
-            ref={imageInputRef}
-            className="hidden"
-            onChange={handleFileChange}
-          />
-          <button
-            onClick={handleUploadClick}
-            className="w-[168px] h-[168px] bg-[#F3F4F6] flex justify-center items-center rounded-[12px] "
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col max-w-[1200px] w-full mx-auto"
           >
-            <img src={addItem} alt="addItem" className="w-[74px] h-[86px]" />
-          </button>
-          <div className="w-[168px] h-[168px] relative ">
-            {previewUrl && (
-              <>
-                <img
-                  src={previewUrl}
-                  alt="미리보기"
-                  className="w-[168px] h-[168px] object-cover rounded-[12px]"
-                />
-                <img
-                  src={xIcon}
-                  alt="image delete button"
-                  className="w-[22px] h-[24px] absolute top-[12px] right-[12px]"
-                  onClick={() => setPreviewUrl("")}
-                />
-              </>
-            )}
-          </div>
+            <FormHeader
+              title="상품 등록하기"
+              isSubmitEnabled={allFieldsFilled}
+            />
+
+            <ImageUploader
+              previewUrl={previewUrl}
+              setPreviewUrl={setPreviewUrl}
+              showWarning={showWarning}
+              setShowWarning={setShowWarning}
+              imageInputRef={imageInputRef}
+            />
+
+            <div className="flex flex-col  mt-[24px] pc:mt-[32px]">
+              <FormField
+                label="상품명"
+                id="product-name"
+                type="text"
+                placeholder="상품명을 입력해주세요"
+                register={register("productName", { required: true })}
+              />
+              <FormField
+                label="상품 소개"
+                id="product-introduce"
+                type="text"
+                placeholder="상품소개를 입력해주세요"
+                register={register("description", { required: true })}
+              />
+              <FormField
+                label="판매 가격"
+                id="price"
+                placeholder="판매 가격을 입력해주세요"
+                register={register("price", {
+                  required: true,
+                  valueAsNumber: true,
+                })}
+              />
+              <TagInput tags={tags} setTags={setTags} />
+            </div>
+          </form>
         </div>
       </div>
     </div>
