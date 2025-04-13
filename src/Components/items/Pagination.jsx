@@ -1,7 +1,23 @@
 import btnRight from "../../assets/btn-right.png";
 import btnLeft from "../../assets/btn-left.png";
 
-const Pagination = ({ currentPage, onPageClick }) => {
+const Pagination = ({
+  currentPage,
+  onPageClick,
+  totalCount,
+  visibleCount,
+  pageSize,
+}) => {
+  const totalPages = Math.ceil(totalCount / pageSize);
+  console.log(totalCount);
+  console.log(visibleCount);
+  console.log(totalPages);
+
+  const pageGroupSize = 5;
+  const currentGroup = Math.floor((currentPage - 1) / pageGroupSize);
+  const startPage = currentGroup * pageGroupSize + 1;
+  const endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       onPageClick(currentPage - 1);
@@ -20,7 +36,10 @@ const Pagination = ({ currentPage, onPageClick }) => {
       </button>
 
       {/* 페이지 번호 버튼 */}
-      {[1, 2, 3, 4, 5].map((pageNum) => (
+      {Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      ).map((pageNum) => (
         <button
           key={pageNum}
           onClick={() => onPageClick(pageNum)}
@@ -30,12 +49,12 @@ const Pagination = ({ currentPage, onPageClick }) => {
               : "bg-white text-[#6B7280]"
           }`}
         >
-          <div className="text-[16px] text-[600]">{pageNum}</div>
+          <div className="text-[16px] font-[600]">{pageNum}</div>
         </button>
       ))}
 
       {/* 다음 페이지 버튼 */}
-      <button onClick={handleNextPage} disabled={currentPage === 5}>
+      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
         <img src={btnRight} alt="right-button" className="w-[40px] h-[40px]" />
       </button>
     </div>

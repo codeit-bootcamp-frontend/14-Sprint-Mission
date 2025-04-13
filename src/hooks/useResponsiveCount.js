@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 
 const useResponsiveCount = ({ pc = 4, tablet = 2, mobile = 1 }) => {
-  const [count, setCount] = useState(mobile);
+  const [count, setCount] = useState(pc);
 
   useLayoutEffect(() => {
     const updateCount = () => {
