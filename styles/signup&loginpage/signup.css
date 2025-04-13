@@ -1,0 +1,143 @@
+/* 회원가입 페이지 전체 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Pretendard";
+}
+
+.signuppage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 231px 640px;
+}
+/* 회원가입 페이지 전체 스타일 */
+
+/* 로고 스타일 */
+#mainlogo {
+  width: 396px;
+  height: 132px;
+}
+/* 로고 스타일 */
+
+/* 회원가입 섹션 스타일 */
+.signupsection {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+/* 회원가입 라벨 스타일 */
+.signuplabel {
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* 인풋 스타일 */
+.logininput {
+  width: 640px;
+  height: 56px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  border: 0px solid #3182f6;
+  padding-left: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* 회원가입 박스 스타일 */
+.signupbox {
+  margin-bottom: 24px;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 640px;
+}
+
+#passwardinput {
+  width: 100%;
+  padding-right: 48px;
+}
+
+#togglePassword {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+#togglePassword:hover {
+  opacity: 1;
+}
+/* 로그인 섹션 스타일 */
+
+/* 회원가입 버튼 */
+#signupbutton {
+  margin-bottom: 24px;
+  width: 640px;
+  height: 56px;
+}
+/* 로그인 버튼 */
+
+/* 간편 로그인 하기 섹션 스타일 */
+.socialloginsection {
+  width: 640px;
+  height: 74px;
+  background-color: #e6f2ff;
+  margin-bottom: 24px;
+  gap: 10px;
+  padding: 16px 23px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#sociallogintext {
+  font-weight: 500;
+  line-height: 26px;
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+}
+
+#socialloginicon {
+  display: flex;
+  gap: 12px;
+}
+
+#socialloginicon img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+/* 간편 로그인 하기 스타일 */
+
+/* 회원가입 */
+
+#gologin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+#loginlink {
+  color: #3692ff;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* 회원가입 */
