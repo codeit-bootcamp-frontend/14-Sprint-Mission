@@ -3,6 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="일상의 모든 물건을 거래해보세요" />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta
+      property="og:image"
+      content="https://sprint3-panda-market.netlify.app/assets/images/logo.png"
+    />
+    <meta
+      property="og:url"
+      content="https://sprint3-panda-market.netlify.app/html/index.html"
+    />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://sprint3-panda-market.netlify.app/assets/images/logo.png"
+    />
+
+    <meta property="og:type" content="website" />
+
     <title>판다마켓</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/index.css" />
@@ -10,12 +33,10 @@
   </head>
   <body>
     <header class="header">
-      <div class="header__navbar">
-        <a href="/">
-          <img src="../assets/images/logo.svg" alt="메인 로고" class="logo" />
-        </a>
-        <a href="./login.html" class="header__login-button">로그인</a>
-      </div>
+      <a href="/">
+        <img src="../assets/images/logo.svg" alt="메인 로고" class="logo" />
+      </a>
+      <a href="./login.html" class="header__login-button">로그인</a>
     </header>
 
     <main>
@@ -46,7 +67,9 @@
           </div>
           <div class="highlight__content">
             <span class="highlight__keyword">Hot item</span>
-            <p class="highlight__title">인기 상품을<br />확인해 보세요</p>
+            <p class="highlight__title">
+              인기 상품을 <br class="br-highlight" />확인해 보세요
+            </p>
             <p class="highlight__subtitle">
               가장 HOT한 중고거래 물품을<br />
               판다 마켓에서 확인해 보세요
@@ -57,18 +80,18 @@
 
       <section class="highlight">
         <div class="highlight__container">
-          <div class="highlight__search-content">
+          <div class="highlight__image">
+            <img src="../assets/images/search_img.svg" alt="상품검색 이미지" />
+          </div>
+          <div class="feature-content">
             <span class="highlight__keyword">Search</span>
-            <p class="highlight__title align-right">
-              구매를 원하는<br />상품을 검색하세요
+            <p class="highlight__title">
+              구매를 원하는<br class="br-highlight" />상품을 검색하세요
             </p>
-            <p class="highlight__subtitle align-right">
+            <p class="highlight__subtitle">
               구매하고 싶은 물품은 검색해서<br />
               쉽게 찾아보세요
             </p>
-          </div>
-          <div class="highlight__search-image">
-            <img src="../assets/images/search_img.svg" alt="상품검색 이미지" />
           </div>
         </div>
       </section>
@@ -98,7 +121,7 @@
       <section class="banner">
         <div class="banner__container banner__container--bottom">
           <p class="banner__description banner__description--bottom">
-            믿을 수 있는<br />
+            믿을 수 있는<br class="br-bottom-banner" />
             판다마켓 중고 거래
           </p>
           <img
