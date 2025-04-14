@@ -1,0 +1,68 @@
+@charset "uft-8";
+
+/* style */
+a.el-btn,
+button.el-btn {
+  display: block;
+  padding: 0;
+  width: 100%;
+  font-weight: 800;
+  text-align: center;
+  background-color: var(--color-primary-100);
+  color: var(--color-gray100);
+  border: none;
+  cursor: pointer;
+}
+.el-btn {
+  &:hover {
+    background-color: var(--color-primary-200);
+  }
+  &:active {
+    background-color: var(--color-primary-300);
+  }
+  &:disabled {
+    background-color: var(--color-gray400);
+  }
+
+  /* size */
+  &.btn-l {
+    border-radius: 40px;
+    font-size: var(--text-xl);
+    line-height: 56px;
+  }
+  &.btn-m {
+    border-radius: 40px;
+    font-size: var(--text-2lg);
+    line-height: 48px;
+  }
+  &.btn-sm {
+    padding: 0 30px;
+    line-height: 48px;
+    border-radius: 8px;
+    font-size: var(--text-lg);
+  }
+  &.btn-s {
+    padding: 0 23px;
+    line-height: 42px;
+    border-radius: 8px;
+    font-size: var(--text-lg);
+  }
+
+  /* password */
+  &.btn-password {
+    width: 24px;
+    height: 24px;
+    background: transparent url("../img/btn_vis.png") no-repeat center/24px;
+
+    &.active {
+      background-image: url("../img/btn_vis_on.png");
+    }
+  }
+}
+
+@media (width < 768px) {
+  .el-btn.btn-l {
+    font-size: var(--text-2lg);
+    line-height: 48px;
+  }
+}

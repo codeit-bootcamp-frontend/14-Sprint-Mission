@@ -1,0 +1,165 @@
+@charset 'uft-8';
+
+.contents {
+  .color-sec {
+    padding-top: 200px;
+    background-color: #cfe5ff;
+
+    .banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1110px;
+      margin: 0 auto;
+
+      .img-wrap {
+        margin-bottom: -9px;
+      }
+
+      .text {
+        font-weight: bold;
+        font-size: 40px;
+        color: #374151;
+      }
+
+      .el-btn.btn-l {
+        color: var(--color-gray100);
+        margin-top: 32px;
+        min-width: 357px;
+      }
+    }
+  }
+
+  .main-cont section {
+    padding: 138px 0;
+  }
+}
+
+.footer {
+  padding-top: 32px;
+  background-color: #111827;
+  height: 160px;
+
+  .foot-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1120px;
+  }
+
+  .copy {
+    font-size: 16px;
+    color: #9ca3af;
+  }
+
+  .page-link {
+    ul {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    li a {
+      font-size: 16px;
+      color: #e5e7eb;
+    }
+  }
+
+  .sns-link-wrap {
+    ul {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+}
+
+/* tablet */
+@media (width < 1200px) {
+  .contents {
+    .color-sec .banner {
+      flex-direction: column;
+
+      .text {
+        text-align: center;
+      }
+
+      .img-wrap {
+        margin-top: 211px;
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .el-btn.btn-l {
+        max-width: 357px;
+        margin: 24px auto 0;
+      }
+    }
+
+    .main-cont {
+      padding: 24px;
+      background: #fcfcfc;
+
+      section {
+        padding: 0 0 52px;
+      }
+    }
+  }
+
+  .footer {
+    padding: 32px 104px;
+  }
+}
+
+/* mobile */
+@media (width < 768px) {
+  .contents {
+    .color-sec {
+      padding-top: 120px;
+
+      .banner {
+        .text {
+          font-size: 32px;
+        }
+
+        .el-btn.btn-l {
+          max-width: 240px;
+          min-width: auto;
+        }
+
+        .img-wrap {
+          margin-top: 132px;
+        }
+      }
+    }
+
+    .main-cont {
+      padding: 52px 15px 43px;
+
+      section {
+        padding-bottom: 40px;
+      }
+    }
+  }
+
+  .footer {
+    position: relative;
+    padding: 32px;
+
+    .foot-wrap {
+      .copy {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+      }
+
+      .page-link li a {
+        vertical-align: text-top;
+      }
+    }
+  }
+}

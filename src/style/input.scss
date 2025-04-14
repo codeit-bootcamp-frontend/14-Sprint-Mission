@@ -1,0 +1,66 @@
+@charset "uft-8";
+
+.el-txt-input {
+  position: relative;
+
+  label {
+    display: block;
+    margin-bottom: 16px;
+    font-size: var(--text-2lg);
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-gray800);
+  }
+
+  input {
+    padding: 15px 50px 15px 24px;
+    width: 100%;
+    font-size: var(--text-lg);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background-color: var(--color-gray100);
+    color: var(--color-gray800);
+
+    &::placeholder {
+      font-size: var(--text-lg);
+      color: var(--color-gray400);
+    }
+
+    &:focus {
+      border: 1px solid #3692ff;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .el-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 24px;
+  }
+
+  .has-btn {
+    position: relative;
+  }
+
+  &.error input {
+    border-color: var(--color-error);
+  }
+}
+.error-txt {
+  padding: 8px 0 0 16px;
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--color-error);
+  text-align: left;
+}
+
+@media (width < 768px) {
+  .el-txt-input label {
+    font-size: var(--text-md);
+  }
+  .el-txt-input label + input {
+    margin-top: 8px;
+  }
+}
