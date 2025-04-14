@@ -1,0 +1,28 @@
+@charset 'uft-8';
+
+.sns-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 16px 23px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+
+  .login-tit {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-gray800);
+  }
+
+  .sns-login-link {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    li {
+      width: 42px;
+      height: 42px;
+    }
+  }
+}
