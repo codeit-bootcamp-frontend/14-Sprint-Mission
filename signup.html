@@ -56,12 +56,13 @@
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
-            <img
-              src="/images/icon/auth/eye-invisible.svg"
-              alt="비밀번호 숨김"
-              class="password-show"
-              width="24"
-            />
+            <button class="password-show">
+              <img
+                src="/images/icon/auth/eye-invisible.svg"
+                alt="비밀번호 숨김"
+                width="24"
+              />
+            </button>
           </div>
         </div>
         <div class="input-form">
@@ -73,16 +74,19 @@
               name="verifyPassword"
               placeholder="비밀번호를 다시 입력해주세요"
             />
-            <img
-              src="/images/icon/auth/eye-visible.svg"
-              alt="비밀번호 보임"
-              class="password-show"
-              width="24"
-            />
+            <button class="password-show">
+              <img
+                src="/images/icon/auth/eye-visible.svg"
+                alt="비밀번호 보임"
+                width="24"
+              />
+            </button>
           </div>
         </div>
         <!-- 나중에 페이지 연결 예정 -->
-        <a href="#" id="auth-button" class="button btn-round">회원가입</a>
+        <button type="submit" class="button btn-round auth-button">
+          회원가입
+        </button>
       </form>
 
       <!-- 간편 로그인 -->
