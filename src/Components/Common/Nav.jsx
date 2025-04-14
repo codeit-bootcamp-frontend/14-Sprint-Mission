@@ -1,8 +1,12 @@
 import pandaFace from "../../assets/panda-face.png";
 import pandaFaceLogo from "../../assets/panda-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = ({ darkMode }) => {
+  const location = useLocation();
+  const isItemsPage = location.pathname === "/items";
+  const isBoardsPage = location.pathname === "/boards";
+  const isAddItemPage = location.pathname === "/additem";
   return (
     <nav
       className={`flex items-center justify-between h-[70px] border-b ${
@@ -24,14 +28,18 @@ const Nav = ({ darkMode }) => {
           판다마켓
         </Link>
         <Link
-          to={"/"}
-          className="flex items-center text-[#4B5563] text-[16px] font-bold h-[70px] tablet:text-[18px] tablet:h-[108px]"
+          to={"/boards"}
+          className={`flex items-center  text-[16px] font-bold h-[70px] tablet:text-[18px] tablet:h-[108px] ${
+            isBoardsPage ? "text-[#3692FF]" : "text-[#4B5563]"
+          }`}
         >
           자유게시판
         </Link>
         <Link
-          to={"/"}
-          className="flex items-center  text-[#4B5563] text-[16px] font-bold h-[70px] tablet:text-[18px] tablet:h-[108px]"
+          to={"/items"}
+          className={`flex items-center text-[16px] font-bold h-[70px] tablet:text-[18px] tablet:h-[108px] ${
+            isItemsPage || isAddItemPage ? "text-[#3692FF]" : "text-[#4B5563]"
+          }`}
         >
           중고마켓
         </Link>

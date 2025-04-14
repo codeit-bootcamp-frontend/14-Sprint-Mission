@@ -8,33 +8,32 @@ const useProducts = ({
   keyword = "",
 }) => {
   const [products, setProducts] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const getProducts = async () => {
       setIsLoading(true);
-      setHasError(false);
-      try {
-        const data = await fetchProducts({
-          orderBy,
-          page,
-          pageSize,
-          keyword,
-        });
-        setProducts(data.list);
-      } catch (error) {
-        console.error("상품 로딩 실패:", error);
-        setHasError(true);
-      } finally {
-        setIsLoading(false);
-      }
+
+      const data = await fetchProducts({
+        orderBy,
+        page,
+        pageSize,
+        keyword,
+      });
+      setProducts(data.list);
+      setTotalCount(data.totalCount);
+      setIsLoading(false);
     };
 
     getProducts();
   }, [orderBy, page, pageSize, keyword]);
 
-  return { products, isLoading, hasError };
+  return {
+    products,
+    totalCount,
+    isLoading,
+  };
 };
 
 export default useProducts;

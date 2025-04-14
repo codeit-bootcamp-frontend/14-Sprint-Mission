@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import FormInput from "../Common/FormInput";
 import pandaLogo from "../../assets/panda-logo.png";
 import kakaoImg from "../../assets/kakao.png";
 import googleImg from "../../assets/google.png";
@@ -84,7 +85,7 @@ const Signup = () => {
             <label htmlFor="email" className="label-primary">
               이메일
             </label>
-            <input
+            <FormInput
               type="text"
               id="email"
               value={email}
@@ -104,7 +105,7 @@ const Signup = () => {
             <label htmlFor="nickname" className="label-primary">
               닉네임
             </label>
-            <input
+            <FormInput
               type="text"
               id="nickname"
               value={nickname}
@@ -117,7 +118,7 @@ const Signup = () => {
               비밀번호
             </label>
             <div className="relative">
-              <input
+              <FormInput
                 type={showPassword ? "text" : "password"}
                 id="password"
                 value={password}
@@ -150,7 +151,7 @@ const Signup = () => {
               비밀번호 확인
             </label>
             <div className="relative">
-              <input
+              <FormInput
                 type={showPassword ? "text" : "password"}
                 id="confirm-password"
                 value={confirmPassword}

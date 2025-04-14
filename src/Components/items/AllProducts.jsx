@@ -2,8 +2,10 @@ import Pagination from "./Pagination";
 import AllProductHeader from "./AllProductHeader";
 import ProductList from "./ProductList";
 import useAllProductsController from "./useAllProductsController";
+import Loading from "../Common/Loading";
 
-const AllProcuts = () => {
+const AllProducts = () => {
+
   const {
     sortOption,
     setSortOption,
@@ -14,6 +16,8 @@ const AllProcuts = () => {
     visibleCount,
     currentPage,
     handlePageClick,
+    totalCount,
+    pageSize,
   } = useAllProductsController();
 
   return (
@@ -28,16 +32,23 @@ const AllProcuts = () => {
       </div>
       <div className="mt-4 mb-[40px] flex flex-wrap gap-[8px] mx-auto w-[344px] tablet:gap-[16px] pc:gap-[24px] tablet:w-[695px] pc:w-[1201px]">
         {isLoading ? (
-          <p>로딩 중...</p>
+          <Loading />
         ) : (
           <ProductList products={products.slice(0, visibleCount)} />
         )}
       </div>
       {searchKeyword ? null : (
-        <Pagination currentPage={currentPage} onPageClick={handlePageClick} />
+        <Pagination
+          currentPage={currentPage}
+          onPageClick={handlePageClick}
+          totalCount={totalCount}
+          visibleCount={visibleCount}
+          pageSize={pageSize}
+        />
       )}
     </div>
   );
 };
 
-export default AllProcuts;
+export default AllProducts;
+

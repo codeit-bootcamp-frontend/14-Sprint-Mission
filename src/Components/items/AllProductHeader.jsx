@@ -44,7 +44,7 @@ const AllProductHeader = ({
             setSearchKeyword={setSearchKeyword}
           />
           <SortDropdown selected={sortOption} setSelected={setSortOption} />
-          <Link to={"/"}>
+          <Link to={"/additem"}>
             <div className="flex justify-center items-center bg-blue-500 text-white rounded-[8px] w-[133px] h-[42px]">
               상품 등록하기
             </div>

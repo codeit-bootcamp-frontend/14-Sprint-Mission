@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import FormInput from "../Common/FormInput";
 import pandaLogo from "../../assets/panda-logo.png";
 import kakaoImg from "../../assets/kakao.png";
 import googleImg from "../../assets/google.png";
@@ -64,7 +64,7 @@ const Login = () => {
             <label htmlFor="email" className="label-primary">
               이메일
             </label>
-            <input
+            <FormInput
               type="text"
               id="email"
               placeholder="이메일을 입력해주세요"
@@ -85,7 +85,7 @@ const Login = () => {
               비밀번호
             </label>
             <div className="relative">
-              <input
+              <FormInput
                 type={showPassword ? "text" : "password"}
                 id="password"
                 placeholder="비밀번호를 입력해주세요"
