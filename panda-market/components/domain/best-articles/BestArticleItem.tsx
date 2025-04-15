@@ -10,7 +10,7 @@ function BestArticleItem({ article }: { article: Article }) {
   const formattedDate = formatDate(article.createdAt);
 
   return (
-    <div className="relative flex flex-col gap-[18px] px-[24px] pt-[46px] pb-[16px] bg-gray-50 rounded-[8px]">
+    <div className="relative flex flex-col gap-18 px-[24px] pt-[46px] pb-[16px] bg-gray-50 rounded-[8px]">
       <Image
         className="absolute top-0"
         src={badgeImg}

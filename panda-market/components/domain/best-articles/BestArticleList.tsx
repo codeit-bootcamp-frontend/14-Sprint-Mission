@@ -1,6 +1,6 @@
 'use client';
 import { Article, getData } from '@/app/boards/page';
-import BestArticleItem from '@/components/domain/BestArticleItem';
+import BestArticleItem from '@/components/domain/best-articles/BestArticleItem';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 

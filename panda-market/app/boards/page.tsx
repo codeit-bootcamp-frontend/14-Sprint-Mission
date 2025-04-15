@@ -1,5 +1,5 @@
-import ArticleList from '@/components/domain/ArticleList';
-import BestArticleList from '@/components/domain/BestArticleList';
+import ArticleList from '@/components/domain/articles/ArticleList';
+import BestArticleList from '@/components/domain/best-articles/BestArticleList';
 import Navbar from '@/components/common/Navbar';
 import SearchForm from '@/components/common/SearchForm';
 import Select from '@/components/common/Select';

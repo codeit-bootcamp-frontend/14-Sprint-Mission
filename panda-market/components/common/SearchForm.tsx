@@ -1,10 +1,11 @@
 'use client';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import searchIcon from '@/public/assets/icons/search-icon.svg';
-import { redirect, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Input from './Input';
 
 export default function SearchForm() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword') || '';
   const orderBy = searchParams.get('orderBy') || '';
@@ -17,16 +18,16 @@ export default function SearchForm() {
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     if (!value) {
-      redirect('/');
+      router.push('/');
     }
-    redirect(`/boards?orderby=${orderBy}&keyword=${value}`);
+    router.push(`/boards?orderby=${orderBy}&keyword=${value}`);
   };
 
   return (
     <form className="relative flex-1" onSubmit={handleSubmit}>
       <Input
         imageSrc={searchIcon}
-        alt="seach"
+        alt="search"
         placeholder="검색할 상품을 입력해주세요."
         onChange={handleChange}
       />

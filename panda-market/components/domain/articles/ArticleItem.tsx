@@ -28,7 +28,7 @@ function ArticleItem({ article }: { article: Article }) {
       <div className="flex justify-between font-[400] text-[14px] ">
         <div className="flex items-center gap-[8px] text-gray-600">
           <Image src={userIcon} alt="user" width={24} height={24} />
-          <span>{article.writer.nickname}</span>
+          <span>{article.writer?.nickname}</span>
           <span className="text-gray-400">{formattedDate}</span>
         </div>
         <div className="flex items-center gap-[4px]">
