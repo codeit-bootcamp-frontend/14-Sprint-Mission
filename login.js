@@ -7,8 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.querySelector(".btn-large");
 
     submitBtn.disabled = true; // 초기 상태에서 버튼 비활성화
+
+    // 필드별로 touched 상태를 추적
+    let emailTouched = false;
+    let passwordTouched = false;
+
     // 유효성 검사 함수
     function validateEmail() {
+        if (!emailTouched) return true;
         const emailValue = emailInput.value.trim();
         if (!emailValue) {
             emailError.textContent = "이메일을 입력해 주세요.";
@@ -25,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validatePassword() {
+        if (!passwordTouched) return true;
         const passwordValue = passwordInput.value.trim();
         if (!passwordValue) {
             passwordError.textContent = "비밀번호를 입력해 주세요.";
@@ -43,7 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateSubmitLoginState() {
         const isEmailValid = validateEmail();
         const isPasswordValid = validatePassword();
-        submitBtn.disabled = !(isEmailValid && isPasswordValid);
+        submitBtn.disabled = !(
+            emailTouched &&
+            passwordTouched &&
+            isEmailValid &&
+            isPasswordValid
+        );
     }
 
     // 폼 제출 시 유효성 검사
@@ -61,8 +73,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 입력 필드에서 포커스가 벗어날 때 유효성 검사
-    emailInput.addEventListener("blur", validateEmail);
-    passwordInput.addEventListener("blur", validatePassword);
+    emailInput.addEventListener("blur", () => {
+        emailTouched = true;
+        validateEmail();
+    });
+    passwordInput.addEventListener("blur", () => {
+        passwordTouched = true;
+        validatePassword();
+    });
     // 입력 필드에서 값이 변경될 때 버튼 상태 업데이트
     emailInput.addEventListener("input", updateSubmitLoginState);
     passwordInput.addEventListener("input", updateSubmitLoginState);

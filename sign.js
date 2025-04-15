@@ -1,20 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const emailInput = document.getElementById("email");
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
-    const passwordConfirmInput = document.getElementById("password-confirm");
-    const emailError = document.getElementById("email-error");
-    const usernameError = document.getElementById("username-error");
-    const passwordError = document.getElementById("password-error");
+    const emailInput = document.getElementById("signup-email");
+    const usernameInput = document.getElementById("signup-username");
+    const passwordInput = document.getElementById("signup-password");
+    const passwordConfirmInput = document.getElementById(
+        "signup-password-confirm"
+    );
+    const emailError = document.getElementById("signup-email-error");
+    const usernameError = document.getElementById("signup-username-error");
+    const passwordError = document.getElementById("signup-password-error");
     const passwordConfirmInputError = document.getElementById(
-        "password-confirm-error"
+        "signup-password-confirm-error"
     );
     const form = document.querySelector(".login-form");
     const submitBtn = document.querySelector(".btn-large");
 
     submitBtn.disabled = true; // 초기 상태에서 버튼 비활성화
+
+    // 필드별로 touched 상태를 추적
+    let emailTouched = false;
+    let usernameTouched = false;
+    let passwordTouched = false;
+    let passwordConfirmTouched = false;
+
     // 유효성 검사 함수
     function validateEmail() {
+        if (!emailTouched) return true;
         const emailValue = emailInput.value.trim();
         if (!emailValue) {
             emailError.textContent = "이메일을 입력해 주세요.";
@@ -31,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function vaildateUsername() {
+        if (!usernameTouched) return true;
         const usernameValue = usernameInput.value.trim();
         if (!usernameValue) {
             usernameError.textContent = "닉네임을 입력해 주세요.";
@@ -43,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validatePassword() {
+        if (!passwordTouched) return true;
         const passwordValue = passwordInput.value.trim();
         if (!passwordValue) {
             passwordError.textContent = "비밀번호를 입력해 주세요.";
@@ -59,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validateConfirmPassword() {
+        if (!passwordConfirmTouched) return true;
         const passwordConfirmValue = passwordConfirmInput.value.trim();
         const passwordValue = passwordInput.value.trim();
         if (!passwordConfirmValue) {
@@ -83,6 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const isPasswordValid = validatePassword();
         const isPasswordConfirmValid = validateConfirmPassword();
         submitBtn.disabled = !(
+            emailTouched &&
+            usernameTouched &&
+            passwordTouched &&
+            passwordConfirmTouched &&
             isEmailVaild &&
             isUsernameValid &&
             isPasswordValid &&
@@ -104,10 +121,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 입력 필드에서 포커스가 벗어날 때 유효성 검사
-    emailInput.addEventListener("blur", validateEmail);
-    usernameInput.addEventListener("blur", vaildateUsername);
-    passwordInput.addEventListener("blur", validatePassword);
-    passwordConfirmInput.addEventListener("blur", validateConfirmPassword);
+    emailInput.addEventListener("blur", () => {
+        emailTouched = true;
+        validateEmail();
+    });
+    usernameInput.addEventListener("blur", () => {
+        usernameTouched = true;
+        vaildateUsername();
+    });
+    passwordInput.addEventListener("blur", () => {
+        passwordTouched = true;
+        validatePassword();
+    });
+    passwordConfirmInput.addEventListener("blur", () => {
+        passwordConfirmTouched = true;
+        validateConfirmPassword();
+    });
     // 입력 필드에서 값이 변경될 때 버튼 상태 업데이트
     emailInput.addEventListener("input", updateSubmitSignupState);
     usernameInput.addEventListener("input", updateSubmitSignupState);
