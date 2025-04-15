@@ -17,7 +17,9 @@ function Input({ imageSrc, alt, placeholder, onChange }: InputProps) {
         />
       )}
       <input
-        className="w-full bg-gray-100 py-[9px] pl-[44px] rounded-xl outline-none"
+        className={`w-full bg-gray-100 py-[9px] rounded-xl outline-none ${
+          imageSrc ? ' pl-[44px]' : ''
+        }`}
         placeholder={placeholder}
         onChange={onChange}
       />
