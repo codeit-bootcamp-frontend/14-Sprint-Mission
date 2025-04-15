@@ -21,7 +21,7 @@ interface Comment {
 interface Props {
   id: string;
   limit: number;
-  cursor?: number;
+  cursor?: number | null;
 }
 
 export default async function getComment({ id, limit, cursor }: Props) {
@@ -30,7 +30,7 @@ export default async function getComment({ id, limit, cursor }: Props) {
     if (cursor) {
       query = `limit=${limit}&cursor=${cursor}`;
     } else {
-      query = `limit=${limit}`;
+       query = `limit=${limit}`;
     }
 
     const response = await axios.get<Comment>(

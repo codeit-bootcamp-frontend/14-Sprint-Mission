@@ -5,7 +5,7 @@ type Props = {
   id: string;
 };
 
-interface Comment {
+export interface Comment {
   id: number;
   title: string;
   content: string;
@@ -40,6 +40,8 @@ const useComment = ({ id }: Props) => {
   return {
     comments,
     nextCursor,
+    setComment,
+    setNextCursor,
   };
 };
 

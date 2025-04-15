@@ -1,6 +1,7 @@
 "use client";
 import Article from "@/components/Article";
 import BestArticle from "@/components/BestArticle";
+import Loading from "@/components/Loading";
 import Search from "@/components/Search";
 import useArticle, { Articles } from "@/hooks/useArticle";
 import useBestArticle from "@/hooks/useBestArticle";
@@ -57,21 +58,7 @@ export default function Boards() {
         ))}
       </div>
 
-      {loading ?? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex justify-center mt-[30px]"
-        >
-          <motion.div
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ ease: "linear", duration: 1, repeat: Infinity }}
-            className="w-[30px] h-[30px] border-[#F3F4F6] border-[3px] rounded-full border-t-transparent"
-          />
-        </motion.div>
-      )}
+      {loading ?? <Loading />}
     </div>
   );
 }

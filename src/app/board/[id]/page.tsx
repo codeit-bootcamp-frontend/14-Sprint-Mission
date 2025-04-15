@@ -10,14 +10,21 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoHeart } from "react-icons/go";
 import { TbArrowBack } from "react-icons/tb";
 import Link from "next/link";
+import useScroll from "@/hooks/useScroll";
+import Loading from "@/components/Loading";
 
-type Props = {};
-
-const Page = (props: Props) => {
+const Page = () => {
   const { id } = useParams();
-  console.log(`id : ${id}`);
   const { articleDetails } = useArticleDetails(id as string);
-  const { comments, nextCursor } = useComment({ id: id as string });
+  const { comments, nextCursor, setComment, setNextCursor } = useComment({
+    id: id as string,
+  });
+  const { loading } = useScroll({
+    nextCursor,
+    setComment,
+    setNextCursor,
+    id: id as string,
+  });
 
   const formattedDate = articleDetails?.createdAt
     ? new Date(articleDetails.createdAt)
@@ -69,12 +76,14 @@ const Page = (props: Props) => {
         ))
       ) : (
         <div className="flex flex-col items-center justify-center mt-[40px]">
-                      <Image width={140} height={140} alt="Empty" src="/empty_Icon.svg" />
+          <Image width={140} height={140} alt="Empty" src="/empty_Icon.svg" />
           <span className="text-[16px] text-[#9CA3AF] font-normal mt-[16px]">
             아직 댓글이 없어요, 지금 댓글을 달아보세요!
           </span>
         </div>
       )}
+
+      {loading && <Loading />}
 
       <div className="mt-[64px] mb-[95px] flex flex-row justify-center">
         <Link
