@@ -1,8 +1,8 @@
 'use client';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import searchIcon from '@/public/assets/icons/search-icon.svg';
-import Image from 'next/image';
 import { redirect, useSearchParams } from 'next/navigation';
+import Input from './Input';
 
 export default function SearchForm() {
   const searchParams = useSearchParams();
@@ -24,15 +24,9 @@ export default function SearchForm() {
 
   return (
     <form className="relative flex-1" onSubmit={handleSubmit}>
-      <Image
-        className="absolute left-[20px] top-[13px]"
-        src={searchIcon}
-        alt="search"
-      />
-      <input
-        className="w-full bg-gray-100 py-[9px] pl-[44px] rounded-xl outline-none"
-        name="q"
-        value={value}
+      <Input
+        imageSrc={searchIcon}
+        alt="seach"
         placeholder="검색할 상품을 입력해주세요."
         onChange={handleChange}
       />

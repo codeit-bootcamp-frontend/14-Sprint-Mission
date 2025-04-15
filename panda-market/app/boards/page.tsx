@@ -2,8 +2,6 @@ import ArticleList from '@/components/domain/ArticleList';
 import BestArticleList from '@/components/domain/BestArticleList';
 import Navbar from '@/components/common/Navbar';
 import SearchForm from '@/components/common/SearchForm';
-import axios from '@/lib/api/axios';
-import { AxiosResponse } from 'axios';
 import Select from '@/components/common/Select';
 
 interface DataProps {
@@ -32,11 +30,12 @@ interface Writer {
 export async function getData({ page, pageSize, orderBy, keyword }: DataProps) {
   try {
     const query = `/articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
-    const response: AxiosResponse = await axios.get(query);
+    const response = await fetch(`https://panda-market-api.vercel.app${query}`);
 
-    if (response.status >= 200 && response.status < 300) {
-      // console.log(response.data);
-      return response.data;
+    if (response.ok) {
+      const data = await response.json();
+      // console.log(data);
+      return data;
     } else {
       console.error('Request failed with status:', response.status);
       throw new Error(`Request failed with status: ${response.status}`);
