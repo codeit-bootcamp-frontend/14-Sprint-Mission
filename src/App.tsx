@@ -1,4 +1,4 @@
-import Home from "@/pages/home.tsx";
+import Home from "@/pages/home/home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
