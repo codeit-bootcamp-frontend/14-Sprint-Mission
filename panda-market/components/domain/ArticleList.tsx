@@ -30,15 +30,21 @@ function ArticleList({ initialArticles }: { initialArticles: Article[] }) {
       }
       setError(null);
       try {
-        const data = await getData({
-          page: 1,
-          pageSize: pageSize,
-          orderBy: orderBy,
-          keyword: keyword,
-        });
-        const newArticles = await data.list;
-        setArticles(newArticles);
-        setHasMore(pageSize + data.list.length < data.totalCount);
+        console.log('orderby', orderBy);
+        if (keyword === '' && orderBy === 'recent') {
+          // 검색어가 없을 경우 데이터를 다시 불러오지 않고 기존 상품 데이터를 사용
+          setArticles(initialArticles);
+        } else {
+          const data = await getData({
+            page: 1,
+            pageSize: pageSize,
+            orderBy: orderBy,
+            keyword: keyword,
+          });
+          const newArticles = await data.list;
+          setArticles(newArticles);
+          setHasMore(pageSize + data.list.length < data.totalCount);
+        }
       } catch (error) {
         setError(error as Error);
       } finally {
@@ -48,7 +54,7 @@ function ArticleList({ initialArticles }: { initialArticles: Article[] }) {
     };
 
     fetchArticles();
-  }, [keyword, orderBy, pageSize]);
+  }, [initialArticles, keyword, orderBy, pageSize]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
