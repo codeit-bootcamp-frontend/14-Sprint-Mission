@@ -17,40 +17,6 @@
 
   /* Error */
   --error: #f74747;
-
-  /* 3xl */
-  --font-3xl-size: 32px;
-  --font-3xl-line-height: 42px;
-
-  /* 2xl */
-  --font-2xl-size: 28px;
-  --font-2xl-line-height: 38px;
-
-  /* xl */
-  --font-xl-size: 24px;
-  --font-xl-line-height: 34px;
-
-  /* lg */
-  --font-lg-size: 20px;
-  --font-lg-line-height: 30px;
-
-  /* md */
-  --font-md-size: 18px;
-  --font-md-line-height: 28px;
-
-  /* sm */
-  --font-sm-size: 16px;
-  --font-sm-line-height: 26px;
-
-  /* xs */
-  --font-xs-size: 14px;
-  --font-xs-line-height: 24px;
-
-  /* font-weight */
-  --weight-bold: 700;
-  --weight-semibold: 600;
-  --weight-medium: 500;
-  --weight-regular: 400;
 }
 * {
   box-sizing: border-box;

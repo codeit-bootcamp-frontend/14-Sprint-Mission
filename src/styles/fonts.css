@@ -1,0 +1,54 @@
+.font-3xl {
+  font-size: 32px;
+  line-height: 42px;
+}
+
+.font-2xl {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.font-xl {
+  font-size: 20px;
+  line-height: 32px;
+}
+.font-2lg {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.font-lg {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.font-md {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.font-sm {
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.font-xs {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-regular {
+  font-weight: 400;
+}
