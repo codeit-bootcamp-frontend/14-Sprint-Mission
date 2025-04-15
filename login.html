@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="./styles/components/footer.css" />
 
         <!-- script -->
-        <script src="./sign.js"></script>
+        <script src="./login.js"></script>
     </head>
     <body>
         <div class="login-container">
@@ -35,6 +35,7 @@
                         name="email"
                         placeholder="이메일을 입력해 주세요"
                     />
+                    <span class="error-message" id="email-error"></span>
                 </div>
                 <div class="input-item">
                     <label for="password">비밀번호</label>
@@ -52,6 +53,7 @@
                             />
                         </button>
                     </div>
+                    <span class="error-message" id="password-error"></span>                        </span>
                 </div>
                 <button type="submit" class="btn-large full-width">
                     로그인
