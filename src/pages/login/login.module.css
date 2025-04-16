@@ -1,0 +1,15 @@
+.login__form {
+  max-width: 640px;
+  padding: 80px 16px 0px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .login__form {
+    padding: 190px 52px 0px;
+  }
+}
