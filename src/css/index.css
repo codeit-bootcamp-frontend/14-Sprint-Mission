@@ -317,6 +317,11 @@
   .banner__container--bottom {
     gap: 0;
   }
+
+  .highlight:nth-child(3) .highlight__container {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
 
 /* 태블릿 */
@@ -337,9 +342,12 @@
     padding: 24px;
   }
 
-  .highlight:nth-child(3) .highlight__container {
-    flex-direction: column;
-    align-items: flex-end;
+  .highlight__title {
+    font-size: 32px;
+  }
+
+  .highlight__subtitle {
+    font-size: 18px;
   }
 
   .feature-content {
@@ -370,9 +378,12 @@
     padding: 52px 15px;
   }
 
-  .highlight:nth-child(3) .highlight__container {
-    flex-direction: column;
-    align-items: flex-end;
+  .highlight__title {
+    font-size: 24px;
+  }
+
+  .highlight__subtitle {
+    font-size: 18px;
   }
 
   .br-highlight {
@@ -380,7 +391,7 @@
   }
 
   .footer {
-    padding: 32px 100px;
+    padding: 32px;
   }
 
   .footer__section {

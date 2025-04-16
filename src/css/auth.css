@@ -174,4 +174,8 @@ body {
     padding: 0 16px;
     max-width: 400px;
   }
+
+  .auth__label {
+    font-size: 14px;
+  }
 }
