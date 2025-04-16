@@ -1,26 +1,36 @@
 .auth-container {
-  max-width: 640px;
-  margin: 60px auto;
+  max-width: 400px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 16px;
   color: var(--gray800);
 }
 
 /* 로고 */
 .logo-wrapper {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 /* 로그인 폼 */
-.input-form {
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 24px;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .input-form label {
   display: block;
   font-weight: 700;
-  font-size: var(--font-size-2lg);
-  line-height: var(--line-height-2lg);
-  margin-bottom: 16px;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
 }
 
 input {
@@ -29,6 +39,10 @@ input {
   border: none;
   border-radius: 12px;
   background-color: var(--gray100);
+}
+
+input::placeholder {
+  color: var(--gray400);
 }
 
 input:focus {
@@ -49,7 +63,6 @@ input:focus {
 
 .auth-button {
   width: 100%;
-  margin-bottom: 24px;
 }
 
 /* 간편 로그인하기 */
@@ -88,4 +101,41 @@ input:focus {
 .switch-auth {
   color: var(--primary100);
   text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .auth-container {
+    max-width: 640px;
+    margin: 48px auto;
+    padding: 0;
+    color: var(--gray800);
+  }
+
+  /* 로고 */
+  .logo-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .logo-wrapper img {
+    width: 396px;
+  }
+  /* 로그인 폼 */
+  .auth-container form {
+    gap: 24px;
+  }
+
+  .input-form {
+    gap: 16px;
+  }
+
+  .input-form label {
+    font-size: var(--font-size-2lg);
+    line-height: var(--line-height-2lg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-container {
+    margin: 60px auto;
+  }
 }
