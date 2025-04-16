@@ -1,35 +1,40 @@
-# 코드잇 프론트엔드 스프린트 14기 스프린트 미션 (판다마켓)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## 스프린트 미션 5
+## Getting Started
 
-### Todo List
+First, run the development server:
 
-#### 리액트 전환
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- [x] `/` 홈페이지
-- [x] `/signin` 로그인
-- [x] `/signup` 회원가입
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-#### 페이지 구현
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-- [x] `/items` 상품 페이지
-  - [x] 중고마켓 페이지 주소는 `/items` 입니다.
-  - [x] 페이지 주소가 `/items` 일때 상단네비게이션바의 '중고마켓' 버튼의 색상은 `3692FF`입니다.
-  - [x] 상단 네비게이션 바는 이전 미션에서 구현한 랜딩 페이지와 동일한 스타일로 만들어 주세요.
-  - [x] 상품 데이터 정보는 `https://panda-market-api.vercel.app/docs/#/` 에 명세된 GET 메소드 `/products` 를 사용해주세요.
-  - [x] `상품 등록하기` 버튼을 누르면 `/additem` 로 이동합니다. ( 빈 페이지 )
-  - [x] 전체 상품에서 드롭 다운으로 `최신 순` 또는 `좋아요 순`을 선택해서 정렬을 할 수 있습니다.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-##### 중고마켓 반응형
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-- 베스트 상품
-  - Desktop : 4개 보이기
-  - Tablet : 2개 보이기
-  - Mobile : 1개 보이기
-- 전체 상품
-  - Desktop : 12개 보이기
-  - Tablet : 6개 보이기
-  - Mobile : 4개 보이기
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-#### 심화
-- [x] 페이지 네이션 기능을 구현합니다.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
