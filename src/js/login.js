@@ -21,13 +21,6 @@ function showSuccess(input, error) {
   error.classList.add('hidden');
 }
 
-/*로그인 버튼 활성화*/
-function updateButton() {
-  const isEmailValid = emailInput.classList.contains('success');
-  const isPwValid = pwInput.classList.contains('success');
-  loginButton.disabled = !(isEmailValid && isPwValid);
-}
-
 /* 이메일 유효성 검사 */
 function validateEmail() {
   const value = emailInput.value.trim();
@@ -55,6 +48,26 @@ function validatePassword() {
   }
   updateButton();
 }
+
+/* 모든 입력값이 유효한지 확인 */
+function isAllValid() {
+  return (
+    emailInput.classList.contains('success') &&
+    pwInput.classList.contains('success')
+  );
+}
+
+/* 로그인 버튼 활성화 */
+function updateButton() {
+  loginButton.disabled = !isAllValid();
+}
+
+/* 버튼 이동 */
+loginButton.addEventListener('click', () => {
+  if (isAllValid()) {
+    window.location.href = '../html/items.html';
+  }
+});
 
 emailInput.addEventListener('blur', validateEmail);
 emailInput.addEventListener('input', validateEmail);

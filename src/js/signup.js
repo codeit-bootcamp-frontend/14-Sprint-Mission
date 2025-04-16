@@ -8,7 +8,7 @@ const nicknameError = nicknameInput.nextElementSibling;
 const pwError = pwInput.nextElementSibling;
 const pwcheckError = pwcheckInput.nextElementSibling;
 
-const loginButton = document.querySelector('.auth__button');
+const signupButton = document.querySelector('.auth__button');
 const form = document.querySelector('.auth__form');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,20 +25,6 @@ function showSuccess(input, error) {
   input.classList.add('success');
   input.classList.remove('error');
   error.classList.add('hidden');
-}
-
-/* 로그인 버튼 활성화 */
-function updateButton() {
-  const isEmailValid = emailInput.classList.contains('success');
-  const isNicknameValid = nicknameInput.classList.contains('success');
-  const isPwValid = pwInput.classList.contains('success');
-  const isPwcheckValid = pwcheckInput.classList.contains('success');
-  loginButton.disabled = !(
-    isEmailValid &&
-    isPwValid &&
-    isNicknameValid &&
-    isPwcheckValid
-  );
 }
 
 /* 이메일 유효성 검사 */
@@ -93,6 +79,28 @@ function validatePasswordcheck() {
   }
   updateButton();
 }
+
+/* 모든 입력값이 유효한지 확인 */
+function isAllValid() {
+  return (
+    emailInput.classList.contains('success') &&
+    nicknameInput.classList.contains('success') &&
+    pwInput.classList.contains('success') &&
+    pwcheckInput.classList.contains('success')
+  );
+}
+
+/* 로그인 버튼 활성화 */
+function updateButton() {
+  signupButton.disabled = !isAllValid();
+}
+
+/* 버튼 이동 */
+signupButton.addEventListener('click', () => {
+  if (isAllValid()) {
+    window.location.href = '../html/login.html';
+  }
+});
 
 emailInput.addEventListener('blur', validateEmail);
 emailInput.addEventListener('input', validateEmail);
