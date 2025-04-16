@@ -1,21 +1,15 @@
 /* header */
 
 .header {
+  width: 100%;
   height: 70px;
-  padding: 0 200px;
   background: #fff;
   display: flex;
   align-items: center;
   position: fixed;
-  width: 100%;
-}
-
-.header__navbar {
-  display: flex;
-  gap: 839px;
-  align-items: center;
-  max-width: 1120px;
-  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0 300px;
+  top: 0px;
 }
 
 .header__login-button {
@@ -45,6 +39,7 @@
   background: #cfe5ff;
   display: flex;
   width: 100%;
+  padding-top: 70px;
 }
 
 .banner__container {
@@ -96,6 +91,7 @@
   overflow: hidden;
   white-space: nowrap;
   cursor: pointer;
+  width: fit-content;
 }
 
 .banner__slogan {
@@ -111,6 +107,12 @@
   padding: 138px;
   display: flex;
   justify-content: center;
+  flex-direction: row;
+}
+
+.feature-content {
+  text-align: right;
+  margin-left: 40px;
 }
 
 .highlight__container {
@@ -120,9 +122,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 32px;
-  width: 988px;
   overflow: hidden;
-  height: 444px;
+}
+
+.highlight:nth-child(3) .highlight__container {
+  flex-direction: row-reverse;
 }
 
 .highlight__image,
@@ -179,13 +183,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 32px;
-}
-
-.highlight__search-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-left: 38px;
 }
 
 .highlight__search-image {
@@ -264,4 +261,146 @@
 
 .footer__icon--instagram {
   background-image: url('../assets/images/ic_instagram.svg');
+}
+
+/* 태블릿 + 모바일 */
+@media (max-width: 1199px) {
+  .banner__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner__slogan {
+    align-items: center;
+  }
+
+  .banner__image {
+    margin-top: auto;
+  }
+
+  .highlight__container {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    background: #ffffff;
+  }
+
+  .highlight__image {
+    margin-left: 0;
+  }
+
+  .highlight__image,
+  .highlight__search-image,
+  .highlight__item-image {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  .highlight__image img {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  .highlight__title br {
+    display: none;
+  }
+
+  .highlight__register-image {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  .banner__container--bottom {
+    gap: 0;
+  }
+
+  .highlight:nth-child(3) .highlight__container {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .header {
+    padding: 0 24px;
+  }
+
+  .banner {
+    height: 771px;
+  }
+
+  .banner__slogan {
+    margin-top: 54px;
+  }
+
+  .highlight {
+    padding: 24px;
+  }
+
+  .highlight__title {
+    font-size: 32px;
+  }
+
+  .highlight__subtitle {
+    font-size: 18px;
+  }
+
+  .feature-content {
+    text-align: right;
+  }
+
+  .footer {
+    padding: 20px 200px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .banner {
+    height: 700px;
+  }
+
+  .banner__slogan {
+    margin-bottom: 0px;
+    margin-top: 48px;
+  }
+
+  .highlight {
+    padding: 52px 15px;
+  }
+
+  .highlight__title {
+    font-size: 24px;
+  }
+
+  .highlight__subtitle {
+    font-size: 18px;
+  }
+
+  .br-highlight {
+    display: none;
+  }
+
+  .footer {
+    padding: 32px;
+  }
+
+  .footer__section {
+    position: relative;
+  }
+
+  .footer__copyright {
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
 }
