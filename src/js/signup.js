@@ -1,12 +1,18 @@
 const emailInput = document.getElementById('email');
+const nicknameInput = document.getElementById('nickname');
 const pwInput = document.getElementById('password');
+const pwcheckInput = document.getElementById('passwordcheck');
+
 const emailError = emailInput.nextElementSibling;
+const nicknameError = nicknameInput.nextElementSibling;
 const pwError = pwInput.nextElementSibling;
+const pwcheckError = pwcheckInput.nextElementSibling;
+
 const loginButton = document.querySelector('.auth__button');
 const form = document.querySelector('.auth__form');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/*에러 메시지*/
+/* 에러 메시지 */
 function showError(input, error, message) {
   input.classList.remove('success');
   input.classList.add('error');
@@ -14,11 +20,25 @@ function showError(input, error, message) {
   error.classList.remove('hidden');
 }
 
-/*성공 메시지*/
+/* 성공 메시지 */
 function showSuccess(input, error) {
   input.classList.add('success');
   input.classList.remove('error');
   error.classList.add('hidden');
+}
+
+/* 로그인 버튼 활성화 */
+function updateButton() {
+  const isEmailValid = emailInput.classList.contains('success');
+  const isNicknameValid = nicknameInput.classList.contains('success');
+  const isPwValid = pwInput.classList.contains('success');
+  const isPwcheckValid = pwcheckInput.classList.contains('success');
+  loginButton.disabled = !(
+    isEmailValid &&
+    isPwValid &&
+    isNicknameValid &&
+    isPwcheckValid
+  );
 }
 
 /* 이메일 유효성 검사 */
@@ -32,6 +52,19 @@ function validateEmail() {
   } else {
     showSuccess(emailInput, emailError);
   }
+  updateButton();
+}
+
+/* 닉네임 유효성 검사 */
+function validateNickname() {
+  const value = nicknameInput.value.trim();
+
+  if (value === '') {
+    showError(nicknameInput, nicknameError, '닉네임을 입력해주세요');
+  } else {
+    showSuccess(nicknameInput, nicknameError);
+  }
+  updateButton();
 }
 
 /* 비밀번호 유효성 검사 */
@@ -40,14 +73,32 @@ function validatePassword() {
 
   if (value === '') {
     showError(pwInput, pwError, '비밀번호를 입력해주세요');
-  } else if (pwInput.value.length < 8) {
+  } else if (value.length < 8) {
     showError(pwInput, pwError, '비밀번호를 8자 이상 입력해주세요');
   } else {
     showSuccess(pwInput, pwError);
   }
+  updateButton();
+}
+
+/* 비밀번호 확인 유효성 검사 */
+function validatePasswordcheck() {
+  const pwValue = pwInput.value.trim();
+  const pwcheckValue = pwcheckInput.value.trim();
+
+  if (!(pwValue === pwcheckValue)) {
+    showError(pwcheckInput, pwcheckError, '비밀번호가 일치하지 않습니다.');
+  } else {
+    showSuccess(pwcheckInput, pwcheckError);
+  }
+  updateButton();
 }
 
 emailInput.addEventListener('blur', validateEmail);
 emailInput.addEventListener('input', validateEmail);
+nicknameInput.addEventListener('blur', validateNickname);
+nicknameInput.addEventListener('input', validateNickname);
 pwInput.addEventListener('blur', validatePassword);
 pwInput.addEventListener('input', validatePassword);
+pwcheckInput.addEventListener('blur', validatePasswordcheck);
+pwcheckInput.addEventListener('input', validatePasswordcheck);
