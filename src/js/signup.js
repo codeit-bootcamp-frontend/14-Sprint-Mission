@@ -49,7 +49,9 @@ function validatePasswordcheck() {
   const pwValue = pwInput.value.trim();
   const pwcheckValue = pwcheckInput.value.trim();
 
-  if (!(pwValue === pwcheckValue)) {
+  if (pwcheckValue === '') {
+    showError(pwcheckInput, pwcheckError, '비밀번호를 다시 입력해주세요');
+  } else if (!(pwValue === pwcheckValue)) {
     showError(pwcheckInput, pwcheckError, '비밀번호가 일치하지 않습니다.');
   } else {
     showSuccess(pwcheckInput, pwcheckError);
