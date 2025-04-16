@@ -1,14 +1,7 @@
-.banner-title span,
-.content-title span {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 56px;
-  letter-spacing: 0.02em;
-}
-
+/* Mobile First로 진행(Mobile → Tablet → PC)*/
 /* header */
 .logo {
-  width: 153px;
+  width: 103px;
   cursor: pointer;
 }
 
@@ -22,62 +15,79 @@
 
 /* banner */
 .banner {
-  height: 540px;
   background-color: #cfe5ff;
   background-repeat: no-repeat;
-  background-position: calc(100% - 30%) bottom;
   display: flex;
-  align-items: center;
+  background-position: center bottom;
+  text-align: center;
 }
 
 #banner-top {
+  height: 540px;
+  padding-top: 48px;
+  margin-top: 70px;
   background-image: url("/images/home/Img_banner_top.png");
+  background-size: 448px;
 }
 
 #banner-bottom {
+  height: 540px;
+  padding-top: 121px;
   background-image: url("/images/home/Img_banner_bottom.png");
+  background-size: 375px;
 }
 
-.banner-title {
-  margin-bottom: 32px;
+#banner-top .banner-title {
+  margin-bottom: 18px;
 }
 .banner-title span {
+  font-weight: 700;
+  line-height: 140%;
+  font-size: var(--font-size-3xl);
   display: block;
 }
 
 /* contents */
 #contents {
-  margin-bottom: 138px;
+  margin-top: 52px;
+  margin-bottom: 83px;
 }
 
 .content {
-  padding: 138px 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  gap: 64px;
-}
-
-.content-description p {
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-2xl);
-  margin-top: 24px;
+  gap: 24px;
 }
 
 .content-tag {
   color: var(--primary100);
-  font-size: var(--font-size-2lg);
-  line-height: var(--line-height-2lg);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .content-title span {
-  display: block;
+  font-weight: 700;
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+.content-description {
+  margin-bottom: 40px;
+}
+
+.content-description p {
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  margin-top: 16px;
 }
 
 .content-img {
-  width: 579px;
+  width: 100%;
+  border-radius: 7px;
 }
 
 .content:nth-child(odd) .content-description {
@@ -88,13 +98,158 @@
 }
 
 /* footer */
+.copyright {
+  order: 3;
+  flex-basis: 100%;
+  font-weight: 400;
+  font-size: var(--font-size-lg);
+}
 .footer-menu {
   display: flex;
   gap: 30px;
   color: var(--gray200);
+  font-weight: 400;
+  font-size: var(--font-size-lg);
 }
 
 .footer-social {
   display: flex;
   gap: 12px;
+}
+
+/* 반응형 - Tablet */
+@media (min-width: 768px) {
+  #banner-top .banner-title span {
+    font-size: 40px;
+    display: inline;
+  }
+
+  .logo {
+    content: url(/images/logo/pandaMarket-Logo.png);
+    width: 153px;
+  }
+
+  /* banner */
+  #banner-top {
+    height: 771px;
+    padding-top: 84px;
+    background-size: 744px;
+  }
+
+  #banner-bottom {
+    height: 927px;
+    padding-top: 201px;
+    background-size: 744px;
+  }
+
+  .banner-title {
+    margin-bottom: 24px;
+  }
+
+  /* contents */
+  #contents {
+    margin-top: 24px;
+    margin-bottom: 56px;
+  }
+
+  .content-tag {
+    font-size: var(--font-size-2lg);
+    line-height: var(--line-height-2lg);
+    margin-bottom: 16px;
+  }
+
+  .content-title span {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-3xl);
+  }
+
+  .content-description {
+    margin-bottom: 52px;
+  }
+
+  .content-description p {
+    font-size: var(--font-size-2lg);
+    line-height: var(--line-height-2lg);
+    margin-top: 24px;
+  }
+
+  .content-img {
+    border-radius: 14px;
+  }
+
+  /* footer */
+  .copyright {
+    order: 0;
+    flex-basis: auto;
+  }
+}
+
+/* 반응형 - Desktop */
+@media (min-width: 1200px) {
+  #banner-top .banner-title span,
+  .content-title span {
+    display: block;
+  }
+
+  /* banner */
+  .banner {
+    text-align: start;
+    align-items: center;
+    background-position: calc(100% - 30%) bottom;
+  }
+
+  .banner-title {
+    margin-bottom: 32px;
+  }
+
+  #banner-top,
+  #banner-bottom {
+    height: 540px;
+    padding-top: 0;
+    background-size: 746px;
+  }
+
+  /* contents */
+  #contents {
+    margin-top: 0;
+    margin-bottom: 138px;
+  }
+
+  .content {
+    padding: 138px 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .content-tag {
+    margin-bottom: 12px;
+  }
+
+  .content-title span {
+    font-size: 40px;
+    line-height: 140%;
+  }
+
+  .content-description {
+    margin-bottom: 40px;
+  }
+
+  .content-description p {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-2xl);
+  }
+
+  .content-img {
+    width: 579px;
+    border-radius: 0;
+  }
+
+  .reverse .content-img {
+    order: 2;
+  }
+
+  .reverse .content-description {
+    order: 1;
+  }
 }
