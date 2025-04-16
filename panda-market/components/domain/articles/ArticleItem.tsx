@@ -3,6 +3,7 @@ import formatDate from '@/lib/formatDate';
 import Image from 'next/image';
 import heartIcon from '@/public/assets/icons/heart-icon.svg';
 import userIcon from '@/public/assets/icons/user-icon.svg';
+import Link from 'next/link';
 
 function ArticleItem({ article }: { article: Article }) {
   if (!article) return <div>Loading...</div>;
@@ -10,7 +11,10 @@ function ArticleItem({ article }: { article: Article }) {
   const formattedDate = formatDate(article.createdAt);
 
   return (
-    <div className="flex flex-col w-full border-b gap-[16px] pb-[24px]">
+    <Link
+      href={`/board/${article.id}`}
+      className="flex flex-col w-full border-b gap-[16px] pb-[24px]"
+    >
       <div className="flex flex-1">
         <h2 className="flex-1 font-[600] text-[20px]">{article.content}</h2>
         {article.image && (
@@ -42,7 +46,7 @@ function ArticleItem({ article }: { article: Article }) {
           <span>{article.likeCount}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

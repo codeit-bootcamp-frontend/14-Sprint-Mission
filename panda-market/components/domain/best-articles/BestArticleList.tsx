@@ -4,16 +4,6 @@ import BestArticleItem from '@/components/domain/best-articles/BestArticleItem';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 
-async function getBestArticles(pageSize: number) {
-  const bestData = await getData({
-    page: 1,
-    pageSize,
-    orderBy: 'like',
-    keyword: '',
-  });
-  return bestData?.list || [];
-}
-
 function BestArticleList() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
   const isTablet = useMediaQuery({
@@ -33,7 +23,20 @@ function BestArticleList() {
   }, [isDesktop, isTablet]);
 
   useEffect(() => {
-    getBestArticles(pageSize).then((articles) => setBestArticles(articles));
+    const fetchBestArticles = async () => {
+      try {
+        const bestData = await getData({
+          page: 1,
+          pageSize,
+          orderBy: 'like',
+          keyword: '',
+        });
+        setBestArticles(bestData.list);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBestArticles();
   }, [pageSize]);
 
   return (

@@ -3,6 +3,7 @@ import formatDate from '@/lib/formatDate';
 import Image from 'next/image';
 import badgeImg from '@/public/assets/images/badge.png';
 import heartIcon from '@/public/assets/icons/heart-icon.svg';
+import Link from 'next/link';
 
 function BestArticleItem({ article }: { article: Article }) {
   if (!article) return <div>Loading...</div>;
@@ -10,7 +11,10 @@ function BestArticleItem({ article }: { article: Article }) {
   const formattedDate = formatDate(article.createdAt);
 
   return (
-    <div className="relative flex flex-col gap-18 px-[24px] pt-[46px] pb-[16px] bg-gray-50 rounded-[8px]">
+    <Link
+      href={`/board/${article.id}`}
+      className="relative flex flex-col gap-18 px-[24px] pt-[46px] pb-[16px] bg-gray-50 rounded-[8px]"
+    >
       <Image
         className="absolute top-0"
         src={badgeImg}
@@ -46,7 +50,7 @@ function BestArticleItem({ article }: { article: Article }) {
         </div>
         <span className="text-gray-400">{formattedDate}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 

@@ -29,12 +29,14 @@ interface Writer {
 
 export async function getData({ page, pageSize, orderBy, keyword }: DataProps) {
   try {
-    const query = `/articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
-    const response = await fetch(`https://panda-market-api.vercel.app${query}`);
+    const query = `articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`;
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/${query}`
+    );
 
     if (response.ok) {
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       return data;
     } else {
       console.error('Request failed with status:', response.status);

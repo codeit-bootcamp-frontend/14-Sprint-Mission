@@ -1,4 +1,3 @@
-// components/domain/articles/ArticleList.tsx
 'use client';
 import ArticleItem from './ArticleItem';
 import useArticleList from '@/hooks/useArticleList';

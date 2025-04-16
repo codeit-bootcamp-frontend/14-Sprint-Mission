@@ -1,4 +1,4 @@
-// hooks/useArticleList.ts
+'use client';
 import { useState, useEffect } from 'react';
 import { Article, getData } from '@/app/boards/page';
 import { useSearchParams } from 'next/navigation';
