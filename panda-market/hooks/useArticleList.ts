@@ -16,7 +16,7 @@ function useArticleList(initialArticles: Article[]) {
 
   const handleLoadMoreClick = () => {
     if (hasMore) {
-      setPage(page + 1);
+      setPageSize(pageSize + 10);
     }
   };
 
@@ -25,7 +25,7 @@ function useArticleList(initialArticles: Article[]) {
       setLoading(true);
       setError(null);
       try {
-        if (keyword === '' && orderBy === 'recent' && page === 1) {
+        if (keyword === '' && orderBy === 'recent' && pageSize === 10) {
           setArticles(initialArticles);
           setHasMore(true);
         } else {
@@ -36,7 +36,7 @@ function useArticleList(initialArticles: Article[]) {
             keyword: keyword,
           });
           const newArticles = data.list;
-          setArticles((prevArticles) => [...prevArticles, ...newArticles]);
+          setArticles(newArticles);
           setHasMore(page * pageSize + data.list.length < data.totalCount);
         }
       } catch (error) {
