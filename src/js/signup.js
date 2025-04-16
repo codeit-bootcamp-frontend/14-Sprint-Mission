@@ -1,3 +1,11 @@
+import {
+  validationEmail,
+  validationPassword,
+  updateButtonState,
+  goToPage,
+  showError,
+  showSuccess,
+} from './formvalidation.js';
 const emailInput = document.getElementById('email');
 const nicknameInput = document.getElementById('nickname');
 const pwInput = document.getElementById('password');
@@ -9,36 +17,19 @@ const pwError = pwInput.nextElementSibling;
 const pwcheckError = pwcheckInput.nextElementSibling;
 
 const signupButton = document.querySelector('.auth__button');
-const form = document.querySelector('.auth__form');
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/* 에러 메시지 */
-function showError(input, error, message) {
-  input.classList.remove('success');
-  input.classList.add('error');
-  error.textContent = message;
-  error.classList.remove('hidden');
-}
+const inputs = [emailInput, nicknameInput, pwInput, pwcheckInput];
 
-/* 성공 메시지 */
-function showSuccess(input, error) {
-  input.classList.add('success');
-  input.classList.remove('error');
-  error.classList.add('hidden');
-}
-
-/* 이메일 유효성 검사 */
+/* 이메일 검증 */
 function validateEmail() {
-  const value = emailInput.value.trim();
+  validationEmail(emailInput, emailError);
+  updateButtonState(inputs, signupButton);
+}
 
-  if (value === '') {
-    showError(emailInput, emailError, '이메일을 입력해주세요');
-  } else if (!emailRegex.test(value)) {
-    showError(emailInput, emailError, '잘못된 이메일 형식입니다');
-  } else {
-    showSuccess(emailInput, emailError);
-  }
-  updateButton();
+/* 비밀번호 검증 */
+function validatePassword() {
+  validationPassword(pwInput, pwError);
+  updateButtonState(inputs, signupButton);
 }
 
 /* 닉네임 유효성 검사 */
@@ -50,21 +41,7 @@ function validateNickname() {
   } else {
     showSuccess(nicknameInput, nicknameError);
   }
-  updateButton();
-}
-
-/* 비밀번호 유효성 검사 */
-function validatePassword() {
-  const value = pwInput.value.trim();
-
-  if (value === '') {
-    showError(pwInput, pwError, '비밀번호를 입력해주세요');
-  } else if (value.length < 8) {
-    showError(pwInput, pwError, '비밀번호를 8자 이상 입력해주세요');
-  } else {
-    showSuccess(pwInput, pwError);
-  }
-  updateButton();
+  updateButtonState(inputs, signupButton);
 }
 
 /* 비밀번호 확인 유효성 검사 */
@@ -77,30 +54,11 @@ function validatePasswordcheck() {
   } else {
     showSuccess(pwcheckInput, pwcheckError);
   }
-  updateButton();
+  updateButtonState(inputs, signupButton);
 }
 
-/* 모든 입력값이 유효한지 확인 */
-function isAllValid() {
-  return (
-    emailInput.classList.contains('success') &&
-    nicknameInput.classList.contains('success') &&
-    pwInput.classList.contains('success') &&
-    pwcheckInput.classList.contains('success')
-  );
-}
-
-/* 로그인 버튼 활성화 */
-function updateButton() {
-  signupButton.disabled = !isAllValid();
-}
-
-/* 버튼 이동 */
-signupButton.addEventListener('click', () => {
-  if (isAllValid()) {
-    window.location.href = '../html/login.html';
-  }
-});
+/* 페이지 이동 */
+goToPage(inputs, signupButton, '../html/login.html');
 
 emailInput.addEventListener('blur', validateEmail);
 emailInput.addEventListener('input', validateEmail);
