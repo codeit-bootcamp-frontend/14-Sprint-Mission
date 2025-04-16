@@ -52,10 +52,10 @@ button.el-btn {
   &.btn-password {
     width: 24px;
     height: 24px;
-    background: transparent url("../img/btn_vis.png") no-repeat center/24px;
+    background: transparent url("../images/btn_vis.png") no-repeat center/24px;
 
     &.active {
-      background-image: url("../img/btn_vis_on.png");
+      background-image: url("../images/btn_vis_on.png");
     }
   }
 }
