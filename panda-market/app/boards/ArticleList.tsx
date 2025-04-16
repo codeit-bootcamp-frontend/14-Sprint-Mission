@@ -1,5 +1,5 @@
 'use client';
-import ArticleItem from './ArticleItem';
+import ArticleItem from '../board/[id]/ArticleItem';
 import useArticleList from '@/hooks/useArticleList';
 import { Article } from '@/app/boards/page';
 

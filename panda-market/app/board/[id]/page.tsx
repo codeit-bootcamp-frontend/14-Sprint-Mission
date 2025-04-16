@@ -1,3 +1,5 @@
+import Navbar from '@/components/common/Navbar';
+
 export async function getArticle(id: string) {
   try {
     const response = await fetch(
@@ -25,6 +27,7 @@ async function Board({ params }: { params: { id: string } }) {
 
   return (
     <div>
+      <Navbar isLoggedIn={true} />
       <div>{article.title}</div>
     </div>
   );
