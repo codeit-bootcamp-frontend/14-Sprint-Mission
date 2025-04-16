@@ -3,54 +3,60 @@ const pwInput = document.getElementById('password');
 const emailError = emailInput.nextElementSibling;
 const pwError = pwInput.nextElementSibling;
 const loginButton = document.querySelector('.auth__button');
-const toggleBtn = document.querySelector('.auth__visible');
-const toggleIcon = toggleBtn.querySelector('img');
 const form = document.querySelector('.auth__form');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/*에러 메시지*/
+function showError(input, error, message) {
+  input.classList.remove('success');
+  input.classList.add('error');
+  error.textContent = message;
+  error.classList.remove('hidden');
+}
+
+/*성공 메시지*/
+function showSuccess(input, error) {
+  input.classList.add('success');
+  input.classList.remove('error');
+  error.classList.add('hidden');
+}
+
+/*로그인 버튼 활성화*/
+function updateButton() {
+  const isEmailValid = emailInput.classList.contains('success');
+  const isPwValid = pwInput.classList.contains('success');
+  loginButton.disabled = !(isEmailValid && isPwValid);
+}
+
+/* 이메일 유효성 검사 */
 function validateEmail() {
   const value = emailInput.value.trim();
 
   if (value === '') {
-    //email이 비어있을 때
-    emailInput.classList.remove('success');
-    emailInput.classList.add('error');
-    emailError.classList.remove('hidden');
-    emailError.textContent = '이메일을 입력해주세요';
+    showError(emailInput, emailError, '이메일을 입력해주세요');
   } else if (!emailRegex.test(value)) {
-    emailInput.classList.remove('success');
-    emailInput.classList.add('error');
-    emailError.classList.remove('hidden');
-    emailError.textContent = '잘못된 이메일 형식입니다';
+    showError(emailInput, emailError, '잘못된 이메일 형식입니다');
   } else {
-    emailInput.classList.add('success');
-    emailInput.classList.remove('error');
-    emailError.classList.add('hidden');
+    showSuccess(emailInput, emailError);
   }
+  updateButton();
+}
+
+/* 비밀번호 유효성 검사 */
+function validatePassword() {
+  const value = pwInput.value.trim();
+
+  if (value === '') {
+    showError(pwInput, pwError, '비밀번호를 입력해주세요');
+  } else if (pwInput.value.length < 8) {
+    showError(pwInput, pwError, '비밀번호를 8자 이상 입력해주세요');
+  } else {
+    showSuccess(pwInput, pwError);
+  }
+  updateButton();
 }
 
 emailInput.addEventListener('blur', validateEmail);
 emailInput.addEventListener('input', validateEmail);
 pwInput.addEventListener('blur', validatePassword);
 pwInput.addEventListener('input', validatePassword);
-
-function validatePassword() {
-  const value = pwInput.value.trim();
-
-  if (value === '') {
-    //pw가 비어있을 때
-    pwInput.classList.remove('success');
-    pwInput.classList.add('error');
-    pwError.classList.remove('hidden');
-    pwError.textContent = '비밀번호를 입력해주세요';
-  } else if (pwInput.value.length < 8) {
-    pwInput.classList.remove('success');
-    pwInput.classList.add('error');
-    pwError.classList.remove('hidden');
-    pwError.textContent = '비밀번호를 8자 이상 입력해주세요';
-  } else {
-    pwInput.classList.add('success');
-    pwInput.classList.remove('error');
-    pwError.classList.add('hidden');
-  }
-}

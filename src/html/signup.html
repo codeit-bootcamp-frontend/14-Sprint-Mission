@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/auth.css" />
     <link rel="stylesheet" href="../css/palette.css" />
+    <script src="../js/signup.js" defer></script>
   </head>
   <body>
     <div class="auth auth--login">
@@ -30,6 +31,7 @@
               placeholder="이메일을 입력해주세요"
               required
             />
+            <p class="auth__error-message hidden">에러 메시지</p>
           </div>
 
           <div class="auth__field">
@@ -42,6 +44,7 @@
               placeholder="닉네임을 입력해주세요"
               required
             />
+            <p class="auth__error-message hidden">에러 메시지</p>
           </div>
 
           <div class="auth__field">
@@ -54,6 +57,7 @@
               placeholder="비밀번호를 입력해주세요"
               required
             />
+            <p class="auth__error-message hidden">에러 메시지</p>
             <button
               type="button"
               class="auth__visible"
@@ -76,6 +80,7 @@
               placeholder="비밀번호를 다시 입력해주세요"
               required
             />
+            <p class="auth__error-message hidden">에러 메시지</p>
             <button
               type="button"
               class="auth__visible"
