@@ -47,6 +47,13 @@
   &.error input {
     border-color: var(--color-error);
   }
+
+  &.search input {
+    width: 470px;
+    padding: 11px 44px 10px;
+    background: var(--color-gray100) url("../images/ic_search.png") no-repeat
+      left 16px center;
+  }
 }
 .error-txt {
   padding: 8px 0 0 16px;
@@ -54,6 +61,19 @@
   font-weight: 800;
   color: var(--color-error);
   text-align: left;
+}
+
+.select-box {
+  select {
+    width: 130px;
+    padding: 12px 20px;
+    border: 1px solid var(--color-gray200);
+    border-radius: 12px;
+    font-size: var(--text-lg);
+    color: var(--color-gray900);
+    appearance: none;
+    background: url("../images/ic_arrow_down.png") no-repeat right 20px center;
+  }
 }
 
 @media (width < 768px) {

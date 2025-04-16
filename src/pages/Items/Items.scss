@@ -1,0 +1,22 @@
+@charset 'uft-8';
+
+.contents {
+  .items-wrap {
+    padding-bottom: 58px;
+    &.best {
+      padding-bottom: 40px;
+    }
+
+    .title {
+      margin-bottom: 16px;
+    }
+  }
+
+  .items-header {
+    margin-bottom: 24px;
+
+    .el-btn.btn-s {
+      color: var(--color-gray100);
+    }
+  }
+}

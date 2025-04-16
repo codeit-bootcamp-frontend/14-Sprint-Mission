@@ -1,7 +1,12 @@
 const BASE_URL = "https://panda-market-api.vercel.app";
 
-export async function getItems({ search, order = "recent" }) {
-  const query = `orderBy=${order}&keyword=${search}`;
+export async function getItems({
+  search,
+  order = "recent",
+  page = 1,
+  pageSize = 10,
+}) {
+  const query = `page=${page}&pageSize=${pageSize}&orderBy=${order}&keyword=${search}`;
 
   const res = await fetch(`${BASE_URL}/products?${query}`);
   const body = await res.json();

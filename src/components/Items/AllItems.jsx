@@ -5,11 +5,14 @@ import OrderSelect from "../OrderSelect/OrderSelect";
 import ItemList from "./ItemList";
 import Pagenation from "../Pagenation/Pagenation";
 import { getItems } from "../../api/api";
+import "./ItemComponent.scss";
 
 function AllItems() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("recent");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const handleSearch = (e) => {
     const { value } = e.target;
@@ -22,19 +25,19 @@ function AllItems() {
   };
 
   const handleGetItmes = async () => {
-    const result = await getItems({ search, order });
+    const result = await getItems({ search, order, page, pageSize });
     setItems(result);
   };
 
   useEffect(() => {
     handleGetItmes();
-  }, [search, order]);
+  }, [search, order, page]);
 
   return (
-    <div className="allItmes">
+    <div className="items-wrap">
       <div className="items-header">
         <h2 className="title">전체 상품</h2>
-        <div>
+        <div className="sort">
           <SearchInput
             placeholder="검색할 상품을 입력해주세요"
             value={search}
@@ -47,7 +50,12 @@ function AllItems() {
         </div>
       </div>
       <ItemList items={items.list} />
-      <Pagenation />
+      <Pagenation
+        totalCount={items.totalCount}
+        pageSize={pageSize}
+        currentPage={page}
+        onPageChange={setPage}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { getBestItems } from "../../api/api";
+import "./ItemComponent.scss";
 
 function BestItems() {
   const [items, setItems] = useState([]);
@@ -15,7 +16,7 @@ function BestItems() {
   }, []);
 
   return (
-    <div className="bestItems">
+    <div className="items-wrap best">
       <h3 className="title">베스트 상품</h3>
       <ItemList items={items.list} />
     </div>

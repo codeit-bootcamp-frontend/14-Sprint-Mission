@@ -3,7 +3,7 @@ import ItemCard from "./ItemCard";
 
 function ItemList({ items }) {
   return (
-    <div className="item-List">
+    <div className="item-list">
       <ul>
         {items?.map((item) => (
           <ItemCard key={item.id} item={item} />

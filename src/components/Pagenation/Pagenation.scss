@@ -1,0 +1,35 @@
+@charset 'uft-8';
+
+.pagenation {
+  padding-top: 43px;
+  margin: 0 auto;
+  width: 304px;
+  display: flex;
+  align-items: center;
+
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-gray200);
+    background-color: #fff;
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-gray500);
+    cursor: pointer;
+
+    & + button {
+      margin-left: 4px;
+    }
+    &.active {
+      background-color: #2f80ed;
+      color: var(--color-gray50);
+    }
+    &:first-child {
+      background: #fff url("../../images/arrow_left.png") no-repeat center;
+    }
+    &:last-child {
+      background: #fff url("../../images/arrow_right.png") no-repeat center;
+    }
+  }
+}
