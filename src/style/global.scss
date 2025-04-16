@@ -232,3 +232,14 @@ button:-moz-focusring,
     display: block;
   }
 }
+
+/* layout */
+.layout {
+  background-color: #fcfcfc;
+  min-height: 100vh;
+  .contents {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 94px;
+  }
+}
