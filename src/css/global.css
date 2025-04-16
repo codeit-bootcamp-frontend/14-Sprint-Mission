@@ -10,6 +10,13 @@
     'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background-color: #fff;
   color: #374151;
