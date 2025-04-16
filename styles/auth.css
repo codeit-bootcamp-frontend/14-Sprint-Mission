@@ -73,7 +73,6 @@ input:focus {
   background-color: #e6f2ff;
   border-radius: 8px;
   margin-bottom: 24px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -108,7 +107,6 @@ input:focus {
     max-width: 640px;
     margin: 48px auto;
     padding: 0;
-    color: var(--gray800);
   }
 
   /* 로고 */
