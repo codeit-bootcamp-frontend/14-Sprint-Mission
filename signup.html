@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="./styles/components/sign.css" />
         <link rel="stylesheet" href="./styles/components/buttons.css" />
         <link rel="stylesheet" href="./styles/components/footer.css" />
+
+        <!-- script -->
+        <script src="./sign.js"></script>
+        <script src="togglePasswordBtn.js"></script>
     </head>
     <body>
         <div class="login-container">
@@ -28,55 +32,66 @@
                     <label for="email">이메일</label>
                     <input
                         type="email"
-                        id="email"
+                        id="signup-email"
                         name="email"
                         placeholder="이메일을 입력해 주세요"
                     />
+                    <span class="error-message" id="signup-email-error"></span>
                 </div>
                 <div class="input-item">
                     <label for="username">닉네임</label>
                     <input
                         type="username"
-                        id="username"
+                        id="signup-username"
                         name="username"
                         placeholder="닉네임을 입력해 주세요"
                     />
+                    <span
+                        class="error-message"
+                        id="signup-username-error"
+                    ></span>
                 </div>
                 <div class="input-item">
                     <label for="password">비밀번호</label>
                     <div class="input-wrapper">
                         <input
                             type="password"
-                            id="password"
+                            id="signup-password"
                             name="password"
                             placeholder="비밀번호를 입력해 주세요"
                         />
-                        <button>
+                        <button type="button" class="toggle-password-btn">
                             <img
                                 src="styles/assets/icons/icon/eyes_off.svg"
                                 alt="toggle-password"
-                                class="toggle-password"
                             />
                         </button>
                     </div>
+                    <span
+                        class="error-message"
+                        id="signup-password-error"
+                    ></span>
                 </div>
                 <div class="input-item">
-                    <label for="password">비밀번호 확인</label>
+                    <label for="password-confirm">비밀번호 확인</label>
                     <div class="input-wrapper">
                         <input
                             type="password"
-                            id="password"
+                            id="signup-password-confirm"
                             name="password"
                             placeholder="비밀번호를 다시 한 번 입력해 주세요"
                         />
-                        <button>
+                        <button type="button" class="toggle-password-btn">
                             <img
                                 src="styles/assets/icons/icon/eyes_off.svg"
                                 alt="toggle-password"
-                                class="toggle-password"
                             />
                         </button>
                     </div>
+                    <span
+                        class="error-message"
+                        id="signup-password-confirm-error"
+                    ></span>
                 </div>
                 <button type="submit" class="btn-large full-width">
                     회원가입
