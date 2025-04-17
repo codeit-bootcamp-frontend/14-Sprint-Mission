@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import likeIcon from "../../images/ic_like.png";
+import mockImg from "../../images/mock_img.png";
 
 function ItemCard({ item }) {
+  const [imgSrc, setImgSrc] = useState(item?.images[0] || mockImg);
+
+  const handleImgError = () => {
+    setImgSrc(mockImg);
+  };
+
   return (
     <li>
       <div className="item-img">
-        <img src={item.images[0]} alt="" />
+        <img src={imgSrc} alt={item.name} onError={handleImgError} />
       </div>
       <div className="item-text">
         <div className="name">{item.name}</div>

@@ -243,3 +243,9 @@ button:-moz-focusring,
     padding-top: 94px;
   }
 }
+
+@media (width < 1200px) {
+  .layout {
+    padding: 0 24px;
+  }
+}

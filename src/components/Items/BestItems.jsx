@@ -3,7 +3,7 @@ import ItemList from "./ItemList";
 import { getBestItems } from "../../api/api";
 import "./ItemComponent.scss";
 
-function BestItems() {
+function BestItems({ itemCount }) {
   const [items, setItems] = useState([]);
 
   const handleGetBestItem = async () => {
@@ -18,7 +18,7 @@ function BestItems() {
   return (
     <div className="items-wrap best">
       <h3 className="title">베스트 상품</h3>
-      <ItemList items={items.list} />
+      <ItemList items={items.list} count={itemCount} />
     </div>
   );
 }

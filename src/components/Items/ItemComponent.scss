@@ -21,6 +21,7 @@
 
   &.best {
     .item-list ul {
+      row-gap: 0;
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -28,8 +29,8 @@
 
 .item-list ul {
   display: grid;
-  gap: 24px;
   grid-template-columns: repeat(5, 1fr);
+  gap: 40px 24px;
 
   li {
     display: flex;
@@ -37,13 +38,20 @@
     gap: 16px;
 
     .item-img {
-      aspect-ratio: 1 / 1;
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 16px;
 
       img {
-        border-radius: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 16px;
       }
     }
 
@@ -72,5 +80,61 @@
         }
       }
     }
+  }
+}
+
+@media (width < 1200px) {
+  .items-wrap.best {
+    .item-list ul {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 16px;
+
+      li {
+        gap: 10px;
+      }
+    }
+  }
+
+  .item-list ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width < 768px) {
+  .items-wrap {
+    &.best {
+      .item-list ul {
+        grid-template-columns: 1fr;
+
+        li {
+          gap: 10px;
+        }
+      }
+    }
+
+    .items-header {
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+
+      .title {
+        padding: 5px 0;
+      }
+      .sort {
+        width: 100%;
+        .el-btn {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 133px;
+        }
+      }
+    }
+  }
+
+  .item-list ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 8px;
   }
 }

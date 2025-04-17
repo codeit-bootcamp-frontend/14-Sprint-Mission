@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #dfdfdf;
@@ -48,6 +49,10 @@
   .header {
     .inner {
       padding: 0 25px;
+
+      .nav-area {
+        gap: 20px;
+      }
     }
   }
 }
@@ -57,6 +62,14 @@
   .header {
     .inner {
       padding: 0 16px;
+
+      .nav-area {
+        gap: 4px;
+
+        .nav ul li {
+          padding: 0 4px;
+        }
+      }
     }
 
     .head-logo img {

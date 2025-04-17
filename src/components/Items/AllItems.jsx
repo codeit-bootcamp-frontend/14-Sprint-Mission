@@ -7,12 +7,11 @@ import Pagenation from "../Pagenation/Pagenation";
 import { getItems } from "../../api/api";
 import "./ItemComponent.scss";
 
-function AllItems() {
+function AllItems({ itemCount }) {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("recent");
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
 
   const handleSearch = (e) => {
     const { value } = e.target;
@@ -25,13 +24,13 @@ function AllItems() {
   };
 
   const handleGetItmes = async () => {
-    const result = await getItems({ search, order, page, pageSize });
+    const result = await getItems({ search, order, page, pageSize: itemCount });
     setItems(result);
   };
 
   useEffect(() => {
     handleGetItmes();
-  }, [search, order, page]);
+  }, [search, order, page, itemCount]);
 
   return (
     <div className="items-wrap">
@@ -49,10 +48,10 @@ function AllItems() {
           <OrderSelect handleOrder={handleOrder} value={order} />
         </div>
       </div>
-      <ItemList items={items.list} />
+      <ItemList items={items.list} count={itemCount} />
       <Pagenation
         totalCount={items.totalCount}
-        pageSize={pageSize}
+        pageSize={itemCount}
         currentPage={page}
         onPageChange={setPage}
       />

@@ -64,8 +64,10 @@
 }
 
 .select-box {
+  position: relative;
   select {
     width: 130px;
+    height: 42px;
     padding: 12px 20px;
     border: 1px solid var(--color-gray200);
     border-radius: 12px;
@@ -76,11 +78,51 @@
   }
 }
 
-@media (width < 768px) {
-  .el-txt-input label {
-    font-size: var(--text-md);
+@media (width < 1200px) {
+  .el-txt-input.search input {
+    width: 248px;
+    padding: 9px 24px 8px 44px;
   }
-  .el-txt-input label + input {
-    margin-top: 8px;
+}
+
+@media (width < 768px) {
+  .el-txt-input {
+    label {
+      font-size: var(--text-md);
+
+      & + input {
+        margin-top: 8px;
+      }
+    }
+
+    &.search {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .select-box {
+    &::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 42px;
+      background: url("../images/ic_filter.png") no-repeat center/24px;
+      border: 1px solid var(--color-gray200);
+      border-radius: 12px;
+    }
+
+    select {
+      width: 42px;
+      height: 42px;
+      background: none;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
   }
 }

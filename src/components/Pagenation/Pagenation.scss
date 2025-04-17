@@ -33,3 +33,9 @@
     }
   }
 }
+
+@media (width < 1200px) {
+  .pagenation {
+    padding-top: 40px;
+  }
+}
