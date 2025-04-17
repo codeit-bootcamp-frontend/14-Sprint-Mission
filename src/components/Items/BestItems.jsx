@@ -3,12 +3,18 @@ import ItemList from "./ItemList";
 import { getBestItems } from "../../api/api";
 import "./ItemComponent.scss";
 
-function BestItems({ itemCount }) {
+function BestItems({ itemCount, onLoading, onError }) {
   const [items, setItems] = useState([]);
 
   const handleGetBestItem = async () => {
-    const result = await getBestItems();
-    setItems(result);
+    try {
+      const result = await getBestItems();
+      setItems(result);
+      onLoading(false);
+    } catch (error) {
+      onLoading(false);
+      onError(error.message);
+    }
   };
 
   useEffect(() => {

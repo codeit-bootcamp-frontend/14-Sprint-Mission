@@ -7,7 +7,7 @@ import Pagenation from "../Pagenation/Pagenation";
 import { getItems } from "../../api/api";
 import "./ItemComponent.scss";
 
-function AllItems({ itemCount }) {
+function AllItems({ itemCount, onLoading, onError }) {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("recent");
@@ -18,14 +18,24 @@ function AllItems({ itemCount }) {
     setSearch(value);
   };
 
-  const handleOrder = (e) => {
-    const { value } = e.target;
+  const handleOrder = (value) => {
     setOrder(value);
   };
 
   const handleGetItmes = async () => {
-    const result = await getItems({ search, order, page, pageSize: itemCount });
-    setItems(result);
+    try {
+      const result = await getItems({
+        search,
+        order,
+        page,
+        pageSize: itemCount,
+      });
+      setItems(result);
+      onLoading(false);
+    } catch (error) {
+      onLoading(false);
+      onError(error.message);
+    }
   };
 
   useEffect(() => {
