@@ -1,4 +1,8 @@
 /* main.css */
+* {
+  box-sizing: border-box;
+}
+
 main {
   padding-top: 70px;
 }
@@ -6,7 +10,6 @@ main {
 .body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* header */
@@ -32,7 +35,6 @@ main {
   max-width: 1200px;
   padding: 0 clamp(16px, 6vw, 24px);
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .logo img {
@@ -68,7 +70,6 @@ main {
   width: 100vw;
   height: 540px;
   flex-shrink: 0;
-  box-sizing: border-box;
   background: #cfe5ff;
 }
 
@@ -147,7 +148,6 @@ main {
   gap: 64px;
   border-radius: 12px;
   background: #fcfcfc;
-  box-sizing: border-box;
 }
 
 .info-card-image {
@@ -206,7 +206,6 @@ main {
   padding-top: 60px;
   padding-bottom: 0;
   height: 100%;
-  box-sizing: border-box;
 }
 
 .sub-banner-left {
