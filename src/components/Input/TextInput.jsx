@@ -4,7 +4,7 @@ function TextInput({
   id,
   name,
   label,
-  type,
+  type = "text",
   placeholder,
   value,
   visibleBtn = false,
@@ -30,7 +30,11 @@ function TextInput({
         type === "search" ? "search" : ""
       }`}
     >
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label className="input-label" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <div className="el-input">
         {type === "search" && (
           <button
@@ -40,16 +44,26 @@ function TextInput({
             onClick={onSearch}
           ></button>
         )}
-        <input
-          id={id}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          ref={inputRef}
-        />
+        {type === "textarea" ? (
+          <textarea
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          ></textarea>
+        ) : (
+          <input
+            id={id}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            ref={inputRef}
+          />
+        )}
         {visibleBtn && (
           <button
             type="button"

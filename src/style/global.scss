@@ -237,15 +237,26 @@ button:-moz-focusring,
 .layout {
   background-color: #fcfcfc;
   min-height: 100vh;
+
+  &.none-color {
+    background-color: #fff;
+  }
   .contents {
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 94px;
+    padding-bottom: 69px;
   }
 }
 
 @media (width < 1200px) {
   .layout {
     padding: 0 24px;
+  }
+}
+
+@media (width < 768px) {
+  .layout {
+    padding: 0 15px;
   }
 }

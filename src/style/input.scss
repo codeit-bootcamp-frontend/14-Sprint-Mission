@@ -3,20 +3,35 @@
 .el-txt-input {
   position: relative;
 
-  label {
-    display: block;
-    margin-bottom: 16px;
-    font-size: var(--text-2lg);
-    font-weight: bold;
-    text-align: left;
-    color: var(--color-gray800);
-  }
-
   input {
     padding: 15px 50px 15px 24px;
     width: 100%;
     font-size: var(--text-lg);
     border: 1px solid transparent;
+    border-radius: 12px;
+    background-color: var(--color-gray100);
+    color: var(--color-gray800);
+
+    &::placeholder {
+      font-size: var(--text-lg);
+      color: var(--color-gray400);
+    }
+
+    &:focus {
+      border: 1px solid #3692ff;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  textarea {
+    padding: 16px 24px;
+    width: 100%;
+    height: 282px;
+    font-size: var(--text-lg);
+    border: 1px solid transparent;
+    resize: none;
     border-radius: 12px;
     background-color: var(--color-gray100);
     color: var(--color-gray800);
@@ -60,6 +75,15 @@
   font-weight: 800;
   color: var(--color-error);
   text-align: left;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: var(--text-2lg);
+  font-weight: bold;
+  text-align: left;
+  color: var(--color-gray800);
 }
 
 .select-box {

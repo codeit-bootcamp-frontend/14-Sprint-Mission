@@ -68,6 +68,12 @@ button.el-btn {
     background: transparent url("../images/ic_search.png") no-repeat left
       center/24px;
   }
+
+  &.btn-remove {
+    width: 24px;
+    height: 24px;
+    background: url("../images/ic_X.png") no-repeat center;
+  }
 }
 
 @media (width < 768px) {

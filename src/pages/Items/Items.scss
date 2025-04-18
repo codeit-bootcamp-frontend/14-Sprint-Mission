@@ -2,7 +2,6 @@
 
 .contents {
   .items-wrap {
-    padding-bottom: 58px;
     &.best {
       padding-bottom: 40px;
       .title {
@@ -16,14 +15,6 @@
 
     .el-btn.btn-s {
       color: var(--color-gray100);
-    }
-  }
-}
-
-@media (width < 1200px) {
-  .contents {
-    .items-wrap {
-      padding-bottom: 70px;
     }
   }
 }
