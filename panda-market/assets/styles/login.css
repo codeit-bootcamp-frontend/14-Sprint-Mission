@@ -1,8 +1,11 @@
 /* login.css */
+* {
+  box-sizing: border-box;
+}
+
 .body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .login-page {
@@ -69,7 +72,6 @@ input {
   outline: none;
   border: 2px solid rgba(49, 130, 246, 0);
   background: var(--Cool-Gray-100, #f3f4f6);
-  box-sizing: border-box;
 }
 
 .password-wrapper {
@@ -118,7 +120,6 @@ input {
   border-radius: 8px;
   border: none;
   background: #e6f2ff;
-  box-sizing: border-box;
 }
 
 .sns-buttons {
