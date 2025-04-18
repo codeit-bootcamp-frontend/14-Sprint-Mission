@@ -1,0 +1,62 @@
+@charset 'uft-8';
+
+/* layout */
+.layout-sign {
+  padding: 100px 0;
+
+  .contents {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .sign-form {
+    margin-top: 40px;
+    .input-box {
+      margin-bottom: 24px;
+    }
+  }
+
+  .sign-msg {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: var(--text-md);
+
+    .link-txt {
+      font-weight: 500;
+      font-size: var(--text-md);
+      color: var(--color-primary-100);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* tablet */
+@media (width < 1200px) {
+  .layout-sign {
+    padding-top: 48px;
+  }
+}
+
+/* mobile */
+@media (width < 768px) {
+  .layout-sign {
+    padding: 24px 16px 0;
+
+    .contents {
+      max-width: 400px;
+    }
+
+    .sign-form {
+      margin-top: 24px;
+
+      .input-box {
+        margin-bottom: 16px;
+      }
+
+      .el-btn.btn-l {
+        line-height: 56px;
+      }
+    }
+  }
+}

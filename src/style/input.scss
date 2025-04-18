@@ -1,0 +1,128 @@
+@charset "uft-8";
+
+.el-txt-input {
+  position: relative;
+
+  label {
+    display: block;
+    margin-bottom: 16px;
+    font-size: var(--text-2lg);
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-gray800);
+  }
+
+  input {
+    padding: 15px 50px 15px 24px;
+    width: 100%;
+    font-size: var(--text-lg);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background-color: var(--color-gray100);
+    color: var(--color-gray800);
+
+    &::placeholder {
+      font-size: var(--text-lg);
+      color: var(--color-gray400);
+    }
+
+    &:focus {
+      border: 1px solid #3692ff;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .el-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 24px;
+  }
+
+  .has-btn {
+    position: relative;
+  }
+
+  &.error input {
+    border-color: var(--color-error);
+  }
+
+  &.search input {
+    width: 470px;
+    padding: 11px 44px 10px;
+    background: var(--color-gray100) url("../images/ic_search.png") no-repeat
+      left 16px center;
+  }
+}
+.error-txt {
+  padding: 8px 0 0 16px;
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--color-error);
+  text-align: left;
+}
+
+.select-box {
+  position: relative;
+  select {
+    width: 130px;
+    height: 42px;
+    padding: 12px 20px;
+    border: 1px solid var(--color-gray200);
+    border-radius: 12px;
+    font-size: var(--text-lg);
+    color: var(--color-gray900);
+    appearance: none;
+    background: url("../images/ic_arrow_down.png") no-repeat right 20px center;
+  }
+}
+
+@media (width < 1200px) {
+  .el-txt-input.search input {
+    width: 248px;
+    padding: 9px 24px 8px 44px;
+  }
+}
+
+@media (width < 768px) {
+  .el-txt-input {
+    label {
+      font-size: var(--text-md);
+
+      & + input {
+        margin-top: 8px;
+      }
+    }
+
+    &.search {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .select-box {
+    &::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 42px;
+      background: url("../images/ic_filter.png") no-repeat center/24px;
+      border: 1px solid var(--color-gray200);
+      border-radius: 12px;
+    }
+
+    select {
+      width: 42px;
+      height: 42px;
+      background: none;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+  }
+}
