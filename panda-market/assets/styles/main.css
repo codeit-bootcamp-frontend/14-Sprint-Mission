@@ -1,0 +1,269 @@
+/* main.css */
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 clamp(16px, 6vw, 24px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.logo img {
+  width: 153px;
+  height: 51px;
+}
+
+.login-btn {
+  background-color: var(--primary-100);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  width: 128px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: var(--primary-200);
+}
+
+.main-banner,
+.sub-banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100vw;
+  height: 540px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background: #cfe5ff;
+}
+
+.main-banner-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.main-banner-left,
+.sub-banner-left {
+  display: flex;
+  padding-bottom: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.main-banner-text,
+.sub-banner-text {
+  color: var(--Secondary-700);
+  font-family: "Pretendard";
+  font-size: var(--fs-title);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  white-space: nowrap;
+  margin-bottom: 32px;
+}
+
+.browse-btn {
+  display: flex;
+  padding: 16px 124px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: var(--primary-100);
+  color: var(--secondary-50);
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.browse-btn:hover {
+  background-color: var(--primary-200);
+}
+
+.main-banner-image,
+.sub-banner-image {
+  display: flex;
+  width: 746px;
+  height: 340px;
+  padding-right: 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 공통 카드 섹션 */
+.info-card-section {
+  background: #fff;
+  display: flex;
+  padding: 138px 466px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-card {
+  display: flex;
+  width: 988px;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  border-radius: 12px;
+  background: #fcfcfc;
+  box-sizing: border-box;
+}
+
+.info-card-image {
+  background: var(--secondary-100);
+  width: 588px;
+  height: 444px;
+  flex-shrink: 0;
+}
+
+.info-card-text {
+  display: flex;
+  padding-right: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info-card-label {
+  color: var(--primary-100);
+}
+
+.info-card-title {
+  color: var(--Secondary-700, #374151);
+  font-family: "pretendard";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  margin-bottom: 12px;
+}
+
+.info-card-description {
+  color: var(--secondary-700);
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.info-card.reverse {
+  flex-direction: row-reverse;
+  gap: 32px;
+}
+
+.info-card.reverse .info-card-text {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.sub-banner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sub-banner-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: auto;
+  padding-top: 200px;
+  gap: 32px;
+}
+
+.sub-banner-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.footer {
+  background-color: var(--secondary-900);
+  color: var(--Secondary-400, #9ca3af);
+  line-height: normal;
+  font-size: 16px;
+  font-weight: 400;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 1120px;
+  padding-top: 32px;
+}
+
+.copyright {
+  text-align: left;
+}
+
+.footer-links {
+  display: flex;
+  text-align: center;
+  gap: 30px;
+  transition: color 0.3s ease;
+}
+
+.footer-links > a {
+  text-decoration: none;
+  color: var(--Secondary-400, #9ca3af); /* 링크 색상도 설정 */
+}
+
+.footer-links > a:hover {
+  color: #ffffff; /* 호버 시 색상 변경 */
+}
+
+.footer-sns-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.footer-sns-links > img {
+  width: 20px;
+  height: 20px;
+}
