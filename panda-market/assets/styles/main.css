@@ -1,17 +1,29 @@
 /* main.css */
+* {
+  box-sizing: border-box;
+}
+
+main {
+  padding-top: 70px;
+}
+
 .body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 /* header */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: #ffffff;
   border-bottom: 1px solid #dfdfdf;
   height: 70px;
   display: flex;
   align-items: center;
+  z-index: 1000;
 }
 
 .header-inner {
@@ -19,10 +31,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
   max-width: 1200px;
   padding: 0 clamp(16px, 6vw, 24px);
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .logo img {
@@ -58,7 +70,6 @@
   width: 100vw;
   height: 540px;
   flex-shrink: 0;
-  box-sizing: border-box;
   background: #cfe5ff;
 }
 
@@ -137,7 +148,6 @@
   gap: 64px;
   border-radius: 12px;
   background: #fcfcfc;
-  box-sizing: border-box;
 }
 
 .info-card-image {
@@ -196,7 +206,6 @@
   padding-top: 60px;
   padding-bottom: 0;
   height: 100%;
-  box-sizing: border-box;
 }
 
 .sub-banner-left {
