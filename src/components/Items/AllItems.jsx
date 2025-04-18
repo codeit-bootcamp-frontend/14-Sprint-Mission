@@ -6,9 +6,9 @@ import Pagenation from "../Pagenation/Pagenation";
 import { getItems } from "../../api/api";
 import "./ItemComponent.scss";
 import useItemFetcher from "../../hooks/useItemFetcher";
-import TextInput from "../Input/TextInput";
+import TextFiled from "../Input/TextFiled";
 
-function AllItems({ itemCount, onLoading, onError }) {
+function AllItems({ itemCount }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function AllItems({ itemCount, onLoading, onError }) {
 
   const handleOrder = (value) => {
     setSearchParams({
-      search,
+      search: searchQuery,
       order: value,
       page: 1,
     });
@@ -44,7 +44,7 @@ function AllItems({ itemCount, onLoading, onError }) {
 
   const handlePageChange = (newPage) => {
     setSearchParams({
-      search,
+      search: searchQuery,
       order,
       page: newPage,
     });
@@ -60,7 +60,7 @@ function AllItems({ itemCount, onLoading, onError }) {
         <h2 className="title">전체 상품</h2>
         <div className="sort">
           <form onSubmit={handleSearch}>
-            <TextInput
+            <TextFiled
               type="search"
               placeholder="검색할 상품을 입력해주세요"
               value={localSearch}

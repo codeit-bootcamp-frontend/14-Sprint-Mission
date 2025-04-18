@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BigLogo from "../../components/BigLogo/BigLogo";
-import TextInput from "../../components/Input/TextInput";
+import TextFiled from "../../components/Input/TextFiled";
 import SNSLogin from "../../components/SNSLogin/SNSLogin";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sign.scss";
@@ -70,7 +70,7 @@ function Login() {
         <BigLogo />
         <div className="sign-form">
           <form onSubmit={handleSubmit}>
-            <TextInput
+            <TextFiled
               id="email"
               name="email"
               label="이메일"
@@ -81,7 +81,7 @@ function Login() {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <TextInput
+            <TextFiled
               id="password"
               name="password"
               label="비밀번호"

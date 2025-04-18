@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function TextInput({
+function TextFiled({
   id,
   name,
   label,
@@ -79,4 +79,4 @@ function TextInput({
   );
 }
 
-export default TextInput;
+export default TextFiled;

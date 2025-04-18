@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SubHeader from "../../components/Header/SubHeader/SubHeader";
-import TextInput from "../../components/Input/TextInput";
+import TextFiled from "../../components/Input/TextFiled";
 import ImageUploader from "../../components/Input/ImageUploader/ImageUploader";
 import TagInput from "../../components/Input/TageInput/TagInput";
 import "./AddItem.scss";
@@ -50,7 +50,7 @@ function AddItem() {
             </button>
           </div>
           <ImageUploader value={imageData} onChange={setImageData} />
-          <TextInput
+          <TextFiled
             id="productName"
             name="productName"
             label="상품명"
@@ -59,7 +59,7 @@ function AddItem() {
             value={values.productName}
             onChange={(e) => handleInputChange(e, "productName")}
           />
-          <TextInput
+          <TextFiled
             id="productInfo"
             name="productInfo"
             label="상품 소개"
@@ -68,7 +68,7 @@ function AddItem() {
             value={values.productInfo}
             onChange={(e) => handleInputChange(e, "productInfo")}
           />
-          <TextInput
+          <TextFiled
             id="price"
             name="price"
             label="판매가격"
