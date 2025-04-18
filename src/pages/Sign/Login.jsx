@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BigLogo from "../../components/BigLogo/BigLogo";
 import TextInput from "../../components/Input/TextInput";
-import PwInput from "../../components/Input/PwInput";
 import SNSLogin from "../../components/SNSLogin/SNSLogin";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sign.scss";
@@ -16,7 +15,9 @@ function Login() {
     email: "",
     password: "",
   });
-  const [isValid, setIsValid] = useState(false);
+  const hasError = Object.values(error).some(Boolean);
+  const hasEmpty = Object.values(form).some((val) => val === "");
+  const isValid = !hasEmpty && !hasError;
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,6 +27,12 @@ function Login() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+    handleValidate(name, value);
   };
 
   const handleValidate = (name, value) => {
@@ -50,13 +57,6 @@ function Login() {
     }));
   };
 
-  useEffect(() => {
-    const hasError = Object.values(error).some(Boolean);
-    const hasEmpty = Object.values(form).some((val) => val === "");
-
-    setIsValid(!hasError && !hasEmpty);
-  }, [form, error]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
@@ -79,17 +79,19 @@ function Login() {
               value={form.email}
               error={error.email}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
-            <PwInput
+            <TextInput
               id="password"
               name="password"
               label="비밀번호"
+              type="password"
               placeholder="비밀번호를 입력해주세요"
               value={form.password}
+              visibleBtn={true}
               error={error.password}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
             <button type="submit" className="el-btn btn-l" disabled={!isValid}>
               로그인
