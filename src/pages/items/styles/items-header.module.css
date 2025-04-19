@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 0 200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.nav {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navLink {
+  padding: 21px 15px;
+  text-decoration: none;
+  color: var(--gray-600);
+}
+
+.active {
+  color: #3692ff;
+}
+
+.profile {
+  margin-left: auto;
+}
