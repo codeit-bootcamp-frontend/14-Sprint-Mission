@@ -1,0 +1,66 @@
+.allProducts {
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 1200px;
+}
+.allProductsNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.allProductsTitle {
+  flex-grow: 1;
+  composes: font-xl font-bold from global;
+}
+.allProductsSearchInput {
+  width: 325px;
+  height: 42px;
+  padding: 9px 20px;
+  padding-left: 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--gray-100);
+  composes: font-lg font-regular from global;
+}
+
+.allProductsSearchInput::placeholder {
+  color: var(--gray-400);
+}
+
+.addProduct {
+  width: auto;
+  height: 42px;
+  padding: 12px 23px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-100);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: var(--gray-100);
+  composes: font-lg font-semibold from global;
+}
+
+.filter {
+  appearance: none; /* 표준 */
+  -webkit-appearance: none; /* 사파리/크롬 */
+  -moz-appearance: none; /* 파이어폭스 */
+
+  width: 130px;
+  height: 42px;
+  padding: 12px 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+}
+.filterOption {
+  width: 130px;
+  height: 42px;
+  border-radius: 12px 12px 0 0;
+}
+.allProductsList {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px;
+}
