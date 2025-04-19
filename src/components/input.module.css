@@ -19,6 +19,10 @@
   border-radius: 12px;
 }
 
+.input__field--error {
+  border: 1px solid #f74747;
+}
+
 .input__field::placeholder {
   color: var(--gray-400);
   font-weight: 400;
