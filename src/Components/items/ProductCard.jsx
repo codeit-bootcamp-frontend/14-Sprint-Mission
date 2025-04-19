@@ -1,8 +1,9 @@
 import heartIcon from "../../assets/heart-Icon.png";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, cardType = "best" }) => {
   return (
-    <div>
+    <Link to={`/product/${product.id}`} key={product.id}>
       <img
         src={
           product.images?.[0]
@@ -30,7 +31,7 @@ const ProductCard = ({ product, cardType = "best" }) => {
           <div className="text-[#4B5563]">{product.favoriteCount}</div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

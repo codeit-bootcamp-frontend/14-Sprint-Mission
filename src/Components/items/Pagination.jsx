@@ -1,17 +1,8 @@
 import btnRight from "../../assets/btn-right.png";
 import btnLeft from "../../assets/btn-left.png";
 
-const Pagination = ({
-  currentPage,
-  onPageClick,
-  totalCount,
-  visibleCount,
-  pageSize,
-}) => {
+const Pagination = ({ currentPage, onPageClick, totalCount, pageSize }) => {
   const totalPages = Math.ceil(totalCount / pageSize);
-  console.log(totalCount);
-  console.log(visibleCount);
-  console.log(totalPages);
 
   const pageGroupSize = 5;
   const currentGroup = Math.floor((currentPage - 1) / pageGroupSize);
