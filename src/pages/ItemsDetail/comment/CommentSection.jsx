@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import styles from './CommentSection.module.css';
-import useProductsComments from 'hooks/useProductsComments';
-import CommentList from './CommentList';
 import Button from 'components/ui/Button';
 import Icon from 'components/ui/Icon';
-import { useNavigate } from 'react-router-dom';
 import emptyImg from 'assets/img/Img_inquiry_empty_2x.png';
-import Modal from 'components/ui/Modal';
-import { deleteComment } from 'api';
+import { useNavigate, useParams } from 'react-router-dom';
+import useProductsComments from 'hooks/useProductsComments';
+import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
 
 
 function CommentSection() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const {
     loading,
     data,
     nextCursor
-  } = useProductsComments();
+  } = useProductsComments(id);
 
   const handleGoBack = () => {
     navigate(-1); // ← 이전 페이지로 이동
   };
+
   return (
     <>
-        <CommentForm />
+        <CommentForm prodId={id} />
         {data.length > 0 ? (
-          <CommentList items={data} className='w-full'/>
+          <CommentList items={data} prodId={id} className='w-full'/>
         ):(
           <div className='mt-12 mb-20 text-center'>
             <img src={emptyImg} className='w-[174px] mx-auto' alt='빈페이지' />

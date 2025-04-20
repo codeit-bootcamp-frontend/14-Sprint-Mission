@@ -1,7 +1,7 @@
 .selectBox {
   position: relative;
   width: 130px;
-  z-index: 99;
+  z-index: 999;
 }
 .selectBox .selectBtn {
   display: flex;
@@ -33,6 +33,7 @@
   border: 1px solid var(--Cool_Gray_200);
   overflow: hidden;
   transform: scaleY(0);
+  z-index: 99;
 }
 
 .selectboxOption.active {

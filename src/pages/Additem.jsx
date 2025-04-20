@@ -37,6 +37,7 @@ function Additem() {
         <Button 
           variant="roundedSS" 
           disabled = { !product.name || !product.description || !product.price }
+          heightError='true'
         >등록</Button>
       </Title>
     

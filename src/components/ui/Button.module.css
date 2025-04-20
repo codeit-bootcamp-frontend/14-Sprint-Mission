@@ -16,7 +16,16 @@
   opacity: 0;
 }
 .btn:hover .top {
-  transform: translateX(-50%) translateY(49%);
+  transform: translateX(-50%) translateY(50%);
+  opacity: 1;
+}
+.btn:disabled .top {
+  transform: translateX(-50%) translateY(-15%) !important;
+  opacity: 0 !important;
+}
+
+.btn:hover._2 .top {
+  transform: translateX(-50%) translateY(77%);
   opacity: 1;
 }
 .btn .front {
@@ -29,6 +38,10 @@
 .btn:hover .front {
   transform: translateY(50%);
   opacity: 0;
+}
+.btn:disabled .front {
+  transform: translateY(0px) !important;
+  opacity: 1 !important;
 }
 /* btn_large */
 .btn.roundedXL {
@@ -64,8 +77,9 @@
 .btn.roundedSS {
   display: inline-flex;
   font-size: 16px;
-  padding: 8px 23px;
+  padding: 11px 23px;
   border-radius: 8px;
+  line-height: 1;
 }
 .btn.roundedXL,
 .btn.roundedL,
@@ -82,8 +96,8 @@
 .btn.roundedM:hover,
 .btn.roundedS:hover,
 .btn.roundedSS:hover {
-  background-color: var(--Primary_200);
   animation: color-change-2x 1.5s linear infinite alternate both;
+  background-color: var(--Primary_200);
   color: #fff;
 }
 .btn.roundedXL:active,
@@ -108,6 +122,7 @@
 .btn.roundedS:disabled,
 .btn.roundedSS:disabled {
   background-color: var(--Cool_Gray_400);
+  animation: none;
 }
 
 @keyframes color-change-2x {

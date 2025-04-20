@@ -19,7 +19,6 @@ function ProductDescription({detailData}) {
     tags
   } = detailData;
 
-  console.log(detailData);
   // '2025-04-08T01:00:06+09:00'  '2025-04-07T01:00:06+09:00'
   const createdAtString = formatDate(createdAt);
   // console.log(createdAtString);

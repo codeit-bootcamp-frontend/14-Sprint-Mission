@@ -75,3 +75,15 @@ export async function deleteComment(commentId) {
     throw error;
   }
 }
+// 댓글 등록
+export async function postProductComment(id, content) {
+  try {
+    const response = await requestor.post(`/products/${id}/comments`, {
+      content,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('댓글 작성 실패:', error);
+    throw error;
+  }
+}

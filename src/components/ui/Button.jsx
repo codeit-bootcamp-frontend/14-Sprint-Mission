@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 import clsx from 'clsx';
 
-function Button({ variant, className, link, children, ...restProps }) {
-  const combinedClassName = clsx(styles.btn, styles[variant], className, 'flex gap-2');
+function Button({ variant, className, link, children,heightError, ...restProps }) {
+  let combinedClassName = clsx(styles.btn, styles[variant], className, 'flex gap-2');
+
+  if(heightError) combinedClassName = clsx(styles.btn, styles._2, styles[variant], className, 'flex gap-2');
+  
   if (link) {
     return (
       <Link

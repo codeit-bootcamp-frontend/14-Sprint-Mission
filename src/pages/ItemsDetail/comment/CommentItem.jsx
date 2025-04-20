@@ -9,7 +9,6 @@ import Button from 'components/ui/Button';
 import { deleteComment, updateComment } from 'api';
 import Icon from 'components/ui/Icon';
 import DropdownMenu from 'components/ui/DropdownMenu';
-import Modal from 'components/ui/Modal';
 
 
 
@@ -38,7 +37,7 @@ function CommentItem({commentItem,setShowConfirm}) {
     }
   };
   return (
-    <li className={clsx(styles.commentItem,'flex gap-4 flex-col border-b border-b-[var(--Cool_Gray_200)] pb-3 relative')}>
+    <li className={clsx(styles.commentItem,'flex gap-4 flex-col border-b border-b-[var(--Cool_Gray_200)] pb-3 relative fade-in' )}>
       {editMode === true ? (
           <div>
             <TextAreaBox height='80px' placeholder='내용을 입력해주세요' defaultValue={content} value={editValue} onChange={({ target }) => setEditValue(target.value)}  />
@@ -55,8 +54,8 @@ function CommentItem({commentItem,setShowConfirm}) {
                 <Icon iconName='ic_kebab' alt='드롭다운 버튼'/>
               </div>
               <DropdownMenu isOpen={isOpen}>
-                <div><button onClick={() => setShowConfirm(true)}>삭제하기</button></div>
-                <div><button onClick={() => setEditMode(true)} variant="none">수정하기</button></div>
+                <div onClick={() => setIsOpen(!isOpen)}><button onClick={() => setShowConfirm(true)}>삭제하기</button></div>
+                <div onClick={() => setIsOpen(!isOpen)}><button onClick={() => setEditMode(true)} variant="none">수정하기</button></div>
               </DropdownMenu> 
             </div>
           </div>

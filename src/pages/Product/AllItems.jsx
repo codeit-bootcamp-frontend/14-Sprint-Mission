@@ -46,7 +46,7 @@ function AllItems({ items, query, setMergedQuery, totalCount, updateQuery, scree
 
   return (
     <>
-      <Container>
+      <Container className='relative z-20'>
         <div className={styles.prodListTitle}>
           <div className="left">
             <div className={styles.title}>전체상품</div>
@@ -72,6 +72,7 @@ function AllItems({ items, query, setMergedQuery, totalCount, updateQuery, scree
               link="Additem"
               variant="roundedSS"
               className={styles.prodAddBtn}
+               heightError='true'
             >
               상품 등록하기
             </Button>

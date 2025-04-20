@@ -9,7 +9,7 @@ import Modal from 'components/ui/Modal';
 
 
 
-function CommentList({items}) {
+function CommentList({items,prodId}) {
   
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -17,12 +17,11 @@ function CommentList({items}) {
     try {
       await deleteComment(id);
       console.log(' 댓글 삭제 완료');
-      // 예: 목록 다시 불러오기 or 상태 업데이트
     } catch (err) {
       console.error(' 삭제 실패:', err);
     }
   };
-
+  
   const confirmDelete = (id) => {
     handleDelete(id);
     setShowConfirm(false);
@@ -42,6 +41,7 @@ function CommentList({items}) {
           <CommentItem
             key={item.id} 
             id={item.id} 
+            prodId={prodId}
             commentItem={item}
             setShowConfirm={setShowConfirm}
             confirmDelete={confirmDelete}

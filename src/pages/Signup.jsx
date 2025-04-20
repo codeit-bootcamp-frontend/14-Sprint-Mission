@@ -8,6 +8,7 @@ import MembersLogo from './members/MembersLogo';
 import SnsLogin from './members/SnsLogin';
 import eyeOpen from 'assets/eye_1.svg';
 import eyeClose from 'assets/eye_2.svg';
+import Button from 'components/ui/Button';
 
 function Login() {
   const [email, setEmail] = useState('user@mail.com');
@@ -106,8 +107,8 @@ function Login() {
               <img src={pwdCheckBoxType? eyeOpen : eyeClose}  onClick={handleEyepwdCheck} alt="password type" className={styles.eye} />
               { errorCase.pwdCheck === '' ? null : (<span className={styles.error}>{errorCase.pwdCheck}</span>) }
             </label>
-
-            <button type="submit" className={styles.submit} disabled={errorCase.email === '' && errorCase.name === '' && errorCase.password === '' && errorCase.pwdCheck === '' ? false : true}>회원가입</button>
+         
+            <Button type="submit" variant='roundedXL' className={styles.submit} disabled={errorCase.email === '' && errorCase.name === '' && errorCase.password === '' && errorCase.pwdCheck === '' ? false : true}>회원가입</Button>
           </form>
         </div>
         <SnsLogin />
