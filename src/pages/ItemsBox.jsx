@@ -50,7 +50,7 @@ function ItemsBox() {
   } = useItemQuery(INITIAL_QUERY,VISIBLE_ITEMS);
  
 
-  const { loading:loadingBest, items:itemsBest, itemQuery, setItemQuery } = useItems(INITIAL_QUERY_BEST,VISIBLE_ITEMS_BEST);
+  const { loading:loadingBest, items:itemsBest, setItemQuery } = useItems(INITIAL_QUERY_BEST,VISIBLE_ITEMS_BEST);
 
   // 페이지 반응형 달라질때마다 pageSize 수정
   useEffect(() => {

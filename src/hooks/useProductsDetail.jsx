@@ -17,7 +17,7 @@ const useProductsDetail = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [id]);
   
   useEffect(() => {
     fetchItems();
