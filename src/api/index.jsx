@@ -56,6 +56,7 @@ export async function getProductsComments(id, limit = 4, cursor = 0) {
 
 // 댓글 수정
 export async function updateComment(commentId, content) {
+  console.log('updateComments',commentId);
   try {
     const response = await requestor.patch(`/comments/${commentId}`, {
       content,
@@ -68,6 +69,7 @@ export async function updateComment(commentId, content) {
 }
 // 댓글 삭제
 export async function deleteComment(commentId) {
+  console.log('deleteComments',commentId);
   try {
     await requestor.delete(`/comments/${commentId}`);
   } catch (error) {
@@ -77,6 +79,7 @@ export async function deleteComment(commentId) {
 }
 // 댓글 등록
 export async function postProductComment(id, content) {
+  console.log('postComments',id);
   try {
     const response = await requestor.post(`/products/${id}/comments`, {
       content,

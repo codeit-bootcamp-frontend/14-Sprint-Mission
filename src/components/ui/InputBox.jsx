@@ -32,7 +32,7 @@ export function InputField({ label, boxType, placeholder, ...rest }) {
 export function TextAreaBox({ placeholder, height, ...rest }) {
   return (
     <textarea 
-      className={clsx(styles.input,'w-full h-20 text-sm')} 
+      className={clsx(styles.input,'w-full  text-sm desktop:h-20 mobile:h-36')} 
       placeholder={placeholder}  
       {...rest}
     />

@@ -4,6 +4,7 @@ import UserInfo from 'components/ui/UserInfo';
 import { formatDate } from 'utils/date';
 import Icon from 'components/ui/Icon';
 import Button from 'components/ui/Button';
+import clsx from 'clsx';
 
 function ProductDescription({detailData}) {
   
@@ -29,10 +30,10 @@ function ProductDescription({detailData}) {
   
   return (
     <div className={styles.description}>
-      <div>
-        <div className={styles.title}>
-          <h2>{name}</h2>
-          <h3>{price?.toLocaleString()}원</h3>
+      <div className='mobile:mb-10'>
+        <div className={clsx(styles.title,'tablet:gap-2')}>
+          <h2 className='desktop:text-xl tablet:text-xl mobile:text-base '>{name}</h2>
+          <h3 className='desktop:text-4xl tablet:text-3xl mobile:text-2xl'>{price?.toLocaleString()}원</h3>
         </div>
         <ul>
           <li>

@@ -11,13 +11,11 @@
 }
 
 .title h2 {
-  font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
 }
 
 .title h3 {
-  font-size: 40px;
   font-weight: 700;
 }
 .description > div > ul {
@@ -54,4 +52,14 @@
 .likeBtnBox {
   padding-left: 24px;
   border-left: 1px solid var(--Cool_Gray_200);
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .description > div > ul > li > div {
+    flex-wrap: wrap;
+  }
+}
+/* Mobile */
+@media (max-width: 767px) {
 }

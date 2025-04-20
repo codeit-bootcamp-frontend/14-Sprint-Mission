@@ -10,7 +10,7 @@ import CommentForm from './CommentForm';
 
 
 
-function CommentSection() {
+function CommentSection({setDeleteComment, setShowConfirm,  confirmDelete}) {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -28,7 +28,7 @@ function CommentSection() {
     <>
         <CommentForm prodId={id} />
         {data.length > 0 ? (
-          <CommentList items={data} prodId={id} className='w-full'/>
+          <CommentList items={data} prodId={id} setDeleteComment={setDeleteComment} setShowConfirm={setShowConfirm} confirmDelete={confirmDelete} className='w-full'/>
         ):(
           <div className='mt-12 mb-20 text-center'>
             <img src={emptyImg} className='w-[174px] mx-auto' alt='빈페이지' />

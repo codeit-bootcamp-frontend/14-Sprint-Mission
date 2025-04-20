@@ -6,7 +6,7 @@ const useProductsComments = (id) => {
   const [loading, setLoading] = useState(true);
   const [nextCursor, setNextCursor] = useState(0);
   const [data, setData] = useState([]);
-  const moreViewLength = 1;
+  const  [moreViewLength, setMoreViewLength] = useState(4);
 
   const fetchItems = useCallback(async () => {
     if(nextCursor === null) return;
@@ -20,10 +20,11 @@ const useProductsComments = (id) => {
                 const newItems = response.list.filter(item => !existingIds.has(item.id));
                 return [...prev, ...newItems];
               });
-            }, 1000);
+            }, 800);
         } else {
           setData(response.list);
         }
+        setMoreViewLength(1);
         setNextCursor(response.nextCursor);
     } catch (error) {
       console.error("데이터 가져오기 오류:", error);

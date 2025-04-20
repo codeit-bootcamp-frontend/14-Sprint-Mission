@@ -12,7 +12,7 @@ import DropdownMenu from 'components/ui/DropdownMenu';
 
 
 
-function CommentItem({commentItem,setShowConfirm}) {
+function CommentItem({commentItem, setShowConfirm, setDeleteComment}) {
   const {
     id,
     content,
@@ -46,7 +46,7 @@ function CommentItem({commentItem,setShowConfirm}) {
               <Button onClick={handleUpdate} variant="roundedSS">수정 완료</Button>
             </div>
           </div>
-        ):(
+        ):(              
           <div>
             <span>{content}</span>
             <div className='absolute top-0 right-0 cursor-pointer'>
@@ -54,7 +54,16 @@ function CommentItem({commentItem,setShowConfirm}) {
                 <Icon iconName='ic_kebab' alt='드롭다운 버튼'/>
               </div>
               <DropdownMenu isOpen={isOpen}>
-                <div onClick={() => setIsOpen(!isOpen)}><button onClick={() => setShowConfirm(true)}>삭제하기</button></div>
+                <div onClick={() => setIsOpen(!isOpen)}>
+                  <button 
+                    variant="none"
+                    onClick={() => {
+                      setShowConfirm(true);
+                      setDeleteComment(id);
+                    }}>
+                    삭제하기
+                  </button>
+                </div>
                 <div onClick={() => setIsOpen(!isOpen)}><button onClick={() => setEditMode(true)} variant="none">수정하기</button></div>
               </DropdownMenu> 
             </div>
