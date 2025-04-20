@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductOverview from './ProductOverview';
 import ProductDescription from './ProductDescription';
-import styles from './ProductDetails.module.css';
 import Container from 'components/layout/Container';
 import CommentSection from './comment/CommentSection';
 

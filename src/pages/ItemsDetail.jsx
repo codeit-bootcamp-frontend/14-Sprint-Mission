@@ -3,7 +3,6 @@ import useProductsDetail from 'hooks/useProductsDetail';
 import ProductDetails from './ItemsDetail/ProductDetails';
 import styles from './ItemsDetail.module.css';
 import Modal from 'components/ui/Modal';
-import { deleteComment } from 'api';
 import Icon from 'components/ui/Icon';
 import Button from 'components/ui/Button';
 

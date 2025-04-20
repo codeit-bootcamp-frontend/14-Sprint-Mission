@@ -3,7 +3,6 @@ import { postProductComment } from 'api';
 import Button from 'components/ui/Button';
 import { TextAreaBox } from 'components/ui/InputBox';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 function CommentForm({prodId}) {
 

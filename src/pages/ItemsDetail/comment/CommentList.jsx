@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './CommentList.module.css';
 import clsx from 'clsx';
-import Button from 'components/ui/Button';
-import { deleteComment } from 'api';
-import Icon from 'components/ui/Icon';
 import CommentItem from './CommentItem';
-import Modal from 'components/ui/Modal';
 
 
 
-function CommentList({items,prodId, setDeleteComment, setShowConfirm,  confirmDelete}) {
+function CommentList({items,prodId, setDeleteComment, setShowConfirm}) {
   
 
   return (

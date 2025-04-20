@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import BestItems from './Product/BestItems';
 import AllItems from './Product/AllItems';
 import Container from 'components/layout/Container';

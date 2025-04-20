@@ -6,7 +6,7 @@ import UserInfo from 'components/ui/UserInfo';
 import clsx from 'clsx';
 import { TextAreaBox } from 'components/ui/InputBox';
 import Button from 'components/ui/Button';
-import { deleteComment, updateComment } from 'api';
+import { updateComment } from 'api';
 import Icon from 'components/ui/Icon';
 import DropdownMenu from 'components/ui/DropdownMenu';
 
@@ -16,9 +16,7 @@ function CommentItem({commentItem, setShowConfirm, setDeleteComment}) {
   const {
     id,
     content,
-    createdAt,
     updatedAt,
-    writer
   } = commentItem;
 
   const [editMode, setEditMode] = useState(false);

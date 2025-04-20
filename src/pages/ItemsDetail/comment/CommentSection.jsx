@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import styles from './CommentSection.module.css';
+import React from 'react';
 import Button from 'components/ui/Button';
 import Icon from 'components/ui/Icon';
 import emptyImg from 'assets/img/Img_inquiry_empty_2x.png';
@@ -15,9 +14,7 @@ function CommentSection({setDeleteComment, setShowConfirm,  confirmDelete}) {
   const { id } = useParams();
 
   const {
-    loading,
     data,
-    nextCursor
   } = useProductsComments(id);
 
   const handleGoBack = () => {

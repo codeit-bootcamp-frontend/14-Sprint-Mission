@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
 import styles from "./AllItems.module.css";
 import Container from "components/layout/Container";
 import Icon from "components/ui/Icon";

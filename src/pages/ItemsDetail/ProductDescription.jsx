@@ -9,7 +9,6 @@ import clsx from 'clsx';
 function ProductDescription({detailData}) {
   
   const {
-    id,
     createdAt,
     description,
     favoriteCount,
