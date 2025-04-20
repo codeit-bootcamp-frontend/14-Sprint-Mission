@@ -1,0 +1,19 @@
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.userInfo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.userInfo > div span:first-child {
+  color: var(--Secondary_600);
+  font-size: 14px;
+}
+.userInfo > div span:last-child {
+  color: var(--Cool_Gray_400);
+  font-size: 14px;
+}
