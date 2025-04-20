@@ -8,7 +8,7 @@ function UserInfo({UserImg ='', ownerNickname, createdAtString, fontSize='14px'}
   if(UserImg === '' || UserImg === null) UserImg = tempUserImg;
   return (
     <div className={clsx(styles.userInfo, `text-[${fontSize}]`)}>
-      <img src={UserImg} alt="작성자이미지"/>
+      <span><img src={UserImg} alt="작성자이미지"/></span>
       <div>
         <span>{ownerNickname}</span>
         <span>{createdAtString}</span>
