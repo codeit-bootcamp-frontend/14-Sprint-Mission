@@ -13,7 +13,7 @@ function UserInfo({UserImg ='', ownerNickname, createdAtString, fontSize='14px'}
         <span>{ownerNickname}</span>
         <span>{createdAtString}</span>
       </div>
-    </div>
+    </div>  
   );
 }
 export default UserInfo;
