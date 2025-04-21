@@ -2,29 +2,22 @@ import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { getBestItems } from "../../api/api";
 import "./ItemComponent.scss";
+import useItemFetcher from "../../hooks/useItemFetcher";
+import Loading from "../Loading/Loading";
 
-function BestItems({ itemCount, onLoading, onError }) {
-  const [items, setItems] = useState([]);
+function BestItems({ itemCount }) {
+  const { items, isLoading, error } = useItemFetcher(getBestItems);
 
-  const handleGetBestItem = async () => {
-    try {
-      const result = await getBestItems();
-      setItems(result);
-      onLoading(false);
-    } catch (error) {
-      onLoading(false);
-      onError(error.message);
-    }
-  };
+  if (isLoading) return <Loading />;
 
-  useEffect(() => {
-    handleGetBestItem();
-  }, []);
+  if (error) {
+    alert("베스트 상품 로딩 에러");
+  }
 
   return (
     <div className="items-wrap best">
       <h3 className="title">베스트 상품</h3>
-      <ItemList items={items.list} count={itemCount} />
+      <ItemList items={items?.list || []} count={itemCount} />
     </div>
   );
 }

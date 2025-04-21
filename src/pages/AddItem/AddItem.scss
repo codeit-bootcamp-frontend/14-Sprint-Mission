@@ -1,0 +1,43 @@
+@charset 'uft-8';
+
+.form-additem {
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title {
+      font-weight: bold;
+      font-size: var(--text-xl);
+    }
+
+    .el-btn.btn-s {
+      width: 74px;
+    }
+  }
+
+  .image-uploader {
+    margin-bottom: 32px;
+
+    &.error {
+      margin-bottom: 24px;
+    }
+  }
+
+  .el-txt-input + .el-txt-input {
+    margin-top: 32px;
+  }
+}
+
+@media (width < 1200px) {
+  .form-additem {
+    .image-uploader {
+      margin-bottom: 24px;
+    }
+
+    .el-txt-input + .el-txt-input {
+      margin-top: 24px;
+    }
+  }
+}

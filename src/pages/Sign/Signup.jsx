@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BigLogo from "../../components/BigLogo/BigLogo";
-import TextInput from "../../components/Input/TextInput";
-import PwInput from "../../components/Input/PwInput";
+import TextFiled from "../../components/Input/TextFiled";
 import SNSLogin from "../../components/SNSLogin/SNSLogin";
 import { Link, useNavigate } from "react-router-dom";
 import "./Sign.scss";
@@ -25,8 +24,10 @@ function Signup() {
     password: "",
     passwordChk: "",
   });
-  const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
+  const hasError = Object.values(error).some(Boolean);
+  const hasEmpty = Object.values(form).some((val) => val === "");
+  const isValid = !hasEmpty && !hasError;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,6 +36,12 @@ function Signup() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+    handleValidate(name, value);
   };
 
   const handleValidate = (name, value) => {
@@ -67,13 +74,6 @@ function Signup() {
     }));
   };
 
-  useEffect(() => {
-    const hasError = Object.values(error).some(Boolean);
-    const hasEmpty = Object.values(form).some((val) => val === "");
-
-    setIsValid(!hasError && !hasEmpty);
-  }, [form, error]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isValid) return;
@@ -87,7 +87,7 @@ function Signup() {
         <BigLogo />
         <div className="sign-form">
           <form onSubmit={handleSubmit}>
-            <TextInput
+            <TextFiled
               id="email"
               name="email"
               label="이메일"
@@ -96,9 +96,9 @@ function Signup() {
               value={form.email}
               error={error.email}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
-            <TextInput
+            <TextFiled
               id="name"
               name="nickName"
               label="닉네임"
@@ -107,27 +107,31 @@ function Signup() {
               value={form.nickName}
               error={error.nickName}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
-            <PwInput
+            <TextFiled
               id="password"
               name="password"
               label="비밀번호"
+              type="password"
               placeholder="비밀번호를 입력해주세요"
               value={form.password}
+              visibleBtn={true}
               error={error.password}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
-            <PwInput
+            <TextFiled
               id="passwordChk"
               name="passwordChk"
               label="비밀번호 확인"
+              type="password"
               placeholder="비밀번호를 다시 한 번 입력해주세요"
               value={form.passwordChk}
+              visibleBtn={true}
               error={error.passwordChk}
               onChange={handleChange}
-              handleValidate={handleValidate}
+              onBlur={handleBlur}
             />
             <button type="submit" className="el-btn btn-l" disabled={!isValid}>
               회원가입

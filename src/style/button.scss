@@ -58,6 +58,22 @@ button.el-btn {
       background-image: url("../images/btn_vis_on.png");
     }
   }
+
+  &.btn-search {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    background: transparent url("../images/ic_search.png") no-repeat left
+      center/24px;
+  }
+
+  &.btn-remove {
+    width: 24px;
+    height: 24px;
+    background: url("../images/ic_X.png") no-repeat center;
+  }
 }
 
 @media (width < 768px) {

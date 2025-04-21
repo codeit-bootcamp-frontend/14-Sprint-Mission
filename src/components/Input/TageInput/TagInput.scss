@@ -1,0 +1,30 @@
+@charset 'uft-8';
+
+.tag-input-container {
+  .tag-list {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .tag-item {
+      position: relative;
+      background: var(--color-gray100);
+      border-radius: 26px;
+      padding: 0 42px 0 16px;
+      font-size: var(--text-lg);
+      color: var(--color-gray800);
+      line-height: 36px;
+
+      &::before {
+        content: "#";
+      }
+
+      .el-btn.btn-remove {
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
