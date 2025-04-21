@@ -37,12 +37,12 @@ main {
   margin: 0 auto;
 }
 
-.logo img {
+.header-logo img {
   width: 153px;
   height: 51px;
 }
 
-.login-btn {
+.header-login-btn {
   background-color: var(--primary-100);
   color: white;
   border: none;
@@ -57,7 +57,7 @@ main {
   cursor: pointer;
 }
 
-.login-btn:hover {
+.header-login-btn:hover {
   background-color: var(--primary-200);
 }
 

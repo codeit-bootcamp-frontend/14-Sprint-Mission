@@ -1,4 +1,6 @@
-/* signup.css */
+/* auth.css */
+
+/* 기본 설정 */
 * {
   box-sizing: border-box;
 }
@@ -8,55 +10,8 @@
   padding: 0;
 }
 
-.signup-page {
-  display: flex;
-  width: 100%;
-  max-width: 1920px;
-  padding: 231px 0;
-  justify-content: center;
-  align-items: center;
-  background: #fcfcfc;
-}
-
-.signup-container {
-  display: flex;
-  width: 640px;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  flex-shrink: 0;
-}
-
-.signup-logo {
-  display: flex;
-  width: 640px;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  flex-shrink: 0;
-}
-
-.signup-logo img {
-  width: 396px;
-  height: 132px;
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  align-self: stretch;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-label {
+label,
+span {
   color: var(--secondary-800);
 }
 
@@ -73,6 +28,45 @@ input {
   border: 2px solid rgba(49, 130, 246, 0);
   background: var(--Cool-Gray-100, #f3f4f6);
   box-sizing: border-box;
+}
+
+/* 공통 레이아웃 */
+.auth-page {
+  display: flex;
+  width: 100%;
+  padding: 231px 0;
+  justify-content: center;
+  align-items: center;
+  background: #fcfcfc;
+}
+
+.auth-container {
+  display: flex;
+  width: 640px;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  flex-shrink: 0;
+}
+
+.auth-logo img {
+  width: 396px;
+  height: 132px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .password-wrapper,
@@ -96,22 +90,6 @@ input {
   cursor: pointer;
 }
 
-.btn-signup {
-  display: flex;
-  width: 640px;
-  height: 56px;
-  padding: 16px 124px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 40px;
-  border: none;
-  background: var(--primary-100);
-  color: var(--Cool-Gray-100, #f3f4f6);
-  text-align: center;
-  cursor: pointer;
-}
-
 .easy-login {
   display: flex;
   width: 640px;
@@ -123,7 +101,6 @@ input {
   border-radius: 8px;
   border: none;
   background: #e6f2ff;
-  box-sizing: border-box;
 }
 
 .sns-buttons {
@@ -145,8 +122,55 @@ input {
 }
 
 span {
-  color: var(--secondary-800);
   white-space: nowrap;
+}
+
+/* 로그인 */
+.btn-login {
+  display: flex;
+  width: 640px;
+  height: 56px;
+  padding: 16px 124px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: none;
+  background: var(--primary-100);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.join-guide {
+  color: var(--secondary-800);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.join-guide a {
+  color: var(--primary-100);
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+/* 회원가입 */
+.btn-signup {
+  display: flex;
+  width: 640px;
+  height: 56px;
+  padding: 16px 124px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: none;
+  background: var(--primary-100);
+  color: white;
+  text-align: center;
+  cursor: pointer;
 }
 
 .login-guide {
@@ -161,9 +185,4 @@ span {
   color: var(--primary-100);
   line-height: normal;
   text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-skip-ink: none;
-  text-decoration-thickness: auto;
-  text-underline-offset: auto;
-  text-underline-position: from-font;
 }
