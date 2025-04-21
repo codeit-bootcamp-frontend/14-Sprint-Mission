@@ -1,5 +1,21 @@
 import React from "react";
 
+export interface FormInputType {
+  id: string;
+  type?: string;
+  label?: string;
+  value?: string;
+  placeholder?: string;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  error?:string;
+  hidden?: boolean;
+  className?: string;
+  rightIcon?: React.ReactNode;
+  accept?: string;
+  onChange?: (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  ref?:React.Ref<HTMLInputElement | HTMLTextAreaElement>;
+}
+
 const FormInput = ({
   id,
   type = "text",
@@ -13,7 +29,7 @@ const FormInput = ({
   accept,
   ref,
   ...rest
-}) => {
+}:FormInputType) => {
   return (
     <div className={`${hidden ? "hidden" : "mb-[24px]"}`}>
       {label && !hidden && (
@@ -25,11 +41,9 @@ const FormInput = ({
         {type === "textarea" ? (
           <textarea
             id={id}
-            ref={ref}
-            type={type}
+            ref={ref as React.Ref<HTMLTextAreaElement>}
             placeholder={placeholder}
             onBlur={onBlur}
-            accept={accept}
             {...rest}
             className={`input-primary resize-none px-4 py-3 h-[282px] ${
               error ? "border border-red-500 mb-[8px]" : ""
@@ -38,7 +52,7 @@ const FormInput = ({
         ) : (
           <input
             id={id}
-            ref={ref}
+            ref={ref as React.Ref<HTMLInputElement>}
             type={type}
             placeholder={placeholder}
             onBlur={onBlur}

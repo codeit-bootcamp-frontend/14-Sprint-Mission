@@ -6,7 +6,7 @@ import instagramimg from "../../assets/instagram.png";
 import youtubeimg from "../../assets/youtube.png";
 
 const MainFooter = () => {
-  return (
+    return (
     <footer className="h-[160px] bg-[#111827]">
       <div className="max-w-screen-xl mx-[200px] gap-10 flex justify-between items-center px-6 pt-8 tablet:mx-[100px] tablet:gap-[60px] mobile:mx-[32px] ">
         <div>

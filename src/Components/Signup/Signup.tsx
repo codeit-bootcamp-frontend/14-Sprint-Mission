@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import React from "react";
 import FormInput from "../Common/FormInput";
 import pandaLogo from "../../assets/panda-logo.png";
 import kakaoImg from "../../assets/kakao.png";
@@ -58,7 +58,7 @@ const Signup = () => {
     !passwordError &&
     !confirmError;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateEmail();
     validatePassword();

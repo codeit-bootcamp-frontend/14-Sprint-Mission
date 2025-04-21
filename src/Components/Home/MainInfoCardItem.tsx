@@ -1,3 +1,5 @@
+import { MainInfoCardItemType } from "./MainTypes";
+
 const MainInfoCardItem = ({
   title,
   title2,
@@ -6,7 +8,7 @@ const MainInfoCardItem = ({
   image,
   highlightText,
   reverse,
-}) => {
+}: MainInfoCardItemType) => {
   return (
     <div className="flex flex-col justify-center items-center bg-white gap-8 pc:pt-[138px] pc:pb-[138px] tablet:pt-[24px] tablet:pb-[56px] mobile:pt-[52px] mobile:pb-[83px]">
       <div

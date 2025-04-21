@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FormInput from "../Common/FormInput";
@@ -38,7 +39,7 @@ const Login = () => {
   const isFormValid =
     email && password && emailError === "" && passwordError === "";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateEmail();
     validatePassword();

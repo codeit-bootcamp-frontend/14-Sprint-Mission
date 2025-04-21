@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import AddItemPage from "./pages/AddItemPage";
 import ErrorPage from "./pages/ErrorPage";
 import BoardsPage from "./pages/BoardsPage";
+import ItemDetailPage from "./pages/ItemDetailPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/items" element={<ItemsPage />} />
+        <Route path="/product/:id" element={<ItemDetailPage />} />
         <Route path="/additem" element={<AddItemPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
