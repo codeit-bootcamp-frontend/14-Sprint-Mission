@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/panda_market_login.css" />
-    <title>판다마켓 로그인 페이지</title>
+    <title>판다마켓 회원가입 페이지</title>
   </head>
   <body>
-    <div class="login__container">
+    <div class="signup__container">
       <div class="logo__container">
         <a href="/">
           <img src="../img/panda__face.png" alt="판다얼굴" />
@@ -17,14 +17,25 @@
       <div class="login__input__text">이메일</div>
       <input class="login__input" placeholder="이메일을 입력해주세요." />
 
+      <div class="login__input__text">닉네임</div>
+      <input class="login__input" placeholder="닉네임을 입력해주세요." />
+
       <div class="login__input__text">비밀번호</div>
       <input
         class="login__input"
         type="password"
         placeholder="비밀번호를 입력하세요"
       />
+
+      <div class="login__input__text">비밀번호 확인</div>
+      <input
+        class="login__input"
+        type="password"
+        placeholder="비밀번호를 확인하세요"
+      />
+
       <div>
-        <button class="login__button">로그인</button>
+        <button class="login__button">회원가입</button>
       </div>
       <div class="snsAuth__container">
         <span>간편 로그인하기</span>
@@ -46,9 +57,10 @@
         </div>
       </div>
       <div class="explain__signup__text">
-        <span>판다마켓이 처음이신가요?</span
-        ><a href="./signup.html" class="linked__page">회원가입</a>
+        <span>이미 회원이신가요?</span>
+        <a href="./login.html" class="linked__page">로그인</a>
       </div>
     </div>
+    <div></div>
   </body>
 </html>
