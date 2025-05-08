@@ -1,0 +1,34 @@
+:root {
+  --font-family-base: "Pretendard", sans-serif;
+
+  /* Font Sizes + Line Heights */
+  --font-size-3xl: 32px;
+  --line-height-3xl: 42px;
+
+  --font-size-2xl: 24px;
+  --line-height-2xl: 32px;
+
+  --font-size-xl: 20px;
+  --line-height-xl: 32px;
+
+  --font-size-2lg: 18px;
+  --line-height-2lg: 26px;
+
+  --font-size-lg: 16px;
+  --line-height-lg: 26px;
+
+  --font-size-md: 14px;
+  --line-height-md: 24px;
+
+  --font-size-sm: 13px;
+  --line-height-sm: 22px;
+
+  --font-size-xs: 12px;
+  --line-height-xs: 20px;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
