@@ -45,7 +45,7 @@ const AddImage = (props: Props) => {
               className="rounded-xl lg:w-[282px] lg:h-[282px] w-[168px] h-[168px]"
             />
             <button
-              className=" absolute top-[10px] right-[10px] z-50 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#9CA3AF] cursor-pointer"
+              className="absolute top-[10px] right-[10px] z-50 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#9CA3AF] cursor-pointer"
               onClick={handleCancel}
             >
               <IoIosClose size={24} color="white" />

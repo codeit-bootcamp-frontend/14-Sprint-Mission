@@ -1,21 +1,10 @@
-import useComment from "@/hooks/useComment";
+import { CommentType } from "@/types/comment";
 import Image from "next/image";
 import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 type Props = {
-  comment: {
-    id: number;
-    title: string;
-    content: string;
-    createdAt: string;
-    updatedAt: string;
-    writer: {
-      image: string;
-      nickname: string;
-      id: number;
-    };
-  };
+  comment: CommentType;
 };
 
 const Comment = ({ comment }: Props) => {

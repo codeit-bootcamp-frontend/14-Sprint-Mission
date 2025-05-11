@@ -37,7 +37,7 @@ const Page = () => {
     : "";
 
   return (
-    <div className="flex flex-col lg:px-[360px] ">
+    <div className="flex flex-col lg:px-[360px] md:px-[24px] px-[16px] ">
       <div className="flex flex-row justify-between items-center mt-[95px]">
         <span className="text-[20px] font-bold">{articleDetails?.title}</span>
         <BsThreeDotsVertical size={24} color="#9CA3AF" />

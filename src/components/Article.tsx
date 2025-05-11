@@ -1,24 +1,13 @@
+import { Articles } from "@/types/article";
 import Image from "next/image";
 import React from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 
-interface Articles {
-  article: {
-    id: number;
-    title: string;
-    content: string;
-    image: string;
-    likeCount: number;
-    createdAt: string;
-    updatedAt: string;
-    writer: {
-      nickname: string;
-      id: number;
-    };
-  };
+interface Article {
+  article: Articles;
 }
 
-const Article = ({ article }: Articles) => {
+const Article = ({ article }: Article) => {
   const formattedDate = new Date(article.createdAt)
     .toLocaleDateString("ko-KR", {
       year: "numeric",

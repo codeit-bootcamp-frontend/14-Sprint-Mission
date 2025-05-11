@@ -1,25 +1,13 @@
 import getComment from "@/services/getComment";
+import { CommentType } from "@/types/comment";
 import React, { useEffect, useState } from "react";
 
 type Props = {
   id: string;
 };
 
-export interface Comment {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-  writer: {
-    image: string;
-    nickname: string;
-    id: number;
-  };
-}
-
 const useComment = ({ id }: Props) => {
-  const [comments, setComment] = useState<Comment[]>([]);
+  const [comments, setComment] = useState<CommentType[]>([]);
   const [nextCursor, setNextCursor] = useState<number | null>(null);
 
   useEffect(() => {

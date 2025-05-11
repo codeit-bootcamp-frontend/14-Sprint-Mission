@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Comment } from "./useComment";
 import getComment from "@/services/getComment";
+import { CommentType } from "@/types/comment";
 
 type Props = {
   nextCursor: number | null;
-  setComment: React.Dispatch<React.SetStateAction<Comment[]>>;
+  setComment: React.Dispatch<React.SetStateAction<CommentType[]>>;
   id: string;
   setNextCursor: React.Dispatch<React.SetStateAction<number | null>>;
 };

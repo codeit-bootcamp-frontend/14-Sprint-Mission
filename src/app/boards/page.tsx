@@ -3,9 +3,9 @@ import Article from "@/components/Article";
 import BestArticle from "@/components/BestArticle";
 import Loading from "@/components/Loading";
 import Search from "@/components/Search";
-import useArticle, { Articles } from "@/hooks/useArticle";
+import useArticle from "@/hooks/useArticle";
 import useBestArticle from "@/hooks/useBestArticle";
-import { motion } from "framer-motion";
+import { Articles } from "@/types/article";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -18,9 +18,8 @@ export default function Boards() {
     basis,
   });
 
-  console.log(articleResults);
   return (
-    <div className="flex flex-col justify-center lg:px-[360px]  md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
+    <div className="flex flex-col justify-center lg:px-[360px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
       <div className="flex flex-col items-start lg:mt-[94px] md:mt-[94px] mt-[84px]">
         <span className="text-[20px] font-bold mb-[24px]">베스트 게시글</span>
         <div className="flex flex-row">

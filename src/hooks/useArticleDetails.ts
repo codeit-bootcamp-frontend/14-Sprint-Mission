@@ -1,19 +1,6 @@
 import getArticleDetails from "@/services/getArticleDetails";
+import { Articles } from "@/types/article";
 import React, { useEffect, useState } from "react";
-
-interface Articles {
-  id: number;
-  title: string;
-  content: string;
-  image: string;
-  likeCount: number;
-  createdAt: string;
-  updatedAt: string;
-  writer: {
-    nickname: string;
-    id: number;
-  };
-}
 
 const useArticleDetails = (id: string) => {
   const [articleDetails, setArticleDetails] = useState<Articles | null>(null);
