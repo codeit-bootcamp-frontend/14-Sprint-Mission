@@ -1,19 +1,6 @@
 import getArticles from "@/services/getArticles";
+import { Articles } from "@/types/article";
 import { useEffect, useState } from "react";
-
-interface Articles {
-  id: number;
-  title: string;
-  content: string;
-  image: string;
-  likeCount: number;
-  createdAt: string;
-  updatedAt: string;
-  writer: {
-    nickname: string;
-    id: number;
-  };
-}
 
 const useBestArticle = () => {
   const [bestArticles, setArticles] = useState<Articles[]>([]);

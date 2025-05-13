@@ -1,31 +1,20 @@
+import { Articles } from "@/types/article";
 import Image from "next/image";
 import React from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 
 type Props = {
-  article: {
-    id: number;
-    title: string;
-    content: string;
-    image: string;
-    likeCount: number;
-    createdAt: string;
-    updatedAt: string;
-    writer: {
-      nickname: string;
-      id: number;
-    };
-  };
+  article: Articles;
 };
 
 const BestArticle = ({ article }: Props) => {
-    const formattedDate = new Date(article.createdAt)
-      .toLocaleDateString("ko-KR", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replace(/\.$/, "");
+  const formattedDate = new Date(article.createdAt)
+    .toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\.$/, "");
 
   return (
     <div className=" flex flex-col lg:h-[169px] lg:w-[384px] md:w-[340px] md:h-[198px] w-[343px] h-[198px] bg-[#F9FAFB] lg:mr-[24px] md:mr-[16px] rounded-lg px-[24px] pb-[9px]">

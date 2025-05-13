@@ -1,10 +1,12 @@
 "use client";
 import Article from "@/components/Article";
 import BestArticle from "@/components/BestArticle";
+import Loading from "@/components/Loading";
 import Search from "@/components/Search";
-import useArticle, { Articles } from "@/hooks/useArticle";
+import useArticle from "@/hooks/useArticle";
 import useBestArticle from "@/hooks/useBestArticle";
-import { motion } from "framer-motion";
+import { Articles } from "@/types/article";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Boards() {
@@ -16,14 +18,15 @@ export default function Boards() {
     basis,
   });
 
-  console.log(articleResults);
   return (
-    <div className="flex flex-col justify-center lg:px-[360px] lg:pt-[24px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
-      <div className="flex flex-col items-start">
+    <div className="flex flex-col justify-center lg:px-[360px] md:px-[24px] md:pt-[24px] px-[16px] pt-[16px]">
+      <div className="flex flex-col items-start lg:mt-[94px] md:mt-[94px] mt-[84px]">
         <span className="text-[20px] font-bold mb-[24px]">베스트 게시글</span>
         <div className="flex flex-row">
           {bestArticles.map((article, index) => (
-            <BestArticle key={index} article={article} />
+            <Link href={`/board/${article.id}`} key={index}>
+              <BestArticle key={index} article={article} />
+            </Link>
           ))}
         </div>
       </div>
@@ -31,9 +34,12 @@ export default function Boards() {
       <div className=" mt-[40px] flex flex-col">
         <div className="flex flex-row justify-between">
           <span className="text-[20px] font-bold mb-[24px]">게시글</span>
-          <button className="w-[88px] h-[42px] rounded-lg bg-[#3692FF] text-[#FFFFFF] text-[16px] font-semibold cursor-pointer">
+          <Link
+            href="/addboard"
+            className="w-[88px] h-[42px] rounded-lg bg-[#3692FF] text-[#FFFFFF] text-[16px] font-semibold cursor-pointer flex items-center justify-center"
+          >
             글쓰기
-          </button>
+          </Link>
         </div>
 
         <Search
@@ -45,25 +51,13 @@ export default function Boards() {
         />
 
         {articleResults?.map((article, index) => (
-          <Article key={index} article={article} />
+          <Link key={index} href={`/board/${article.id}`}>
+            <Article key={index} article={article} />
+          </Link>
         ))}
       </div>
 
-      {loading ?? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex justify-center mt-[30px]"
-        >
-          <motion.div
-            initial={{ rotate: 0 }}
-            animate={{ rotate: 360 }}
-            transition={{ ease: "linear", duration: 1, repeat: Infinity }}
-            className="w-[30px] h-[30px] border-[#F3F4F6] border-[3px] rounded-full border-t-transparent"
-          />
-        </motion.div>
-      )}
+      {loading ?? <Loading />}
     </div>
   );
 }
