@@ -4,6 +4,9 @@ const emailError = document.querySelector(".email-error");
 const passwordError = document.querySelector(".password-error");
 const loginButton = document.querySelector('button[type="submit"]');
 const loginForm = document.querySelector("form");
+const togglePasswordButton = document.querySelector(
+  ".input-wrapper .toggle-password"
+);
 
 // 이메일 유효성 검사 함수
 const validateEmail = () => {
@@ -105,3 +108,22 @@ loginForm.addEventListener("submit", (event) => {
 
 // 페이지 로드 시 초기 버튼 상태 설정
 updateLoginButtonState();
+
+// 비밀번호 보이기/숨기기 토글 함수
+if (togglePasswordButton && passwordInput) {
+  togglePasswordButton.addEventListener("click", () => {
+    // 비밀번호 필드의 type을 변경 (password <-> text)
+    const type =
+      passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // 아이콘 이미지 변경
+    if (type === "password") {
+      togglePasswordButton.src = "images/icons/eye-invisible.svg";
+      togglePasswordButton.alt = "비밀번호 숨김";
+    } else {
+      togglePasswordButton.src = "images/icons/eye-visible.svg";
+      togglePasswordButton.alt = "비밀번호 보임";
+    }
+  });
+}

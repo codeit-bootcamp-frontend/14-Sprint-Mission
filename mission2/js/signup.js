@@ -14,6 +14,9 @@ const passwordConfirmationError = document.querySelector(
 
 const signupButton = document.querySelector('button[type="submit"]');
 const signupForm = document.querySelector("form");
+const togglePasswordButtons = document.querySelectorAll(
+  ".input-wrapper .toggle-password"
+);
 
 // 이메일 유효성 검사 함수 (signin.js와 동일)
 const validateEmail = () => {
@@ -213,3 +216,31 @@ signupForm.addEventListener("submit", (event) => {
 
 // 페이지 로드 시 초기 버튼 상태 설정
 updateSignupButtonState();
+
+// 비밀번호 보이기/숨기기 토글 함수 ( signup.html 용)
+const setupPasswordToggle = (passwordField, toggleButton) => {
+  if (toggleButton && passwordField) {
+    toggleButton.addEventListener("click", () => {
+      const type =
+        passwordField.getAttribute("type") === "password" ? "text" : "password";
+      passwordField.setAttribute("type", type);
+
+      if (type === "password") {
+        toggleButton.src = "images/icons/eye-invisible.svg";
+        toggleButton.alt = "비밀번호 숨김";
+      } else {
+        toggleButton.src = "images/icons/eye-visible.svg";
+        toggleButton.alt = "비밀번호 보임";
+      }
+    });
+  }
+};
+
+// 각 비밀번호 필드에 토글 기능 설정
+if (togglePasswordButtons.length > 0) {
+  setupPasswordToggle(passwordInput, togglePasswordButtons[0]); // 첫 번째 아이콘은 passwordInput 용
+  if (togglePasswordButtons.length > 1) {
+    // 두 번째 아이콘이 있는 경우 (비밀번호 확인 필드용)
+    setupPasswordToggle(passwordConfirmationInput, togglePasswordButtons[1]);
+  }
+}
