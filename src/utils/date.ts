@@ -12,7 +12,7 @@ export function formatDate(dateStr: string) {
   if (diffDays === 0) {
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffMinutes = Math.floor(diffMs / (1000 * 60));
-    console.log(diffHours, diffMinutes);
+    // console.log(diffHours, diffMinutes);
     if (diffHours >= 1) {
       return `${diffHours}시간 전`;
     } else if (diffMinutes >= 1) {

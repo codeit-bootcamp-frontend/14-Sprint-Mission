@@ -39,7 +39,6 @@ export const FallbackImage = ({
   const finalSrc = hasError || !isValid ? defaultImg : src;
 
   return (
-
     <div className="relative w-full aspect-[1/1]">
       <Image
         src={defaultImg}

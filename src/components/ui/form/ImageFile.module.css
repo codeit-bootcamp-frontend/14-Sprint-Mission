@@ -60,7 +60,6 @@
 .previewImg li {
   position: relative;
   width: 282px;
-  padding-top: 282px;
   overflow: hidden;
   border-radius: 16px;
 }

@@ -10,7 +10,7 @@ function ItemsDetail() {
       <div className={styles.items_detail}>
         <ProductDetails />
       </div>
-      </>
+    </>
   );
 }
 

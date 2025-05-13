@@ -9,24 +9,24 @@ interface TextAreaBoxProps {
   height?: string | number;
   [key: string]: any;
 }
-export function InputBox({ boxType='text', placeholder, ...rest }: TextAreaBoxProps) {
+export function InputBox({ inputBoxType='text', placeholder, ...rest }: TextAreaBoxProps) {
   return (
     <input 
       className={clsx(styles.input,'w-full h-20 text-sm')} 
-      type={boxType} 
+      type={inputBoxType} 
       placeholder={placeholder}  
       {...rest}
     />
   );
 }
 
-export function InputField({ label, boxType, placeholder, ...rest }: TextAreaBoxProps) {
+export function InputField({ label, inputBoxType, placeholder, ...rest }: TextAreaBoxProps) {
   return (
     <label className={styles.label}>
       <span>{label}</span>
       <input 
         className={styles.input} 
-        type={boxType} 
+        type={inputBoxType} 
         placeholder={placeholder}  
         {...rest}
       />

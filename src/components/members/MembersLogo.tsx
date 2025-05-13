@@ -2,9 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { logoImg1, logoImg2 } from '@/lib/imageAssets';
 
-const logoImg1 = '/assets/logo_01.svg';
-const logoImg2 = '/assets/logo_03.svg';
 
 function MembersLogo() {
   return (

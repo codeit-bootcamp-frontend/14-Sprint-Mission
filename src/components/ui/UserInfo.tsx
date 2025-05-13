@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './UserInfo.module.css';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { tempUserImg } from '@/lib/imageAssets';
 
-const tempUserImg = '/assets/ic_3_01.png';
 
 interface UserInfoProps {
   userImg?: string | null;

@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from "react";
 import styles from './TagBox.module.css';
 import Icon from './Icon';
-import { InputField } from './InputBox';
-import { ProductSummary } from '@/hooks/useItems';
+import { InputField } from './form/InputBox';
+import { CreateProductRequest, ProductSummary } from '@/hooks/useItems';
 
 
 interface TagListProps {
@@ -22,8 +22,8 @@ function TagList({tags, onClickDelete, num}: TagListProps){
 }
 
 interface TagBoxProps {
-  product: ProductSummary;
-  setProduct: React.Dispatch<React.SetStateAction<ProductSummary>>;
+  product: CreateProductRequest;
+  setProduct: React.Dispatch<React.SetStateAction<CreateProductRequest>>;
 }
 
 function TagBox({product, setProduct}: TagBoxProps){
@@ -59,7 +59,7 @@ function TagBox({product, setProduct}: TagBoxProps){
     <div className={styles.tagBox}>
       <InputField
       label='태그' 
-      boxType='text' 
+      inputBoxType='text' 
       placeholder='태그를 입력해주세요' 
       value={inputValue}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}

@@ -6,6 +6,8 @@ import Icon from 'components/ui/Icon';
 import Button from 'components/ui/Button';
 import clsx from 'clsx';
 import { ProductDetail } from '@/hooks/useProductsDetail';
+import LikeButton from '../ui/LikeButton';
+import { useGetUserFavorites } from '@/hooks/useUser';
 
 function ProductDescription(detailData:ProductDetail) {
   
@@ -20,14 +22,13 @@ function ProductDescription(detailData:ProductDetail) {
     tags
   } = detailData;
 
+  const { data } = useGetUserFavorites({});
+  const isFavorite = data?.list.some((item) => item.id === detailData.id) ?? false;
+
   // '2025-04-08T01:00:06+09:00'  '2025-04-07T01:00:06+09:00'
   const createdAtString = formatDate(createdAt);
   // console.log(createdAtString);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const handleClick = () => {
-    setIsFavorite((prev) => !prev);  // 현재 상태를 반전시킴
-  };
-  
+
   return (
     <div className={styles.description}>
       <div className='mobile:mb-10'>
@@ -55,7 +56,7 @@ function ProductDescription(detailData:ProductDetail) {
       <div className={styles.UserInfo}>
         <UserInfo ownerNickname={ownerNickname} createdAtString={createdAtString}/>
         <div className={styles.likeBtnBox}>
-          <Button variant="btn-heart_L" onClick={handleClick} ><Icon iconName={isFavorite === false ? 'heartOpen' : 'heartClose' }  width="24" height="24"  alt='Like icon'/><span>{favoriteCount}</span></Button>
+           <LikeButton variant="btn-heart_L" productId={detailData.id} favoriteCount={detailData.favoriteCount} isFavorite={isFavorite} childrenClassName='gap-2' width="24" height="24"/>
         </div>
       </div>
     </div>

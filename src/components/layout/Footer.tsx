@@ -1,15 +1,11 @@
 'use client';
 
 import React from 'react';
-import styles from './Footer.module.css';
 import Container from './Container';
 import Link from 'next/link';
 import Image from 'next/image';
+import { facebookIcon, instagramIcon, twitterIcon, youtubeIcon } from '@/lib/imageAssets';
 
-const facebookIcon = '/assets/ic_facebook.svg';
-const twitterIcon = '/assets/ic_twitter.svg';
-const instagramIcon = '/assets/ic_instagram.svg';
-const youtubeIcon = '/assets/ic_youtube.svg';
 
 function Footer() {
   return (

@@ -4,12 +4,7 @@ import React from 'react';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import { MotionSelection, VisualSelection } from '@/components/ui/mainSelection';
-
-const imgHome_top = '/assets/Img_home_top.png';
-const imgHome1 = '/assets/Img_home_01.png';
-const imgHome2 = '/assets/Img_home_02.png';
-const imgHome3 = '/assets/Img_home_03.png';
-const imgHome_bottom = '/assets/Img_home_bottom.png';
+import { imgHome1, imgHome2, imgHome3, imgHome_bottom, imgHome_top } from '@/lib/imageAssets';
 
 function HomePage() {
 

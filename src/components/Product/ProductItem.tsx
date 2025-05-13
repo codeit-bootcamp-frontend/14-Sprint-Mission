@@ -1,16 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from './ProductItem.module.css';
 import Icon from 'components/ui/Icon';
 import Button from 'components/ui/Button';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { ProductSummary } from '@/hooks/useItems';
+import { ProductSummary, useToggleProductFavorite } from '@/hooks/useItems';
 import { FallbackImage } from '../FallbackImage/FallbackImage';
 import { defaultImg } from '@/lib/imageAssets';
+import { useConfirmModal, useModal } from '@/hooks/useModal';
+import ConfirmModal from '../ui/ConfirmModal';
+import { useAuth } from '@/contexts/AuthContext';
+import { useGetUserFavorites } from '@/hooks/useUser';
+import LikeButton from '../ui/LikeButton';
 
 
 interface ProductItemProps {   // ProductSummary 타입정의할때 옵셔널 방식을 사용함   | undefined 필요 
@@ -21,15 +25,14 @@ function ProductItem({productItem}: ProductItemProps) {
   // const randomNum = Math.floor(Math.random() * 4) + 1;
   // const randomImg = `../img/img_1.jpg`;
 
-  const [isLiked, setIsLiked] = useState(false);
-  const handleClick = () => {
-    setIsLiked((prev) => !prev);  // 현재 상태를 반전시킴
-  };
+  const productId = productItem.id ?? 0; 
 
-  if(productItem === undefined) return null;
+  const { data } = useGetUserFavorites({});
+  const isFavorite = data?.list.some((item) => item.id === productId) ?? false;
+
   return (
     <li className={styles.listItem}>
-      <Link href={`items/${productItem.id}`}>
+      <Link href={`items/${productId}`}>
         <div className={clsx(styles.imgBox,'border border-[var(--Cool_Gray_200)]')}>
           <FallbackImage
             src={productItem.images?.[0] || defaultImg}
@@ -41,10 +44,7 @@ function ProductItem({productItem}: ProductItemProps) {
         <div className={styles.name}>{productItem.name}</div>
         <div className={styles.price}>{productItem.price?.toLocaleString()}원</div>
         
-        <Button onClick={handleClick} variant="btn-heart_S">
-          <Icon iconName={isLiked === false ? 'heartOpen' : 'heartClose'}  width="16" height="16"  alt='Like icon' />
-          <span>{productItem.favoriteCount}</span>
-        </Button>
+        <LikeButton productId={productId} favoriteCount={productItem.favoriteCount} isFavorite={isFavorite} />
       </div>
     </li>
   );

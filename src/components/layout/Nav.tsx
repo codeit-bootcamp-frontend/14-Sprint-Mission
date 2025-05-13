@@ -6,14 +6,20 @@ import Button from '../ui/Button';
 import Image from 'next/image';
 import Link from 'next/link'; 
 import { useAuth } from '@/contexts/AuthContext';
+import { logoImg1, logoImg2 } from '@/lib/imageAssets';
+import { useConfirmModal, useModal } from '@/hooks/useModal';
+import ConfirmModal from '../ui/ConfirmModal';
 
-const logoImg1 = '/assets/logo_01.svg';
-const logoImg2 = '/assets/logo_03.svg';
 
 function Nav() {
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { user, logout } = useAuth();
+    
+  const handleLogout = () => {
+    logout();
+    openConfirmModal('로그아웃 되었습니다.');
+  };
 
-  console.log('Nav user:', user);
   return (
     <div className='sticky w-full top-0 z-[999] bg-white shadow-soft-xl'>
       <Container className='flex justify-between items-center py-3'>
@@ -28,7 +34,7 @@ function Nav() {
           </Link>
         </div>
         {user ? (
-          <Button onClick={logout} variant="roundedS">
+          <Button onClick={handleLogout} variant="roundedS">
             로그아웃
           </Button>
         ) : (
@@ -37,6 +43,7 @@ function Nav() {
           </Button>
         )}
       </Container>
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </div>
   );
 }

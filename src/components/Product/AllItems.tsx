@@ -8,11 +8,15 @@ import SelectBox from "components/ui/SelectBox";
 import PageNation from "components/ui/PageNation";
 import LoadingBox from "../ui/LoadingBox";
 import { useItemService, useParsedItemQuery, useSetItemQuery } from "@/hooks/useItemQuery";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ProductQuery } from "@/hooks/useItems";
 import { useScreenType } from "@/hooks/useScreenType";
 import { ProdListAll } from "./ProdListAll";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import EmptyBox from "../ui/EmptyBox";
+import { useAuth } from "@/contexts/AuthContext";
+import { useConfirmModal } from "@/hooks/useModal";
+import ConfirmModal from "../ui/ConfirmModal";
 
 
 type orderByType = "recent" | "favorite";
@@ -47,7 +51,9 @@ export function AllItems() {
   const parsedQuery = useParsedItemQuery(INITIAL_QUERY, searchParams);
   const [query, setQuery] = useState(parsedQuery);
   const { data , isLoading } = useItemService( query , searchParams);
-
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
+  const { user } = useAuth();
+  const router = useRouter();
 
   // 페이지 반응형 달라질때마다 pageSize 수정
   useLayoutEffect(() => {
@@ -86,6 +92,14 @@ export function AllItems() {
     setQueryToURL(next);
   };
 
+  const handleApplyClick = () => {
+    if(!user) {
+      openConfirmModal('로그인 후 이용 가능합니다.');
+      return;
+    }
+    router.push('items/apply');
+  };
+
   return (
     <>
       <Container className='relative z-20'>
@@ -112,10 +126,10 @@ export function AllItems() {
             </form>
 
             <Button
-              link="items/apply"
               variant="roundedSS"
               className={styles.prodAddBtn}
-               heightError='true'
+              heightError='true'
+              onClick={handleApplyClick}
             >
               상품 등록하기
             </Button>
@@ -131,16 +145,17 @@ export function AllItems() {
       </Container>
 
       {/* 🔹 로딩 중이면 LoadingBox 표시 */}
-      {isLoading === true ? (
-        <LoadingBox  className="h-[672px]"/>
-      ) : (
-        data && (
-        <ProdListAll
-          itemsData={data}
-          pageColumn={VISIBLE_ITEMS.column[breakpoint]}
-        />
-        )
-      )}
+        {isLoading ? (
+          <LoadingBox className="h-[572px] mb-[141px]" />
+        ) : data?.list.length ? (
+          <ProdListAll
+            itemsData={data}
+            pageColumn={VISIBLE_ITEMS.column[breakpoint]}
+            className={Number(data?.list?.length) < Number(query.pageSize) ? 'mb-[141px]' : 'mb-0'} 
+          />
+        ) : (
+          <EmptyBox context="아직 해당 상품이 없습니다." className="h-[572px] mb-[141px]" />
+        )}
 
       {/* 🔹 페이지네이션 */}
       <PageNation
@@ -150,6 +165,7 @@ export function AllItems() {
         size={query.pageSize}
         clickEvent={handlePageNationClick}
       />
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </>
   );
 }

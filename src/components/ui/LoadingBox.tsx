@@ -10,7 +10,7 @@ interface LoadingBoxProps {
 function LoadingBox({className}: LoadingBoxProps) {
   return (
     <Container className={className}>
-      <div className={styles.loadingBox}> 페이지 로딩중입니다. </div>
+      <div className='flex justify-center items-center h-full bg-[var(--Cool_Gray_100)] rounded-[8px]'> 페이지 로딩중입니다. </div>
     </Container> 
   );
 }

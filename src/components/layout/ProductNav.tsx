@@ -8,15 +8,22 @@ import Button from '../ui/Button';
 import Link from 'next/link';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-
-const logoImg1 = '/assets/logo_01.svg';
-const logoImg2 = '/assets/logo_03.svg';
+import { logoImg1, logoImg2 } from '@/lib/imageAssets';
+import ConfirmModal from '../ui/ConfirmModal';
+import { useConfirmModal, useModal } from '@/hooks/useModal';
 
 function ProductNav() {
   const segments = useSelectedLayoutSegments();
   const isItems = segments[0] === 'items' ;
   const isBoards = segments[0] === 'boards';
-    const { user, logout } = useAuth();
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    openConfirmModal('로그아웃 되었습니다.');
+  }; 
+  
 
   return (
     <div className='sticky w-full top-0 z-[999] bg-white shadow-soft-xl'>
@@ -36,7 +43,7 @@ function ProductNav() {
           </div>
         </div>
         {user ? (
-          <Button onClick={logout} variant="roundedS">
+          <Button onClick={handleLogout} variant="roundedS">
             로그아웃
           </Button>
         ) : (
@@ -45,6 +52,7 @@ function ProductNav() {
           </Button>
         )}
       </Container>
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </div>
   );
 }

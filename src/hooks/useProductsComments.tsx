@@ -1,5 +1,5 @@
 import { requestor } from '@/lib/requestor';
-import { QueryFunctionContext, useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import {useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 
 // 댓글 작성자 정보
@@ -31,7 +31,7 @@ export interface GetCommentsQuery {
 
 export const useInfiniteProductsComments = (productId: number, limit = 10) => {
   return useInfiniteQuery<CommentListResponse, Error>({
-    queryKey: ['itemsComment', productId, limit],
+    queryKey: ['productComments', productId],
     queryFn: async ({ pageParam }) => {
       const res = await requestor.get<CommentListResponse>(`/products/${productId}/comments`, {
         params: {
@@ -46,13 +46,101 @@ export const useInfiniteProductsComments = (productId: number, limit = 10) => {
   });
 };
 
-export const useDeleteProductMutation = () => {
+export const usePostProductComment = (productId: number, openModal: (msg: string) => void) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (id: number) => requestor.delete(`/products/${id}`),
+    mutationFn: (requestCommentValue: string | undefined) => {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        openModal('로그인이 필요합니다.');
+        return Promise.reject('No accessToken'); 
+      }
+      return requestor.post(
+        `/products/${productId}/comments`,
+        { content: requestCommentValue },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['itemsComment'] });
+      openModal('댓글이 등록되었습니다!');
+      queryClient.invalidateQueries({ queryKey: ['productComments', productId] });
+    },
+    onError: (error: any) => {
+      const message = error?.response?.data?.message;
+      if (message?.includes('jwt malformed')) {
+        openModal('로그인 후 등록 가능합니다!');
+      } else {
+        openModal(message || '댓글 등록 실패');
+      }
+    },
+  });
+};
+
+export const usePatchProductComment = (productId: number, openModal: (msg: string) => void) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ commentId, requestCommentValue }: { commentId: number; requestCommentValue: string }) => {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        openModal('로그인이 필요합니다.');
+        return Promise.reject('No accessToken'); 
+      }
+      return requestor.patch(
+        `/comments/${commentId}`,
+        { content: requestCommentValue },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    },
+    onSuccess: () => {
+      openModal('댓글이 수정되었습니다!');
+      queryClient.invalidateQueries({ queryKey: ['productComments', productId] });
+    },
+    onError: (error: any) => {      
+      const message = error?.response?.data?.message;
+      if (message?.includes('jwt malformed')) {
+        openModal('로그인 후 수정 가능합니다!');
+      } else {
+      openModal(error?.response?.data?.message || '댓글 수정 실패');
+    }
+    },
+  });
+};
+export const useDeleteCommentMutation = (productId: number, openModal: (msg: string) => void) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (commentId: number) => {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        openModal('로그인이 필요합니다.');
+        return Promise.reject('No accessToken'); 
+      }
+      return requestor.delete(`/comments/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['productComments', productId] }); 
+    },
+    onError: (error: any) => {
+      const message = error?.response?.data?.message;
+      if (message?.includes('jwt malformed')) {
+        openModal('로그인 후 등록 가능합니다!');
+      } else {
+        openModal(message || '댓글 삭제 실패');
+      }
     },
   });
 };

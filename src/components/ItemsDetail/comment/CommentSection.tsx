@@ -20,11 +20,11 @@ function CommentSection({productId}: CommentSectionProps) {
   return (
     <>
         <CommentForm productId={productId} />
-        <CommentList productId={productId} className='w-full'/>
+        <CommentList productId={productId} className='w-full mb-16'/>
         <div className='flex justify-center align-middle w-full '>
-          <Button onClick={handleGoBack} variant="roundedL">
+          <Button onClick={handleGoBack} variant="roundedL" childrenClassName='gap-2'>
             <span>목록으로 돌아가기</span>
-            <Icon iconName='back'  alt='back icon'/>
+            <Icon iconName='back' alt='back icon'/>
           </Button>
         </div>
 

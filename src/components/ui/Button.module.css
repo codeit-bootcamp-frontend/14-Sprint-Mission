@@ -43,6 +43,7 @@
 }
 .btn:disabled .front {
   top: 0 !important;
+  transform: translateY(0%) !important;
   opacity: 1 !important;
 }
 /* btn_large */

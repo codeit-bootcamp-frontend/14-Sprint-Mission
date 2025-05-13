@@ -2,20 +2,24 @@
 import React from 'react';
 import styles from './ImageFile.module.css';
 import Image from 'next/image';
-import Icon from './Icon';
+import Icon from '../Icon';
+import { FallbackImage } from '@/components/FallbackImage/FallbackImage';
 
 interface ImagePreviewsProps {
   num: number;
   onClickDelete: (num: number) => void;
-  src: string;
+  src: string ;
 }
 
 function ImagePreviews({ num, onClickDelete, src }: ImagePreviewsProps) {
   const handleClick = () => onClickDelete(num);
+  console.log('src', src , typeof src);
   return (
     <>
-      <div className={styles.previewDeleteBtn} onClick={handleClick}><Icon iconName='X'  width="12" height="12"  alt='delete product image'/></div>
-      <Image src={src} alt={`preview image_${num}`}/>
+      <div className="relative w-full aspect-[1/1]">
+        <div className={styles.previewDeleteBtn} onClick={handleClick}><Icon iconName='X'  width="12" height="12"  alt='delete product image'/></div>
+        <FallbackImage src={src} fill alt={`preview image_${num}`}/>
+      </div>
     </>
   )
 }
@@ -46,12 +50,12 @@ function ImageFile({label, text, images, errorCase, onChange, onClickDelete, ...
             </div>
           </div>
           <ul className={styles.previewImg}>
-            {images.map((img ,index) => (
+            {( images.map((img ,index) => (
               img === null ? null :
               <li key={index}>
                 <ImagePreviews num={index} onClickDelete={onClickDelete}  src={img}/>
               </li>
-            ))}
+            )))}
           </ul>
         </div> 
         { errorCase === '' ? null : <span className={styles.error}>{errorCase}</span> }

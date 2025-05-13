@@ -2,9 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './SnsLogin.module.css';
 import Image from 'next/image';
-
-const sns_google = '/assets/gg_icon.png';
-const sns_kakao = '/assets/kakao_icon.png';
+import { sns_google, sns_kakao } from '@/lib/imageAssets';
 
 function SnsLogin() {
   return (

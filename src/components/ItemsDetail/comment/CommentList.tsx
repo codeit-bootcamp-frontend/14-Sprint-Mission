@@ -1,16 +1,17 @@
-import React from 'react';
-import {  useInfiniteProductsComments } from '@/hooks/useProductsComments';
-import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
+import { useInfiniteProductsComments } from '@/hooks/useProductsComments';
+import CommentItem from './CommentItem';
+import LoadingBox from '@/components/ui/LoadingBox';
+import EmptyBox from '@/components/ui/EmptyBox';
 
-
-const emptyImg = '/assets/img/Img_inquiry_empty_2x.png';
 
 interface CommentListProps {
   productId: number;
+  className?: string;
   [key: string]: any; 
 }
 
-function CommentList({ productId, ...rest }: CommentListProps) {
+function CommentList({ productId,className, ...rest }: CommentListProps) {
 
   const {
     data,
@@ -21,43 +22,48 @@ function CommentList({ productId, ...rest }: CommentListProps) {
     isError,
   } = useInfiniteProductsComments(productId);
 
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  
+  useEffect(() => {
+    if (!loadMoreRef.current || !hasNextPage) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasNextPage) {
+          fetchNextPage();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    observer.observe(loadMoreRef.current);
+
+    return () => {
+      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+    };
+  }, [hasNextPage, fetchNextPage]);
+
   return (
     <>
-      {data ? (
-        <div>
+      {isLoading ? <LoadingBox className="h-[372px]"/> :  data?.pages?.[0].list.length ? (
+      <div className={`${className}`} {...rest}>
         {data?.pages.map((page, i) => (
-          <React.Fragment key={i}>
+          <React.Fragment key={page.nextCursor}>
             {page.list.map((comment) => (
-              <div key={comment.id}>
-                <p>{comment.writer.nickname}: {comment.content}</p>
+              <div key={comment.id} className='mb-6'>
+                <CommentItem productId={productId} commentItem={comment}/>               
               </div>
             ))}
           </React.Fragment>
         ))}
-
-        {hasNextPage && (
-          <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-            {isFetchingNextPage ? '불러오는 중...' : '더 보기'}
-          </button>
-        )}
+        <div ref={loadMoreRef} style={{ height: '20px' }} />
+        {isFetchingNextPage && <div>로딩 중...</div>}
       </div>
-      // <ul className={clsx(styles.commentList,'flex  flex-col gap-6 mb-16')}>
-      //             {data?.pages.map((page, i) => (
-      //   {data..list.map((item) => (
-      //     <li key={item.id} >
-      //     <CommentItem
-      //       productId={productId}
-      //       commentItem={item} 
-      //     />
-      //     </li>
-      //   ))}
-      // </ul>
-        ):(
-          <div className='mt-12 mb-20 text-center'>
-            <Image src={emptyImg} className='w-[174px] mx-auto' alt='빈페이지' />
-            <span className='text-center mx-auto text-cool-gray-400'>아직 문의가 없어요</span>
-          </div>
-        )}
+      ):(
+        <EmptyBox context="아직 문의가 없어요" className='h-[372px]' />
+        )
+      }
     </>
     
   );

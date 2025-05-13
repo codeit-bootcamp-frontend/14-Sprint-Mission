@@ -1,15 +1,16 @@
 
 import React, { useState } from 'react';
-import styles from './CommentList.module.css';
 import { formatDate } from 'utils/date';
 import UserInfo from 'components/ui/UserInfo';
 import clsx from 'clsx';
-import { TextAreaBox } from 'components/ui/InputBox';
+import { TextAreaBox } from '@/components/ui/form/InputBox';
 import Button from 'components/ui/Button';
-import Icon from 'components/ui/Icon';
 import DropdownMenu from 'components/ui/DropdownMenu';
 import Modal from '@/components/ui/Modal';
-import { CommentItemUnit, useDeleteProductMutation } from '@/hooks/useProductsComments';
+import { CommentItemUnit, useDeleteCommentMutation, usePatchProductComment } from '@/hooks/useProductsComments';
+import { useConfirmModal, useModal } from '@/hooks/useModal';
+import ConfirmModal from '@/components/ui/ConfirmModal';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface CommentItemProps {
   productId: number;
@@ -18,86 +19,90 @@ interface CommentItemProps {
 
 function CommentItem({productId,commentItem}:CommentItemProps) {
   const {
-    id,
+    id:commentId,
     content,
     updatedAt,
   } = commentItem;
 
-  const [editMode, setEditMode] = useState(false);
-  const [editValue, setEditValue] = useState(content);
-
-  const [isOpen, setIsOpen] = useState(false);
-
   const createdAtString = formatDate(updatedAt);
 
-  const handleUpdate = async () => {
-    setEditMode(false);
-    try {
-      const updated = await updateComment(id, editValue);
-      console.log('수정된 댓글:', updated);
-    } catch (err) {
-      console.error(' 수정 실패:', err);
+  const [editMode, setEditMode] = useState(false);
+  const [requestCommentValue, setRequestCommentValue] = useState<string>(content);
+
+  const { isModalOpen, modalMessage, openModal, closeModal } = useModal();
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
+  const { mutate: deleteProduct } = useDeleteCommentMutation(productId,openConfirmModal);
+  const { mutate: patchComment } = usePatchProductComment(productId,openConfirmModal);
+  const { user } = useAuth();
+
+  const handleOpenModal = () =>{
+    if(!user) {
+      openConfirmModal('로그인 후 이용 가능합니다.');
+      return;
     }
+    if(commentItem.writer.id !== user?.id) {
+      openConfirmModal('본인의 댓글만 삭제할 수 있습니다.');
+      return;
+    }
+    openModal('정말 삭제하시겠습니까?');
+  };
+  const handleOpenEdit = () =>{
+    if(!user) {
+      openConfirmModal('로그인 후 이용 가능합니다.');
+      return;
+    }
+    if(commentItem.writer.id !== user?.id) {
+      openConfirmModal('본인의 댓글만 수정할 수 있습니다.');
+      return;
+    }
+    setEditMode(true);
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleConfirmDelete = () => {
+    deleteProduct(commentId);
+    closeConfirmModal();
+  };
+  const handleUpdate = () =>{
+    patchComment({ commentId, requestCommentValue });
+    setEditMode(false)
+  };
 
-  const { mutate: deleteProduct } = useDeleteProductMutation()
-  const handleDelete = async () => {
-    deleteProduct(productId);
-  };
-  
-  const confirmDelete = () => {
-    handleDelete();
-    setIsModalOpen(false);
-  };
+  const dropdownActions = [
+    {
+      label: '삭제하기',
+      onClick: handleOpenModal,
+    },
+    {
+      label: '수정하기',
+      onClick:handleOpenEdit,
+    },
+  ];
+
 
   return (
-    <li className={clsx(styles.commentItem,'flex gap-4 flex-col border-b border-b-[var(--Cool_Gray_200)] pb-3 relative fade-in' )}>
+    <li className={clsx('flex gap-4 flex-col border-b border-b-[var(--Cool_Gray_200)] pb-3 relative fade-in' )}>
       {editMode === true ? (
-          <div>
-            <TextAreaBox 
-              height='80px' 
-              placeholder='내용을 입력해주세요' 
-              defaultValue={content} 
-              value={editValue} 
-              onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setEditValue(target.value)}  
-            />
-            <div className='absolute bottom-4 right-0'>
-              <Button onClick={() => setEditMode(false)} variant="none">취소</Button>
-              <Button onClick={handleUpdate} variant="roundedSS">수정 완료</Button>
-            </div>
+        <div>
+          <TextAreaBox 
+            height='80px' 
+            placeholder='내용을 입력해주세요' 
+            value={requestCommentValue} 
+            onChange={({ target }: React.ChangeEvent<HTMLTextAreaElement>) => setRequestCommentValue(target.value)}  
+          />
+          <div className='absolute bottom-4 right-0'>
+            <Button onClick={() => setEditMode(false)} variant="none">취소</Button>
+            <Button onClick={handleUpdate} variant="roundedSS">수정 완료</Button>
           </div>
+        </div>
         ):(              
-          <div>
-            <span>{content}</span>
-            <div className='absolute top-0 right-0 cursor-pointer'>
-              <div onClick={() => setIsOpen(!isOpen)}>
-                <Icon iconName='ic_kebab'  width="24" height="24"  alt='드롭다운 버튼'/>
-              </div>
-              <DropdownMenu isOpen={isOpen}>
-                <div onClick={() => setIsOpen(!isOpen)}>
-                  <button 
-                    onClick={() => {
-                      setIsModalOpen(true);
-                    }}>
-                    삭제하기
-                  </button>
-                </div>
-                <div onClick={() => setIsOpen(!isOpen)}><button onClick={() => setEditMode(true)}>수정하기</button></div>
-              </DropdownMenu> 
-            </div>
-          </div>
+        <div>
+          <span>{requestCommentValue}</span>
+          <DropdownMenu dropdownActions={dropdownActions} className='' />
+        </div>
        )}
       <UserInfo userImg={commentItem.writer.image} ownerNickname={commentItem.writer.nickname} createdAtString={createdAtString} fontSize='12px'/>
-      <Modal isOpen={isModalOpen}>
-        <Icon iconName="check"  width="12" height="12"  className="bg-[var(--primary_100)] mx-auto mb-6" alt="check icon" />
-        <p className="mb-8 text-center">댓글을 삭제하시겠습니까?</p>
-        <div className="flex justify-center gap-2">
-          <Button variant="lined_btn" onClick={() => setIsModalOpen(false)}>아니요</Button>
-          <Button variant="roundedS" onClick={() => confirmDelete()}>확인</Button>
-        </div>
-      </Modal>
+      <Modal isOpen={isModalOpen} closeModal={closeModal} onclick={handleConfirmDelete} message={modalMessage}/>
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </li>
   );
 }

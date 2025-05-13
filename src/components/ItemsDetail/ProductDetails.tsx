@@ -26,9 +26,9 @@ function ProductDetails( ) {
           </>
         )}
       </Container>
-      {/* <Container>
+      <Container>
         <CommentSection productId={productId} />
-      </Container> */}
+      </Container>
     </div>
   );
 }
