@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import * as S from './Home.style'
+import * as S from './page.style'
 import Button from '../../../components/common/Button'
 
 import Logo from '../../../public/assets/image/Logo.png'
@@ -15,7 +15,7 @@ import HomeRegister from '../../../public/assets/image/home_register.png'
 import Facebook from '../../../public/assets/svg/facebook.svg'
 import Instagram from '../../../public/assets/svg/instagram.svg'
 import Twitter from '../../../public/assets/svg/twitter.svg'
-import Youtube from '../../../public/assets/svg/youtube.svg'
+import Youtube from '../../../public/ assets/svg/youtube.svg'
 import Image from 'next/image'
 
 function Home() {
