@@ -1,22 +1,22 @@
-'use client' // 클라이언트 컴포넌트로 지정
-
+'use client'
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
-import * as S from './page.style'
-import Button from '../../components/common/Button'
+import * as S from './Home.style'
+import Button from '../../../components/common/Button'
 
-import Logo from '../../public/assets/image/Logo.png'
-import LogoFace from '../../public/assets/image/LogoFace.png'
-import HomeTop from '../../public/assets/image/home_top.png'
-import HomeBottom from '../../public/assets/image/home_bottom.png'
-import HomeHotItems from '../../public/assets/image/home_hot_items.png'
-import HomeSearch from '../../public/assets/image/home_search.png'
-import HomeRegister from '../../public/assets/image/home_register.png'
-import Facebook from '../../public/assets/svg/facebook.svg'
-import Instagram from '../../public/assets/svg/instagram.svg'
-import Twitter from '../../public/assets/svg/twitter.svg'
-import Youtube from '../../public/assets/svg/youtube.svg'
+import Logo from '../../../public/assets/image/Logo.png'
+import LogoFace from '../../../public/assets/image/LogoFace.png'
+import HomeTop from '../../../public/assets/image/home_top.png'
+import HomeBottom from '../../../public/assets/image/home_bottom.png'
+import HomeHotItems from '../../../public/assets/image/home_hot_items.png'
+import HomeSearch from '../../../public/assets/image/home_search.png'
+import HomeRegister from '../../../public/assets/image/home_register.png'
+import Facebook from '../../../public/assets/svg/facebook.svg'
+import Instagram from '../../../public/assets/svg/instagram.svg'
+import Twitter from '../../../public/assets/svg/twitter.svg'
+import Youtube from '../../../public/assets/svg/youtube.svg'
+import Image from 'next/image'
 
 function Home() {
   const [buttonStyle, setButtonStyle] = useState({
@@ -44,15 +44,16 @@ function Home() {
       <S.HeaderTop>
         <S.HeaderNav>
           <S.HeaderLogo>
-            <Link href="/">
-              <S.HeaderLogoFace src={LogoFace} alt="판다마켓 로고 사진" />
+            <Link to="/">
+              <Image src={LogoFace} alt="판다마켓 로고 사진" />
             </Link>
-            <Link href="/">
-              <S.HeaderLogoName src={Logo} alt="판다마켓 로고 사진" />
+            <Link to="/">
+              <Image src={Logo} alt="판다마켓 로고 사진" />
             </Link>
           </S.HeaderLogo>
           <S.ButtonWrapper>
             <Button
+              as={Link}
               to="/login"
               size={48.5}
               paddingHeight={11}
@@ -71,7 +72,8 @@ function Home() {
             </S.HeaderTitleFont>
             <S.ButtonWrapper>
               <Button
-                href="/items"
+                as={Link}
+                to="/items"
                 size={56}
                 paddingHeight={12}
                 paddingWidth={buttonStyle.paddingWidth}
@@ -80,13 +82,13 @@ function Home() {
               </Button>
             </S.ButtonWrapper>
           </S.HeaderMainTitle>
-          <img src={HomeTop} alt="판다마켓 백그라운드사진" />
+          <Image src={HomeTop} alt="판다마켓 백그라운드사진" />
         </S.HeaderMainContainer>
       </S.HeaderMain>
       <S.MainBasic>
         <S.MainTheme>
           <S.MainPopularSellImage>
-            <img src={HomeHotItems} alt="판다마켓 인기 상품 사진" />
+            <Image src={HomeHotItems} alt="판다마켓 인기 상품 사진" />
           </S.MainPopularSellImage>
           <S.MainThemeBasic>
             <div>
@@ -116,17 +118,17 @@ function Home() {
             </div>
             <div>
               <S.MainPopularSellFontBottom>
-                구매하고 싶은 물품은 검색해서 쉽게 찾아보세요
+                구매하고 싶은 물품은 검색해서&nbsp;쉽게 찾아보세요
               </S.MainPopularSellFontBottom>
             </div>
           </S.MainThemeBasicMiddle>
           <S.MainSearchImage>
-            <img src={HomeSearch} alt="판다마켓 상품 검색 사진" />
+            <Image src={HomeSearch} alt="판다마켓 상품 검색 사진" />
           </S.MainSearchImage>
         </S.MainThemeCenter>
         <S.MainTheme>
           <S.MainPopularSellImage>
-            <img src={HomeRegister} alt="판다마켓 인기 상품 등록" />
+            <Image src={HomeRegister} alt="판다마켓 인기 상품 등록" />
           </S.MainPopularSellImage>
           <S.MainThemeBasic>
             <div>
@@ -139,7 +141,7 @@ function Home() {
             </div>
             <div>
               <S.MainPopularSellFontBottom>
-                어떤 물건이든 판매하고 싶은 상품을 쉽게 등록하세요
+                어떤 물건이든 판매하고 싶은&nbsp; 상품을 쉽게 등록하세요
               </S.MainPopularSellFontBottom>
             </div>
           </S.MainThemeBasic>
@@ -153,7 +155,7 @@ function Home() {
               <S.FooterFont>믿을 수 있는 판다마켓 중고 거래</S.FooterFont>
             </div>
             <S.FooterImage>
-              <img src={HomeBottom} alt="판다마켓 백그라운드사진" />
+              <Image src={HomeBottom} alt="판다마켓 백그라운드사진" />
             </S.FooterImage>
           </S.FooterBackground>
         </S.FooterContainer>
@@ -161,25 +163,25 @@ function Home() {
           <S.FooterNavMain>
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
-              <Link href="/privacy">
+              <Link to="/privacy">
                 <S.Privacy>Privacy Policy</S.Privacy>
               </Link>
-              <Link href="/faq">
+              <Link to="/faq">
                 <S.Faq>FAQ</S.Faq>
               </Link>
             </S.PrivacyFaq>
             <S.Social>
               <a href="https://www.facebook.com/" target="_blank">
-                <img src={Facebook} alt="페이스북 로고 사진" />
+                <Image src={Facebook} alt="페이스북 로고 사진" />
               </a>
               <a href="https://x.com/" target="_blank">
-                <img src={Twitter} alt="트위터 로고 사진" />
+                <Image src={Twitter} alt="트위터 로고 사진" />
               </a>
               <a href="https://www.youtube.com/" target="_blank">
-                <img src={Youtube} alt="유튜브 로고 사진" />
+                <Image src={Youtube} alt="유튜브 로고 사진" />
               </a>
               <a href="https://www.instagram.com/" target="_blank">
-                <img src={Instagram} alt="인스타그램 로고 사진" />
+                <Image src={Instagram} alt="인스타그램 로고 사진" />
               </a>
             </S.Social>
           </S.FooterNavMain>
