@@ -1,13 +1,7 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
 function NotFound() {
-  const router = useRouter();
-  useEffect(() => {
-    router.push('/boards');
-  }, [router]);
-  return <></>;
+  redirect('/boards');
 }
 
 export default NotFound;
