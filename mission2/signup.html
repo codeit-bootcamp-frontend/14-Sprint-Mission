@@ -30,6 +30,7 @@
             type="email"
             placeholder="이메일을 입력해 주세요"
           />
+          <p class="error-message email-error"></p>
         </div>
         <div class="input-item">
           <label for="nickname">닉네임</label>
@@ -39,6 +40,7 @@
             type="text"
             placeholder="닉네임을 입력해 주세요"
           />
+          <p class="error-message nickname-error"></p>
         </div>
         <div class="input-item">
           <label for="password">비밀번호</label>
@@ -55,6 +57,7 @@
               class="toggle-password"
             />
           </div>
+          <p class="error-message password-error"></p>
         </div>
         <div class="input-item">
           <label for="passwordConfirmation">비밀번호 확인</label>
@@ -71,9 +74,10 @@
               class="toggle-password"
             />
           </div>
+          <p class="error-message password-confirmation-error"></p>
         </div>
 
-        <button type="submit" class="button pill-button full-width">
+        <button type="submit" class="button pill-button full-width" disabled>
           회원가입
         </button>
       </form>
@@ -100,5 +104,6 @@
         이미 회원이신가요? <a href="signin.html">로그인</a>
       </div>
     </div>
+    <script src="js/signup.js"></script>
   </body>
 </html>
