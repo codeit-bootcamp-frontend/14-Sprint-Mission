@@ -7,6 +7,7 @@ import kebabIcon from '@/public/assets/icons/kebab-icon.svg';
 import Comment from './Comment';
 import CommentList from './CommentList';
 import { Writer } from '@/app/boards/page';
+import { notFound } from 'next/navigation';
 
 interface Article {
   id: number;
@@ -32,6 +33,11 @@ export async function getArticle(id: string) {
       return data;
     } else {
       console.error('Request failed with status:', response.status);
+      // Instead of throwing an error, return null for 404 status
+      if (response.status === 404) {
+        return null;
+      }
+      // For other errors, you can still throw
       throw new Error(`Request failed with status: ${response.status}`);
     }
   } catch (error) {
@@ -42,7 +48,12 @@ export async function getArticle(id: string) {
 
 async function Board({ params }: { params: { id: string } }) {
   const id = params.id;
-  const article: Article = await getArticle(id);
+  const article: Article | null = await getArticle(id);
+
+  if (!article) {
+    console.log('page not found');
+    notFound();
+  }
 
   const formattedDate = formatDate(article.createdAt);
 
