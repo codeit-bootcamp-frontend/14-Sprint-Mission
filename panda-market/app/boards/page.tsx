@@ -1,8 +1,10 @@
 import ArticleList from '@/app/boards/ArticleList';
 import BestArticleList from '@/app/boards/BestArticleList';
+import ButtonSmall from '@/components/common/ButtonSmall';
 import Navbar from '@/components/common/Navbar';
 import SearchForm from '@/components/common/SearchForm';
 import Select from '@/components/common/Select';
+import Link from 'next/link';
 
 interface DataProps {
   page: number;
@@ -22,9 +24,10 @@ export interface Article {
   writer: Writer;
 }
 
-interface Writer {
+export interface Writer {
   id: number;
   nickname: string;
+  image: string;
 }
 
 export async function getData({ page, pageSize, orderBy, keyword }: DataProps) {
@@ -36,7 +39,7 @@ export async function getData({ page, pageSize, orderBy, keyword }: DataProps) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } else {
       console.error('Request failed with status:', response.status);
@@ -68,7 +71,12 @@ async function Boards() {
       <div className="max-w-[1200px] mx-auto my-0 max-[1200px]:mx-[24px]">
         <h2 className="font-bold text-[20px] my-[24px]">베스트 게시글</h2>
         <BestArticleList />
-        <h2 className="font-bold text-[20px] my-[24px]">게시글</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="font-bold text-[20px] my-[24px]">게시글</h2>
+          <Link href="/addboard">
+            <ButtonSmall>글쓰기</ButtonSmall>
+          </Link>
+        </div>
         <div className="flex items-center gap-4">
           <SearchForm />
           <Select labels={labels} />

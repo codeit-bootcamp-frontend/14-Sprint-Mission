@@ -2,6 +2,7 @@
 const px0_10 = { ...Array.from(Array(11)).map((_, i) => `${i}px`) };
 const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) };
 const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
+const px0_1200 = { ...Array.from(Array(1201)).map((_, i) => `${i}px`) };
 
 module.exports = {
   content: [
@@ -20,6 +21,18 @@ module.exports = {
       padding: px0_200,
       margin: px0_200,
       gap: px0_200,
+      width: px0_1200,
+      fontWeight: {
+        100: '100',
+        200: '200',
+        300: '300',
+        400: '400',
+        500: '500',
+        600: '600',
+        700: '700',
+        800: '800',
+        900: '900',
+      },
       fontFamily: {
         rokaf: ['ROKAF Sans', 'sans-serif'],
         pretendard: ['Pretendard'],
