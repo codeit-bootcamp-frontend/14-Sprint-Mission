@@ -6,6 +6,19 @@ import heartIcon from '@/public/assets/icons/heart-icon.svg';
 import kebabIcon from '@/public/assets/icons/kebab-icon.svg';
 import Comment from './Comment';
 import CommentList from './CommentList';
+import { Writer } from '@/app/boards/page';
+
+interface Article {
+  id: number;
+  content: string;
+  image: string;
+  isLiked: boolean;
+  likeCount: number;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  writer: Writer;
+}
 
 export async function getArticle(id: string) {
   try {
@@ -29,8 +42,7 @@ export async function getArticle(id: string) {
 
 async function Board({ params }: { params: { id: string } }) {
   const id = params.id;
-  console.log('id', id);
-  const article = await getArticle(id);
+  const article: Article = await getArticle(id);
 
   const formattedDate = formatDate(article.createdAt);
 
@@ -67,7 +79,10 @@ async function Board({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className="mt-24 mb-32 font-400 text-18">
+        <div className="flex flex-col gap-12 mt-24 mb-32 font-400 text-18">
+          {article.image && (
+            <Image src={article.image} alt="article" width={300} height={300} />
+          )}
           <p>{article.content}</p>
         </div>
         <Comment />
