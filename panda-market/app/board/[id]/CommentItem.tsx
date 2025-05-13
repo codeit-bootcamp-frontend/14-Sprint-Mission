@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Comment } from './CommentList';
 import kebabIcon from '@/public/assets/icons/kebab-icon.svg';
+import UserIcon from '@/public/assets/icons/user-icon.svg';
 
 function CommentItem({ comment }: { comment: Comment }) {
   return (
@@ -18,7 +19,7 @@ function CommentItem({ comment }: { comment: Comment }) {
       <div className="flex items-center gap-8">
         <Image
           className="w-32 h-32 rounded-full"
-          src={comment.writer.image}
+          src={comment.writer.image || UserIcon}
           alt="user"
           width={32}
           height={32}

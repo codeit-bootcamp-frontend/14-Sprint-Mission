@@ -2,26 +2,27 @@ import Image from 'next/image';
 import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  imageSrc: string;
-  alt: string;
+  image?: string;
+  alt?: string;
+  label?: string;
 }
 
-function Input({ imageSrc, alt, placeholder, onChange }: InputProps) {
+function Input({ ...props }: InputProps) {
   return (
-    <div>
-      {imageSrc && (
+    <div className="flex flex-col gap-12">
+      {props.label && <h2 className="font-700 text-18">*{props.label}</h2>}
+      {props.image && (
         <Image
           className="absolute left-[20px] top-[13px]"
-          src={imageSrc}
-          alt={alt}
+          src={props.image}
+          alt={props.alt || ''}
         />
       )}
       <input
         className={`w-full bg-gray-100 py-[9px] rounded-xl outline-none ${
-          imageSrc ? ' pl-[44px]' : ''
+          props.image ? ' pl-[44px]' : ' pl-[24px]'
         }`}
-        placeholder={placeholder}
-        onChange={onChange}
+        {...props}
       />
     </div>
   );

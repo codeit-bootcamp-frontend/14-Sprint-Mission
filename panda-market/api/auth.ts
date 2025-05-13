@@ -59,6 +59,7 @@ export const getNewAccessToken = async (
     }
 
     const data: { accessToken: string } = await response.json();
+    // console.log('토큰 갱신 성공', data.accessToken);
     return data.accessToken;
   } catch (error) {
     console.error('토큰 갱신 실패', error);

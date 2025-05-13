@@ -26,7 +26,7 @@ export default function SearchForm() {
   return (
     <form className="relative flex-1" onSubmit={handleSubmit}>
       <Input
-        imageSrc={searchIcon}
+        image={searchIcon}
         alt="search"
         placeholder="검색할 상품을 입력해주세요."
         onChange={handleChange}

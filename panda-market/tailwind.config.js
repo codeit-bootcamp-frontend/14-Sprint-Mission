@@ -22,6 +22,7 @@ module.exports = {
       margin: px0_200,
       gap: px0_200,
       width: px0_1200,
+      height: px0_1200,
       fontWeight: {
         100: '100',
         200: '200',

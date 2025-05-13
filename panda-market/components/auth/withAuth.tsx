@@ -15,13 +15,8 @@ export const isAuthenticated = () => {
 };
 
 // HOC에서 사용할 Props 타입
-interface WithAuthProps {
-  user?: User;
-}
-
-function withAuth<P>(WrappedComponent: ComponentType<P>) {
-  type Props = Omit<P, keyof WithAuthProps>;
-  const AuthenticatedComponent = (props: Props) => {
+function withAuth(WrappedComponent: ComponentType) {
+  const AuthenticatedComponent = () => {
     const router = useRouter();
     const [authState, setAuthState] = useState<{
       isAuthenticated: boolean;
@@ -66,9 +61,7 @@ function withAuth<P>(WrappedComponent: ComponentType<P>) {
       return <div>로딩중...</div>;
     }
 
-    return (
-      <WrappedComponent {...(props as P)} user={authState.user || undefined} />
-    );
+    return <WrappedComponent />;
   };
 
   // displayName 설정 (디버깅 용이)
