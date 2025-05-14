@@ -7,9 +7,14 @@ function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
   return (
     <nav>
       <div className="flex items-center justify-between h-[70px] px-[200px] py-0 border-b border-[#dfdfdf] max-[1200px]:px-[24px] max-[767px]:px-[16px]">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-[3rem] max-md:gap-[2rem] max-sm:gap-[1rem]">
           <Link className="flex items-center font-rokaf gap-[8px]" href="/">
-            <Image className="h-auto" src={logo} alt="logo" width={40} />
+            <Image
+              className="h-auto max-sm:hidden"
+              src={logo}
+              alt="logo"
+              width={40}
+            />
             <div className="text-[26px] font-[700] text-blue">판다마켓</div>
           </Link>
           {isLoggedIn && (

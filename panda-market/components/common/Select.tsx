@@ -1,10 +1,10 @@
 'use client';
-import { redirect } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import arrowDownIcon from '@/public/assets/icons/arrow-down-icon.svg';
 import filterIcon from '@/public/assets/icons/filter-icon.svg';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
+import { useRouter } from 'next/navigation';
 
 interface Label {
   name: string;
@@ -16,6 +16,7 @@ interface SelectProps {
 }
 
 function Select({ labels }: SelectProps) {
+  const router = useRouter();
   const [name, setName] = useState<string>(labels[0].name);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const isMobile = useMediaQuery({
@@ -30,7 +31,7 @@ function Select({ labels }: SelectProps) {
     setName(e.currentTarget.textContent || '');
     const order = e.currentTarget.getAttribute('value');
     setIsOpen(false);
-    redirect(`/boards?orderBy=${order}`);
+    router.push(`/boards?orderBy=${order}`);
   };
 
   return (
