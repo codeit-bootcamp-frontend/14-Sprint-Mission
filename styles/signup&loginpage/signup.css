@@ -9,7 +9,7 @@ body {
   font-family: "Pretendard";
 }
 
-.signuppage {
+.signup-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,27 +19,27 @@ body {
 /* 회원가입 페이지 전체 스타일 */
 
 /* 로고 스타일 */
-#mainlogo {
+#main-logo {
   width: 396px;
   height: 132px;
 }
 /* 로고 스타일 */
 
 /* 회원가입 섹션 스타일 */
-.signupsection {
+.signup-section {
   font-weight: 700;
   font-size: 18px;
   margin-top: 40px;
 }
 
 /* 회원가입 라벨 스타일 */
-.signuplabel {
+.signup-label {
   display: block;
   margin-bottom: 16px;
 }
 
 /* 인풋 스타일 */
-.logininput {
+.login-input {
   width: 640px;
   height: 56px;
   background-color: #f3f4f6;
@@ -51,7 +51,7 @@ body {
 }
 
 /* 회원가입 박스 스타일 */
-.signupbox {
+.signup-box {
   margin-bottom: 24px;
 }
 
@@ -60,12 +60,12 @@ body {
   width: 640px;
 }
 
-#passwardinput {
+#passward-input {
   width: 100%;
   padding-right: 48px;
 }
 
-#togglePassword {
+#toggle-Password {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -75,13 +75,13 @@ body {
   cursor: pointer;
   opacity: 0.6;
 }
-#togglePassword:hover {
+#toggle-Password:hover {
   opacity: 1;
 }
 /* 로그인 섹션 스타일 */
 
 /* 회원가입 버튼 */
-#signupbutton {
+#signup-button {
   margin-bottom: 24px;
   width: 640px;
   height: 56px;
@@ -89,7 +89,7 @@ body {
 /* 로그인 버튼 */
 
 /* 간편 로그인 하기 섹션 스타일 */
-.socialloginsection {
+.social-login-section {
   width: 640px;
   height: 74px;
   background-color: #e6f2ff;
@@ -103,7 +103,7 @@ body {
   justify-content: space-between;
 }
 
-#sociallogintext {
+#social-login-text {
   font-weight: 500;
   line-height: 26px;
   font-size: 16px;
@@ -111,12 +111,12 @@ body {
   margin: 0;
 }
 
-#socialloginicon {
+#social-login-icon {
   display: flex;
   gap: 12px;
 }
 
-#socialloginicon img {
+#social-login-icon img {
   width: 36px;
   height: 36px;
   cursor: pointer;
@@ -125,7 +125,7 @@ body {
 
 /* 회원가입 */
 
-#gologin {
+#go-login {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -133,7 +133,7 @@ body {
   gap: 4px;
 }
 
-#loginlink {
+#login-link {
   color: #3692ff;
   text-decoration: underline;
   font-weight: 500;

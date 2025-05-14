@@ -6,25 +6,43 @@
   background-repeat: no-repeat;
   background-position: 80% bottom;
   background-size: 55%;
+  position: relative;
 }
 
 #hero {
-  background-image: url("../images/home/hero-image.png");
+  position: absolute;
+  bottom: 0;
+  right: 405px;
+}
+
+#footer-Menu {
+  display: flex;
+  gap: 30px;
+  color: #e5e7eb;
+}
+
+#social-Media {
+  gap: 12px;
+  display: flex;
 }
 
 #features {
   padding-bottom: 138px;
 }
 
-#bottomBanner {
-  background-image: url("../images/home/bottom-banner-image.png");
+#bottom-Banner {
+  position: absolute;
+  bottom: 0;
+  right: 405px;
 }
 
-#loginLinkButton {
+#login-Link-Button {
   font-size: 16px;
   font-weight: 600;
   border-radius: 8px;
-  padding: 11.5px 23px;
+  padding: 12px 23px;
+  width: 128px;
+  height: 48px;
 }
 
 .banner .pill-button {
@@ -60,4 +78,28 @@
   line-height: 120%;
   letter-spacing: 0.08em;
   margin-top: 24px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 200px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
+  z-index: 9999;
+}
+
+footer {
+  background-color: #111827;
+  color: #9ca3af;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 200px 108px 200px;
+  font-size: 16px;
 }
