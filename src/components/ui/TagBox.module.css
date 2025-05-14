@@ -1,0 +1,34 @@
+.tagBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tagList {
+  display: flex;
+  gap: 12px;
+}
+.tagList li {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  padding: 5px 16px;
+  padding-right: 44px;
+  background-color: var(--Cool_Gray_100);
+  border-radius: 999px;
+  line-height: 26px;
+}
+.tagDeleteBtn {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  background-color: var(--Cool_Gray_400);
+  border-radius: 999px;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.tagDeleteBtn img {
+  width: 22px;
+}

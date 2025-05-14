@@ -1,0 +1,60 @@
+
+import React from 'react';
+import styles from './InputBox.module.css';
+import clsx from 'clsx';
+
+
+interface TextAreaBoxProps {
+  placeholder?: string;
+  height?: string | number;
+  [key: string]: any;
+}
+export function InputBox({ inputBoxType='text', placeholder, ...rest }: TextAreaBoxProps) {
+  return (
+    <input 
+      className={clsx(styles.input,'w-full h-20 text-sm')} 
+      type={inputBoxType} 
+      placeholder={placeholder}  
+      {...rest}
+    />
+  );
+}
+
+export function InputField({ label, inputBoxType, placeholder, ...rest }: TextAreaBoxProps) {
+  return (
+    <label className={styles.label}>
+      <span>{label}</span>
+      <input 
+        className={styles.input} 
+        type={inputBoxType} 
+        placeholder={placeholder}  
+        {...rest}
+      />
+    </label>
+  );
+}
+
+
+export function TextAreaBox({ placeholder, height, ...rest }: TextAreaBoxProps) {
+  return (
+    <textarea 
+      className={clsx(styles.input,'w-full  text-sm desktop:h-20 mobile:h-36')} 
+      placeholder={placeholder}  
+      {...rest}
+    />
+  );
+}
+
+export function TextAreaField({ label, placeholder, height, ...rest }: TextAreaBoxProps) {
+  return (
+    <label className={styles.label}>
+      <span>{label}</span>
+      <textarea 
+        className={styles.textarea} 
+        placeholder={placeholder} 
+        style={{ height: 'auto', minHeight: `${height}`}} 
+        {...rest}
+      />
+    </label>
+  );
+}

@@ -1,0 +1,9 @@
+/* Mobile */
+@media (max-width: 767px) {
+  .category {
+    margin-left: 8px;
+  }
+  .category a {
+    padding: 0px 8px;
+  }
+}
