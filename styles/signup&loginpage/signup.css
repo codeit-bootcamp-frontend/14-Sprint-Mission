@@ -50,6 +50,11 @@ body {
   padding-bottom: 16px;
 }
 
+input::placeholder {
+  color: #9ca3af; /* 연한 회색 */
+  font-size: 16px;
+}
+
 /* 회원가입 박스 스타일 */
 .signup-box {
   margin-bottom: 24px;
@@ -141,3 +146,56 @@ body {
 }
 
 /* 회원가입 */
+
+@media (max-width: 767px) {
+  /* 페이지 전체 설정 */
+  .signup-page {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    padding: 0 16px; /* 좌우 16px 여백 */
+  }
+
+  /* 회원가입 섹션 설정 */
+  .signup-section {
+    width: 100%;
+    max-width: 400px; /* 최대 400px까지만 확장 */
+  }
+
+  /* 로고 설정 */
+  #main-logo {
+    width: 100%;
+    max-width: 396px; /* 원본 크기 최대 제한 */
+    height: auto; /* 비율 유지하며 축소 */
+  }
+
+  /* 인풋 필드 및 버튼 설정 */
+  .login-input,
+  #passward-input,
+  #signup-button {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 비밀번호 wrapper 설정 */
+  .password-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 소셜 로그인 설정 */
+  .social-login-section {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 16px;
+  }
+
+  /* 로그인 링크 설정 */
+  #go-login {
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 400px;
+  }
+}
