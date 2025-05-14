@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 import ArrowDown from '../../public/assets/image/ArrowDown.png'
 import Sort from '../../public/assets/svg/Sort.svg'
 

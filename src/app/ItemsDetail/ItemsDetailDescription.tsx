@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { useGetProductId } from '../../../hooks/useProductService'
-import Tag from '../../../components/common/Tag'
+import Tag from '../common/Tag'
 import { formatDate } from '../../../utils/datetime'
 
 import Setting from '../../../public/assets/svg/Setting.svg'

@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import "../styles/reset.css";
+import { createGlobalStyle } from 'styled-components'
+import './reset.css'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -25,6 +25,6 @@ const GlobalStyles = createGlobalStyle`
     background: none;
     cursor: pointer;
   }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

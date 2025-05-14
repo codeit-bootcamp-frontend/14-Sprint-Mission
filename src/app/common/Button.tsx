@@ -1,33 +1,31 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { ReactNode } from 'react'
+import Link from 'next/link'
+import { ReactNode, CSSProperties } from 'react'
 
 interface ButtonProps {
   size: number
-  width?: number
-  paddingHeight?: number
-  paddingWidth?: number
   onClick?: () => void
   disabled?: boolean
   children?: ReactNode
+  style?: CSSProperties
   prefix?: ReactNode
   suffix?: ReactNode
   as?: 'button' | typeof Link
   to?: string
+  className?: string
 }
 
 const Button = ({
-  size = 43,
-  width,
-  paddingHeight,
-  paddingWidth,
+  size = 48.5,
   onClick,
   disabled,
   children,
+  style,
   prefix,
   suffix,
   as = 'button',
   to,
+  className,
 }: ButtonProps) => {
   const isLink = as === Link
 
@@ -36,16 +34,35 @@ const Button = ({
     return null
   }
 
+  if (isLink) {
+    return (
+      <Link href={to!} passHref legacyBehavior>
+        <a style={{ textDecoration: 'none' }}>
+          <ButtonWrapper
+            as="div"
+            size={size}
+            className={className}
+            style={style}
+          >
+            <ButtonInner>
+              {prefix && <ButtonInnerText>{prefix}</ButtonInnerText>}
+              <ButtonInnerText>{children}</ButtonInnerText>
+              {suffix && <ButtonInnerText>{suffix}</ButtonInnerText>}
+            </ButtonInner>
+          </ButtonWrapper>
+        </a>
+      </Link>
+    )
+  }
+
   return (
     <ButtonWrapper
-      as={as}
-      {...(isLink ? { href: to } : {})}
+      as="button"
+      className={className}
+      style={style}
       size={size}
-      width={width}
       onClick={onClick}
       disabled={disabled}
-      paddingHeight={paddingHeight}
-      paddingWidth={paddingWidth}
     >
       <ButtonInner>
         {prefix && <ButtonInnerText>{prefix}</ButtonInnerText>}
@@ -60,9 +77,6 @@ export default Button
 
 interface StyledButtonWrapper {
   size?: number
-  width?: number
-  paddingHeight?: number
-  paddingWidth?: number
 }
 
 const ButtonWrapper = styled.button<StyledButtonWrapper>`
@@ -75,13 +89,9 @@ const ButtonWrapper = styled.button<StyledButtonWrapper>`
   color: ${({ theme }) => theme.colors.SecondaryGray[50]};
   font-weight: ${({ size }) => ButtonSize[size!]?.fontWeight || 600};
   border-radius: ${({ size }) => ButtonSize[size!]?.borderRadius || '40px'};
-  height: ${({ size }) => (size === 43 ? '48px' : 'auto')};
-  width: ${({ width }) => (width ? `${width}px` : '100%')};
+
   font-size: ${({ size }) => ButtonSize[size!]?.fontSize || '16px'};
-  padding: ${({ paddingHeight, paddingWidth }) =>
-    paddingHeight && paddingWidth
-      ? `${paddingHeight}px ${paddingWidth}px`
-      : `16px`};
+
   transition: all 0.3s ease-in-out;
   &:hover {
     background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
@@ -111,45 +121,39 @@ const ButtonInnerText = styled.span`
 type ButtonSizeType = Record<
   number,
   {
-    height: string
     fontSize: string
     fontWeight: number
-    padding?: string
+
     borderRadius: string
   }
 >
 const ButtonSize: ButtonSizeType = {
   56: {
-    height: '56px',
     fontSize: '20px',
     fontWeight: 600,
-    padding: '12px 124px',
+
     borderRadius: '40px',
   },
   48: {
-    height: '48px',
     fontSize: '18px',
     fontWeight: 600,
-    padding: '11px 71px',
+
     borderRadius: '40px',
   },
 
   42.5: {
-    height: '42px',
     fontSize: '16px',
     fontWeight: 600,
-    padding: '9px 20px',
+
     borderRadius: '8px',
   },
   48.5: {
-    height: '48px',
     fontSize: '16px',
     fontWeight: 600,
-    padding: '11px 30px',
+
     borderRadius: '8px',
   },
   0: {
-    height: '40px',
     fontSize: '16px',
     fontWeight: 600,
     borderRadius: '40px',

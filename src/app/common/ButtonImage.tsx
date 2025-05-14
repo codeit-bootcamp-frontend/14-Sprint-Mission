@@ -4,8 +4,8 @@ import Plus from '../../public/assets/svg/Plus.svg'
 import Delete from '../../public/assets/svg/Delete.svg'
 
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 import Image from 'next/image'
 
 const ButtonImage = () => {

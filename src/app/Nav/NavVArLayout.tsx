@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import ItemsNavVar from '../../../components/common/ItemsNavVar'
+import ItemsNavVar from '../common/ItemsNavVar'
 
 const NavVArLayout = () => {
   const { pathname } = useLocation() // 현재 페이지가 어떤 페이지인지 감지

@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom'
 
 import { useGetCommentService } from '../../../hooks/useCommentService'
 import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
-import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
-import Button from '../../../components/common/Button'
+import TextInputPlaceholder from '../common/TextInputPlaceholder'
+import Button from '../common/Button'
 import InquiryEmpty from '../../../public/assets/svg/InquiryEmpty.svg'
 
 import styled from 'styled-components'

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import ItemsDetailDescription from './ItemsDetailDescription'
 import ItemsDetailQuestionTextarea from './ItemsDetailQuestionTextarea'
-import Button from '../../../components/common/Button'
+import Button from '../common/Button'
 
 import BackIcon from '../../../public/assets/svg/BackIcon.svg'
 

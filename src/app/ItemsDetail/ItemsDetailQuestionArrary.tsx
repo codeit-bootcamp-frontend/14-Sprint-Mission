@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import { PostCommentType } from '../../../types/comment'
-import Button from '../../../components/common/Button'
-import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
+import Button from '../common/Button'
+import TextInputPlaceholder from '../common/TextInputPlaceholder'
 import commentService from '../../../src/app/api/services/commentService'
 import { diffDate } from '../../../utils/datetime'
 import { formatDate } from '../../../utils/datetime'

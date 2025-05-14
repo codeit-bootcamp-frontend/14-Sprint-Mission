@@ -1,8 +1,8 @@
 'use client'
 
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../../styles/theme'
-import GlobalStyles from '../../styles/GlobalStyles'
+import { theme } from './styles/theme'
+import GlobalStyles from './styles/GlobalStyles'
 
 export default function ClientLayout({
   children,

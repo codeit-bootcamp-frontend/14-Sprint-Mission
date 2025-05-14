@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
 
-import LoginField from './LoginField'
-import Button from '../../../components/common/Button'
+import LoginField from '../LoginAndSignup/LoginField'
+import Button from '../common/Button'
 
 import Logo from '../../../public/assets/image/Logo.png'
 import LogoFace from '../../../public/assets/image/LogoFace.png'
@@ -14,8 +14,9 @@ import VisibillityOff from '../../../public/assets/svg/btn_visibillity_off.svg'
 import Visibillity from '../../../public/assets/svg/btn_visibillity.svg'
 
 import styled from 'styled-components'
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
+import Image from 'next/image'
 
 const Bone = styled.div`
   display: flex;
@@ -46,23 +47,7 @@ const LogoContainer = styled.div`
     margin-bottom: 1.5rem;
   }
 `
-const LogoFaceImage = styled.img`
-  width: 6.438rem;
-  height: 6.438rem;
-  @media (max-width: 375px) {
-    margin: auto 11px auto 0;
-    width: 3.187rem;
-    height: 3.187rem;
-  }
-`
-const LogoImage = styled.img`
-  width: 16.625rem;
-  height: 5rem;
-  @media (max-width: 375px) {
-    width: 8.313rem;
-    height: 2.813rem;
-  }
-`
+
 const ButtonWrapper = styled.div`
   margin-bottom: 3rem;
   width: 100%;
@@ -106,7 +91,6 @@ const Register = styled.div`
 `
 
 const Login = () => {
-  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
@@ -142,7 +126,6 @@ const Login = () => {
     setPasswordError(passwordValidation)
 
     if (!emailValidation && !passwordValidation) {
-      navigate(`/items`)
     }
   }
   useEffect(() => {
@@ -152,11 +135,11 @@ const Login = () => {
   return (
     <Bone>
       <LogoContainer>
-        <Link to="/">
-          <LogoFaceImage src={LogoFace} alt="판다마켓 로고 사진" />
+        <Link href="/">
+          <Image src={LogoFace} alt="판다마켓 로고 사진" />
         </Link>
-        <Link to="/">
-          <LogoImage src={Logo} alt="판다마켓 로고 사진" />
+        <Link href="/">
+          <Image src={Logo} alt="판다마켓 로고 사진" />
         </Link>
       </LogoContainer>
       <LoginField
@@ -186,12 +169,7 @@ const Login = () => {
         error={passwordError}
       />
       <ButtonWrapper>
-        <Button
-          size={56}
-          paddingHeight={12}
-          onClick={handleLogin}
-          disabled={!isState}
-        >
+        <Button size={56} onClick={handleLogin} disabled={!isState}>
           로그인
         </Button>
       </ButtonWrapper>
@@ -199,17 +177,17 @@ const Login = () => {
         <SimpleLogin>간편 로그인하기</SimpleLogin>
         <ImageWrapper>
           <a href="https://www.google.com/" target="_blank">
-            <img src={Google} alt="구글 로고 사진" />
+            <Image src={Google} alt="구글 로고 사진" />
           </a>
           <a href="https://www.kakaocorp.com/page/" target="_blank">
-            <img src={Kakao} alt="카카오 로고 사진" />
+            <Image src={Kakao} alt="카카오 로고 사진" />
           </a>
         </ImageWrapper>
       </SimpleLoginWrapper>
       <FooterContainer>
         <First>판다마켓이 처음이신가요? &nbsp;</First>
         <Register>
-          <Link to="/signup">회원가입</Link>
+          <Link href="/signup">회원가입</Link>
         </Register>
       </FooterContainer>
     </Bone>

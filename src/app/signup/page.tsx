@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Image from 'next/image'
 
 import LoginField from './LoginField'
-import Button from '../../../components/common/Button'
+import Button from '../common/Button'
 
 import Logo from '../../../public/assets/image/Logo.png'
 import LogoFace from '../../../public/assets/image/LogoFace.png'

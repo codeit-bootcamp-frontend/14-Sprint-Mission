@@ -1,4 +1,6 @@
-export const theme = {
+import { DefaultTheme } from 'styled-components'
+
+export const theme: DefaultTheme = {
   colors: {
     PrimaryBlue: {
       100: '#3692FF',
@@ -55,37 +57,7 @@ export const theme = {
     },
     40: {
       fontSize: '40px',
-      lineHeight: 1.4,
-    },
-  },
-  ButtonSize: {
-    56: {
-      height: '56px',
-      fontSize: '20px',
-      fontWeight: 600,
-      padding: '12px 124px',
-      borderRadius: '40px',
-    },
-    48: {
-      height: '48px',
-      fontSize: '18px',
-      fontWeight: 600,
-      padding: '11px 71px',
-      borderRadius: '40px',
-    },
-    42.5: {
-      height: '42px',
-      fontSize: '16px',
-      fontWeight: 600,
-      padding: '8px 23px',
-      borderRadius: '8px',
-    },
-    48.5: {
-      height: '48px',
-      fontSize: '16px',
-      fontWeight: 600,
-      padding: '11px 30px',
-      borderRadius: '8px',
+      lineHeight: '56px',
     },
   },
 }

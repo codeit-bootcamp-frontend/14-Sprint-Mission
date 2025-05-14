@@ -1,8 +1,8 @@
 import React from 'react'
 import Delete from '../../public/assets/svg/Delete.svg'
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 interface TagProps {
   tag: string

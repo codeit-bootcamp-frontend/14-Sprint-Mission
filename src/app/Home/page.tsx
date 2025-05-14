@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import * as S from './page.style'
-import Button from '../../../components/common/Button'
+import Button from '../common/Button'
 
 import Logo from '../../../public/assets/image/Logo.png'
 import LogoFace from '../../../public/assets/image/LogoFace.png'

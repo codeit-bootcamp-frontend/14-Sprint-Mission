@@ -10,8 +10,11 @@
   }
 }
 
-html,
+html {
+  font-size: 62.5% !important;
+}
 body {
+  font-size: 1.6rem !important;
   max-width: 100vw;
   overflow-x: hidden;
 }
