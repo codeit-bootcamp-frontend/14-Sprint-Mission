@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,13 +10,40 @@
   </head>
   <body>
     <nav>
-    <div id="nav-container">
-      <img src="./assets/images/logo/logo_Typo.svg" class="logo"></img>
-      <button class="login-button"><p>로그인</p></button>
-    </div>
+      <div id="nav-container">
+        <a href="./index.html"
+          ><img
+            src="./assets/images/logo/logo_sm.svg"
+            id="logo"
+            alt="판다마켓 로고"
+        /></a>
+        <a href="./login.html">
+          <button id="login-button">로그인</button>
+        </a>
+      </div>
     </nav>
-    <main>
-      
+    <main id="main-container">
+      <section id="trade-section" class="banner-container">
+        <img src="./assets/images/landing/desktop/desktop_01.svg" />
+      </section>
+      <section id="popular-products">
+        <div class="img-container">
+          <img src="./assets/images/landing/desktop/desktop_02.svg" />
+        </div>
+      </section>
+      <section id="search-section">
+        <div class="img-container">
+          <img src="./assets/images/landing/desktop/desktop_03.svg" />
+        </div>
+      </section>
+      <section id="product-upload">
+        <div class="img-container">
+          <img src="./assets/images/landing/desktop/desktop_04.svg" />
+        </div>
+      </section>
+      <section id="banner" class="banner-container">
+        <img src="./assets/images/landing/desktop/desktop_05.svg" />
+      </section>
     </main>
     <footer></footer>
   </body>
