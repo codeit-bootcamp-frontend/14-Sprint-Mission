@@ -25,11 +25,18 @@
 }
 
 .banner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
+  height: 54rem;
+  background-color: var(--color-banner);
+}
 
-  > img {
-    width: 100%;
-  }
+.banner-text {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-700);
 }
 
 .img-container {
@@ -42,6 +49,30 @@
   > img {
     width: 60%;
     height: 70%;
+  }
+}
+
+#trade-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rem;
+  margin: 0 auto;
+}
+
+#top-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  > a button {
+    width: 35.7rem;
+    height: 5.6rem;
+    border-radius: 4rem;
+    background-color: var(--color-primary-100);
+    color: var(--color-gray-50);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
   }
 }
 

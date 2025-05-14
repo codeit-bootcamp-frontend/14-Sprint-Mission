@@ -2,6 +2,9 @@
   --font-family-base: "Pretendard", sans-serif;
 
   /* Font Sizes + Line Heights */
+  --font-size-4xl: 40px;
+  --line-height-4xl: 46px;
+
   --font-size-3xl: 32px;
   --line-height-3xl: 42px;
 
