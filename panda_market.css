@@ -1,22 +1,3 @@
-:root {
-  --gray900: #111827;
-  --gray800: #1f2937;
-  --gray700: #374151;
-  --gray600: #4b5563;
-  --gray500: #6b7280;
-  --gray400: #9ca3af;
-  --gray300: #d1d5db;
-  --gray200: #e5e7eb;
-  --gray100: #f3f4f6;
-  --gray50: #f9fafb;
-  --blue: #3692ff;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: 'Pretendard Variable';
-}
-
 a {
   cursor: pointer;
   text-decoration: none;
@@ -97,7 +78,7 @@ header {
 
 .main__image__container img {
   width: 740px;
-  height: 340px;
+  height: auto;
 }
 
 .min__title {
@@ -222,127 +203,11 @@ footer {
   height: 20px;
 }
 
-@media (max-width: 1440px) {
-  header {
-    padding: 0 100px;
-  }
-
-  .header__container {
-    margin: 9px 100px 10px;
-  }
-
-  .main__image__container {
-    padding: 150px 50px 0;
-    height: auto;
-  }
-
-  .main__image__container img {
-    width: 100%;
-    max-width: 740px;
-    height: auto;
-  }
-
-  .main__image__container p {
-    font-size: 32px;
-  }
-
-  .main__image__container button {
-    width: 300px;
-    font-size: 18px;
-  }
+@media (min-width: 1024px) {
 }
 
-@media (max-width: 1024px) {
-  .card__content__container,
-  .card__content__container__reverse {
-    width: 90%;
-    height: auto;
-    margin: 50px auto;
-  }
-
-  .hot__item__padding,
-  .search__padding,
-  .register__padding {
-    padding: 50px 20px;
-  }
-
-  .explanation__content {
-    font-size: 32px;
-  }
-
-  .explanation__detail {
-    font-size: 20px;
-  }
-
-  .main__image__container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .main__image__container img {
-    max-width: 100%;
-  }
+@media (min-width: 768px) and (max-width: 1023px) {
 }
 
-@media (max-width: 768px) {
-  header {
-    padding: 0 20px;
-  }
-
-  .header__container {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-
-  .header__container img,
-  .header__container button {
-    margin: 10px 0;
-  }
-
-  .main__image__container {
-    padding: 50px 20px 0;
-    height: auto;
-  }
-
-  .main__image__container button {
-    width: 90%;
-    font-size: 16px;
-  }
-
-  .card__content__container,
-  .card__content__container__reverse {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    height: auto;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    font-size: 14px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .main__image__container p {
-    font-size: 24px;
-  }
-
-  .main__image__container button {
-    width: 100%;
-  }
-
-  .explanation__content {
-    font-size: 24px;
-  }
-
-  .explanation__detail {
-    font-size: 16px;
-  }
+@media (max-width: 767px) {
 }
