@@ -1,6 +1,6 @@
 import './SignUpPage.css';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -10,6 +10,7 @@ import ShowPasswordIcon from '../assets/icons/eye.svg';
 import GoogleLogo from '../assets/social/google.png';
 import KakaoLogo from '../assets/social/kakao.png';
 import Input from '../components/common/Input';
+import authService from '../api/services/auth.services';
 
 // Zod로 폼 검증 스키마 정의
 const signUpSchema = z
@@ -18,32 +19,34 @@ const signUpSchema = z
       .string()
       .nonempty('이메일을 입력해주세요.')
       .email('잘못된 이메일 형식입니다.'),
-    username: z.string().nonempty('닉네임을 입력해주세요.'),
+    nickname: z.string().nonempty('닉네임을 입력해주세요.'),
     password: z
       .string()
       .nonempty('비밀번호를 입력해주세요.')
       .min(8, '비밀번호를 8자 이상 입력해주세요.'),
-    passwordConfirm: z.string().nonempty('비밀번호를 입력해주세요.'),
+    passwordConfirmation: z.string().nonempty('비밀번호를 입력해주세요.'),
   })
-  .refine((data) => data.password === data.passwordConfirm, {
+  .refine((data) => data.password === data.passwordConfirmation, {
     message: '비밀번호가 일치하지 않습니다.',
-    path: ['passwordConfirm'],
+    path: ['passwordConfirmation'],
   });
 
 // 타입 정의
-type SignUpFormData = z.infer<typeof signUpSchema>;
+export type SignUpFormData = z.infer<typeof signUpSchema>;
 
 function SignUpPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isValid },
     control,
   } = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     mode: 'onBlur', // 필드에서 포커스가 벗어날 때 유효성 검사
   });
-
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
@@ -55,9 +58,28 @@ function SignUpPage() {
     setShowPasswordConfirm((prev) => !prev);
   };
 
-  const onSubmit = (data: SignUpFormData) => {
-    console.log('회원가입 데이터:', data);
-    // 여기에 회원가입 API 호출 로직 추가
+  const onSubmit = async (formData: SignUpFormData) => {
+    setIsSubmitting(true);
+    console.log('회원가입 데이터:', formData);
+    // 회원가입
+    try {
+      const response = await authService.signUp(formData);
+      navigate('/items');
+    } catch (error: any) {
+      if (error.details.email) {
+        setError('email', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else {
+        setError('nickname', {
+          type: 'manual',
+          message: error.message,
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,11 +110,11 @@ function SignUpPage() {
           <div className="input-box">
             <Input
               label="닉네임"
-              id="username"
+              id="nickname"
               type="text"
               placeholder="닉네임을 입력해주세요"
-              error={errors.username?.message}
-              {...register('username')}
+              error={errors.nickname?.message}
+              {...register('nickname')}
             />
           </div>
 
@@ -128,8 +150,8 @@ function SignUpPage() {
               id="passwordConfirm"
               type={showPasswordConfirm ? 'text' : 'password'}
               placeholder="비밀번호를 다시 한번 입력해주세요"
-              error={errors.passwordConfirm?.message}
-              {...register('passwordConfirm')}
+              error={errors.passwordConfirmation?.message}
+              {...register('passwordConfirmation')}
             />
             {!showPasswordConfirm ? (
               <img
@@ -148,7 +170,11 @@ function SignUpPage() {
             )}
           </div>
 
-          <button type="submit" className="login-btn" disabled={!isValid}>
+          <button
+            type="submit"
+            className="login-btn"
+            disabled={!isValid || isSubmitting}
+          >
             회원가입
           </button>
         </form>

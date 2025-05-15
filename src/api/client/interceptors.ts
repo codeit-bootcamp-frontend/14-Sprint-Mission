@@ -3,7 +3,7 @@ import { InternalAxiosRequestConfig, AxiosHeaders } from 'axios';
 export const requestInterceptor = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
-  const tokenString = localStorage.getItem('token');
+  const tokenString = localStorage.getItem('access_token');
   let token = '';
 
   if (tokenString) {
