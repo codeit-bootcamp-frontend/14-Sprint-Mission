@@ -14,7 +14,7 @@ function ProductDetails( ) {
   const { id } = useParams(); // URL에서 [id] 추출
   const productId = Number(id);
 
-  const { data, isLoading, isError } = useProductsDetails(productId);
+  const { data } = useProductsDetails(productId);
 
   return (
     <div className='flex flex-col mt-8'>

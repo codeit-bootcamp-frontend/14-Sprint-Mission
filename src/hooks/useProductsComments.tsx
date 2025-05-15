@@ -30,7 +30,7 @@ export interface GetCommentsQuery {
   cursor?: number; 
 }
 
-export function useInfiniteProductsCommentsWithObserver(productId: number, limit = 10) {
+export function useInfiniteProductsCommentsWithObserver(productId: number, limit = 10) {   // 무한로딩
   const queryResult = useInfiniteQuery<CommentListResponse, Error>({
     queryKey: ['productComments', productId],
     queryFn: async ({ pageParam }) => {
