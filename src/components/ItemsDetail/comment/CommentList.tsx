@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { useInfiniteProductsComments } from '@/hooks/useProductsComments';
+import React from 'react';
+import { useInfiniteProductsCommentsWithObserver } from '@/hooks/useProductsComments';
 import CommentItem from './CommentItem';
 import LoadingBox from '@/components/ui/LoadingBox';
 import EmptyBox from '@/components/ui/EmptyBox';
@@ -8,41 +8,16 @@ import EmptyBox from '@/components/ui/EmptyBox';
 interface CommentListProps {
   productId: number;
   className?: string;
-  [key: string]: any; 
 }
 
 function CommentList({ productId,className, ...rest }: CommentListProps) {
 
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-  } = useInfiniteProductsComments(productId);
-
-  const loadMoreRef = useRef<HTMLDivElement>(null);
-
-  
-  useEffect(() => {
-    if (!loadMoreRef.current || !hasNextPage) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage();
-        }
-      },
-      { threshold: 1.0 }
-    );
-
-    observer.observe(loadMoreRef.current);
-
-    return () => {
-      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
-    };
-  }, [hasNextPage, fetchNextPage]);
+  const { 
+    data, 
+    isLoading, 
+    isFetchingNextPage, 
+    loadMoreRef } 
+  = useInfiniteProductsCommentsWithObserver(productId);
 
   return (
     <>

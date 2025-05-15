@@ -2,7 +2,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { useState ,useEffect,useMemo } from 'react';
+import { useState } from 'react';
 import styles from '../login/Login.module.css';
 import { memberCheck } from 'utils/auth';
 import Button from 'components/ui/Button';
@@ -10,7 +10,7 @@ import MembersLogo from '@/components/members/MembersLogo';
 import SnsLogin from '@/components/members/SnsLogin';
 import FormField from '@/components/ui/form/FormField';
 import { useSignUp } from '@/hooks/useAuth';
-import { useConfirmModal, useModal } from '@/hooks/useModal';
+import { useConfirmModal } from '@/hooks/useModal';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 
 function Login() {
@@ -25,14 +25,14 @@ function Login() {
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { mutate: signUp, isPending } = useSignUp(openConfirmModal);
 
-const handleSignUp = () => {
-  signUp({
-    email,
-    nickname,
-    password,
-    passwordConfirmation: pwdCheck,
-  });
-};
+  const handleSignUp = () => {
+    signUp({
+      email,
+      nickname,
+      password,
+      passwordConfirmation: pwdCheck,
+    });
+  };
   const setters: Record<string, React.Dispatch<React.SetStateAction<string>>> = {
     login_email: setEmail,
     login_name: setNickname,
@@ -58,7 +58,6 @@ const handleSignUp = () => {
       [id.replace('login_', '')]: error, // email, name, password, pwdCheck에 매핑
     }));
   };
-
 
   const handleEyeClick = () => setPasswordBoxType(!passwordBoxType);
   const handleEyePwdCheck = () => setPwdCheckBoxType(!pwdCheckBoxType);

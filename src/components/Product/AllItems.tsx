@@ -1,59 +1,41 @@
 'use client';
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import styles from "./AllItems.module.css";
+import React, { useLayoutEffect } from "react";
 import Container from "components/layout/Container";
-import Icon from "components/ui/Icon";
 import Button from "components/ui/Button";
 import SelectBox from "components/ui/SelectBox";
 import PageNation from "components/ui/PageNation";
 import LoadingBox from "../ui/LoadingBox";
-import { useItemService, useParsedItemQuery, useSetItemQuery } from "@/hooks/useItemQuery";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ProductQuery } from "@/hooks/useItems";
-import { useScreenType } from "@/hooks/useScreenType";
+import { ProductQuery, useItemList } from "@/hooks/useItems";
 import { ProdListAll } from "./ProdListAll";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import EmptyBox from "../ui/EmptyBox";
 import { useAuth } from "@/contexts/AuthContext";
 import { useConfirmModal } from "@/hooks/useModal";
 import ConfirmModal from "../ui/ConfirmModal";
+import ProductSearchBox from "./ProductSearchBox";
+import Title from "../ui/Title";
+import { ORDER_OPTIONS, orderByType, VISIBLE_ITEMS } from "@/constants/product.constants";
+import { usePushQueryToURL } from "@/hooks/useItemQuery";
 
-
-type orderByType = "recent" | "favorite";
-
-
-const ORDER_OPTIONS = [
-  { value: 'recent', label: '최신순' },
-  { value: 'favorite', label: '좋아요순' },
-];
 
 export function AllItems() {
-  
 
-  const searchParams = useSearchParams();
-  const screenType = useScreenType(); // 0: 모바일, 1: 태블릿, 2: 데스크탑
-  const breakpoint = useBreakpoint();
-
-  const VISIBLE_ITEMS = {
-    length: {mobile:4, tablet:6, desktop:10},
-    column: {mobile:2, tablet:3, desktop:5},
-  };
-
-  const INITIAL_QUERY : ProductQuery = {
-    page: 1,
-    pageSize: VISIBLE_ITEMS.length[breakpoint],
-    orderBy: 'recent',
-    keyword: '',
-  };
-
-  const setQueryToURL = useSetItemQuery();
-  
-  const parsedQuery = useParsedItemQuery(INITIAL_QUERY, searchParams);
-  const [query, setQuery] = useState(parsedQuery);
-  const { data , isLoading } = useItemService( query , searchParams);
-  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { user } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const breakpoint = useBreakpoint();
+
+  const query: ProductQuery = {
+    page: Number(searchParams.get("page") ?? 1),
+    pageSize: Number(searchParams.get("pageSize") ?? VISIBLE_ITEMS.length[breakpoint]),
+    orderBy: (searchParams.get("orderBy") ?? 'recent')as orderByType,
+    keyword: searchParams.get("keyword") ?? '',
+  };
+
+  const pushQueryToURL = usePushQueryToURL();
+  const { data , isLoading } = useItemList( query );
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
 
   // 페이지 반응형 달라질때마다 pageSize 수정
   useLayoutEffect(() => {
@@ -66,30 +48,26 @@ export function AllItems() {
       pageSize,
     };
   
-    setQuery(next);
-    setQueryToURL(next);
+    pushQueryToURL(next);
   }, [breakpoint]);
 
 
   // PageNation handle
   const handlePageNationClick = (num: number) => {
     const next = { ...query, page: (num) };
-    setQuery(next);
-    setQueryToURL(next);
+    pushQueryToURL(next);
   };
 
   // SelectBox handle
   const handleSelectBoxClick = (value: string) => {
     const next = { ...query, orderBy: value as orderByType, page: 1 };
-    setQuery(next);
-    setQueryToURL(next);
+    pushQueryToURL(next);
   };
 
   // Keyword handle
   const handleKeywordChange = (keyword: string) => {
     const next = { ...query,  keyword,page: 1};
-    setQuery(next);
-    setQueryToURL(next);
+    pushQueryToURL(next);
   };
 
   const handleApplyClick = () => {
@@ -102,46 +80,24 @@ export function AllItems() {
 
   return (
     <>
-      <Container className='relative z-20'>
-        <div className={styles.prodListTitle}>
-          <div className="left">
-            <div className={styles.title}>전체상품</div>
-          </div>
-          <div className="right">
-            <form className={styles.prodSearch}>
-              <div className={styles.prodSearchWrap}>
-                <Icon iconName="search" alt="search box" />
-                <input
-                  name="keyword"
-                  type="text"
-                  placeholder="검색할 상품을 입력해주세요"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      handleKeywordChange((e.target as HTMLInputElement).value);
-                    }
-                  }}
-                />
-              </div>
-            </form>
+      <Container className='relative z-20'>      
+        <Title titleTag='h2' text='전체상품'> 
+          <ProductSearchBox onSearch={(keyword) => handleKeywordChange(keyword)} />
+          <Button
+            className="absolute right-0 top-0"
+            variant="roundedSS"
+            onClick={handleApplyClick}
+          >
+            상품 등록하기
+          </Button>
 
-            <Button
-              variant="roundedSS"
-              className={styles.prodAddBtn}
-              heightError='true'
-              onClick={handleApplyClick}
-            >
-              상품 등록하기
-            </Button>
-
-            <SelectBox
-              options={ORDER_OPTIONS}
-              screenType={Number(screenType)}
-              current={query.orderBy}
-              clickEvent={handleSelectBoxClick}
-            />
-          </div>
-        </div>
+          <SelectBox
+            options={ORDER_OPTIONS}
+            screenType={breakpoint}
+            current={query.orderBy}
+            clickEvent={handleSelectBoxClick}
+          />
+        </Title>
       </Container>
 
       {/* 🔹 로딩 중이면 LoadingBox 표시 */}

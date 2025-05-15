@@ -26,28 +26,34 @@ function Login() {
     login({ email, password });
   };
 
-  // input이 Blur될때 email,password state 변경 및 UserChecked state 표시
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if(e.target.id === 'login_email') {
-      setEmail(e.target.value);
-    } else if(e.target.id === 'login_pwd') {
-      setPassword(e.target.value);
-    }
-  }
+  const setters: Record<string, React.Dispatch<React.SetStateAction<string>>> = {
+    login_email: setEmail,
+    login_pwd: setPassword,
+  };
 
-  const idCheck = useMemo(() => memberCheck.EmailChecked(email), [email]);
-  const passwordCheck = useMemo(() => memberCheck.passwordChecked(password), [password]);
-  
-  useEffect(() => {
-    setErrorCase({
-      email: idCheck,
-      password: passwordCheck,
-    });
-  }, [idCheck, passwordCheck]);
+ // input이 Blur될때 email,password state 변경 및 UserChecked state 표시
+  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+
+    const setter = setters[id];
+    if (setter) setter(value);
+
+    let error = '';
+    if (id === 'login_email') error = memberCheck.EmailChecked(value);
+    else if (id === 'login_pwd') error = memberCheck.passwordChecked(value);
+
+    setErrorCase(prev => ({
+      ...prev,
+      [id.replace('login_', '')]: error, // email, name, password, pwdCheck에 매핑
+    }));
+  };
+
 
   const handleEyeClick = () => setPasswordBoxType(!passwordBoxType);
-
   const isFormValid = email && password && errorCase.email === '' && errorCase.password === '';
+
+  
+
 
   return (
     <div className={styles.login_body}>

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useToggleProductFavorite } from "@/hooks/useItems";
 import ConfirmModal from "./ConfirmModal";
 import { useConfirmModal } from "@/hooks/useModal";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface LikeButtonProps {
   className?: string;
@@ -24,6 +25,7 @@ function LikeButton({
   ...restProps 
 } : LikeButtonProps) {
   
+  const { user } = useAuth();
   const [isFavorited, setIsFavorited] = useState(isFavorite);
   const [count, setCount ] = useState(favoriteCount);
 
@@ -32,6 +34,10 @@ function LikeButton({
   const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal);
 
   const handleClick =  () => {
+    if(!user) {
+      openConfirmModal('로그인 후 이용 가능합니다.');
+      return;
+    }
     toggleFavorite({ productId, isFavorited ,setIsFavorited, setCount});
   };
 

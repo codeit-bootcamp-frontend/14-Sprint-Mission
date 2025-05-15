@@ -1,5 +1,6 @@
 import { requestor } from '@/lib/requestor';
 import {useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useEffect, useReducer, useRef } from 'react';
 
 
 // 댓글 작성자 정보
@@ -29,8 +30,8 @@ export interface GetCommentsQuery {
   cursor?: number; 
 }
 
-export const useInfiniteProductsComments = (productId: number, limit = 10) => {
-  return useInfiniteQuery<CommentListResponse, Error>({
+export function useInfiniteProductsCommentsWithObserver(productId: number, limit = 10) {
+  const queryResult = useInfiniteQuery<CommentListResponse, Error>({
     queryKey: ['productComments', productId],
     queryFn: async ({ pageParam }) => {
       const res = await requestor.get<CommentListResponse>(`/products/${productId}/comments`, {
@@ -44,7 +45,33 @@ export const useInfiniteProductsComments = (productId: number, limit = 10) => {
     initialPageParam: null,
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? null,
   });
-};
+
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!loadMoreRef.current || !queryResult.hasNextPage) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && queryResult.hasNextPage) {
+          queryResult.fetchNextPage();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    observer.observe(loadMoreRef.current);
+
+    return () => {
+      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+    };
+  }, [queryResult.hasNextPage, queryResult.fetchNextPage]);
+
+  return {
+    ...queryResult,
+    loadMoreRef,
+  };
+}
 
 export const usePostProductComment = (productId: number, openModal: (msg: string) => void) => {
   const queryClient = useQueryClient();
