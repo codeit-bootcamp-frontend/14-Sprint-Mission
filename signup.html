@@ -5,10 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/signup.css" />
     <title>판다마켓</title>
   </head>
   <body>
-    회원가입
+    <main>
+      <a href="./index.html">
+        <img src="./assets/images/logo/logo_lg.svg" alt="판다마켓 로고" />
+      </a>
+
+      <div id="main-content">
+        <div class="input-content">
+          <label for="email">이메일</label>
+          <input class="input" name="email" type="email" />
+        </div>
+
+        <div class="input-content">
+          <label for="nickname">닉네임</label>
+          <input class="input" name="nickname" type="text" />
+        </div>
+
+        <div class="input-content">
+          <label for="password">비밀번호</label>
+          <div class="input password-wrapper">
+            <input class="input-field" name="password" type="password" />
+            <button type="button" aria-label="비밀번호 보기/숨기기">
+              <img
+                src="./assets/icons/ic_eye_inactive.svg"
+                alt="비밀번호 숨김 아이콘" />
+            </button>
+          </div>
+        </div>
+
+        <div class="input-content">
+          <label for="password">비밀번호 확인</label>
+          <div class="input password-wrapper">
+            <input class="input-field" name="password" type="text" />
+            <button type="button" aria-label="비밀번호 보기/숨기기">
+              <img
+                src="./assets/icons/ic_eye_active.svg"
+                alt="비밀번호 숨김 아이콘" />
+            </button>
+          </div>
+        </div>
+        <button>회원가입</button>
+      </div>
+
+      <div id="sub-content">
+        <div id="social-login">
+          <span>간편 로그인하기</span>
+          <div>
+            <a href="https://contacts.google.com/?hl=ko">
+              <img src="./assets/icons/ic_google.svg" />
+            </a>
+            <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk">
+              <img src="./assets/icons/ic_kakaotalk.svg" />
+            </a>
+          </div>
+        </div>
+        <div id="signup-text">
+          이미 회원이신가요? <a href="./login.html">로그인</a>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
