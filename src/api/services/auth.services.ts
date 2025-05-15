@@ -13,16 +13,6 @@ class AuthService {
   async signUp(data: SignUpFormData): Promise<AuthResponse> {
     try {
       const response = await requestor.post<AuthResponse>('/auth/signUp', data);
-      localStorage.setItem(
-        'access_token',
-        JSON.stringify({ token: response.data.accessToken })
-      );
-      localStorage.setItem(
-        'refresh_token',
-        JSON.stringify({ token: response.data.refreshToken })
-      );
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-
       return response.data;
     } catch (error: any) {
       console.error('회원가입 실패:', error);

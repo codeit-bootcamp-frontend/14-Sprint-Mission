@@ -63,7 +63,7 @@ function SignUpPage() {
     // 회원가입
     try {
       const response = await authService.signUp(formData);
-      navigate('/items');
+      navigate('/login');
     } catch (error: any) {
       if (error.details.email) {
         setError('email', {
