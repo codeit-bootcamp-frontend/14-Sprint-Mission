@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import ItemsPage from "./pages/ItemsPage";
+import AddItemPage from "./pages/AddItemPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import FaqPage from "./pages/FaqPage";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/items" element={<ItemsPage />} />
+        <Route path="/additem" element={<AddItemPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/faq" element={<FaqPage />} />
       </Routes>

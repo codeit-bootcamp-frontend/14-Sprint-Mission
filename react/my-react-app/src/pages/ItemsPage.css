@@ -1,0 +1,270 @@
+/* ItemsPage.css */
+
+.items-page-container {
+  max-width: 1200px; /* 전체 페이지 컨테이너 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 20px;
+}
+
+.best-items-section,
+.all-items-section {
+  margin-bottom: 40px;
+}
+
+.best-items-section h2,
+.all-items-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.all-items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* 화면 작을 시 줄바꿈 */
+  gap: 10px; /* 요소들 사이 간격 */
+}
+
+.all-items-header h2 {
+  margin-bottom: 0; /* h2 기본 마진 제거 */
+  flex-basis: 100%; /* 모바일에서 제목이 한 줄 차지하도록 */
+}
+
+@media (min-width: 768px) {
+  .all-items-header h2 {
+    flex-basis: auto; /* 태블릿 이상에서는 auto */
+  }
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+  flex-grow: 1; /* 검색창이 가능한 많은 공간 차지 */
+  max-width: 400px; /* 검색창 최대 너비 */
+}
+
+.search-form input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.search-form button {
+  padding: 8px 12px;
+  background-color: var(--blue); /* global.css의 --blue 변수 사용 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-form button:hover {
+  background-color: #1967d6; /* global.css의 button:hover 색상 참고 */
+}
+
+.sort-dropdown {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+
+.add-item-button {
+  /* global.css의 .button 스타일이 적용되므로 추가 스타일은 필요에 따라 */
+  padding: 9px 15px; /* 버튼 크기 조정 */
+  font-size: 14px;
+  border-radius: 4px; /* 다른 버튼들과 동일한 곡률 적용 */
+}
+
+/* Items Grid */
+.items-grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* 반응형 그리드 컬럼 수 - API 요청 시 pageSize와는 별개로 UI 표시용 */
+/* Mobile: 1-2 columns (Best 1, All 2 or as per design) */
+.best-items-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+.all-items-grid {
+  grid-template-columns: repeat(2, 1fr); /* 모바일 기본 2열 */
+}
+
+/* Tablet: 2-3 columns */
+@media (min-width: 768px) {
+  .best-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .all-items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop: 4-5 columns */
+@media (min-width: 1280px) {
+  .best-items-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .all-items-grid {
+    grid-template-columns: repeat(
+      5,
+      1fr
+    ); /* 전체 상품은 한 줄에 5개로 변경 (이미지 참고) */
+  }
+}
+
+/* Item Card */
+.item-card {
+  border: none; /* 테두리 제거 */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-card > * {
+  margin: 0; /* 카드 내부 요소들 간 여백 제거 */
+}
+
+/* 베스트 상품의 아이템 카드 컨텐츠 상단 패딩 줄이기 */
+.best-items-section .item-card .item-card-content {
+  padding-top: 0px; /* 이미지와 아이템명 간 간격을 0으로 설정 */
+}
+
+.item-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.item-card img {
+  /* 상품 이미지 */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  /* display: block; 은 flex item이 되면서 불필요할 수 있음 */
+}
+
+.item-card-content {
+  /* 텍스트 콘텐츠 래퍼 */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 이미지를 제외한 나머지 공간을 채우도록 */
+}
+
+.item-card-content h3 {
+  /* 상품명 */
+  font-size: 15px;
+  font-weight: 500; /* 약간 얇게 */
+  margin: 0 0 4px 0; /* 위, 좌우, 아래 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-card-content .price {
+  /* 가격 */
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--gray-900);
+  margin: 0 0 8px 0; /* 위, 좌우, 아래 */
+}
+
+.item-card-content .favorites {
+  /* 좋아요 */
+  font-size: 12px;
+  color: var(--gray-500);
+  margin: 0; /* 패딩은 부모에서 처리 */
+  display: flex;
+  align-items: center;
+  margin-top: auto; /* 가격 아래 남은 공간을 채우고 맨 아래로 밀기 */
+}
+
+.item-card .favorite-icon {
+  /* 좋아요 아이콘 */
+  width: 14px;
+  height: 14px;
+  margin-right: 4px; /* 아이콘과 숫자 사이 간격 */
+  object-fit: contain; /* 아이콘 비율 유지하며 맞춤 */
+  display: inline-block; /* 다른 요소와 한 줄에 배치 */
+}
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 8px;
+}
+
+.page-button,
+.page-ellipsis {
+  padding: 0; /* 내부 컨텐츠 크기에 맞추도록 패딩 초기화 */
+  width: 32px; /* 버튼 너비 고정 */
+  height: 32px; /* 버튼 높이 고정 */
+  line-height: 32px; /* 텍스트 세로 중앙 정렬 */
+  border: 1px solid #ccc;
+  background-color: white;
+  color: var(--gray-600);
+  cursor: pointer;
+  border-radius: 50%; /* 원형 버튼 */
+  font-size: 14px;
+  text-align: center;
+  display: flex; /* 아이콘/텍스트 중앙 정렬을 위해 */
+  justify-content: center; /* 아이콘/텍스트 가로 중앙 정렬 */
+  align-items: center; /* 아이콘/텍스트 세로 중앙 정렬 */
+}
+
+.page-button.prev-button,
+.page-button.next-button {
+  /* 이전/다음 버튼은 아이콘을 사용할 것이므로, 텍스트 대신 아이콘을 위한 공간 확보 */
+  font-weight: bold;
+}
+
+.page-button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  border-color: #adadad;
+}
+
+.page-button:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+  background-color: #f9f9f9;
+  border-color: #e0e0e0; /* 비활성 시 테두리도 연하게 */
+}
+
+.page-button.active {
+  background-color: var(--blue);
+  color: white;
+  border-color: var(--blue);
+  font-weight: bold;
+}
+
+.page-ellipsis {
+  border: none;
+  background-color: transparent;
+  cursor: default;
+  width: auto; /* ...은 너비 자동 */
+}
+
+/* 로딩, 에러 메시지 스타일 */
+.items-page-container .error-message {
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
+
+.items-page-container p {
+  /* 로딩 메시지 등에 대한 기본 스타일 */
+  text-align: center;
+  padding: 0; /* 패딩 0으로 변경 */
+}

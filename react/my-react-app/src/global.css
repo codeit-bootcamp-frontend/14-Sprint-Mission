@@ -180,3 +180,33 @@ button {
     padding: 32px 200px 108px 200px;
   }
 }
+
+/* Added for Header layout */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  margin-left: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: var(--gray-600);
+  padding: 8px 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.header-nav a:hover {
+  color: var(--blue);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+/* End of Added for Header layout */
