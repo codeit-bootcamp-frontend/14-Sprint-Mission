@@ -19,3 +19,11 @@
 .inputContainer input:focus {
   outline-color: var(--blue);
 }
+
+.error-message {
+  position: absolute;
+  bottom: -53px;
+  color: red;
+  font-size: 14px;
+  margin-left: 5px;
+}

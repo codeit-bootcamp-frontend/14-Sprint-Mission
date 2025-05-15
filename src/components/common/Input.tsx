@@ -1,30 +1,28 @@
-import {
-  ChangeEvent,
-  FocusEventHandler,
-  InputHTMLAttributes,
-  Ref,
-} from 'react';
+import { InputHTMLAttributes, forwardRef } from 'react';
 import './Input.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  ref?: Ref<HTMLInputElement>;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
+  error?: string;
 }
 
-function Input({ label, id, value, onChange, onBlur, ...rest }: InputProps) {
-  return (
-    <div className="inputContainer">
-      <label>{label}</label>
-      <input
-        id={id}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        {...rest}
-      />
-    </div>
-  );
-}
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ label, id, value, onChange, onBlur, error, ...rest }, ref) => {
+    return (
+      <div className="inputContainer">
+        <label htmlFor={id}>{label}</label>
+        <input
+          id={id}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          ref={ref}
+          {...rest}
+        />
+        {error && <p className="error-message">{error}</p>}
+      </div>
+    );
+  }
+);
 
 export default Input;

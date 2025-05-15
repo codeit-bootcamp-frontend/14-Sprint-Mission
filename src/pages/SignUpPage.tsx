@@ -1,121 +1,64 @@
 import './SignUpPage.css';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import LogoImg from '../assets/images/logo.png';
 import HidePasswordIcon from '../assets/icons/eye-slash.svg';
 import ShowPasswordIcon from '../assets/icons/eye.svg';
-import Input from '../components/common/Input';
 import GoogleLogo from '../assets/social/google.png';
 import KakaoLogo from '../assets/social/kakao.png';
+import Input from '../components/common/Input';
 
-interface SignUpData {
-  email: string;
-  username: string;
-  password: string;
-  passwordConfirm: string;
-}
+// Zod로 폼 검증 스키마 정의
+const signUpSchema = z
+  .object({
+    email: z
+      .string()
+      .nonempty('이메일을 입력해주세요.')
+      .email('잘못된 이메일 형식입니다.'),
+    username: z.string().nonempty('닉네임을 입력해주세요.'),
+    password: z
+      .string()
+      .nonempty('비밀번호를 입력해주세요.')
+      .min(8, '비밀번호를 8자 이상 입력해주세요.'),
+    passwordConfirm: z.string().nonempty('비밀번호를 입력해주세요.'),
+  })
+  .refine((data) => data.password === data.passwordConfirm, {
+    message: '비밀번호가 일치하지 않습니다.',
+    path: ['passwordConfirm'],
+  });
+
+// 타입 정의
+type SignUpFormData = z.infer<typeof signUpSchema>;
 
 function SignUpPage() {
-  const [inputData, setInputData] = useState<SignUpData>({
-    email: '',
-    username: '',
-    password: '',
-    passwordConfirm: '',
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    control,
+  } = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+    mode: 'onBlur', // 필드에서 포커스가 벗어날 때 유효성 검사
   });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showPasswordConfirm, setShowPasswordConfirm] =
-    useState<boolean>(false);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-  const passwordConfirmInputRef = useRef<HTMLInputElement>(null);
-  const [emailError, setEmailError] = useState<string | null>();
-  const [usernameError, setUsernameError] = useState<string | null>();
-  const [passwordError, setPasswordError] = useState<string | null>();
-  const [passwordConfirmError, setPasswordConfirmError] = useState<
-    string | null
-  >();
-  const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
   };
+
   const togglePasswordConfirm = () => {
     setShowPasswordConfirm((prev) => !prev);
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setInputData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
+  const onSubmit = (data: SignUpFormData) => {
+    console.log('회원가입 데이터:', data);
+    // 여기에 회원가입 API 호출 로직 추가
   };
-
-  const handleEmailBlur = () => {
-    if (!inputData.email) {
-      setEmailError('이메일을 입력해주세요.');
-    } else if (!isValidEmail(inputData.email)) {
-      setEmailError('잘못된 이메일 형식입니다.');
-    } else {
-      setEmailError(null);
-    }
-  };
-
-  const handleUserNameBlur = () => {
-    if (!inputData.username) {
-      setUsernameError('닉네임을 입력해주세요.');
-    } else {
-      setUsernameError(null);
-    }
-  };
-
-  const handlePasswordBlur = () => {
-    if (!inputData.password) {
-      setPasswordError('비밀번호를 입력해주세요.');
-    } else if (inputData.password.trim().length < 8) {
-      setPasswordError('비밀번호를 8자 이상 입력해주세요.');
-    } else {
-      setPasswordError(null);
-    }
-  };
-
-  const handlePasswordConfirmBlur = () => {
-    if (!inputData.passwordConfirm) {
-      setPasswordConfirmError('비밀번호를 입력해주세요.');
-    } else if (inputData.password.trim() !== inputData.passwordConfirm.trim()) {
-      setPasswordConfirmError('비밀번호가 일치하지 않습니다.');
-    } else {
-      setPasswordConfirmError(null);
-    }
-  };
-
-  // 이메일 유효성 검사
-  const isValidEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  useEffect(() => {
-    if (
-      inputData.email &&
-      inputData.password &&
-      inputData.passwordConfirm &&
-      inputData.username &&
-      !emailError &&
-      !usernameError &&
-      !passwordError &&
-      !passwordConfirmError
-    ) {
-      setIsButtonEnabled(true);
-    } else {
-      setIsButtonEnabled(false);
-    }
-  }, [
-    inputData,
-    emailError,
-    passwordError,
-    usernameError,
-    passwordConfirmError,
-  ]);
 
   return (
     <main>
@@ -130,43 +73,38 @@ function SignUpPage() {
           />
           판다마켓
         </Link>
-        <form id="form">
+        <form id="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="input-box">
             <Input
               label="이메일"
               id="email"
-              value={inputData.email}
               type="email"
               placeholder="이메일을 입력해주세요"
-              onChange={handleChange}
-              onBlur={handleEmailBlur}
+              error={errors.email?.message}
+              {...register('email')}
             />
-            {emailError && <p className="error-message">{emailError}</p>}
           </div>
+
           <div className="input-box">
             <Input
               label="닉네임"
               id="username"
-              value={inputData.username}
               type="text"
               placeholder="닉네임을 입력해주세요"
-              onChange={handleChange}
-              onBlur={handleUserNameBlur}
+              error={errors.username?.message}
+              {...register('username')}
             />
-            {usernameError && <p className="error-message">{usernameError}</p>}
           </div>
+
           <div className="input-box">
             <Input
               label="비밀번호"
               id="password"
-              type={!showPassword ? 'password' : 'text'}
-              value={inputData.password}
+              type={showPassword ? 'text' : 'password'}
               placeholder="비밀번호를 입력해주세요"
-              onChange={handleChange}
-              ref={passwordInputRef}
-              onBlur={handlePasswordBlur}
+              error={errors.password?.message}
+              {...register('password')}
             />
-            {passwordError && <p className="error-message">{passwordError}</p>}
             {!showPassword ? (
               <img
                 className="hide-password-icon"
@@ -183,20 +121,16 @@ function SignUpPage() {
               />
             )}
           </div>
+
           <div className="input-box">
             <Input
               label="비밀번호 확인"
               id="passwordConfirm"
-              type={!showPassword ? 'password' : 'text'}
-              value={inputData.passwordConfirm}
+              type={showPasswordConfirm ? 'text' : 'password'}
               placeholder="비밀번호를 다시 한번 입력해주세요"
-              onChange={handleChange}
-              ref={passwordConfirmInputRef}
-              onBlur={handlePasswordConfirmBlur}
+              error={errors.passwordConfirm?.message}
+              {...register('passwordConfirm')}
             />
-            {passwordConfirmError && (
-              <p className="error-message">{passwordConfirmError}</p>
-            )}
             {!showPasswordConfirm ? (
               <img
                 className="hide-password-icon"
@@ -213,11 +147,8 @@ function SignUpPage() {
               />
             )}
           </div>
-          <button
-            type="button"
-            className="login-btn"
-            disabled={!isButtonEnabled}
-          >
+
+          <button type="submit" className="login-btn" disabled={!isValid}>
             회원가입
           </button>
         </form>

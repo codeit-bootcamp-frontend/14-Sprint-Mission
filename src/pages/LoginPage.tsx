@@ -110,7 +110,6 @@ function LoginPage() {
                 value={inputData.password}
                 placeholder="비밀번호를 입력해주세요"
                 onChange={handleChange}
-                ref={passwordInputRef}
                 onBlur={handlePasswordBlur}
               />
               {passwordError && (
