@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 
-import { GetProductIdTypes } from '../../../types/product'
+import { GetProductIdTypes } from '../types/product'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
 import DropDown from '../common/DropDown'
-import productService from '../../app/api/services/productService'
+import productService from '../api/services/productService'
 import Button from '../common/Button'
 
 import Search from '../../../public/assets/svg/Search.svg'
@@ -15,8 +14,8 @@ import ArrowLeft from '../../../public/assets/svg/ArrowLeft.svg'
 import ArrowRight from '../../../public/assets/svg/ArrowRight.svg'
 
 import styled, { css } from 'styled-components'
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 type SelectOption = {
   value: string
@@ -24,9 +23,6 @@ type SelectOption = {
 }
 
 const Items = () => {
-  const navigate = useNavigate()
-  const location = useLocation() // location을 써서 url 주소를 가져와 선택된 옵션에 맞게 변경경
-
   const [bestProducts, setBestProducts] = useState<GetProductIdTypes[]>([])
   const [sortedProducts, setSortedProducts] = useState<GetProductIdTypes[]>([])
   const [totalItems, setTotalItems] = useState(0) // 전체 상품 개수 저장
@@ -40,21 +36,17 @@ const Items = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search)
+    const queryParams = new URLSearchParams()
     const orderBy = queryParams.get('orderBy') ?? 'recent'
     const page = parseInt(queryParams.get('page') ?? '1', 10)
 
     setSelectedOption(orderBy)
     setCurrentPage(page)
-  }, [location.search])
+  }, [])
 
-  const updateURL = (orderBy: string, page: number) => {
-    navigate(`?orderBy=${orderBy}&page=${page}`)
-  }
+  const updateURL = (orderBy: string, page: number) => {}
 
-  const handleAdditem = () => {
-    navigate(`/additem`)
-  }
+  const handleAdditem = () => {}
   // BestItems 데이터 불러오기, bestProducts
   useEffect(() => {
     productService.getProduct(1, 10, 'favorite', '').then((response) => {
@@ -125,12 +117,7 @@ const Items = () => {
             <SearchIcon src={Search} alt={`검색 아이콘`} />
             <NavSearch placeholder="검색할 상품 입력해주세요" />
             <ButtonWrapper>
-              <Button
-                size={42.5}
-                onClick={handleAdditem}
-                paddingHeight={8}
-                paddingWidth={23}
-              >
+              <Button size={42.5} onClick={handleAdditem}>
                 상품 등록하기
               </Button>
             </ButtonWrapper>
@@ -177,7 +164,7 @@ export default Items
 const Bone = styled.div`
   width: 75rem;
   margin: 1.5rem auto;
-  @media (max-width: 1199px) {
+  @media (max-width: 1024px) {
     width: 43.5rem;
     margin: 1.5rem 1.5rem 2.5rem 1.5rem;
   }
@@ -237,7 +224,7 @@ const NavSearch = styled.input`
   background-color: ${theme.colors.SecondaryGray[100]};
   border: none;
   margin-right: 1.3333rem;
-  @media (max-width: 1199px) {
+  @media (max-width: 1024px) {
     width: 15.125rem;
     padding: 9px 24px 9px 44px;
   }
@@ -274,7 +261,7 @@ const Pagenation = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 2.688rem auto 0 auto;
-  @media (max-width: 1199px) {
+  @media (max-width: 1024px) {
     margin: 2.5rem auto 0 auto;
   }
 `

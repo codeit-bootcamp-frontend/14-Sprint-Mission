@@ -1,5 +1,6 @@
-import { Axios, AxiosResponse } from 'axios'
 import requestor from '../client/requestor'
+import { AxiosResponse } from 'axios'
+
 import { GetProductIdTypes } from '../../types/product'
 
 class ProductService {

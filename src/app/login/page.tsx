@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import LoginField from '../LoginAndSignup/LoginField'
 import Button from '../common/Button'
@@ -133,7 +134,7 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [isState, setIsState] = useState(false)
-
+  const router = useRouter()
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev)
   }
@@ -163,6 +164,7 @@ const Login = () => {
     setPasswordError(passwordValidation)
 
     if (!emailValidation && !passwordValidation) {
+      router.push('/items')
     }
   }
   useEffect(() => {

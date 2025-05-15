@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import LoginField from '../LoginAndSignup/LoginField'
 import Button from '../common/Button'
@@ -23,55 +24,93 @@ const Bone = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 40rem;
-  margin: 3.75rem auto auto auto;
-  @media (max-width: 375px) {
-    margin: 5rem 1rem auto 1rem;
-    width: 21.437rem;
+  width: 64rem;
+  margin: 23.1rem auto auto auto;
+  @media (max-width: 1023px) {
+    margin: 19rem auto auto auto;
+  }
+  @media (max-width: 743px) {
+    margin: 8rem auto auto auto;
+    width: 34.3rem;
   }
 `
-
 const LogoContainer = styled.div`
-  width: 24.75rem;
-  height: 8.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
-  @media (max-width: 375px) {
-    width: 12.375rem;
-    height: 4.125rem;
-    margin-bottom: 1.5rem;
+  margin-bottom: 4rem;
+  @media (max-width: 743px) {
+    width: 19.8rem;
+    height: 6.6rem;
+    margin-bottom: 2.4rem;
   }
 `
-
+const LogoPanda = styled.div`
+  img {
+    width: 10.3rem;
+    height: 10.3rem;
+    margin-right: 2.2rem;
+    display: flex;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 5.1rem;
+      height: 5.1rem;
+      margin-right: 1.1rem;
+      display: flex;
+    }
+  }
+`
+const LogoPandaText = styled.div`
+  img {
+    width: 26.6rem;
+    height: 9rem;
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 13.3rem;
+      height: 4.5rem;
+    }
+  }
+`
 const ButtonWrapper = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.4rem;
   width: 100%;
 `
+const SignupButton = styled(Button)`
+  padding: 1.2rem 28.5rem;
+  width: max-content;
+  @media (max-width: 743px) {
+    padding: 1.2rem 13.6rem;
+  }
+`
 const SimpleLoginWrapper = styled.div`
-  height: 4.625rem;
+  height: fit-content;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #e6f2ff;
-  padding: 1rem 1.438rem;
-  margin-bottom: 1.5rem;
+  padding: 1.6rem 2.3rem;
+  margin-bottom: 2.4rem;
 `
-
 const SimpleLogin = styled.div`
   ${(props) => textStyle(16, 500)(props)}
   color: ${theme.colors.SecondaryGray[800]};
 `
 const ImageWrapper = styled.div`
-  height: 2.625rem;
-  width: 6.25rem;
+  height: 4.2rem;
+  width: 10rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1.6rem;
+  flex-direction: row;
+  align-items: center;
   img {
-    width: 2.625rem;
-    height: 2.625rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    display: flex;
   }
 `
 const FooterContainer = styled.div`
@@ -100,7 +139,7 @@ const Signup = () => {
     password: false,
     confirmPassword: false,
   })
-
+  const router = useRouter()
   const togglePasswordVisibility = (field: keyof typeof passwordVisibility) => {
     setPasswordVisibility((prev) => ({
       ...prev,
@@ -138,6 +177,7 @@ const Signup = () => {
     setPasswordError(passwordValidation)
     setPasswordConfirmError(passwordConfirmValidation)
     if (!emailValidation && !passwordValidation && !passwordValidation) {
+      router.push('/login')
     }
   }
 
@@ -149,12 +189,16 @@ const Signup = () => {
   return (
     <Bone>
       <LogoContainer>
-        <Link href="/">
-          <Image src={LogoFace} alt="판다마켓 로고 사진" />
-        </Link>
-        <Link href="/">
-          <Image src={Logo} alt="판다마켓 로고 사진" />
-        </Link>
+        <LogoPanda>
+          <Link href="/">
+            <Image src={LogoFace} alt="판다마켓 로고 사진" />
+          </Link>
+        </LogoPanda>
+        <LogoPandaText>
+          <Link href="/">
+            <Image src={Logo} alt="판다마켓 로고 사진" />
+          </Link>
+        </LogoPandaText>
       </LogoContainer>
       <LoginField
         label="이메일"
@@ -174,6 +218,9 @@ const Signup = () => {
         placeholder="닉네임을 입력해주세요"
         id="name"
         value={name}
+        onChange={(e) => {
+          setName(e.target.value)
+        }}
       ></LoginField>
       <LoginField
         label="비밀번호"
@@ -204,18 +251,18 @@ const Signup = () => {
         error={passwordConfirmError}
       />
       <ButtonWrapper>
-        <Button size={56} onClick={handleLogin} disabled={!isState}>
+        <SignupButton size={56} onClick={handleLogin} disabled={!isState}>
           회원가입
-        </Button>
+        </SignupButton>
       </ButtonWrapper>
       <SimpleLoginWrapper>
         <SimpleLogin>간편 로그인하기</SimpleLogin>
         <ImageWrapper>
           <a href="https://www.google.com/" target="_blank">
-            <img src={Google} alt="구글 로고 사진" />
+            <Image src={Google} alt="구글 로고 사진" />
           </a>
           <a href="https://www.kakaocorp.com/page/" target="_blank">
-            <img src={Kakao} alt="카카오 로고 사진" />
+            <Image src={Kakao} alt="카카오 로고 사진" />
           </a>
         </ImageWrapper>
       </SimpleLoginWrapper>

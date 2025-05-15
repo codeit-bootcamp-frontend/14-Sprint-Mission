@@ -1,33 +1,14 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
-import { GetProductType } from '../../../types/product'
+import { GetProductType } from '../types/product'
 
 import HeartInactive from '../../../public/assets/image/HeartInactive.png'
 
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 import styled from 'styled-components'
-
-// interface Product {
-//   id: number
-//   name: string
-//   description: string
-//   price: number
-//   tags: string[]
-//   images: string[]
-//   favoriteCount: number
-//   ownerId: number
-//   createdAt: string
-//   updatedAt: string
-// }
-// interface ProductsProps {
-//   products: {
-//     list: Product[]
-//     totalCount: number
-//   }
-// }
 
 const BestItems = ({ products }: GetProductType) => {
   const [itemsDisplay, setItemsDisplay] = useState(1)

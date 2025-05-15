@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { GetProductIdTypes } from '../../../types/product'
+import { GetProductIdTypes } from '../types/product'
 
 import HeartInactive from '../../../public/assets/image/HeartInactive.png'
 import NoImage from '../../../public/assets/image/NoImage.png'
 
 import styled from 'styled-components'
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
   const [itemsDisplay, setItemsDisplay] = useState(1)

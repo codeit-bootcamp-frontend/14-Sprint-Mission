@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { theme } from '../styles/theme'
 import { textStyle } from '../styles/textStyle'
-import ArrowDown from '../../public/assets/image/ArrowDown.png'
-import Sort from '../../public/assets/svg/Sort.svg'
+import ArrowDown from '../../../public/assets/image/ArrowDown.png'
+import Sort from '../../../public/assets/svg/Sort.svg'
 
 type OptionType = {
   name: string
@@ -19,7 +19,6 @@ type DropDownProps = {
 const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef(null)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -30,36 +29,35 @@ const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
     setIsOpen(false)
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
+  // useEffect(() => {
+  //   const handleResize = () => {}
 
-    window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  //   window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
+  //   return () => window.removeEventListener('resize', handleResize)
+  // }, [])
 
   return (
-    <div style={{ position: 'relative' }}>
-      <SelectBox ref={selectRef} onClick={toggleDropdown}>
-        {window.innerWidth <= 743 ? (
-          <SortImage src={Sort} alt="Sort" />
-        ) : (
-          selectList.find((item) => item.value === selected)?.name
-        )}
-        <ArrowDownImage isOpen={isOpen} src={ArrowDown} />
-      </SelectBox>
+    <></>
+    // <div style={{ position: 'relative' }}>
+    //   <SelectBox ref={selectRef} onClick={toggleDropdown}>
+    //     {window.innerWidth <= 743 ? (
+    //       <SortImage src={Sort} alt="Sort" />
+    //     ) : (
+    //       selectList.find((item) => item.value === selected)?.name
+    //     )}
+    //     <ArrowDownImage isOpen={isOpen} src={ArrowDown} />
+    //   </SelectBox>
 
-      {isOpen && (
-        <SelectOption>
-          {selectList.map((item) => (
-            <Option key={item.value} onClick={() => handleSelect(item.value)}>
-              {item.name}
-            </Option>
-          ))}
-        </SelectOption>
-      )}
-    </div>
+    //   {isOpen && (
+    //     <SelectOption>
+    //       {selectList.map((item) => (
+    //         <Option key={item.value} onClick={() => handleSelect(item.value)}>
+    //           {item.name}
+    //         </Option>
+    //       ))}
+    //     </SelectOption>
+    //   )}
+    // </div>
   )
 }
 
@@ -94,12 +92,15 @@ const SortImage = styled.img`
     height: 24px;
   }
 `
-const ArrowDownImage = styled.img<{ isOpen: boolean }>`
+const ArrowDownImage = styled.img.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>`
   width: 1.5rem;
   height: 1.5rem;
   cursor: pointer;
   transition: transform 0.3s ease;
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+
   @media (max-width: 743px) {
     width: 0;
     height: 0;

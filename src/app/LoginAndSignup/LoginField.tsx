@@ -55,12 +55,15 @@ const IconWrapper = styled.div`
     left: 302px;
   }
 `
+const ErrorPosition = styled.div`
+  position: relative;
+`
 const ErrorMessage = styled.div`
   color: ${theme.colors.error};
   ${(props) => textStyle(14, 600)(props)}
-  margin: 0.5rem 1rem;
+  margin: 0.5rem;
   top: -28px;
-  position: relative;
+  position: absolute;
 `
 interface LoginFieldtProps {
   label: string
@@ -110,18 +113,22 @@ const LoginField = ({
             onBlur={handleBlur}
             $isError={!!error}
           />
-          {icon && (
-            <IconWrapper onClick={onIconClick}>
+          <IconWrapper onClick={onIconClick}>
+            {icon ? (
               <Image
                 src={icon}
                 alt={`${label} 아이콘`}
                 width={24}
                 height={24}
               />
-            </IconWrapper>
-          )}
+            ) : (
+              <div style={{ width: 24, height: 24, visibility: 'hidden' }} />
+            )}
+          </IconWrapper>
         </>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <ErrorPosition>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+        </ErrorPosition>
       </InputWrapper>
     </>
   )

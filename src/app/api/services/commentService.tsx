@@ -1,11 +1,14 @@
 import requestor from '../client/requestor'
+import { AxiosResponse } from 'axios'
 
-import { Comment } from '../../types/comment'
-import { Axios, AxiosResponse } from 'axios'
+import { PostCommentType, GetCommentType } from '../../types/comment'
 
 class CommentService {
   // 틀릴 수도
-  postProductComment(productId, body) {
+  postProductComment(
+    productId: number,
+    body: Omit<PostCommentType, 'id' | 'createdAt' | 'updatedAt' | 'writer'>
+  ): Promise<AxiosResponse<PostCommentType>> {
     const requestBody = {
       ...body,
       productId: productId,
@@ -17,7 +20,7 @@ class CommentService {
     productId: number,
     limit: number,
     cursor?: number
-  ): Promise<AxiosResponse<Comment>> {
+  ): Promise<AxiosResponse<GetCommentType>> {
     let url = `/products/${productId}/comments?limit=${limit}`
 
     if (cursor) {
