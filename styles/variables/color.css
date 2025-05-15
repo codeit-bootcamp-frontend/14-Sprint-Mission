@@ -23,4 +23,7 @@
 
   /* section background */
   --color-section-background: #fcfcfc;
+
+  /*social-login-background */
+  --color-login-background: #e6f2ff;
 }
