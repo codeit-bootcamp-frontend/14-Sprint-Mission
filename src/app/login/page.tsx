@@ -23,58 +23,94 @@ const Bone = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 40rem;
-  margin: 14.438rem auto auto auto;
-  @media (max-width: 744px) {
-    margin: 11.875rem auto auto auto;
+  width: 64rem;
+  margin: 23.1rem auto auto auto;
+  @media (max-width: 1023px) {
+    margin: 19rem auto auto auto;
   }
-  @media (max-width: 375px) {
-    margin: 5rem 1rem auto 1rem;
-    width: 21.437rem;
+  @media (max-width: 743px) {
+    margin: 8rem auto auto auto;
+    width: 34.3rem;
   }
 `
-
 const LogoContainer = styled.div`
-  width: 24.75rem;
-  height: 8.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
-  @media (max-width: 375px) {
-    width: 12.375rem;
-    height: 4.125rem;
-    margin-bottom: 1.5rem;
+  margin-bottom: 4rem;
+  @media (max-width: 743px) {
+    width: 19.8rem;
+    height: 6.6rem;
+    margin-bottom: 2.4rem;
+  }
+`
+const LogoPanda = styled.div`
+  img {
+    width: 10.3rem;
+    height: 10.3rem;
+    margin-right: 2.2rem;
+    display: flex;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 5.1rem;
+      height: 5.1rem;
+      margin-right: 1.1rem;
+      display: flex;
+    }
+  }
+`
+const LogoPandaText = styled.div`
+  img {
+    width: 26.6rem;
+    height: 9rem;
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 13.3rem;
+      height: 4.5rem;
+    }
   }
 `
 
 const ButtonWrapper = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 2.4rem;
   width: 100%;
 `
+const LoginButton = styled(Button)`
+  padding: 1.2rem 29.4rem;
+  width: max-content;
+  @media (max-width: 743px) {
+    padding: 1.2rem 14.5rem;
+  }
+`
 const SimpleLoginWrapper = styled.div`
-  height: 4.625rem;
+  height: fit-content;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #e6f2ff;
-  padding: 1rem 1.438rem;
-  margin-bottom: 3rem;
+  padding: 1.6rem 2.3rem;
+  margin-bottom: 2.4rem;
 `
-
 const SimpleLogin = styled.div`
   ${(props) => textStyle(16, 500)(props)}
   color: ${theme.colors.SecondaryGray[800]};
 `
 const ImageWrapper = styled.div`
-  height: 2.625rem;
-  width: 6.25rem;
+  height: 4.2rem;
+  width: 10rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1.6rem;
+  flex-direction: row;
+  align-items: center;
   img {
-    width: 2.625rem;
-    height: 2.625rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    display: flex;
   }
 `
 const FooterContainer = styled.div`
@@ -118,6 +154,7 @@ const Login = () => {
 
     return ''
   }
+
   const handleLogin = () => {
     const emailValidation = validateEmail(email)
     const passwordValidation = validatePassword(password)
@@ -135,12 +172,16 @@ const Login = () => {
   return (
     <Bone>
       <LogoContainer>
-        <Link href="/">
-          <Image src={LogoFace} alt="판다마켓 로고 사진" />
-        </Link>
-        <Link href="/">
-          <Image src={Logo} alt="판다마켓 로고 사진" />
-        </Link>
+        <LogoPanda>
+          <Link href="/">
+            <Image src={LogoFace} alt="판다마켓 로고 사진" />
+          </Link>
+        </LogoPanda>
+        <LogoPandaText>
+          <Link href="/">
+            <Image src={Logo} alt="판다마켓 로고 사진" />
+          </Link>
+        </LogoPandaText>
       </LogoContainer>
       <LoginField
         label="이메일"
@@ -169,9 +210,9 @@ const Login = () => {
         error={passwordError}
       />
       <ButtonWrapper>
-        <Button size={56} onClick={handleLogin} disabled={!isState}>
+        <LoginButton size={56} onClick={handleLogin} disabled={!isState}>
           로그인
-        </Button>
+        </LoginButton>
       </ButtonWrapper>
       <SimpleLoginWrapper>
         <SimpleLogin>간편 로그인하기</SimpleLogin>

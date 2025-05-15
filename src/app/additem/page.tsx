@@ -1,14 +1,14 @@
 'use client'
 import React, { useState } from 'react'
 
-import Button from '../../common/Button'
-import ButtonImage from '../../common/ButtonImage'
-import TextInputPlaceholder from '../../common/TextInputPlaceholder'
-import Tag from '../../common/Tag'
+import Button from '../common/Button'
+import ButtonImage from '../common/ButtonImage'
+import TextInputPlaceholder from '../common/TextInputPlaceholder'
+import Tag from '../common/Tag'
 
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 const AddItem = () => {
   const [productName, setProductName] = useState('')

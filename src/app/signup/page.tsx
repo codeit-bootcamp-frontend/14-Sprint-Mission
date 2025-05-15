@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 import Image from 'next/image'
 
-import LoginField from './LoginField'
+import LoginField from '../LoginAndSignup/LoginField'
 import Button from '../common/Button'
 
 import Logo from '../../../public/assets/image/Logo.png'
@@ -14,9 +13,10 @@ import Kakao from '../../../public/assets/svg/Kakao.svg'
 import VisibillityOff from '../../../public/assets/svg/btn_visibillity_off.svg'
 import Visibillity from '../../../public/assets/svg/btn_visibillity.svg'
 
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const Bone = styled.div`
   display: flex;
@@ -44,23 +44,7 @@ const LogoContainer = styled.div`
     margin-bottom: 1.5rem;
   }
 `
-// const LogoFaceImage = styled.img`
-//   width: 6.438rem;
-//   height: 6.438rem;
-//   @media (max-width: 375px) {
-//     margin: auto 11px auto 0;
-//     width: 3.187rem;
-//     height: 3.187rem;
-//   }
-// `
-// const LogoImage = styled.img`
-//   width: 16.625rem;
-//   height: 5rem;
-//   @media (max-width: 375px) {
-//     width: 8.313rem;
-//     height: 2.813rem;
-//   }
-// `
+
 const ButtonWrapper = styled.div`
   margin-bottom: 1.5rem;
   width: 100%;
@@ -104,7 +88,6 @@ const Register = styled.div`
 `
 
 const Signup = () => {
-  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
@@ -155,7 +138,6 @@ const Signup = () => {
     setPasswordError(passwordValidation)
     setPasswordConfirmError(passwordConfirmValidation)
     if (!emailValidation && !passwordValidation && !passwordValidation) {
-      navigate(`/items`)
     }
   }
 
@@ -167,10 +149,10 @@ const Signup = () => {
   return (
     <Bone>
       <LogoContainer>
-        <Link to="/">
+        <Link href="/">
           <Image src={LogoFace} alt="판다마켓 로고 사진" />
         </Link>
-        <Link to="/">
+        <Link href="/">
           <Image src={Logo} alt="판다마켓 로고 사진" />
         </Link>
       </LogoContainer>
@@ -240,7 +222,7 @@ const Signup = () => {
       <FooterContainer>
         <First>이미 회원이신가요? &nbsp;</First>
         <Register>
-          <Link to="/login" target="_blank">
+          <Link href="/login" target="_blank">
             로그인
           </Link>
         </Register>

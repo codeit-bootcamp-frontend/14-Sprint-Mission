@@ -2,22 +2,23 @@ import React, { useState } from 'react'
 import { theme } from '../styles/theme'
 import { textStyle } from '../styles/textStyle'
 import styled from 'styled-components'
+import Image from 'next/image'
 
-const PlaceholderWrapper = styled.div`
-  height: 3.75rem;
-`
 const Field = styled.span`
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
+  @media (max-width: 743px) {
+    margin-bottom: 0.8rem;
+  }
 `
 interface InputProps {
   $isError?: boolean
 }
 const Input = styled.input<InputProps>`
   width: 100%;
-  padding: 1rem 1.5rem;
-  border: none;
-  border-radius: 12px;
+  padding: 1.5rem 2.4rem;
+
+  border-radius: 1.2rem;
   ${(props) => textStyle(16, 400)(props)}
   color: ${theme.colors.SecondaryGray[800]};
   background-color: ${theme.colors.SecondaryGray[100]};
@@ -33,20 +34,24 @@ const Input = styled.input<InputProps>`
 `
 const InputWrapper = styled.label`
   width: 100%;
-  height: 6.125rem;
-  margin-bottom: 3rem;
+  height: 9.8rem;
+  margin-bottom: 2.4rem;
   ${(props) => textStyle(18, 700)(props)}
   color: ${theme.colors.SecondaryGray[800]};
+  @media (max-width: 743px) {
+    ${(props) => textStyle(14, 700)(props)}
+    height: 8.8rem;
+  }
 `
 
-const Icon = styled.img`
+const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
   position: relative;
   left: 594px;
   top: -41px;
   cursor: pointer;
-  @media (max-width: 375px) {
+  @media (max-width: 743px) {
     left: 302px;
   }
 `
@@ -54,6 +59,8 @@ const ErrorMessage = styled.div`
   color: ${theme.colors.error};
   ${(props) => textStyle(14, 600)(props)}
   margin: 0.5rem 1rem;
+  top: -28px;
+  position: relative;
 `
 interface LoginFieldtProps {
   label: string
@@ -92,7 +99,7 @@ const LoginField = ({
     <>
       <InputWrapper htmlFor={id}>
         <Field>{label}</Field>
-        <PlaceholderWrapper>
+        <>
           <Input
             type={type}
             name={id}
@@ -104,9 +111,16 @@ const LoginField = ({
             $isError={!!error}
           />
           {icon && (
-            <Icon src={icon} alt={`${label} 아이콘`} onClick={onIconClick} />
+            <IconWrapper onClick={onIconClick}>
+              <Image
+                src={icon}
+                alt={`${label} 아이콘`}
+                width={24}
+                height={24}
+              />
+            </IconWrapper>
           )}
-        </PlaceholderWrapper>
+        </>
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </InputWrapper>
     </>
