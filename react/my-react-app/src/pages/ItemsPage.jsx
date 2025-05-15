@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./ItemsPage.css"; // ItemsPage 전용 CSS 파일 import
 import ItemImage from "../components/ItemImage"; // 새 컴포넌트 import
@@ -40,6 +40,21 @@ function ItemsPage() {
   const { width: windowWidth } = useWindowSize();
 
   const ITEMS_PER_API_PAGE = 10; // API 요청 시 사용하는 pageSize
+
+  const [mobileSortOpen, setMobileSortOpen] = useState(false);
+  const mobileSortRef = useRef(null);
+
+  // 모바일 외부 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    if (!mobileSortOpen) return;
+    function handleClick(e) {
+      if (mobileSortRef.current && !mobileSortRef.current.contains(e.target)) {
+        setMobileSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [mobileSortOpen]);
 
   const fetchProducts = useCallback(async (params) => {
     // params: { page, pageSize, orderBy, keyword }
@@ -213,28 +228,80 @@ function ItemsPage() {
       </section>
       <section className="all-items-section">
         <div className="all-items-header">
-          <h2>전체 상품</h2>
-          <form onSubmit={handleSearchSubmit} className="search-form">
-            <input
-              type="text"
-              name="searchInput"
-              placeholder="검색할 상품을 입력해주세요"
-              value={inputValue}
-              onChange={handleSearchInputChange}
-            />
-            <button type="submit">검색</button>
-          </form>
-          <Link to="/additem" className="button add-item-button">
-            상품 등록하기
-          </Link>
-          <select
-            value={orderBy}
-            onChange={handleSortChange}
-            className="sort-dropdown"
-          >
-            <option value="recent">최신순</option>
-            <option value="favorite">좋아요순</option>
-          </select>
+          <div className="header-row1">
+            <h2>전체 상품</h2>
+            {windowWidth <= 767 && (
+              <Link to="/additem" className="button add-item-button">
+                상품 등록하기
+              </Link>
+            )}
+          </div>
+          <div className="header-row2">
+            <form onSubmit={handleSearchSubmit} className="search-form">
+              <input
+                type="text"
+                name="searchInput"
+                placeholder="검색할 상품을 입력해주세요"
+                value={inputValue}
+                onChange={handleSearchInputChange}
+              />
+            </form>
+            {windowWidth > 767 && (
+              <Link to="/additem" className="button add-item-button">
+                상품 등록하기
+              </Link>
+            )}
+            {windowWidth > 767 ? (
+              <select
+                value={orderBy}
+                onChange={handleSortChange}
+                className="sort-dropdown"
+              >
+                <option value="recent">최신순</option>
+                <option value="favorite">좋아요순</option>
+              </select>
+            ) : (
+              <div className="mobile-sort-dropdown" ref={mobileSortRef}>
+                <button
+                  type="button"
+                  className="mobile-sort-btn"
+                  onClick={() => setMobileSortOpen((v) => !v)}
+                  aria-haspopup="listbox"
+                  aria-expanded={mobileSortOpen}
+                >
+                  <img src="/images/icons/btn_sort.png" alt="정렬" />
+                </button>
+                {mobileSortOpen && (
+                  <ul className="mobile-sort-menu" role="listbox">
+                    <li
+                      className={orderBy === "recent" ? "selected" : ""}
+                      onClick={() => {
+                        setOrderBy("recent");
+                        setCurrentPage(1);
+                        setMobileSortOpen(false);
+                      }}
+                      role="option"
+                      aria-selected={orderBy === "recent"}
+                    >
+                      최신순
+                    </li>
+                    <li
+                      className={orderBy === "favorite" ? "selected" : ""}
+                      onClick={() => {
+                        setOrderBy("favorite");
+                        setCurrentPage(1);
+                        setMobileSortOpen(false);
+                      }}
+                      role="option"
+                      aria-selected={orderBy === "favorite"}
+                    >
+                      좋아요순
+                    </li>
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
         </div>
         {loadingAll ? (
           <p>전체 상품 로딩 중...</p>

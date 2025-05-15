@@ -4,32 +4,40 @@
   border-radius: 16px; /* 이미지 곡률 더 크게 설정 */
   border: none; /* 테두리 제거 */
   margin-bottom: 0; /* 아래쪽 여백 제거 */
+  display: flex; /* Flexbox 컨테이너로 변경 */
+  justify-content: center; /* 내부 이미지 가로 중앙 정렬 */
+  align-items: center; /* 내부 이미지 세로 중앙 정렬 */
 }
 
 .item-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: 100%; /* 실제 이미지 크기가 컨테이너 너비를 넘지 않도록 */
+  max-height: 100%; /* 실제 이미지 크기가 컨테이너 높이를 넘지 않도록 */
+  object-fit: contain;
   display: block;
-  border-radius: 16px; /* 이미지 자체에도 동일한 곡률 적용 */
 }
 
 /* 모바일 기본 설정 */
 .best-image {
-  height: 200px; /* Mobile 높이 수정 */
+  width: 343px;
+  height: 343px;
 }
 
 .all-image {
+  width: 168px;
   height: 168px;
 }
 
 /* 태블릿 설정 (768px 이상) */
 @media (min-width: 768px) {
   .best-image {
-    height: 200px; /* Tablet 높이 수정 */
+    width: 343px;
+    height: 343px;
   }
 
   .all-image {
+    width: 221px;
     height: 221px;
   }
 }
@@ -37,10 +45,12 @@
 /* 데스크톱 설정 (1280px 이상) */
 @media (min-width: 1280px) {
   .best-image {
-    height: 170px; /* Desktop 높이 수정 */
+    width: 282px;
+    height: 282px;
   }
 
   .all-image {
+    width: 221px;
     height: 221px;
   }
 }

@@ -169,7 +169,7 @@ button {
 
 @media (min-width: 1280px) {
   header {
-    padding: 0 200px;
+    padding: 0 100px;
   }
 
   .break-on-desktop {
@@ -185,6 +185,12 @@ button {
 .header-left {
   display: flex;
   align-items: center;
+}
+
+.header-left .logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .header-nav {
@@ -208,5 +214,27 @@ button {
 .header-right {
   display: flex;
   align-items: center;
+}
+
+.header-right .profile-link {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.header-right .profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.header-right .button.pill-button {
+  font-size: 12px;
+  padding: 7px 16px;
+  height: 40px;
+  min-width: 120px;
+  border-radius: 8px;
 }
 /* End of Added for Header layout */

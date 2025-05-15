@@ -4,6 +4,7 @@
   max-width: 1200px; /* 전체 페이지 컨테이너 최대 너비 */
   margin: 0 auto; /* 중앙 정렬 */
   padding: 20px;
+  padding-top: 100px; /* 헤더 높이만큼 상단 패딩 추가 */
 }
 
 .best-items-section,
@@ -18,111 +19,279 @@
   margin-bottom: 20px;
 }
 
+.all-items-section {
+  margin-bottom: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .all-items-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* 화면 작을 시 줄바꿈 */
-  gap: 10px; /* 요소들 사이 간격 */
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* 그룹1: 전체 상품 제목 */
 .all-items-header h2 {
-  margin-bottom: 0; /* h2 기본 마진 제거 */
-  flex-basis: 100%; /* 모바일에서 제목이 한 줄 차지하도록 */
+  margin-bottom: 0;
+  flex: 3; /* 3:7 비율의 3 */
+  min-width: 200px; /* 최소 너비 설정 */
 }
 
-@media (min-width: 768px) {
-  .all-items-header h2 {
-    flex-basis: auto; /* 태블릿 이상에서는 auto */
-  }
-}
-
-.search-form {
+/* 그룹2: 검색창, 버튼, 드롭다운을 감싸는 컨테이너 */
+.all-items-header .group2 {
+  flex: 7;
   display: flex;
-  gap: 8px;
-  flex-grow: 1; /* 검색창이 가능한 많은 공간 차지 */
-  max-width: 400px; /* 검색창 최대 너비 */
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
-.search-form input[type="text"] {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex-grow: 1;
-  font-size: 14px;
+/* 그룹2 내부 요소들의 비율 조정 */
+.search-form {
+  flex: 0.7;
+  min-width: 150px;
+  max-width: 400px;
 }
 
-.search-form button {
-  padding: 8px 12px;
-  background-color: var(--blue); /* global.css의 --blue 변수 사용 */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.search-form button:hover {
-  background-color: #1967d6; /* global.css의 button:hover 색상 참고 */
-}
-
-.sort-dropdown {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
+.search-form input {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
   font-size: 14px;
 }
 
 .add-item-button {
-  /* global.css의 .button 스타일이 적용되므로 추가 스타일은 필요에 따라 */
-  padding: 9px 15px; /* 버튼 크기 조정 */
+  white-space: nowrap;
+  height: 32px;
+  padding: 0 15px;
   font-size: 14px;
-  border-radius: 4px; /* 다른 버튼들과 동일한 곡률 적용 */
+  border-radius: 8px;
+  background-color: var(--blue);
+  color: white;
+}
+
+.add-item-button:hover {
+  background-color: #1967d6; /* hover 시 색상 */
+}
+
+.sort-dropdown {
+  white-space: nowrap;
+  height: 32px;
+  padding: 0 36px 0 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white
+    url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 12px center/16px 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.sort-dropdown:focus {
+  outline: none;
+  border-color: #bdbdbd;
+}
+
+.sort-dropdown option {
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+/* 모바일 대응 */
+@media (max-width: 767px) {
+  .all-items-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .header-row1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .header-row2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+  }
+  .header-row2 .add-item-button {
+    order: -1;
+    margin-left: 8px;
+  }
+  .header-row1 h2 {
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+  .search-form {
+    flex: 1;
+    min-width: 0;
+  }
+  .sort-dropdown {
+    display: none;
+  }
+  .mobile-sort-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .mobile-sort-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .mobile-sort-btn:active,
+  .mobile-sort-btn:focus {
+    background: #f0f0f0;
+    outline: none;
+  }
+  .mobile-sort-btn img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+  .mobile-sort-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    min-width: 100px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    padding: 6px 0;
+    list-style: none;
+  }
+  .mobile-sort-menu li {
+    padding: 10px 18px;
+    font-size: 15px;
+    color: #222;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .mobile-sort-menu li.selected,
+  .mobile-sort-menu li:hover {
+    background: #f5f7fa;
+    font-weight: bold;
+  }
+  .all-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Items Grid */
 .items-grid {
   display: grid;
   gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 반응형 그리드 컬럼 수 - API 요청 시 pageSize와는 별개로 UI 표시용 */
-/* Mobile: 1-2 columns (Best 1, All 2 or as per design) */
+/* 반응형 그리드 컬럼 수 */
 .best-items-grid {
-  grid-template-columns: repeat(1, 1fr);
-}
-.all-items-grid {
-  grid-template-columns: repeat(2, 1fr); /* 모바일 기본 2열 */
+  grid-template-columns: 343px;
+  justify-content: center;
 }
 
-/* Tablet: 2-3 columns */
+.all-items-grid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+/* 태블릿 */
 @media (min-width: 768px) {
   .best-items-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 343px);
   }
   .all-items-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 221px);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .all-items-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header-row1 {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+  }
+  .header-row2 {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+    min-width: 300px;
+  }
+  .header-row1 h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+  .add-item-button {
+    margin-bottom: 0;
   }
 }
 
-/* Desktop: 4-5 columns */
+/* 데스크톱 */
 @media (min-width: 1280px) {
   .best-items-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 282px);
   }
   .all-items-grid {
-    grid-template-columns: repeat(
-      5,
-      1fr
-    ); /* 전체 상품은 한 줄에 5개로 변경 (이미지 참고) */
+    grid-template-columns: repeat(5, 221px);
   }
 }
 
 /* Item Card */
 .item-card {
-  border: none; /* 테두리 제거 */
+  border: none;
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
@@ -131,25 +300,42 @@
   flex-direction: column;
 }
 
-.item-card > * {
-  margin: 0; /* 카드 내부 요소들 간 여백 제거 */
-}
-
-/* 베스트 상품의 아이템 카드 컨텐츠 상단 패딩 줄이기 */
-.best-items-section .item-card .item-card-content {
-  padding-top: 0px; /* 이미지와 아이템명 간 간격을 0으로 설정 */
-}
-
 .item-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.item-card img {
-  /* 상품 이미지 */
+/* 이미지 컨테이너 */
+.item-card .image-container {
   width: 100%;
-  height: 200px;
+  padding-bottom: 75%; /* 4:3 비율 */
+  position: relative;
+  overflow: hidden;
+}
+
+.item-card img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  /* display: block; 은 flex item이 되면서 불필요할 수 있음 */
+}
+
+/* 전체 상품 섹션의 이미지 컨테이너 특별 처리 */
+.all-items-section .item-card .image-container {
+  max-width: 100%; /* 컨테이너 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 태블릿과 데스크톱에서의 전체 상품 이미지 처리 */
+@media (min-width: 768px) {
+  .all-items-section .item-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .all-items-section .item-card .image-container {
+    flex-shrink: 0; /* 이미지 컨테이너가 축소되지 않도록 */
+  }
 }
 
 .item-card-content {
@@ -267,4 +453,16 @@
   /* 로딩 메시지 등에 대한 기본 스타일 */
   text-align: center;
   padding: 0; /* 패딩 0으로 변경 */
+}
+
+@media (max-width: 1279px) {
+  .all-items-header {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .all-items-header .group2 {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }

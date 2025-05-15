@@ -7,7 +7,11 @@ function ItemCardContent({ name, price, favoriteCount }) {
       <h3>{name}</h3>
       <p className="price">{price.toLocaleString()}원</p>
       <p className="favorites">
-        <img src="/images/Icon.png" alt="Favorite" className="favorite-icon" />
+        <img
+          src="/images/icons/Icon.png"
+          alt="Favorite"
+          className="favorite-icon"
+        />
         {favoriteCount}
       </p>
     </div>
