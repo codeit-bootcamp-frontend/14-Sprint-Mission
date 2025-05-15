@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 import styles from "./styles/items-products.module.css";
 import DropDown, { OrderBy } from "@/components/drop-down";
 import Pagination from "@/components/pagination";
+import icSearch from "@assets/images/ic_search.svg";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import useResponsivePageSize from "@/hooks/useResponsivePageSize";
 
-enum PageSize {
-  PC = 10,
-  Tablet = 6,
-  Mobile = 4,
-}
+const allProductsPageSizeConfig = {
+  mobile: 4,
+  tablet: 6,
+  desktop: 10,
+};
 
 export default function AllProducts() {
   const [productsData, setProductsData] = useState<ProductsData>({
@@ -18,36 +21,26 @@ export default function AllProducts() {
     totalCount: 0,
   });
   const [orderBy, setOrderBy] = useState<OrderBy>("recent");
-  const [pageSize, setPageSize] = useState<PageSize>(10);
-  const [page, setPage] = useState<number>(17);
+  const { pageSize: responsivePageSize, isResponsiveSizeReady } =
+    useResponsivePageSize(
+      allProductsPageSizeConfig,
+      "desktop" // 초기 기본값을 desktop으로 설정
+    );
+  const [page, setPage] = useState<number>(1);
+  const isMobile = useMediaQuery("(max-width:767px)");
 
   const products: Products = productsData.list;
   const totalProductCount: number = productsData.totalCount;
-  const totalPage = Math.floor(totalProductCount / pageSize) + 1;
+  const totalPage = Math.floor(totalProductCount / responsivePageSize) + 1;
 
   const handleChangeOrderBy = (order: OrderBy) => {
     setOrderBy(order);
   };
 
-  const handleResize = () => {
-    if (window.innerWidth >= 1200) {
-      setPageSize(PageSize.PC);
-    } else if (window.innerWidth >= 768) {
-      setPageSize(PageSize.Tablet);
-    } else {
-      setPageSize(PageSize.Mobile);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
+    if (!isResponsiveSizeReady) return;
 
-  useEffect(() => {
-    const query: Query = { page, pageSize, orderBy };
+    const query: Query = { page, pageSize: responsivePageSize, orderBy };
     getProducts(query)
       .then((data) => setProductsData(data))
       .catch((error) => {
@@ -56,20 +49,39 @@ export default function AllProducts() {
       .finally(() => {
         console.log("상품 데이터 로딩 완료");
       });
-    return () => {
-      console.log("상품 데이터 로딩 취소");
-    };
-  }, [page, orderBy, pageSize]);
+  }, [page, orderBy, responsivePageSize, isResponsiveSizeReady]);
 
   return (
     <section className={styles.allProducts}>
       <div className={styles.allProductsNav}>
         <h2 className={styles.allProductsTitle}>전체 상품</h2>
-        <input className={styles.allProductsSearchInput} />
+        {!isMobile && (
+          <div className={styles.relativeDiv}>
+            <img src={icSearch} className={styles.icSearch} />
+            <input
+              className={styles.allProductsSearchInput}
+              placeholder="검색할 상품을 입력해주세요"
+            />
+          </div>
+        )}
         <Link to={"/addItem"} className={styles.addProduct}>
           상품 등록하기
         </Link>
-        <DropDown orderBy={orderBy} handleChangeOrderBy={handleChangeOrderBy} />
+        <div className="">
+          {isMobile && (
+            <div className={styles.relativeDiv}>
+              <img src={icSearch} className={styles.icSearch} />
+              <input
+                className={styles.allProductsSearchInput}
+                placeholder="검색할 상품을 입력해주세요"
+              />
+            </div>
+          )}
+          <DropDown
+            orderBy={orderBy}
+            handleChangeOrderBy={handleChangeOrderBy}
+          />
+        </div>
       </div>
       <ul className={styles.allProductsList}>
         {products.map((product) => (

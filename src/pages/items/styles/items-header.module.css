@@ -1,4 +1,7 @@
 .header {
+  position: sticky;
+  top: 0;
+  background-color: white;
   width: 100%;
   height: 70px;
   padding: 0 200px;
@@ -26,4 +29,16 @@
 
 .profile {
   margin-left: auto;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+  }
 }

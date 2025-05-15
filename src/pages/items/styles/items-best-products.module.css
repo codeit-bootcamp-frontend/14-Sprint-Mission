@@ -18,3 +18,17 @@
   width: 282px;
   height: 378px;
 }
+
+@media (max-width: 1023px) {
+  .bestProductElement {
+    width: 50%;
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .bestProductElement {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -21,6 +21,25 @@
   composes: font-lg font-semibold from global;
 }
 
+.pageBtn:hover {
+  cursor: pointer;
+}
+
+.arrowBtn {
+  width: fit-content;
+  height: auto;
+  border: none;
+  background-color: transparent;
+}
+
+.arrowBtn:hover {
+  cursor: pointer;
+}
+
+.arrowBtn:disabled {
+  cursor: auto;
+}
+
 .active {
   color: var(--gray-100);
   background-color: #2f80ed;

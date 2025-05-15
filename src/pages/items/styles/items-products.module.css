@@ -1,22 +1,26 @@
 .allProducts {
   margin: 0 auto;
   margin-top: 40px;
+  padding-bottom: 40px;
   max-width: 1200px;
 }
+
 .allProductsNav {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .allProductsTitle {
   flex-grow: 1;
   composes: font-xl font-bold from global;
 }
+
 .allProductsSearchInput {
   width: 325px;
   height: 42px;
   padding: 9px 20px;
-  padding-left: 16px;
+  padding-left: 44px;
   border: none;
   border-radius: 12px;
   background-color: var(--gray-100);
@@ -41,6 +45,18 @@
   composes: font-lg font-semibold from global;
 }
 
+.relativeDiv {
+  position: relative;
+}
+
+.icSearch {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 9px;
+  left: 16px;
+}
+
 .filter {
   appearance: none; /* 표준 */
   -webkit-appearance: none; /* 사파리/크롬 */
@@ -63,4 +79,19 @@
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 24px;
+}
+
+@media (max-width: 1023px) {
+  .allProductsList {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .allProductsList {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+  }
 }
