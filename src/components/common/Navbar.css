@@ -64,6 +64,11 @@ a {
   border-radius: 8px;
 }
 
+.profile {
+  position: relative;
+  display: flex;
+}
+
 @media (width <= 1199px) {
   .header {
     padding: 0 24px;

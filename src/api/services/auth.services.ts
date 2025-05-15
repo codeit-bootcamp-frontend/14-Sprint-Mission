@@ -21,7 +21,7 @@ class AuthService {
         'refresh_token',
         JSON.stringify({ token: response.data.refreshToken })
       );
-      localStorage.setItem('user_info', JSON.stringify(response.data.user));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
       return response.data;
     } catch (error: any) {
@@ -44,7 +44,7 @@ class AuthService {
         'refresh_token',
         JSON.stringify({ token: response.data.refreshToken })
       );
-      localStorage.setItem('user_info', JSON.stringify(response.data.user));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
       return response.data;
     } catch (error: any) {
@@ -58,8 +58,8 @@ class AuthService {
 
   logout() {
     // 로컬 스토리지에서 인증 관련 데이터 제거
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     localStorage.removeItem('user');
   }
 }

@@ -1,7 +1,10 @@
 import './Navbar.css';
 import logo from '../../assets/images/logo.png';
 import userIcon from '../../assets/images/user.png';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
+import { useState } from 'react';
+import authService from '../../api/services/auth.services';
+import Dropdown from './Dropdown';
 
 function getLinkStyle({ isActive }: { isActive: boolean }) {
   return {
@@ -9,7 +12,24 @@ function getLinkStyle({ isActive }: { isActive: boolean }) {
   };
 }
 
-function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
+function Navbar() {
+  const isLoggedIn = localStorage.getItem('access_token');
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownItems = [{ label: '로그아웃', onClick: () => handleLogout() }];
+  const dropdownButton = 'dropdown-button';
+
+  // dropdown 열기/닫기
+  const handleProfileClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // 로그아웃
+  const handleLogout = () => {
+    authService.logout();
+    navigate('/');
+  };
+
   return (
     <nav>
       <div className="header">
@@ -35,7 +55,22 @@ function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
         </div>
 
         {isLoggedIn ? (
-          <img src={userIcon} alt="user icon" width={40}></img>
+          <div className="profile">
+            <img
+              id={dropdownButton} // 고유 ID 적용
+              src={userIcon}
+              alt="user icon"
+              width={40}
+              onClick={handleProfileClick}
+              style={{ cursor: 'pointer' }}
+            />
+            <Dropdown
+              items={dropdownItems}
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+              triggerElementId={dropdownButton} // 트리거 요소 ID 전달
+            />
+          </div>
         ) : (
           <Link className="login-button" to="/login">
             로그인

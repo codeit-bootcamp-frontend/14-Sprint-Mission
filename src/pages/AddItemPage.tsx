@@ -53,7 +53,7 @@ function AddItemPage() {
 
   return (
     <div>
-      <Navbar isLoggedIn={true} />
+      <Navbar />
       <div className="add-item-container">
         <div className="add-item-header">
           <h1>상품 등록하기</h1>

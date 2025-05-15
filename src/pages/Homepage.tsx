@@ -11,7 +11,7 @@ import LinkButton from '../components/common/LinkButton';
 function Homepage() {
   return (
     <div>
-      <Navbar isLoggedIn={false} />
+      <Navbar />
       <main>
         <section className="hero">
           <div className="banner">
