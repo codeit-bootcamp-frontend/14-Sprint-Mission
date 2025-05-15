@@ -1,79 +1,81 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './LoginPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.png';
 import HidePasswordIcon from '../assets/icons/eye-slash.svg';
 import ShowPasswordIcon from '../assets/icons/eye.svg';
 import Input from '../components/common/Input';
 import GoogleLogo from '../assets/social/google.png';
 import KakaoLogo from '../assets/social/kakao.png';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import authService from '../api/services/auth.services';
 
-interface LoginData {
-  email: string;
-  password: string;
-}
+// Zod로 폼 검증 스키마 정의
+const signInSchema = z.object({
+  email: z
+    .string()
+    .nonempty('이메일을 입력해주세요.')
+    .email('잘못된 이메일 형식입니다.'),
+  password: z
+    .string()
+    .nonempty('비밀번호를 입력해주세요.')
+    .min(8, '비밀번호를 8자 이상 입력해주세요.'),
+});
+
+// 타입 정의
+export type SignInFormData = z.infer<typeof signInSchema>;
 
 function LoginPage() {
-  const [inputData, setInputData] = useState<LoginData>({
-    email: '',
-    password: '',
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isValid },
+    control,
+  } = useForm<SignInFormData>({
+    resolver: zodResolver(signInSchema),
+    mode: 'onBlur', // 필드에서 포커스가 벗어날 때 유효성 검사
   });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
-  const [emailError, setEmailError] = useState<string | null>();
-  const [passwordError, setPasswordError] = useState<string | null>();
-  const [isButtonEnabled, setIsButtonEnabled] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {
     setShowPassword((prev) => !prev);
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setInputData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-  };
-
-  const handleEmailBlur = () => {
-    if (!inputData.email) {
-      setEmailError('이메일을 입력해주세요.');
-    } else if (!isValidEmail(inputData.email)) {
-      setEmailError('잘못된 이메일 형식입니다.');
-    } else {
-      setEmailError(null);
+  const onSubmit = async (formData: SignInFormData) => {
+    setIsSubmitting(true);
+    console.log('로그인 데이터:', formData);
+    // 로그인
+    try {
+      const response = await authService.login(formData);
+      navigate('/items');
+    } catch (error: any) {
+      if (error.details.email) {
+        setError('email', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else {
+        setError('password', {
+          type: 'manual',
+          message: error.message,
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
     }
-  };
-
-  const handlePasswordBlur = () => {
-    if (!inputData.password) {
-      setPasswordError('비밀번호를 입력해주세요.');
-    } else if (inputData.password.trim().length < 8) {
-      setPasswordError('비밀번호를 8자 이상 입력해주세요.');
-    } else {
-      setPasswordError(null);
-    }
-  };
-
-  // 이메일 유효성 검사
-  const isValidEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
   };
 
   useEffect(() => {
-    if (
-      inputData.email &&
-      inputData.password &&
-      !emailError &&
-      !passwordError
-    ) {
-      setIsButtonEnabled(true);
-    } else {
-      setIsButtonEnabled(false);
+    const accessToken = localStorage.getItem('access_token');
+    if (accessToken) {
+      navigate('/'); // 메인 페이지로 리다이렉트
     }
-  }, [inputData, emailError, passwordError]);
+  }, [navigate]);
 
   return (
     <>
@@ -89,32 +91,26 @@ function LoginPage() {
             />
             판다마켓
           </Link>
-          <form id="form">
+          <form id="form" onSubmit={handleSubmit(onSubmit)}>
             <div className="input-box">
               <Input
                 label="이메일"
                 id="email"
-                value={inputData.email}
                 type="email"
                 placeholder="이메일을 입력해주세요"
-                onChange={handleChange}
-                onBlur={handleEmailBlur}
+                error={errors.email?.message}
+                {...register('email')}
               />
-              {emailError && <p className="error-message">{emailError}</p>}
             </div>
             <div className="input-box">
               <Input
                 label="비밀번호"
                 id="password"
-                type={!showPassword ? 'password' : 'text'}
-                value={inputData.password}
+                type={showPassword ? 'text' : 'password'}
                 placeholder="비밀번호를 입력해주세요"
-                onChange={handleChange}
-                onBlur={handlePasswordBlur}
+                error={errors.password?.message}
+                {...register('password')}
               />
-              {passwordError && (
-                <p className="error-message">{passwordError}</p>
-              )}
               {!showPassword ? (
                 <img
                   className="hide-password-icon"
@@ -132,9 +128,9 @@ function LoginPage() {
               )}
             </div>
             <button
-              type="button"
+              type="submit"
               className="login-btn"
-              disabled={!isButtonEnabled}
+              disabled={!isValid || isSubmitting}
             >
               로그인
             </button>

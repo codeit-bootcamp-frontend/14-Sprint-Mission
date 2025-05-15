@@ -82,6 +82,13 @@ function SignUpPage() {
     }
   };
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access_token');
+    if (accessToken) {
+      navigate('/'); // 메인 페이지로 리다이렉트
+    }
+  }, [navigate]);
+
   return (
     <main>
       <div className="login-container">

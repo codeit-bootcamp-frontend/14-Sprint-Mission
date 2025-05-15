@@ -17,6 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           onBlur={onBlur}
           ref={ref}
+          className={error ? 'error' : ''}
           {...rest}
         />
         {error && <p className="error-message">{error}</p>}

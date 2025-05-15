@@ -1,3 +1,4 @@
+import { SignInFormData } from '../../pages/LoginPage';
 import { SignUpFormData } from '../../pages/SignUpPage';
 import { User } from '../../types/types';
 import requestor from '../client/requestor';
@@ -24,7 +25,7 @@ class AuthService {
 
       return response.data;
     } catch (error: any) {
-      console.error('로그인 실패:', error);
+      console.error('회원가입 실패:', error);
       if (error.response && error.response.data) {
         throw error.response.data;
       }
@@ -32,8 +33,27 @@ class AuthService {
     }
   }
 
-  login() {
-    return requestor;
+  async login(data: SignInFormData) {
+    try {
+      const response = await requestor.post<AuthResponse>('/auth/signIn', data);
+      localStorage.setItem(
+        'access_token',
+        JSON.stringify({ token: response.data.accessToken })
+      );
+      localStorage.setItem(
+        'refresh_token',
+        JSON.stringify({ token: response.data.refreshToken })
+      );
+      localStorage.setItem('user_info', JSON.stringify(response.data.user));
+
+      return response.data;
+    } catch (error: any) {
+      console.error('로그인 실패:', error);
+      if (error.response && error.response.data) {
+        throw error.response.data;
+      }
+      throw error;
+    }
   }
 
   logout() {
