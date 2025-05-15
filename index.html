@@ -13,6 +13,20 @@
     />
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/homepage/home.css" />
+
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta property="og:image" content="images/social/panda-maket-share.png" />
+    <meta property="og:url" content="https://sprint-mission-ktw.netlify.app/" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta name="twitter:image" content="images/social/panda-maket-share.png" />
   </head>
 
   <body>
@@ -22,17 +36,27 @@
           src="images/logo/panda-market-logo.png"
           alt="판다마켓 홈"
           width="153"
+          class="responsive-img"
       /></a>
-      <a href="login.html" id="loginLinkButton" class="button">로그인</a>
+      <a href="login.html" id="login-Link-Button" class="button">로그인</a>
     </header>
+
     <main>
-      <section id="hero" class="banner">
-        <div class="wrapper">
-          <h1>
-            일상의 모든 물건을<br />
-            거래해 보세요
-          </h1>
-          <a href="items.html" class="button pill-button">구경하러 가기</a>
+      <section class="banner">
+        <div class="top-wrapper">
+          <div id="top-banner-text">
+            <h1>
+              일상의 모든 물건을<br />
+              거래해 보세요
+            </h1>
+            <a href="items.html" class="button pill-button">구경하러 가기</a>
+          </div>
+          <img
+            src="images/home/hero-image.png"
+            width="746px"
+            height="340px"
+            id="hero-banner"
+          />
         </div>
       </section>
 
@@ -51,6 +75,7 @@
             </p>
           </div>
         </div>
+
         <div class="feature">
           <div class="feature-content">
             <h2 class="feature-tag">Search</h2>
@@ -66,6 +91,7 @@
             width="50%"
           />
         </div>
+
         <div class="feature">
           <img
             src="images/home/feature3-image.png"
@@ -83,24 +109,34 @@
         </div>
       </section>
 
-      <section id="bottomBanner" class="banner">
-        <div class="wrapper">
-          <h1>
-            믿을 수 있는
-            <br />
-            판다마켓 중고거래
-          </h1>
+      <section class="bottom-banner">
+        <div class="bottom-wrapper">
+          <div id="bottom-text">
+            <h1>
+              믿을 수 있는
+              <br />
+              판다마켓 중고거래
+            </h1>
+          </div>
+          <img
+            src="/images/home/bottom-banner-image.png"
+            alt="바텀배너이미지"
+            width="746px"
+            height="397px"
+            id="bottom-Banner-img"
+          />
         </div>
       </section>
     </main>
 
     <footer>
-      <div>©codeit - 2024</div>
-      <div id="footerMenu">
+      <div id="footer-codeit">©codeit - 2024</div>
+      <div id="footer-Menu">
         <a href="privacy.html">Privacy Policy</a>
         <a href="faq.html">FAQ</a>
       </div>
-      <div id="socialMedia">
+
+      <div id="social-Media">
         <a
           href="https://www.facebook.com/"
           target="_blank"

@@ -143,3 +143,55 @@ body {
 }
 
 /* 회원가입 */
+
+@media (max-width: 767px) {
+  /* 최상단 login 페이지 설정 */
+  .loginpage {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+  }
+  /* 메인 로고 설정 */
+  #mainlogo {
+    width: 100%;
+    max-width: 396px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* 내부 로그인 섹션 설정 */
+  .loginsection {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 입력 필드, 버튼 설정 */
+  .logininput,
+  #passwardinput,
+  #loginbutton {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  /* 비밀번호 input과 아이콘 정렬 */
+  .password-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* 소셜 로그인 설정 */
+  .socialloginsection {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 16px;
+  }
+
+  /* 회원가입 링크 설정 */
+  #gosignup {
+    text-align: center;
+    margin-top: 16px;
+  }
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <!-- 헤더 부분 -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,72 +8,83 @@
     <link rel="icon" href="images/logo/favicon.ico" />
     <link
       rel="stylesheet"
-      as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/signup&loginpage/signup.css" />
   </head>
+  <!-- 헤더 부분 -->
+  <!-- 바디부분 -->
   <body>
-    <div class="signuppage">
+    <div class="signup-page">
       <a href="index.html">
         <img
           src="./images/logo/panda-market-logo.png"
           alt="panda-market-logo"
-          id="mainlogo"
+          id="main-logo"
         />
       </a>
-      <section class="signupsection">
-        <div class="signupbox">
-          <label class="signuplabel"> 이메일 </label>
-          <input class="logininput" alt="email" />
+      <section class="signup-section">
+        <div class="signup-box">
+          <label class="signup-label"> 이메일 </label>
+          <input
+            class="login-input"
+            alt="email"
+            placeholder="이메일을 입력해주세요"
+          />
         </div>
 
-        <div class="signupbox">
-          <label class="signuplabel"> 닉네임 </label>
-          <input class="logininput" alt="nickname" />
+        <div class="signup-box">
+          <label class="signup-label"> 닉네임 </label>
+          <input
+            class="login-input"
+            alt="nickname"
+            placeholder="닉네임을 입력해주세요"
+          />
         </div>
 
-        <div class="signupbox">
-          <label class="signuplabel"> 비밀번호 </label>
+        <div class="signup-box">
+          <label class="signup-label"> 비밀번호 </label>
           <div class="password-wrapper">
             <input
-              class="logininput"
-              id="passwardinput"
+              placeholder="비밀번호를 입력해주세요"
+              class="login-input"
+              id="passward-input"
               type="password"
               alt="passward"
             />
             <img
               src="./images/anyicons/passwardcancel.svg"
               alt="비밀번호 보기 토글"
-              id="togglePassword"
+              id="toggle-Password"
             />
           </div>
         </div>
 
-        <div class="signupbox">
-          <label class="signuplabel"> 비밀번호 확인 </label>
+        <div class="signup-box">
+          <label class="signup-label"> 비밀번호 확인 </label>
           <div class="password-wrapper">
             <input
-              class="logininput"
-              id="passwardinput"
+              placeholder="비밀번호를 다시 한 번 입력해주세요"
+              class="login-input"
+              id="passward-input"
               type="password"
               alt="passward"
             />
             <img
               src="./images/anyicons/passwardcancel.svg"
               alt="비밀번호 보기 토글"
-              id="togglePassword"
+              id="toggle-Password"
             />
           </div>
         </div>
 
-        <button id="signupbutton" class="button pill-button">회원가입</button>
+        <button id="signup-button" class="button pill-button">회원가입</button>
 
-        <section class="socialloginsection">
-          <div id="sociallogintext">간편 로그인하기</div>
-          <div id="socialloginicon">
+        <section class="social-login-section">
+          <div id="social-login-text">간편 로그인하기</div>
+          <div id="social-login-icon">
             <a href="https://www.google.co.kr/">
               <img src="./images/social/google-logo.png" alt="googleicon" />
             </a>
@@ -82,11 +94,12 @@
           </div>
         </section>
 
-        <div id="gologin">
+        <div id="go-login">
           이미 회원이신가요?
-          <a id="loginlink" href="login.html">로그인</a>
+          <a id="login-link" href="login.html">로그인</a>
         </div>
       </section>
     </div>
   </body>
+  <!-- 바디부분 -->
 </html>
