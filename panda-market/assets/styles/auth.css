@@ -30,11 +30,16 @@ input {
   box-sizing: border-box;
 }
 
+input::placeholder {
+  color: var(--Secondary-400, #9ca3af);
+}
+
 /* 공통 레이아웃 */
 .auth-page {
   display: flex;
   width: 100%;
-  padding: 231px 0;
+  height: 100%;
+  /* padding: 231px 0; */
   justify-content: center;
   align-items: center;
   background: #fcfcfc;
@@ -136,7 +141,7 @@ span {
   gap: 10px;
   border-radius: 40px;
   border: none;
-  background: var(--primary-100);
+  background: var(--Secondary-400, #9ca3af);
   color: white;
   text-align: center;
   cursor: pointer;
@@ -167,7 +172,7 @@ span {
   gap: 10px;
   border-radius: 40px;
   border: none;
-  background: var(--primary-100);
+  background: var(--Secondary-400, #9ca3af);
   color: white;
   text-align: center;
   cursor: pointer;
@@ -185,4 +190,43 @@ span {
   color: var(--primary-100);
   line-height: normal;
   text-decoration-line: underline;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    height: 100%;
+    overflow-y: hidden;
+    padding: 0 16px;
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 400px;
+    gap: 16px;
+  }
+
+  .auth-logo img {
+    width: 196px;
+  }
+
+  input,
+  .btn-login,
+  .form-group,
+  .easy-login,
+  .btn-signup {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .easy-login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 343px;
+    height: 74px;
+    padding: 16px 23px;
+    border-radius: 8px;
+    background: #e6f2ff;
+  }
 }
