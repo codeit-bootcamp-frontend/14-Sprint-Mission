@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './LoginPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import LogoImg from '../assets/images/logo.png';
@@ -33,10 +33,9 @@ function LoginPage() {
     handleSubmit,
     setError,
     formState: { errors, isValid },
-    control,
   } = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
-    mode: 'onBlur', // 필드에서 포커스가 벗어날 때 유효성 검사
+    mode: 'onChange',
   });
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -1,7 +1,7 @@
 import './SignUpPage.css';
-import { useEffect, useRef, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useForm, Controller } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import LogoImg from '../assets/images/logo.png';
@@ -40,10 +40,9 @@ function SignUpPage() {
     handleSubmit,
     setError,
     formState: { errors, isValid },
-    control,
   } = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
-    mode: 'onBlur', // 필드에서 포커스가 벗어날 때 유효성 검사
+    mode: 'onChange',
   });
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
