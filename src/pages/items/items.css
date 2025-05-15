@@ -1,0 +1,157 @@
+.items-container {
+  width: 1201px; /* 확인 필요 */
+  padding-top: 24px;
+  margin: 0 auto;
+}
+
+.best-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  color: #111827;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  font-family: Pretendard;
+  margin-bottom: 16px;
+}
+
+.card-container {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.all-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.mobile-all-header {
+  display: none;
+}
+
+.all-header-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+}
+
+.search-box input {
+  width: 325px;
+  height: 42px;
+  padding: 9px 16px 9px 44px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Pretendard", sans-serif;
+  background-color: #f3f4f6;
+}
+
+.search-box input::placeholder {
+  color: #9ca3af;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
+/* 등록 버튼 */
+.add-button {
+  padding: 12px 23px;
+  background-color: #3692ff;
+  color: #f3f4f6;
+  font-weight: 600;
+  font-size: 16px;
+  vertical-align: middle;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration-line: none;
+}
+
+.add-button:hover {
+  background-color: #2176d2;
+}
+
+.pagination-wrapper {
+  margin-top: 32px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .items-container {
+    width: 344px;
+  }
+
+  .mobile-all-header {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .all-header {
+    display: none;
+  }
+
+  .mobile-all-header-top {
+    margin-bottom: 8px;
+  }
+
+  .mobile-all-header-top,
+  .mobile-all-header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-section-title {
+    color: #111827;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    font-family: Pretendard;
+  }
+
+  .search-box input {
+    width: 288px;
+  }
+
+  .card-container {
+    gap: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .items-container {
+    width: 696px;
+  }
+
+  .card-container {
+    gap: 10px;
+  }
+
+  .search-box input {
+    width: 242px;
+  }
+}
