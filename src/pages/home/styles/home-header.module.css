@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 9.5px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  gap: 8.6px;
+}
+
+.logoIcon {
+  width: 40px;
+}
+
+.logoTypo {
+  position: relative;
+  top: 1.5px;
+  width: 103px;
+}
+
+.btn-login {
+  width: 128px;
+  height: 48px;
+  padding: 12px 23px;
+  background-color: var(--primary-100);
+  border-radius: 8px;
+  color: var(--gray-100);
+  text-decoration: none;
+  align-content: center;
+  text-align: center;
+}

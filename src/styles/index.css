@@ -1,0 +1,29 @@
+:root {
+  /* Primary color */
+  --primary-100: #3692ff;
+  --primary-200: #1967d6;
+  --primary-300: #1251aa;
+
+  /* Secondary color */
+  --gray-900: #111827; /* gray900 */
+  --gray-800: #1f2937; /* gray800 */
+  --gray-700: #374151; /* gray700 */
+  --gray-600: #4b5563; /* gray600 */
+  --gray-500: #6b7280; /* gray500 */
+  --gray-400: #9ca3af; /* gray400 */
+  --gray-200: #e5e7eb; /* gray200 */
+  --gray-100: #f3f4f6; /* gray100 */
+  --gray-50: #f9fafb; /* gray50 */
+
+  /* Error */
+  --error: #f74747;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}

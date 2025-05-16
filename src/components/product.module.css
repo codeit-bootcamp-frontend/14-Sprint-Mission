@@ -1,0 +1,38 @@
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.name {
+  margin-top: 16px;
+  composes: font-md font-medium from global;
+}
+
+.price {
+  margin-top: 6px;
+  composes: font-lg font-bold from global;
+}
+
+.likeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.favoriteCount {
+  composes: font-xs font-medium from global;
+}

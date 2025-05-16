@@ -1,0 +1,19 @@
+.simple-auth {
+  width: 100%;
+  max-width: 640px;
+  height: 74px;
+  padding: 16px 23px;
+  display: flex;
+  gap: 16px;
+  background-color: #e6f2ff;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.simple-auth__span {
+  flex-grow: 1;
+}
+
+.simple-auth__image {
+  width: 42px;
+}

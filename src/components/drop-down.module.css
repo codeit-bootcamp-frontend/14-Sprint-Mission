@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  width: 130px;
+  height: auto;
+}
+
+.border {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+}
+
+.button {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  composes: border;
+  composes: font-lg font-regular from global;
+}
+
+.list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.option {
+  display: flex;
+  width: 130px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  composes: border;
+  composes: font-lg font-regular from global;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+.list > .option:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.list > .option:last-child {
+  border-radius: 0 0 12px 12px;
+}
