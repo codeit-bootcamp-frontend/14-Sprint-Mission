@@ -1,0 +1,36 @@
+.search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.search {
+  width: 100%;
+  height: 42px;
+  padding-left: 44px;
+  background-color: #f3f4f6;
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .search {
+    width: 242px;
+  }
+}
+@media (max-width: 767px) {
+  .search {
+    width: 290px;
+    padding-left: 42px;
+  }
+}

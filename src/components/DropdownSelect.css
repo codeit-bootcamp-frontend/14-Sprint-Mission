@@ -1,0 +1,33 @@
+.dropdown-select {
+  width: 130px;
+  height: 42px;
+  font-size: 18px;
+  padding: 0 16px;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  background-image: url("/src/assets/images/common/ic_arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+
+  color: #222;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .dropdown-select {
+    width: 42px;
+    height: 42px;
+    background: white url("/src/assets/images/common/ic_sort.svg") no-repeat
+      center center;
+    background-size: 18px 18px;
+    text-indent: -9999px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0px;
+  }
+}
