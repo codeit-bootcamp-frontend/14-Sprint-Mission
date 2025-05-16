@@ -9,6 +9,17 @@ const nicknameError = document.getElementById("nicknameError");
 const passwordError = document.getElementById("passwordError");
 const passwordConfirmError = document.getElementById("passwordConfirmError");
 
+const togglePassword = document.getElementById("togglePassword");
+const togglePasswordConfirm = document.getElementById("togglePasswordConfirm");
+
+/* 이미지 파일 경로 설정 */
+const eyeOpenSrc = "./images/anyicons/passwardeye.svg";
+const eyeSlashSrc = "./images/anyicons/passwardcancel.svg";
+
+/* 초기 상태 */
+let isPasswordVisible = false;
+let isPasswordConfirmVisible = false;
+
 /* 이메일 정규표현식 */
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,6 +28,30 @@ let isEmailValid = false;
 let isNicknameValid = false;
 let isPasswordValid = false;
 let isPasswordMatch = false;
+
+/* 비밀번호 보이기/숨기기 토글 */
+togglePassword.addEventListener("click", () => {
+  isPasswordVisible = !isPasswordVisible;
+  if (isPasswordVisible) {
+    passwordInput.type = "text";
+    togglePassword.src = eyeOpenSrc;
+  } else {
+    passwordInput.type = "password";
+    togglePassword.src = eyeSlashSrc;
+  }
+});
+
+/* 비밀번호 확인 보이기/숨기기 토글 */
+togglePasswordConfirm.addEventListener("click", () => {
+  isPasswordConfirmVisible = !isPasswordConfirmVisible;
+  if (isPasswordConfirmVisible) {
+    passwordConfirmInput.type = "text";
+    togglePasswordConfirm.src = eyeOpenSrc;
+  } else {
+    passwordConfirmInput.type = "password";
+    togglePasswordConfirm.src = eyeSlashSrc;
+  }
+});
 
 /* 📌 유효성 검사 함수 */
 const validateEmail = () => {

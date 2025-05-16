@@ -44,6 +44,7 @@ body {
   width: 640px;
 }
 
+#togglePasswordConfirm,
 #togglePassword {
   position: absolute;
   right: 16px;
@@ -54,6 +55,7 @@ body {
   cursor: pointer;
   opacity: 0.6;
 }
+#togglePasswordConfirm:hover,
 #togglePassword:hover {
   opacity: 1;
 }
@@ -235,8 +237,5 @@ input::placeholder {
     margin-top: 16px;
     width: 100%;
     max-width: 400px;
-  }
-  #togglePassword {
-    top: 41%;
   }
 }

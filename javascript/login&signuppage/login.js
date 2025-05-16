@@ -3,6 +3,14 @@ const emailError = document.getElementById("emailError");
 const passwordInput = document.getElementById("passwardinput");
 const passwordError = document.getElementById("passwordError");
 const loginButton = document.getElementById("loginButton");
+const togglePassword = document.getElementById("togglePassword");
+
+/* 이미지 파일 경로 설정 */
+const eyeOpenSrc = "./images/anyicons/passwardeye.svg";
+const eyeSlashSrc = "./images/anyicons/passwardcancel.svg";
+
+/* 초기 상태 설정 */
+let isPasswordVisible = false;
 
 /* 이메일 정규표현식 */
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -68,5 +76,17 @@ passwordInput.addEventListener("focusout", () => {
 loginButton.addEventListener("click", () => {
   if (isEmailValid && isPasswordValid) {
     window.location.href = "/items";
+  }
+});
+
+/* 클릭 이벤트 */
+togglePassword.addEventListener("click", () => {
+  isPasswordVisible = !isPasswordVisible;
+  if (isPasswordVisible) {
+    passwordInput.type = "text";
+    togglePassword.src = eyeOpenSrc;
+  } else {
+    passwordInput.type = "password";
+    togglePassword.src = eyeSlashSrc;
   }
 });
