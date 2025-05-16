@@ -27,7 +27,17 @@
       <section class="loginsection">
         <div id="emailbox">
           <label class="loginlabel"> 이메일 </label>
-          <input class="logininput" alt="email" />
+          <input
+            id="emailInput"
+            class="logininput"
+            alt="email"
+            placeholder="이메일을 입력해주세요"
+          />
+          <div
+            id="emailError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
         <div id="passwardbox">
           <label class="loginlabel"> 비밀번호 </label>
@@ -44,8 +54,15 @@
               id="togglePassword"
             />
           </div>
+          <div
+            id="passwordError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
-        <button id="loginbutton" class="button pill-button">로그인</button>
+        <button id="loginButton" class="button pill-button" disabled>
+          로그인
+        </button>
         <section class="socialloginsection">
           <div id="sociallogintext">간편 로그인하기</div>
           <div id="socialloginicon">
@@ -63,5 +80,6 @@
         </div>
       </section>
     </div>
+    <script src="/javascript/login&signuppage/login.js"></script>
   </body>
 </html>

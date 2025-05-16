@@ -50,6 +50,22 @@ body {
   padding-bottom: 16px;
 }
 
+.logininput:focus {
+  border-color: #3692ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.error-message {
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.logininput.error {
+  border: 1px solid #f74747 !important;
+}
+
 /* 이메일 박스 스타일 */
 #emailbox {
   margin-bottom: 24px;
@@ -82,7 +98,7 @@ body {
 /* 로그인 섹션 스타일 */
 
 /* 로그인 버튼 */
-#loginbutton {
+#loginButton {
   margin-top: 24px;
   margin-bottom: 24px;
   width: 640px;
@@ -168,7 +184,7 @@ body {
   /* 입력 필드, 버튼 설정 */
   .logininput,
   #passwardinput,
-  #loginbutton {
+  #loginButton {
     width: 100%;
     margin-bottom: 12px;
   }
