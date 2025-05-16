@@ -23,7 +23,7 @@ function AddItemPage() {
   const isEnabled =
     formData.name && formData.description && formData.price && formData.tags[0];
 
-  const handleChange = (
+  const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
@@ -33,8 +33,14 @@ function AddItemPage() {
     }));
   };
 
-  const handleInputChange = (name: string, value: any) => {
-    // any말고는 생각나는게 없네요
+  const handleFileInputChange = (name: string, value: File | null) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleTagsInputChange = (name: string, value: string[]) => {
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -47,7 +53,7 @@ function AddItemPage() {
 
   return (
     <div>
-      <Navbar isLoggedIn={true} />
+      <Navbar />
       <div className="add-item-container">
         <div className="add-item-header">
           <h1>상품 등록하기</h1>
@@ -59,7 +65,7 @@ function AddItemPage() {
           <div className="product-details">
             <FileInput
               value={formData.images[0]}
-              onChange={handleInputChange}
+              onChange={handleFileInputChange}
             />
             <label htmlFor="name">상품명</label>
             <input
@@ -67,7 +73,7 @@ function AddItemPage() {
               name="name"
               type="text"
               value={formData.name}
-              onChange={handleChange}
+              onChange={handleInputChange}
               placeholder="상품명을 입력해주세요"
             />
             <label htmlFor="description">상품 소개</label>
@@ -75,7 +81,7 @@ function AddItemPage() {
               id="description"
               name="description"
               value={formData.description}
-              onChange={handleChange}
+              onChange={handleInputChange}
               placeholder="상품 소개을 입력해주세요"
             />
             <label htmlFor="price">판매가격</label>
@@ -84,10 +90,10 @@ function AddItemPage() {
               name="price"
               type="number"
               value={formData.price}
-              onChange={handleChange}
+              onChange={handleInputChange}
               placeholder="판매 가격을 입력해주세요"
             />
-            <TagsInput tags={formData.tags} onChange={handleInputChange} />
+            <TagsInput tags={formData.tags} onChange={handleTagsInputChange} />
           </div>
         </form>
       </div>

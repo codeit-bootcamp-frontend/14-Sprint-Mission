@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './Pagination.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-interface PaginationValue {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (e: number) => void;
@@ -12,7 +12,7 @@ function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-}: PaginationValue) {
+}: PaginationProps) {
   const pageNumbers: number[] = [];
   const pagesPerGroup: number = 5;
 

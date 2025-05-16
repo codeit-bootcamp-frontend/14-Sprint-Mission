@@ -22,7 +22,7 @@ function ProductItemPage() {
 
   return (
     <div>
-      <Navbar isLoggedIn={true} />
+      <Navbar />
       {!loading && (
         <main className="ProductPage">
           <ProductItem product={product} />

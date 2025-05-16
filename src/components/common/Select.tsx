@@ -3,12 +3,12 @@ import './Select.css';
 import { FaCaretDown, FaSortAmountDown } from 'react-icons/fa';
 import { Label, SelectBoxValue, SortOrder } from '../../types/types';
 
-interface SelectValue {
+interface SelectProps {
   onSelect: (e: SortOrder) => void;
   selectBox: SelectBoxValue[];
 }
 
-function Select({ onSelect, selectBox }: SelectValue) {
+function Select({ onSelect, selectBox }: SelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<Label>(
     selectBox[0].label

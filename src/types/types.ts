@@ -70,3 +70,10 @@ export interface CommentsResponse {
     nextCursor: number;
   };
 }
+
+// User
+export interface User {
+  id: number;
+  email: string;
+  image: string;
+}

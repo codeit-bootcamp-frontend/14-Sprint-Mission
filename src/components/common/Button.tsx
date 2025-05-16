@@ -1,13 +1,14 @@
 import './Button.css';
-import { MouseEvent, ReactNode } from 'react';
+import { ButtonHTMLAttributes, MouseEvent, PropsWithChildren } from 'react';
 
-interface ButtonProps {
-  children?: ReactNode;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
-}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-function Button({ children, onClick, disabled, ...rest }: ButtonProps) {
+function Button({
+  children,
+  onClick,
+  disabled,
+  ...rest
+}: PropsWithChildren<ButtonProps>) {
   return (
     <button className="button" onClick={onClick} disabled={disabled} {...rest}>
       {children}

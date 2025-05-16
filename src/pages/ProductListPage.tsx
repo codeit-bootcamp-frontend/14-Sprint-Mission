@@ -70,7 +70,7 @@ function ProductListPage() {
 
   return (
     <div>
-      <Navbar isLoggedIn={true} />
+      <Navbar />
       <main className="market">
         <div className="best-container">
           <h2>베스트 상품</h2>

@@ -1,25 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { MouseEventHandler, useEffect, useRef } from 'react';
 import './Dropdown.css';
 
 interface DropdownItem {
   label: string;
-  onClick: () => void;
+  onClick: MouseEventHandler;
 }
 
 interface DropdownProps {
   items: DropdownItem[];
   isOpen: boolean;
   onClose: () => void;
+  triggerElementId?: string;
 }
 
-function Dropdown({ items, isOpen, onClose }: DropdownProps) {
-  console.log(isOpen);
+function Dropdown({ items, isOpen, onClose, triggerElementId }: DropdownProps) {
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+
+      // 트리거 요소(이미지)를 클릭한 경우 무시
+      if (triggerElementId && target.id === triggerElementId) {
+        return;
+      }
+
       if (
-        isOpen &&
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
@@ -27,14 +33,12 @@ function Dropdown({ items, isOpen, onClose }: DropdownProps) {
       }
     };
 
-    if (isOpen) {
-      window.addEventListener('mousedown', handleClickOutside);
-    }
+    window.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose]);
+  }, [onClose]);
 
   return (
     <>
