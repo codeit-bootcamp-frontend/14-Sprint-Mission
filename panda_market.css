@@ -14,7 +14,6 @@ body {
 }
 
 header {
-  padding: 0 200px;
   position: fixed;
   top: 0;
   left: 0;
@@ -24,7 +23,7 @@ header {
 }
 
 .header__container {
-  margin: 9px 200px 10px;
+  margin: 10px 350px 9px;
   display: flex;
   justify-content: space-between;
 }
@@ -36,13 +35,18 @@ header {
 
 .header__container button {
   width: 128px;
-  height: 48px;
+  padding: 12px 23px;
   color: white;
   background-color: var(--blue);
   border-radius: 8px;
   border: solid 1px;
   font-size: 16px;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+.main__explain {
+  width: 360px;
 }
 
 .main__image__container {
@@ -52,13 +56,12 @@ header {
   color: var(--gray700);
   width: 100%;
   margin: 0 auto;
-  padding: 200px 405px 0;
-  height: 540px;
+  padding: 200px 0 0;
 }
 
 .main__image__container p {
   margin-bottom: 32px;
-  margin-top: 40px;
+  margin-right: 60px;
   font-weight: 700;
   font-size: 40px;
   line-height: 140%;
@@ -203,11 +206,68 @@ footer {
   height: 20px;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
+  .main__image__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__container {
+    margin: 10px 24px 9px;
+  }
+
+  .main__explain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .main__image__container p {
+    margin-right: 0;
+  }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-}
-
+/* 모바일 */
 @media (max-width: 767px) {
+  header {
+    padding: 0 10px;
+  }
+
+  .header__container {
+    height: 60px;
+  }
+
+  .main__image__container > div:first-child p {
+    font-size: 1.8rem;
+  }
+
+  .main__image__container {
+    padding: 10px 10px 40px;
+    margin: 60px auto 0;
+  }
+
+  .flex__container {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .card__content__container,
+  .card__content__container__reverse {
+    max-width: 100%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .sizing__container {
+    max-width: 100%;
+    font-size: 1.2rem;
+  }
+
+  footer {
+    height: auto;
+    padding: 20px 10px;
+    font-size: 0.875rem;
+  }
 }

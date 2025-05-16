@@ -10,14 +10,6 @@ a {
 }
 
 .login__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-}
-
-.signup__container {
   max-width: 640px;
   width: 100%;
 }
@@ -41,7 +33,7 @@ a {
   font-weight: 700;
   font-family: ROKAF Sans;
   color: var(--blue);
-  margin: 23.98px 4.23px 18.02px 22.24px;
+  margin: 0 4.23px 0 22.24px;
 }
 
 /*input*/
@@ -123,4 +115,32 @@ a {
   margin-left: 4px;
   text-decoration: underline;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .logo__container img {
+    width: 51.76px;
+    height: 51.94px;
+  }
+
+  .logo__text {
+    font-size: 33.17px;
+  }
+
+  .login__input__text {
+    font-size: 14px;
+  }
+
+  .login__container {
+    max-width: 400px;
+  }
+  .login__input {
+    max-width: 400px;
+  }
+  .login__button {
+    max-width: 400px;
+  }
+  .snsAuth__container {
+    max-width: 400px;
+  }
 }
