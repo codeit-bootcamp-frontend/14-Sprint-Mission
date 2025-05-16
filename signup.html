@@ -29,19 +29,31 @@
         <div class="signup-box">
           <label class="signup-label"> 이메일 </label>
           <input
+            id="emailInput"
             class="login-input"
             alt="email"
             placeholder="이메일을 입력해주세요"
           />
+          <div
+            id="emailError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="signup-box">
           <label class="signup-label"> 닉네임 </label>
           <input
+            id="nicknameInput"
             class="login-input"
             alt="nickname"
             placeholder="닉네임을 입력해주세요"
           />
+          <div
+            id="nicknameError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="signup-box">
@@ -50,16 +62,21 @@
             <input
               placeholder="비밀번호를 입력해주세요"
               class="login-input"
-              id="passward-input"
+              id="passwordInput"
               type="password"
-              alt="passward"
+              alt="password"
             />
             <img
               src="./images/anyicons/passwardcancel.svg"
-              alt="비밀번호 보기 토글"
-              id="toggle-Password"
+              alt="passwardtoggle"
+              id="togglePassword"
             />
           </div>
+          <div
+            id="passwordError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="signup-box">
@@ -68,19 +85,27 @@
             <input
               placeholder="비밀번호를 다시 한 번 입력해주세요"
               class="login-input"
-              id="passward-input"
+              id="passwordConfirmInput"
               type="password"
-              alt="passward"
+              alt="password-confirm"
             />
+
             <img
               src="./images/anyicons/passwardcancel.svg"
-              alt="비밀번호 보기 토글"
-              id="toggle-Password"
+              alt="passwardtoggle"
+              id="togglePassword"
             />
           </div>
+          <div
+            id="passwordConfirmError"
+            class="error-message"
+            style="display: none"
+          ></div>
         </div>
 
-        <button id="signup-button" class="button pill-button">회원가입</button>
+        <button id="signup-button" class="button pill-button" disabled>
+          회원가입
+        </button>
 
         <section class="social-login-section">
           <div id="social-login-text">간편 로그인하기</div>
@@ -100,6 +125,7 @@
         </div>
       </section>
     </div>
+    <script src="./javascript/login&signuppage/signup.js"></script>
   </body>
   <!-- 바디부분 -->
 </html>
