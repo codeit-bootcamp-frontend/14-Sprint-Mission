@@ -1,21 +1,22 @@
 .item-image-container {
-  width: 100%;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: 16px; /* 이미지 곡률 더 크게 설정 */
-  border: none; /* 테두리 제거 */
-  margin-bottom: 0; /* 아래쪽 여백 제거 */
-  display: flex; /* Flexbox 컨테이너로 변경 */
-  justify-content: center; /* 내부 이미지 가로 중앙 정렬 */
-  align-items: center; /* 내부 이미지 세로 중앙 정렬 */
+  position: relative;
+  border: 1px solid #e5e8ec;
 }
 
 .item-image {
   width: 100%;
   height: 100%;
-  max-width: 100%; /* 실제 이미지 크기가 컨테이너 너비를 넘지 않도록 */
-  max-height: 100%; /* 실제 이미지 크기가 컨테이너 높이를 넘지 않도록 */
-  object-fit: contain;
-  display: block;
+  object-fit: cover;
+}
+
+.all-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 모바일 기본 설정 */
@@ -24,9 +25,8 @@
   height: 343px;
 }
 
-.all-image {
-  width: 168px;
-  height: 168px;
+.item-image-container:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 태블릿 설정 (768px 이상) */

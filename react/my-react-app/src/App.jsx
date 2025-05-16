@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -11,9 +11,12 @@ import PrivacyPage from "./pages/PrivacyPage";
 import FaqPage from "./pages/FaqPage";
 import MyProfilePage from "./pages/MyProfilePage";
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideFooterRoutes = ["/additem"];
+
   return (
-    <BrowserRouter>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -25,7 +28,15 @@ function App() {
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/myprofile" element={<MyProfilePage />} />
       </Routes>
-      <Footer />
+      {!hideFooterRoutes.includes(location.pathname) && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

@@ -8,7 +8,8 @@ function Header() {
     fontWeight: "bold", // 시각적 강조를 위해 추가
   };
   const location = useLocation();
-  const isItemsPage = location.pathname === "/items";
+  const isItemsOrAddItemPage =
+    location.pathname === "/items" || location.pathname === "/additem";
 
   return (
     <header>
@@ -20,7 +21,7 @@ function Header() {
             className="logo"
           />
         </Link>
-        {isItemsPage && (
+        {isItemsOrAddItemPage && (
           <nav className="header-nav">
             <NavLink
               to="/community"
@@ -30,7 +31,11 @@ function Header() {
             </NavLink>
             <NavLink
               to="/items"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              style={({ isActive }) =>
+                isActive || location.pathname === "/additem"
+                  ? activeStyle
+                  : undefined
+              }
             >
               중고마켓
             </NavLink>
@@ -38,7 +43,7 @@ function Header() {
         )}
       </div>
       <div className="header-right">
-        {isItemsPage ? (
+        {isItemsOrAddItemPage ? (
           <Link to="/myprofile" className="profile-link">
             <img
               src="../../public/images/icons/mypanda.png"
