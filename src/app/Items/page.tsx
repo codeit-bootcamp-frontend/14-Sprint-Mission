@@ -1,8 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { GetProductIdTypes } from '../types/product'
+
+import ItemsNavVar from '../common/ItemsNavVar'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
 import DropDown from '../common/DropDown'
@@ -26,7 +30,7 @@ const Items = () => {
   const [bestProducts, setBestProducts] = useState<GetProductIdTypes[]>([])
   const [sortedProducts, setSortedProducts] = useState<GetProductIdTypes[]>([])
   const [totalItems, setTotalItems] = useState(0) // 전체 상품 개수 저장
-
+  const router = useRouter()
   const selectList: SelectOption[] = [
     { value: 'recent', name: '최신순' },
     { value: 'favorite', name: '좋아요순' },
@@ -44,16 +48,31 @@ const Items = () => {
     setCurrentPage(page)
   }, [])
 
-  const updateURL = (orderBy: string, page: number) => {}
-
-  const handleAdditem = () => {}
-  // BestItems 데이터 불러오기, bestProducts
+  const handleAdditem = () => {
+    router.push('/additem')
+  }
   useEffect(() => {
-    productService.getProduct(1, 10, 'favorite', '').then((response) => {
-      setBestProducts(response.data)
-    })
+    productService
+      .getProduct(1, 5, 'favorite', '')
+      .then((response) => {
+        const sorted = [...(response.data.list || [])].sort((a, b) => {
+          if (selectedOption === 'recent') {
+            return (
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            ) // Date 쓸 때는 getTime을 써야 함함
+          } else if (selectedOption === 'favorite') {
+            return b.favoriteCount - a.favoriteCount
+          }
+          return 0
+        })
+        console.log(sorted)
+        setBestProducts(sorted)
+        console.log('bestList:', sorted)
+      })
+      .catch((error) => {
+        console.error('베스트 상품 불러오기 실패:', error)
+      })
   }, [])
-
   // 페이지네이션
   useEffect(() => {
     productService
@@ -93,7 +112,7 @@ const Items = () => {
   const handleNextPage = () => {
     setCurrentPage((prev) => {
       const nextPage = prev + 1
-      updateURL(selectedOption, nextPage)
+
       return nextPage
     })
   }
@@ -101,32 +120,34 @@ const Items = () => {
   const handlePrevPage = () => {
     setCurrentPage((prev) => {
       const prevPage = prev > 1 ? prev - 1 : 1
-      updateURL(selectedOption, prevPage)
+
       return prevPage
     })
   }
 
   return (
     <>
+      <ItemsNavVar isItemsPage={true} isBoardsPage={false} />
       <Bone>
         <BestItems products={bestProducts} />
 
         <NavVAr>
           <NavTitle>전체상품</NavTitle>
           <NavRightWrapper>
-            <SearchIcon src={Search} alt={`검색 아이콘`} />
+            <SearchIcon>
+              <Image src={Search} alt="검색 아이콘" />
+            </SearchIcon>
             <NavSearch placeholder="검색할 상품 입력해주세요" />
             <ButtonWrapper>
-              <Button size={42.5} onClick={handleAdditem}>
+              <RegisterButton size={42.5} onClick={handleAdditem}>
                 상품 등록하기
-              </Button>
+              </RegisterButton>
             </ButtonWrapper>
             <DropDown
               selectList={selectList}
               selected={selectedOption}
               onChange={(value) => {
                 setSelectedOption(value)
-                updateURL(value, currentPage)
               }}
             />
           </NavRightWrapper>
@@ -136,7 +157,7 @@ const Items = () => {
 
         <Pagenation>
           <LeftButton onClick={handlePrevPage}>
-            <img src={ArrowLeft} />
+            <Image src={ArrowLeft} alt="왼쪽 페이지 화살표" />
           </LeftButton>
           {pages.map((page) => (
             <PageButton
@@ -144,14 +165,13 @@ const Items = () => {
               $isActive={currentPage === page}
               onClick={() => {
                 setCurrentPage(page)
-                updateURL(selectedOption, page)
               }}
             >
               {page}
             </PageButton>
           ))}
           <LeftButton onClick={handleNextPage}>
-            <img src={ArrowRight} />
+            <Image src={ArrowRight} alt="오른쪽 페이지 화살표" />
           </LeftButton>
         </Pagenation>
       </Bone>
@@ -162,27 +182,26 @@ const Items = () => {
 export default Items
 
 const Bone = styled.div`
-  width: 75rem;
-  margin: 1.5rem auto;
-  @media (max-width: 1024px) {
-    width: 43.5rem;
-    margin: 1.5rem 1.5rem 2.5rem 1.5rem;
+  width: 120rem;
+  margin: 2.4rem auto;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
   }
   @media (max-width: 743px) {
-    width: 21.437rem;
-    margin: 1rem;
+    width: 34.4rem;
+    margin: 1rem auto;
   }
 `
 const NavVAr = styled.div`
-  height: 2.625rem;
+  height: 4.2rem;
   width: 100%;
-  margin: 1.5rem auto;
+  margin: 0 auto 2.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   @media (max-width: 743px) {
     flex-wrap: wrap;
-    margin: 1.5rem auto 4.5rem;
+    margin: 0 auto 6.6rem;
   }
 `
 const NavTitle = styled.div`
@@ -199,48 +218,57 @@ const NavRightWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  position: relative;
   @media (max-width: 743px) {
     flex-wrap: wrap;
   }
 `
-const SearchIcon = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-  right: -38px;
+const SearchIcon = styled.div`
+  position: absolute;
+  right: 585px;
+  z-index: 10;
+  display: flex;
+  @media (max-width: 1023px) {
+    right: 412px;
+  }
   @media (max-width: 743px) {
-    left: 8px;
-    z-index: 1;
-    top: 10px;
+    right: 308px;
+    top: 28px;
   }
 `
+const RegisterButton = styled(Button)`
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+`
 const NavSearch = styled.input`
-  width: 20.313rem;
+  width: 32.5rem;
   height: 100%;
-  padding: 9px 107px 9px 44px;
-  border-radius: 12px;
+  padding: 0.9rem 10.7rem 0.9rem 4.4rem;
+  border-radius: 1.2rem;
   ${(props) => textStyle(16, 400)(props)}
   color: ${theme.colors.SecondaryGray[400]};
   background-color: ${theme.colors.SecondaryGray[100]};
   border: none;
-  margin-right: 1.3333rem;
-  @media (max-width: 1024px) {
+  margin-right: 1.2rem;
+  @media (max-width: 1023px) {
     width: 15.125rem;
     padding: 9px 24px 9px 44px;
   }
   @media (max-width: 743px) {
     position: relative;
-    left: -28px;
-    top: 10px;
+    top: 19px;
+    padding: 9px 40px 9px 44px;
+    width: max-content;
+    margin: 0;
   }
 `
 const ButtonWrapper = styled.div`
-  margin-right: 1.3333rem;
+  margin-right: 1.2rem;
   @media (max-width: 743px) {
-    position: absolute;
+    position: relative;
     width: max-content;
-    top: 546px;
-    left: 226px;
+    top: -74px;
+    left: 206px;
   }
   button {
     transition: all 0.3s ease-in-out;
@@ -254,14 +282,15 @@ const ButtonWrapper = styled.div`
     }
   }
 `
+
 const Pagenation = styled.div`
-  width: 19rem;
-  height: 2.5rem;
+  width: 30.4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2.688rem auto 0 auto;
-  @media (max-width: 1024px) {
+  margin: 4.3rem auto 0 auto;
+  @media (max-width: 1023px) {
     margin: 2.5rem auto 0 auto;
   }
 `

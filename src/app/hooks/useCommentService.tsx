@@ -1,15 +1,12 @@
+'use client'
+
 import { useEffect, useState } from 'react'
-import { PostCommentType } from '../types/comment'
+import { GetCommentType } from '../types/comment'
 
-import commentService from '../src/app/api/services/commentService'
-
-interface ProductComment {
-  list: PostCommentType[]
-  nextCursor: number | null
-}
+import commentService from '../../../src/app/api/services/commentService'
 
 export const useGetCommentService = (productId: number, limit = 3) => {
-  const [productQuestion, setProductQuestion] = useState<ProductComment>({
+  const [productQuestion, setProductQuestion] = useState<GetCommentType>({
     list: [],
     nextCursor: null,
   })

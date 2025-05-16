@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
+import ItemsNavVar from '../common/ItemsNavVar'
 import Button from '../common/Button'
 import ButtonImage from '../common/ButtonImage'
 import TextInputPlaceholder from '../common/TextInputPlaceholder'
@@ -44,18 +45,14 @@ const AddItem = () => {
 
   return (
     <>
+      <ItemsNavVar isItemsPage={true} isBoardsPage={false} />
       <Bone>
         <Header>
           <ProductRegister>싱품 등록하기</ProductRegister>
           <ButtonWrapper>
-            <Button
-              size={42.5}
-              paddingHeight={8}
-              paddingWidth={23}
-              disabled={!isState}
-            >
+            <RegisterButton size={42.5} disabled={!isState}>
               등록
-            </Button>
+            </RegisterButton>
           </ButtonWrapper>
         </Header>
         <Main>
@@ -117,16 +114,18 @@ const AddItem = () => {
 export default AddItem
 
 const Bone = styled.div`
-  width: 75rem;
+  width: 120rem;
   display: flex;
   align-items: center;
   margin: 1.5rem auto auto auto;
   flex-direction: column;
-  @media (max-width: 1199px) {
-    width: 43.5rem;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+    margin-bottom: 7.8rem;
   }
   @media (max-width: 743px) {
-    width: 21.625rem;
+    width: 34.6rem;
+    margin-bottom: 7rem;
   }
 `
 const Header = styled.div`
@@ -134,7 +133,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 1.8125rem;
+  margin-bottom: 2.4rem;
 `
 const ProductRegister = styled.div`
   ${(props) => textStyle(20, 700)(props)}
@@ -143,21 +142,24 @@ const ProductRegister = styled.div`
 const ButtonWrapper = styled.div`
   width: max-content;
 `
+const RegisterButton = styled(Button)`
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+`
 const Main = styled.div`
   width: 100%;
-  margin-bottom: 78px;
 `
 const DisplayWrapper = styled.div`
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 3.2rem;
   @media (max-width: 743px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.4rem;
   }
 `
 const ProductText = styled.div`
   ${(props) => textStyle(18, 700)(props)}
   color: ${theme.colors.SecondaryGray[800]};
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
 `
 const TagDisplay = styled.div`
   display: flex;

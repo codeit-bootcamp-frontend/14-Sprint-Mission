@@ -13,7 +13,10 @@ class CommentService {
       ...body,
       productId: productId,
     }
-    return requestor.post(`/products/${productId}/comments`, requestBody)
+    return requestor.post(
+      `/api/proxy/products/${productId}/comments`,
+      requestBody
+    )
   }
 
   getProductComment(
@@ -21,7 +24,7 @@ class CommentService {
     limit: number,
     cursor?: number
   ): Promise<AxiosResponse<GetCommentType>> {
-    let url = `/products/${productId}/comments?limit=${limit}`
+    let url = `/api/proxy/products/${productId}/comments?limit=${limit}`
 
     if (cursor) {
       url += `&cursor=${cursor}`
@@ -36,21 +39,24 @@ class CommentService {
       ...body,
       articleId: articleId,
     }
-    return requestor.post(`/articles/${articleId}/comments`, requestBody)
+    return requestor.post(
+      `/api/proxy/articles/${articleId}/comments`,
+      requestBody
+    )
   }
 
-  getArticleComment(articleId, limit, cursor) {
+  getArticleComment(articleId: number, limit: number, cursor?: number) {
     return requestor.get(
-      `/articles/${articleId}/comments?limit=${limit}&cursor=${cursor}`
+      `/api/proxy/articles/${articleId}/comments?limit=${limit}&cursor=${cursor}`
     )
   }
 
   patchComment(commentId, body) {
-    return requestor.patch(`/comments/${commentId}`, body)
+    return requestor.patch(`/api/proxy/comments/${commentId}`, body)
   }
 
   deleteComment(commentId) {
-    return requestor.delete(`/comments/${commentId}`)
+    return requestor.delete(`/api/proxy/comments/${commentId}`)
   }
 }
 

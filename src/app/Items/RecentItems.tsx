@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import { GetProductIdTypes } from '../types/product'
 
@@ -19,7 +20,7 @@ const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
     const handleReasize = () => {
       if (window.innerWidth <= 743) {
         setItemsDisplay(4)
-      } else if (window.innerWidth >= 744 && window.innerWidth <= 1199) {
+      } else if (window.innerWidth >= 744 && window.innerWidth <= 1023) {
         setItemsDisplay(6)
       } else {
         setItemsDisplay(10)
@@ -35,18 +36,13 @@ const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
       <RecentItem>
         <RecentItemsDisplay>
           {products.slice(0, itemsDisplay).map((product) => (
-            <Link
-              key={product.id}
-              to={`/items/${product.id}`}
-              state={{ product }}
-            >
+            <Link key={product.id} href={`/items/${product.id}`}>
               <RecentItemKey key={product.id}>
                 <RecentItemImage
                   src={
-                    product.images?.length > 0 &&
-                    !product.images.includes('https://via.placeholder.com/300')
+                    Array.isArray(product.images) && product.images.length > 0
                       ? product.images[0]
-                      : NoImage
+                      : NoImage.src
                   }
                   alt={product.name}
                 />
@@ -56,10 +52,7 @@ const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
                     {product.price.toLocaleString('ko-KR')}원
                   </ProductPrice>
                   <ProductFavoriteCount>
-                    <HeartInactiveImage
-                      src={HeartInactive}
-                      alt="HeartInactive"
-                    />
+                    <Image src={HeartInactive} alt="HeartInactive" />
                     {product.favoriteCount}
                   </ProductFavoriteCount>
                 </ProductDescription>
@@ -75,20 +68,30 @@ const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
 export default RecentItems
 
 const RecentItem = styled.div`
-  height: 42.125rem;
+  height: 67.4rem;
   @media (max-width: 743px) {
-    height: 35rem;
+    height: fit-content;
   }
 `
 const RecentItemKey = styled.div`
   display: flex;
-  height: 19.813rem;
-  width: 13.8125rem;
+  height: 31.7rem;
+  width: 22.1rem;
   justify-content: center;
   flex-direction: column;
+  img {
+    width: 22.1rem;
+    height: 22.1rem;
+    border-radius: 1rem;
+  }
   @media (max-width: 743px) {
-    height: 16.5rem;
-    width: 10.5rem;
+    height: 26.4rem;
+    width: 16.8rem;
+    img {
+      width: 16.8rem;
+      height: 16.8rem;
+      border-radius: 1rem;
+    }
   }
 `
 const RecentItemImage = styled.img`
@@ -103,15 +106,15 @@ const RecentItemsDisplay = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  row-gap: 2.5rem;
+  row-gap: 4rem;
   @media (max-width: 743px) {
     row-gap: 2rem;
   }
 `
 const ProductDescription = styled.div`
   width: 100%;
-  height: 5rem;
-  margin-top: 1rem;
+  height: 8rem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -129,8 +132,9 @@ const ProductFavoriteCount = styled.div`
   color: ${theme.colors.SecondaryGray[600]};
   display: flex;
   align-items: center;
-`
-const HeartInactiveImage = styled.img`
-  width: 1rem;
-  height: 1rem;
+  gap: 0.4rem;
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `

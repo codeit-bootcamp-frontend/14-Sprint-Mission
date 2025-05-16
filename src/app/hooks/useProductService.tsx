@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import productService from '../src/app/api/services/productService'
+import productService from '../../../src/app/api/services/productService'
 import { GetProductIdTypes } from '../types/product'
 
 export const useGetProductId = (productId: number) => {

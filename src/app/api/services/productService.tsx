@@ -9,17 +9,24 @@ class ProductService {
     const requestBody = {
       ...body,
     }
-    return requestor.post(`/products`, requestBody)
+    return requestor.post(`/api/proxy/products`, requestBody)
   }
 
-  getProduct(page: number, pageSize: number, orderBy: string, keyword: string) {
-    return requestor.get(
-      `/products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`
-    )
+  getProduct(
+    page: number,
+    pageSize: number,
+    orderBy: string,
+    keyword?: string
+  ) {
+    let url = `/api/proxy/products?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}`
+    if (keyword) {
+      url += `&keyword=${encodeURIComponent(keyword)}`
+    }
+    return requestor.get(url)
   }
 
   getProductId(productId: number): Promise<AxiosResponse<GetProductIdTypes>> {
-    return requestor.get(`/products/${productId}`)
+    return requestor.get(`/api/proxy/products/${productId}`)
   }
 
   patchProductId(productId, body) {
@@ -28,19 +35,19 @@ class ProductService {
       ...body,
       productId: productId,
     }
-    return requestor.patch(`/products/${productId}`, requestBody)
+    return requestor.patch(`/api/proxy/products/${productId}`, requestBody)
   }
 
   deleteProductId(productId) {
-    return requestor.delete(`/products/${productId}`)
+    return requestor.delete(`/api/proxy/products/${productId}`)
   }
 
   postProductIdFavorite(productId) {
-    return requestor.post(`/products/${productId}/favorite`)
+    return requestor.post(`/api/proxy/products/${productId}/favorite`)
   }
 
   deleteProductIdFavorite(productId) {
-    return requestor.delete(`/products/${productId}/favorite`)
+    return requestor.delete(`/api/proxy/products/${productId}/favorite`)
   }
 }
 

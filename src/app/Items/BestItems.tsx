@@ -2,23 +2,28 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { GetProductType } from '../types/product'
+import { GetProductIdTypes } from '../types/product'
 
 import HeartInactive from '../../../public/assets/image/HeartInactive.png'
 
 import { theme } from '../styles/theme'
 import { textStyle } from '../styles/textStyle'
 import styled from 'styled-components'
+import Image from 'next/image'
 
-const BestItems = ({ products }: GetProductType) => {
+interface BestItemsProps {
+  products: GetProductIdTypes[]
+}
+
+const BestItems = ({ products }: BestItemsProps) => {
   const [itemsDisplay, setItemsDisplay] = useState(1)
-  const list = products.list || []
+  const list = products || []
   console.log(products)
   useEffect(() => {
     const handleReasize = () => {
       if (window.innerWidth <= 743) {
         setItemsDisplay(1)
-      } else if (window.innerWidth <= 1199) {
+      } else if (window.innerWidth <= 1023) {
         setItemsDisplay(2)
       } else {
         setItemsDisplay(4)
@@ -36,17 +41,13 @@ const BestItems = ({ products }: GetProductType) => {
 
       <BestItemsDisplay>
         {list.slice(0, itemsDisplay).map((product) => (
-          <Link
-            key={product.id}
-            to={`/items/${product.id}`}
-            state={{ product }}
-          >
+          <Link key={product.id} href={`/items/${product.id}`}>
             <BestItem>
               <BestItemImage
                 src={
-                  Array.isArray(product.images)
+                  Array.isArray(product.images) && product.images.length > 0
                     ? product.images[0]
-                    : product.images
+                    : ''
                 }
                 alt={product.name}
               />
@@ -56,7 +57,7 @@ const BestItems = ({ products }: GetProductType) => {
                   {product.price.toLocaleString('ko-KR')}원
                 </ProductPrice>
                 <ProductFavoriteCount>
-                  <HeartInactiveImage src={HeartInactive} alt="HeartInactive" />
+                  <Image src={HeartInactive} alt="HeartInactive" />
                   {product.favoriteCount}
                 </ProductFavoriteCount>
               </ProductDescription>
@@ -71,34 +72,46 @@ const BestItems = ({ products }: GetProductType) => {
 export default BestItems
 
 const Bone = styled.div`
-  height: 26.625rem;
+  height: 42.6rem;
   width: auto;
-  margin-bottom: 2.5rem;
-  @media (max-width: 1199px) {
-    height: 27.125rem;
+  margin-bottom: 4rem;
+  @media (max-width: 1023px) {
+    height: 48.2rem;
   }
   @media (max-width: 743px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.4rem;
   }
 `
 const Title = styled.div`
   ${(props) => textStyle(20, 700)(props)}
   color: ${theme.colors.SecondaryGray[900]};
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
 `
 
 const BestItem = styled.div`
   display: flex;
-  height: 23.625rem;
-  justify-content: center;
+  height: 37.8rem;
   flex-direction: column;
   cursor: pointer;
+  justify-content: space-between;
+  img {
+    width: 28.2rem;
+    height: 28.2rem;
+    border-radius: 1rem;
+  }
+  @media (max-width: 1023px) {
+    height: 43.4rem;
+    img {
+      width: 34.3rem;
+      height: 34.3rem;
+    }
+  }
 `
 const BestItemImage = styled.img`
   width: 17.625rem;
   height: 17.625rem;
   border-radius: 1rem;
-  @media (max-width: 1199px) {
+  @media (max-width: 1023px) {
     height: 21.437rem;
     width: 100%;
   }
@@ -107,18 +120,18 @@ const BestItemsDisplay = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 1199px) {
+  @media (max-width: 1023px) {
     gap: 10px;
   }
 `
 const ProductDescription = styled.div`
   width: 100%;
-  height: 5rem;
-  margin-top: 1rem;
+  height: 8rem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media (max-width: 1199px) {
+  @media (max-width: 1023px) {
     margin-top: 0.625rem;
   }
 `
@@ -135,8 +148,9 @@ const ProductFavoriteCount = styled.div`
   color: ${theme.colors.SecondaryGray[600]};
   display: flex;
   align-items: center;
-`
-const HeartInactiveImage = styled.img`
-  width: 1rem;
-  height: 1rem;
+  gap: 0.4rem;
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `

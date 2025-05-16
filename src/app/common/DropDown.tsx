@@ -1,9 +1,13 @@
+'use client'
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import Image from 'next/image'
+
 import ArrowDown from '../../../public/assets/image/ArrowDown.png'
 import Sort from '../../../public/assets/svg/Sort.svg'
+
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 type OptionType = {
   name: string
@@ -29,67 +33,58 @@ const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
     setIsOpen(false)
   }
 
-  // useEffect(() => {
-  //   const handleResize = () => {}
+  useEffect(() => {
+    const handleResize = () => {}
 
-  //   window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
-  //   return () => window.removeEventListener('resize', handleResize)
-  // }, [])
+    window.addEventListener('resize', handleResize) // resize: 창 크기가 변경될 때 발생하는 이벤트 / handleResize: 이벤트가 발생할 때 실행할 함수
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return (
-    <></>
-    // <div style={{ position: 'relative' }}>
-    //   <SelectBox ref={selectRef} onClick={toggleDropdown}>
-    //     {window.innerWidth <= 743 ? (
-    //       <SortImage src={Sort} alt="Sort" />
-    //     ) : (
-    //       selectList.find((item) => item.value === selected)?.name
-    //     )}
-    //     <ArrowDownImage isOpen={isOpen} src={ArrowDown} />
-    //   </SelectBox>
-
-    //   {isOpen && (
-    //     <SelectOption>
-    //       {selectList.map((item) => (
-    //         <Option key={item.value} onClick={() => handleSelect(item.value)}>
-    //           {item.name}
-    //         </Option>
-    //       ))}
-    //     </SelectOption>
-    //   )}
-    // </div>
+    <div style={{ position: 'relative' }}>
+      <SelectBox ref={selectRef} onClick={toggleDropdown}>
+        {window.innerWidth <= 743 ? (
+          <Image src={Sort} alt="Sort" />
+        ) : (
+          selectList.find((item) => item.value === selected)?.name
+        )}
+        <ArrowDownImage src={ArrowDown.src} alt="Sort" isOpen={isOpen} />
+      </SelectBox>
+      {isOpen && (
+        <SelectOption>
+          {selectList.map((item) => (
+            <Option key={item.value} onClick={() => handleSelect(item.value)}>
+              {item.name}
+            </Option>
+          ))}
+        </SelectOption>
+      )}
+    </div>
   )
 }
 
 export default DropDown
 
 const SelectBox = styled.div`
-  width: 8.125rem;
+  width: 13rem;
   height: 100%;
   cursor: pointer;
-  padding: 0.5rem 1.25rem;
+  padding: 0.8rem 2rem;
   border: 1px solid ${theme.colors.SecondaryGray[200]};
-  border-radius: 0.75rem;
+  border-radius: 1.2rem;
   background-color: white;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   @media (max-width: 743px) {
-    width: 2.625rem;
-    height: 2.625rem;
+    width: max-content;
+    height: max-content;
     justify-content: center;
     position: relative;
-    left: 14px;
-    top: 10px;
-  }
-`
-const SortImage = styled.img`
-  width: 0;
-  height: 0;
-  @media (max-width: 743px) {
-    width: 24px;
-    height: 24px;
+    left: 150px;
+    top: -24px;
+    padding: 0.9rem;
   }
 `
 const ArrowDownImage = styled.img.withConfig({
@@ -108,19 +103,18 @@ const ArrowDownImage = styled.img.withConfig({
 `
 const SelectOption = styled.ul`
   position: absolute;
-  top: 3.8rem;
-  left: 0;
+  top: 5.8rem;
+
   width: 100%;
   border: 1px solid #cccccc;
   border-radius: 12px;
   background-color: #ffffff;
   color: #181818;
   ${(props) => textStyle(16, 400)(props)}
-  max-height: 300px;
-  overflow-y: auto;
+
   z-index: 10;
   list-style: none;
-  padding: 0;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -137,8 +131,13 @@ const SelectOption = styled.ul`
 `
 const Option = styled.li`
   ${(props) => textStyle(16, 400)(props)}
-  padding: 8px 35px;
+  padding: 9px 28px;
   cursor: pointer;
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
   &:hover {
     background-color: #f6f6f6;
   }

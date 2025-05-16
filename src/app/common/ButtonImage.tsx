@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 
-import Plus from '../../public/assets/svg/Plus.svg'
-import Delete from '../../public/assets/svg/Delete.svg'
+import Plus from '../../../public/assets/svg/Plus.svg'
+import Delete from '../../../public/assets/svg/Delete.svg'
 
 import styled from 'styled-components'
 import { theme } from '../styles/theme'
@@ -34,7 +34,7 @@ const ButtonImage = () => {
   }
 
   const handleDeleteClick = () => {
-    setImagePreview('`')
+    setImagePreview('')
   }
   console.log(imagePreview)
   return (
@@ -42,20 +42,18 @@ const ButtonImage = () => {
       <ImageWrapper>
         <Bone onClick={handleButton}>
           <Container>
-            <Image src={Plus} />
+            <Image src={Plus} alt="이미지등록아이콘" />
             <Text>이미지 등록</Text>
           </Container>
         </Bone>
         {imagePreview && (
           <div>
-            <Image src={imagePreview} alt="미리보기 이미지" />
-            <>
-              <DeleteIcon
-                src={Delete}
-                alt="삭제버튼"
-                onClick={handleDeleteClick}
-              />
-            </>
+            <PreviewImageWrapper>
+              <img src={imagePreview} alt="미리보기 이미지" />
+            </PreviewImageWrapper>
+            <DeleteIcon>
+              <Image src={Delete} alt="삭제버튼" onClick={handleDeleteClick} />
+            </DeleteIcon>
           </div>
         )}
       </ImageWrapper>
@@ -77,35 +75,33 @@ const ImageWrapper = styled.div`
   height: auto;
   display: flex;
   gap: 24px;
-  @media (max-width: 1199px) {
+  @media (max-width: 1023px) {
     gap: 10px;
   }
   @media (max-width: 743px) {
-    width: 21.625rem;
+    width: 34.6rem;
+    height: 16.8rem;
     position: relative;
   }
 `
 const Bone = styled.div`
-  width: 17.625rem;
-  height: 17.625rem;
+  width: 28.2rem;
+  height: 28.2rem;
   background-color: #e5e7eb;
   border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1199px) {
-    width: 10.5rem;
-    height: 10.5rem;
-  }
-  @media (max-width: 743px) {
-    width: 10.5rem;
-    height: 10.5rem;
+  position: relative;
+  @media (max-width: 1023px) {
+    width: 16.8rem;
+    height: 16.8rem;
   }
 `
 const Container = styled.div`
   width: fit-content;
-  height: 5.375rem;
+  height: 8.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,23 +114,39 @@ const Text = styled.div`
   ${(props) => textStyle(16, 400)(props)}
   color: ${theme.colors.SecondaryGray[400]};
 `
-const PreviewImage = styled.img`
-  width: 17.625rem;
-  height: 17.625rem;
+const PreviewImageWrapper = styled.div`
+  width: fit-content;
+  height: fit-content;
   border-radius: 12px;
-  object-fit: cover;
-  @media (max-width: 1199px) {
-    width: 10.5rem;
-    height: 10.5rem;
+
+  img {
+    width: 28.2rem;
+    height: 28.2rem;
+    border-radius: 12px;
+  }
+  @media (max-width: 1023px) {
+    img {
+      width: 16.8rem;
+      height: 16.8rem;
+    }
   }
 `
-const DeleteIcon = styled.img`
-  width: 1.375rem;
-  height: 1.5rem;
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
-  cursor: pointer;
+
+const DeleteIcon = styled.div`
+  img {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    right: -25.25rem;
+    top: -27.25rem;
+    cursor: pointer;
+  }
+  @media (max-width: 1023px) {
+    img {
+      right: -14.25rem;
+      top: -16.25rem;
+    }
+  }
 `
 const ErrorMessage = styled.div`
   ${(props) => textStyle(16, 400)(props)}

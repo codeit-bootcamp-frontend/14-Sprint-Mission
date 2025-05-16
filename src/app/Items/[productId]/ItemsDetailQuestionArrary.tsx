@@ -1,18 +1,20 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 
-import { PostCommentType } from '../../../types/comment'
-import Button from '../common/Button'
-import TextInputPlaceholder from '../common/TextInputPlaceholder'
-import commentService from '../../../src/app/api/services/commentService'
-import { diffDate } from '../../../utils/datetime'
-import { formatDate } from '../../../utils/datetime'
+import { PostCommentType } from '../../types/comment'
+import Button from '../../common/Button'
+import TextInputPlaceholder from '../../common/TextInputPlaceholder'
+import commentService from '../../../../src/app/api/services/commentService'
+import { diffDate } from '../../utils/datetime'
+import { formatDate } from '../../utils/datetime'
 
-import Setting from '../../../public/assets/svg/Setting.svg'
-import ProfileIcon from '../../../public/assets/svg/ProfileIcon.svg'
+import Setting from '../../../../public/assets/svg/Setting.svg'
 
 import styled from 'styled-components'
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 interface ItemsDetailQuestionArraryProps {
   productQuestion: PostCommentType
@@ -72,7 +74,7 @@ const ItemsDetailQuestionArrary = ({
           <EditingWrapper>
             {/*로그인을 하지 않아 토큰?전달이 되지 않은 상태*/}
             <TextInputPlaceholder
-              height="108px"
+              height="84px"
               value={userComment}
               padding="16px 24px 40px 24px"
               onChange={(e) => setUserComment(e.target.value)}
@@ -82,14 +84,9 @@ const ItemsDetailQuestionArrary = ({
                 취소
               </EditCalcelButton>
               <ButtonWrapper>
-                <Button
-                  size={42.5}
-                  paddingHeight={8}
-                  paddingWidth={23}
-                  onClick={handleEditSuccessClick}
-                >
+                <EditButton size={42.5} onClick={handleEditSuccessClick}>
                   수정완료
-                </Button>
+                </EditButton>
               </ButtonWrapper>
             </ButtonEditWrapper>
           </EditingWrapper>
@@ -104,8 +101,12 @@ const ItemsDetailQuestionArrary = ({
           <UserProfileImageWrapper>
             {/*이미지가 없을 경우 기본 이미지 적용*/}
             <img
-              src={productQuestion.writer.image || ProfileIcon}
+              src={
+                productQuestion.writer.image || '/assets/svg/ProfileIcon.svg'
+              }
               alt="유저프로필사진"
+              width={32}
+              height={32}
             />
             <UserProfileImageRight>
               <UserProfileName>
@@ -128,7 +129,7 @@ const ItemsDetailQuestionArrary = ({
           </UserProfileImageWrapper>
         </div>
         <SettingButtonWrapper ref={dropDownRef}>
-          <SettingButton
+          <Image
             src={Setting}
             alt="수정, 삭제 선택 버튼"
             onClick={handleSettingClick}
@@ -155,16 +156,24 @@ const EditBone = styled.div`
 const EditingWrapper = styled.div`
   position: absolute;
   width: 100%;
-  bottom: -194px;
+  bottom: -212px;
+  @media (max-width: 1023px) {
+    bottom: -190px;
+  }
 `
 const ButtonWrapper = styled.div`
+  width: max-content;
+`
+const EditButton = styled(Button)`
+  padding: 0.8rem 2.3rem;
   width: max-content;
 `
 const ButtonEditWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
-  margin: 1rem 0 1.5rem;
+  margin: 1.6rem 0 2.4rem;
+  gap: 0.4rem;
 `
 const EditCalcelButton = styled.button`
   ${(props) => textStyle(16, 600)(props)}
@@ -181,24 +190,25 @@ const Bone = styled.div`
   display: flex;
   align-items: end;
   justify-content: space-between;
-  height: 92px;
+  height: 10rem;
   position: relative;
-  padding-bottom: 0.8rem;
-  margin-top: 1.5rem;
-}
+  padding-bottom: 1.2rem;
+
+  margin-top: 2.4rem;
+  @media (max-width: 1023px) {
+    margin-top: 0;
+  }
 `
 
 const QuestionContent = styled.div`
   ${(props) => textStyle(14, 400)(props)}
   color: ${theme.colors.SecondaryGray[800]};
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.4rem;
 `
 const UserProfileImageWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
   img {
-    width: 32px;
-    height: 32px;
     border-radius: 50%;
   }
 `
@@ -218,24 +228,9 @@ const DiffDate = styled.div`
 const SettingButtonWrapper = styled.div`
   position: relative;
   top: -42px;
-`
-const SettingButton = styled.img`
-  width: auto;
-  height: auto;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  &:hover {
-    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
-    border-radius: 50%;
-    transform: scale(1.05);
-  }
-  &:active {
-    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
-    border-radius: 50%;
-    transform: scale(0.95);
-  }
 `
+
 const SelectOption = styled.ul`
   position: absolute;
   top: 1.8rem;

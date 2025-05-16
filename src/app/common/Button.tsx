@@ -23,38 +23,28 @@ const Button = ({
   style,
   prefix,
   suffix,
-  as = 'button',
   to,
   className,
 }: ButtonProps) => {
-  const isLink = as === Link
+  const isLink = !!to
 
   if (isLink && !to) {
     console.error('Error: "to" prop is required when "as" is Link.')
     return null
   }
-
   if (isLink) {
     return (
-      <Link href={to!} passHref legacyBehavior>
-        <a style={{ textDecoration: 'none' }}>
-          <ButtonWrapper
-            as="div"
-            size={size}
-            className={className}
-            style={style}
-          >
-            <ButtonInner>
-              {prefix && <ButtonInnerText>{prefix}</ButtonInnerText>}
-              <ButtonInnerText>{children}</ButtonInnerText>
-              {suffix && <ButtonInnerText>{suffix}</ButtonInnerText>}
-            </ButtonInner>
-          </ButtonWrapper>
-        </a>
+      <Link href={to!} style={{ textDecoration: 'none' }}>
+        <ButtonWrapper as="div" size={size} className={className} style={style}>
+          <ButtonInner>
+            {prefix && <ButtonInnerText>{prefix}</ButtonInnerText>}
+            <ButtonInnerText>{children}</ButtonInnerText>
+            {suffix && <ButtonInnerText>{suffix}</ButtonInnerText>}
+          </ButtonInner>
+        </ButtonWrapper>
       </Link>
     )
   }
-
   return (
     <ButtonWrapper
       as="button"

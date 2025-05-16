@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import React from 'react'
 
-import LogoFace from '../../public/assets/image/LogoFace.png'
-import Logo from '../../public/assets/image/Logo.png'
-import ProfileIcon from '../../public/assets/svg/ProfileIcon.svg'
+import LogoFace from '../../../public/assets/image/LogoFace.png'
+import Logo from '../../../public/assets/image/Logo.png'
+import ProfileIcon from '../../../public/assets/svg/ProfileIcon.svg'
 
 import styled from 'styled-components'
 import { theme } from '../styles/theme'
@@ -21,18 +21,22 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }: ItemsNavVarProps) => {
       <Bone>
         <LeftWrapper>
           <HeaderLogo>
-            <Link to="/">
-              <Image src={LogoFace} alt="판다마켓 로고 사진" />
+            <Link href="/">
+              <PandaLogoWrapper>
+                <Image src={LogoFace} alt="판다마켓 로고 사진" />
+              </PandaLogoWrapper>
             </Link>
-            <Link to="/">
-              <Image src={Logo} alt="판다마켓 로고 사진" />
+            <Link href="/">
+              <PandaTextWrapper>
+                <Image src={Logo} alt="판다마켓 로고 사진" />
+              </PandaTextWrapper>
             </Link>
           </HeaderLogo>
           <NavContent>
-            <Link to="/boards">
+            <Link href="/boards">
               <FreeBordLink $isActive={isBoardsPage}>자유게시판</FreeBordLink>
             </Link>
-            <Link to="/items">
+            <Link href="/items">
               <MarketLink $isActive={isItemsPage}>중고마켓</MarketLink>
             </Link>
           </NavContent>
@@ -46,51 +50,79 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }: ItemsNavVarProps) => {
 export default ItemsNavVar
 
 const Bone = styled.div`
-  height: 4.375rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12.5rem 0 12.5rem;
+  padding: 0 20rem 0 20rem;
   position: sticky;
   border-bottom: 1px solid #dfdfdf;
-  @media (max-width: 1199px) {
-    margin: auto 1.5rem;
-    padding: 0;
+  height: 7rem;
+  @media (max-width: 1023px) {
+    padding: 0 2.4rem;
   }
   @media (max-width: 743px) {
-    margin: auto 1rem;
+    padding: 0 1.6rem;
   }
 `
 const LeftWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 24.125rem;
+  width: 38.6rem;
   ${(props) => textStyle(18, 700)(props)}
   color: ${theme.colors.SecondaryGray[600]};
-  @media (max-width: 1199px) {
+  @media (max-width: 1023px) {
     width: 23.375rem;
   }
   @media (max-width: 743px) {
-    width: 14rem;
+    width: 22.4rem;
   }
 `
 const HeaderLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.8rem;
   @media (max-width: 743px) {
     position: relative;
     left: -8px;
+  }
+`
+const PandaLogoWrapper = styled.div`
+  img {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+  }
+
+  @media (max-width: 743px) {
+    img {
+      display: none;
+    }
+  }
+`
+const PandaTextWrapper = styled.div`
+  img {
+    width: 10.3rem;
+    height: 3.5rem;
+    display: flex;
+  }
+  @media (max-width: 1023px) {
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 8.1rem;
+      height: 2.3rem;
+    }
   }
 `
 const NavContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 12.438rem;
+  width: 20rem;
   @media (max-width: 743px) {
-    width: 8.4375rem;
+    width: 13.5rem;
     justify-content: space-between;
   }
 `
@@ -132,28 +164,4 @@ const FreeBordLink = styled.div<LinkProps>`
     ${(props) => textStyle(16, 700)(props)}
     padding: 21px 0px;
   }
-`
-const LogoFaceImage = styled.img`
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.537rem;
-  @media (max-width: 743px) {
-    width: 0;
-    height: 0;
-  }
-`
-const LogoImage = styled.img`
-  width: 6.438rem;
-  height: 2.188rem;
-  @media (max-width: 743px) {
-    width: 5.062rem;
-    height: 1.3125rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`
-const ProfileIconImage = styled.img`
-  width: 2.5rem;
-  height: 2.5rem;
 `

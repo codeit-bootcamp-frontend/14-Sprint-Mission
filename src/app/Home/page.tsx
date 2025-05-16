@@ -1,6 +1,6 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import Link from 'next/link'
 
 import * as S from './page.style'
 import Button from '../common/Button'
@@ -19,46 +19,20 @@ import Youtube from '../../../public/ assets/svg/youtube.svg'
 import Image from 'next/image'
 
 function Home() {
-  const [buttonStyle, setButtonStyle] = useState({
-    width: 364,
-    paddingWidth: 43,
-  })
-
-  const handleResize = () => {
-    if (window.innerWidth < 375) {
-      setButtonStyle({ width: 258, paddingWidth: 71 })
-    } else {
-      setButtonStyle({ width: 364, paddingWidth: 124 })
-    }
-  }
-
-  // placeholder useEffect 적용
-  useEffect(() => {
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
   return (
     <>
       <S.HeaderTop>
         <S.HeaderNav>
           <S.HeaderLogo>
-            <Link to="/">
+            <Link href="/">
               <Image src={LogoFace} alt="판다마켓 로고 사진" />
             </Link>
-            <Link to="/">
+            <Link href="/">
               <Image src={Logo} alt="판다마켓 로고 사진" />
             </Link>
           </S.HeaderLogo>
           <S.ButtonWrapper>
-            <Button
-              as={Link}
-              to="/login"
-              size={48.5}
-              paddingHeight={11}
-              paddingWidth={43}
-            >
+            <Button as={Link} to="/login" size={48.5}>
               로그인
             </Button>
           </S.ButtonWrapper>
@@ -71,13 +45,7 @@ function Home() {
               일상의 모든 물건을 거래해 보세요
             </S.HeaderTitleFont>
             <S.ButtonWrapper>
-              <Button
-                as={Link}
-                to="/items"
-                size={56}
-                paddingHeight={12}
-                paddingWidth={buttonStyle.paddingWidth}
-              >
+              <Button as={Link} to="/items" size={56}>
                 구경하러 가기
               </Button>
             </S.ButtonWrapper>
@@ -163,10 +131,10 @@ function Home() {
           <S.FooterNavMain>
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
-              <Link to="/privacy">
+              <Link href="/privacy">
                 <S.Privacy>Privacy Policy</S.Privacy>
               </Link>
-              <Link to="/faq">
+              <Link href="/faq">
                 <S.Faq>FAQ</S.Faq>
               </Link>
             </S.PrivacyFaq>

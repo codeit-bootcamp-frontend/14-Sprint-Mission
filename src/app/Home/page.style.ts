@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { theme } from '../../../styles/theme'
-import { textStyle } from '../../../styles/textStyle'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
 
 export const HeaderTop = styled.header`
   display: flex;
