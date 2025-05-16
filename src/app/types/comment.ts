@@ -1,5 +1,5 @@
 export interface GetCommentType {
-  nextCursor: number
+  nextCursor: number | null
   list: PostCommentType[]
 }
 

@@ -24,8 +24,6 @@ interface ItemsDetailQuestionArraryProps {
 
 const ItemsDetailQuestionArrary = ({
   productQuestion,
-  setIsEditing,
-  isEditing,
 }: ItemsDetailQuestionArraryProps) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
   const dropDownRef = useRef<HTMLDivElement>(null)
