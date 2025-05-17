@@ -56,12 +56,13 @@ function TagInput({ tags, onAddTag, onRemoveTag }) {
         onBlur={handleInputBlur}
         style={{
           width: "100%",
-          height: 32,
-          padding: "0 12px",
+          height: 56,
+          padding: "0 16px",
           border: "1px solid #E5E8EB",
           borderRadius: 8,
-          fontSize: 14,
+          fontSize: 16,
           marginBottom: 8,
+          boxSizing: "border-box",
         }}
       />
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>

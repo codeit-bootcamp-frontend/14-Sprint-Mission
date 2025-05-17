@@ -10,16 +10,19 @@ function Input({
   style,
   onKeyDown,
   onBlur,
+  className,
 }) {
-  const baseStyle = {
-    width: "100%",
-    height: 40,
-    borderRadius: 8,
-    border: "none",
-    background: "#F4F6FA",
-    padding: "0 16px",
-    fontSize: 16,
-  };
+  const baseStyle = className
+    ? {}
+    : {
+        width: "100%",
+        height: 40,
+        borderRadius: 8,
+        border: "none",
+        background: "#F4F6FA",
+        padding: "0 16px",
+        fontSize: 16,
+      };
 
   return (
     <input
@@ -31,6 +34,7 @@ function Input({
       min={min}
       onKeyDown={onKeyDown}
       onBlur={onBlur}
+      className={className}
       style={{
         ...baseStyle,
         ...style,

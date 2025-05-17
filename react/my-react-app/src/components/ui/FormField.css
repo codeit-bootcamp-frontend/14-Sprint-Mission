@@ -1,0 +1,71 @@
+/* FormField 공통 스타일 */
+.form-field-container {
+  width: 100%;
+  max-width: 344px; /* 모바일 기본 너비 */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.form-field-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 입력 필드 공통 스타일 */
+.form-field-input {
+  width: 100%;
+  height: 56px !important; /* 고정 높이 */
+  border-radius: 8px;
+  border: 1px solid #e5e8ec;
+  background-color: #f4f6fa;
+  padding: 0 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* 텍스트 영역 스타일 */
+.form-field-textarea {
+  width: 100%;
+  height: 282px !important; /* 고정 높이 */
+  border-radius: 8px;
+  border: 1px solid #e5e8ec;
+  background-color: #f4f6fa;
+  padding: 16px;
+  font-size: 16px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+/* 태그 입력 컨테이너 */
+.form-field-tag-input {
+  width: 100%;
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+/* 태그 입력창 스타일 덮어쓰기 */
+.form-field-tag-input input {
+  height: 56px !important;
+  box-sizing: border-box;
+}
+
+.form-field-error {
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* 태블릿 화면 */
+@media (min-width: 768px) {
+  .form-field-container {
+    max-width: 696px;
+  }
+}
+
+/* 데스크톱 화면 */
+@media (min-width: 1280px) {
+  .form-field-container {
+    max-width: 1200px;
+  }
+}

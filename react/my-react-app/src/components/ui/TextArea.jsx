@@ -7,17 +7,20 @@ function TextArea({
   maxLength,
   style,
   rows = 4,
+  className,
 }) {
-  const baseStyle = {
-    width: "100%",
-    minHeight: 120,
-    borderRadius: 8,
-    border: "none",
-    background: "#F4F6FA",
-    padding: "12px 16px",
-    fontSize: 16,
-    resize: "vertical",
-  };
+  const baseStyle = className
+    ? {}
+    : {
+        width: "100%",
+        minHeight: 120,
+        borderRadius: 8,
+        border: "none",
+        background: "#F4F6FA",
+        padding: "12px 16px",
+        fontSize: 16,
+        resize: "vertical",
+      };
 
   return (
     <textarea
@@ -26,6 +29,7 @@ function TextArea({
       onChange={onChange}
       maxLength={maxLength}
       rows={rows}
+      className={className}
       style={{
         ...baseStyle,
         ...style,
