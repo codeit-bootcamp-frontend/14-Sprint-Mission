@@ -72,6 +72,7 @@ const BoneWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 4rem;
 `
 const BestBoardsTitle = styled.div`
   ${(props) => textStyle(20, 800)(props)}
