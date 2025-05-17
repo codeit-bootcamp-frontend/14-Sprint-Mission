@@ -2,6 +2,10 @@ import React, { useState, useMemo } from "react";
 import Header from "../components/Header";
 import ImageUpload from "../components/ImageUpload";
 import TagInput from "../components/TagInput";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
+import TextArea from "../components/ui/TextArea";
+import FormGroup from "../components/ui/FormGroup";
 import "./ItemsPage.css";
 
 function AddItemPage() {
@@ -53,7 +57,7 @@ function AddItemPage() {
           margin: "0 auto",
           paddingTop: 120,
           marginBottom: 10,
-        }} // 헤더에 가리지 않게 충분한 패딩, 하단 마진 10px
+        }}
       >
         <form onSubmit={handleSubmit} autoComplete="off">
           <div
@@ -67,108 +71,58 @@ function AddItemPage() {
             <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0 }}>
               상품 등록하기
             </h2>
-            <button
+            <Button
               type="submit"
               disabled={!isFormValid}
-              style={{
-                width: 100,
-                height: 40,
-                borderRadius: 8,
-                background: isFormValid ? "#3692FF" : "#B0B8C1",
-                color: "#fff",
-                fontWeight: 600,
-                fontSize: 16,
-                border: "none",
-                cursor: isFormValid ? "pointer" : "not-allowed",
-                marginLeft: 16,
-              }}
+              style={{ width: 100, marginLeft: 16 }}
             >
               등록
-            </button>
+            </Button>
           </div>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontWeight: 600, marginBottom: 12 }}>상품 이미지</div>
+          <FormGroup label="상품 이미지" error={error}>
             <ImageUpload
               images={images}
               onImagesChange={handleImagesChange}
               max={3}
             />
-            {error && (
-              <div style={{ color: "#E54848", fontSize: 14, marginTop: 8 }}>
-                *{error}
-              </div>
-            )}
-          </div>
+          </FormGroup>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontWeight: 600, marginBottom: 8 }}>상품명</div>
-            <input
-              type="text"
+          <FormGroup label="상품명">
+            <Input
               placeholder="상품명을 입력해주세요"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              style={{
-                width: "100%",
-                height: 40,
-                borderRadius: 8,
-                border: "none",
-                background: "#F4F6FA",
-                padding: "0 16px",
-                fontSize: 16,
-              }}
               maxLength={40}
             />
-          </div>
+          </FormGroup>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontWeight: 600, marginBottom: 8 }}>상품 소개</div>
-            <textarea
+          <FormGroup label="상품 소개">
+            <TextArea
               placeholder="상품 소개를 입력해주세요"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
-              style={{
-                width: "100%",
-                minHeight: 120,
-                borderRadius: 8,
-                border: "none",
-                background: "#F4F6FA",
-                padding: "12px 16px",
-                fontSize: 16,
-                resize: "vertical",
-              }}
               maxLength={500}
             />
-          </div>
+          </FormGroup>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontWeight: 600, marginBottom: 8 }}>판매가격</div>
-            <input
+          <FormGroup label="판매가격">
+            <Input
               type="number"
               placeholder="판매 가격을 입력해주세요"
               value={price}
               onChange={(e) => setPrice(e.target.value.replace(/[^0-9]/g, ""))}
-              style={{
-                width: "100%",
-                height: 40,
-                borderRadius: 8,
-                border: "none",
-                background: "#F4F6FA",
-                padding: "0 16px",
-                fontSize: 16,
-              }}
               min={0}
             />
-          </div>
+          </FormGroup>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontWeight: 600, marginBottom: 8 }}>태그</div>
+          <FormGroup label="태그">
             <TagInput
               tags={tags}
               onAddTag={handleAddTag}
               onRemoveTag={handleRemoveTag}
             />
-          </div>
+          </FormGroup>
         </form>
       </div>
     </>
