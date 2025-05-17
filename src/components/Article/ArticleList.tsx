@@ -2,7 +2,6 @@
 
 import { orderByType, POST_OPTIONS, postByType } from "@/constants/product.constants";
 import { useAuth } from "@/contexts/AuthContext";
-import { PostListQuery, useInfiniteArticles } from "@/hooks/useArticles";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { usePushQueryToURL } from "@/hooks/useItemQuery";
 import { useConfirmModal } from "@/hooks/useModal";
@@ -16,6 +15,7 @@ import LoadingBox from "../ui/LoadingBox";
 import EmptyBox from "../ui/EmptyBox";
 import ConfirmModal from "../ui/ConfirmModal";
 import ArticleListItem from "./ArticleListItem";
+import { PostListQuery, useInfiniteArticles } from "@/hooks/useArticles";
 
 
 export function ArticleList() {
@@ -34,7 +34,7 @@ export function ArticleList() {
   };
 
   const pushQueryToURL = usePushQueryToURL();
-  const { data, handleLoadMore, hasNextPage, isFetchingNextPage } = useInfiniteArticles(query);
+  const { data, handleLoadMore, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteArticles(query);
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
 
     // SelectBox handle
@@ -79,26 +79,32 @@ export function ArticleList() {
         </div>
       </Container>
 
-      <Container className="mb-[141px]">      
-       { data ? (
-          <div>             
-            <ul>
-            {data?.pages.flatMap((page) => (
-              page.list.map((article) => (
-                <ArticleListItem key={article.id} postItem={article}/>
-              ))
-            ))}              
-            </ul>
-            {isFetchingNextPage && <LoadingBox className="h-[572px]" />}
-            {hasNextPage && (
-              <button onClick={handleLoadMore} disabled={isFetchingNextPage} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-                더보기
-              </button>
-            )}
-          </div>
-        ) : (
+      <Container className="mb-[141px]">  
+        {isLoading ? (
+        <LoadingBox className="h-[572px] mb-[141px]"/>
+         ) : (    
+          data ?  (
+            <div>             
+              <ul>
+              {data?.pages.flatMap((page) => (
+                page.list.map((article) => (
+                  <ArticleListItem key={article.id} postItem={article}/>
+                ))
+              ))}              
+              </ul>
+              {isFetchingNextPage && <LoadingBox className="h-[572px]" />}
+              {hasNextPage && (
+                <div className="text-center">
+                  <button onClick={handleLoadMore} disabled={isFetchingNextPage} className="mt-4 bg-blue-500 text-white px-10 py-3 rounded">
+                    게시물 더보기
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
           <EmptyBox context="해당 게시물이 없습니다." className="h-[572px]" />
-        )}
+          )
+      )}    
       </Container>
       <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </>

@@ -83,7 +83,7 @@ export function usePostProduct(openModal: (msg: string) => void, router: AppRout
 
 
 interface ProductFavoriteResponse {
-   productId: number; 
+   id: number; 
    isFavorited: boolean; 
    setIsFavorited: (value: boolean) => void, 
    setCount: (value: number | ((prev: number) => number)) => void 
@@ -93,7 +93,7 @@ export const useToggleProductFavorite =
 (openModal: (msg: string) => void, options?: { onSuccess?: (data: any) => void }) => {
 
   return useMutation({
-    mutationFn: async ({ productId, isFavorited, setIsFavorited, setCount }:ProductFavoriteResponse ) => {
+    mutationFn: async ({ id, isFavorited, setIsFavorited, setCount }:ProductFavoriteResponse ) => {
       const token = localStorage.getItem('accessToken');
       if (!token) {
         openModal('로그인이 필요합니다.');
@@ -104,14 +104,14 @@ export const useToggleProductFavorite =
       setCount((prev: number) => isFavorited ? prev - 1 : prev + 1);
 
       if (isFavorited) {
-        return requestor.delete(`/products/${productId}/favorite`, {
+        return requestor.delete(`/products/${id}/favorite`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
       } else {
         return requestor.post(
-          `/products/${productId}/favorite`,
+          `/products/${id}/favorite`,
           {},
           {
             headers: {

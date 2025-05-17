@@ -27,7 +27,14 @@ function ProductItem({productItem}: ProductItemProps) {
 
   const productId = productItem.id ?? 0; 
 
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { data } = useGetUserFavorites({});
+
+  const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal, {
+  onSuccess: (data) => {
+      openConfirmModal(data.isFavorited ? "관심상품 등록되었습니다" :  "관심상품 취소되었습니다");
+    },
+  });
   const isFavorite = data?.list.some((item) => item.id === productId) ?? false;
 
   return (
@@ -45,13 +52,13 @@ function ProductItem({productItem}: ProductItemProps) {
         <div className={styles.price}>{productItem.price?.toLocaleString()}원</div>
         
         <LikeButton 
-          productId={productId} 
+          id={productId} 
           favoriteCount={productItem.favoriteCount} 
-          likedMessage = "관심상품 등록되었습니다"
-          unLikedMessage = "관심상품 취소되었습니다"
-          isFavorite={isFavorite} 
+          toggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
           />
       </div>
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </li>
   );
 }

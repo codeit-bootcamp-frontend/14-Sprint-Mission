@@ -96,8 +96,51 @@ export type PostDetail = {
 };
 
 interface ProductFavoriteResponse {
-   productId: number; 
+   id: number; 
    isFavorited: boolean; 
    setIsFavorited: (value: boolean) => void, 
    setCount: (value: number | ((prev: number) => number)) => void 
 }
+
+export const useToggleArticlesFavorite = 
+(openModal: (msg: string) => void, options?: { onSuccess?: (data: any) => void }) => {
+
+  return useMutation({
+    mutationFn: async ({ id, isFavorited, setIsFavorited, setCount }:ProductFavoriteResponse ) => {
+      const token = localStorage.getItem('accessToken');
+      if (!token) {
+        openModal('로그인이 필요합니다.');
+        return Promise.reject('No accessToken');
+      }
+
+      setIsFavorited(!isFavorited);
+      setCount((prev: number) => isFavorited ? prev - 1 : prev + 1);
+
+      if (isFavorited) {
+        return requestor.delete(`/articles/${id}/like`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      } else {
+        return requestor.post(
+          `/articles/${id}/like`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      }
+    },
+    onError: (error) => {
+      const message = (error as any)?.response?.data?.message;
+      if (message?.includes('jwt malformed')) {
+        openModal('로그인 후 등록 가능합니다!');
+      } else {
+        openModal(message || '관심 게시물 처리 실패');
+      }
+    },
+  });
+};

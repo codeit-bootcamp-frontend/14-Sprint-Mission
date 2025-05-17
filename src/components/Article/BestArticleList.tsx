@@ -1,11 +1,12 @@
-
+'use client';
 import { BEST_POST_ITEMS, BEST_VISIBLE_ITEMS } from "@/constants/product.constants";
-import { PostListQuery, useArticlesList } from "@/hooks/useArticles";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useEffect, useState } from "react";
 import Container from "../layout/Container";
 import LoadingBox from "../ui/LoadingBox";
 import EmptyBox from "../ui/EmptyBox";
+import { PostListQuery, useArticlesList } from "@/hooks/useArticles";
+import BestArticleItem from "./BestArticleItem";
 
 
 function BestArticleList() {
@@ -28,15 +29,21 @@ function BestArticleList() {
     }, [breakpoint]);
   
   return (
-      <Container className="mb-[141px]">       
+      <Container className="mb-[24px]">       
       
        {isLoading ? (
         <LoadingBox className="h-[178px]"/>
-         ) : (    
-          data ? (  data.list.map((article) => (
-            <div key={article.id}>{article.title}----{article.likeCount}</div>
-          ))
-         ) : (
+         ) : (        
+          data ?  (
+            <div>             
+              <ul className="flex gap-6">
+                {data.list.map((article) => (
+                  <BestArticleItem key={article.id} postItem={article}/>
+                ))
+                 }              
+              </ul>
+            </div>
+          ) : (
           <EmptyBox context="해당 게시물이 없습니다." className="h-[572px]" />
         )
       )}

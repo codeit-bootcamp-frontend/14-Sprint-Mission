@@ -2,11 +2,11 @@
 
 import Button from "./Button";
 import Icon from "./Icon";
-import { useState } from "react";
 import { useToggleProductFavorite } from "@/hooks/useItems";
 import ConfirmModal from "./ConfirmModal";
 import { useConfirmModal } from "@/hooks/useModal";
 import { useAuth } from "@/contexts/AuthContext";
+import { useState } from "react";
 
 interface LikeButtonProps {
   className?: string;
@@ -15,14 +15,13 @@ interface LikeButtonProps {
   [key: string]: any; 
 }
 function LikeButton({
-  productId, 
+  id, 
   className, 
   childrenClassName, 
   favoriteCount, 
   isFavorite, 
   variant="btn-heart_S", 
-  likedMessage = "",
-  unLikedMessage = "",
+  toggleFavorite,
   width = 16, height = 16 , 
   ...restProps 
 } : LikeButtonProps) {
@@ -33,18 +32,14 @@ function LikeButton({
 
 
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
-  const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal, {
-  onSuccess: (data) => {
-    openConfirmModal(data.isFavorited ? likedMessage : unLikedMessage);
-  },
-});
+
 
   const handleClick =  () => {
     if(!user) {
       openConfirmModal('로그인 후 이용 가능합니다.');
       return;
     }
-    toggleFavorite({ productId, isFavorited ,setIsFavorited, setCount});
+    toggleFavorite({ id, isFavorited ,setIsFavorited, setCount});
   };
 
   return (
