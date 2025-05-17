@@ -56,7 +56,13 @@ function ProductDescription(detailData:ProductDetail) {
       <div className={styles.UserInfo}>
         <UserInfo ownerNickname={ownerNickname} createdAtString={createdAtString}/>
         <div className={styles.likeBtnBox}>
-           <LikeButton variant="btn-heart_L" productId={detailData.id} favoriteCount={detailData.favoriteCount} isFavorite={isFavorite} childrenClassName='gap-2' width="24" height="24"/>
+           <LikeButton variant="btn-heart_L" 
+            likedMessage = "관심상품 등록되었습니다"
+            unLikedMessage = "관심상품 취소되었습니다"
+            productId={detailData.id} 
+            favoriteCount={detailData.favoriteCount} 
+            isFavorite={isFavorite} 
+            childrenClassName='gap-2' width="24" height="24"/>
         </div>
       </div>
     </div>

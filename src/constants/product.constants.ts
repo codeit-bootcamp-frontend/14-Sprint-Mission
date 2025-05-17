@@ -1,4 +1,3 @@
-import { ProductQuery } from "@/hooks/useItems";
 
   // 일반 상품리스트 기본값
   export type orderByType = "recent" | "favorite";
@@ -17,5 +16,16 @@ import { ProductQuery } from "@/hooks/useItems";
   export const BEST_VISIBLE_ITEMS = {
     length: { mobile:1, tablet:2, desktop:4},   // 상품 갯수 (mobile, tablet, desktop)
     column: { mobile: 1, tablet: 2, desktop: 4 },   // 열 갯수 (mobile, tablet, desktop)
+  };
+    
+  export type postByType = "recent" | "like";
+
+  export const POST_OPTIONS = [
+    { value: 'recent', label: '최신순' },
+    { value: 'like', label: '좋아요순' },
+  ];
+  export const BEST_POST_ITEMS = {
+    length: { mobile:1, tablet:2, desktop:3},   
+    column: { mobile:1, tablet:2, desktop:3 },  
   };
     

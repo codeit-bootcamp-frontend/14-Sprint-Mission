@@ -88,9 +88,9 @@ interface ProductFavoriteResponse {
    setIsFavorited: (value: boolean) => void, 
    setCount: (value: number | ((prev: number) => number)) => void 
 }
-export const useToggleProductFavorite = (
-  openModal: (msg: string) => void
-) => {
+
+export const useToggleProductFavorite = 
+(openModal: (msg: string) => void, options?: { onSuccess?: (data: any) => void }) => {
 
   return useMutation({
     mutationFn: async ({ productId, isFavorited, setIsFavorited, setCount }:ProductFavoriteResponse ) => {
@@ -120,9 +120,6 @@ export const useToggleProductFavorite = (
           }
         );
       }
-    },
-    onSuccess: (_, variables) => {
-      openModal(variables.isFavorited ? '관심상품이 해제되었습니다!' : '관심상품이 등록되었습니다!');
     },
     onError: (error) => {
       const message = (error as any)?.response?.data?.message;

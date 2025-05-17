@@ -12,7 +12,7 @@ import { useConfirmModal } from '@/hooks/useModal';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import FormField from '@/components/ui/form/FormField';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { validationRules } from '@/utils/auth';
+import { validationRules } from '@/utils/validate';
 
 type FormValues = {
   email: string;

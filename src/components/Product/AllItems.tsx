@@ -13,10 +13,11 @@ import EmptyBox from "../ui/EmptyBox";
 import { useAuth } from "@/contexts/AuthContext";
 import { useConfirmModal } from "@/hooks/useModal";
 import ConfirmModal from "../ui/ConfirmModal";
-import ProductSearchBox from "./ProductSearchBox";
 import Title from "../ui/Title";
 import { ORDER_OPTIONS, orderByType, VISIBLE_ITEMS } from "@/constants/product.constants";
 import { usePushQueryToURL } from "@/hooks/useItemQuery";
+import ProductSearchBox from "../ui/form/SearchBox";
+import SearchBox from "../ui/form/SearchBox";
 
 
 export function AllItems() {
@@ -29,7 +30,7 @@ export function AllItems() {
   const query: ProductQuery = {
     page: Number(searchParams.get("page") ?? 1),
     pageSize: Number(searchParams.get("pageSize") ?? VISIBLE_ITEMS.length[breakpoint]),
-    orderBy: (searchParams.get("orderBy") ?? 'recent')as orderByType,
+    orderBy: (searchParams.get("orderBy") ?? 'recent') as orderByType,
     keyword: searchParams.get("keyword") ?? '',
   };
 
@@ -82,7 +83,7 @@ export function AllItems() {
     <>
       <Container className='relative z-20'>      
         <Title titleTag='h2' text='전체상품'> 
-          <ProductSearchBox onSearch={(keyword) => handleKeywordChange(keyword)} />
+          <SearchBox onSearch={(keyword) => handleKeywordChange(keyword)} />
           <Button
             className="absolute right-0 top-0"
             variant="roundedSS"
@@ -110,7 +111,7 @@ export function AllItems() {
             className={Number(data?.list?.length) < Number(query.pageSize) ? 'mb-[141px]' : 'mb-0'} 
           />
         ) : (
-          <EmptyBox context="아직 해당 상품이 없습니다." className="h-[572px] mb-[141px]" />
+          <EmptyBox context="해당 상품이 없습니다." className="h-[572px] mb-[141px]" />
         )}
 
       {/* 🔹 페이지네이션 */}

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styles from './ItemsDetail.module.css';
-import ProductDetails from '@/components/ItemsDetail/ProductDetails';
+import ProductDetails from '@/components/productDetail/ProductDetails';
 
 function ItemsDetail() {
 

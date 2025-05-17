@@ -21,6 +21,8 @@ function LikeButton({
   favoriteCount, 
   isFavorite, 
   variant="btn-heart_S", 
+  likedMessage = "",
+  unLikedMessage = "",
   width = 16, height = 16 , 
   ...restProps 
 } : LikeButtonProps) {
@@ -31,7 +33,11 @@ function LikeButton({
 
 
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
-  const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal);
+  const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal, {
+  onSuccess: (data) => {
+    openConfirmModal(data.isFavorited ? likedMessage : unLikedMessage);
+  },
+});
 
   const handleClick =  () => {
     if(!user) {

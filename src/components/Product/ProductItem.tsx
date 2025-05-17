@@ -44,7 +44,13 @@ function ProductItem({productItem}: ProductItemProps) {
         <div className={styles.name}>{productItem.name}</div>
         <div className={styles.price}>{productItem.price?.toLocaleString()}원</div>
         
-        <LikeButton productId={productId} favoriteCount={productItem.favoriteCount} isFavorite={isFavorite} />
+        <LikeButton 
+          productId={productId} 
+          favoriteCount={productItem.favoriteCount} 
+          likedMessage = "관심상품 등록되었습니다"
+          unLikedMessage = "관심상품 취소되었습니다"
+          isFavorite={isFavorite} 
+          />
       </div>
     </li>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import ProductOverview from './ProductOverview';
 import ProductDescription from './ProductDescription';
 import Container from 'components/layout/Container';
