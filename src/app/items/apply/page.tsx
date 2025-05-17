@@ -53,7 +53,7 @@ function Additem() {
       </Title>
     
       <form className={styles.formBox}> 
-        <ImageFileBox product={addProduct} setProduct={setAddProduct}/>
+        <ImageFileBox<CreateProductRequest> setForm={setAddProduct} />
         <InputField id='name' label='상품명' inputBoxType='text' placeholder='상품명을 입력해주세요' onBlur={handleInputBlur} />
         <TextAreaField id='description' label='상품 소개' height='282px' placeholder='상품 소개를 입력해주세요' onBlur={handleInputBlur} />
         <InputField id='price' label='판매가격' inputBoxType='number' placeholder='판매 가격을 입력해주세요' onBlur={handleInputBlur} />

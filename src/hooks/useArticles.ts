@@ -144,3 +144,27 @@ export const useToggleArticlesFavorite =
     },
   });
 };
+
+export interface ArticleCreateRequest {
+  title?: string; 
+  content?: string;
+  image?:string;
+}
+
+// 상품 등록
+export function usePostArticles(openModal: (msg: string) => void, router: { push: (path: string) => void }) { 
+    
+  return useMutation({
+    mutationFn: async (ArticlesData: ArticleCreateRequest) => {
+      const res = await requestor.post<PostDetail>('/articles', ArticlesData);
+      return res.data;
+    },
+    onSuccess: () => {
+      openModal('게시물 등록이 완료되었습니다!');
+      router.push('/boards');
+    },
+    onError: (error: any) => {
+      openModal(error?.response?.data?.message || '게시물 등록 실패');
+    },
+  });
+};

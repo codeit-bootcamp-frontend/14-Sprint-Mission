@@ -1,33 +1,38 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ImageFile from './ImageFile';
-import { CreateProductRequest } from '@/hooks/useItems';
 import { useUploadImage } from '@/hooks/useUploadImage';
 import { useConfirmModal } from '@/hooks/useModal';
 import ConfirmModal from '../ConfirmModal';
 
-
-interface ImageFileBoxProps {
-  product: CreateProductRequest;
-  setProduct: React.Dispatch<React.SetStateAction<CreateProductRequest>>;
+interface ImageUpdatable {
+  images?: string[];
+  image?: string;
 }
 
-function ImageFileBox({ product, setProduct }: ImageFileBoxProps) {
-  
-  const [preview, setPreview] = useState<(string | null)[]>([]); // 미리보기 이미지 상태
+interface ImageFileBoxProps<T extends ImageUpdatable> {
+  setForm: React.Dispatch<React.SetStateAction<T>>;
+}
+
+function ImageFileBox<T extends ImageUpdatable>({ setForm }: ImageFileBoxProps<T>) {
+  const [preview, setPreview] = useState<(string | null)[]>([]);
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const [errorCase, setErrorCase] = useState('');
   const MAX_IMAGE_COUNT = 1;
 
-  // console.log('업로드된 이미지:', product.images);
   const { mutate: uploadImage } = useUploadImage(
     (msg) => openConfirmModal(msg),
     (url) => {
-      // console.log('업로드 완료 URL:', url);
       setPreview((prev) => [...prev, url]);
     }
   );
-  function getFilesValue(e: React.ChangeEvent<HTMLInputElement>) {
+
+  const getImageKey = (obj: any): 'images' | 'image' => {
+    if ('images' in obj) return 'images';
+    if ('image' in obj) return 'image';
+    throw new Error('No image key found');
+  };
+
+  const getFilesValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -37,46 +42,64 @@ function ImageFileBox({ product, setProduct }: ImageFileBoxProps) {
       return;
     }
 
-  // 2. 서버 업로드 요청 → 성공 시 URL 저장
-  uploadImage(file, {
-    onSuccess: (url) => {
-      setProduct((prev) => ({
-        ...prev,
-        images: [...(prev.images || []), url],
-      }));
-    },
-    onError: (msg) => {
-      setErrorCase(msg);
-      setTimeout(() => setErrorCase(''), 2000);
-    },
-  });
-}
+    uploadImage(file, {
+      onSuccess: (url) => {
+        setForm((prev) => {
+          const key = getImageKey(prev);
 
-// 미리보기 & URL 동기화 삭제
-function handleClickImgDelete(index: number) {
-  if (preview.length > 0) setErrorCase('');
+          return {
+            ...prev,
+            [key]: key === 'images'
+              ? [...(prev.images || []), url]
+              : url, // image는 string으로 바로 저장
+          };
+        });
+      },
+      onError: (msg) => {
+        setErrorCase(msg);
+        setTimeout(() => setErrorCase(''), 2000);
+      },
+    });
+  };
 
-  // 삭제 시 preview와 images 모두 index 기준 삭제
-  setPreview((prev) => prev.filter((_, i) => i !== index));
-  setProduct((prev) => ({
-    ...prev,
-    images: (prev.images || []).filter((_, i) => i !== index),
-  }));
-}
+  const handleClickImgDelete = (index: number) => {
+    if (preview.length > 0) setErrorCase('');
+    setPreview((prev) => prev.filter((_, i) => i !== index));
 
-  return(
+    setForm((prev) => {
+      const key = getImageKey(prev);
+
+      if (key === 'images') {
+        return {
+          ...prev,
+          images: (prev.images || []).filter((_, i) => i !== index),
+        };
+      } else {
+        return {
+          ...prev,
+          image: '', // 단일 이미지 삭제는 빈 문자열로 대체
+        };
+      }
+    });
+  };
+
+  return (
     <>
-      <ImageFile 
-        label='상품 이미지' 
-        text='이미지 등록' 
-        images={preview} 
-        errorCase={errorCase} 
-        onChange={getFilesValue} 
+      <ImageFile
+        label="상품 이미지"
+        text="이미지 등록"
+        images={preview}
+        errorCase={errorCase}
+        onChange={getFilesValue}
         onClickDelete={handleClickImgDelete}
       />
-      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
+      <ConfirmModal
+        isOpen={isConfirmOpen}
+        onClose={closeConfirmModal}
+        errorMessage={confirmMessage}
+      />
     </>
-  )
+  );
 }
 
 export default ImageFileBox;

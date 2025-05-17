@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
-import { eyeClose, eyeOpen } from '@/lib/imageAssets';
 import Icon from '../Icon';
 import clsx from 'clsx';
 

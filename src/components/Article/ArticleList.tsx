@@ -54,7 +54,7 @@ export function ArticleList() {
         openConfirmModal('로그인 후 이용 가능합니다.');
         return;
       }
-      router.push('articles/apply');
+      router.push('boards/apply');
     };
   return (
     <>
