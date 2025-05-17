@@ -1,9 +1,71 @@
 import React, { useState, useMemo } from "react";
+import styled from "styled-components";
 import Header from "../components/Header";
 import ImageUpload from "../components/ImageUpload";
 import Button from "../components/ui/Button";
 import FormField from "../components/ui/FormField";
-import "./ItemsPage.css";
+
+const PageContainer = styled.div`
+  margin: 0 auto;
+  padding-top: 120px;
+  margin-bottom: 10px;
+`;
+
+// FormFieldContainer 스타일과 동일한 스타일 적용
+const CommonContainer = styled.div`
+  width: 100%;
+  max-width: 344px; /* 모바일 기본 너비 */
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* 태블릿 화면 */
+  @media (min-width: 768px) {
+    max-width: 696px;
+  }
+
+  /* 데스크톱 화면 */
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+`;
+
+const FormHeader = styled(CommonContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+`;
+
+const Title = styled.h2`
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+`;
+
+const SubmitButton = styled(Button)`
+  width: 100px;
+  margin-left: 16px;
+`;
+
+const ImageSection = styled(CommonContainer)`
+  margin-bottom: 30px;
+`;
+
+const ImageLabel = styled.div`
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+`;
+
+const ErrorMessage = styled.div`
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+`;
+
+const FormSection = styled.div`
+  margin-bottom: 24px;
+`;
 
 function AddItemPage() {
   const [images, setImages] = useState([]); // 여러 이미지
@@ -44,70 +106,29 @@ function AddItemPage() {
     alert("상품이 등록되었습니다! (API 연동 전)");
   };
 
-  // 이미지 업로드 영역 너비 계산 - 반응형
-  const getImageUploadWidth = () => {
-    if (window.innerWidth >= 1280) {
-      return 1200;
-    } else if (window.innerWidth >= 768) {
-      return 696;
-    } else {
-      return 344;
-    }
-  };
-
   return (
     <>
       <Header highlightItemsNav={true} />
-      <div
-        className="items-page-container"
-        style={{
-          margin: "0 auto",
-          paddingTop: 120,
-          marginBottom: 10,
-        }}
-      >
+      <PageContainer>
         <form onSubmit={handleSubmit} autoComplete="off">
-          <div
-            className="form-field-container"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 24,
-            }}
-          >
-            <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0 }}>
-              상품 등록하기
-            </h2>
-            <Button
-              type="submit"
-              disabled={!isFormValid}
-              style={{ width: 100, marginLeft: 16 }}
-            >
+          <FormHeader>
+            <Title>상품 등록하기</Title>
+            <SubmitButton type="submit" disabled={!isFormValid}>
               등록
-            </Button>
-          </div>
+            </SubmitButton>
+          </FormHeader>
 
-          <div
-            className="form-field-container"
-            style={{
-              marginBottom: 30,
-            }}
-          >
-            <div className="form-field-label">상품 이미지</div>
+          <ImageSection>
+            <ImageLabel>상품 이미지</ImageLabel>
             <ImageUpload
               images={images}
               onImagesChange={handleImagesChange}
               max={1}
             />
-            {error && (
-              <div style={{ color: "#F74747", fontSize: 14, marginTop: 8 }}>
-                {error}
-              </div>
-            )}
-          </div>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+          </ImageSection>
 
-          <div style={{ marginBottom: 24 }}>
+          <FormSection>
             <FormField
               type="text"
               label="상품명"
@@ -116,9 +137,9 @@ function AddItemPage() {
               onChange={(e) => setTitle(e.target.value)}
               maxLength={40}
             />
-          </div>
+          </FormSection>
 
-          <div style={{ marginBottom: 24 }}>
+          <FormSection>
             <FormField
               type="textarea"
               label="상품 소개"
@@ -127,9 +148,9 @@ function AddItemPage() {
               onChange={(e) => setDesc(e.target.value)}
               maxLength={500}
             />
-          </div>
+          </FormSection>
 
-          <div style={{ marginBottom: 24 }}>
+          <FormSection>
             <FormField
               type="number"
               label="판매가격"
@@ -138,9 +159,9 @@ function AddItemPage() {
               onChange={(e) => setPrice(e.target.value.replace(/[^0-9]/g, ""))}
               min={0}
             />
-          </div>
+          </FormSection>
 
-          <div style={{ marginBottom: 24 }}>
+          <FormSection>
             <FormField
               type="tag"
               label="태그"
@@ -148,9 +169,9 @@ function AddItemPage() {
               onAddTag={handleAddTag}
               onRemoveTag={handleRemoveTag}
             />
-          </div>
+          </FormSection>
         </form>
-      </div>
+      </PageContainer>
     </>
   );
 }

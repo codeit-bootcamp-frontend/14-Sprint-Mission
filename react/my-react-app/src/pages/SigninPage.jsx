@@ -1,6 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../auth.css"; // 경로 수정
+import styled from "styled-components";
+
+const AuthContainer = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+
+  form {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-item {
+    width: 100%;
+  }
+`;
 
 function SigninPage() {
   const [email, setEmail] = useState("");
@@ -73,7 +97,7 @@ function SigninPage() {
     emailRegex.test(email);
 
   return (
-    <div className="auth-container">
+    <AuthContainer>
       <Link to="/" className="logo-home-button">
         <img src="/images/logo/logo.svg" alt="판다마켓 홈" />
       </Link>
@@ -166,7 +190,7 @@ function SigninPage() {
       <div className="auth-switch">
         판다마켓이 처음이신가요? <Link to="/signup">회원가입</Link>
       </div>
-    </div>
+    </AuthContainer>
   );
 }
 

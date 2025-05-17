@@ -1,4 +1,47 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const TagInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #e5e8eb;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+`;
+
+const TagsContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+`;
+
+const Tag = styled.span`
+  background: #f4f6fa;
+  color: #4e5968;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+const RemoveButton = styled.button`
+  background: none;
+  border: none;
+  color: #b0b8c1;
+  font-size: 16px;
+  margin-left: 4px;
+  cursor: pointer;
+`;
 
 function TagInput({ tags, onAddTag, onRemoveTag }) {
   const [input, setInput] = useState("");
@@ -52,60 +95,30 @@ function TagInput({ tags, onAddTag, onRemoveTag }) {
   };
 
   return (
-    <div>
-      <input
+    <TagInputContainer>
+      <Input
         type="text"
         placeholder="태그를 입력해주세요"
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
-        style={{
-          width: "100%",
-          height: 56,
-          padding: "0 16px",
-          border: "1px solid #E5E8EB",
-          borderRadius: 8,
-          fontSize: 16,
-          marginBottom: 8,
-          boxSizing: "border-box",
-        }}
       />
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      <TagsContainer>
         {tags.map((tag) => (
-          <span
-            key={tag}
-            style={{
-              background: "#F4F6FA",
-              color: "#4E5968",
-              borderRadius: 16,
-              padding: "4px 12px",
-              fontSize: 14,
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-            }}
-          >
+          <Tag key={tag}>
             #{tag}
-            <button
+            <RemoveButton
               type="button"
               aria-label="태그 삭제"
               onClick={() => onRemoveTag(tag)}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#B0B8C1",
-                fontSize: 16,
-                marginLeft: 4,
-                cursor: "pointer",
-              }}
             >
               ×
-            </button>
-          </span>
+            </RemoveButton>
+          </Tag>
         ))}
-      </div>
-    </div>
+      </TagsContainer>
+    </TagInputContainer>
   );
 }
 

@@ -1,8 +1,72 @@
 import React from "react";
-import "./FormField.css";
+import styled from "styled-components";
 import Input from "./Input";
 import TextArea from "./TextArea";
 import TagInput from "../TagInput";
+
+// styled-components 정의
+const FormFieldContainer = styled.div`
+  width: 100%;
+  max-width: 344px; /* 모바일 기본 너비 */
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* 태블릿 화면 */
+  @media (min-width: 768px) {
+    max-width: 696px;
+  }
+
+  /* 데스크톱 화면 */
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+`;
+
+const FormFieldLabel = styled.label`
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+`;
+
+const StyledInput = styled(Input)`
+  width: 100%;
+  height: 56px !important; /* 고정 높이 */
+  border-radius: 8px;
+  border: 1px solid #e5e8ec;
+  background-color: #f4f6fa;
+  padding: 0 16px;
+  font-size: 16px;
+  box-sizing: border-box;
+`;
+
+const StyledTextArea = styled(TextArea)`
+  width: 100%;
+  height: 282px !important; /* 고정 높이 */
+  border-radius: 8px;
+  border: 1px solid #e5e8ec;
+  background-color: #f4f6fa;
+  padding: 16px;
+  font-size: 16px;
+  resize: none;
+  box-sizing: border-box;
+`;
+
+const TagInputContainer = styled.div`
+  width: 100%;
+  min-height: 56px;
+  box-sizing: border-box;
+
+  input {
+    height: 56px !important;
+    box-sizing: border-box;
+  }
+`;
+
+const ErrorMessage = styled.div`
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+`;
 
 /**
  * 공통 폼 필드 컴포넌트
@@ -33,47 +97,45 @@ function FormField({
     switch (type) {
       case "textarea":
         return (
-          <TextArea
+          <StyledTextArea
             placeholder={placeholder}
             value={value}
             onChange={onChange}
             maxLength={props.maxLength}
-            className="form-field-textarea"
           />
         );
       case "tag":
         return (
-          <div className="form-field-tag-input">
+          <TagInputContainer>
             <TagInput
               tags={value}
               onAddTag={props.onAddTag}
               onRemoveTag={props.onRemoveTag}
             />
-          </div>
+          </TagInputContainer>
         );
       case "number":
       case "text":
       default:
         return (
-          <Input
+          <StyledInput
             type={type}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
             maxLength={props.maxLength}
             min={props.min}
-            className="form-field-input"
           />
         );
     }
   };
 
   return (
-    <div className="form-field-container">
-      {label && <label className="form-field-label">{label}</label>}
+    <FormFieldContainer>
+      {label && <FormFieldLabel>{label}</FormFieldLabel>}
       {renderFieldContent()}
-      {error && <div className="form-field-error">{error}</div>}
-    </div>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </FormFieldContainer>
   );
 }
 

@@ -1,5 +1,123 @@
 import React, { useRef, useState } from "react";
-import "./ItemImage.css";
+import styled from "styled-components";
+
+const UploadContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const ImagesRow = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+`;
+
+const ImageContainer = styled.div`
+  width: 168px;
+  height: 168px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e5e8ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  ${(props) =>
+    props.isUploadButton &&
+    `
+    background: #F4F6FA;
+    cursor: ${props.disabled ? "not-allowed" : "pointer"};
+  `}
+  ${(props) =>
+    props.isBestImage &&
+    `
+    width: 343px;
+    height: 343px;
+  `}
+  
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    width: 221px;
+    height: 221px;
+
+    ${(props) =>
+      props.isBestImage &&
+      `
+      width: 343px;
+      height: 343px;
+    `}
+  }
+
+  @media (min-width: 1280px) {
+    width: 282px;
+    height: 282px;
+
+    ${(props) =>
+      props.isBestImage &&
+      `
+      width: 282px;
+      height: 282px;
+    `}
+  }
+`;
+
+const ImagePlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b0b8c1;
+  font-size: 24px;
+`;
+
+const PlusIcon = styled.span`
+  font-size: 40px;
+  margin-bottom: 8px;
+`;
+
+const UploadText = styled.span`
+  font-size: 16px;
+`;
+
+const ErrorMessage = styled.div`
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 4px;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const HiddenInput = styled.input`
+  display: none;
+`;
+
+const RemoveButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 function ImageUpload({ images, onImagesChange, max = 1 }) {
   const fileInputRef = useRef();
@@ -43,83 +161,41 @@ function ImageUpload({ images, onImagesChange, max = 1 }) {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-      <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-        <div
-          className="item-image-container all-image"
-          style={{
-            background: "#F4F6FA",
-            cursor: images.length >= max ? "not-allowed" : "pointer",
-            flexShrink: 0,
-          }}
+    <UploadContainer>
+      <ImagesRow>
+        <ImageContainer
+          isUploadButton
+          disabled={images.length >= max}
           onClick={handleRegisterClick}
         >
-          <input
+          <HiddenInput
             type="file"
             accept="image/*"
-            style={{ display: "none" }}
             ref={fileInputRef}
             onChange={handleFileChange}
           />
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#B0B8C1",
-              fontSize: 24,
-            }}
-          >
-            <span style={{ fontSize: 40, marginBottom: 8 }}>+</span>
-            <span style={{ fontSize: 16 }}>이미지 등록</span>
-          </div>
-        </div>
+          <ImagePlaceholder>
+            <PlusIcon>+</PlusIcon>
+            <UploadText>이미지 등록</UploadText>
+          </ImagePlaceholder>
+        </ImageContainer>
+
         {images.map((img, idx) => (
-          <div
-            key={idx}
-            className="item-image-container all-image"
-            style={{ position: "relative", flexShrink: 0 }}
-          >
-            <img
-              src={img.url}
-              alt={`상품 이미지 ${idx + 1}`}
-              className="item-image"
-            />
-            <button
+          <ImageContainer key={idx}>
+            <Image src={img.url} alt={`상품 이미지 ${idx + 1}`} />
+            <RemoveButton
               type="button"
               aria-label="이미지 삭제"
               onClick={() => handleRemove(idx)}
-              style={{
-                position: "absolute",
-                top: 8,
-                right: 8,
-                background: "rgba(0,0,0,0.4)",
-                border: "none",
-                borderRadius: "50%",
-                width: 28,
-                height: 28,
-                color: "#fff",
-                fontSize: 18,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
             >
               ×
-            </button>
-          </div>
+            </RemoveButton>
+          </ImageContainer>
         ))}
-      </div>
-      {error && (
-        <div style={{ color: "#F74747", fontSize: 14, marginTop: 4 }}>
-          {error}
-        </div>
-      )}
-    </div>
+      </ImagesRow>
+
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </UploadContainer>
   );
 }
 

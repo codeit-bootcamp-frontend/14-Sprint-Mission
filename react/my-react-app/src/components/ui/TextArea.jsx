@@ -1,4 +1,21 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledTextArea = styled.textarea`
+  width: 100%;
+  min-height: 120px;
+  border-radius: 8px;
+  border: none;
+  background: #f4f6fa;
+  padding: 12px 16px;
+  font-size: 16px;
+  resize: vertical;
+  ${(props) =>
+    props.style &&
+    Object.entries(props.style)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(" ")}
+`;
 
 function TextArea({
   placeholder,
@@ -9,31 +26,15 @@ function TextArea({
   rows = 4,
   className,
 }) {
-  const baseStyle = className
-    ? {}
-    : {
-        width: "100%",
-        minHeight: 120,
-        borderRadius: 8,
-        border: "none",
-        background: "#F4F6FA",
-        padding: "12px 16px",
-        fontSize: 16,
-        resize: "vertical",
-      };
-
   return (
-    <textarea
+    <StyledTextArea
       placeholder={placeholder}
       value={value}
       onChange={onChange}
       maxLength={maxLength}
       rows={rows}
       className={className}
-      style={{
-        ...baseStyle,
-        ...style,
-      }}
+      style={style}
     />
   );
 }

@@ -1,5 +1,5 @@
 .auth-container {
-  max-width: 400px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -9,11 +9,14 @@
   display: block;
   margin-top: 24px;
   margin-bottom: 24px;
-  width: 198px;
+  width: 396px;
+  height: 132px;
 }
 
 .logo-home-button img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .input-item {
@@ -37,6 +40,8 @@ input {
   font-size: 16px;
   line-height: 24px;
   width: 100%;
+  height: 56px;
+  box-sizing: border-box;
 }
 
 input::placeholder {
@@ -81,6 +86,9 @@ input:focus {
   justify-content: space-between;
   padding: 16px 23px;
   margin: 24px 0;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
 }
 
 .social-login-container h3 {
@@ -113,6 +121,7 @@ input:focus {
 
   .logo-home-button {
     width: 396px;
+    height: 132px;
     margin-top: 48px;
     margin-bottom: 40px;
   }
@@ -121,6 +130,11 @@ input:focus {
     font-size: 18px;
     margin-bottom: 16px;
   }
+
+  .social-login-container,
+  form .button.pill-button.full-width {
+    max-width: 640px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -128,4 +142,10 @@ input:focus {
     margin-top: 60px;
     margin-bottom: 40px;
   }
+}
+
+/* Button styling override for auth pages */
+form .button.pill-button.full-width {
+  width: 100%;
+  height: 56px;
 }

@@ -1,4 +1,20 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledInput = styled.input`
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: #f4f6fa;
+  padding: 0 16px;
+  font-size: 16px;
+  ${(props) =>
+    props.style &&
+    Object.entries(props.style)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(" ")}
+`;
 
 function Input({
   type = "text",
@@ -12,20 +28,8 @@ function Input({
   onBlur,
   className,
 }) {
-  const baseStyle = className
-    ? {}
-    : {
-        width: "100%",
-        height: 40,
-        borderRadius: 8,
-        border: "none",
-        background: "#F4F6FA",
-        padding: "0 16px",
-        fontSize: 16,
-      };
-
   return (
-    <input
+    <StyledInput
       type={type}
       placeholder={placeholder}
       value={value}
@@ -35,10 +39,7 @@ function Input({
       onKeyDown={onKeyDown}
       onBlur={onBlur}
       className={className}
-      style={{
-        ...baseStyle,
-        ...style,
-      }}
+      style={style}
     />
   );
 }
