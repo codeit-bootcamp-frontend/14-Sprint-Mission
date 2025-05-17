@@ -68,13 +68,12 @@ function AddItemPage() {
       >
         <form onSubmit={handleSubmit} autoComplete="off">
           <div
+            className="form-field-container"
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               marginBottom: 24,
-              maxWidth: 1200,
-              margin: "0 auto",
             }}
           >
             <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0 }}>
@@ -90,13 +89,12 @@ function AddItemPage() {
           </div>
 
           <div
+            className="form-field-container"
             style={{
-              marginBottom: 24,
-              maxWidth: getImageUploadWidth(),
-              margin: "0 auto",
+              marginBottom: 30,
             }}
           >
-            <div style={{ fontWeight: 600, marginBottom: 8 }}>상품 이미지</div>
+            <div className="form-field-label">상품 이미지</div>
             <ImageUpload
               images={images}
               onImagesChange={handleImagesChange}

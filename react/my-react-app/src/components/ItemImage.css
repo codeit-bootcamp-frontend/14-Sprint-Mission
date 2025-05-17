@@ -32,8 +32,8 @@
 /* 태블릿 설정 (768px 이상) */
 @media (min-width: 768px) {
   .item-image-container {
-    width: 221px;
-    height: 221px;
+    width: 168px;
+    height: 168px;
   }
 
   .best-image {
@@ -45,8 +45,8 @@
 /* 데스크톱 설정 (1280px 이상) */
 @media (min-width: 1280px) {
   .item-image-container {
-    width: 221px;
-    height: 221px;
+    width: 282px;
+    height: 282px;
   }
 
   .best-image {
