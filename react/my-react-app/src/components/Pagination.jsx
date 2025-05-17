@@ -1,5 +1,52 @@
 import React from "react";
-import "./Pagination.css";
+import styled from "styled-components";
+
+const PaginationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 32px 0;
+`;
+
+const PageButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e8ec;
+  background-color: #ffffff;
+  color: #4e5968;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: #3692ff;
+    background-color: #f0f7ff;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.active {
+    background-color: #3692ff;
+    color: #ffffff;
+    border-color: #3692ff;
+  }
+
+  &.first,
+  &.last,
+  &.prev,
+  &.next {
+    font-weight: bold;
+  }
+`;
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   // 페이지 그룹 나누기 (최대 5개 페이지 버튼만 표시)
@@ -20,56 +67,56 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   const canGoNextGroup = 5 * Math.floor((currentPage - 1) / 5) + 5 < totalPages;
 
   return (
-    <div className="pagination">
+    <PaginationContainer>
       {/* 첫 페이지 버튼 */}
-      <button
-        className="page-button first"
+      <PageButton
+        className="first"
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
       >
         &lt;&lt;
-      </button>
+      </PageButton>
 
       {/* 이전 페이지 그룹 버튼 */}
-      <button
-        className="page-button prev"
+      <PageButton
+        className="prev"
         onClick={() =>
           onPageChange(Math.max(1, 5 * Math.floor((currentPage - 1) / 5)))
         }
         disabled={!canGoPrevGroup}
       >
         &lt;
-      </button>
+      </PageButton>
 
       {/* 페이지 번호 버튼들 */}
       {getPageGroup().map((page) => (
-        <button
+        <PageButton
           key={page}
-          className={`page-button ${page === currentPage ? "active" : ""}`}
+          className={page === currentPage ? "active" : ""}
           onClick={() => onPageChange(page)}
         >
           {page}
-        </button>
+        </PageButton>
       ))}
 
       {/* 다음 페이지 그룹 버튼 */}
-      <button
-        className="page-button next"
+      <PageButton
+        className="next"
         onClick={() => onPageChange(5 * Math.floor((currentPage - 1) / 5) + 6)}
         disabled={!canGoNextGroup}
       >
         &gt;
-      </button>
+      </PageButton>
 
       {/* 마지막 페이지 버튼 */}
-      <button
-        className="page-button last"
+      <PageButton
+        className="last"
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
       >
         &gt;&gt;
-      </button>
-    </div>
+      </PageButton>
+    </PaginationContainer>
   );
 }
 

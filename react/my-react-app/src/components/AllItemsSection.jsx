@@ -1,10 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ItemCard from "./ItemCard";
 import SearchForm from "./SearchForm";
-import Button from "./ui/Button";
 import Pagination from "./Pagination";
 import Dropdown from "./ui/Dropdown";
+import {
+  SectionContainer,
+  AllItemsHeader,
+  TitleRow,
+  AllItemsTitle,
+  HeaderControls,
+  AddItemButton,
+  MobileAddButton,
+  DesktopAddButton,
+  AllItemsGrid,
+  MessageParagraph,
+} from "../pages/ItemsPage.styled";
 
 function AllItemsSection({
   items,
@@ -28,29 +38,19 @@ function AllItemsSection({
   ];
 
   return (
-    <section className="all-items-section">
-      <div className="all-items-header">
-        <div className="header-row1">
-          <h2>전체 상품</h2>
-          {windowWidth <= 767 && (
-            <Link to="/additem" className="button add-item-button">
-              상품 등록하기
-            </Link>
-          )}
-        </div>
-        <div className="header-row2">
+    <SectionContainer>
+      <AllItemsHeader>
+        <TitleRow>
+          <AllItemsTitle>전체 상품</AllItemsTitle>
+          <MobileAddButton to="/additem">상품 등록하기</MobileAddButton>
+        </TitleRow>
+        <HeaderControls>
           <SearchForm
             value={inputValue}
             onChange={handleSearchInputChange}
             onSubmit={handleSearchSubmit}
           />
-          {windowWidth > 767 && (
-            <Link to="/additem" className="button add-item-button">
-              상품 등록하기
-            </Link>
-          )}
-
-          {/* 드롭다운 메뉴 - 모든 화면 크기에서 커스텀 드롭다운 적용 */}
+          <DesktopAddButton to="/additem">상품 등록하기</DesktopAddButton>
           <Dropdown
             options={sortOptions}
             selectedValue={orderBy}
@@ -59,18 +59,18 @@ function AllItemsSection({
             isOpen={mobileSortOpen}
             setIsOpen={setMobileSortOpen}
           />
-        </div>
-      </div>
+        </HeaderControls>
+      </AllItemsHeader>
 
       {loading ? (
-        <p>상품 로딩 중...</p>
+        <MessageParagraph>상품 로딩 중...</MessageParagraph>
       ) : (
         <>
-          <div className="items-grid all-items-grid">
+          <AllItemsGrid>
             {items.map((item) => (
               <ItemCard key={item.id} item={item} />
             ))}
-          </div>
+          </AllItemsGrid>
 
           {/* 페이지네이션 */}
           <Pagination
@@ -80,7 +80,7 @@ function AllItemsSection({
           />
         </>
       )}
-    </section>
+    </SectionContainer>
   );
 }
 

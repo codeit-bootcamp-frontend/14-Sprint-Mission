@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import "./ItemsPage.css";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
+import { ErrorMessage, ItemsPageContainer } from "./ItemsPage.styled";
 
 const API_BASE_URL = "https://panda-market-api.vercel.app/"; // API base URL 업데이트
 
@@ -163,11 +163,11 @@ function ItemsPage() {
   const totalPages = Math.ceil(totalAllItemsCount / ITEMS_PER_API_PAGE);
 
   if (error) {
-    return <div className="error-message">오류: {error}</div>;
+    return <ErrorMessage>오류: {error}</ErrorMessage>;
   }
 
   return (
-    <div className="items-page-container">
+    <ItemsPageContainer>
       <BestItemsSection items={visibleBestItems} loading={loadingBest} />
 
       <AllItemsSection
@@ -185,7 +185,7 @@ function ItemsPage() {
         mobileSortOpen={mobileSortOpen}
         setMobileSortOpen={setMobileSortOpen}
       />
-    </div>
+    </ItemsPageContainer>
   );
 }
 

@@ -1,20 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import ItemImage from "./ItemImage";
 import ItemCardContent from "./ItemCardContent";
-
-const CardContainer = styled.div`
-  width: auto;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
+import { ItemCard as StyledItemCard } from "../pages/ItemsPage.styled";
 
 function ItemCard({ item, imageType = "all" }) {
   return (
-    <CardContainer className="item-card">
+    <StyledItemCard>
       <ItemImage
         src={item.images?.[0] || ""}
         alt={item.name}
@@ -25,7 +16,7 @@ function ItemCard({ item, imageType = "all" }) {
         price={item.price}
         favoriteCount={item.favoriteCount}
       />
-    </CardContainer>
+    </StyledItemCard>
   );
 }
 

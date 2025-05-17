@@ -1,20 +1,26 @@
 import React from "react";
 import ItemCard from "./ItemCard";
+import {
+  SectionContainer,
+  SectionTitle,
+  BestItemsGrid,
+  MessageParagraph,
+} from "../pages/ItemsPage.styled";
 
 function BestItemsSection({ items, loading }) {
   return (
-    <section className="best-items-section">
-      <h2>베스트 상품</h2>
+    <SectionContainer>
+      <SectionTitle>베스트 상품</SectionTitle>
       {loading ? (
-        <p>베스트 상품 로딩 중...</p>
+        <MessageParagraph>베스트 상품 로딩 중...</MessageParagraph>
       ) : (
-        <div className="items-grid best-items-grid">
+        <BestItemsGrid>
           {items.map((item) => (
             <ItemCard key={item.id} item={item} imageType="best" />
           ))}
-        </div>
+        </BestItemsGrid>
       )}
-    </section>
+    </SectionContainer>
   );
 }
 
