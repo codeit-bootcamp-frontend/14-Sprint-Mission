@@ -23,8 +23,8 @@ function AddItemPage() {
 
   // 이미지 업로드
   const handleImagesChange = (imgs) => {
-    if (imgs.length > 3) {
-      setError("이미지 등록은 최대 3개까지 가능합니다.");
+    if (imgs.length > 1) {
+      setError("이미지 등록은 최대 1개까지 가능합니다.");
       return;
     }
     setImages(imgs);
@@ -84,7 +84,7 @@ function AddItemPage() {
             <ImageUpload
               images={images}
               onImagesChange={handleImagesChange}
-              max={3}
+              max={1}
             />
           </FormGroup>
 

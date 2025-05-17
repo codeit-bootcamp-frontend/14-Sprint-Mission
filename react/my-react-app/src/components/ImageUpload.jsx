@@ -10,7 +10,7 @@ function ImageUpload({ images, onImagesChange, max = 1 }) {
     if (!file) return;
 
     if (images.length >= max) {
-      setError("*이미지 등록은 최대 1개까지 가능합니다.");
+      setError(`*이미지 등록은 최대 ${max}개까지 가능합니다.`);
       e.target.value = "";
       return;
     }
@@ -33,7 +33,7 @@ function ImageUpload({ images, onImagesChange, max = 1 }) {
 
   const handleRegisterClick = () => {
     if (images.length >= max) {
-      setError("*이미지 등록은 최대 1개까지 가능합니다.");
+      setError(`*이미지 등록은 최대 ${max}개까지 가능합니다.`);
       return;
     }
     setError("");
