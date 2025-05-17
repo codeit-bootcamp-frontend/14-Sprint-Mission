@@ -72,17 +72,21 @@
 }
 
 .add-item-button {
-  white-space: nowrap;
-  height: 32px;
+  width: 133px;
+  height: 42px !important;
   padding: 0 15px;
   font-size: 14px;
   border-radius: 8px;
-  background-color: var(--blue);
+  background-color: #3692ff;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .add-item-button:hover {
-  background-color: #1967d6; /* hover 시 색상 */
+  background-color: #2a7ad4; /* hover 시 색상 */
 }
 
 .sort-dropdown {

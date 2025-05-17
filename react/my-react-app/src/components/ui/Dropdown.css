@@ -84,11 +84,10 @@
 /* 커스텀 드롭다운 스타일 */
 .custom-dropdown-container {
   position: relative;
-  min-width: 120px;
 }
 
 .dropdown-button {
-  height: 40px;
+  height: 42px; /* 모든 화면에서 동일한 높이 */
   padding: 0 16px;
   border-radius: 8px;
   border: 1px solid #e5e8ec;
@@ -150,14 +149,14 @@
 
 /* 모바일 및 데스크톱 특화 스타일 */
 .custom-dropdown-container.mobile {
-  min-width: 40px;
-  width: 40px;
+  width: 42px;
+  height: 42px;
 }
 
 .mobile-button {
   padding: 0;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   justify-content: center;
   border: none;
   background-color: transparent;
@@ -174,5 +173,6 @@
 }
 
 .custom-dropdown-container.desktop {
-  min-width: 120px;
+  width: 130px;
+  height: 42px;
 }
