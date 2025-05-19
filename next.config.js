@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true, // ✅ App Router 활성화 (Next 13 이상)
-  },
+  experimental: {},
   images: {
     remotePatterns: [
       {
