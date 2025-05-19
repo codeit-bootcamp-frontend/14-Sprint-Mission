@@ -1,0 +1,253 @@
+body {
+  background-color: #fcfcfc;
+  width: 100vw;
+}
+/* 로그인 CSS */
+.signin-container {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+}
+.signup-container {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+}
+.login-logo {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.login-logo img #logo-img {
+  height: 132px;
+  width: 396px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.login_input {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 18px;
+  gap: 8px;
+}
+
+input {
+  padding: 16px 24px;
+  background-color: var(--gray-100);
+  border: none;
+  border-radius: 12px;
+  font-size: var(--text-lg);
+  width: 100%;
+}
+
+.login_input img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-10%);
+  cursor: pointer;
+  width: 24px;
+}
+
+.password-toggle-button {
+  color: white;
+  position: absolute;
+  right: 24px;
+}
+input::placeholder {
+  color: var(--gray-400);
+  font-size: var(--text-lg);
+}
+
+input:focus {
+  outline-color: var(--Primary-100);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hide-password {
+  position: absolute;
+  right: 24px;
+  cursor: pointer;
+}
+.submit-button {
+  color: var(--gray-100);
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+  line-height: 32px;
+  display: block;
+  border-radius: 999px;
+  padding: 12px 0;
+  text-align: center;
+  margin: 20px 0;
+  background-color: var(--gray-400);
+}
+.social-login {
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 23px;
+  margin: 24px 0;
+}
+.social-login h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.social-login-button {
+  display: flex;
+  gap: 16px;
+}
+
+.login-change {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.login-change a {
+  color: var(--Primary-100);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+/* 회원가입 CSS */
+
+.login-logo img#logo-img {
+  height: 132px;
+  width: 396px;
+}
+.signup_input img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-10%);
+  cursor: pointer;
+  width: 24px;
+}
+.signup-button {
+  font-size: 20px;
+  font-weight: 700;
+  width: 100%;
+  color: white;
+  border-radius: 999px;
+  padding: 16px 126px;
+  background-color: var(--gray-400);
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid var(--Primary-100);
+}
+.input.error {
+  border: 1px solid var(--error-red);
+}
+.error-message {
+  color: var(--error-red);
+  font-size: var(--test-sm);
+  line-height: var(--line-height-xs);
+}
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.toggle-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* 데스크탑 */
+@media (max-width: 1200px) {
+  .signin-container {
+    max-width: 640px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .login-logo {
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+  .login-logo img #logo-img {
+    height: 132px;
+    width: 396px;
+  }
+  .login_input {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  input {
+    padding: 16px 24px;
+    background-color: var(--gray-100);
+
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+  }
+}
+/* 모바일 반응형 */
+@media (min-width: 375px) and (max-width: 767px) {
+  .signin-container {
+    margin-top: 80px;
+    max-width: 400px;
+    width: 100%;
+    padding: 0 16px;
+  }
+  .signin-container .login-logo {
+    margin-bottom: 24px;
+  }
+  .login-logo img#logo-img {
+    margin: 60px 0 0;
+    width: 198px;
+    height: 66px;
+  }
+  .login-form .login_input {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

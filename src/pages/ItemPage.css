@@ -1,0 +1,129 @@
+.all-product-header {
+  max-width: 1206px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0px 6px;
+}
+
+.create-button {
+  background-color: #3692ff;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  padding: 0 1.2rem;
+  height: 42px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 드롭다운 */
+.dropdown-select {
+  width: 130px;
+  height: 42px;
+  font-size: 18px;
+  padding: 0 16px;
+  padding-right: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  background-image: url("/src/assets/images/common/ic_arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  appearance: none;
+  color: #222;
+  font-weight: 500;
+}
+.pagination-wrapper {
+  margin-top: -40px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .all-product-header {
+    width: 710px;
+  }
+}
+@media (max-width: 767px) {
+  .all-product-header {
+    width: 378px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 8px;
+    column-gap: 12px;
+  }
+
+  .product-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .create-button {
+    position: relative;
+    top: -74px;
+    right: 8px;
+    order: 3; /* 가장 위에 표시 */
+    align-self: flex-end; /* 오른쪽 정렬 */
+    width: 130px;
+    height: 42px;
+    background-color: #3692ff;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .search-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dropdown-select {
+    position: relative;
+    padding: 0;
+    left: 8rem;
+    width: 42px;
+    height: 42px;
+    background: white url("/src/assets/images/common/btn_sort.svg") no-repeat
+      center;
+    background-size: 42px 42px;
+    border-radius: 8px;
+    text-indent: -9999px;
+    flex-shrink: 0;
+  }
+}

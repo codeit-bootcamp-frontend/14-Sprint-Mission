@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>판다마켓 - 회원가입</title>
+    <link rel="icon" href="images/logo/favicon.ico" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/login.css" />
+  </head>
+
+  <body>
+    <main class="signup-container">
+      <div class="login-logo">
+        <a href="index.html">
+          <img
+            src="/images/logo/panda-market-logo.png"
+            alt="판다마켓 로고"
+            id="logo-img"
+          />
+        </a>
+      </div>
+
+      <form class="login-form" action="#" method="post">
+        <label class="login_input" for="email">
+          <span>이메일</span>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="이메일을 입력해 주세요"
+            required
+          />
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="nickname">
+          <span>닉네임</span>
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            placeholder="닉네임을 입력해 주세요"
+            required
+          />
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="password">
+          <span>비밀번호</span>
+          <div class="input-box">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="비밀번호를 입력해 주세요"
+              required
+            />
+            <img
+              src="./images/icons/eye-invisible.svg"
+              alt="eyes"
+              class="password-toggle"
+            />
+          </div>
+          <span class="error-message"></span>
+        </label>
+
+        <label class="login_input" for="passwordCheck">
+          <span>비밀번호 확인</span>
+          <div class="input-box">
+            <input
+              id="passwordCheck"
+              name="passwordCheck"
+              type="password"
+              placeholder="비밀번호를 다시 한 번 입력해 주세요"
+              required
+            />
+            <img
+              src="./images/icons/eye-invisible.svg"
+              alt="eyes"
+              class="password-toggle"
+            />
+          </div>
+          <span class="error-message"></span>
+        </label>
+
+        <button type="submit" class="submit-button button login-button">
+          회원가입
+        </button>
+      </form>
+
+      <div class="social-login">
+        <h3>간편 로그인하기</h3>
+        <div class="social-login-button">
+          <a href="https://www.google.com/" target="_blank">
+            <img
+              src="images/social/google-logo.png"
+              alt="구글 로그인"
+              width="42"
+            />
+          </a>
+          <a href="https://www.kakaocorp.com/page/" target="_blank">
+            <img
+              src="images/social/kakao-logo.png"
+              alt="카카오 로그인"
+              width="42"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="login-change">
+        이미 회원이신가요? <a href="login.html">로그인</a>
+      </div>
+    </main>
+    <script src="script/signup.js"></script>
+  </body>
+</html>
