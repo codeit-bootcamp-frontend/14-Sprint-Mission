@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 const TagInputContainer = styled.div`
@@ -45,53 +45,45 @@ const RemoveButton = styled.button`
 
 function TagInput({ tags, onAddTag, onRemoveTag }) {
   const [input, setInput] = useState("");
+  const isComposing = useRef(false); // 입력기 조합 중인지 추적
 
-  // 태그 추가 함수
-  const addTag = () => {
-    const tagValue = input.trim();
-
-    // 빈 문자열이 아니고, 이미 없는 태그만 추가
-    if (tagValue && !tags.includes(tagValue)) {
-      onAddTag(tagValue);
+  const addTag = (tagValue) => {
+    const trimmedTag = tagValue.trim();
+    if (trimmedTag && !tags.includes(trimmedTag)) {
+      onAddTag(trimmedTag);
     }
-
-    // 입력창 비우기
-    setInput("");
+    setInput(""); // 입력창 비우기
   };
 
   const handleInputChange = (e) => {
-    // 현재 입력 값에 쉼표가 없으면 그대로 업데이트
-    if (!e.target.value.includes(",")) {
-      setInput(e.target.value);
-      return;
-    }
-
-    // 쉼표가 있는 경우, 쉼표 이전 값을 태그로 추가
-    const beforeComma = e.target.value.split(",")[0].trim();
-    if (beforeComma && !tags.includes(beforeComma)) {
-      onAddTag(beforeComma);
-    }
-
-    // 쉼표 이후 값을 입력창에 남겨둠
-    const afterComma = e.target.value.split(",").slice(1).join(",");
-    setInput(afterComma);
+    const value = e.target.value.replace(/[,]/g, "").trim();
+    setInput(value); // 조합 중이든 아니든 입력값 반영
   };
 
   const handleKeyDown = (e) => {
-    // Enter 키 또는 쉼표 키 처리
+    if (isComposing.current) return; // 조합 중에는 키 이벤트 무시
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
-
       if (input.trim()) {
-        addTag();
+        addTag(input);
       }
     }
   };
 
   const handleBlur = () => {
+    if (isComposing.current) return; // 조합 중에는 블러 이벤트 무시
     if (input.trim()) {
-      addTag();
+      addTag(input);
     }
+  };
+
+  const handleCompositionStart = () => {
+    isComposing.current = true;
+  };
+
+  const handleCompositionEnd = () => {
+    isComposing.current = false;
+    // 입력값은 handleInputChange에서 이미 처리됨
   };
 
   return (
@@ -103,6 +95,8 @@ function TagInput({ tags, onAddTag, onRemoveTag }) {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
+        onCompositionStart={handleCompositionStart}
+        onCompositionEnd={handleCompositionEnd}
       />
       <TagsContainer>
         {tags.map((tag) => (

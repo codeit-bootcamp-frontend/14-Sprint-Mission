@@ -1,32 +1,69 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
 import { ErrorMessage, ItemsPageContainer } from "./ItemsPage.styled";
 
-const API_BASE_URL = "https://panda-market-api.vercel.app/"; // API base URL 업데이트
+const API_BASE_URL = "https://panda-market-api.vercel.app/";
 
 function ItemsPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  // URL에서 쿼리 파라미터 읽기
+  const page = parseInt(queryParams.get("page") || "1", 10);
+  const sort = queryParams.get("sort") || "recent";
+  const search = queryParams.get("search") || "";
+
   const [bestItems, setBestItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [totalAllItemsCount, setTotalAllItemsCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [orderBy, setOrderBy] = useState("recent"); // 'recent' or 'favorite'
-  const [searchTerm, setSearchTerm] = useState(""); // 최종 검색어 (API 호출용)
-  const [inputValue, setInputValue] = useState(""); // 입력창의 현재 값 (디바운싱용)
+  const [inputValue, setInputValue] = useState(search); // 입력창의 현재 값
 
   const [loadingBest, setLoadingBest] = useState(false);
   const [loadingAll, setLoadingAll] = useState(false);
   const [error, setError] = useState(null);
-
-  const { width: windowWidth } = useWindowSize();
-  const ITEMS_PER_API_PAGE = 10; // API 요청 시 사용하는 pageSize
-
   const [mobileSortOpen, setMobileSortOpen] = useState(false);
 
+  const { width: windowWidth } = useWindowSize();
+  const ITEMS_PER_API_PAGE = 10;
+
+  // URL 업데이트 함수
+  const updateQueryParams = useCallback(
+    (updates) => {
+      const newParams = new URLSearchParams(location.search);
+
+      // 업데이트할 파라미터 설정
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value) {
+          newParams.set(key, value);
+        } else {
+          newParams.delete(key);
+        }
+      });
+
+      // 1페이지와 기본 정렬일 경우 쿼리 파라미터에서 제거
+      if (newParams.get("page") === "1") newParams.delete("page");
+      if (newParams.get("sort") === "recent") newParams.delete("sort");
+
+      // 빈 검색어는 제거
+      if (!newParams.get("search")) newParams.delete("search");
+
+      // URL 업데이트
+      navigate(
+        {
+          pathname: location.pathname,
+          search: newParams.toString() ? `?${newParams.toString()}` : "",
+        },
+        { replace: true }
+      );
+    },
+    [location.pathname, location.search, navigate]
+  );
+
   const fetchProducts = useCallback(async (params) => {
-    // params: { page, pageSize, orderBy, keyword }
-    // setLoading 상태는 각 useEffect에서 호출 전에 직접 관리
     setError(null);
     let queryParams = `?orderBy=${params.orderBy || "recent"}`;
     if (params.page) queryParams += `&page=${params.page}`;
@@ -37,7 +74,6 @@ function ItemsPage() {
     try {
       const response = await fetch(`${API_BASE_URL}products${queryParams}`);
       if (!response.ok) {
-        // 서버에서 에러 응답 (4xx, 5xx)을 보낸 경우
         const errorData = await response
           .json()
           .catch(() => ({ message: `HTTP error! status: ${response.status}` }));
@@ -57,33 +93,32 @@ function ItemsPage() {
   // 디바운싱을 위한 useEffect
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setSearchTerm(inputValue); // 일정 시간 후 inputValue를 searchTerm으로 반영
-      setCurrentPage(1); // 검색 시 1페이지로
+      if (inputValue !== search) {
+        updateQueryParams({
+          search: inputValue,
+          page: inputValue !== search ? "1" : page.toString(),
+        });
+      }
     }, 500); // 500ms 디바운스 시간
 
     return () => {
-      clearTimeout(timerId); // 컴포넌트 언마운트 또는 inputValue 변경 시 타이머 클리어
+      clearTimeout(timerId);
     };
-  }, [inputValue]); // inputValue가 변경될 때마다 이 effect 실행
+  }, [inputValue, search, page, updateQueryParams]);
 
   // 베스트 상품 로드
   useEffect(() => {
     const loadBestItems = async () => {
       setLoadingBest(true);
-      setError(null); // API 호출 전 에러 초기화
+      setError(null);
       try {
         const response = await fetchProducts({
           orderBy: "favorite",
           pageSize: 4,
         });
-        console.log(
-          "API 응답 - 베스트 상품 개수:",
-          response.list.length,
-          response.list
-        );
         setBestItems(response.list);
       } catch (err) {
-        // setError는 fetchProducts 내부에서 이미 호출됨
+        // 에러 처리는 fetchProducts에서 함
       } finally {
         setLoadingBest(false);
       }
@@ -95,55 +130,45 @@ function ItemsPage() {
   useEffect(() => {
     const loadAllItems = async () => {
       setLoadingAll(true);
-      setError(null); // API 호출 전 에러 초기화
+      setError(null);
       try {
         const response = await fetchProducts({
-          page: currentPage,
+          page: page,
           pageSize: ITEMS_PER_API_PAGE,
-          orderBy: orderBy,
-          keyword: searchTerm,
+          orderBy: sort,
+          keyword: search,
         });
         setAllItems(response.list);
         setTotalAllItemsCount(response.totalCount);
       } catch (err) {
-        // setError는 fetchProducts 내부에서 이미 호출됨
+        // 에러 처리는 fetchProducts에서 함
       } finally {
         setLoadingAll(false);
       }
     };
     loadAllItems();
-  }, [currentPage, orderBy, searchTerm, fetchProducts]);
+  }, [page, sort, search, fetchProducts]);
 
   // 반응형 상품 개수 결정 로직
   const getVisibleItemsCount = (itemType) => {
-    console.log("화면 너비:", windowWidth, "px");
     if (itemType === "best") {
-      if (windowWidth >= 1280) {
-        console.log("데스크톱 뷰 - 베스트 상품 4개 표시");
-        return 4; // Desktop
-      }
-      if (windowWidth >= 768) {
-        console.log("태블릿 뷰 - 베스트 상품 2개 표시");
-        return 2; // Tablet
-      }
-      console.log("모바일 뷰 - 베스트 상품 1개 표시");
-      return 1; // Mobile
+      if (windowWidth >= 1280) return 4;
+      if (windowWidth >= 768) return 2;
+      return 1;
     } else {
       // 'all'
-      if (windowWidth >= 1280) return 10; // Desktop
-      if (windowWidth >= 768) return 6; // Tablet
-      return 4; // Mobile
+      if (windowWidth >= 1280) return 10;
+      if (windowWidth >= 768) return 6;
+      return 4;
     }
   };
 
   const visibleBestItems = bestItems.slice(0, getVisibleItemsCount("best"));
-  console.log("표시될 베스트 상품 개수:", visibleBestItems.length);
   const visibleAllItems = allItems.slice(0, getVisibleItemsCount("all"));
 
   // 이벤트 핸들러
   const handleSortChange = (e) => {
-    setOrderBy(e.target.value);
-    setCurrentPage(1);
+    updateQueryParams({ sort: e.target.value, page: "1" });
   };
 
   const handleSearchInputChange = (e) => {
@@ -152,12 +177,11 @@ function ItemsPage() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchTerm(inputValue); // 현재 입력된 값으로 즉시 검색
-    setCurrentPage(1);
+    updateQueryParams({ search: inputValue, page: "1" });
   };
 
   const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+    updateQueryParams({ page: newPage.toString() });
   };
 
   const totalPages = Math.ceil(totalAllItemsCount / ITEMS_PER_API_PAGE);
@@ -176,10 +200,10 @@ function ItemsPage() {
         inputValue={inputValue}
         handleSearchInputChange={handleSearchInputChange}
         handleSearchSubmit={handleSearchSubmit}
-        orderBy={orderBy}
+        orderBy={sort}
         handleSortChange={handleSortChange}
         windowWidth={windowWidth}
-        currentPage={currentPage}
+        currentPage={page}
         totalPages={totalPages}
         handlePageChange={handlePageChange}
         mobileSortOpen={mobileSortOpen}

@@ -92,7 +92,6 @@ function AddItemPage() {
 
   // 태그 추가/삭제
   const handleAddTag = (tag) => {
-    if (tags.length >= 5) return; // 태그 최대 5개 제한(옵션)
     setTags([...tags, tag]);
   };
   const handleRemoveTag = (tag) => {
