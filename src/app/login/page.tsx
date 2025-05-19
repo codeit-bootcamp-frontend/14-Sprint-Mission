@@ -175,12 +175,12 @@ const Login = () => {
     <Bone>
       <LogoContainer>
         <LogoPanda>
-          <Link href="/">
+          <Link href="/" prefetch={true}>
             <Image src={LogoFace} alt="판다마켓 로고 사진" />
           </Link>
         </LogoPanda>
         <LogoPandaText>
-          <Link href="/">
+          <Link href="/" prefetch={true}>
             <Image src={Logo} alt="판다마켓 로고 사진" />
           </Link>
         </LogoPandaText>
@@ -230,7 +230,9 @@ const Login = () => {
       <FooterContainer>
         <First>판다마켓이 처음이신가요? &nbsp;</First>
         <Register>
-          <Link href="/signup">회원가입</Link>
+          <Link href="/signup" prefetch={true}>
+            회원가입
+          </Link>
         </Register>
       </FooterContainer>
     </Bone>

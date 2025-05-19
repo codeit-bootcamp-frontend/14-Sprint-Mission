@@ -144,6 +144,8 @@ const Items = () => {
               </RegisterButton>
             </ButtonWrapper>
             <DropDown
+              left="152px"
+              top="-24px"
               selectList={selectList}
               selected={selectedOption}
               onChange={(value) => {

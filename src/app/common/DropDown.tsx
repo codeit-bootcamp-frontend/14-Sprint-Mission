@@ -18,9 +18,17 @@ type DropDownProps = {
   selectList: OptionType[]
   selected: string
   onChange: (value: string) => void
+  left?: string
+  top?: string
 }
 
-const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
+const DropDown = ({
+  selectList,
+  selected,
+  onChange,
+  left = '0',
+  top = '0',
+}: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef(null)
 
@@ -42,7 +50,12 @@ const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <SelectBox ref={selectRef} onClick={toggleDropdown}>
+      <SelectBox
+        ref={selectRef}
+        onClick={toggleDropdown}
+        $left={left}
+        $top={top}
+      >
         {window.innerWidth <= 743 ? (
           <Image src={Sort} alt="Sort" />
         ) : (
@@ -65,7 +78,7 @@ const DropDown = ({ selectList, selected, onChange }: DropDownProps) => {
 
 export default DropDown
 
-const SelectBox = styled.div`
+const SelectBox = styled.div<{ $left?: string; $top?: string }>`
   width: 13rem;
   height: 100%;
   cursor: pointer;
@@ -81,9 +94,9 @@ const SelectBox = styled.div`
     width: max-content;
     height: max-content;
     justify-content: center;
-    position: relative;
-    left: 150px;
-    top: -24px;
+
+    left: ${({ $left }) => $left || '0'};
+    top: ${({ $top }) => $top || '0'};
     padding: 0.9rem;
   }
 `

@@ -41,7 +41,7 @@ const BestItems = ({ products }: BestItemsProps) => {
 
       <BestItemsDisplay>
         {list.slice(0, itemsDisplay).map((product) => (
-          <Link key={product.id} href={`/items/${product.id}`}>
+          <Link key={product.id} href={`/items/${product.id}`} prefetch={true}>
             <BestItem>
               <BestItemImage
                 src={

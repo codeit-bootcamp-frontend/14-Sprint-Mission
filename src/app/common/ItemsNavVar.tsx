@@ -21,22 +21,22 @@ const ItemsNavVar = ({ isItemsPage, isBoardsPage }: ItemsNavVarProps) => {
       <Bone>
         <LeftWrapper>
           <HeaderLogo>
-            <Link href="/">
+            <Link href="/" prefetch={true}>
               <PandaLogoWrapper>
                 <Image src={LogoFace} alt="판다마켓 로고 사진" />
               </PandaLogoWrapper>
             </Link>
-            <Link href="/">
+            <Link href="/" prefetch={true}>
               <PandaTextWrapper>
                 <Image src={Logo} alt="판다마켓 로고 사진" />
               </PandaTextWrapper>
             </Link>
           </HeaderLogo>
           <NavContent>
-            <Link href="/boards">
+            <Link href="/boards" prefetch={true}>
               <FreeBordLink $isActive={isBoardsPage}>자유게시판</FreeBordLink>
             </Link>
-            <Link href="/items">
+            <Link href="/items" prefetch={true}>
               <MarketLink $isActive={isItemsPage}>중고마켓</MarketLink>
             </Link>
           </NavContent>

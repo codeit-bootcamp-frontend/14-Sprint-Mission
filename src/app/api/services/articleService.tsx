@@ -17,10 +17,18 @@ class ArticleService {
     orderBy: string,
     keyword?: string
   ): Promise<AxiosResponse<GetArticleType>> {
-    let url = `/api/proxy/articles?page=${page}&pageSize=${pageSize}&orderBy=${orderBy}&keyword=${keyword}`
+    const params = new URLSearchParams({
+      page: page.toString(),
+      pageSize: pageSize.toString(),
+      orderBy,
+    })
+
     if (keyword) {
-      url += `&keyword=${encodeURIComponent(keyword)}`
+      params.append('keyword', keyword)
     }
+
+    const url = `/api/proxy/articles?${params.toString()}`
+
     return requestor.get(url)
   }
 

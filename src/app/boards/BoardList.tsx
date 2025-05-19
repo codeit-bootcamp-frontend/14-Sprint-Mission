@@ -122,6 +122,12 @@ const BoardHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2.4rem;
+  @media (max-width: 1023px) {
+    margin-bottom: 4.8rem;
+  }
+  @media (max-width: 743px) {
+    margin-bottom: 1.6rem;
+  }
 `
 const BestBoardsTitle = styled.div`
   ${(props) => textStyle(20, 800)(props)}
@@ -135,6 +141,12 @@ const SearchList = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 1023px) {
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 743px) {
+    margin-bottom: 1.6rem;
+  }
 `
 const TextInputIcon = styled.div`
   position: relative;
@@ -150,12 +162,12 @@ const NavSearch = styled.input`
   border: none;
   margin-right: 1.2rem;
   @media (max-width: 1023px) {
-    width: 15.125rem;
+    width: 55rem;
     padding: 9px 24px 9px 44px;
   }
   @media (max-width: 743px) {
     position: relative;
-    top: 19px;
+
     padding: 9px 40px 9px 44px;
     width: max-content;
     margin: 0;

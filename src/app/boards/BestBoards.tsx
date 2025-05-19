@@ -1,14 +1,13 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 
-import { GetArticleType, GetArticleIdType } from '../types/article'
+import { GetArticleType } from '../types/article'
 
 import HeartInactive from '../../../public/assets/image/HeartInactive.png'
 import BestBadge from '../../../public/assets/image/BestBadge.png'
 import { formatDate } from '../utils/datetime'
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { theme } from '../styles/theme'
 import { textStyle } from '../styles/textStyle'
 
@@ -17,29 +16,12 @@ type BestBoardsProps = {
 }
 
 const BestBoards = ({ articleList }: BestBoardsProps) => {
-  const [itemsDisplay, setItemsDisplay] = useState(1)
-
-  useEffect(() => {
-    const handleReasize = () => {
-      if (window.innerWidth <= 743) {
-        setItemsDisplay(1)
-      } else if (window.innerWidth >= 744 && window.innerWidth <= 1023) {
-        setItemsDisplay(2)
-      } else {
-        setItemsDisplay(3)
-      }
-    }
-    handleReasize()
-    window.addEventListener('resize', handleReasize)
-
-    return () => window.removeEventListener('resize', handleReasize)
-  }, [])
   if (!articleList) return null
   return (
     <>
       <BestBoardsTitle>베스트 게시글</BestBoardsTitle>
       <BoneWrapper>
-        {articleList.list.slice(0, itemsDisplay).map((article) => (
+        {articleList.list.map((article) => (
           <MainWrapper key={article.id}>
             <BestIcon>
               <Image src={BestBadge} alt="베스트 게시글 오피셜 아이콘" />
@@ -74,6 +56,9 @@ const BoneWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4rem;
+  @media (max-width: 1023px) {
+    margin-bottom: 2.4rem;
+  }
 `
 const BestBoardsTitle = styled.div`
   ${(props) => textStyle(20, 800)(props)}
@@ -86,9 +71,12 @@ const MainWrapper = styled.div`
   border-radius: 8px;
   background-color: ${theme.colors.SecondaryGray[50]};
   display: flex;
-
   justify-content: space-between;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    width: 34rem;
+    height: 19.8rem;
+  }
 `
 const BestIcon = styled.div``
 const Description = styled.div`
@@ -102,6 +90,9 @@ const MainFooter = styled.div`
 `
 const TextDescription = styled.div`
   ${(props) => textStyle(20, 600)(props)}
+  @media (max-width: 1023px) {
+    ${(props) => textStyle(18, 600)(props)}
+  }
 `
 const DescriptionImage = styled.div`
   img {

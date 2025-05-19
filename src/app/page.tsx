@@ -24,7 +24,7 @@ function Home() {
       <S.HeaderTop>
         <S.HeaderNav>
           <S.HeaderLogo>
-            <Link href="/">
+            <Link href="/" prefetch={true}>
               <S.PandaLogo>
                 <Image
                   src={LogoFace}
@@ -34,7 +34,7 @@ function Home() {
                 />
               </S.PandaLogo>
             </Link>
-            <Link href="/">
+            <Link href="/" prefetch={true}>
               <S.PandaLogoName>
                 <Image
                   src={Logo}
@@ -148,10 +148,10 @@ function Home() {
           <S.FooterNavMain>
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
-              <Link href="/privacy">
+              <Link href="/privacy" prefetch={true}>
                 <S.Privacy>Privacy Policy</S.Privacy>
               </Link>
-              <Link href="/faq">
+              <Link href="/faq" prefetch={true}>
                 <S.Faq>FAQ</S.Faq>
               </Link>
             </S.PrivacyFaq>

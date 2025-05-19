@@ -34,7 +34,7 @@ const Button = ({
   }
   if (isLink) {
     return (
-      <Link href={to!} style={{ textDecoration: 'none' }}>
+      <Link href={to!} style={{ textDecoration: 'none' }} prefetch={true}>
         <ButtonWrapper as="div" size={size} className={className} style={style}>
           <ButtonInner>
             {prefix && <ButtonInnerText>{prefix}</ButtonInnerText>}
