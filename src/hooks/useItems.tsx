@@ -92,9 +92,11 @@ export function usePostProduct(openModal: (msg: string) => void, router: AppRout
       const res = await requestor.post<CreateProductResponse>('/products', productData);
       return res.data;
     },
-    onSuccess: (product) => {
+    onSuccess: (data) => {
       openModal('상품 등록이 완료되었습니다!');
-      router.push('/items');
+       setTimeout(() => {
+         router.push(`/items${data.id}`);
+        }, 1300);
     },
     onError: (error: any) => {
       openModal(error?.response?.data?.message || '상품 등록 실패');

@@ -45,6 +45,7 @@ export const FallbackImage = ({
         alt={alt}
         fill
         priority
+        unoptimized
         sizes="sm:100vw, 33vw"
         className={`absolute inset-0 object-cover scale-105 transition-opacity duration-300 ${
           isLoaded ? "opacity-0" : "opacity-100"

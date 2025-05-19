@@ -20,7 +20,7 @@ function UserInfo({userImg = '', ownerNickname, createdAtString, width=40, noIma
   return (
     <div className={clsx("flex items-center gap-4", className)}>
       {noImage === true ? null :
-       <span><Image src={userImageSrc} width={width} height={width} alt="작성자이미지"/></span>
+       <span><Image src={userImageSrc} width={width} height={width} unoptimized alt="작성자이미지"/></span>
        }
       <div className={clsx('flex flex-col gap-1',childrenClassName)}>
         <span className="text-secondary-600">{ownerNickname}</span>

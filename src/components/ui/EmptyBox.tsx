@@ -16,7 +16,7 @@ function EmptyBox({context, subText, className , imageName = emptyImg }: EmptyBo
   return (
     <Container className={clsx('mt-12 mb-20 text-center',className)}>
       <div className='flex flex-col justify-center items-center h-full  rounded-[8px]'> 
-        <Image src={imageName} width={176} height={176} className='mx-auto' alt='빈페이지' />
+        <Image src={imageName} width={176} unoptimized height={176} className='mx-auto' alt='빈페이지' />
         <span className='text-center mx-auto text-secondary-400'>{context}<br/>{subText}</span>
       </div>
     </Container> 

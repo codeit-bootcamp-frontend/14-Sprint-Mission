@@ -15,7 +15,7 @@ function HomePage() {
           absolute bottom-0 right-0  w-[745px]
           tablet:right-[50%] tablet:translate-x-[50%] tablet:w-[100%]
           mobile:w-[110%] ">
-          <Image src={imgHome_top} width={745} height={345} className="w-full h-auto" alt="인트로 이미지" />
+          <Image src={imgHome_top} width={745} height={345} unoptimized className="w-full h-auto" alt="인트로 이미지" />
         </div>
         <div  className="absolute left-0 top-[240px] tablet:left-[50%] tablet:top-[84px] tablet:-translate-x-[50%] tablet:text-center  mobile:top-[68px]">
           <h1 className="font-bold text-4xl mobile:text-3xl">
@@ -26,7 +26,7 @@ function HomePage() {
       </VisualSelection>
       <MotionSelection>
         <div className="relative w-[579px] tablet:w-[100%] ">
-          <Image src={imgHome1} width={579} height={444} className="w-full h-auto" alt='인기상품' />
+          <Image src={imgHome1} width={579} height={444} unoptimized className="w-full h-auto" alt='인기상품' />
         </div>
         <div className="tablet:w-[100%]">
           <span className='font-bold text-primary-100 mb-3 text-lg mobile:text-base'>Hot item</span>
@@ -36,7 +36,7 @@ function HomePage() {
       </MotionSelection>
       <MotionSelection className="flex-row-reverse">
         <div className="relative w-[579px] tablet:w-[100%] ">
-          <Image src={imgHome2} width={579} height={444} className="w-full h-auto" alt='상품검색' />
+          <Image src={imgHome2} width={579} height={444} unoptimized className="w-full h-auto" alt='상품검색' />
         </div>
         <div className="tablet:w-[100%] text-end">
           <span className='font-bold text-primary-100 mb-3 text-lg mobile:text-base'>Search</span>
@@ -46,7 +46,7 @@ function HomePage() {
       </MotionSelection>
       <MotionSelection>
         <div className="relative w-[579px] tablet:w-[100%] ">
-          <Image src={imgHome3} width={579} height={444} className="w-full h-auto" alt='상품등록' />
+          <Image src={imgHome3} width={579} height={444} unoptimized className="w-full h-auto" alt='상품등록' />
         </div>
         <div className="tablet:w-[100%]">
           <span className='font-bold text-primary-100 mb-3 text-lg mobile:text-base'>Register</span>
@@ -58,7 +58,7 @@ function HomePage() {
         <div className="
           absolute bottom-0 right-0 w-[745px]
           tablet:right-[50%] tablet:translate-x-[50%] tablet:w-[100%] ">
-          <Image src={imgHome_bottom}  width={746} height={397} className="w-full h-auto" alt="아웃트로 이미지" />
+          <Image src={imgHome_bottom}  width={746} height={397} unoptimized className="w-full h-auto" alt="아웃트로 이미지" />
         </div>
         <div className="
           absolute left-0 top-[240px] 

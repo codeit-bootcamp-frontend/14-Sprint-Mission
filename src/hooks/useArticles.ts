@@ -175,9 +175,11 @@ export function usePostArticles(openModal: (msg: string) => void, router: { push
       const res = await requestor.post<PostDetail>('/articles', articlesData);
       return res.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       openModal('게시물 등록이 완료되었습니다!');
-      router.push('/boards');
+      setTimeout(() => {
+        router.push(`/boards/${data.id}`);
+      }, 1300);
     },
     onError: (error: any) => {
       openModal(error?.response?.data?.message || '게시물 등록 실패');

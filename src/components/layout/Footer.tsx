@@ -23,16 +23,16 @@ function Footer() {
         <div className='flex gap-3'>
           {/* 외부링크는 a로? */}
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-            <span><Image src={facebookIcon} width={20} height={20} alt="페이스북 바로가기" /></span>
+            <span><Image src={facebookIcon} unoptimized width={20} height={20} alt="페이스북 바로가기" /></span>
           </a>
           <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
-            <span><Image src={twitterIcon} width={20} height={20} alt="트위터 바로가기" /></span>
+            <span><Image src={twitterIcon} unoptimized width={20} height={20} alt="트위터 바로가기" /></span>
           </a>
           <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-            <span><Image src={youtubeIcon} width={20} height={20} alt="유튜브 바로가기" /></span>
+            <span><Image src={youtubeIcon} unoptimized width={20} height={20} alt="유튜브 바로가기" /></span>
           </a>
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-            <span><Image src={instagramIcon} width={20} height={20} alt="인스타그램 바로가기" /></span>
+            <span><Image src={instagramIcon} unoptimized width={20} height={20} alt="인스타그램 바로가기" /></span>
           </a>
         </div>
       </Container>

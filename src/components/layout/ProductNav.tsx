@@ -30,10 +30,10 @@ function ProductNav() {
         <div className='relative flex items-center'>
           <Link href="/" className='gap-2 flex items-center'>
             <span className='relative inline-flex h-[40px] mobile:hidden'>
-              <Image src={logoImg1} width={110} height={110} className="w-full h-auto" priority alt="로고이미지" />
+              <Image src={logoImg1} width={110} height={110} unoptimized className="w-full h-auto" priority alt="로고이미지" />
             </span>
             <span className='relative inline-flex h-[35px]'>
-              <Image src={logoImg2} width={266} height={90}  className="w-full h-auto" priority alt="판다마켓" />
+              <Image src={logoImg2} width={266} height={90} unoptimized className="w-full h-auto" priority alt="판다마켓" />
             </span>
           </Link>
           <div className='ml-12 flex gap-7 text-lg tablet:ml-8 mobile:ml-4 mobile:gap-2 mobile:text-base'>
