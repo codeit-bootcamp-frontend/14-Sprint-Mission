@@ -142,7 +142,7 @@ export const usePatchProductComment = (productId: number, openModal: (msg: strin
     },
   });
 };
-export const useDeleteCommentMutation = (productId: number, openModal: (msg: string) => void) => {
+export const useDeleteProductComment = (productId: number, openModal: (msg: string) => void) => {
   const queryClient = useQueryClient();
 
   return useMutation({

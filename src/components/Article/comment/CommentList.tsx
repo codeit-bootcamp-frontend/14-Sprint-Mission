@@ -2,32 +2,33 @@ import React from 'react';
 import CommentItem from './CommentItem';
 import LoadingBox from '@/components/ui/LoadingBox';
 import EmptyBox from '@/components/ui/EmptyBox';
-import { useInfiniteProductsCommentsWithObserver } from '@/hooks/useItems';
+import { useInfiniteArticleCommentsWithObserver } from '@/hooks/useArticles';
+import { replyEmptyImg } from '@/lib/imageAssets';
 
 
 interface CommentListProps {
-  productId: number;
+  articleId: number;
   className?: string;
 }
 
-function CommentList({ productId,className, ...rest }: CommentListProps) {
+function CommentList({ articleId,className, ...rest }: CommentListProps) {
 
   const { 
     data, 
     isLoading, 
     isFetchingNextPage, 
     loadMoreRef } 
-  = useInfiniteProductsCommentsWithObserver(productId);
+  = useInfiniteArticleCommentsWithObserver(articleId);
 
   return (
     <>
-      {isLoading ? <LoadingBox className="h-[372px]"/> :  data?.pages?.[0].list.length ? (
+      {isLoading ? <LoadingBox className="h-[202px] mt-12 mb-20"/> :  data?.pages?.[0].list.length ? (
       <div className={`${className}`} {...rest}>
         {data?.pages.map((page, i) => (
           <React.Fragment key={page.nextCursor}>
             {page.list.map((comment) => (
               <div key={comment.id} className='mb-6'>
-                <CommentItem productId={productId} commentItem={comment}/>               
+                <CommentItem articleId={articleId} commentItem={comment}/>               
               </div>
             ))}
           </React.Fragment>
@@ -36,7 +37,7 @@ function CommentList({ productId,className, ...rest }: CommentListProps) {
         {isFetchingNextPage && <div>로딩 중...</div>}
       </div>
       ):(
-        <EmptyBox context="아직 문의가 없어요" className='h-[372px]'/>
+        <EmptyBox context="아직 댓글이 없어요." subText="지금 댓글을 달아 보세요!" className='h-[202px]' imageName={replyEmptyImg}/>
         )
       }
     </>

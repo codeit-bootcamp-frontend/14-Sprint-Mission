@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductDescription.module.css';
 import UserInfo from 'components/ui/UserInfo';
 import { formatDate } from 'utils/date';
-import Icon from 'components/ui/Icon';
-import Button from 'components/ui/Button';
 import clsx from 'clsx';
-import { ProductDetail } from '@/hooks/useProductsDetail';
 import LikeButton from '../ui/LikeButton';
 import { useGetUserFavorites } from '@/hooks/useUser';
-import { useToggleProductFavorite } from '@/hooks/useItems';
+import { ProductDetail, useToggleProductFavorite } from '@/hooks/useItems';
 import { useConfirmModal } from '@/hooks/useModal';
 import ConfirmModal from '../ui/ConfirmModal';
 
@@ -31,13 +28,13 @@ function ProductDescription(detailData:ProductDetail) {
   // '2025-04-08T01:00:06+09:00'  '2025-04-07T01:00:06+09:00'
   const createdAtString = formatDate(createdAt);
   // console.log(createdAtString);
+
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal, {
   onSuccess: (data) => {
     openConfirmModal(data.isFavorited ? "관심상품 등록되었습니다" :  "관심상품 취소되었습니다");
   },
 });
-
   return (
     <div className={styles.description}>
       <div className='mobile:mb-10'>
@@ -63,10 +60,10 @@ function ProductDescription(detailData:ProductDetail) {
         </ul>
       </div>
       <div className={styles.UserInfo}>
-        <UserInfo ownerNickname={ownerNickname} createdAtString={createdAtString}/>
+        <UserInfo ownerNickname={ownerNickname} createdAtString={createdAtString} className="text-sm"/>
         <div className={styles.likeBtnBox}>
            <LikeButton variant="btn-heart_L" 
-            id={detailData.id} 
+            productId={detailData.id} 
             favoriteCount={detailData.favoriteCount} 
             isFavorite={isFavorite} 
             toggleFavorite={toggleFavorite}

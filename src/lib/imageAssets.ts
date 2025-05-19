@@ -26,6 +26,7 @@ export const logoImg1 = '/assets/logo_01.svg';
 export const logoImg2 = '/assets/logo_03.svg';
 
 export const emptyImg = '/assets/img/Img_inquiry_empty_2x.png';
+export const replyEmptyImg = '/assets/reply_empty.svg';
 export const imgHome_top = '/assets/Img_home_top.png';
 export const imgHome1 = '/assets/Img_home_01.png';
 export const imgHome2 = '/assets/Img_home_02.png';

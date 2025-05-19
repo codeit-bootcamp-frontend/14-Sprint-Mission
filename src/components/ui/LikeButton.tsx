@@ -2,7 +2,6 @@
 
 import Button from "./Button";
 import Icon from "./Icon";
-import { useToggleProductFavorite } from "@/hooks/useItems";
 import ConfirmModal from "./ConfirmModal";
 import { useConfirmModal } from "@/hooks/useModal";
 import { useAuth } from "@/contexts/AuthContext";
@@ -44,10 +43,12 @@ function LikeButton({
 
   return (
     <>
-      <Button onClick={handleClick} variant={variant} childrenClassName={childrenClassName}>
-        <Icon iconName={isFavorited === false ? 'heartOpen' : 'heartClose'}  width={width} height={height}  alt='Like icon' />
-        <span>{count}</span>
-      </Button>
+      <div className={className}>
+        <Button onClick={handleClick} variant={variant} childrenClassName={childrenClassName}>
+          <Icon iconName={isFavorited === false ? 'heartOpen' : 'heartClose'}  width={width} height={height}  alt='Like icon' />
+          <span>{count}</span>
+        </Button>
+      </div>
       <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </>
   )

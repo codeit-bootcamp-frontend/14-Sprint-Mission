@@ -4,13 +4,13 @@ import Button from '@/components/ui/Button';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import FormField from '@/components/ui/form/FormField';
 import ImageFileBox from '@/components/ui/form/ImageFileBox';
-import { InputField, TextAreaField } from '@/components/ui/form/InputBox';
+import { TextAreaField } from '@/components/ui/form/InputBox';
 import Title from '@/components/ui/Title';
 import { ArticleCreateRequest, usePostArticles } from '@/hooks/useArticles';
 import { useConfirmModal } from '@/hooks/useModal';
 import { validationRules } from '@/utils/validate';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 
@@ -74,7 +74,7 @@ function PostArticles() {
           type="submit"
           variant="roundedSS" 
           className="!absolute top-0 right-0"
-          disabled = { !isValid || !isDirty || !addArticles.content }
+          disabled = { !isValid || !isDirty || !addArticles.content || !addArticles.image || !addArticles.title }
         >등록</Button>
         <FormField
           id="title"
@@ -86,7 +86,6 @@ function PostArticles() {
             ...validationRules.title,
             onBlur: handleFieldBlur, 
           })}
-          
         />        
         <TextAreaField id='content' label='내용' height='282px' placeholder='내용를 입력해주세요' onBlur={handleInputBlur} />
         <ImageFileBox<ArticleCreateRequest> setForm={setAddArticles} />

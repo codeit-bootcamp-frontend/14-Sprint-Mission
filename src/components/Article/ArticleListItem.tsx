@@ -44,7 +44,7 @@ function ArticleListItem({ postItem }: ArticleListItemProps) {
             </div> 
           </div>
           <div className="flex justify-between w-full">
-            <UserInfo ownerNickname={postItem.writer.nickname} createdAtString={createdAtString} width={24} className="gap-[8px]" childrenClassName="!flex-row items-center" fontSize='12px'/>
+            <UserInfo ownerNickname={postItem.writer.nickname} createdAtString={createdAtString} width={24} className="gap-[8px] text-sm" childrenClassName="!flex-row items-center" fontSize='12px'/>
             <LikeButton 
               id={postItem.id} 
               favoriteCount={postItem.likeCount} 

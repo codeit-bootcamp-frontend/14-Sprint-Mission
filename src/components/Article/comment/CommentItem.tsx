@@ -10,14 +10,15 @@ import Modal from '@/components/ui/Modal';
 import { useConfirmModal, useModal } from '@/hooks/useModal';
 import ConfirmModal from '@/components/ui/ConfirmModal';
 import { useAuth } from '@/contexts/AuthContext';
-import { CommentItemUnit, useDeleteProductComment, usePatchProductComment } from '@/hooks/useItems';
+import { useDeleteArticleComment, usePatchArticleComment } from '@/hooks/useArticles';
+import { CommentItemUnit } from '@/hooks/useItems';
 
 interface CommentItemProps {
-  productId: number;
+  articleId: number;
   commentItem: CommentItemUnit;
 }
 
-function CommentItem({productId,commentItem}:CommentItemProps) {
+function CommentItem({articleId,commentItem}:CommentItemProps) {
   const {
     id:commentId,
     content,
@@ -31,8 +32,9 @@ function CommentItem({productId,commentItem}:CommentItemProps) {
 
   const { isModalOpen, modalMessage, openModal, closeModal } = useModal();
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
-  const { mutate: deleteProduct } = useDeleteProductComment(productId,openConfirmModal);
-  const { mutate: patchComment } = usePatchProductComment(productId,openConfirmModal);
+
+  const { mutate: deleteProduct } = useDeleteArticleComment(articleId,openConfirmModal);
+  const { mutate: patchComment } = usePatchArticleComment(articleId,openConfirmModal);
   const { user } = useAuth();
 
   const handleOpenModal = () =>{
@@ -100,7 +102,7 @@ function CommentItem({productId,commentItem}:CommentItemProps) {
           <DropdownMenu dropdownActions={dropdownActions} className='' />
         </div>
        )}
-      <UserInfo userImg={commentItem.writer.image} ownerNickname={commentItem.writer.nickname} createdAtString={createdAtString}  className="text-xs"/>
+      <UserInfo userImg={commentItem.writer.image} ownerNickname={commentItem.writer.nickname} createdAtString={createdAtString} className="text-xs"/>
       <Modal isOpen={isModalOpen} closeModal={closeModal} onclick={handleConfirmDelete} message={modalMessage}/>
       <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </li>

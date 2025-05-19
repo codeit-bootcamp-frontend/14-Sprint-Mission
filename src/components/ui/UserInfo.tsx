@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './UserInfo.module.css';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { tempUserImg } from '@/lib/imageAssets';
@@ -16,16 +15,16 @@ interface UserInfoProps {
   noImage?: boolean;
 }
 
-function UserInfo({userImg = '', ownerNickname, createdAtString, width=40, fontSize = "14px", noImage = false, childrenClassName ,className ="gap-[16px]"}: UserInfoProps) {
+function UserInfo({userImg = '', ownerNickname, createdAtString, width=40, noImage = false, childrenClassName ,className ="gap-[16px]"}: UserInfoProps) {
   const userImageSrc = userImg === '' || userImg === null ? tempUserImg : userImg;
   return (
-    <div className={clsx(styles.userInfo, `text-[${fontSize}]`,className)}>
+    <div className={clsx("flex items-center gap-4", className)}>
       {noImage === true ? null :
        <span><Image src={userImageSrc} width={width} height={width} alt="작성자이미지"/></span>
        }
       <div className={clsx('flex flex-col gap-1',childrenClassName)}>
-        <span>{ownerNickname}</span>
-        <span>{createdAtString}</span>
+        <span className="text-secondary-600">{ownerNickname}</span>
+        <span className="text-secondary-400">{createdAtString}</span>
       </div>
     </div>  
   );
