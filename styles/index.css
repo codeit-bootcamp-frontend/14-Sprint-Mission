@@ -1,8 +1,15 @@
 /* nav */
 #nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-gray-50);
+  z-index: 1000;
+  padding: 0 20rem;
 }
 
 #login-button {
@@ -18,30 +25,91 @@
 }
 
 /* main */
+main {
+  margin-top: 5.5rem;
+}
 #main-container {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.banner-container {
-  width: 100%;
-
-  > img {
-    width: 100%;
-  }
+.container-width {
+  width: 120rem;
+  margin: 0 auto;
+}
+.container-height {
+  height: 72rem;
 }
 
-.img-container {
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
-  height: 72rem;
+  height: 54rem;
+  background-color: var(--color-banner);
+}
+.banner-text {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-700);
+}
+.banner-section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  > img {
-    width: 60%;
-    height: 70%;
+.main-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content {
+  background-color: var(--color-section-background);
+  width: 40.9rem;
+  height: 44.4rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 6rem;
+}
+section:nth-of-type(3) .main-content {
+  text-align: right;
+  padding-right: 6rem;
+}
+
+.section-title {
+  color: var(--color-primary-100);
+  font-size: var(--font-size-2lg);
+  font-weight: var(--font-weight-bold);
+}
+.section-content {
+  color: var(--color-gray-700);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+}
+.section-subtext {
+  color: var(--color-gray-700);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+}
+
+#top-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  > a button {
+    width: 35.7rem;
+    height: 5.6rem;
+    border-radius: 4rem;
+    background-color: var(--color-primary-100);
+    color: var(--color-gray-50);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
   }
 }
 
@@ -55,7 +123,7 @@ footer {
   display: flex;
   height: 5.5rem;
   padding-top: 3.5rem;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #codeit {

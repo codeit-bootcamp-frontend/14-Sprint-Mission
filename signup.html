@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/signup.css" />
     <title>판다마켓</title>
   </head>
   <body>
@@ -21,6 +21,11 @@
         </div>
 
         <div class="input-content">
+          <label for="nickname">닉네임</label>
+          <input class="input" name="nickname" type="text" />
+        </div>
+
+        <div class="input-content">
           <label for="password">비밀번호</label>
           <div class="input password-wrapper">
             <input class="input-field" name="password" type="password" />
@@ -31,7 +36,19 @@
             </button>
           </div>
         </div>
-        <button>로그인</button>
+
+        <div class="input-content">
+          <label for="password">비밀번호 확인</label>
+          <div class="input password-wrapper">
+            <input class="input-field" name="password" type="text" />
+            <button type="button" aria-label="비밀번호 보기/숨기기">
+              <img
+                src="./assets/icons/ic_eye_active.svg"
+                alt="비밀번호 보여주기 아이콘" />
+            </button>
+          </div>
+        </div>
+        <button>회원가입</button>
       </div>
 
       <div id="sub-content">
@@ -47,7 +64,7 @@
           </div>
         </div>
         <div id="signup-text">
-          판다마켓이 처음이신가요? <a href="./signup.html">회원가입</a>
+          이미 회원이신가요? <a href="./login.html">로그인</a>
         </div>
       </div>
     </main>
