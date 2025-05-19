@@ -8,8 +8,6 @@ import articleService from '../api/services/articleService'
 import { GetArticleType } from '../types/article'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
 
 const Boards = () => {
   const [articleList, setArticleList] = useState<GetArticleType>()

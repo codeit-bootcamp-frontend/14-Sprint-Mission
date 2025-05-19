@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 
 import { GetArticleIdType } from '../types/article'
 import { diffDate } from '../utils/datetime'

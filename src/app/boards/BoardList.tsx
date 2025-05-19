@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 import { GetArticleType } from '../types/article'
