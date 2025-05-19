@@ -190,7 +190,7 @@ footer {
     font-size: 18px;
   }
 
-  #features br {
+  .feature h1 br {
     display: none;
   }
 
@@ -245,13 +245,13 @@ footer {
 }
 
 @media (max-width: 767px) {
-  #top-banner-text {
+  #top-banner-text h1 {
     font-size: 32px;
     line-height: 140%;
   }
 
-  br {
-    display: block;
+  .feature-description br {
+    display: inline;
   }
 
   #top-banner-text {
@@ -326,10 +326,11 @@ footer {
   }
 
   #footer-Menu {
+    color: #cfcfcf;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: flex;
-    gap: 12px;
+    gap: 30px;
     justify-content: start;
     width: 100%;
   }
@@ -346,5 +347,10 @@ footer {
   #bottom-Banner-img {
     width: 375px;
     height: 198px;
+  }
+
+  .pill-button {
+    font-size: 18px;
+    padding: 12px 71px;
   }
 }

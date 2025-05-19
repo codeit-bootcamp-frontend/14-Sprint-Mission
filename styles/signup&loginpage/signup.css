@@ -39,6 +39,27 @@ body {
 }
 
 /* 인풋 스타일 */
+.password-wrapper {
+  position: relative;
+  width: 640px;
+}
+
+#togglePasswordConfirm,
+#togglePassword {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+#togglePasswordConfirm:hover,
+#togglePassword:hover {
+  opacity: 1;
+}
+
 .login-input {
   width: 640px;
   height: 56px;
@@ -50,8 +71,26 @@ body {
   padding-bottom: 16px;
 }
 
+.login-input:focus {
+  border-color: #3692ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* 에러 메시지 스타일 */
+.error-message {
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* 에러 발생 시 input 스타일 */
+.login-input.error {
+  border: 1px solid #f74747 !important;
+}
+
 input::placeholder {
-  color: #9ca3af; /* 연한 회색 */
+  color: #9ca3af;
   font-size: 16px;
 }
 
@@ -176,9 +215,10 @@ input::placeholder {
     max-width: 400px;
   }
 
-  /* 비밀번호 wrapper 설정 */
+  /* 비밀번호 input과 아이콘 정렬 */
   .password-wrapper {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 400px;
