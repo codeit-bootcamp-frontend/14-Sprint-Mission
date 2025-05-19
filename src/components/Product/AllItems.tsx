@@ -16,7 +16,6 @@ import ConfirmModal from "../ui/ConfirmModal";
 import Title from "../ui/Title";
 import { ORDER_OPTIONS, orderByType, VISIBLE_ITEMS } from "@/constants/product.constants";
 import { usePushQueryToURL } from "@/hooks/useItemQuery";
-import ProductSearchBox from "../ui/form/SearchBox";
 import SearchBox from "../ui/form/SearchBox";
 
 

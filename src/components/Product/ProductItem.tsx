@@ -1,18 +1,14 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
 import styles from './ProductItem.module.css';
-import Icon from 'components/ui/Icon';
-import Button from 'components/ui/Button';
 import clsx from 'clsx';
 import { ProductSummary, useToggleProductFavorite } from '@/hooks/useItems';
 import { FallbackImage } from '../FallbackImage/FallbackImage';
 import { defaultImg } from '@/lib/imageAssets';
 import { useConfirmModal, useModal } from '@/hooks/useModal';
 import ConfirmModal from '../ui/ConfirmModal';
-import { useAuth } from '@/contexts/AuthContext';
 import { useGetUserFavorites } from '@/hooks/useUser';
 import LikeButton from '../ui/LikeButton';
 

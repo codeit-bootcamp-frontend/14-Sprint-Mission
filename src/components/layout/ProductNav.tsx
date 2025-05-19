@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import styles from './ProductNav.module.css';
 import Image from 'next/image';
 import Container from './Container';
 import Button from '../ui/Button';
@@ -10,7 +9,7 @@ import { useSelectedLayoutSegments } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { logoImg1, logoImg2 } from '@/lib/imageAssets';
 import ConfirmModal from '../ui/ConfirmModal';
-import { useConfirmModal, useModal } from '@/hooks/useModal';
+import { useConfirmModal } from '@/hooks/useModal';
 
 function ProductNav() {
   const segments = useSelectedLayoutSegments();

@@ -1,6 +1,5 @@
 'use client';
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import styles from './Additem.module.css';
 import Container from 'components/layout/Container';
@@ -8,7 +7,7 @@ import Button from 'components/ui/Button';
 import Title from 'components/ui/Title';
 import { InputField, TextAreaField } from '@/components/ui/form/InputBox';
 import TagBox from '@/components/ui/TagBox';
-import { CreateProductRequest, ProductSummary, usePostProduct } from '@/hooks/useItems';
+import { CreateProductRequest, usePostProduct } from '@/hooks/useItems';
 import ImageFileBox from '@/components/ui/form/ImageFileBox';
 import { useConfirmModal } from '@/hooks/useModal';
 import ConfirmModal from '@/components/ui/ConfirmModal';
