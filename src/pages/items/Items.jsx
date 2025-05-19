@@ -82,7 +82,7 @@ export default function Items() {
                 />
                 <input placeholder="검색할 상품을 입력해주세요" />
               </div>
-              <Link className="add-button" href="/additem">
+              <Link className="add-button" to="/additem">
                 상품 등록하기
               </Link>
               <Dropdown sortOption={sort} setSortOption={setSort} />

@@ -1,0 +1,102 @@
+/* 전체 wrapper */
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.image-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #1f2937;
+}
+
+.button {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+}
+
+.image-boxes {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.upload-label {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+.upload-label img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 12px;
+}
+
+.upload-label p {
+  font-weight: 400;
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.preview-box {
+  position: relative;
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+}
+
+.preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.warning-message {
+  font-size: 16px;
+  font-weight: 400;
+  color: #ef4444;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 1023px) {
+  .upload-label {
+    width: 168px;
+    height: 168px;
+  }
+
+  .preview-box {
+    width: 168px;
+    height: 168px;
+  }
+
+  .image-boxes {
+    gap: 10px;
+  }
+}

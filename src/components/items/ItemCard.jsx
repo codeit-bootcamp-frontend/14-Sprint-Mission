@@ -7,7 +7,7 @@ export default function ItemCard({ cardInfo, cardType }) {
   const { favoriteCount, images, price, name, id } = cardInfo;
 
   return (
-    <Link to={`items/${id}`} className={cardType === "best" ? "best" : "all"}>
+    <Link to={`/items/${id}`} className={cardType === "best" ? "best" : "all"}>
       <img
         className={cardType === "best" ? "best-card-img" : "all-card-img"}
         src={images && images.length > 0 ? images[0] : noImage}

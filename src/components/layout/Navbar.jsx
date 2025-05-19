@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logoImg from "../../asset/icon/panda_market_logo_3.png";
 import logoMobileImg from "../../asset/icon/panda_market_logo_no_icon.png";
 import profileImg from "../../asset/icon/profile_icon.svg";
 import "./navbar.css";
 
 export default function Navbar() {
+  const { pathname } = useLocation();
+
   return (
     <header className="header-container">
       <section className="header-left-container">
@@ -17,10 +19,20 @@ export default function Navbar() {
           />
         </div>
         <div className="link-container">
-          <Link className="link" href="/board">
+          <Link
+            className={`link ${pathname === "/board" ? "link-active" : ""}`}
+            to="/board"
+          >
             자유게시판
           </Link>
-          <Link className="link" href="/items">
+          <Link
+            className={`link ${
+              pathname === "/items" || pathname === "/additem"
+                ? "link-active"
+                : ""
+            }`}
+            to="/items"
+          >
             중고마켓
           </Link>
         </div>
