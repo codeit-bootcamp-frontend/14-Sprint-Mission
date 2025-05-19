@@ -1,0 +1,232 @@
+/* auth.css */
+
+/* 기본 설정 */
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+label,
+span {
+  color: var(--secondary-800);
+}
+
+input {
+  display: flex;
+  width: 640px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px 16px;
+  gap: 10px;
+  border-radius: 12px;
+  outline: none;
+  border: 2px solid rgba(49, 130, 246, 0);
+  background: var(--Cool-Gray-100, #f3f4f6);
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: var(--Secondary-400, #9ca3af);
+}
+
+/* 공통 레이아웃 */
+.auth-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* padding: 231px 0; */
+  justify-content: center;
+  align-items: center;
+  background: #fcfcfc;
+}
+
+.auth-container {
+  display: flex;
+  width: 640px;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  flex-shrink: 0;
+}
+
+.auth-logo img {
+  width: 396px;
+  height: 132px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.password-wrapper,
+.password-check-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.password-wrapper input,
+.password-check-wrapper input {
+  padding-right: 40px;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.easy-login {
+  display: flex;
+  width: 640px;
+  height: 74px;
+  padding: 16px 23px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #e6f2ff;
+}
+
+.sns-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn-sns {
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+span {
+  white-space: nowrap;
+}
+
+/* 로그인 */
+.btn-login {
+  display: flex;
+  width: 640px;
+  height: 56px;
+  padding: 16px 124px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: none;
+  background: var(--Secondary-400, #9ca3af);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.join-guide {
+  color: var(--secondary-800);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.join-guide a {
+  color: var(--primary-100);
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+/* 회원가입 */
+.btn-signup {
+  display: flex;
+  width: 640px;
+  height: 56px;
+  padding: 16px 124px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: none;
+  background: var(--Secondary-400, #9ca3af);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.login-guide {
+  color: var(--secondary-800);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.login-guide a {
+  color: var(--primary-100);
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    height: 100%;
+    overflow-y: hidden;
+    padding: 0 16px;
+  }
+
+  .auth-container {
+    width: 100%;
+    max-width: 400px;
+    gap: 16px;
+  }
+
+  .auth-logo img {
+    width: 196px;
+  }
+
+  input,
+  .btn-login,
+  .form-group,
+  .easy-login,
+  .btn-signup {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .easy-login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 343px;
+    height: 74px;
+    padding: 16px 23px;
+    border-radius: 8px;
+    background: #e6f2ff;
+  }
+}

@@ -13,30 +13,46 @@
     <!-- 공통 스타일 -->
     <link rel="stylesheet" href="./assets/styles/variables.css" />
     <link rel="stylesheet" href="./assets/styles/reset.css" />
-    <link rel="stylesheet" href="./assets/styles/signup.css" />
+    <link rel="stylesheet" href="./assets/styles/auth.css" />
+    <!-- <link rel="stylesheet" href="./assets/styles/signup.css" /> -->
   </head>
   <body>
-    <section class="signup-page">
-      <div class="signup-container">
+    <section class="auth-page">
+      <div class="auth-container">
         <!-- 로고 -->
-        <a href="/" class="signup-logo">
+        <a href="/" class="auth-logo">
           <img src="./assets/images/panda_logo.svg" alt="판다마켓 로고" />
         </a>
 
         <!-- 회원가입 폼 -->
-        <form class="signup-form">
+        <form class="auth-form">
           <div class="form-group">
             <label for="email" class="text-2lg-bold">이메일</label>
-            <input type="email" id="email" class="text-lg-regular" />
+            <input
+              type="email"
+              id="email"
+              placeholder="이메일을 입력해 주세요"
+              class="text-lg-regular"
+            />
           </div>
           <div class="form-group">
             <label for="nickname" class="text-2lg-bold">닉네임</label>
-            <input type="nickname" id="nickname" class="text-lg-regular" />
+            <input
+              type="nickname"
+              id="nickname"
+              placeholder="닉네임을 입력해 주세요"
+              class="text-lg-regular"
+            />
           </div>
           <div class="form-group">
             <label for="password" class="text-2lg-bold">비밀번호</label>
             <div class="password-wrapper">
-              <input type="password" id="password" class="text-lg-regular" />
+              <input
+                type="password"
+                id="password"
+                placeholder="비밀번호를 입력해 주세요"
+                class="text-lg-regular"
+              />
               <button type="button" class="btn-toggle-password">
                 <img
                   src="./assets/icons/visibility_off_btn.png"
@@ -53,6 +69,7 @@
               <input
                 type="password"
                 id="password-check"
+                placeholder="비밀번호를 다시 한 번 입력해 주세요"
                 class="text-lg-regular"
               />
               <button type="button" class="btn-toggle-password">

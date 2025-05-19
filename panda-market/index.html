@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta property="og:title" content="판다마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해 보세요" />
+    <meta property="og:image" content="https://panda_market_withus.com/assets/images/img_landing.png" />
+    <meta property="og:url" content="https://panda_market_withus.com/" />
+    <meta property="og:type" content="website" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>판다마켓</title>
@@ -20,122 +25,129 @@
     <!-- 헤더 -->
     <header class="header">
       <div class="header-inner">
-        <a href="/" class="logo">
-          <img src="./assets/images/panda_logo.svg" alt="판다마켓 로고" />
+        <a href="/" class="header-logo">
+          <img src="./assets/images/panda_face.svg" alt="판다마켓 얼굴 로고" class="logo-icon"/>
+          <img src="./assets/images/title_logo.svg" alt="판다마켓 타이틀 로고" class="logo-title"/>
         </a>
-        <a href="login.html" class="login-btn">로그인</a>
+        <a href="login.html" class="header-login-btn">로그인</a>
       </div>
     </header>
 
     <main>
-    <!-- 메인 배너 -->
-    <section class="main-banner">
-      <div class="main-banner-wrapper">
-        <div class="main-banner-left">
-          <p class="main-banner-text">
-            일상의 모든 물건을<br />거래해 보세요
-          </p>
-          <a href="items.html" class="browse-btn text-xl-semibold">
-            구경하러 가기
+    <div class="container">
+      <!-- 메인 배너 -->
+      <section class="main-banner">
+        <div class="main-banner-wrapper">
+          <div class="main-banner-left">
+            <p class="main-banner-text">
+              <span class="line1">일상의 모든 물건을</span>
+              <span class="line2">거래해 보세요</span>
+            </p>
+            <div class="browse-btn-wrapper">
+              <a href="items.html" class="browse-btn text-xl-semibold">
+                구경하러 가기
+              </a>
+            </div>
+          </div>
+          <div class="main-banner-image">
+            <img src="./assets/images/Img_home_top.svg" alt="메인 배너 이미지" />
+          </div>
+      </section>
+
+      <!-- 인기 상품 세션 -->
+      <section class="info-card-section">
+        <div class="info-card">
+          <div class="info-card-image">
+            <img src="./assets/images/Img_home_01.svg" alt="인기 상품 이미지" />
+          </div>
+          <div class="info-card-text">
+            <span class="info-card-label text-2lg-bold">Hot item</span>   
+            <span class="info-card-title">인기 상품을 <br />확인해 보세요</span>
+            <p class="info-card-description text-2xl-medium">
+              가장 HOT한 중고거래 물품을<br />판다마켓에서 확인해 보세요.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 검색 세션 -->
+      <section class="info-card-section">
+        <div class="info-card reverse">
+          <div class="info-card-image">
+            <img src="./assets/images/Img_home_02.svg" alt="상품 검색 이미지" />
+          </div>
+          <div class="info-card-text">
+            <span class="info-card-label text-2lg-bold">Search</span>
+            <span class="info-card-title">구매를 원하는 <br />상품을 검색하세요</span>
+            <p class="info-card-description text-2xl-medium">
+              구매하고 싶은 물품은 검색해서<br />쉽게 찾아보세요
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 등록 페이지 -->
+      <section class="info-card-section">
+        <div class="info-card">
+          <div class="info-card-image">
+            <img src="./assets/images/Img_home_03.svg" alt="상품 등록 이미지" />
+          </div>
+          <div class="info-card-text">
+            <span class="info-card-label text-2lg-bold">Register</span>
+            <span class="info-card-title">판매를 원하는 <br />상품을 등록하세요</span>
+            <p class="info-card-description text-2xl-medium">
+              어떤 물건이든 판매하고 싶은 상품을<br />쉽게 등록하세요
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 마지막 배너 -->
+      <section class="sub-banner">
+        <div class="sub-banner-wrapper">
+          <div class="sub-banner-left">
+            <p class="sub-banner-text">
+            믿을 수 있는<br />판다마켓 중고 거래</p>
+          </div>
+          <div class="sub-banner-image">
+            <img src="./assets/images/Img_home_bottom.svg" alt="서브 배너 이미지" />
+          </div>
+        </div>      
+      </section>
+      <!-- 푸터 -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-text">
+          <p class="copyright">©codeit - 2024</p>
+
+          <!-- 가운데 - 페이지 연결 -->
+          <nav class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="faq.html">FAQ</a>
+          </nav>
+        </div>
+
+        <!-- 오른쪽 SNS 아이콘 -->
+        <div class="footer-sns-links">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="./assets/icons/ic_facebook.svg" alt="Facebook" />
+          </a>
+          <a href="https://x.com/?lang=ko" target="_blank" rel="noopener noreferrer">
+            <img src="./assets/icons/ic_twitter.svg" alt="Twitter" />
+          </a>     
+          <a
+            href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop"
+            target="_blank" rel="noopener noreferrer"
+          >
+            <img src="./assets/icons/ic_youtube.svg" alt="Youtube" />
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="./assets/icons/ic_instagram.svg" alt="Instagram" />
           </a>
         </div>
-        <div class="main-banner-image">
-          <img src="./assets/images/Img_home_top.svg" alt="메인 배너 이미지" />
-        </div>
-    </section>
-
-    <!-- 인기 상품 세션 -->
-    <section class="info-card-section">
-      <div class="info-card">
-        <div class="info-card-image">
-          <img src="./assets/images/Img_home_01.svg" alt="인기 상품 이미지" />
-        </div>
-        <div class="info-card-text">
-          <span class="info-card-label text-2lg-bold">Hot item</span>
-          <h1 class="info-card-title">인기 상품을<br />확인해 보세요</h1>
-          <p class="info-card-description text-2xl-medium">
-            가장 HOT한 중고거래 물품을<br />판다마켓에서 확인해 보세요.
-          </p>
-        </div>
       </div>
-    </section>
-
-    <!-- 상품 검색 세션 -->
-    <section class="info-card-section">
-      <div class="info-card reverse">
-        <div class="info-card-image">
-          <img src="./assets/images/Img_home_02.svg" alt="상품 검색 이미지" />
-        </div>
-        <div class="info-card-text">
-          <span class="info-card-label text-2lg-bold">Search</span>
-          <h1 class="info-card-title">구매를 원하는<br />상품을 검색하세요</h1>
-          <p class="info-card-description text-2xl-medium">
-            구매하고 싶은 물품은 검색해서<br />쉽게 찾아보세요
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 상품 등록 페이지 -->
-    <section class="info-card-section">
-      <div class="info-card">
-        <div class="info-card-image">
-          <img src="./assets/images/Img_home_03.svg" alt="상품 등록 이미지" />
-        </div>
-        <div class="info-card-text">
-          <span class="info-card-label text-2lg-bold">Register</span>
-          <h1 class="info-card-title">판매를 원하는<br />상품을 등록하세요</h1>
-          <p class="info-card-description text-2xl-medium">
-            어떤 물건이든 판매하고 싶은 상품을<br />쉽게 등록하세요
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 마지막 배너 -->
-    <section class="sub-banner">
-      <div class="sub-banner-wrapper">
-        <div class="sub-banner-left">
-          <p class="sub-banner-text">
-            믿을 수 있는<br />판다마켓 중고 거래
-          </p>
-        </div>
-        <div class="sub-banner-image">
-          <img src="./assets/images/Img_home_bottom.svg" alt="서브 배너 이미지" />
-        </div>
-      </div>      
-    </section>
-    <!-- 푸터 -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <p class="copyright">©codeit - 2024</p>
-
-      <!-- 가운데 - 페이지 연결 -->
-      <nav class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
-
-      <!-- 오른쪽 SNS 아이콘 -->
-      <div class="footer-sns-links">
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <img src="./assets/icons/ic_facebook.svg" alt="Facebook" />
-        </a>
-        <a href="https://x.com/?lang=ko" target="_blank" rel="noopener noreferrer">
-          <img src="./assets/icons/ic_twitter.svg" alt="Twitter" />
-        </a>     
-        <a
-          href="https://www.youtube.com/?hl=ko&gl=KR&app=desktop"
-          target="_blank" rel="noopener noreferrer"
-        >
-          <img src="./assets/icons/ic_youtube.svg" alt="Youtube" />
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-          <img src="./assets/icons/ic_instagram.svg" alt="Instagram" />
-        </a>
-      </div>
-    </div>
-  </footer>
-  </body>
+    </footer>
+    </body>
+  </div>
 </main>
 </html>
