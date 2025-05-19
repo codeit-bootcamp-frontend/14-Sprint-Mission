@@ -11,21 +11,40 @@
     <div class="login__container">
       <div class="logo__container">
         <a href="/">
-          <img src="../img/panda__face.png" alt="판다얼굴" />
+          <img src="/assets/img/panda__face.png" alt="판다얼굴" />
         </a>
         <div class="logo__text">판다마켓</div>
       </div>
-      <label class="login__input__text">이메일</label>
-      <input class="login__input" placeholder="이메일을 입력해주세요." />
-
-      <label class="login__input__text">비밀번호</label>
+      <label class="login__input__text" for="email">이메일</label>
       <input
+        id="email"
         class="login__input"
-        type="password"
-        placeholder="비밀번호를 입력하세요"
+        type="text"
+        placeholder="이메일을 입력해주세요."
       />
+      <p class="error-message" id="email-error"></p>
+
+      <!-- 비밀번호 -->
+      <label class="login__input__text" for="password">비밀번호</label>
+      <div class="password__wrapper">
+        <input
+          id="password"
+          class="login__input"
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+        />
+        <img
+          src="/assets/icons/icon-eye-off.svg"
+          alt="비밀번호 보기 토글"
+          class="toggle-password"
+          id="toggle-password"
+        />
+      </div>
+      <p class="error-message" id="password-error"></p>
+
+      <!-- 로그인 버튼 -->
       <div>
-        <button class="login__button">로그인</button>
+        <button class="login__button" id="login-btn" disabled>로그인</button>
       </div>
       <div class="snsAuth__container">
         <span>간편 로그인하기</span>
@@ -35,14 +54,14 @@
             target="_blank"
             class="snsAuth__icon"
           >
-            <img src="../img/Component 2.png" alt="구글 아이콘" />
+            <img src="/assets/img/Component 2.png" alt="구글 아이콘" />
           </a>
           <a
             href="https://www.kakaocorp.com/page/"
             target="_blank"
             class="snsAuth__icon"
           >
-            <img src="../img/Component 3.png" alt="카카오톡 아이콘" />
+            <img src="/assets/img/Component 3.png" alt="카카오톡 아이콘" />
           </a>
         </div>
       </div>
@@ -53,3 +72,83 @@
     </div>
   </body>
 </html>
+
+<script>
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const loginBtn = document.getElementById('login-btn');
+  const emailError = document.getElementById('email-error');
+  const passwordError = document.getElementById('password-error');
+  const togglePasswordIcon = document.getElementById('toggle-password');
+  let passwordVisible = false;
+
+  function validateEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
+  function validateForm() {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    const emailValid = email && validateEmail(email);
+    const passwordValid = password && password.length >= 8;
+
+    loginBtn.disabled = !(emailValid && passwordValid);
+  }
+
+  togglePasswordIcon.addEventListener('click', () => {
+    passwordVisible = !passwordVisible;
+    passwordInput.type = passwordVisible ? 'text' : 'password';
+
+    // 아이콘 이미지 변경
+    togglePasswordIcon.src = passwordVisible
+      ? '/assets/icons/icon-eye.svg' // 눈 뜬 아이콘
+      : '/assets/icons/icon-eye-off.svg'; // 눈 감은 아이콘
+  });
+
+  emailInput.addEventListener('focusout', () => {
+    const value = emailInput.value.trim();
+    if (!value) {
+      emailInput.classList.add('error');
+      emailError.textContent = '이메일을 입력해주세요.';
+    } else if (!validateEmail(value)) {
+      emailInput.classList.add('error');
+      emailError.textContent = '잘못된 이메일 형식입니다.';
+    } else {
+      emailInput.classList.remove('error');
+      emailError.textContent = '';
+    }
+    validateForm();
+  });
+
+  passwordInput.addEventListener('focusout', () => {
+    const value = passwordInput.value.trim();
+    if (!value) {
+      passwordInput.classList.add('error');
+      passwordError.textContent = '비밀번호를 입력해주세요.';
+    } else if (value.length < 8) {
+      passwordInput.classList.add('error');
+      passwordError.textContent = '비밀번호를 8자 이상 입력해주세요.';
+    } else {
+      passwordInput.classList.remove('error');
+      passwordError.textContent = '';
+    }
+    validateForm();
+  });
+
+  emailInput.addEventListener('input', () => {
+    validateForm();
+  });
+
+  passwordInput.addEventListener('input', () => {
+    validateForm();
+  });
+
+  loginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!loginBtn.disabled) {
+      window.location.href = './items.html';
+    }
+  });
+</script>

@@ -11,32 +11,62 @@
     <div class="login__container">
       <div class="logo__container">
         <a href="/">
-          <img src="../img/panda__face.png" alt="판다얼굴" />
+          <img src="/assets/img/panda__face.png" alt="판다얼굴" />
         </a>
         <div class="logo__text">판다마켓</div>
       </div>
-      <label class="login__input__text">이메일</label>
-      <input class="login__input" placeholder="이메일을 입력해주세요." />
-
+      <label class="login__input__text" for="email">이메일</label>
+      <input
+        id="email"
+        class="login__input"
+        placeholder="이메일을 입력해주세요."
+      />
+      <p class="error-message" id="email-error"></p>
       <label class="login__input__text">닉네임</label>
-      <input class="login__input" placeholder="닉네임을 입력해주세요." />
-
-      <label class="login__input__text">비밀번호</label>
       <input
+        id="nickname"
         class="login__input"
-        type="password"
-        placeholder="비밀번호를 입력하세요"
+        placeholder="닉네임을 입력해주세요."
       />
+      <p class="error-message" id="nickname-error"></p>
+      <label class="login__input__text" for="password">비밀번호</label>
+      <div class="password__wrapper">
+        <input
+          id="password"
+          class="login__input"
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+        />
+        <img
+          src="/assets/icons/icon-eye-off.svg"
+          alt="비밀번호 보기 토글"
+          class="toggle-password"
+          id="toggle-password"
+        />
+      </div>
+      <p class="error-message" id="password-error"></p>
 
-      <label class="login__input__text">비밀번호 확인</label>
-      <input
-        class="login__input"
-        type="password"
-        placeholder="비밀번호를 확인하세요"
-      />
+      <label class="login__input__text" for="password-check"
+        >비밀번호 확인</label
+      >
+      <div class="password__wrapper">
+        <input
+          id="password-check"
+          class="login__input"
+          type="password"
+          placeholder="비밀번호를 확인하세요"
+        />
+        <img
+          src="/assets/icons/icon-eye-off.svg"
+          alt="비밀번호 확인 보기 토글"
+          class="toggle-password"
+          id="toggle-password-check"
+        />
+      </div>
+      <p class="error-message" id="password-check-error"></p>
 
       <div>
-        <button class="login__button">회원가입</button>
+        <button class="login__button" id="signup-btn" disabled>회원가입</button>
       </div>
       <div class="snsAuth__container">
         <span>간편 로그인하기</span>
@@ -46,14 +76,14 @@
             target="_blank"
             class="snsAuth__icon"
           >
-            <img src="../img/Component 2.png" alt="구글 아이콘" />
+            <img src="/assets/img/Component 2.png" alt="구글 아이콘" />
           </a>
           <a
             href="https://www.kakaocorp.com/page/"
             target="_blank"
             class="snsAuth__icon"
           >
-            <img src="../img/Component 3.png" alt="카카오톡 아이콘" />
+            <img src="/assets/img/Component 3.png" alt="카카오톡 아이콘" />
           </a>
         </div>
       </div>
@@ -63,5 +93,153 @@
       </div>
     </div>
     <div></div>
+    <script>
+      const togglePassword = document.getElementById('toggle-password');
+      const togglePasswordCheck = document.getElementById(
+        'toggle-password-check',
+      );
+
+      const email = document.getElementById('email');
+      const nickname = document.getElementById('nickname');
+      const password = document.getElementById('password');
+      const passwordCheck = document.getElementById('password-check');
+      const signupBtn = document.getElementById('signup-btn');
+
+      const emailError = document.getElementById('email-error');
+      const nicknameError = document.getElementById('nickname-error');
+      const passwordError = document.getElementById('password-error');
+      const passwordCheckError = document.getElementById(
+        'password-check-error',
+      );
+
+      function validateEmailFormat(email) {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+      }
+
+      function validateForm() {
+        const isEmailValid = email.value && validateEmailFormat(email.value);
+        const isNicknameValid = nickname.value.trim() !== '';
+        const isPasswordValid = password.value.length >= 8;
+        const isPasswordCheckValid =
+          passwordCheck.value === password.value &&
+          passwordCheck.value.length >= 8;
+
+        signupBtn.disabled = !(
+          isEmailValid &&
+          isNicknameValid &&
+          isPasswordValid &&
+          isPasswordCheckValid
+        );
+      }
+
+      function handleValidation(input, condition, message, errorEl) {
+        if (!condition) {
+          input.classList.add('error');
+          errorEl.textContent = message;
+        } else {
+          input.classList.remove('error');
+          errorEl.textContent = '';
+        }
+        validateForm();
+      }
+
+      togglePassword.addEventListener('click', () => {
+        const type = password.type === 'password' ? 'text' : 'password';
+        password.type = type;
+        togglePassword.src =
+          type === 'password'
+            ? '/assets/icons/icon-eye-off.svg'
+            : '/assets/icons/icon-eye.svg';
+      });
+
+      togglePasswordCheck.addEventListener('click', () => {
+        const type = passwordCheck.type === 'password' ? 'text' : 'password';
+        passwordCheck.type = type;
+        togglePasswordCheck.src =
+          type === 'password'
+            ? '/assets/icons/icon-eye-off.svg'
+            : '/assets/icons/icon-eye.svg';
+      });
+
+      email.addEventListener('focusout', () => {
+        const val = email.value.trim();
+        if (!val) {
+          handleValidation(email, false, '이메일을 입력해주세요.', emailError);
+        } else if (!validateEmailFormat(val)) {
+          handleValidation(
+            email,
+            false,
+            '잘못된 이메일 형식입니다.',
+            emailError,
+          );
+        } else {
+          handleValidation(email, true, '', emailError);
+        }
+      });
+
+      nickname.addEventListener('focusout', () => {
+        handleValidation(
+          nickname,
+          nickname.value.trim() !== '',
+          '닉네임을 입력해주세요.',
+          nicknameError,
+        );
+      });
+
+      password.addEventListener('focusout', () => {
+        const val = password.value;
+        if (!val) {
+          handleValidation(
+            password,
+            false,
+            '비밀번호를 입력해주세요.',
+            passwordError,
+          );
+        } else if (val.length < 8) {
+          handleValidation(
+            password,
+            false,
+            '비밀번호를 8자 이상 입력해주세요.',
+            passwordError,
+          );
+        } else {
+          handleValidation(password, true, '', passwordError);
+        }
+      });
+
+      passwordCheck.addEventListener('focusout', () => {
+        const val = passwordCheck.value;
+        if (!val) {
+          handleValidation(
+            passwordCheck,
+            false,
+            '비밀번호를 확인해주세요.',
+            passwordCheckError,
+          );
+        } else if (val !== password.value) {
+          handleValidation(
+            passwordCheck,
+            false,
+            '비밀번호가 일치하지 않습니다.',
+            passwordCheckError,
+          );
+        } else {
+          handleValidation(passwordCheck, true, '', passwordCheckError);
+        }
+      });
+
+      // 실시간 input 변화 감지
+      [email, nickname, password, passwordCheck].forEach((input) => {
+        input.addEventListener('input', validateForm);
+      });
+
+      signupBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!signupBtn.disabled) {
+          window.location.href = './login.html';
+        }
+      });
+    </script>
   </body>
 </html>
