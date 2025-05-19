@@ -13,7 +13,7 @@ import { theme } from '../styles/theme'
 import { textStyle } from '../styles/textStyle'
 
 type BestBoardsProps = {
-  articleList: GetArticleType
+  articleList?: GetArticleType
 }
 
 const BestBoards = ({ articleList }: BestBoardsProps) => {
@@ -34,6 +34,7 @@ const BestBoards = ({ articleList }: BestBoardsProps) => {
 
     return () => window.removeEventListener('resize', handleReasize)
   }, [])
+  if (!articleList) return null
   return (
     <>
       <BestBoardsTitle>베스트 게시글</BestBoardsTitle>

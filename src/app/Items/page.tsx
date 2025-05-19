@@ -88,7 +88,7 @@ const Items = () => {
           }
           return 0
         })
-        console.log(sorted)
+
         setSortedProducts(sorted)
         setTotalItems(response.data.totalCount)
       })

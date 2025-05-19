@@ -2,11 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 
-import { GetArticleType, GetArticleIdType } from '../types/article'
+import { GetArticleIdType } from '../types/article'
 import { diffDate } from '../utils/datetime'
 import { formatDate } from '../utils/datetime'
-
-import Setting from '../../../../public/assets/svg/Setting.svg'
 
 import styled from 'styled-components'
 import { theme } from '../styles/theme'
