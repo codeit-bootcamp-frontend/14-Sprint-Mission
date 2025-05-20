@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ItemImage from "./ItemImage";
 import ItemCardContent from "./ItemCardContent";
-import { ItemCard as StyledItemCard } from "../pages/ItemsPage.styled";
+import { ItemCard as StyledItemCard } from "../pages/ProductsPage.styled";
 
 function ItemCard({ item, imageType = "all" }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/items/${item.id}`);
+    navigate(`/products/${item.id}`);
   };
 
   return (

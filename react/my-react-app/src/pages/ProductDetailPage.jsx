@@ -53,7 +53,7 @@ function ProductDetailPage() {
 
   return (
     <ProductDetailContainer>
-      <BackButton to="/items">← 목록으로 돌아가기</BackButton>
+      <BackButton to="/products">← 목록으로 돌아가기</BackButton>
       {/* TODO: 상품 상세 정보 컴포넌트들 추가 예정 */}
       <div>Product ID: {productId}</div>
     </ProductDetailContainer>

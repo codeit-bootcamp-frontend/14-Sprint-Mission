@@ -3,11 +3,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
-import { ErrorMessage, ItemsPageContainer } from "./ItemsPage.styled";
+import { ErrorMessage, ProductsPageContainer } from "./ProductsPage.styled";
 
 const API_BASE_URL = "https://panda-market-api.vercel.app/";
 
-function ItemsPage() {
+function ProductsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -191,7 +191,7 @@ function ItemsPage() {
   }
 
   return (
-    <ItemsPageContainer>
+    <ProductsPageContainer>
       <BestItemsSection items={visibleBestItems} loading={loadingBest} />
 
       <AllItemsSection
@@ -209,8 +209,8 @@ function ItemsPage() {
         mobileSortOpen={mobileSortOpen}
         setMobileSortOpen={setMobileSortOpen}
       />
-    </ItemsPageContainer>
+    </ProductsPageContainer>
   );
 }
 
-export default ItemsPage;
+export default ProductsPage;

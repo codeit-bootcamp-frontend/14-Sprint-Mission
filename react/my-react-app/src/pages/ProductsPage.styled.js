@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Main container
-export const ItemsPageContainer = styled.div`
+export const ProductsPageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;

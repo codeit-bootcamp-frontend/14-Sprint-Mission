@@ -14,7 +14,11 @@ import {
   DesktopAddButton,
   AllItemsGrid,
   MessageParagraph,
-} from "../pages/ItemsPage.styled";
+  MobileSortContainer,
+  MobileSortButton,
+  MobileSortMenu,
+  MobileSortMenuItem,
+} from "../pages/ProductsPage.styled";
 
 function AllItemsSection({
   items,
