@@ -46,7 +46,7 @@ input::placeholder {
 }
 
 input:focus {
-  outline-color: var(--primary100);
+  outline: 1px solid var(--primary100);
 }
 
 .input-form-wrapper {
@@ -55,7 +55,7 @@ input:focus {
   align-items: center;
 }
 
-.password-show {
+.password-toggle-button {
   position: absolute;
   right: 24px;
   cursor: pointer;
@@ -63,6 +63,15 @@ input:focus {
 
 .auth-button {
   width: 100%;
+}
+
+.error-message {
+  padding-left: 16px;
+  color: var(--error);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  display: none;
 }
 
 /* 간편 로그인하기 */

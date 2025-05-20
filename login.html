@@ -29,7 +29,7 @@
       </div>
 
       <!-- 로그인 입력 폼 -->
-      <form method="post">
+      <form method="post" id="loginForm">
         <div class="input-form">
           <label for="email">이메일</label>
           <input
@@ -38,6 +38,12 @@
             name="email"
             placeholder="이메일을 입력해주세요"
           />
+          <span id="email-value-empty" class="error-message"
+            >이메일을 입력해주세요</span
+          >
+          <span id="email-value-invalid" class="error-message"
+            >잘못된 이메일 형식입니다</span
+          >
         </div>
         <div class="input-form">
           <label for="password">비밀번호</label>
@@ -48,17 +54,31 @@
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
-            <button class="password-show">
+            <button
+              type="button"
+              class="password-toggle-button"
+              aria-label="비밀번호 숨김"
+            >
               <img
                 src="/images/icon/auth/eye-invisible.svg"
-                alt="비밀번호 숨김"
+                class="password-toggle-icon"
+                alt="비밀번호 숨김 아이콘"
                 width="24"
               />
             </button>
           </div>
+          <span id="password-value-empty" class="error-message"
+            >비밀번호를 입력해주세요</span
+          >
+          <span id="password-value-invalid" class="error-message"
+            >비밀번호를 8자 이상 입력해주세요</span
+          >
         </div>
-        <!-- 나중에 페이지 연결 예정 -->
-        <button type="submit" class="button btn-round auth-button" disabled>
+        <button
+          type="submit"
+          class="button btn-round auth-button"
+          id="Submit-Button"
+        >
           로그인
         </button>
       </form>
@@ -90,5 +110,6 @@
         <a href="signup.html" class="switch-auth">회원가입</a>
       </div>
     </div>
+    <script src="/scripts/auth.js"></script>
   </body>
 </html>
