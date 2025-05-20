@@ -23,7 +23,7 @@
   border-radius: 12px;
   box-sizing: border-box;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .search {
     width: 242px;
   }

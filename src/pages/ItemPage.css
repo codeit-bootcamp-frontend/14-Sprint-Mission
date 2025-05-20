@@ -5,12 +5,14 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0rem;
 }
 
 .product-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+  font-weight: 700;
+  color: var(--gray-800);
   flex-shrink: 0;
 }
 
@@ -23,26 +25,27 @@
 }
 
 .create-button {
-  background-color: #3692ff;
+  background-color: var(--Primary-100);
   color: white;
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--text-lg);
+  line-height: var(--line-height-sm);
   border: none;
-  padding: 0 1.2rem;
+  padding: 0 1.6rem;
   height: 42px;
   border-radius: 8px;
   cursor: pointer;
   flex-shrink: 0;
 }
 
-/* 드롭다운 */
 .dropdown-select {
   width: 130px;
   height: 42px;
-  font-size: 18px;
+  font-size: var(--text-2lg);
+  line-height: var(--line-height-2lg);
   padding: 0 16px;
   padding-right: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-200);
   border-radius: 8px;
   background-color: white;
   background-image: url("/src/assets/images/common/ic_arrow_down.svg");
@@ -50,21 +53,16 @@
   background-position: right 12px center;
   background-size: 16px 16px;
   appearance: none;
-  color: #222;
+  color: var(--gray-900);
   font-weight: 500;
 }
-.pagination-wrapper {
-  margin-top: -40px;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
-}
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .all-product-header {
     width: 710px;
   }
 }
+
 @media (max-width: 767px) {
   .all-product-header {
     width: 378px;
@@ -85,22 +83,26 @@
   }
 
   .product-title {
-    font-size: 20px;
-    font-weight: bold;
+    padding: 10px;
+    font-size: var(--text-xl);
+    line-height: var(--line-height-xl);
+    font-weight: 700;
+    color: var(--gray-800);
     display: inline-block;
   }
 
   .create-button {
     position: relative;
-    top: -74px;
+    top: -46px;
     right: 8px;
-    order: 3; /* 가장 위에 표시 */
-    align-self: flex-end; /* 오른쪽 정렬 */
-    width: 130px;
+    order: 3;
+    align-self: flex-end;
+    width: 133px;
     height: 42px;
-    background-color: #3692ff;
+    background-color: var(--Primary-100);
     color: white;
-    font-size: 14px;
+    font-size: var(--text-sm);
+    line-height: var(--line-height-sm);
     font-weight: 500;
     border: none;
     border-radius: 8px;
@@ -116,7 +118,7 @@
   .dropdown-select {
     position: relative;
     padding: 0;
-    left: 8rem;
+    left: 8.6rem;
     width: 42px;
     height: 42px;
     background: white url("/src/assets/images/common/btn_sort.svg") no-repeat

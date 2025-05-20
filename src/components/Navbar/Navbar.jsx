@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { useLocation } from "react-router-dom";
-import profileImg from "../assets/images/icons/profile.png";
+import profileImg from "../../assets/images/icons/profile.png";
 
 function Navbar() {
   const location = useLocation();

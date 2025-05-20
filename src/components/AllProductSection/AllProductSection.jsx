@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import "./AllProductSection.css";
 
 function AllProductSection({ products }) {

@@ -1,0 +1,43 @@
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: var(--gray-100);
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+  font-weight: 400;
+  color: var(--gray-800);
+  padding: 5px 12px 5px 16px;
+  height: 36px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.removeTag {
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  all: unset;
+  outline: none;
+  box-shadow: none;
+}
+
+.removeTagIcon {
+  width: 22px;
+  height: 24px;
+  display: block;
+}
+
+.removeTag:focus,
+.removeTag:active {
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}

@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import HeartIcon from "../assets/images/common/ic_heart.svg";
+import HeartIcon from "../../assets/images/common/ic_heart.svg";
 
 function ProductCard({ product, type = "all" }) {
   const imageUrl =

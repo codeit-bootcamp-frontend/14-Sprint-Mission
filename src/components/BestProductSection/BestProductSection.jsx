@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import "./BestProductSection.css";
 
 function BestProductSection() {
   const [products, setProducts] = useState([]);
+  const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
-    fetch(
-      "https://panda-market-api.vercel.app/products?page=1&pageSize=4&orderBy=favorite"
-    )
+    fetch(`${BASE_URL}/products?page=1&pageSize=4&orderBy=favorite`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.list || []);
       })
       .catch((err) => console.error("베스트 상품 가져오기 실패:", err));
-  }, []);
+  }, [BASE_URL]);
 
   if (products.length === 0) return null;
 
