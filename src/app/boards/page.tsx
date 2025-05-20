@@ -1,14 +1,5 @@
+import BoardsClient from "@/components/Article/BoardsClient";
 
-
-
-import React from 'react';
-
-function Boards() {
-  return (
-    <>
-      <h2>Boards</h2>
-    </>
-  );
+export default function BoardsPage() {
+  return <BoardsClient />;
 }
-
-export default Boards;

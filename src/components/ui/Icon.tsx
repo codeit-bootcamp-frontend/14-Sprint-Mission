@@ -25,6 +25,8 @@ const statusWhiteR = '/assets/status_white-1.svg';
 
 const ic_kebab = '/assets/ic_kebab.svg';
 
+const medal = '/assets/ic_medal.svg';
+
 const ICON = {
   eyeOpen,
   eyeClose,
@@ -45,6 +47,7 @@ const ICON = {
   statusInactiveR,
   statusWhiteL,
   statusWhiteR,
+  medal,
 };
 
 interface IconProps {

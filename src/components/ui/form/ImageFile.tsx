@@ -1,7 +1,6 @@
 
 import React from 'react';
 import styles from './ImageFile.module.css';
-import Image from 'next/image';
 import Icon from '../Icon';
 import { FallbackImage } from '@/components/FallbackImage/FallbackImage';
 

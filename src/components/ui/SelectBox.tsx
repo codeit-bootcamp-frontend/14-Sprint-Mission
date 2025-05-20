@@ -22,7 +22,7 @@ interface SelectBoxProps {
   options: { value: string; label: string }[];
   current: string;
   clickEvent: (value: string) => void;
-  screenType: number;
+  screenType: string;
 }
 
 function SelectBox({ options, current, clickEvent, screenType }: SelectBoxProps) {
@@ -35,7 +35,7 @@ function SelectBox({ options, current, clickEvent, screenType }: SelectBoxProps)
   return (
     <section className={styles.selectBox}  >
         <button type="button" className={styles.selectBtn} onClick={handleClickToggle}>
-          { screenType === 0 ? 
+          { screenType === 'mobile' ? 
             <Icon iconName='sort' alt='select box'/>
           :
             <>

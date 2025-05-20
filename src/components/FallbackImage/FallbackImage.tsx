@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image, { ImageProps } from "next/image";
 import { allowedImageDomains, defaultImg, imageExtensionRegex } from "@/lib/imageAssets";
+import { useState } from "react";
 
 interface ImageWithFadeProps extends ImageProps {
   fallbackSrc?: string;
@@ -45,8 +45,9 @@ export const FallbackImage = ({
         alt={alt}
         fill
         priority
+        unoptimized
         sizes="sm:100vw, 33vw"
-        className={`absolute inset-0 object-cover blur-sm scale-105 transition-opacity duration-300 ${
+        className={`absolute inset-0 object-cover scale-105 transition-opacity duration-300 ${
           isLoaded ? "opacity-0" : "opacity-100"
         }`}
         aria-hidden="true"
@@ -65,23 +66,6 @@ export const FallbackImage = ({
         {...props}
       />
     </div>
-
-    // <Image
-    //   src={finalSrc}
-    //   alt={alt}
-    //   onLoad={() => setIsLoaded(true)}
-    //   onError={() => setHasError(true)}
-    //   placeholder={blurDataURL ? "blur" : undefined}
-    //   blurDataURL={blurDataURL}
-    //   fill
-    //   priority
-    //   unoptimized
-    //   sizes="(max-width: 768px) 100vw, 33vw"
-    //   className={`transition-opacity duration-700 ease-in-out ${
-    //     isLoaded ? "opacity-100" : "opacity-0"
-    //   } ${className}`}
-    //   {...props}
-    // />
   );
 };
 

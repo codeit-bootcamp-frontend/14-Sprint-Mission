@@ -1,18 +1,14 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
 import styles from './ProductItem.module.css';
-import Icon from 'components/ui/Icon';
-import Button from 'components/ui/Button';
 import clsx from 'clsx';
 import { ProductSummary, useToggleProductFavorite } from '@/hooks/useItems';
 import { FallbackImage } from '../FallbackImage/FallbackImage';
 import { defaultImg } from '@/lib/imageAssets';
 import { useConfirmModal, useModal } from '@/hooks/useModal';
 import ConfirmModal from '../ui/ConfirmModal';
-import { useAuth } from '@/contexts/AuthContext';
 import { useGetUserFavorites } from '@/hooks/useUser';
 import LikeButton from '../ui/LikeButton';
 
@@ -27,7 +23,14 @@ function ProductItem({productItem}: ProductItemProps) {
 
   const productId = productItem.id ?? 0; 
 
+  const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
   const { data } = useGetUserFavorites({});
+
+  const { mutate: toggleFavorite } = useToggleProductFavorite(openConfirmModal, {
+  onSuccess: (data) => {
+      openConfirmModal(data.isFavorited ? "관심상품 등록되었습니다" :  "관심상품 취소되었습니다");
+    },
+  });
   const isFavorite = data?.list.some((item) => item.id === productId) ?? false;
 
   return (
@@ -44,8 +47,14 @@ function ProductItem({productItem}: ProductItemProps) {
         <div className={styles.name}>{productItem.name}</div>
         <div className={styles.price}>{productItem.price?.toLocaleString()}원</div>
         
-        <LikeButton productId={productId} favoriteCount={productItem.favoriteCount} isFavorite={isFavorite} />
+        <LikeButton 
+          id={productId} 
+          favoriteCount={productItem.favoriteCount} 
+          toggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
+          />
       </div>
+      <ConfirmModal isOpen={isConfirmOpen} onClose={closeConfirmModal} errorMessage={confirmMessage} />
     </li>
   );
 }

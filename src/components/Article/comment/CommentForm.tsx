@@ -2,30 +2,36 @@
 import Button from 'components/ui/Button';
 import { TextAreaBox } from '@/components/ui/form/InputBox';
 import React, { useState } from 'react';
-import { usePostProductComment } from '@/hooks/useProductsComments';
 import { useConfirmModal, useModal } from '@/hooks/useModal';
 import ConfirmModal from '@/components/ui/ConfirmModal';
+import { usePostArticleComment } from '@/hooks/useArticles';
+import { useAuth } from '@/contexts/AuthContext';
 
 type CommentFormProps = {
-  productId: number;
+  articleId: number;
 };
 
-function CommentForm({productId}: CommentFormProps) {
-
+function CommentForm({articleId}: CommentFormProps) {
+  const { user } = useAuth();
   const [requestCommentValue, setRequestCommentValue] = useState<string>('');
   const { isConfirmOpen, confirmMessage, openConfirmModal, closeConfirmModal } = useConfirmModal();
-  const { mutate: postComment } = usePostProductComment(productId, openConfirmModal);
+
+  const { mutate: postComment } = usePostArticleComment(articleId, openConfirmModal);
   
   const handleClick = () => {
+    if(!user) {
+      openConfirmModal('로그인 후 이용 가능합니다.');
+      return;
+    }
     postComment(requestCommentValue);
     setRequestCommentValue('');
   };
 
   return (    
     <div className='w-full mb-6'>
-      <h5 className='text-cool-gray-900 mb-2 font-bold ml-2'>문의하기</h5>
+      <h5 className='text-cool-gray-900 mb-2 font-bold ml-1'>댓글달기</h5>
       <TextAreaBox
-        placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.' 
+        placeholder='댓글을 입력해주세요.' 
         value={requestCommentValue} 
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setRequestCommentValue(e.target.value)}
         />
