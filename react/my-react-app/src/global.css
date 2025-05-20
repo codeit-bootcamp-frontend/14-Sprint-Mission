@@ -13,6 +13,11 @@
   --blue: #3692ff;
 }
 
+html,
+body {
+  min-width: 373px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -37,7 +42,7 @@ header {
   padding: 0 16px;
   background-color: #ffffff;
   border-bottom: 1px solid #dfdfdf;
-  z-index: 1;
+  z-index: 1000;
 }
 
 main {
