@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import FormField from "./FormField";
 
-const StyledTextArea = styled.textarea`
+const Input = styled.input`
   width: 100%;
-  height: 282px;
+  height: 56px;
   border-radius: 8px;
   border: 1px solid #e5e8ec;
   background-color: #f4f6fa;
-  padding: 16px;
+  padding: 0 16px;
   font-size: 16px;
-  resize: none;
   box-sizing: border-box;
 
   &:focus {
@@ -22,12 +21,12 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-function TextArea({ label, error, ...props }) {
+function TextInput({ label, error, ...props }) {
   return (
     <FormField label={label} error={error}>
-      <StyledTextArea {...props} />
+      <Input type="text" {...props} />
     </FormField>
   );
 }
 
-export default TextArea;
+export default TextInput;
