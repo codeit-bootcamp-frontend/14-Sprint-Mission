@@ -3,7 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pandamarket.com/" />
+    <meta property="og:title" content="판다 마켓" />
+    <meta property="og:description" content="일상의 모든 물건을 거래해보세요" />
+    <meta
+      property="og:image"
+      content="https://img.freepik.com/premium-photo/adorable-white-pomeranian-puppy-spitz_463999-7.jpg?semt=ais_hybrid&w=740"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://pandamarket.com/" />
+    <meta name="twitter:title" content="판다 마켓" />
+    <meta
+      name="twitter:description"
+      content="일상의 모든 물건을 거래해보세요"
+    />
+    <meta
+      name="twitter:image"
+      content="https://img.freepik.com/premium-photo/adorable-white-pomeranian-puppy-spitz_463999-7.jpg?semt=ais_hybrid&w=740"
+    />
     <link rel="stylesheet" href="/panda_market.css" />
+    <link rel="stylesheet" href="/global.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
@@ -18,63 +39,84 @@
   <body>
     <header>
       <div class="header__container">
-        <a href="/"><img src="/img/title__logo.png" alt="판다마켓" /></a>
+        <a href="/"><img src="/assets/img/title__logo.png" alt="판다마켓" /></a>
         <button onclick="window.location.href='/html/login.html';">
           로그인
         </button>
       </div>
     </header>
     <div class="main__image__container">
-      <div>
-        <p>
-          일상의 모든 물건을 <br />
-          거래해 보세요
-        </p>
+      <div class="main__explain">
+        <p>일상의 모든 물건을 거래해 보세요</p>
         <a href="/html/items.html"><button>구경하러 가기</button></a>
       </div>
       <div>
-        <img src="/img/img__home__top.png" alt="메인이미지지" />
+        <img src="/assets/img/img__home__top.png" alt="메인이미지" />
       </div>
     </div>
 
     <div class="flex__container">
-      <div class="hot__item card__content__container hot__item__padding">
-        <h3 class="min__title">Hot item</h3>
-        <p class="explanation__content explanation__content__margin">
-          인기 상품을 <br />
-          확인해 보세요
-        </p>
-        <p class="explanation__detail">
-          가장 HOT한 중고거래 물품을<br />판다 마켓에서 확인해 보세요
-        </p>
+      <div class="card">
+        <img
+          src="/assets/img/Img_home_01.png"
+          alt="Hot item image"
+          class="card__img"
+        />
+        <div class="card__text">
+          <div class="min__title">Hot item</div>
+          <p class="explanation__content">
+            인기 상품을 <span class="break-md"></span>확인해 보세요
+          </p>
+          <p class="explanation__detail">
+            가장 HOT한 중고거래 물품을 <span class="break-md"></span>판다
+            마켓에서 확인해 보세요
+          </p>
+        </div>
       </div>
 
-      <div class="search card__content__container__reverse search__padding">
-        <h3 class="min__title">Search</h3>
-        <p class="explanation__content explanation__content__margin__reverse">
-          구매를 원하는<br />상품을 검색하세요
-        </p>
-        <p class="explanation__detail">
-          구매하고 싶은 물품은 검색해서<br />
-          쉽게 찾아보세요
-        </p>
+      <div class="card reverse">
+        <img
+          src="/assets/img/Img_home_02.png"
+          alt="Search image"
+          class="card__img"
+        />
+        <div class="card__text">
+          <div class="min__title">Search</div>
+          <p class="explanation__content">
+            구매를 원하는 <span class="break-md"></span>상품을 검색하세요
+          </p>
+          <p class="explanation__detail">
+            구매하고 싶은 물품은 검색해서 <span class="break-md"></span>쉽게
+            찾아보세요
+          </p>
+        </div>
       </div>
 
-      <div class="register card__content__container register__padding">
-        <h3 class="min__title">Register</h3>
-        <p class="explanation__content explanation__content__margin__detail">
-          판매를 원하는<br />상품을 등록하세요
-        </p>
-        <p class="explanation__detail">
-          어떤 물건이든 판매하고 싶은 상품을 <br />쉽게 등록하세요
-        </p>
+      <div class="card">
+        <img
+          src="/assets/img/Img_home_03.png"
+          alt="Register image"
+          class="card__img"
+        />
+        <div class="card__text">
+          <div class="min__title">Register</div>
+          <p class="explanation__content">
+            판매를 원하는 <span class="break-md"></span>상품을 등록하세요
+          </p>
+          <p class="explanation__detail">
+            어떤 물건이든 판매하고 싶은 상품을
+            <span class="break-md"></span> 쉽게 등록하세요
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="main__image__container">
-      <p class="sizing__container">믿을 수 있는 <br />판다마켓 중고 거래</p>
+      <p class="sizing__container">
+        믿을 수 있는 <span class="break-md"></span>판다마켓 중고 거래
+      </p>
       <div>
-        <img src="/img/Img_home_bottom.png" alt="바텀이미지" />
+        <img src="/assets/img/Img_home_bottom.png" alt="바텀이미지" />
       </div>
     </div>
 

@@ -1,22 +1,3 @@
-:root {
-  --gray900: #111827;
-  --gray800: #1f2937;
-  --gray700: #374151;
-  --gray600: #4b5563;
-  --gray500: #6b7280;
-  --gray400: #9ca3af;
-  --gray300: #d1d5db;
-  --gray200: #e5e7eb;
-  --gray100: #f3f4f6;
-  --gray50: #f9fafb;
-  --blue: #3692ff;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: 'Pretendard Variable';
-}
-
 a {
   cursor: pointer;
   text-decoration: none;
@@ -33,7 +14,6 @@ body {
 }
 
 header {
-  padding: 0 200px;
   position: fixed;
   top: 0;
   left: 0;
@@ -43,7 +23,7 @@ header {
 }
 
 .header__container {
-  margin: 9px 200px 10px;
+  margin: 10px 350px 9px;
   display: flex;
   justify-content: space-between;
 }
@@ -55,13 +35,18 @@ header {
 
 .header__container button {
   width: 128px;
-  height: 48px;
+  padding: 12px 23px;
   color: white;
   background-color: var(--blue);
   border-radius: 8px;
   border: solid 1px;
   font-size: 16px;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+.main__explain {
+  width: 360px;
 }
 
 .main__image__container {
@@ -71,13 +56,12 @@ header {
   color: var(--gray700);
   width: 100%;
   margin: 0 auto;
-  padding: 200px 405px 0;
-  height: 540px;
+  padding: 200px 0 0;
 }
 
 .main__image__container p {
   margin-bottom: 32px;
-  margin-top: 40px;
+  margin-right: 60px;
   font-weight: 700;
   font-size: 40px;
   line-height: 140%;
@@ -97,54 +81,7 @@ header {
 
 .main__image__container img {
   width: 740px;
-  height: 340px;
-}
-
-.min__title {
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--blue);
-  margin: 0px;
-}
-
-.explanation__content {
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 1.4;
-  color: var(--gray700);
-}
-
-.explanation__content__margin {
-  margin-top: 12px;
-  margin-bottom: 24px;
-  margin-right: 52px;
-}
-
-.explanation__detail {
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--gray700);
-  margin: 0px;
-}
-
-.hot__item {
-  background-image: url('/img/Img_home_01.png');
-}
-
-.search {
-  background-image: url('/img/Img_home_02.png');
-}
-
-.register {
-  background-image: url('/img/Img_home_03.png');
-}
-
-.card__content__container {
-  background-repeat: no-repeat;
-  width: 988px;
-  height: 444px;
-  background-color: #fcfcfc;
-  margin: 138px 466px;
+  height: auto;
 }
 
 .flex__container {
@@ -154,36 +91,53 @@ header {
   justify-content: center;
 }
 
-.card__content__container__reverse {
-  background-repeat: no-repeat;
-  background-position: right;
-  width: 988px;
-  height: 444px;
-  background-color: #fcfcfc;
+.card {
+  width: 100%;
+  max-width: 1020px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
   margin: 138px 0;
-  text-align: end;
+  background-color: #fcfcfc;
 }
 
-.explanation__content__margin__reverse {
-  margin-top: 12px;
-  margin-bottom: 24px;
+.min__title {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--blue);
+  margin: 0px;
 }
 
-.hot__item__padding {
-  padding: 103px 23.5px 103px 666.5px;
+.card__text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 23.5px;
 }
 
-.search__padding {
-  padding: 103px 657px 103px 14px;
+.explanation__content {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 1.4;
+  color: var(--gray700);
+  margin: 12px 52px 24px 0;
+  width: 100%;
 }
 
-.register__padding {
-  padding: 103px 7px 103px 636px;
+.explanation__detail {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--gray700);
+  margin: 0;
+  width: 100%;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
 .sizing__container {
   width: 320px;
-  height: 172px;
 }
 
 footer {
@@ -222,127 +176,119 @@ footer {
   height: 20px;
 }
 
-@media (max-width: 1440px) {
-  header {
-    padding: 0 100px;
-  }
-
-  .header__container {
-    margin: 9px 100px 10px;
-  }
-
-  .main__image__container {
-    padding: 150px 50px 0;
-    height: auto;
-  }
-
-  .main__image__container img {
-    width: 100%;
-    max-width: 740px;
-    height: auto;
-  }
-
-  .main__image__container p {
-    font-size: 32px;
-  }
-
-  .main__image__container button {
-    width: 300px;
-    font-size: 18px;
-  }
+.break-md {
+  display: block;
+  height: 0;
 }
 
 @media (max-width: 1024px) {
-  .card__content__container,
-  .card__content__container__reverse {
-    width: 90%;
-    height: auto;
-    margin: 50px auto;
-  }
-
-  .hot__item__padding,
-  .search__padding,
-  .register__padding {
-    padding: 50px 20px;
-  }
-
-  .explanation__content {
-    font-size: 32px;
-  }
-
-  .explanation__detail {
-    font-size: 20px;
+  header {
+    padding: 0 24px;
   }
 
   .main__image__container {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-  }
-
-  .main__image__container img {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  header {
-    padding: 0 20px;
   }
 
   .header__container {
+    margin: 10px 24px 9px;
+  }
+
+  .main__explain {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-
-  .header__container img,
-  .header__container button {
-    margin: 10px 0;
-  }
-
-  .main__image__container {
-    padding: 50px 20px 0;
-    height: auto;
-  }
-
-  .main__image__container button {
-    width: 90%;
-    font-size: 16px;
-  }
-
-  .card__content__container,
-  .card__content__container__reverse {
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 20px;
-    height: auto;
   }
 
-  footer {
+  .main__image__container p {
+    margin-right: 0;
+  }
+  .card {
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0;
+    align-items: normal;
+    padding: 0 24px;
+    background-color: white;
+  }
+  .explanation__content .break-md {
+    display: none;
+  }
+
+  .sizing__container {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    font-size: 14px;
-    text-align: center;
+    justify-content: center;
+  }
+
+  .main__image__container .sizing__container {
+    margin-bottom: 217px;
+  }
+
+  .footer__text {
+    padding-right: 63.44px;
+  }
+
+  .footer__sns {
+    padding-left: 63.44px;
   }
 }
 
-@media (max-width: 480px) {
+/* 모바일 */
+@media (max-width: 767px) {
+  header {
+    padding: 0 16px;
+  }
+
+  .main__explain {
+    max-width: 240px;
+    margin-bottom: 132px;
+  }
+  .main__image__container {
+    padding: 150px 0 0;
+  }
   .main__image__container p {
-    font-size: 24px;
+    text-align: center;
+    font-size: 32px;
   }
 
   .main__image__container button {
+    max-width: 240px;
+    font-size: 18px;
+  }
+
+  .main__image__container .sizing__container {
+    margin-bottom: 131px;
+  }
+
+  .card {
+    margin: 52px 0;
+  }
+
+  footer {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .footer__text {
+    order: 2;
+    margin-top: 24px;
+    padding-right: 0;
     width: 100%;
+    padding-left: 50px;
   }
 
-  .explanation__content {
-    font-size: 24px;
-  }
-
-  .explanation__detail {
-    font-size: 16px;
+  .footer__text--a,
+  .footer__sns {
+    order: 1;
+    margin-top: 0;
+    padding-right: 50px;
+    padding-left: 50px;
   }
 }
