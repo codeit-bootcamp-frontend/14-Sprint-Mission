@@ -1,0 +1,36 @@
+.tag-wrapper {
+  margin-bottom: 32px;
+}
+
+.tag-wrapper > .input-wrapper {
+  margin-bottom: 14px;
+}
+
+.tag-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  padding: 5px 12px 5px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: "Pretendard";
+}
+
+.tag-item span {
+  margin-right: 8px;
+}
+
+.tag-item img {
+  width: 22px;
+  height: 24px;
+  cursor: pointer;
+}

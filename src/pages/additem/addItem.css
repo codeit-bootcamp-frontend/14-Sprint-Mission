@@ -1,0 +1,51 @@
+.additem-container {
+  max-width: 1200px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 24px 0 70px 0;
+}
+
+.additem-top-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.additem-title {
+  line-height: 20px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.submit-button {
+  background-color: #3692ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 23px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .additem-container {
+    /* max-width: 346px; */
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .additem-container {
+    max-width: 696px;
+  }
+}

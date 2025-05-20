@@ -29,11 +29,15 @@
 
 .link {
   padding: 25px 15px;
-  color: black;
+  color: #4b5563;
   text-decoration-line: none;
   font-size: 18px;
   font-weight: 700;
   color: #4b5563;
+}
+
+.link-active {
+  color: #3692ff;
 }
 
 @media (max-width: 768px) {

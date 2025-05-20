@@ -1,0 +1,42 @@
+.input-wrapper {
+  margin-bottom: 32px;
+  max-width: 1200px;
+}
+
+.input-wrapper label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  width: 100%;
+
+  background-color: #f5f6f8;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2937;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.input-wrapper textarea {
+  height: 282px;
+}
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+  outline: none;
+  border: 2px solid #3692ff;
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+  color: #9ca3af;
+}
