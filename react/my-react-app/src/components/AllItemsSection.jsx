@@ -43,28 +43,56 @@ function AllItemsSection({
 
   return (
     <SectionContainer>
-      <AllItemsHeader>
-        <TitleRow>
+      {/* 데스크톱 & 태블릿 모드 (768px 이상) */}
+      {windowWidth > 767 ? (
+        <AllItemsHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <AllItemsTitle>전체 상품</AllItemsTitle>
-          <MobileAddButton to="/additem">상품 등록하기</MobileAddButton>
-        </TitleRow>
-        <HeaderControls>
-          <SearchForm
-            value={inputValue}
-            onChange={handleSearchInputChange}
-            onSubmit={handleSearchSubmit}
-          />
-          <DesktopAddButton to="/additem">상품 등록하기</DesktopAddButton>
-          <Dropdown
-            options={sortOptions}
-            selectedValue={orderBy}
-            onChange={handleSortChange}
-            isMobile={windowWidth <= 767}
-            isOpen={mobileSortOpen}
-            setIsOpen={setMobileSortOpen}
-          />
-        </HeaderControls>
-      </AllItemsHeader>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <SearchForm
+              value={inputValue}
+              onChange={handleSearchInputChange}
+              onSubmit={handleSearchSubmit}
+            />
+            <DesktopAddButton to="/additem">상품 등록하기</DesktopAddButton>
+            <Dropdown
+              options={sortOptions}
+              selectedValue={orderBy}
+              onChange={handleSortChange}
+              isMobile={false}
+              isOpen={mobileSortOpen}
+              setIsOpen={setMobileSortOpen}
+            />
+          </div>
+        </AllItemsHeader>
+      ) : (
+        /* 모바일 모드 (767px 이하) */
+        <AllItemsHeader>
+          {/* 첫 번째 줄: 전체 상품 텍스트와 상품 등록하기 버튼 */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+            <AllItemsTitle>전체 상품</AllItemsTitle>
+            <MobileAddButton to="/additem">상품 등록하기</MobileAddButton>
+          </div>
+          
+          {/* 두 번째 줄: 정렬 드롭다운과 검색창 */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Dropdown
+              options={sortOptions}
+              selectedValue={orderBy}
+              onChange={handleSortChange}
+              isMobile={true}
+              isOpen={mobileSortOpen}
+              setIsOpen={setMobileSortOpen}
+            />
+            <SearchForm
+              value={inputValue}
+              onChange={handleSearchInputChange}
+              onSubmit={handleSearchSubmit}
+              style={{ flex: 1 }}
+            />
+          </div>
+        </AllItemsHeader>
+      )}
+      
 
       {loading ? (
         <MessageParagraph>상품 로딩 중...</MessageParagraph>

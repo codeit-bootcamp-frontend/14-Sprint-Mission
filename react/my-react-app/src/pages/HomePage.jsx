@@ -11,7 +11,7 @@ function HomePage() {
             <br />
             거래해 보세요
           </h1>
-          <Link to="/products" className="button pill-button">
+          <Link to="/items" className="button pill-button">
             구경하러 가기
           </Link>
         </div>

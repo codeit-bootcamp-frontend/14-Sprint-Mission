@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 export const ProductsPageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  padding-top: 100px;
+  padding: 0 20px 20px 20px;
 `;
 
 // Section containers
@@ -17,7 +16,7 @@ export const SectionContainer = styled.section`
 export const SectionTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 // All items header
@@ -50,13 +49,15 @@ export const TitleRow = styled.div`
 
 export const AllItemsTitle = styled.h2`
   margin-bottom: 0;
-  margin-right: 12px;
+  margin-right: 20px;
   font-size: 24px;
   font-weight: bold;
   white-space: nowrap;
+  flex-shrink: 0;
 
   @media (max-width: 767px) {
     font-size: 20px;
+    margin-right: 10px;
   }
 `;
 
@@ -66,12 +67,14 @@ export const HeaderControls = styled.div`
   align-items: center;
   gap: 12px;
   flex: 1;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
 
   @media (max-width: 767px) {
     width: 100%;
     justify-content: space-between;
     flex-wrap: nowrap;
+    margin-top: 12px;
   }
 `;
 

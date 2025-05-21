@@ -1,9 +1,47 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import styled from "styled-components";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
 import { ErrorMessage, ProductsPageContainer } from "./ProductsPage.styled";
+import Button from "../components/ui/Button";
+
+const PageContainer = styled.div`
+  margin: 0 auto;
+  padding-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const CommonContainer = styled.div`
+  width: 100%;
+  max-width: 344px; /* 모바일 기본 너비 */
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* 태블릿 화면 */
+  @media (min-width: 768px) {
+    max-width: 696px;
+  }
+
+  /* 데스크톱 화면 */
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+`;
+
+const FormHeader = styled(CommonContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+`;
+
+const Title = styled.h2`
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+`;
 
 const API_BASE_URL = "https://panda-market-api.vercel.app/";
 
@@ -191,25 +229,27 @@ function ProductsPage() {
   }
 
   return (
-    <ProductsPageContainer>
-      <BestItemsSection items={visibleBestItems} loading={loadingBest} />
+    <PageContainer>
+      <ProductsPageContainer>
+        <BestItemsSection items={visibleBestItems} loading={loadingBest} />
 
-      <AllItemsSection
-        items={visibleAllItems}
-        loading={loadingAll}
-        inputValue={inputValue}
-        handleSearchInputChange={handleSearchInputChange}
-        handleSearchSubmit={handleSearchSubmit}
-        orderBy={sort}
-        handleSortChange={handleSortChange}
-        windowWidth={windowWidth}
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-        mobileSortOpen={mobileSortOpen}
-        setMobileSortOpen={setMobileSortOpen}
-      />
-    </ProductsPageContainer>
+        <AllItemsSection
+          items={visibleAllItems}
+          loading={loadingAll}
+          inputValue={inputValue}
+          handleSearchInputChange={handleSearchInputChange}
+          handleSearchSubmit={handleSearchSubmit}
+          orderBy={sort}
+          handleSortChange={handleSortChange}
+          windowWidth={windowWidth}
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+          mobileSortOpen={mobileSortOpen}
+          setMobileSortOpen={setMobileSortOpen}
+        />
+      </ProductsPageContainer>
+    </PageContainer>
   );
 }
 

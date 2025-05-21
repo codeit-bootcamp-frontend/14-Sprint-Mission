@@ -18,7 +18,8 @@ const StyledTextArea = styled.textarea`
   }
 
   &::placeholder {
-    color: #999;
+    color: #666;
+    opacity: 1;
   }
 `;
 

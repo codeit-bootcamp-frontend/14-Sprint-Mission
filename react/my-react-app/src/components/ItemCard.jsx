@@ -8,7 +8,7 @@ function ItemCard({ item, imageType = "all" }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/products/${item.id}`);
+    navigate(`/items/${item.id}`);
   };
 
   return (

@@ -9,7 +9,9 @@ function Header() {
   };
   const location = useLocation();
   const isItemsOrAddItemPage =
-    location.pathname === "/items" || location.pathname === "/additem";
+    location.pathname === "/items" || 
+    location.pathname.startsWith("/items/") || 
+    location.pathname === "/additem";
 
   return (
     <header>

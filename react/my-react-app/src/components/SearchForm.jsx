@@ -3,20 +3,23 @@ import styled from "styled-components";
 
 const SearchFormContainer = styled.form`
   width: 100%; /* Use full width on mobile */
-  max-width: 400px; /* Allow it to grow larger on mobile */
+  max-width: 300px; /* Reduced max-width */
+  flex-shrink: 1;
 
   @media (min-width: 768px) {
     width: 242px;
   }
 
   @media (min-width: 1280px) {
-    width: 470px;
+    width: 300px;
   }
 
   @media (max-width: 767px) {
     flex-grow: 1; /* Take up available space */
     flex-shrink: 1;
-    width: calc(100% - 54px); /* Leave room for the dropdown */
+    width: 100%; /* Full width on mobile */
+    margin-top: 10px;
+    order: 3; /* Move to bottom on mobile */
   }
 `;
 

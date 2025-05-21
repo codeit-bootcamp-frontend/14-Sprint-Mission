@@ -12,7 +12,7 @@ const LayoutContainer = styled.div`
 
 const MainContent = styled.main`
   flex: 1;
-  padding-top: 60px; // Header 높이만큼 여백
+  padding-top: 30px; // 줄인 패딩
 `;
 
 function Layout() {
