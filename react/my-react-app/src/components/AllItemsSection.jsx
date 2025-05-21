@@ -18,7 +18,7 @@ import {
   MobileSortButton,
   MobileSortMenu,
   MobileSortMenuItem,
-} from "../pages/ProductsPage.styled";
+} from "../styles/pages/ProductsPage.styled";
 
 function AllItemsSection({
   items,

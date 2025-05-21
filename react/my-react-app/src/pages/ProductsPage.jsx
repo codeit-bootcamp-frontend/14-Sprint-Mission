@@ -3,8 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
-import { ErrorMessage, ProductsPageContainer } from "./ProductsPage.styled";
-import { PageContainer } from "../styles/pages/ProductsPage.styled";
+import { ErrorMessage, ProductsPageContainer, PageContainer } from "../styles/pages/ProductsPage.styled";
 import Button from "../components/ui/Button";
 
 
