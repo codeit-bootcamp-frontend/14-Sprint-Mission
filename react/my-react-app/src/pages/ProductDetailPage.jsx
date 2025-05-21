@@ -124,7 +124,7 @@ const CommentInput = styled.textarea`
   height: 104px;
   border-radius: 8px;
   border: 1px solid #e5e8ec;
-  background-color: #ffffff;
+  background-color: #f4f6fa;
   padding: 16px;
   font-size: 14px;
   resize: none;
@@ -330,22 +330,18 @@ function ProductDetailPage() {
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [commentError, setCommentError] = useState(null);
-  const [newComment, setNewComment] = useState(DEFAULT_COMMENT);
+  const [newComment, setNewComment] = useState("");
   const [submittingComment, setSubmittingComment] = useState(false);
   const commentInputRef = useRef(null);
 
-  // 포커스 핸들러: 입력창 클릭 시 디폴트 문구 제거
+  // 포커스 핸들러: 더 이상 필요하지 않음 (placeholder 사용)
   const handleCommentFocus = () => {
-    if (newComment === DEFAULT_COMMENT) {
-      setNewComment("");
-    }
+    // 플레이스홀더를 사용하므로 아무 작업도 하지 않음
   };
 
-  // 블러 핸들러: 입력이 없으면 디폴트 문구 복원
+  // 블러 핸들러: 더 이상 필요하지 않음 (placeholder 사용)
   const handleCommentBlur = () => {
-    if (!newComment.trim()) {
-      setNewComment(DEFAULT_COMMENT);
-    }
+    // 플레이스홀더를 사용하므로 아무 작업도 하지 않음
   };
 
   const handleFavoriteClick = async () => {
@@ -508,9 +504,7 @@ function ProductDetailPage() {
         <CommentsSection>
           <SectionTitle>문의하기</SectionTitle>
           <CommentForm onSubmit={handleCommentSubmit}>
-            <FormField
-              type="textarea"
-              label=""
+            <CommentInput
               placeholder={DEFAULT_COMMENT}
               value={newComment}
               onChange={handleCommentChange}
