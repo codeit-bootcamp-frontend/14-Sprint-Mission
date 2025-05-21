@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { productAPI } from "../api/products";
 import ProductImages from "../components/product/ProductImages";
-import ProductInfo from "../components/product/ProductInfo";
-import ProductTags from "../components/product/ProductTags";
-import SellerInfo from "../components/product/SellerInfo";
-import FormField from "../components/ui/FormField";
-import Button from "../components/ui/Button";
+import ProductDetails from "../components/product/ProductDetails";
+import CommentSection from "../components/comment/CommentSection";
+import LoadingErrorHandler from "../components/ui/LoadingErrorHandler";
+import { formatTimeAgo } from "../utils/timeFormat";
 
 const PageContainer = styled.div`
   margin: 0 auto;
@@ -92,236 +91,6 @@ const ContentLayout = styled.div`
   }
 `;
 
-const ProductDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const CommentsSection = styled.div`
-  margin-top: 40px;
-  width: 100%;
-`;
-
-const SectionTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 16px;
-`;
-
-const CommentForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-  padding: 0;
-  border-radius: 8px;
-`;
-
-const CommentInput = styled.textarea`
-  width: 100%;
-  height: 104px;
-  border-radius: 8px;
-  border: 1px solid #e5e8ec;
-  background-color: #f4f6fa;
-  padding: 16px;
-  font-size: 14px;
-  resize: none;
-  box-sizing: border-box;
-  color: #333333;
-  font-family: inherit;
-
-  &:focus {
-    border-color: #007aff;
-    outline: none;
-  }
-
-  &::placeholder {
-    color: #666;
-    opacity: 1;
-  }
-`;
-
-const NoticeText = styled.p`
-  font-size: 12px;
-  color: #777;
-  margin-top: 8px;
-  margin-bottom: 16px;
-  line-height: 1.4;
-`;
-
-const SubmitButton = styled.button`
-  align-self: flex-end;
-  padding: 8px 16px;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #5a6268;
-  }
-`;
-
-const CommentList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const MessageParagraph = styled.p`
-  text-align: center;
-  color: #8b95a1;
-  padding: 20px;
-  font-size: 14px;
-`;
-
-const CommentItem = styled.div`
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #f0f0f0;
-`;
-
-const CommentAvatar = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-weight: 600;
-  flex-shrink: 0;
-  margin-right: 8px;
-`;
-
-const CommentKebabMenu = styled.div`
-  position: relative;
-  cursor: pointer;
-`;
-
-const KebabIcon = styled.div`
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-
-  &:hover {
-    color: #333;
-  }
-`;
-
-const KebabMenuDropdown = styled.div`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border: 1px solid #e5e8ec;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  min-width: 100px;
-`;
-
-const KebabMenuItem = styled.button`
-  width: 100%;
-  text-align: left;
-  padding: 8px 12px;
-  background: none;
-  border: none;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f5f5f5;
-  }
-`;
-
-const CommentHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-`;
-
-const CommentAuthor = styled.span`
-  font-weight: 500;
-  color: #666;
-  margin-right: 8px;
-`;
-
-const CommentDate = styled.span`
-  color: #999;
-`;
-
-const CommentText = styled.p`
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #333;
-  flex-grow: 1;
-`;
-
-const CommentFooter = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-  font-size: 12px;
-  color: #999;
-`;
-
-const Header = styled.h1`
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 32px;
-`;
-
-// 디폴트 문구 정의
-const DEFAULT_COMMENT =
-  "개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.";
-
-// 시간 포맷 함수
-const formatTimeAgo = (dateString) => {
-  const now = new Date();
-  const date = new Date(dateString);
-  const diffInSeconds = Math.floor((now - date) / 1000);
-
-  if (diffInSeconds < 60) {
-    return "방금 전";
-  }
-
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) {
-    return `${diffInMinutes}분 전`;
-  }
-
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) {
-    return `${diffInHours}시간 전`;
-  }
-
-  const diffInDays = Math.floor(diffInHours / 24);
-  if (diffInDays < 30) {
-    return `${diffInDays}일 전`;
-  }
-
-  const diffInMonths = Math.floor(diffInDays / 30);
-  if (diffInMonths < 12) {
-    return `${diffInMonths}개월 전`;
-  }
-
-  const diffInYears = Math.floor(diffInMonths / 12);
-  return `${diffInYears}년 전`;
-};
-
 function ProductDetailPage() {
   const { productId } = useParams();
   const [loading, setLoading] = useState(true);
@@ -332,16 +101,15 @@ function ProductDetailPage() {
   const [commentError, setCommentError] = useState(null);
   const [newComment, setNewComment] = useState("");
   const [submittingComment, setSubmittingComment] = useState(false);
-  const commentInputRef = useRef(null);
 
-  // 포커스 핸들러: 더 이상 필요하지 않음 (placeholder 사용)
-  const handleCommentFocus = () => {
-    // 플레이스홀더를 사용하므로 아무 작업도 하지 않음
-  };
-
-  // 블러 핸들러: 더 이상 필요하지 않음 (placeholder 사용)
-  const handleCommentBlur = () => {
-    // 플레이스홀더를 사용하므로 아무 작업도 하지 않음
+  // 댓글 메뉴 토글 핸들러
+  const handleToggleCommentMenu = (commentId) => {
+    const updatedComments = comments.map((comment) =>
+      comment.id === commentId
+        ? { ...comment, showMenu: !comment.showMenu }
+        : { ...comment, showMenu: false }
+    );
+    setComments(updatedComments);
   };
 
   const handleFavoriteClick = async () => {
@@ -355,7 +123,6 @@ function ProductDetailPage() {
       setProduct(data);
     } catch (err) {
       console.error("Failed to toggle favorite:", err);
-      // TODO: 에러 처리
     }
   };
 
@@ -380,18 +147,18 @@ function ProductDetailPage() {
             month: "2-digit",
             day: "2-digit",
           })
-          .replace(/\. /g, ".")
+          .replace(/\. /g, "-")
           .replace(/\.$/, ""),
-        avatar:
-          comment.writer.image || comment.writer.nickname[0].toUpperCase(),
-        writerId: comment.writer.id,
+        avatar: comment.writer.nickname.charAt(0),
         showMenu: false,
       }));
 
       setComments(formattedComments);
     } catch (err) {
       console.error("Failed to fetch comments:", err);
-      setCommentError("댓글을 불러오는데 실패했습니다.");
+      setCommentError(
+        err.response?.data?.message || "댓글을 불러오는데 실패했습니다."
+      );
     } finally {
       setLoadingComments(false);
     }
@@ -400,19 +167,17 @@ function ProductDetailPage() {
   // 댓글 작성 제출
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    if (
-      !newComment.trim() ||
-      newComment === DEFAULT_COMMENT ||
-      submittingComment
-    )
-      return;
+    if (!newComment.trim() || submittingComment) return;
 
     setSubmittingComment(true);
 
     try {
-      const { data } = await productAPI.addComment(productId, newComment);
+      const { data } = await productAPI.addComment(productId, {
+        content: newComment,
+      });
 
-      const formattedComment = {
+      // 새 댓글 추가
+      const newCommentObj = {
         id: data.id,
         author: data.writer.nickname,
         content: data.content,
@@ -424,18 +189,19 @@ function ProductDetailPage() {
             month: "2-digit",
             day: "2-digit",
           })
-          .replace(/\. /g, ".")
+          .replace(/\. /g, "-")
           .replace(/\.$/, ""),
-        avatar: data.writer.image || data.writer.nickname[0].toUpperCase(),
-        writerId: data.writer.id,
+        avatar: data.writer.nickname.charAt(0),
         showMenu: false,
       };
 
-      setComments([formattedComment, ...comments]);
-      setNewComment(DEFAULT_COMMENT);
+      setComments([newCommentObj, ...comments]);
+      setNewComment("");
     } catch (err) {
-      console.error("Failed to submit comment:", err);
-      alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
+      console.error("Failed to add comment:", err);
+      alert(
+        err.response?.data?.message || "댓글 작성에 실패했습니다. 다시 시도해주세요."
+      );
     } finally {
       setSubmittingComment(false);
     }
@@ -445,6 +211,7 @@ function ProductDetailPage() {
     setNewComment(e.target.value);
   };
 
+  // 상품 정보 가져오기
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -470,100 +237,38 @@ function ProductDetailPage() {
     }
   }, [loading, product, fetchComments]);
 
-  if (loading) return <LoadingSpinner>Loading...</LoadingSpinner>;
-  if (error) return <ErrorMessage>{error}</ErrorMessage>;
-  if (!product) return null;
-
   return (
-    <PageContainer>
-      <ProductDetailContainer>
-        <ContentLayout>
-          <div>
-            <ProductImages images={product.images} />
-          </div>
-          <ProductDetails>
-            <ProductInfo
-              name={product.name}
-              price={product.price}
-              description={product.description}
-            />
-            <ProductTags tags={product.tags} />
-            <SellerInfo
-              nickname={product.ownerNickname}
-              image={product.ownerImage}
-              createdAt={product.createdAt}
-              favoriteCount={product.favoriteCount}
-              isFavorite={product.isFavorite}
-              onFavoriteClick={handleFavoriteClick}
-            />
-          </ProductDetails>
-        </ContentLayout>
+    <LoadingErrorHandler loading={loading} error={error}>
+      {product && (
+        <PageContainer>
+          <ProductDetailContainer>
+            <ContentLayout>
+              <div>
+                <ProductImages images={product.images} />
+              </div>
+              <ProductDetails
+                product={product}
+                onFavoriteClick={handleFavoriteClick}
+              />
+            </ContentLayout>
 
-        <Divider />
+            <Divider />
 
-        <CommentsSection>
-          <SectionTitle>문의하기</SectionTitle>
-          <CommentForm onSubmit={handleCommentSubmit}>
-            <CommentInput
-              placeholder={DEFAULT_COMMENT}
-              value={newComment}
-              onChange={handleCommentChange}
-              onFocus={handleCommentFocus}
-              onBlur={handleCommentBlur}
+            <CommentSection
+              comments={comments}
+              newComment={newComment}
+              loadingComments={loadingComments}
+              commentError={commentError}
+              onCommentChange={handleCommentChange}
+              onCommentSubmit={handleCommentSubmit}
+              onCommentFocus={() => {}}
+              onCommentBlur={() => {}}
+              onToggleMenu={handleToggleCommentMenu}
             />
-            <SubmitButton type="submit">등록</SubmitButton>
-          </CommentForm>
-
-          <CommentList>
-            {loadingComments ? (
-              <MessageParagraph>댓글을 불러오는 중...</MessageParagraph>
-            ) : commentError ? (
-              <MessageParagraph>
-                댓글을 불러오는데 오류가 발생했습니다.
-              </MessageParagraph>
-            ) : comments.length === 0 ? (
-              <MessageParagraph>
-                아직 댓글이 없습니다. 처음으로 댓글을 남겨보세요!
-              </MessageParagraph>
-            ) : (
-              comments.map((comment) => (
-                <CommentItem key={comment.id}>
-                  <CommentHeader>
-                    <CommentText>{comment.content}</CommentText>
-                    <CommentKebabMenu>
-                      <KebabIcon
-                        onClick={() => {
-                          // 케밥 메뉴 토글 로직 추가
-                          const updatedComments = comments.map((c) =>
-                            c.id === comment.id
-                              ? { ...c, showMenu: !c.showMenu }
-                              : { ...c, showMenu: false }
-                          );
-                          setComments(updatedComments);
-                        }}
-                      >
-                        ⋮
-                      </KebabIcon>
-                      {comment.showMenu && (
-                        <KebabMenuDropdown>
-                          <KebabMenuItem>수정하기</KebabMenuItem>
-                          <KebabMenuItem>삭제하기</KebabMenuItem>
-                        </KebabMenuDropdown>
-                      )}
-                    </CommentKebabMenu>
-                  </CommentHeader>
-                  <CommentFooter>
-                    <CommentAvatar>{comment.avatar}</CommentAvatar>
-                    <CommentAuthor>{comment.author}</CommentAuthor>
-                    <CommentDate>{comment.timeAgo}</CommentDate>
-                  </CommentFooter>
-                </CommentItem>
-              ))
-            )}
-          </CommentList>
-        </CommentsSection>
-      </ProductDetailContainer>
-    </PageContainer>
+          </ProductDetailContainer>
+        </PageContainer>
+      )}
+    </LoadingErrorHandler>
   );
 }
 
