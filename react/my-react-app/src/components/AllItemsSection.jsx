@@ -45,9 +45,15 @@ function AllItemsSection({
     <SectionContainer>
       {/* 데스크톱 & 태블릿 모드 (768px 이상) */}
       {windowWidth > 767 ? (
-        <AllItemsHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <AllItemsHeader
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <AllItemsTitle>전체 상품</AllItemsTitle>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <SearchForm
               value={inputValue}
               onChange={handleSearchInputChange}
@@ -68,13 +74,32 @@ function AllItemsSection({
         /* 모바일 모드 (767px 이하) */
         <AllItemsHeader>
           {/* 첫 번째 줄: 전체 상품 텍스트와 상품 등록하기 버튼 */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <AllItemsTitle>전체 상품</AllItemsTitle>
             <MobileAddButton to="/additem">상품 등록하기</MobileAddButton>
           </div>
-          
-          {/* 두 번째 줄: 정렬 드롭다운과 검색창 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+
+          {/* 두 번째 줄: 검색창과 정렬 드롭다운 */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              justifyContent: windowWidth <= 767 ? "flex-end" : undefined,
+            }}
+          >
+            <SearchForm
+              value={inputValue}
+              onChange={handleSearchInputChange}
+              onSubmit={handleSearchSubmit}
+              style={{ flex: 1 }}
+            />
             <Dropdown
               options={sortOptions}
               selectedValue={orderBy}
@@ -83,16 +108,9 @@ function AllItemsSection({
               isOpen={mobileSortOpen}
               setIsOpen={setMobileSortOpen}
             />
-            <SearchForm
-              value={inputValue}
-              onChange={handleSearchInputChange}
-              onSubmit={handleSearchSubmit}
-              style={{ flex: 1 }}
-            />
           </div>
         </AllItemsHeader>
       )}
-      
 
       {loading ? (
         <MessageParagraph>상품 로딩 중...</MessageParagraph>

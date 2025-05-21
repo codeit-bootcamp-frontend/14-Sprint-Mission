@@ -16,7 +16,7 @@ const PageButton = styled.button`
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 50%;
   border: 1px solid #e5e8ec;
   background-color: #ffffff;
   color: #4e5968;

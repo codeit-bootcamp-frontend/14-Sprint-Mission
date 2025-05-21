@@ -19,7 +19,6 @@ const SearchFormContainer = styled.form`
     flex-shrink: 1;
     width: 100%; /* Full width on mobile */
     margin-top: 10px;
-    order: 3; /* Move to bottom on mobile */
   }
 `;
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const ProductsPageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px 20px 20px;
+  padding: 0 30px 20px 20px;
 `;
 
 // Section containers
@@ -17,6 +17,7 @@ export const SectionTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  margin-left: 10px;
 `;
 
 // All items header
@@ -54,11 +55,7 @@ export const AllItemsTitle = styled.h2`
   font-weight: bold;
   white-space: nowrap;
   flex-shrink: 0;
-
-  @media (max-width: 767px) {
-    font-size: 20px;
-    margin-right: 10px;
-  }
+  margin-left: 10px;
 `;
 
 export const HeaderControls = styled.div`
@@ -252,6 +249,7 @@ export const AllItemsGrid = styled(ItemsGrid)`
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  padding-left: 10px;
 
   @media (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
