@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { CardItemList, Input, Pagination, Select } from "@/components/index";
 import useItemPageState from "./_hooks/useItemPageState";
@@ -10,7 +11,17 @@ import styles from "./page.module.css";
 
 const PAGINATION_AMOUNT = 5;
 
+const sortList = [
+  { value: "recent", label: "최신순 " },
+  { value: "favorite", label: "좋아요 순" },
+];
+
 const ItemsPage = () => {
+  const searchParams = useSearchParams();
+  const currentSortBy = searchParams.get("sortBy");
+  const currentSortValue =
+    sortList.find(({ value }) => currentSortBy === value) ?? sortList[0];
+
   const {
     itemList,
     bestItemList,
@@ -47,9 +58,19 @@ const ItemsPage = () => {
             <Link className={styles.search_button} href="/additem">
               상품 등록하기
             </Link>
-            <Select>
-              <p data-sort-value="recent">최신순</p>
-              <p data-sort-value="favorite">좋아요순</p>
+            <Select initialOption={currentSortValue}>
+              <Select.Trigger>{currentSortValue.label}</Select.Trigger>
+              <Select.List>
+                {sortList.map((option) => (
+                  <Select.Item
+                    key={option.label}
+                    queryStringKey="sortBy"
+                    option={option}
+                  >
+                    {option.label}
+                  </Select.Item>
+                ))}
+              </Select.List>
             </Select>
           </div>
         </div>

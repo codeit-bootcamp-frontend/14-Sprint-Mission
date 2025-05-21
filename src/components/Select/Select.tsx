@@ -1,41 +1,40 @@
 "use client";
 
+import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Children, ReactElement, useState } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
+import {
+  SelectProvider,
+  useSelectValueContext,
+  useSelectActionContext,
+} from "./context/SelectContext";
+import type { OptionType } from "./context/SelectContext";
 import useOutsideClick from "@/hooks/useOutsideClick";
 
 import ArrowDownIcon from "@/assets/icons/ic_arrow_down.svg";
 import SortIcon from "@/assets/icons/ic_sort.svg";
 import styles from "./Select.module.css";
 
-interface CustomReactNode extends ReactElement {
-  props: {
-    "data-sort-value": string;
-  };
+interface SelectWrapperProps {
+  children: ReactNode;
+  initialOption: OptionType;
 }
 
-type SelectProps = {
-  children?: CustomReactNode | CustomReactNode[];
+const SelectWrapper = ({ children, initialOption }: SelectWrapperProps) => {
+  return (
+    <SelectProvider initialOption={initialOption}>
+      <span className={styles.select_wrapper}>{children}</span>
+    </SelectProvider>
+  );
 };
 
-const Select = ({ children }: SelectProps) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [isOpen, setIsOpen] = useState(false);
-  const targetRef = useOutsideClick<HTMLButtonElement>(() => setIsOpen(false));
+const SelectTrigger = ({ children }: PropsWithChildren) => {
+  const { isOpen } = useSelectValueContext();
+  const { changeOpen } = useSelectActionContext();
+  const targetRef = useOutsideClick<HTMLButtonElement>(() => changeOpen(false));
 
-  const currentSortOption =
-    (searchParams.get("sortBy") as "recent" | "favorite") ?? "recent";
-
-  const toggleClickHandler = () => setIsOpen((prev) => !prev);
-
-  const changeSearchParam = (value: string) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.set("sortBy", value);
-
-    router.push(`?${newSearchParams}`, { scroll: false });
-  };
+  const toggleClickHandler = () => changeOpen(!isOpen);
 
   return (
     <button
@@ -44,35 +43,56 @@ const Select = ({ children }: SelectProps) => {
       className={styles.select_button}
       onClick={toggleClickHandler}
     >
-      <span>{sortList[currentSortOption]}</span>
+      <span>{children}</span>
       <SortIcon className={styles.sort_icon} />
       <ArrowDownIcon className={styles.arrow_icon} />
-      {isOpen && (
-        <ul className={styles.toggle_list}>
-          {Children.map(children, (child) => {
-            if (!child) {
-              return null;
-            }
-
-            const sortValue = child.props["data-sort-value"];
-            return (
-              <li
-                className={styles.toggle_list_item}
-                onClick={() => changeSearchParam(sortValue)}
-              >
-                {child}
-              </li>
-            );
-          })}
-        </ul>
-      )}
     </button>
   );
 };
 
-const sortList = {
-  recent: "최신순",
-  favorite: "좋아요순",
-} as const;
+const SelectList = ({ children }: PropsWithChildren) => {
+  const { isOpen } = useSelectValueContext();
+  return isOpen && <ul className={styles.toggle_list}>{children}</ul>;
+};
 
-export default Select;
+interface SelectItemProps {
+  children: ReactNode;
+  option: OptionType;
+  queryStringKey: string;
+}
+
+const SelectItem = ({ children, queryStringKey, option }: SelectItemProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentQueryValue = searchParams.get(queryStringKey);
+  const { changeOpen, changeOption } = useSelectActionContext();
+
+  const changeSearchParam = (selectedOption: OptionType) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set(queryStringKey, selectedOption.value);
+
+    router.push(`?${newSearchParams}`, { scroll: false });
+
+    changeOption(option);
+    changeOpen(false);
+  };
+
+  return (
+    <li
+      role="button"
+      aria-label={option.label}
+      className={clsx(styles.toggle_list_item, {
+        [styles.selected]: currentQueryValue === option.value,
+      })}
+      onClick={() => changeSearchParam(option)}
+    >
+      {children}
+    </li>
+  );
+};
+
+SelectWrapper.Trigger = SelectTrigger;
+SelectWrapper.List = SelectList;
+SelectWrapper.Item = SelectItem;
+
+export default SelectWrapper;
