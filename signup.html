@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
+    />
+    <title>판다마켓</title>
+    <link rel="stylesheet" href="style.css" />
+    <style></style>
+  </head>
+  <body class="login_page">
+    <main id="contents" class="contents">
+      <div class="flex_center_box">
+        <h1 class="logo large">
+          <a href="/"><img src="images/logo.png" alt="판다마켓" /></a>
+        </h1>
+
+        <form action="">
+          <div class="login_area_box">
+            <div class="input_box">
+              <label for="input_email" class="label">이메일</label>
+              <input
+                type="text"
+                id="input_email"
+                placeholder="이메일을 입력해주세요"
+              />
+            </div>
+            <div class="input_box">
+              <label for="input_nickname" class="label">닉네임</label>
+              <input
+                type="text"
+                id="input_nickname"
+                placeholder="닉네임을 입력해주세요"
+              />
+            </div>
+            <div class="input_box">
+              <label for="input_pw" class="label">비밀번호</label>
+              <div class="input btn_group">
+                <input
+                  type="password"
+                  id="input_pw"
+                  placeholder="비밀번호를 입력해주세요"
+                />
+                <button type="button" class="btn btn_pw">
+                  <span>비밀번호 보이기</span>
+                </button>
+                <!--<button type="button" class="btn btn_pw show"><span>비밀번호 보이기</span></button> -->
+              </div>
+            </div>
+            <div class="input_box">
+              <label for="input_pw" class="label">비밀번호 확인</label>
+              <div class="input btn_group">
+                <input
+                  type="password"
+                  id="input_pw"
+                  placeholder="비밀번호를 다시 한 번 입력해주세요"
+                />
+                <button type="button" class="btn btn_pw">
+                  <span>비밀번호 보이기</span>
+                </button>
+                <!--<button type="button" class="btn btn_pw show"><span>비밀번호 보이기</span></button> -->
+              </div>
+            </div>
+            <button type="submit" class="btn-blue large wide" disabled>
+              <span>회원가입</span>
+            </button>
+            <div class="blue_box">
+              <p>간편 로그인하기</p>
+              <div class="social_group">
+                <a
+                  href="https://www.google.com/"
+                  target="_blank"
+                  class="social"
+                >
+                  <img src="images/ico_google.png" alt="구글 로그인" />
+                </a>
+                <a
+                  href="https://www.kakaocorp.com/page/"
+                  target="_blank"
+                  class="social"
+                >
+                  <img src="images/ico_kakao.png" alt="카카오 로그인" />
+                </a>
+              </div>
+            </div>
+            <p class="guide_signup_text">
+              이미 회원이신가요?
+              <a href="./login.html">로그인</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
