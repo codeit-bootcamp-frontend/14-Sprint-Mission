@@ -1,96 +1,59 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { getItems } from "@/api/item";
-import useWindowSize from "@/hooks/useWindowSize";
-import { ProductType } from "@/types/product";
-import debounce from "@/utils/debounce";
+import type { ProductType } from "@/types/product";
 
-const columnList: {
-  best: Record<string, number>;
-  all: Record<string, number>;
-} = {
-  best: {
-    desktop: 4,
-    tablet: 2,
-    mobile: 1,
-  },
-  all: {
-    desktop: 10,
-    tablet: 6,
-    mobile: 4,
-  },
-};
+import useItemQueryParams from "./useItemQueryParams";
+import useItemSearchSync from "./useItemSearchSync";
+import useItemPageResponsiveColumns from "./useItemPageResponsiveColumns";
 
-const useItemPageState = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+export default function useItemPageState() {
+  const { keyword, sortBy, page, searchParams } = useItemQueryParams();
+  const [controlledKeyword, setKeyword] = useState(keyword);
   const [itemList, setItemList] = useState<ProductType[]>([]);
   const [totalCount, setTotalCount] = useState(0);
-  const windowSize = useWindowSize({
-    desktop: 1200,
-    tablet: 768,
-  });
 
-  const currentPageSize = columnList.all[windowSize];
-  const currentBestItemsAmount = columnList.best[windowSize];
-
-  const currentPageNumber = Number(searchParams.get("page")) || 1;
-  const sortBy =
-    (searchParams.get("sortBy") as "recent" | "favorite") || "recent";
-  const keyword = searchParams.get("keyword") || "";
-
-  const bestItemList =
-    itemList
-      .sort((a, b) => b.favoriteCount - a.favoriteCount)
-      .slice(0, currentBestItemsAmount) ?? [];
-
-  const typingKeywordChangeHandler = debounce(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target;
-
-      const newSearchParams = new URLSearchParams(searchParams);
-      if (value === "") {
-        newSearchParams.delete("keyword");
-      } else {
-        newSearchParams.set("keyword", value);
-      }
-      newSearchParams.set("page", "1");
-
-      router.push(`?${newSearchParams}`);
-    },
-    300
+  const { pageSize, bestSize } = useItemPageResponsiveColumns();
+  const typingKeywordChangeHandler = useItemSearchSync(
+    searchParams,
+    setKeyword
   );
 
-  const requestItems = useCallback(async () => {
+  const bestItemList = useMemo(
+    () =>
+      [...itemList]
+        .sort((a, b) => b.favoriteCount - a.favoriteCount)
+        .slice(0, bestSize),
+    [itemList, bestSize]
+  );
+
+  const fetchItems = useCallback(async () => {
     const { status, result } = await getItems({
-      page: currentPageNumber,
-      pageSize: currentPageSize,
+      page,
+      pageSize,
       sortBy,
-      keyword,
+      keyword: controlledKeyword,
     });
 
     if (status === 200) {
       setItemList(result.list);
       setTotalCount(result.totalCount);
     }
-  }, [currentPageNumber, currentPageSize, sortBy, keyword]);
+  }, [page, pageSize, sortBy, controlledKeyword]);
 
   useEffect(() => {
-    requestItems();
-  }, [requestItems]);
+    fetchItems();
+  }, [fetchItems]);
 
   return {
     itemList,
     bestItemList,
-    currentPageSize,
-    currentPageNumber,
+    currentPageSize: pageSize,
+    currentPageNumber: page,
     totalCount,
-    keyword,
+    keyword: controlledKeyword,
     typingKeywordChangeHandler,
   };
-};
-
-export default useItemPageState;
+}
