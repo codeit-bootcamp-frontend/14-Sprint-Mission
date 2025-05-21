@@ -1,0 +1,77 @@
+@charset "UTF-8";
+@import 'reset.css';
+@import 'common.css';
+@import 'palette.css';
+
+/* login, signup */
+.flex_center_box {
+  max-width: 640px;
+  width: 100%;
+}
+.login_page {
+  width: 100%;
+  height: 100%;
+}
+.login_page .contents {
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo.large {
+  margin: 0 auto 40px;
+  max-width: 396px;
+  max-height: 132px;
+}
+.login_area_box {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.guide_signup_text {
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+}
+.guide_signup_text a {
+  margin-left: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #3182f6;
+}
+.blue_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: #e6f2ff;
+}
+
+.social_group {
+  display: flex;
+  gap: 10px;
+}
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .flex_center_box {
+    max-width: 400px;
+    padding: 0 16px;
+  }
+  .logo.large {
+    margin: 0 auto 24px;
+    max-width: 198px;
+    max-height: 66px;
+  }
+  .login_area_box {
+    gap: 16px;
+  }
+  .login_area_box .blue_box {
+    margin: 24px 0;
+  }
+}

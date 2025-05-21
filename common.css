@@ -1,0 +1,270 @@
+html {
+  height: 100%;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  height: 30%;
+  background: #aaa;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+/* button */
+.btn-blue {
+  max-width: 128px;
+  width: 100%;
+  padding: 11px 10px;
+  background-color: var(--blue);
+  text-align: center;
+  font-weight: 600;
+  line-height: 26px;
+  font-size: 18px;
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.btn-blue.large {
+  max-width: 357px;
+  border-radius: 28px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  line-height: 24px;
+  font-size: 20px;
+}
+.btn-blue:hover {
+  background-color: #1967d6;
+}
+.btn-blue:active,
+.btn-blue:focus {
+  background-color: #1251aa;
+}
+.btn-blue:disabled,
+.btn-blue.disabled {
+  background-color: var(--gray400);
+}
+.btn-blue.large.wide {
+  min-width: 100%;
+  width: 100%;
+  height: 54px;
+}
+
+/* layout */
+.main_inner {
+  width: 1110px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.contents {
+  margin-top: 70px;
+}
+
+/* header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  line-height: 100%;
+  background-color: #fff;
+  z-index: 100;
+  box-sizing: border-box;
+}
+.header .main_inner {
+  width: 1120px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo,
+.header .logo a,
+.header .logo img {
+  max-width: 153px;
+  height: 51px;
+}
+
+@media (max-width: 1920px) {
+  .header {
+    padding: 0 200px;
+  }
+  .header .main_inner {
+    width: 100%;
+  }
+}
+/* footer */
+.footer {
+  padding: 32px 0 108px;
+  background-color: var(--gray900);
+  line-height: 20px;
+  font-size: 16px;
+}
+.footer .main_inner {
+  width: 1120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright {
+  color: var(--gray400);
+}
+.footer .menus a {
+  font-weight: 400;
+  color: #fff;
+}
+.footer .menus a + a {
+  margin-left: 30px;
+}
+.footer .sns a + a {
+  margin-left: 12px;
+}
+
+/* input */
+.input {
+  position: relative;
+}
+.input_box .label {
+  display: block;
+  margin-bottom: 16px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  color: var(--gray800);
+}
+.input_box input {
+  width: 100%;
+  height: 56px;
+  padding: 16px 56px 16px 24px;
+  border-radius: 12px;
+  background-color: var(--gray100);
+  box-sizing: border-box;
+  line-height: 26px;
+  font-size: 16px;
+  color: var(--gray800);
+}
+.input_box .btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-indent: -9999px;
+}
+.input_box .btn_pw {
+  background: url(images/ico_visibility_off.png) no-repeat;
+}
+.input_box .btn_pw.show {
+  background: url(images/ico_visibility_on.png) no-repeat;
+}
+.pc_only {
+  display: block;
+}
+.mobile_only {
+  display: none;
+}
+
+.tag_text {
+  margin-bottom: 12px;
+  line-height: 26px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--blue);
+}
+.main_text {
+  margin-bottom: 24px;
+  line-height: 56px;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--gray700);
+}
+.desc_text {
+  line-height: 32px;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--gray700);
+}
+@media screen and (max-width: 1199px) {
+  .pc_only {
+    display: none;
+  }
+  .mobile_only {
+    display: none;
+  }
+  .main_inner {
+    width: 100%;
+  }
+  .header {
+    padding: 0 24px;
+  }
+  .footer {
+    font-size: 14px;
+  }
+  .footer .main_inner {
+    width: 100%;
+    justify-content: center;
+    gap: 63px;
+  }
+  .main_text {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  .desc_text {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .mobile_only {
+    display: block;
+  }
+  .btn-blue.large {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    max-width: 240px;
+    line-height: 26px;
+    font-size: 18px;
+  }
+  .input_box .label {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .input_box .label {
+    margin-bottom: 8px;
+  }
+  .footer {
+    position: relative;
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+  .footer .main_inner {
+    justify-content: space-between;
+    gap: 3%;
+  }
+  .footer .copyright {
+    position: absolute;
+    bottom: 30px;
+    left: 8%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer .main_inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

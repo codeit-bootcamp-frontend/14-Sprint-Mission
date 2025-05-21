@@ -1,0 +1,185 @@
+html * {
+  max-height: 999999px;
+}
+html,
+body {
+  min-width: 270px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -1px;
+}
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address {
+  display: block;
+  margin: 0;
+} /* ie8 */
+ul,
+ol,
+li,
+dl,
+dd,
+dt,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+b,
+input,
+button,
+textarea,
+fieldset,
+legend,
+td,
+th {
+  margin: 0px;
+  padding: 0px;
+  font-weight: normal;
+  word-break: keep-all;
+}
+input,
+textarea,
+button,
+select,
+option {
+  font-family: 'Pretendard', sans-serif;
+}
+li {
+  list-style: none;
+}
+fieldset,
+img,
+a {
+  border: 0px;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: top;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+legend,
+.blind {
+  position: absolute;
+  top: 0;
+  left: -px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+caption {
+  display: none;
+}
+input,
+textarea,
+button {
+  background: none;
+  border: none;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+button,
+label {
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: left;
+  table-layout: fixed;
+}
+table th,
+table td {
+  text-align: left;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+var,
+em {
+  font-style: normal;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+input::-moz-placeholder {
+  color: #999;
+}
+input:-moz-placeholder {
+  color: #999;
+}
+input:-ms-input-placeholder {
+  color: #999;
+}
+textarea::-webkit-input-placeholder {
+  color: #999;
+}
+textarea::-moz-placeholder {
+  color: #999;
+}
+textarea:-moz-placeholder {
+  color: #999;
+}
+textarea:-ms-input-placeholder {
+  color: #999;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent !important;
+}
+input:focus::-moz-placeholder {
+  color: transparent !important;
+}
+input:focus:-moz-placeholder {
+  color: transparent !important;
+}
+input:focus:-ms-input-placeholder {
+  color: transparent !important;
+}
+textarea:focus::-webkit-input-placeholder {
+  color: transparent !important;
+}
+textarea:focus::-moz-placeholder {
+  color: transparent !important;
+}
+textarea:focus:-moz-placeholder {
+  color: transparent !important;
+}
+textarea:focus:-ms-input-placeholder {
+  color: transparent !important;
+}
+
+input:focus,
+div:focus,
+select:focus,
+option:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
