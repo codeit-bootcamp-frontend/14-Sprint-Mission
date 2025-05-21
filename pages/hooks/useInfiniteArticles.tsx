@@ -31,7 +31,7 @@ const useInfiniteArticles = ({
       const newArticles = fetched.list.filter((a) => !existingIds.has(a.id));
       return [...prev, ...newArticles];
     });
-  }, [fetched]);
+  }, [fetched, pageSize]);
 
   useEffect(() => {
     setPage(1);
