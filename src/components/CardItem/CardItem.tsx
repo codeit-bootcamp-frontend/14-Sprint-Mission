@@ -1,7 +1,8 @@
 import { numberFormatter } from "@/utils/formatter";
 
-import HeartIcon from "@/assets/icons/ic_heart.svg";
+import ImageProcessor from "../ImageProcessor/ImageProcessor";
 
+import HeartIcon from "@/assets/icons/ic_heart.svg";
 import styles from "./CardItem.module.css";
 
 type CardItemProps = {
@@ -22,8 +23,9 @@ const CardItem = ({
   return (
     <li>
       <div className={styles.image_wrapper}>
-        <img
-          className={styles.item_image}
+        <ImageProcessor
+          width={100}
+          height={100}
           src={imgSrc}
           alt={`상품이름_${name}`}
         />
@@ -32,7 +34,7 @@ const CardItem = ({
       <p className={styles.price}>{numberFormatter(price)}원</p>
       <span className={styles.heart_count}>
         <i>
-          <img src={HeartIcon} alt="하트 아이콘" />
+          <HeartIcon />
         </i>
         {favoriteCount}
       </span>

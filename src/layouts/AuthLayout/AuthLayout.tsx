@@ -1,21 +1,27 @@
-import { Link, Outlet } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { ReactNode } from "react";
 
 import { ROUTE } from "@/constants/route";
 
-import Logo from "@/assets/imgs/logo_with_panda_icon.svg";
-
 import styles from "./AuthLayout.module.css";
+import Image from "next/image";
 
-const AuthLayout = () => {
+const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main className={styles.auth_main}>
       <div className={styles.auth_center}>
         <div className={styles.logo}>
-          <Link to={ROUTE.HOME}>
-            <img src={Logo} alt="판다 마켓 로고" />
+          <Link href={ROUTE.HOME}>
+            <img
+              className={styles.logo}
+              src={"/imgs/logo_with_panda_icon.svg"}
+              alt="로고"
+            />
           </Link>
         </div>
-        <Outlet />
+        {children}
       </div>
     </main>
   );

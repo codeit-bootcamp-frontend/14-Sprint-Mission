@@ -1,5 +1,7 @@
+"use client";
+
 import clsx from "clsx";
-import { useSearchParams } from "react-router-dom";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import ArrowLeftIcon from "@/assets/icons/ic_arrow_left.svg";
 import styles from "./Pagination.module.css";
@@ -19,7 +21,8 @@ const Pagination = ({
   showItemCount = 5,
   className,
 }: PaginationProps) => {
-  const [, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const searchParams = new URLSearchParams(useSearchParams());
 
   const mod = currentPageNumber % pageSize;
   const value = Math.floor(currentPageNumber / pageSize);
@@ -44,22 +47,17 @@ const Pagination = ({
   const canMoveNext = currentPageNumber < totalFullPageCount;
 
   const offSetClickHandler = (offset: number) => {
-    setSearchParams((prev) => {
-      const newSearchParams = new URLSearchParams(prev);
-      newSearchParams.set("page", String(currentPageNumber + offset));
-
-      return newSearchParams;
-    });
+    const newSearchParams = searchParams;
+    newSearchParams.set("page", String(currentPageNumber + offset));
+    router.push(`?${newSearchParams.toString()}`, { scroll: false });
   };
 
   const movePageClickHandler = (pageNumber: number) => {
     if (pageNumber !== currentPageNumber) {
-      setSearchParams((prev) => {
-        const newSearchParams = new URLSearchParams(prev);
-        newSearchParams.set("page", String(pageNumber));
+      const newSearchParams = searchParams;
+      newSearchParams.set("page", String(pageNumber));
 
-        return newSearchParams;
-      });
+      router.push(`?${newSearchParams.toString()}`, { scroll: false });
     }
   };
 
@@ -71,7 +69,7 @@ const Pagination = ({
           onClick={() => offSetClickHandler(-1)}
           disabled={!canMovePrev}
         >
-          <img src={ArrowLeftIcon} alt="왼쪽 화살표" />
+          <ArrowLeftIcon />
         </button>
       </li>
       {minimumPageNumberArray.map((pageNumber) => (
@@ -99,7 +97,7 @@ const Pagination = ({
           onClick={() => offSetClickHandler(1)}
           disabled={!canMoveNext}
         >
-          <img src={ArrowLeftIcon} alt="오른쪽 화살표" />
+          <ArrowLeftIcon />
         </button>
       </li>
     </ul>

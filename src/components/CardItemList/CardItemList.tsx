@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { ROUTE } from "@/constants/route";
 import { ProductType } from "@/types/product";
@@ -21,19 +21,24 @@ const CardItemList = ({
   return (
     <ul
       className={clsx([
-        styles.item_list,
         {
+          [styles.empty_list]: itemList.length === 0,
+          [styles.item_list]: itemList.length !== 0,
           [styles.large_column]: columnSize === "large",
           [styles.small_column]: columnSize === "small",
         },
         className,
       ])}
     >
-      {itemList?.map((item) => (
-        <Link key={item.id} to={`${ROUTE.ITEMS}/${item.id}`}>
-          <CardItem imgSrc={item.images[0]} {...item} />
-        </Link>
-      ))}
+      {itemList.length === 0 ? (
+        <p className={styles.empty_paragraph}>상품을 찾을 수 없습니다.</p>
+      ) : (
+        itemList.map((item) => (
+          <Link key={item.id} href={`${ROUTE.ITEMS}/${item.id}`}>
+            <CardItem imgSrc={item.images?.[0]} {...item} />
+          </Link>
+        ))
+      )}
     </ul>
   );
 };

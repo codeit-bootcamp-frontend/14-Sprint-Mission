@@ -1,5 +1,6 @@
 import clsx from "clsx";
 
+import Image from "next/image";
 import { dateFormatter } from "@/utils/formatter";
 
 import DefaultProfileIcon from "@/assets/icons/default_profile.svg";
@@ -27,14 +28,25 @@ const Profile = ({ size = "lg", nickname, image, date }: ProfileProps) => {
         },
       ])}
     >
-      <img
-        className={clsx(styles.profile_image, {
-          [styles.lg_profile_image]: isSizeLg,
-          [styles.md_profile_image]: isSizeMd,
-        })}
-        src={image || DefaultProfileIcon}
-        alt="프로필 이미지"
-      />
+      {image ? (
+        <Image
+          width={24}
+          height={24}
+          className={clsx(styles.profile_image, {
+            [styles.lg_profile_image]: isSizeLg,
+            [styles.md_profile_image]: isSizeMd,
+          })}
+          src={image}
+          alt="프로필 이미지"
+        />
+      ) : (
+        <DefaultProfileIcon
+          className={clsx(styles.profile_image, {
+            [styles.lg_profile_image]: isSizeLg,
+            [styles.md_profile_image]: isSizeMd,
+          })}
+        />
+      )}
       <div
         className={clsx(styles.profile_info, {
           [styles.lg_profile_info]: isSizeLg,

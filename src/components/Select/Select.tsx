@@ -1,5 +1,7 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
 import { Children, ReactElement, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 import useOutsideClick from "@/hooks/useOutsideClick";
 
@@ -18,7 +20,8 @@ type SelectProps = {
 };
 
 const Select = ({ children }: SelectProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const targetRef = useOutsideClick<HTMLButtonElement>(() => setIsOpen(false));
 
@@ -28,12 +31,10 @@ const Select = ({ children }: SelectProps) => {
   const toggleClickHandler = () => setIsOpen((prev) => !prev);
 
   const changeSearchParam = (value: string) => {
-    setSearchParams((prev) => {
-      const newSearchParams = new URLSearchParams(prev);
-      newSearchParams.set("sortBy", value);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("sortBy", value);
 
-      return newSearchParams;
-    });
+    router.push(`?${newSearchParams}`, { scroll: false });
   };
 
   return (
@@ -44,12 +45,8 @@ const Select = ({ children }: SelectProps) => {
       onClick={toggleClickHandler}
     >
       <span>{sortList[currentSortOption]}</span>
-      <img className={styles.sort_icon} src={SortIcon} alt="정렬 아이콘" />
-      <img
-        className={styles.arrow_icon}
-        src={ArrowDownIcon}
-        alt="아래 방향 삼각 화살표"
-      />
+      <SortIcon className={styles.sort_icon} />
+      <ArrowDownIcon className={styles.arrow_icon} />
       {isOpen && (
         <ul className={styles.toggle_list}>
           {Children.map(children, (child) => {

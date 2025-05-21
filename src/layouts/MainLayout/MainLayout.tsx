@@ -1,19 +1,16 @@
 import { ReactNode } from "react";
-import { Outlet } from "react-router-dom";
 
 import Footer from "../Footer/Footer";
 
 import styles from "./MainLayout.module.css";
 
-type MainLayoutProps = { header: ReactNode };
+type MainLayoutProps = { header: ReactNode; children: ReactNode };
 
-const MainLayout = ({ header }: MainLayoutProps) => {
+const MainLayout = ({ header, children }: MainLayoutProps) => {
   return (
     <>
       {header}
-      <main className={styles.main}>
-        <Outlet />
-      </main>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </>
   );

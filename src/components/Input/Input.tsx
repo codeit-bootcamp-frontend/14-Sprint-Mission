@@ -10,7 +10,7 @@ interface InputProps
 
 const Input = ({ prefix, className, ...props }: InputProps) => {
   return (
-    <div className={clsx([styles.input_wrapper, className])}>
+    <div className={clsx([className, styles.input_wrapper])}>
       {prefix && <i>{prefix}</i>}
       <input className={styles.input} {...props} />
     </div>

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import FacebookIcon from "@/assets/icons/ic_facebook.svg";
 import TwitterIcon from "@/assets/icons/ic_twitter.svg";
@@ -14,13 +14,19 @@ const Footer = () => {
       <div className={clsx([styles.center_content, styles.footer_box])}>
         <p>@codeit - 2024</p>
         <div className={styles.footer_link}>
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/faq">FAQ</Link>
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/faq">FAQ</Link>
         </div>
         <div className={styles.footer_icon}>
-          {ICON_LIST.map(({ link, iconSrc, alt }) => (
-            <a key={link} href={link} target="_blank" rel="noreferrer">
-              <img src={iconSrc} alt={alt} />
+          {ICON_LIST.map(({ link, icon: IconComponent, alt }) => (
+            <a
+              key={link}
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={alt}
+            >
+              <IconComponent />
             </a>
           ))}
         </div>
@@ -32,22 +38,22 @@ const Footer = () => {
 const ICON_LIST = [
   {
     link: "https://www.facebook.com",
-    iconSrc: FacebookIcon,
+    icon: FacebookIcon,
     alt: "facebook_icon",
   },
   {
     link: "https://www.twitter.com",
-    iconSrc: TwitterIcon,
+    icon: TwitterIcon,
     alt: "twitter_icon",
   },
   {
     link: "https://www.youtube.com",
-    iconSrc: YoutubeIcon,
+    icon: YoutubeIcon,
     alt: "youtube_icon",
   },
   {
     link: "https://www.instagram.com",
-    iconSrc: InstagramIcon,
+    icon: InstagramIcon,
     alt: "instagram_icon",
   },
 ];

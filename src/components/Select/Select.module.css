@@ -1,6 +1,6 @@
 .select_button {
   position: relative;
-  width: 130px;
+  width: 140px;
   display: flex;
   justify-content: space-between;
   padding: 8px 20px;
@@ -26,6 +26,7 @@
   border: 1px solid var(--gray-200);
   background-color: #ffffff;
   overflow: hidden;
+  z-index: 1;
 }
 
 .toggle_list_item {
@@ -49,7 +50,9 @@
 @media (min-width: 375px) and (max-width: 767px) {
   .select_button {
     width: 42px;
+    align-items: center;
     justify-content: center;
+    padding: 0;
   }
 
   .select_button span {
@@ -58,6 +61,8 @@
 
   .select_button .sort_icon {
     display: block;
+    width: 24px;
+    height: 24px;
   }
 
   .select_button .arrow_icon {

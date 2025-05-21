@@ -49,6 +49,13 @@
   color: #3692ff;
 }
 
+.profile {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
 /** 태블릿 반응형 */
 @media (max-width: 1199px) {
   .main_nav {

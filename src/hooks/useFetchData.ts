@@ -1,3 +1,5 @@
+"use client";
+
 import { DependencyList, useCallback, useEffect, useState } from "react";
 
 interface ApiResponse<T> {

@@ -1,9 +1,11 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+"use client";
+
+import clsx from "clsx";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { ROUTE } from "@/constants/route";
 
-import Logo from "@/assets/imgs/logo_with_panda_icon.svg";
-import TextLogo from "@/assets/imgs/logo_without_panda_icon.svg";
 import Profile from "@/assets/icons/default_profile.svg";
 
 import styles from "./NavHeader.module.css";
@@ -21,40 +23,45 @@ const navList = [
   },
 ];
 
-const activeStyle = (isActive: boolean) =>
-  isActive ? styles.active : undefined;
-
 const NavHeader = () => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
 
   return (
     <header className={styles.main_header}>
       <nav className={styles.main_nav}>
-        <Link to={ROUTE.HOME}>
+        <Link href={ROUTE.HOME}>
           <picture>
             <source
               className={styles.logo}
-              srcSet={Logo}
+              srcSet={"/imgs/logo_with_panda_icon.svg"}
               media="(min-width:768px)"
             />
-            <img className={styles.logo} src={TextLogo} alt="판다마켓 로고" />
+            <img
+              className={styles.logo}
+              src={"/imgs/logo_without_panda_icon.svg"}
+              alt="판다마켓 로고"
+            />
           </picture>
         </Link>
         <ul className={styles.menu_list}>
           {navList.map(({ to, name, include }) => (
             <li key={to}>
-              <NavLink
-                to={to}
-                className={activeStyle(
-                  [to, ...include].some((path) => path === pathname)
-                )}
+              <Link
+                href={to}
+                className={clsx({
+                  [styles.active]: [to, ...include].some(
+                    (path) => path === pathname
+                  ),
+                })}
               >
                 {name}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
-        <img src={Profile} alt="profile_image" />
+        <span className={styles.profile}>
+          <Profile />
+        </span>
       </nav>
     </header>
   );

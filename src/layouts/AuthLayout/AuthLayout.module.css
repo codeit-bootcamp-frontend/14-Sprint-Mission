@@ -15,10 +15,11 @@
 .logo {
   display: flex;
   justify-content: center;
+  height: 132px;
   margin-bottom: 40px;
 }
 
-.logo img {
+.logo svg {
   width: 396px;
   height: 132px;
 }
@@ -33,10 +34,11 @@
   }
 
   .logo {
+    height: 66px;
     margin-bottom: 24px;
   }
 
-  .logo img {
+  .logo svg {
     width: 198px;
     height: 66px;
   }

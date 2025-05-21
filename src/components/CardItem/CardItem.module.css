@@ -1,20 +1,23 @@
 .image_wrapper {
-  width: 100%;
-  aspect-ratio: 1 / 1;
   margin-bottom: 16px;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
   overflow: hidden;
 }
 
-.item_image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.image_wrapper svg {
   transition: transform 0.3s ease-in-out;
 }
 
-a:hover .item_image {
+a:hover .image_wrapper svg {
+  transform: scale(1.1);
+}
+
+.image_wrapper img {
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover .image_wrapper img {
   transform: scale(1.1);
 }
 
@@ -45,4 +48,6 @@ a:hover .item_image {
 .heart_count i {
   display: flex;
   align-items: center;
+  width: 14px;
+  height: 14px;
 }

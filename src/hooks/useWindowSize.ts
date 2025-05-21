@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import debounce from "@/utils/debounce";
@@ -33,12 +35,11 @@ const useWindowSize = ({
 }: WindowSizeOptions = {}): DeviceType => {
   const [windowSize, setWindowSize] = useState<DeviceType>(() => {
     return validate({
-      width: window.innerWidth,
+      width: globalThis.innerWidth,
       desktop,
       tablet,
     });
   });
-
   useEffect(() => {
     const handler = debounce((e: UIEvent) => {
       const target = e.target as Window;
