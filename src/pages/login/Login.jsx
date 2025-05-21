@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { authService } from "../../api/authServices";
 
 import mainLogo from "../../asset/icon/panda_market_logo_3.png";
 import eyeOffIcon from "../../asset/icon/btn_visibility_off.png";
@@ -47,10 +48,24 @@ export default function Login() {
   const isFormValid =
     validateEmail(email) === "" && validatePassword(password) === "";
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (isFormValid) {
+
+    if (!isFormValid) return;
+
+    try {
+      const res = await authService.postSignIn({
+        email,
+        password,
+      });
+
+      localStorage.setItem("accessToken", res.accessToken);
+      localStorage.setItem("refreshToken", res.refreshToken);
+
       navigate("/items");
+    } catch (error) {
+      console.error("로그인 실패:", error);
+      alert("이메일 또는 비밀번호가 올바르지 않습니다.");
     }
   };
 

@@ -1,0 +1,622 @@
+.item-detail-page {
+  background-color: #fcfcfc;
+  min-height: fit-content;
+  padding: 24px 0;
+  width: 100%;
+}
+
+.item-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.product-detail-info-section {
+  display: flex;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  padding-bottom: 45px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-detail-img {
+  width: 486px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.product-detail-content-container {
+  max-width: 690px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-detail-title-container {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.product-detail-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.product-detail-name {
+  font-weight: 600;
+  font-size: 24px;
+  color: #1f2937;
+}
+
+.product-detail-price {
+  font-weight: 600;
+  font-size: 40px;
+  color: #1f2937;
+}
+
+.product-detail-description-container {
+  padding-top: 24px;
+}
+
+.product-detail-text {
+  padding-bottom: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.product-detail-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #4b5563;
+  padding-bottom: 24px;
+}
+
+.product-detail-tag-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 62px;
+}
+
+.product-detail-tag {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2937;
+  height: 36px;
+  border-radius: 26px;
+  padding: 6px 16px;
+  line-height: 26px;
+  background-color: #f3f4f6;
+}
+
+.product-detail-owner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-detail-owner-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.product-detail-profile-img {
+  width: 40px;
+  height: 40px;
+}
+
+.product-detail-profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.product-detail-nickname {
+  color: #4b5563;
+}
+
+.product-detail-date {
+  color: #9ca3af;
+}
+
+.product-detail-owner-right-wrapper {
+  padding-left: 24px;
+  border-left: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+.product-detail-owner-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 35px;
+}
+
+.product-detail-heart-img {
+  width: 32px;
+  height: 32px;
+}
+
+.product-detail-heart-count {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #6b7280;
+}
+
+.ask-container {
+  max-width: 1200px;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.ask-form-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ask-form-title {
+  color: #111827;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 9px;
+}
+
+.ask-form-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  font-size: 16px;
+  line-height: 26px;
+  color: #9ca3af;
+  resize: none;
+  outline: none;
+}
+
+.ask-form-input::placeholder {
+  color: #9ca3af;
+}
+
+.ask-form-submit-button {
+  align-self: flex-end;
+  margin-top: 16px;
+  padding: 12px 23px;
+  border-radius: 8px;
+  background-color: #9ca3af;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.ask-form-submit-button.active {
+  background-color: #3692ff;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.comment-content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.comment-edit-textarea {
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1200px;
+  height: 80px;
+  padding: 16px 24px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1f2937;
+  gap: 10px;
+  resize: none;
+  outline: none;
+}
+
+.comment-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1f2937;
+}
+
+.comment-dropdown-wrapper {
+  position: relative;
+}
+
+.comment-kebab-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.comment-dropdown-menu {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 100px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.comment-dropdown-option {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.comment-dropdown-option:first-child {
+  padding: 12px 0 8px;
+}
+
+.comment-dropdown-option:last-child {
+  padding: 8px 0 12px;
+}
+
+.comment-dropdown-option:hover {
+  background-color: #f3f4f6;
+}
+
+.comments-section.empty-comment {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.inquiry-empty-img {
+  width: 196px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 8px;
+}
+
+.inquiry-empty-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #9ca3af;
+}
+
+.comment-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.comment-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-profile-img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+}
+
+.comment-meta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment-nickname {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #4b5563;
+}
+
+.comment-created-at {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #9ca3af;
+}
+
+.comment-edit-button-row {
+  max-width: 178px;
+  width: 100%;
+  align-items: center;
+  gap: 4px;
+}
+
+.comment-edit-cancel-button {
+  background: none;
+  border: none;
+  color: #737373;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  cursor: pointer;
+  height: 47px;
+  padding: 14px 20px 7px;
+}
+
+.comment-edit-cancel-button:hover {
+  text-decoration: underline;
+}
+
+.comment-edit-submit-button {
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  vertical-align: middle;
+  height: 42px;
+  padding: 8px 23px;
+  cursor: pointer;
+}
+
+.comment-edit-submit-button.disabled {
+  background-color: #9ca3af;
+  color: #f3f4f6;
+}
+
+.comment-edit-submit-button.active {
+  background-color: #3692ff;
+  color: #f3f4f6;
+}
+
+.back-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #f3f4f6;
+  background-color: #3692ff;
+  border-radius: 40px;
+  border: none;
+  padding: 12px 39px;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.back-button:hover {
+  background-color: #2176d2;
+}
+
+.back-button-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .item-detail-page {
+    padding: 0;
+  }
+
+  .item-detail-container {
+    max-width: 768px;
+    padding: 16px;
+  }
+
+  .product-detail-info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    max-width: 344px;
+    width: 100%;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .product-detail-img {
+    width: 100%;
+    max-width: 343px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .product-detail-content-container {
+    max-width: 343px;
+  }
+
+  .product-detail-name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .product-detail-price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .product-detail-description-container {
+    padding-top: 16px;
+  }
+
+  .product-detail-text {
+    padding-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .product-detail-tag-list-container {
+    padding-bottom: 40px;
+  }
+
+  .product-detail-owner-right {
+    gap: 5px;
+    height: 32px;
+  }
+
+  .product-detail-heart-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ask-container {
+    padding: 24px 16px 0;
+  }
+
+  .ask-form-input {
+    padding: 16px 24px;
+    min-height: 129px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .comment-meta-row {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    width: 100%;
+  }
+
+  .comment-meta-text {
+    gap: 4px;
+  }
+
+  .comment-edit-button-row {
+    gap: 4px;
+  }
+
+  .comments-section {
+    padding: 0 16px;
+  }
+
+  .back-button {
+    max-width: 240px;
+  }
+
+  .inquiry-empty-img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .item-detail-page {
+    padding: 24px;
+    width: 100%;
+  }
+
+  .product-detail-img {
+    width: 340px;
+    border-radius: 12px;
+  }
+  .product-detail-info-section {
+    max-width: 696px;
+    margin: 0 auto;
+  }
+
+  .product-detail-name {
+    font-size: 20px;
+  }
+
+  .product-detail-price {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .product-detail-tag-list-container {
+    padding-bottom: 40px;
+  }
+
+  .product-detail-tag {
+    padding: 4px 12px;
+    height: auto;
+  }
+
+  .product-detail-owner-container {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .product-detail-owner-right {
+    gap: 5px;
+    height: 32px;
+  }
+
+  .product-detail-heart-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ask-container {
+    padding: 40px 24px;
+  }
+
+  .ask-form-input {
+    padding: 16px 24px;
+  }
+
+  .comment-edit-button-row {
+    gap: 4px;
+  }
+
+  .comments-section {
+    padding: 0 24px;
+  }
+
+  .back-button {
+    max-width: 240px;
+  }
+
+  .inquiry-empty-img {
+    width: 140px;
+    height: 140px;
+  }
+}
