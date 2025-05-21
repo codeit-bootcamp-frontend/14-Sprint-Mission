@@ -1,0 +1,108 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 64rem;
+  margin: 23.1rem auto 17rem auto;
+  @media (max-width: 1023px) {
+    margin: 19rem auto 23rem auto;
+  }
+  @media (max-width: 743px) {
+    margin: 8rem auto 17rem auto;
+    width: 34.3rem;
+  }
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  @media (max-width: 743px) {
+    width: 19.8rem;
+    height: 6.6rem;
+    margin-bottom: 2.4rem;
+  }
+}
+.logo-panda {
+  img {
+    width: 10.3rem;
+    height: 10.3rem;
+    margin-right: 2.2rem;
+    display: flex;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 5.1rem;
+      height: 5.1rem;
+      margin-right: 1.1rem;
+      display: flex;
+    }
+  }
+}
+.logo-panda-text {
+  img {
+    width: 26.6rem;
+    height: 9rem;
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 13.3rem;
+      height: 4.5rem;
+    }
+  }
+}
+.button-wrapper {
+  margin-bottom: 2.4rem;
+  width: 100%;
+}
+.signup-button {
+  padding: 1.2rem 28.5rem;
+  width: max-content;
+  @media (max-width: 743px) {
+    padding: 1.2rem 13.6rem;
+  }
+}
+.simple-login-wrapper {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e6f2ff;
+  padding: 1.6rem 2.3rem;
+  margin-bottom: 2.4rem;
+}
+.simple-login {
+  @include apply-font($font-16, 500);
+  color: $secondaryGray-800;
+}
+.image-wrapper {
+  height: 4.2rem;
+  width: 10rem;
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 4.2rem;
+    height: 4.2rem;
+    display: flex;
+  }
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+.first {
+  @include apply-font($font-14, 500);
+  color: $secondaryGray-800;
+}
+.register {
+  text-decoration: underline;
+  color: $primaryBlue-100;
+}

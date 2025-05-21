@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
     word-break: keep-all;
   }
   body {
-  overflow-y: hidden;
     font-family: 'Arial', sans-serif;
     background-color: #ffffff;
     color: #212529;

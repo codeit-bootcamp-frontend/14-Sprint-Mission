@@ -1,5 +1,5 @@
 export interface GetArticleType {
-  totalCount: number | null
+  totalCount: number
   list: GetArticleIdType[]
 }
 

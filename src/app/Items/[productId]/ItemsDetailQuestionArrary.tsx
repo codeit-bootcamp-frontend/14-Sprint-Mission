@@ -3,18 +3,18 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
-import { PostCommentType } from '../../types/comment'
-import Button from '../../common/Button'
-import TextInputPlaceholder from '../../common/TextInputPlaceholder'
-import commentService from '../../../../src/app/api/services/commentService'
-import { diffDate } from '../../utils/datetime'
-import { formatDate } from '../../utils/datetime'
+import { PostCommentType } from '../../../types/comment'
+import Button from '../../../components/common/Button'
+import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
+import commentService from '../../../lib/api/service/commentService'
+import { diffDate } from '../../../utils/datetime'
+import { formatDate } from '../../../utils/datetime'
 
-import Setting from '../../../../public/assets/svg/Setting.svg'
+import Setting from '../../../../public/assets/svg/setting_icon.svg'
 
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../../../styles/theme'
+import { textStyle } from '../../../styles/textStyle'
 
 interface ItemsDetailQuestionArraryProps {
   productQuestion: PostCommentType
@@ -100,7 +100,7 @@ const ItemsDetailQuestionArrary = ({
             {/*이미지가 없을 경우 기본 이미지 적용*/}
             <img
               src={
-                productQuestion.writer.image || '/assets/svg/ProfileIcon.svg'
+                productQuestion.writer.image || '/assets/svg/profile_icon.svg'
               }
               alt="유저프로필사진"
               width={32}

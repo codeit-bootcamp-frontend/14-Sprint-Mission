@@ -1,17 +1,16 @@
 'use client'
 
 import React from 'react'
-import ItemsNavVar from '@/app/common/ItemsNavVar'
+import ItemsNavVar from '../../../components/domain/Nav/ItemsNavVar'
 
 import ItemsDetailDescription from './ItemsDetailDescription'
 import ItemsDetailQuestionTextarea from './ItemsDetailQuestionTextarea'
-import Button from '../../common/Button'
+import Button from '../../../components/common/Button'
 
-import BackIcon from '../../../../public/assets/svg/BackIcon.svg'
-
+import BackIcon from '../../../../public/assets/svg/back_icon.svg'
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../../../styles/theme'
+import { textStyle } from '../../../styles/textStyle'
 import Image from 'next/image'
 
 const ItemsDetail = () => {

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 
-import Plus from '../../../public/assets/svg/Plus.svg'
-import Delete from '../../../public/assets/svg/Delete.svg'
+import Plus from '../../../public/assets/svg/plus_icon.svg'
+import Delete from '../../../public/assets/svg/delete_tag.svg'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 import Image from 'next/image'
 
 const ButtonImage = () => {
@@ -16,7 +16,7 @@ const ButtonImage = () => {
   const handleButton = () => {
     if (fileInputRef.current) {
       // if문을 쓰는 이유는 useRef 값이 null일 수도 있기 때문문
-      fileInputRef.current.click()
+      fileInputRef.current?.click()
     }
   }
 

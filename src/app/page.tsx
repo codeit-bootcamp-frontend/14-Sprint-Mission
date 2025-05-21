@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import * as S from './page.style'
-import Button from './common/Button'
+import Button from '../components/common/Button'
 
-import Logo from '../../public/assets/image/Logo.png'
-import LogoFace from '../../public/assets/image/LogoFace.png'
+import Logo from '../../public/assets/image/logo_text.png'
+import LogoFace from '../../public/assets/image/logo_face.png'
 import HomeTop from '../../public/assets/image/home_top.png'
 import HomeBottom from '../../public/assets/image/home_bottom.png'
 import HomeHotItems from '../../public/assets/image/home_hot_items.png'

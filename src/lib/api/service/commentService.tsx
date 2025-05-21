@@ -1,7 +1,7 @@
 import requestor from '../client/requestor'
 import { AxiosResponse } from 'axios'
 
-import { PostCommentType, GetCommentType } from '../../types/comment'
+import { PostCommentType, GetCommentType } from '../../../types/comment'
 
 class CommentService {
   // 틀릴 수도

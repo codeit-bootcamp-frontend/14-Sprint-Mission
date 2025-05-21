@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { GetCommentType } from '../types/comment'
+import { GetCommentType } from '../../types/comment'
 
-import commentService from '../../../src/app/api/services/commentService'
+import commentService from '../../lib/api/service/commentService'
 
 export const useGetCommentService = (productId: number, limit = 3) => {
   const [productQuestion, setProductQuestion] = useState<GetCommentType>({

@@ -1,15 +1,15 @@
 'use client'
 import React, { useState } from 'react'
 
-import ItemsNavVar from '../common/ItemsNavVar'
-import Button from '../common/Button'
-import ButtonImage from '../common/ButtonImage'
-import TextInputPlaceholder from '../common/TextInputPlaceholder'
-import Tag from '../common/Tag'
+import ItemsNavVar from '../../components/domain/Nav/ItemsNavVar'
+import Button from '../../components/common/Button'
+import ButtonImage from '../../components/common/ButtonImageInput'
+import TextInputPlaceholder from '../../components/common/TextInputPlaceholder'
+import Tag from '../../components/common/Tag'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const AddItem = () => {
   const [productName, setProductName] = useState('')
@@ -117,7 +117,7 @@ const Bone = styled.div`
   width: 120rem;
   display: flex;
   align-items: center;
-  margin: 1.5rem auto auto auto;
+  margin: 1.5rem auto 6.9rem auto;
   flex-direction: column;
   @media (max-width: 1023px) {
     width: 69.6rem;

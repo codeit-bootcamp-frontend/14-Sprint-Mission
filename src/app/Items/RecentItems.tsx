@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { GetProductIdTypes } from '../types/product'
+import { GetProductIdTypes } from '../../types/product'
 
-import HeartInactive from '../../../public/assets/image/HeartInactive.png'
-import NoImage from '../../../public/assets/image/NoImage.png'
+import HeartInactive from '../../../public/assets/image/heart_inactive.png'
+import NoImage from '../../../public/assets/image/no_image.png'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 const RecentItems = ({ products }: { products: GetProductIdTypes[] }) => {
   const [itemsDisplay, setItemsDisplay] = useState(1)

@@ -2,15 +2,15 @@
 
 import React from 'react'
 
-import { GetArticleIdType } from '../types/article'
-import { diffDate } from '../utils/datetime'
-import { formatDate } from '../utils/datetime'
+import { GetArticleIdType } from '../../types/article'
+import { diffDate } from '../../utils/datetime'
+import { formatDate } from '../../utils/datetime'
 
-import HeartInactive from '../../../public/assets/image/HeartInactive.png'
+import HeartInactive from '../../../public/assets/image/heart_inactive.png'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 import Image from 'next/image'
 
 type BestBoardsProps = {
@@ -23,13 +23,15 @@ const BoardDetailArrary = ({ article }: BestBoardsProps) => {
       <Bone>
         <ContentWrappeer>
           <QuestionContent>{article.content}</QuestionContent>
-          <img src={article.image} alt="게시글 상세 이미지" />
+          {article.image && (
+            <img src={article.image} alt="게시글 상세 이미지" />
+          )}
         </ContentWrappeer>
         <UserProfileImageWrapper>
           <NameProfile>
             {/*이미지가 없을 경우 기본 이미지 적용*/}
-            <img
-              src={'/assets/svg/ProfileIcon.svg'}
+            <Image
+              src={'/assets/svg/profile_icon.svg'}
               alt="유저프로필사진"
               width={32}
               height={32}

@@ -1,77 +1,70 @@
 'use client'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 
-import { GetArticleType } from '../types/article'
+import { useInfiniteScroll } from '../../hooks/useInfiniteScroll'
+import { useDebounce } from '../../hooks/useDebounce'
+import { useGetArticles } from '../../hooks/useGetArticle'
 
 import BoardDetailArrary from './BoardDetailArrary'
-import DropDown from '../common/DropDown'
-import Button from '../common/Button'
+import DropDown from '../../components/common/DropDown'
+import Button from '../../components/common/Button'
 
-import InquiryEmpty from '../../../public/assets/svg/InquiryEmpty.svg'
-import Search from '../../../public/assets/svg/Search.svg'
+import InquiryEmpty from '../../../public/assets/svg/inquiry_empty.svg'
+import Search from '../../../public/assets/svg/search.svg'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 type SelectOption = {
   value: string
   name: string
 }
-type BestBoardsProps = {
-  articleList: GetArticleType
-  selectedOption: string
-  setSelectedOption: (value: string) => void
-  loadMore: () => void
-  hasMore: boolean
-  searchTerm: string
-  setSearchTerm: (value: string) => void
-}
-const BoardList = ({
-  articleList,
-  selectedOption,
-  setSelectedOption,
-  loadMore,
-  hasMore,
-  searchTerm,
-  setSearchTerm,
-}: BestBoardsProps) => {
-  console.log(articleList)
+
+const BoardList = () => {
   const selectList: SelectOption[] = [
     { value: 'recent', name: '최신순' },
     { value: 'like', name: '좋아요순' },
   ]
   const observerRef = useRef<HTMLDivElement | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
-  const loadingRef = useRef(false)
+  const [page, setPage] = useState(1)
+  const [selectedOption, setSelectedOption] = useState('recent')
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
 
+  const orderBy = selectedOption === 'recent' ? 'recent' : 'like'
+  // 페이지네이션을 위한 상태
   useEffect(() => {
-    if (!hasMore || !observerRef.current || !scrollContainerRef.current) return
-
-    let observer: IntersectionObserver | null = null
-
-    const callback = async (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && !loadingRef.current) {
-        loadingRef.current = true
-        await loadMore()
-        setTimeout(() => {
-          loadingRef.current = false
-        }, 500) // 시간을 넣어 무한 스크롤이 한 번에 여러번 호출되지 않게
-      }
+    if (page !== 1) {
+      setPage(1)
+      setHasMore(true)
     }
+  }, [selectedOption, debouncedSearchTerm])
 
-    observer = new IntersectionObserver(callback, {
-      root: scrollContainerRef.current,
-      threshold: 0.9,
-    })
+  // 게시글 목록을 가져오는 커스텀 훅
+  const { articleList, hasMore, setHasMore } = useGetArticles(
+    page,
+    orderBy,
+    debouncedSearchTerm
+  )
+  // 페이지네이션을 위한 상태
+  const loadMore = async () => {
+    if (hasMore) setPage((prev) => prev + 1)
+  }
+  //무한스크롤
+  useInfiniteScroll({
+    hasMore,
+    loadMore,
+    observerRef,
+    scrollContainerRef,
+  })
 
-    observer.observe(observerRef.current)
-
-    return () => {
-      if (observer) observer.disconnect()
-    }
-  }, [hasMore, loadMore])
+  if (!articleList) {
+    // 데이터가 없을 때 로딩 상태를 보여줄 수 있고, 데이터가 도착하면 다시 렌더링되어 실제 게시글 목록이 보임임
+    return null
+  }
   return (
     <>
       <BoardHeader>

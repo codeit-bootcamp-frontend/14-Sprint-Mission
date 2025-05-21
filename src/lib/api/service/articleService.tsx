@@ -1,6 +1,6 @@
 import requestor from '../client/requestor'
 import { AxiosResponse } from 'axios'
-import { GetArticleType, GetArticleIdType } from '@/app/types/article'
+import { GetArticleType, GetArticleIdType } from '../../../types/article'
 
 class ArticleService {
   postArticle(body) {

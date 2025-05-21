@@ -6,14 +6,14 @@ import Image from 'next/image'
 
 import { useGetCommentService } from '../../hooks/useCommentService'
 import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
-import TextInputPlaceholder from '../../common/TextInputPlaceholder'
-import Button from '../../common/Button'
+import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
+import Button from '../../../components/common/Button'
 
-import InquiryEmpty from '../../../../public/assets/svg/InquiryEmpty.svg'
+import InquiryEmpty from '../../../../public/assets/svg/inquiry_empty.svg'
 
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../../../styles/theme'
+import { textStyle } from '../../../styles/textStyle'
 
 const ItemsDetailQuestionTextarea = () => {
   const params = useParams() // product 데어터 받기

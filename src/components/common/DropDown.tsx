@@ -3,11 +3,11 @@ import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 
-import ArrowDown from '../../../public/assets/image/ArrowDown.png'
-import Sort from '../../../public/assets/svg/Sort.svg'
+import ArrowDown from '../../../public/assets/image/arrow_down.png'
+import Sort from '../../../public/assets/svg/sort_arrow.svg'
 
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 type OptionType = {
   name: string

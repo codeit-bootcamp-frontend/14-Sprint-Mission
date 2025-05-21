@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { theme } from './styles/theme'
-import { textStyle } from './styles/textStyle'
-import Button from './common/Button'
+import { theme } from '../styles/theme'
+import { textStyle } from '../styles/textStyle'
+import Button from '../components/common/Button'
 
 export const HeaderTop = styled.header`
   display: flex;
   justify-content: center;
-  position: sticky;
+
   top: 0;
   background-color: #ffffff;
 `
@@ -90,6 +90,7 @@ export const HeaderLogin = styled.a`
 export const HeaderMain = styled.div`
   width: 100%;
   background-color: #cfe5ff;
+  position: relative;
 `
 
 export const HeaderMainContainer = styled.div`

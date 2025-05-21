@@ -1,27 +1,45 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-import { GetArticleType } from '../types/article'
+import { useGetBestArticles } from '../../hooks/useGetBeatArticle'
 
-import HeartInactive from '../../../public/assets/image/HeartInactive.png'
-import BestBadge from '../../../public/assets/image/BestBadge.png'
-import { formatDate } from '../utils/datetime'
+import HeartInactive from '../../../public/assets/image/heart_inactive.png'
+import BestBadge from '../../../public/assets/image/best_badge.png'
+import { formatDate } from '../../utils/datetime'
 
 import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
-type BestBoardsProps = {
-  articleList?: GetArticleType
-}
+const BestBoards = () => {
+  const [bestPageSize, setBestPageSize] = useState(3)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 743) {
+        setBestPageSize(1)
+      } else if (window.innerWidth <= 1023) {
+        setBestPageSize(2)
+      } else {
+        setBestPageSize(3)
+      }
+    }
 
-const BestBoards = ({ articleList }: BestBoardsProps) => {
-  if (!articleList) return null
+    handleResize() // 처음 렌더링 시에도 계산
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // useGetBestArticles 훅을 사용하여 베스트 게시글 목록을 가져옵니다.
+  const bestArticleList = useGetBestArticles(bestPageSize)
+
+  if (!bestArticleList) {
+    return <div>게시글을 불러오는 중입니다...</div>
+  }
   return (
     <>
       <BestBoardsTitle>베스트 게시글</BestBoardsTitle>
       <BoneWrapper>
-        {articleList.list.map((article) => (
+        {bestArticleList.list.map((article) => (
           <MainWrapper key={article.id}>
             <BestIcon>
               <Image src={BestBadge} alt="베스트 게시글 오피셜 아이콘" />

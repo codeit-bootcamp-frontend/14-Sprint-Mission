@@ -4,22 +4,22 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import { GetProductIdTypes } from '../types/product'
+import { GetProductIdTypes } from '../../types/product'
 
-import ItemsNavVar from '../common/ItemsNavVar'
+import ItemsNavVar from '../../components/domain/Nav/ItemsNavVar'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
-import DropDown from '../common/DropDown'
-import productService from '../api/services/productService'
-import Button from '../common/Button'
+import DropDown from '../../components/common/DropDown'
+import productService from '../../lib/api/service/productService'
+import Button from '../../components/common/Button'
 
-import Search from '../../../public/assets/svg/Search.svg'
-import ArrowLeft from '../../../public/assets/svg/ArrowLeft.svg'
-import ArrowRight from '../../../public/assets/svg/ArrowRight.svg'
+import Search from '../../../public/assets/svg/search.svg'
+import ArrowLeft from '../../../public/assets/svg/arrow_left.svg'
+import ArrowRight from '../../../public/assets/svg/arrow_right.svg'
 
 import styled, { css } from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 
 type SelectOption = {
   value: string

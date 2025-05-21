@@ -4,16 +4,16 @@ import React from 'react'
 import { useParams } from 'next/navigation'
 
 import { useGetProductId } from '../../hooks/useProductService'
-import Tag from '../../common/Tag'
-import { formatDate } from '../../utils/datetime'
+import Tag from '../../../components/common/Tag'
+import { formatDate } from '../../../utils/datetime'
 
-import Setting from '../../../../public/assets/svg/Setting.svg'
-import ProfileIcon from '../../../../public/assets/svg/ProfileIcon.svg'
-import HeartInactive from '../../../../public/assets/image/HeartInactive.png'
+import Setting from '../../../../public/assets/svg/setting_icon.svg'
+import ProfileIcon from '../../../../public/assets/svg/profile_icon.svg'
+import HeartInactive from '../../../../public/assets/image/heart_inactive.png'
 
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import { theme } from '../../../styles/theme'
+import { textStyle } from '../../../styles/textStyle'
 import Image from 'next/image'
 
 const ItemsDetailDescription = () => {

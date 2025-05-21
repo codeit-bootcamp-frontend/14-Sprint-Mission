@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { GetProductIdTypes } from '../types/product'
+import { GetProductIdTypes } from '../../types/product'
 
-import HeartInactive from '../../../public/assets/image/HeartInactive.png'
+import HeartInactive from '../../../public/assets/image/heart_inactive.png'
 
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import { theme } from '../../styles/theme'
+import { textStyle } from '../../styles/textStyle'
 import styled from 'styled-components'
 import Image from 'next/image'
 
