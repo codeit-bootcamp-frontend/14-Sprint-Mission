@@ -122,7 +122,7 @@ html {
 }
 .footer .menus a {
   font-weight: 400;
-  color: #fff;
+  color: #e5e7eb;
 }
 .footer .menus a + a {
   margin-left: 30px;
@@ -171,11 +171,12 @@ html {
 .input_box .btn_pw.show {
   background: url(images/ico_visibility_on.png) no-repeat;
 }
-.pc_only {
-  display: block;
-}
+
 .mobile_only {
   display: none;
+}
+.pc_only {
+  display: block;
 }
 
 .tag_text {
