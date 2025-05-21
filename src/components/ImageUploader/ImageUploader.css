@@ -1,0 +1,85 @@
+.imageRow {
+  display: flex;
+  gap: 12px;
+}
+
+.imageBox {
+  width: 282px;
+  height: 282px;
+  background-color: var(--gray-100);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.previewWrapper {
+  width: 282px;
+  height: 282px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--gray-100);
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeImageButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.imagePlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.plusIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.imageText {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+.imageError {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-sm);
+  color: var(--error-red);
+  font-weight: 400;
+  margin-top: -10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .imageBox {
+    width: 168px;
+    height: 168px;
+  }
+  .previewWrapper {
+    width: 168px;
+    height: 168px;
+  }
+}

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Pretendard", sans-serif;
 }
 
 a {
@@ -239,7 +240,6 @@ button {
 button,
 button.medium,
 .button {
-  width: 240px;
   height: 48px;
   border-radius: 40px;
   background-color: var(--Primary-100);
@@ -273,13 +273,11 @@ button.small-48,
   border-radius: 8px;
 }
 button:hover {
-  background-color: var(--Primary-200);
   cursor: pointer;
 }
 button:active {
   background-color: var(--Primary-300);
 }
 button:disabled {
-  background-color: var(--gray-400);
   cursor: not-allowed;
 }

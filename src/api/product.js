@@ -1,6 +1,6 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-// 전체 상품 목록 가져오기
+// 상품 목록 가져오기 (검색, 정렬, 페이지네이션 포함)
 export async function getItems({
   search,
   order = "recent",
@@ -19,9 +19,7 @@ export async function getItems({
   return res.json();
 }
 
-// 좋아요 순 베스트 상품 가져오기 (4개만)
-export async function getBestItems() {
-  const res = await fetch(`${BASE_URL}/products?pageSize=4&orderBy=favorite`);
-  if (!res.ok) throw new Error(res.status);
-  return res.json();
+// 베스트 상품 가져오기 (optional alias)
+export function getBestItems() {
+  return getItems({ order: "favorite", pageSize: 4 });
 }

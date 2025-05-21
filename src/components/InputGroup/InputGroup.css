@@ -1,0 +1,39 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: var(--text-2lg);
+  line-height: var(--line-height-2lg);
+  color: var(--gray-800);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.input {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+  height: 42px;
+  padding: 7px 12px;
+  padding-left: 24px;
+  border: none;
+  outline: none;
+  color: var(--gray-800);
+  border-radius: 12px;
+  background-color: var(--gray-100);
+}
+
+.textarea {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+  height: 200px;
+  padding: 20px 24px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: var(--gray-100);
+  resize: none;
+  color: var(--gray-800);
+}

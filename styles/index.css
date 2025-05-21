@@ -37,28 +37,19 @@ header .nav a.button {
 .break-title {
   display: none;
 }
-/* @media (min-width: 1200px) {
-  header .nav {
-    margin: 0 48px;
-    height: 100%;
-  }
-  .break-title {
-    display: inline;
-  }
-} */
+
 @media (max-width: 1200px) {
   header .nav {
     margin: 0 24px;
   }
 }
-/* 모바일 */
+
 @media (max-width: 768px) {
   header .nav .left img {
     display: none;
   }
 }
 
-/* 메인 */
 main .banner {
   background-color: #cfe5ff;
   padding-top: 200px;
@@ -140,7 +131,7 @@ main #bottom-panda {
     margin: 200px 0;
   }
 }
-/* 모바일 메인 */
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 24px;

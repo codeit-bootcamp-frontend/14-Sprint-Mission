@@ -1,7 +1,7 @@
 .best-section {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 2rem;
+  margin: 1rem auto 2rem;
 }
 
 .best-grid {
@@ -13,10 +13,12 @@
 
 .best-title {
   grid-column: 1 / -1;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+  font-weight: 700;
+
   text-align: left;
+  color: var(--gray-800);
 }
 .best-card-wrapper {
   display: block;
@@ -26,7 +28,7 @@
   height: 378px;
 }
 
-@media (max-width: 1023px) and (min-width: 768px) {
+@media (max-width: 1023px) {
   .best-grid {
     width: 696px;
     height: 482px;

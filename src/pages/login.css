@@ -2,7 +2,7 @@ body {
   background-color: #fcfcfc;
   width: 100vw;
 }
-/* 로그인 CSS */
+
 .signin-container {
   position: absolute;
   top: 15%;
@@ -136,7 +136,6 @@ input:focus {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-/* 회원가입 CSS */
 
 .login-logo img#logo-img {
   height: 132px;
@@ -187,8 +186,7 @@ input:focus {
   height: 24px;
 }
 
-/* 데스크탑 */
-@media (max-width: 1200px) {
+@media (max-width: 1023px) {
   .signin-container {
     max-width: 640px;
     margin-top: 60px;
@@ -229,8 +227,8 @@ input:focus {
     width: 100%;
   }
 }
-/* 모바일 반응형 */
-@media (min-width: 375px) and (max-width: 767px) {
+
+@media (max-width: 767px) {
   .signin-container {
     margin-top: 80px;
     max-width: 400px;

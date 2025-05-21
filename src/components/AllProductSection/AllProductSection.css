@@ -1,14 +1,12 @@
 .all-section {
   max-width: 1206px;
   margin: 0 auto;
-  padding: 0 1rem;
-
-  margin-bottom: 40px;
+  padding: 0rem;
 }
 
 .all-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 221px);
+  grid-template-columns: repeat(5, 224px);
   gap: 40px 24px;
   justify-content: center;
 }
@@ -43,7 +41,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     width: 100%;
-    padding: 0px;
+    padding: 10px;
   }
 
   .product-wrapper {
@@ -51,14 +49,6 @@
     height: 264px;
   }
 
-  .index-4,
-  .index-5,
-  .index-6,
-  .index-7,
-  .index-8,
-  .index-9 {
-    display: none;
-  }
   .product-card.all .product-image {
     height: 168px;
   }

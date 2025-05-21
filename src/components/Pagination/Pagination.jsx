@@ -4,39 +4,32 @@ function Pagination({ currentPage, totalCount, pageSize, onPageChange }) {
   const totalPages = Math.ceil(totalCount / pageSize);
   if (totalPages <= 1) return null;
 
-  const getVisiblePages = () => {
-    const maxVisible = 5;
-    const half = Math.floor(maxVisible / 2);
+  const maxVisible = 5;
+  const currentGroup = Math.floor((currentPage - 1) / maxVisible);
+  const start = currentGroup * maxVisible + 1;
+  const end = Math.min(start + maxVisible - 1, totalPages);
 
-    let start = currentPage - half;
-    let end = currentPage + half;
+  const visiblePages = [];
+  for (let i = start; i <= end; i++) {
+    visiblePages.push(i);
+  }
 
-    if (start < 1) {
-      start = 1;
-      end = Math.min(totalPages, maxVisible);
-    }
-
-    if (end > totalPages) {
-      end = totalPages;
-      start = Math.max(1, end - maxVisible + 1);
-    }
-
-    const pages = [];
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    return pages;
+  const goToPrevGroup = () => {
+    const prevGroupPage = Math.max(1, start - 1);
+    onPageChange(prevGroupPage);
   };
 
-  const visiblePages = getVisiblePages();
+  const goToNextGroup = () => {
+    const nextGroupPage = Math.min(totalPages, end + 1);
+    onPageChange(nextGroupPage);
+  };
 
   return (
     <div className="pagination-container">
       <button
         className="pagination-button"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={goToPrevGroup}
+        disabled={start === 1}
       >
         &lt;
       </button>
@@ -55,8 +48,8 @@ function Pagination({ currentPage, totalCount, pageSize, onPageChange }) {
 
       <button
         className="pagination-button"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={goToNextGroup}
+        disabled={end === totalPages}
       >
         &gt;
       </button>
