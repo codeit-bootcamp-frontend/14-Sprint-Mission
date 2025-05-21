@@ -31,7 +31,7 @@ const ArticleCardList = () => {
 
       if (node) observer.current.observe(node);
     },
-    [hasMore]
+    [hasMore, setPage]
   );
 
   const handleSortChange = (option: "recent" | "like") => {

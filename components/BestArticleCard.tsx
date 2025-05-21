@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import bestBedge from "@/public/images/best-bedge.png";
 import heartIcon from "@/public/icons/ic_heart.png";
