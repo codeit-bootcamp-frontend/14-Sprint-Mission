@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+
+.product-question-wrapper {
+  margin: 4rem auto 2.4rem;
+  @media (max-width: 1023px) {
+    margin: 4rem auto;
+  }
+  @media (max-width: 743px) {
+    margin: 2.5rem auto;
+  }
+}
+.product-question-text {
+  @include apply-font($font-16, 600);
+  color: $secondaryGray-900;
+  margin-bottom: 0.9rem;
+}
+
+.button-wrapper {
+  width: fit-content;
+  margin: 1.6rem 0 0 auto;
+}
+.register-button {
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+}
+.items-question-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-empty-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.inquiry-empty-text {
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-400;
+  margin-top: 0.5rem;
+}

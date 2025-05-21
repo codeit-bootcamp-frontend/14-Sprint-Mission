@@ -1,4 +1,4 @@
-import { useEffect, RefObject } from 'react'
+import { useEffect, RefObject, useRef } from 'react'
 
 type UseInfiniteScrollProps = {
   hasMore: boolean
@@ -13,17 +13,17 @@ export function useInfiniteScroll({
   observerRef,
   scrollContainerRef,
 }: UseInfiniteScrollProps) {
+  const loadingRef = useRef(false)
+
   useEffect(() => {
     if (!hasMore || !observerRef.current || !scrollContainerRef.current) return
 
-    let loading = false
-
     const callback = async (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && !loading) {
-        loading = true
+      if (entries[0].isIntersecting && !loadingRef.current) {
+        loadingRef.current = true
         await loadMore()
         setTimeout(() => {
-          loading = false
+          loadingRef.current = false
         }, 500)
       }
     }

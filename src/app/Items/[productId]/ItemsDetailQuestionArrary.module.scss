@@ -1,0 +1,126 @@
+@import '../../../styles/variables';
+
+.edit-bone {
+  position: relative;
+  margin: 1rem 0 7rem;
+  z-index: 1;
+}
+.editing-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: -212px;
+  @media (max-width: 1023px) {
+    bottom: -190px;
+  }
+}
+.button-wrapper {
+  width: max-content;
+}
+.edit-button {
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+}
+.button-edit-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 1.6rem 0 2.4rem;
+  gap: 0.4rem;
+}
+.edit-cancel-button {
+  @include apply-font($font-16, 600);
+  color: $secondaryGray-500;
+  width: 68px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bone {
+  border-bottom: 1px solid $secondaryGray-200;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 10rem;
+  position: relative;
+  padding-bottom: 1.2rem;
+
+  margin-top: 2.4rem;
+  @media (max-width: 1023px) {
+    margin-top: 0;
+  }
+}
+
+.question-content {
+  @include apply-font($font-14, 400);
+  color: $secondaryGray-800;
+  margin-bottom: 2.4rem;
+}
+.user-profile-image-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  img {
+    border-radius: 50%;
+  }
+}
+.user-profile-image-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-profile-name {
+  @include apply-font($font-12, 400);
+  color: $secondaryGray-600;
+}
+.diff-date {
+  @include apply-font($font-12, 400);
+  color: $secondaryGray-400;
+}
+.setting-button-wrapper {
+  position: relative;
+  top: -42px;
+  cursor: pointer;
+}
+
+.select-option {
+  position: absolute;
+  top: 1.8rem;
+  left: -124px;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #181818;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  @media (max-width: 743px) {
+    position: absolute;
+    top: 30px;
+    left: -110px;
+    z-index: 1;
+    width: 130px;
+    height: 84px;
+  }
+}
+.option {
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-500;
+  padding: 12px 40px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f6f6f6;
+  }
+  @media (max-width: 743px) {
+    padding: 7px 35px;
+  }
+}

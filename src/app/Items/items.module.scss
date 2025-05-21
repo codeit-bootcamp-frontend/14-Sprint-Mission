@@ -1,0 +1,167 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  width: 120rem;
+  margin: 2.4rem auto;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+  }
+  @media (max-width: 743px) {
+    width: 34.4rem;
+    margin: 1rem auto;
+  }
+}
+.nav-var {
+  height: 4.2rem;
+  width: 100%;
+  margin: 0 auto 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 743px) {
+    flex-wrap: wrap;
+    margin: 0 auto 6.6rem;
+  }
+}
+.nav-title {
+  @include apply-font($font-20, 700);
+  color: $secondaryGray-900;
+  @media (max-width: 743px) {
+    height: 2.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.nav-right-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  @media (max-width: 743px) {
+    flex-wrap: wrap;
+  }
+}
+.search-icon {
+  position: absolute;
+  right: 585px;
+  z-index: 10;
+  display: flex;
+  @media (max-width: 1023px) {
+    right: 412px;
+  }
+  @media (max-width: 743px) {
+    right: 308px;
+    top: 28px;
+  }
+}
+.register-button {
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+}
+.nav-search {
+  width: 32.5rem;
+  height: 100%;
+  padding: 0.9rem 10.7rem 0.9rem 4.4rem;
+  border-radius: 1.2rem;
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-400;
+  background-color: $secondaryGray-100;
+  border: none;
+  margin-right: 1.2rem;
+  @media (max-width: 1023px) {
+    width: 15.125rem;
+    padding: 9px 24px 9px 44px;
+  }
+  @media (max-width: 743px) {
+    position: relative;
+    top: 19px;
+    padding: 9px 40px 9px 44px;
+    width: max-content;
+    margin: 0;
+  }
+}
+.search-input {
+  border: none;
+  background-color: $secondaryGray-100;
+}
+
+.button-wrapper {
+  margin-right: 1.2rem;
+  @media (max-width: 743px) {
+    position: relative;
+    width: max-content;
+    top: -74px;
+    left: 206px;
+  }
+  button {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+.pagination {
+  width: 30.4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4.3rem auto 0 auto;
+  @media (max-width: 1023px) {
+    margin: 2.5rem auto 0 auto;
+  }
+}
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid $secondaryGray-200;
+  background: #ffffff;
+  color: $secondaryGray-600;
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
+  padding: 12px;
+
+  &:hover {
+    background: $primaryBlue-200;
+  }
+
+  &:disabled {
+    background: $secondaryGray-400;
+    cursor: not-allowed;
+  }
+}
+
+interface PageButtonProps {
+  $isActive: boolean;
+}
+.page-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid $secondaryGray-100;
+  background: #fff;
+  color: $secondaryGray-900;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: $primaryBlue-200;
+  }
+
+  &.active {
+    background-color: $primaryBlue-100;
+    color: $secondaryGray-50;
+  }
+}

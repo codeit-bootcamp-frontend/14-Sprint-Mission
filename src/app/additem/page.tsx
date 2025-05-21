@@ -7,9 +7,7 @@ import ButtonImage from '../../components/common/ButtonImageInput'
 import TextInputPlaceholder from '../../components/common/TextInputPlaceholder'
 import Tag from '../../components/common/Tag'
 
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import styles from './additem.module.scss'
 
 const AddItem = () => {
   const [productName, setProductName] = useState('')
@@ -46,30 +44,34 @@ const AddItem = () => {
   return (
     <>
       <ItemsNavVar isItemsPage={true} isBoardsPage={false} />
-      <Bone>
-        <Header>
-          <ProductRegister>싱품 등록하기</ProductRegister>
-          <ButtonWrapper>
-            <RegisterButton size={42.5} disabled={!isState}>
+      <div className={styles['bone']}>
+        <div className={styles['header']}>
+          <div className={styles['product-register']}>상품 등록하기</div>
+          <div className={styles['button-wrapper']}>
+            <Button
+              className={styles['register-button']}
+              size={42.5}
+              disabled={!isState}
+            >
               등록
-            </RegisterButton>
-          </ButtonWrapper>
-        </Header>
-        <Main>
-          <DisplayWrapper>
-            <ProductText>상품 이미지</ProductText>
+            </Button>
+          </div>
+        </div>
+        <div className={styles['main']}>
+          <div className={styles['display-wrapper']}>
+            <div className={styles['product-text']}>상품 이미지</div>
             <ButtonImage />
-          </DisplayWrapper>
-          <DisplayWrapper>
-            <ProductText>상품명</ProductText>
+          </div>
+          <div className={styles['display-wrapper']}>
+            <div className={styles['product-text']}>상품명</div>
             <TextInputPlaceholder
               placeholder={'상품명을 입력해주세요'}
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
             />
-          </DisplayWrapper>
-          <DisplayWrapper>
-            <ProductText>상품 소개</ProductText>
+          </div>
+          <div className={styles['display-wrapper']}>
+            <div className={styles['product-text']}>상품 소개</div>
             <TextInputPlaceholder
               placeholder={'상품 소개를 입력해주세요'}
               height="282px"
@@ -77,25 +79,25 @@ const AddItem = () => {
               value={productDescription}
               onChange={(e) => setProductDescription(e.target.value)}
             />
-          </DisplayWrapper>
-          <DisplayWrapper>
-            <ProductText>판매 가격</ProductText>
+          </div>
+          <div className={styles['display-wrapper']}>
+            <div className={styles['product-text']}>판매 가격</div>
             <TextInputPlaceholder
               placeholder={'판매 가격을 입력해주세요'}
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.value)}
             />
-          </DisplayWrapper>
-          <DisplayWrapper>
-            <ProductText>태그</ProductText>
+          </div>
+          <div className={styles['display-wrapper']}>
+            <div className={styles['product-text']}>태그</div>
             <TextInputPlaceholder
               placeholder={'태그를 입력해주세요'}
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={handleEnterDown}
             />
-          </DisplayWrapper>
-          <TagDisplay>
+          </div>
+          <div className={styles['tag-display']}>
             {productTags.map((tag, index) => (
               <Tag
                 key={index}
@@ -104,66 +106,66 @@ const AddItem = () => {
                 onClick={() => handleDeleteTag(tag)}
               />
             ))}
-          </TagDisplay>
-        </Main>
-      </Bone>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
 
 export default AddItem
 
-const Bone = styled.div`
-  width: 120rem;
-  display: flex;
-  align-items: center;
-  margin: 1.5rem auto 6.9rem auto;
-  flex-direction: column;
-  @media (max-width: 1023px) {
-    width: 69.6rem;
-    margin-bottom: 7.8rem;
-  }
-  @media (max-width: 743px) {
-    width: 34.6rem;
-    margin-bottom: 7rem;
-  }
-`
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 2.4rem;
-`
-const ProductRegister = styled.div`
-  ${(props) => textStyle(20, 700)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-`
-const ButtonWrapper = styled.div`
-  width: max-content;
-`
-const RegisterButton = styled(Button)`
-  padding: 0.8rem 2.3rem;
-  width: max-content;
-`
-const Main = styled.div`
-  width: 100%;
-`
-const DisplayWrapper = styled.div`
-  width: 100%;
-  margin-bottom: 3.2rem;
-  @media (max-width: 743px) {
-    margin-bottom: 2.4rem;
-  }
-`
-const ProductText = styled.div`
-  ${(props) => textStyle(18, 700)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-  margin-bottom: 1.6rem;
-`
-const TagDisplay = styled.div`
-  display: flex;
-  gap: 0.75rem;
-  width: 100%;
-  flex-wrap: wrap;
-`
+// const Bone = styled.div`
+//   width: 120rem;
+//   display: flex;
+//   align-items: center;
+//   margin: 1.5rem auto 6.9rem auto;
+//   flex-direction: column;
+//   @media (max-width: 1023px) {
+//     width: 69.6rem;
+//     margin-bottom: 7.8rem;
+//   }
+//   @media (max-width: 743px) {
+//     width: 34.6rem;
+//     margin-bottom: 7rem;
+//   }
+// `
+// const Header = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   width: 100%;
+//   margin-bottom: 2.4rem;
+// `
+// const ProductRegister = styled.div`
+//   ${(props) => textStyle(20, 700)(props)}
+//   color: ${theme.colors.SecondaryGray[800]};
+// `
+// const ButtonWrapper = styled.div`
+//   width: max-content;
+// `
+// const RegisterButton = styled(Button)`
+//   padding: 0.8rem 2.3rem;
+//   width: max-content;
+// `
+// const Main = styled.div`
+//   width: 100%;
+// `
+// const DisplayWrapper = styled.div`
+//   width: 100%;
+//   margin-bottom: 3.2rem;
+//   @media (max-width: 743px) {
+//     margin-bottom: 2.4rem;
+//   }
+// `
+// const ProductText = styled.div`
+//   ${(props) => textStyle(18, 700)(props)}
+//   color: ${theme.colors.SecondaryGray[800]};
+//   margin-bottom: 1.6rem;
+// `
+// const TagDisplay = styled.div`
+//   display: flex;
+//   gap: 0.75rem;
+//   width: 100%;
+//   flex-wrap: wrap;
+// `

@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: max-content;
+  border-bottom: 1px solid $secondaryGray-200;
+  position: relative;
+  padding-bottom: 2.4rem;
+  padding-right: 2rem;
+  margin-top: 2.4rem;
+  @media (max-width: 743px) {
+    margin-top: 0;
+    margin-bottom: 2.4rem;
+  }
+}
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  img {
+    width: 7.2rem;
+    height: 7.2rem;
+  }
+}
+
+.question-content {
+  @include apply-font($font-20, 600);
+  color: $secondaryGray-800;
+  margin-bottom: 2.4rem;
+  @media (max-width: 743px) {
+    @include apply-font($font-18, 600);
+  }
+}
+.user-profile-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+  }
+}
+.name-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.user-profile-name {
+  @include apply-font($font-12, 400);
+  color: $secondaryGray-600;
+}
+.diff-date {
+  @include apply-font($font-12, 400);
+  color: $secondaryGray-400;
+}
+.heart-count {
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-500;
+  display: flex;
+  gap: 0.8rem;
+}

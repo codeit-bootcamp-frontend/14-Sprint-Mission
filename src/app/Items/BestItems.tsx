@@ -1,15 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { GetProductIdTypes } from '../../types/product'
 
 import HeartInactive from '../../../public/assets/image/heart_inactive.png'
 
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
-import styled from 'styled-components'
-import Image from 'next/image'
+import styles from './BestItems.module.scss'
 
 interface BestItemsProps {
   products: GetProductIdTypes[]
@@ -36,14 +34,16 @@ const BestItems = ({ products }: BestItemsProps) => {
   }, [])
 
   return (
-    <Bone>
-      <Title>베스트 상품</Title>
+    <div className={styles['bone']}>
+      {/* 점 표기법이 아니고 [] 사용한 이유는 클래스명에 - 하이픈이 있을 수도 있고  동적일 때도 []를 쓰지만 여기서는 하이픈 이유 때문에 []를 씀*/}
+      <div className={styles['title']}>베스트 상품</div>
 
-      <BestItemsDisplay>
+      <div className={styles['best-items-display']}>
         {list.slice(0, itemsDisplay).map((product) => (
           <Link key={product.id} href={`/items/${product.id}`} prefetch={true}>
-            <BestItem>
-              <BestItemImage
+            <div className={styles['best-item']}>
+              <img
+                className={styles['best-item-image']}
                 src={
                   Array.isArray(product.images) && product.images.length > 0
                     ? product.images[0]
@@ -51,106 +51,22 @@ const BestItems = ({ products }: BestItemsProps) => {
                 }
                 alt={product.name}
               />
-              <ProductDescription>
-                <ProductName>{product.name}</ProductName>
-                <ProductPrice>
+              <div className={styles['product-description']}>
+                <div className={styles['product-name']}>{product.name}</div>
+                <div className={styles['product-price']}>
                   {product.price.toLocaleString('ko-KR')}원
-                </ProductPrice>
-                <ProductFavoriteCount>
+                </div>
+                <div className={styles['product-favorite-count']}>
                   <Image src={HeartInactive} alt="HeartInactive" />
                   {product.favoriteCount}
-                </ProductFavoriteCount>
-              </ProductDescription>
-            </BestItem>
+                </div>
+              </div>
+            </div>
           </Link>
         ))}
-      </BestItemsDisplay>
-    </Bone>
+      </div>
+    </div>
   )
 }
 
 export default BestItems
-
-const Bone = styled.div`
-  height: 42.6rem;
-  width: auto;
-  margin-bottom: 4rem;
-  @media (max-width: 1023px) {
-    height: 48.2rem;
-  }
-  @media (max-width: 743px) {
-    margin-bottom: 2.4rem;
-  }
-`
-const Title = styled.div`
-  ${(props) => textStyle(20, 700)(props)}
-  color: ${theme.colors.SecondaryGray[900]};
-  margin-bottom: 1.6rem;
-`
-
-const BestItem = styled.div`
-  display: flex;
-  height: 37.8rem;
-  flex-direction: column;
-  cursor: pointer;
-  justify-content: space-between;
-  img {
-    width: 28.2rem;
-    height: 28.2rem;
-    border-radius: 1rem;
-  }
-  @media (max-width: 1023px) {
-    height: 43.4rem;
-    img {
-      width: 34.3rem;
-      height: 34.3rem;
-    }
-  }
-`
-const BestItemImage = styled.img`
-  width: 17.625rem;
-  height: 17.625rem;
-  border-radius: 1rem;
-  @media (max-width: 1023px) {
-    height: 21.437rem;
-    width: 100%;
-  }
-`
-const BestItemsDisplay = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media (max-width: 1023px) {
-    gap: 10px;
-  }
-`
-const ProductDescription = styled.div`
-  width: 100%;
-  height: 8rem;
-  margin-top: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media (max-width: 1023px) {
-    margin-top: 0.625rem;
-  }
-`
-const ProductName = styled.div`
-  ${(props) => textStyle(14, 500)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-`
-const ProductPrice = styled.div`
-  ${(props) => textStyle(16, 700)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-`
-const ProductFavoriteCount = styled.div`
-  ${(props) => textStyle(12, 500)(props)}
-  color: ${theme.colors.SecondaryGray[600]};
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  img {
-    width: 1.6rem;
-    height: 1.6rem;
-  }
-`

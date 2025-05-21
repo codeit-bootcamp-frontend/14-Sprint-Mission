@@ -13,9 +13,7 @@ import Button from '../../components/common/Button'
 import InquiryEmpty from '../../../public/assets/svg/inquiry_empty.svg'
 import Search from '../../../public/assets/svg/search.svg'
 
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import styles from './BoardList.module.scss'
 
 type SelectOption = {
   value: string
@@ -67,21 +65,24 @@ const BoardList = () => {
   }
   return (
     <>
-      <BoardHeader>
-        <BestBoardsTitle>게시글</BestBoardsTitle>
-        <WriterButton size={42.5}>글쓰기</WriterButton>
-      </BoardHeader>
-      <SearchList>
-        <TextInputIcon>
-          <NavSearch
+      <div className={styles['board-header']}>
+        <div className={styles['best-boards-title']}>게시글</div>
+        <Button className={styles['writer-button']} size={42.5}>
+          글쓰기
+        </Button>
+      </div>
+      <div className={styles['search-list']}>
+        <div className={styles['text-input-icon']}>
+          <input
+            className={styles['nav-search']}
             placeholder="검색할 상품 입력해주세요"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <PlaceholderIcon>
+          <div className={styles['placeholder-icon']}>
             <Image src={Search} alt="검색아이콘" />
-          </PlaceholderIcon>
-        </TextInputIcon>
+          </div>
+        </div>
         <DropDown
           selectList={selectList}
           selected={selectedOption}
@@ -89,108 +90,24 @@ const BoardList = () => {
             setSelectedOption(value)
           }}
         />
-      </SearchList>
-      <BoardsList ref={scrollContainerRef}>
+      </div>
+      <div className={styles['boards-list']} ref={scrollContainerRef}>
         {articleList.list?.length === 0 ? (
-          <InquiryEmptyWrapper>
+          <div className={styles['inquiry-empty-wrapper']}>
             <Image src={InquiryEmpty} alt="관련된 게시글이 없습니다." />
-            <InquiryEmptyText>문의가 없습니다</InquiryEmptyText>
-          </InquiryEmptyWrapper>
+            <div className={styles['inquiry-empty-text']}>문의가 없습니다</div>
+          </div>
         ) : (
-          <ItemsQuestionWrapper>
+          <div className={styles['items-question-wrapper']}>
             {articleList.list.map((article) => (
               <BoardDetailArrary key={article.id} article={article} />
             ))}
             {hasMore && <div ref={observerRef} style={{ height: '50px' }} />}
-          </ItemsQuestionWrapper>
+          </div>
         )}
-      </BoardsList>
+      </div>
     </>
   )
 }
 
 export default BoardList
-const BoardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2.4rem;
-  @media (max-width: 1023px) {
-    margin-bottom: 4.8rem;
-  }
-  @media (max-width: 743px) {
-    margin-bottom: 1.6rem;
-  }
-`
-const BestBoardsTitle = styled.div`
-  ${(props) => textStyle(20, 800)(props)}
-`
-const WriterButton = styled(Button)`
-  padding: 0.8rem 2.3rem;
-  width: max-content;
-`
-
-const SearchList = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media (max-width: 1023px) {
-    margin-bottom: 4rem;
-  }
-  @media (max-width: 743px) {
-    margin-bottom: 1.6rem;
-  }
-`
-const TextInputIcon = styled.div`
-  position: relative;
-`
-const NavSearch = styled.input`
-  width: 105.4rem;
-  height: 4.2rem;
-  padding: 0.9rem 8.7rem 0.9rem 4.4rem;
-  border-radius: 1.2rem;
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-  background-color: ${theme.colors.SecondaryGray[100]};
-  border: none;
-  margin-right: 1.2rem;
-  @media (max-width: 1023px) {
-    width: 55rem;
-    padding: 9px 24px 9px 44px;
-  }
-  @media (max-width: 743px) {
-    position: relative;
-
-    padding: 9px 40px 9px 44px;
-    width: max-content;
-    margin: 0;
-  }
-`
-const PlaceholderIcon = styled.div`
-  width: max-content;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-`
-
-const BoardsList = styled.div`
-  overflow-y: auto;
-  height: 60vh;
-`
-const ItemsQuestionWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`
-
-const InquiryEmptyWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`
-const InquiryEmptyText = styled.div`
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-  margin-top: 0.5rem;
-`

@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+
+.bone-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  @media (max-width: 1023px) {
+    margin-bottom: 2.4rem;
+  }
+}
+.best-boards-title {
+  @include apply-font($font-20, 800);
+  margin-bottom: 2.4rem;
+}
+.main-wrapper {
+  width: 38.4rem;
+  height: 16.9rem;
+  padding: 0 2.4rem 1.6rem 2.4rem;
+  border-radius: 8px;
+  background-color: $secondaryGray-50;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  @media (max-width: 1023px) {
+    width: 34rem;
+    height: 19.8rem;
+  }
+}
+
+.description {
+  display: flex;
+  gap: 0.8rem;
+}
+.main-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-description {
+  @include apply-font($font-20, 600);
+  @media (max-width: 1023px) {
+    @include apply-font($font-18, 600);
+  }
+}
+.description-image {
+  img {
+    width: 7.2rem;
+    height: 7.2rem;
+  }
+}
+.name-heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 2.4rem;
+}
+.create-date {
+  @include apply-font($font-14, 400);
+  color: $secondaryGray-500;
+}
+.user-name {
+  @include apply-font($font-14, 400);
+  color: $secondaryGray-500;
+}
+.user-heart {
+  display: flex;
+  align-items: center;
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+.heart-count {
+  @include apply-font($font-14, 400);
+  color: $secondaryGray-500;
+}

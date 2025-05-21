@@ -1,0 +1,85 @@
+@import '../../styles//variables.scss';
+
+.bone {
+  height: 42.6rem;
+  width: auto;
+  margin-bottom: 4rem;
+  @media (max-width: 1023px) {
+    height: 48.2rem;
+  }
+  @media (max-width: 743px) {
+    margin-bottom: 2.4rem;
+  }
+}
+.title {
+  @include apply-font($font-20, 700);
+  color: $secondaryGray-900;
+  margin-bottom: 1.6rem;
+}
+
+.best-item {
+  display: flex;
+  height: 37.8rem;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: space-between;
+  img {
+    width: 28.2rem;
+    height: 28.2rem;
+    border-radius: 1rem;
+  }
+  @media (max-width: 1023px) {
+    height: 43.4rem;
+    img {
+      width: 34.3rem;
+      height: 34.3rem;
+    }
+  }
+}
+.best-item-image {
+  width: 17.625rem;
+  height: 17.625rem;
+  border-radius: 1rem;
+  @media (max-width: 1023px) {
+    height: 21.437rem;
+    width: 100%;
+  }
+}
+.best-items-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 1023px) {
+    gap: 10px;
+  }
+}
+.product-description {
+  width: 100%;
+  height: 8rem;
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 1023px) {
+    margin-top: 0.625rem;
+  }
+}
+.product-name {
+  @include apply-font($font-14, 500);
+  color: $secondaryGray-800;
+}
+.product-price {
+  @include apply-font($font-16, 700);
+  color: $secondaryGray-800;
+}
+.product-favorite-count {
+  @include apply-font($font-12, 500);
+  color: $secondaryGray-600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
