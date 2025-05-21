@@ -1,95 +1,19 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import { productAPI } from "../api/products";
 import ProductImages from "../components/product/ProductImages";
 import ProductDetails from "../components/product/ProductDetails";
 import CommentSection from "../components/comment/CommentSection";
 import LoadingErrorHandler from "../components/ui/LoadingErrorHandler";
 import { formatTimeAgo } from "../utils/timeFormat";
+import {
+  PageContainer,
+  ProductDetailContainer,
+  ContentLayout,
+  Divider
+} from "../styles/pages/ProductDetailPage.styled.js";
 
-const PageContainer = styled.div`
-  margin: 0 auto;
-  padding-top: 10px;
-  margin-bottom: 10px;
-`;
 
-const CommonContainer = styled.div`
-  width: 100%;
-  max-width: 344px; /* 모바일 기본 너비 */
-  margin: 0 auto;
-  box-sizing: border-box;
-
-  /* 태블릿 화면 */
-  @media (min-width: 768px) {
-    max-width: 696px;
-  }
-
-  /* 데스크톱 화면 */
-  @media (min-width: 1280px) {
-    max-width: 1200px;
-  }
-`;
-
-const FormHeader = styled(CommonContainer)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-`;
-
-const Title = styled.h2`
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-`;
-
-const ProductDetailContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-`;
-
-const LoadingSpinner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const ErrorMessage = styled.div`
-  text-align: center;
-  color: #e53935;
-  padding: 20px;
-  margin-top: 100px;
-`;
-
-const Divider = styled.hr`
-  border: none;
-  border-top: 1px solid #dfdfdf;
-  width: 100%;
-  max-width: 1200px;
-  margin: 40px auto;
-`;
-
-const ContentLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 24px;
-
-  /* 태블릿 화면 */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    grid-template-columns: 340px 1fr;
-    gap: 32px;
-  }
-
-  /* 데스크톱 화면 */
-  @media (min-width: 1024px) {
-    grid-template-columns: 486px 1fr;
-    gap: 48px;
-  }
-`;
 
 function ProductDetailPage() {
   const { productId } = useParams();

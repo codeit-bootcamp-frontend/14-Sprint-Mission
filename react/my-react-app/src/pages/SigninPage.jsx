@@ -1,30 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../auth.css"; // 경로 수정
-import styled from "styled-components";
-
-const AuthContainer = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: #fff;
-
-  form {
-    width: 100%;
-    max-width: 640px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .input-item {
-    width: 100%;
-  }
-`;
+import { AuthContainer } from "../styles/pages/SigninPage.styled";
 
 function SigninPage() {
   const [email, setEmail] = useState("");

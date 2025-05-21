@@ -31,7 +31,7 @@ const Input = styled.input`
   }
 `;
 
-function NumberInput({ label, error, onChange, ...props }) {
+function NumberInput({ label, error, onChange, onKeyDown, ...props }) {
   const handleChange = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, "");
     onChange?.({ ...e, target: { ...e.target, value } });
@@ -39,7 +39,12 @@ function NumberInput({ label, error, onChange, ...props }) {
 
   return (
     <FormField label={label} error={error}>
-      <Input type="number" onChange={handleChange} {...props} />
+      <Input 
+        type="number" 
+        onChange={handleChange} 
+        onKeyDown={onKeyDown}
+        {...props} 
+      />
     </FormField>
   );
 }
