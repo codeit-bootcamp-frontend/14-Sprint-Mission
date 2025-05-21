@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const ImageContainer = styled.div`
-  width: 100%;
+  width: 343px;
+  height: 343px;
+  margin: 0 auto;
 
+  /* 태블릿 화면 */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 340px;
+    height: 340px;
+  }
+
+  /* 데스크톱 화면 */
   @media (min-width: 1024px) {
     width: 486px;
     height: 486px;

@@ -9,7 +9,7 @@ import TagInput from "../components/TagInput";
 
 const PageContainer = styled.div`
   margin: 0 auto;
-  padding-top: 120px;
+  padding-top: 10px;
   margin-bottom: 10px;
 `;
 

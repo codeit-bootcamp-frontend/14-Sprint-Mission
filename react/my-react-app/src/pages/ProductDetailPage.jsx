@@ -11,7 +11,7 @@ import Button from "../components/ui/Button";
 
 const PageContainer = styled.div`
   margin: 0 auto;
-  padding-top: 120px;
+  padding-top: 10px;
   margin-bottom: 10px;
 `;
 
@@ -79,6 +79,13 @@ const ContentLayout = styled.div`
   gap: 24px;
   margin-top: 24px;
 
+  /* 태블릿 화면 */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: 340px 1fr;
+    gap: 32px;
+  }
+
+  /* 데스크톱 화면 */
   @media (min-width: 1024px) {
     grid-template-columns: 486px 1fr;
     gap: 48px;
@@ -473,9 +480,6 @@ function ProductDetailPage() {
 
   return (
     <PageContainer>
-      <FormHeader>
-        <Title>상품 상세</Title>
-      </FormHeader>
       <ProductDetailContainer>
         <ContentLayout>
           <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -16,13 +16,19 @@ const MainContent = styled.main`
 `;
 
 function Layout() {
+  const location = useLocation();
+  // Hide footer on /additem, /items, and product detail pages (/items/:productId)
+  const hideFooter = location.pathname === "/additem" || 
+                    location.pathname === "/items" || 
+                    location.pathname.startsWith("/items/");
+
   return (
     <LayoutContainer>
       <Header />
       <MainContent>
         <Outlet />
       </MainContent>
-      <Footer />
+      {!hideFooter && <Footer />}
     </LayoutContainer>
   );
 }

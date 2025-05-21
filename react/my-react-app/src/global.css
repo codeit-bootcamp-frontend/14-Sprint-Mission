@@ -212,7 +212,21 @@ button {
   font-weight: 500;
 }
 
+.header-nav a.community-link,
+.header-nav a.market-link {
+  font-weight: bold;
+}
+
 .header-nav a:hover {
+  color: var(--blue);
+}
+
+.header-nav a.active-link {
+  color: var(--gray-600);
+  font-weight: bold;
+}
+
+.header-nav a.active-link:hover {
   color: var(--blue);
 }
 

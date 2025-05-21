@@ -83,7 +83,7 @@ export const Group2 = styled.div`
   justify-content: flex-end;
   min-width: 0;
 
-  @media (max-width: 1279px) {
+  @media (max-width: 1199px) {
     justify-content: flex-start;
   }
 `;
@@ -229,14 +229,14 @@ export const ItemsGrid = styled.div`
 `;
 
 export const BestItemsGrid = styled(ItemsGrid)`
-  grid-template-columns: 343px;
+  grid-template-columns: 344px;
   justify-content: center;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 343px);
+  @media (min-width: 768px) and (max-width: 1199px) {
+    grid-template-columns: repeat(2, 344px);
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(4, 282px);
   }
 `;
@@ -255,12 +255,12 @@ export const AllItemsGrid = styled(ItemsGrid)`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1199px) {
     grid-template-columns: repeat(3, 221px);
-    max-width: 1200px;
+    max-width: 1199px;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(5, 224px);
     max-width: 1200px;
   }
