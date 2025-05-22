@@ -69,7 +69,7 @@ export default function SignUp() {
   });
 
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
-   await mutation.mutateAsync({
+    await mutation.mutateAsync({
       email: data.email,
       nickname: data.nickname,
       password: data.password,
@@ -84,9 +84,9 @@ export default function SignUp() {
           <img
             src="/logo.svg"
             alt="logo"
-            className="lg:w-[103px] lg:h-[103px]"
+            className="lg:w-[103px] lg:h-[103px] md:w-[103px] md:h-[103px] w-[51px] h-[51px]"
           />
-          <span className="lg:text-[66px] text-[#3692FF] font-bold ml-[22px]">
+          <span className="lg:text-[66px] md:text-[66px] text-[33px]  text-[#3692FF] font-bold ml-[22px]">
             판다마켓
           </span>
         </div>
