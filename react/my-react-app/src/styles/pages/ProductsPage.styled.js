@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { PageContainer, CommonContainer, FormHeader, Title } from "../common/CommonStyles";
+
+// 공통 스타일 내보내기
+export { PageContainer, FormHeader, Title };
 
 // Main container
-export const ItemsPageContainer = styled.div`
+export const ProductsPageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  padding-top: 100px;
+  padding: 0 30px 20px 20px;
 `;
 
 // Section containers
@@ -17,7 +20,8 @@ export const SectionContainer = styled.section`
 export const SectionTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 `;
 
 // All items header
@@ -50,14 +54,12 @@ export const TitleRow = styled.div`
 
 export const AllItemsTitle = styled.h2`
   margin-bottom: 0;
-  margin-right: 12px;
+  margin-right: 20px;
   font-size: 24px;
   font-weight: bold;
   white-space: nowrap;
-
-  @media (max-width: 767px) {
-    font-size: 20px;
-  }
+  flex-shrink: 0;
+  margin-left: 10px;
 `;
 
 export const HeaderControls = styled.div`
@@ -66,12 +68,14 @@ export const HeaderControls = styled.div`
   align-items: center;
   gap: 12px;
   flex: 1;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
 
   @media (max-width: 767px) {
     width: 100%;
     justify-content: space-between;
     flex-wrap: nowrap;
+    margin-top: 12px;
   }
 `;
 
@@ -83,7 +87,7 @@ export const Group2 = styled.div`
   justify-content: flex-end;
   min-width: 0;
 
-  @media (max-width: 1279px) {
+  @media (max-width: 1199px) {
     justify-content: flex-start;
   }
 `;
@@ -229,14 +233,14 @@ export const ItemsGrid = styled.div`
 `;
 
 export const BestItemsGrid = styled(ItemsGrid)`
-  grid-template-columns: 343px;
+  grid-template-columns: 344px;
   justify-content: center;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 343px);
+  @media (min-width: 768px) and (max-width: 1199px) {
+    grid-template-columns: repeat(2, 344px);
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(4, 282px);
   }
 `;
@@ -249,17 +253,18 @@ export const AllItemsGrid = styled(ItemsGrid)`
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  padding-left: 10px;
 
   @media (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1199px) {
     grid-template-columns: repeat(3, 221px);
-    max-width: 1200px;
+    max-width: 1199px;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(5, 224px);
     max-width: 1200px;
   }

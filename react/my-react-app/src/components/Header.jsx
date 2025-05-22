@@ -9,7 +9,9 @@ function Header() {
   };
   const location = useLocation();
   const isItemsOrAddItemPage =
-    location.pathname === "/items" || location.pathname === "/additem";
+    location.pathname === "/items" ||
+    location.pathname.startsWith("/items/") ||
+    location.pathname === "/additem";
 
   return (
     <header>
@@ -25,17 +27,15 @@ function Header() {
           <nav className="header-nav">
             <NavLink
               to="/community"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              style={{}} // Remove the active style
+              className="community-link"
             >
               자유게시판
             </NavLink>
             <NavLink
               to="/items"
-              style={({ isActive }) =>
-                isActive || location.pathname === "/additem"
-                  ? activeStyle
-                  : undefined
-              }
+              style={{}} // Remove the active style
+              className="market-link"
             >
               중고마켓
             </NavLink>

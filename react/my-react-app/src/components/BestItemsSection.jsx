@@ -5,7 +5,7 @@ import {
   SectionTitle,
   BestItemsGrid,
   MessageParagraph,
-} from "../pages/ItemsPage.styled";
+} from "../styles/pages/ProductsPage.styled";
 
 function BestItemsSection({ items, loading }) {
   return (

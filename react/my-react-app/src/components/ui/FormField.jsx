@@ -4,6 +4,23 @@ import Input from "./Input";
 import TextArea from "./TextArea";
 import TagInput from "../TagInput";
 
+const FormFieldWrapper = styled.div`
+  margin-bottom: 16px;
+  width: 100%;
+`;
+
+const Label = styled.label`
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+`;
+
+const ErrorText = styled.div`
+  color: #f74747;
+  font-size: 14px;
+  margin-top: 8px;
+`;
+
 // styled-components 정의
 const FormFieldContainer = styled.div`
   width: 100%;
@@ -20,12 +37,6 @@ const FormFieldContainer = styled.div`
   @media (min-width: 1280px) {
     max-width: 1200px;
   }
-`;
-
-const FormFieldLabel = styled.label`
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: block;
 `;
 
 const StyledInput = styled(Input)`
@@ -60,12 +71,6 @@ const TagInputContainer = styled.div`
     height: 56px !important;
     box-sizing: border-box;
   }
-`;
-
-const ErrorMessage = styled.div`
-  color: #f74747;
-  font-size: 14px;
-  margin-top: 8px;
 `;
 
 /**
@@ -131,11 +136,11 @@ function FormField({
   };
 
   return (
-    <FormFieldContainer>
-      {label && <FormFieldLabel>{label}</FormFieldLabel>}
+    <FormFieldWrapper>
+      {label && <Label>{label}</Label>}
       {renderFieldContent()}
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </FormFieldContainer>
+      {error && <ErrorText>{error}</ErrorText>}
+    </FormFieldWrapper>
   );
 }
 

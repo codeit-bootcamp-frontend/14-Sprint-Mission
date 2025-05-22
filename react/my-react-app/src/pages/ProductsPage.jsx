@@ -3,11 +3,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowSize";
 import BestItemsSection from "../components/BestItemsSection";
 import AllItemsSection from "../components/AllItemsSection";
-import { ErrorMessage, ItemsPageContainer } from "./ItemsPage.styled";
+import { ErrorMessage, ProductsPageContainer, PageContainer } from "../styles/pages/ProductsPage.styled";
+import Button from "../components/ui/Button";
+
+
 
 const API_BASE_URL = "https://panda-market-api.vercel.app/";
 
-function ItemsPage() {
+function ProductsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -191,26 +194,28 @@ function ItemsPage() {
   }
 
   return (
-    <ItemsPageContainer>
-      <BestItemsSection items={visibleBestItems} loading={loadingBest} />
+    <PageContainer>
+      <ProductsPageContainer>
+        <BestItemsSection items={visibleBestItems} loading={loadingBest} />
 
-      <AllItemsSection
-        items={visibleAllItems}
-        loading={loadingAll}
-        inputValue={inputValue}
-        handleSearchInputChange={handleSearchInputChange}
-        handleSearchSubmit={handleSearchSubmit}
-        orderBy={sort}
-        handleSortChange={handleSortChange}
-        windowWidth={windowWidth}
-        currentPage={page}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-        mobileSortOpen={mobileSortOpen}
-        setMobileSortOpen={setMobileSortOpen}
-      />
-    </ItemsPageContainer>
+        <AllItemsSection
+          items={visibleAllItems}
+          loading={loadingAll}
+          inputValue={inputValue}
+          handleSearchInputChange={handleSearchInputChange}
+          handleSearchSubmit={handleSearchSubmit}
+          orderBy={sort}
+          handleSortChange={handleSortChange}
+          windowWidth={windowWidth}
+          currentPage={page}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+          mobileSortOpen={mobileSortOpen}
+          setMobileSortOpen={setMobileSortOpen}
+        />
+      </ProductsPageContainer>
+    </PageContainer>
   );
 }
 
-export default ItemsPage;
+export default ProductsPage;
