@@ -1,14 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import ProductInfo from "./ProductInfo";
 import ProductTags from "./ProductTags";
 import SellerInfo from "./SellerInfo";
-
-const ProductDetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
+import { ProductDetailsContainer } from "../../styles/components/product/ProductDetails.styled";
 
 function ProductDetails({ product, onFavoriteClick }) {
   return (

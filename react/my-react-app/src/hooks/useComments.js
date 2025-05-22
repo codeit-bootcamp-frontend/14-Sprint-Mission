@@ -54,29 +54,13 @@ function useComments(productId) {
         return null;
       setSubmittingComment(true);
       try {
-        const { data } = await productAPI.addComment(productId, {
+        // API 호출하여 댓글 추가
+        await productAPI.addComment(productId, {
           content: newCommentContent,
         });
-        // API 응답에서 writer 정보가 완전한지 확인 필요
-        const newCommentObj = {
-          id: data.id,
-          author: data.writer?.nickname || "사용자", // writer 객체 및 nickname 존재 여부 확인
-          content: data.content,
-          createdAt: data.createdAt,
-          timeAgo: formatTimeAgo(data.createdAt),
-          date: new Date(data.createdAt)
-            .toLocaleDateString("ko-KR", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            })
-            .replace(/\. /g, "-")
-            .replace(/\.$/, ""),
-          avatar: data.writer?.nickname?.charAt(0) || "U",
-          showMenu: false,
-        };
-        setComments((prevComments) => [newCommentObj, ...prevComments]);
-        return newCommentObj; // 성공 시 새 댓글 객체 반환
+        // 댓글 추가 성공 후, 댓글 목록을 다시 불러옴
+        await fetchComments(); // 댓글 목록 새로고침
+        return true; // 성공 여부 반환 (객체 대신 boolean 또는 void로 변경 가능)
       } catch (err) {
         console.error("Failed to add comment:", err);
         alert(
@@ -88,7 +72,7 @@ function useComments(productId) {
         setSubmittingComment(false);
       }
     },
-    [productId, submittingComment]
+    [productId, submittingComment, fetchComments] // fetchComments 의존성 배열에 추가
   );
 
   const handleToggleCommentMenu = (commentId) => {

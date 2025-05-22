@@ -11,7 +11,7 @@ import {
   KebabMenuButton,
   MenuDropdown,
   MenuItem,
-} from "./ProductInfo.styled";
+} from "../../styles/components/product/ProductInfo.styled";
 
 // 케밥 메뉴 아이콘 컴포넌트를 ProductInfo 컴포넌트 외부로 이동
 const KebabMenuIcon = () => (

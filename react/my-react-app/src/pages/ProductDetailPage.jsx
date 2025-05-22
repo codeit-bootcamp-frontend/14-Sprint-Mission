@@ -28,22 +28,7 @@ function ProductDetailPage() {
     submittingComment,
     handleCommentSubmit,
     handleToggleCommentMenu,
-    // fetchComments // 필요시 CommentSection에 전달하여 수동 새로고침 기능 구현 가능
   } = useComments(productId);
-
-  const [newComment, setNewComment] = useState("");
-  const handleCommentChange = (e) => {
-    setNewComment(e.target.value);
-  };
-
-  // CommentSection으로 전달할 submit 핸들러 (UI와 관련된 부분은 페이지에 남김)
-  const onCommentSubmitWrapper = async (e) => {
-    e.preventDefault();
-    const submittedComment = await handleCommentSubmit(newComment); // 훅의 함수 호출
-    if (submittedComment) {
-      setNewComment(""); // 댓글 제출 성공 시 입력창 비우기
-    }
-  };
 
   // 초기 product 로딩 중이거나 에러 발생 시 LoadingErrorHandler가 처리
   // product 데이터가 없는 경우 (null)는 LoadingErrorHandler 이후에 한 번 더 체크하여 렌더링 방지
@@ -74,14 +59,11 @@ function ProductDetailPage() {
 
             <CommentSection
               comments={comments}
-              newComment={newComment}
               loadingComments={loadingComments}
               commentError={commentError}
-              submittingComment={submittingComment} // 댓글 제출 중 상태 전달
-              onCommentChange={handleCommentChange}
-              onCommentSubmit={onCommentSubmitWrapper}
+              submittingComment={submittingComment}
+              handleCommentSubmit={handleCommentSubmit}
               onToggleMenu={handleToggleCommentMenu}
-              // onCommentFocus, onCommentBlur 등은 CommentSection 내부에서 관리하는 것이 더 적절할 수 있음
             />
           </ProductDetailContainer>
         </PageContainer>
