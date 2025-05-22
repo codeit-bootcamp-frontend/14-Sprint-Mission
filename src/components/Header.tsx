@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import HeaderDropDownComponent from "./HeaderDropDownComponent";
 
 const Header = () => {
+  const [click, setClick] = useState(false);
+
   return (
     <>
       <div className="fixed right-0 left-0 z-50 bg-[var(--background)]  lg:px-[200px] lg:py-[15px] md:px-[24px] md:py-[10px] px-[16px] py-[10px]  flex items-center justify-between border-b border-gray-200">
@@ -30,8 +34,16 @@ const Header = () => {
           </span>
         </div>
 
-        <div className=" relative w-[40px] h-[40px] rounded-full bg-gray-400">
+        <div
+          className=" relative w-[40px] h-[40px] rounded-full bg-gray-400 cursor-pointer"
+          onClick={() => setClick(!click)}
+        >
           <Image fill src="/profile.svg" alt="profile" />
+          {click && (
+            <div className="absolute top-[50px] right-[10px]">
+              <HeaderDropDownComponent />
+            </div>
+          )}
         </div>
       </div>
     </>
