@@ -1,169 +1,63 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { productAPI } from "../api/products";
 import ProductImages from "../components/product/ProductImages";
 import ProductDetails from "../components/product/ProductDetails";
 import CommentSection from "../components/comment/CommentSection";
 import LoadingErrorHandler from "../components/ui/LoadingErrorHandler";
-import { formatTimeAgo } from "../utils/timeFormat";
+
 import {
   PageContainer,
   ProductDetailContainer,
   ContentLayout,
-  Divider
+  Divider,
 } from "../styles/pages/ProductDetailPage.styled.js";
 
-
+// 커스텀 훅 import
+import useProductDetail from "../hooks/useProductDetail";
+import useComments from "../hooks/useComments";
 
 function ProductDetailPage() {
   const { productId } = useParams();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [product, setProduct] = useState(null);
-  const [comments, setComments] = useState([]);
-  const [loadingComments, setLoadingComments] = useState(false);
-  const [commentError, setCommentError] = useState(null);
+
+  const { product, loadingProduct, productError, handleFavoriteClick } =
+    useProductDetail(productId);
+  const {
+    comments,
+    loadingComments,
+    commentError,
+    submittingComment,
+    handleCommentSubmit,
+    handleToggleCommentMenu,
+    // fetchComments // 필요시 CommentSection에 전달하여 수동 새로고침 기능 구현 가능
+  } = useComments(productId);
+
   const [newComment, setNewComment] = useState("");
-  const [submittingComment, setSubmittingComment] = useState(false);
-
-  // 댓글 메뉴 토글 핸들러
-  const handleToggleCommentMenu = (commentId) => {
-    const updatedComments = comments.map((comment) =>
-      comment.id === commentId
-        ? { ...comment, showMenu: !comment.showMenu }
-        : { ...comment, showMenu: false }
-    );
-    setComments(updatedComments);
-  };
-
-  const handleFavoriteClick = async () => {
-    try {
-      if (!product) return;
-
-      const api = product.isFavorite
-        ? productAPI.removeFavorite
-        : productAPI.addFavorite;
-      const { data } = await api(productId);
-      setProduct(data);
-    } catch (err) {
-      console.error("Failed to toggle favorite:", err);
-    }
-  };
-
-  // 댓글 목록 가져오기
-  const fetchComments = useCallback(async () => {
-    if (!productId) return;
-
-    setLoadingComments(true);
-    setCommentError(null);
-
-    try {
-      const { data } = await productAPI.getComments(productId, null, 10);
-      const formattedComments = data.list.map((comment) => ({
-        id: comment.id,
-        author: comment.writer.nickname,
-        content: comment.content,
-        createdAt: comment.createdAt,
-        timeAgo: formatTimeAgo(comment.createdAt),
-        date: new Date(comment.createdAt)
-          .toLocaleDateString("ko-KR", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })
-          .replace(/\. /g, "-")
-          .replace(/\.$/, ""),
-        avatar: comment.writer.nickname.charAt(0),
-        showMenu: false,
-      }));
-
-      setComments(formattedComments);
-    } catch (err) {
-      console.error("Failed to fetch comments:", err);
-      setCommentError(
-        err.response?.data?.message || "댓글을 불러오는데 실패했습니다."
-      );
-    } finally {
-      setLoadingComments(false);
-    }
-  }, [productId]);
-
-  // 댓글 작성 제출
-  const handleCommentSubmit = async (e) => {
-    e.preventDefault();
-    if (!newComment.trim() || submittingComment) return;
-
-    setSubmittingComment(true);
-
-    try {
-      const { data } = await productAPI.addComment(productId, {
-        content: newComment,
-      });
-
-      // 새 댓글 추가
-      const newCommentObj = {
-        id: data.id,
-        author: data.writer.nickname,
-        content: data.content,
-        createdAt: data.createdAt,
-        timeAgo: formatTimeAgo(data.createdAt),
-        date: new Date(data.createdAt)
-          .toLocaleDateString("ko-KR", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })
-          .replace(/\. /g, "-")
-          .replace(/\.$/, ""),
-        avatar: data.writer.nickname.charAt(0),
-        showMenu: false,
-      };
-
-      setComments([newCommentObj, ...comments]);
-      setNewComment("");
-    } catch (err) {
-      console.error("Failed to add comment:", err);
-      alert(
-        err.response?.data?.message || "댓글 작성에 실패했습니다. 다시 시도해주세요."
-      );
-    } finally {
-      setSubmittingComment(false);
-    }
-  };
-
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
   };
 
-  // 상품 정보 가져오기
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const { data } = await productAPI.getDetail(productId);
-        setProduct(data);
-      } catch (err) {
-        setError(
-          err.response?.data?.message || "상품 정보를 불러오는데 실패했습니다."
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [productId]);
-
-  useEffect(() => {
-    if (!loading && product) {
-      fetchComments();
+  // CommentSection으로 전달할 submit 핸들러 (UI와 관련된 부분은 페이지에 남김)
+  const onCommentSubmitWrapper = async (e) => {
+    e.preventDefault();
+    const submittedComment = await handleCommentSubmit(newComment); // 훅의 함수 호출
+    if (submittedComment) {
+      setNewComment(""); // 댓글 제출 성공 시 입력창 비우기
     }
-  }, [loading, product, fetchComments]);
+  };
+
+  // 초기 product 로딩 중이거나 에러 발생 시 LoadingErrorHandler가 처리
+  // product 데이터가 없는 경우 (null)는 LoadingErrorHandler 이후에 한 번 더 체크하여 렌더링 방지
+  if (!loadingProduct && !product && !productError) {
+    // 데이터도 없고, 로딩중도 아니고, 에러도 없는 초기 상태 (또는 productId가 없는 경우 useProductDetail에서 처리)
+    // 이 경우는 useProductDetail 훅 내부에서 productId가 없을 때 error를 설정하거나
+    // product를 null로 유지하여 아래 LoadingErrorHandler에서 걸리도록 할 수 있습니다.
+    // 또는 여기서 특정 UI (예: "상품 정보를 찾을 수 없습니다.")를 보여줄 수 있습니다.
+    // 현재 useProductDetail에서 productId가 없을 때 productError를 설정하므로, 그쪽 로직에 의해 처리됩니다.
+  }
 
   return (
-    <LoadingErrorHandler loading={loading} error={error}>
-      {product && (
+    <LoadingErrorHandler loading={loadingProduct} error={productError}>
+      {product && ( // product가 존재할 때만 내부 UI 렌더링
         <PageContainer>
           <ProductDetailContainer>
             <ContentLayout>
@@ -183,11 +77,11 @@ function ProductDetailPage() {
               newComment={newComment}
               loadingComments={loadingComments}
               commentError={commentError}
+              submittingComment={submittingComment} // 댓글 제출 중 상태 전달
               onCommentChange={handleCommentChange}
-              onCommentSubmit={handleCommentSubmit}
-              onCommentFocus={() => {}}
-              onCommentBlur={() => {}}
+              onCommentSubmit={onCommentSubmitWrapper}
               onToggleMenu={handleToggleCommentMenu}
+              // onCommentFocus, onCommentBlur 등은 CommentSection 내부에서 관리하는 것이 더 적절할 수 있음
             />
           </ProductDetailContainer>
         </PageContainer>
