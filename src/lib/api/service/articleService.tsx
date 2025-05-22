@@ -33,10 +33,10 @@ class ArticleService {
   }
 
   getArticleId(articleId: number): Promise<AxiosResponse<GetArticleIdType>> {
-    return requestor.get(`p/articles/${articleId}`)
+    return requestor.get(`/api/proxy/articles/${articleId}`)
   }
 
-  patchArticleId(articleId, body) {
+  patchArticleId(articleId: number, body: GetArticleIdType) {
     // 틀릴수도
     return requestor.patch(`/api/proxy/articles/${articleId}`, {
       data: body,

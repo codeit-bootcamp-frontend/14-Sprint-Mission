@@ -16,8 +16,8 @@ import styles from './ItemsDetailQuestionArrary.module.scss'
 
 interface ItemsDetailQuestionArraryProps {
   productQuestion: PostCommentType
-  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>
-  isEditing: boolean
+  setIsEditing?: React.Dispatch<React.SetStateAction<boolean>>
+  isEditing?: boolean
 }
 
 const ItemsDetailQuestionArrary = ({

@@ -31,7 +31,7 @@ const BoardList = () => {
   const [selectedOption, setSelectedOption] = useState('recent')
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
-
+  const [isMobile, setIsMobile] = useState(false)
   const orderBy = selectedOption === 'recent' ? 'recent' : 'like'
   // 페이지네이션을 위한 상태
   useEffect(() => {
@@ -58,7 +58,16 @@ const BoardList = () => {
     observerRef,
     scrollContainerRef,
   })
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 743)
+    }
 
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
   if (!articleList) {
     // 데이터가 없을 때 로딩 상태를 보여줄 수 있고, 데이터가 도착하면 다시 렌더링되어 실제 게시글 목록이 보임임
     return null
@@ -67,7 +76,7 @@ const BoardList = () => {
     <>
       <div className={styles['board-header']}>
         <div className={styles['best-boards-title']}>게시글</div>
-        <Button className={styles['writer-button']} size={42.5}>
+        <Button className={styles['writer-button']} size={42.5} to="/addboard">
           글쓰기
         </Button>
       </div>
@@ -84,11 +93,11 @@ const BoardList = () => {
           </div>
         </div>
         <DropDown
+          left={isMobile ? '-44px' : '0'}
+          top={isMobile ? '-22px' : '0'}
           selectList={selectList}
           selected={selectedOption}
-          onChange={(value) => {
-            setSelectedOption(value)
-          }}
+          onChange={(value) => setSelectedOption(value)}
         />
       </div>
       <div className={styles['boards-list']} ref={scrollContainerRef}>

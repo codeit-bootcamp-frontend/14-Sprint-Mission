@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 import LogoFace from '../../../../public/assets/image/logo_face.png'
 import Logo from '../../../../public/assets/image/logo_text.png'
@@ -8,7 +11,6 @@ import ProfileIcon from '../../../../public/assets/svg/profile_icon.svg'
 import styled from 'styled-components'
 import { theme } from '../../../styles/theme'
 import { textStyle } from '../../../styles/textStyle'
-import Image from 'next/image'
 
 interface ItemsNavVarProps {
   isItemsPage: boolean

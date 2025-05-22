@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px 5px 16px;
+  background-color: $secondaryGray-100;
+  border-radius: 26px;
+}
+.text {
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-800;
+  margin-right: 0.5rem;
+}

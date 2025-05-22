@@ -46,8 +46,9 @@ class CommentService {
   }
 
   getArticleComment(articleId: number, limit: number, cursor?: number) {
+    const cursorParam = cursor !== undefined ? `&cursor=${cursor}` : ''
     return requestor.get(
-      `/api/proxy/articles/${articleId}/comments?limit=${limit}&cursor=${cursor}`
+      `/api/proxy/articles/${articleId}/comments?limit=${limit}${cursorParam}`
     )
   }
 

@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: #007aff;
+  color: $white;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: #005fcc; // PrimaryBlue[200]
+    transform: scale(1.01);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    background: #a0a0a0; // SecondaryGray[400]
+    cursor: not-allowed;
+  }
+}
+
+.button-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.button-inner-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 사이즈별 클래스 */
+.size56 {
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 40px;
+}
+.size48 {
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 40px;
+}
+.size48_5 {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.size42_5 {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.size0 {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 40px;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-
+import { useRouter } from 'next/navigation'
 import { GetArticleIdType } from '../../types/article'
 import { diffDate } from '../../utils/datetime'
 import { formatDate } from '../../utils/datetime'
@@ -14,9 +14,14 @@ type BestBoardsProps = {
 }
 
 const BoardDetailArrary = ({ article }: BestBoardsProps) => {
+  console.log('BoardDetailArrary', article)
+  const router = useRouter()
+  const handleClickBoardID = () => {
+    router.push(`/boards/${article.id}`)
+  }
   return (
     <>
-      <div className={styles['bone']}>
+      <div className={styles['bone']} onClick={handleClickBoardID}>
         <div className={styles['content-wrapper']}>
           <div className={styles['question-content']}>{article.content}</div>
           {article.image && (

@@ -1,0 +1,89 @@
+@import '../../styles/variables.scss';
+
+.dropdown-container {
+  position: relative;
+}
+
+.select-box {
+  width: 13rem;
+  height: 100%;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: 1.2rem;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 743px) {
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    padding: 0.9rem;
+    position: absolute;
+  }
+}
+
+.arrow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 743px) {
+    width: 0;
+    height: 0;
+  }
+}
+
+.select-option {
+  position: absolute;
+  top: 5.8rem;
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #181818;
+  z-index: 10;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @include apply-font($font-16, 400);
+
+  @media (max-width: 743px) {
+    top: 62px;
+    left: -72px;
+    z-index: 1;
+    width: 130px;
+    height: 84px;
+  }
+}
+
+.option {
+  padding: 9px 28px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+
+  @include apply-font($font-16, 400);
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
+
+  @media (max-width: 743px) {
+    padding: 7px 35px;
+  }
+}

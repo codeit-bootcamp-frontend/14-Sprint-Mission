@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react'
 import articleService from '../lib/api/service/articleService'
 import { GetArticleType } from '../types/article'

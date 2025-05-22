@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+
+import styles from './TextInputPlaceholder.module.scss'
 
 interface TextInputPlaceholderProps {
   placeholder?: string
@@ -21,10 +20,13 @@ const TextInputPlaceholder = ({
   onKeyDown,
 }: TextInputPlaceholderProps) => {
   return (
-    <Bone
+    <textarea
+      className={styles['bone']}
       placeholder={placeholder}
-      $height={height}
-      $padding={padding}
+      style={{
+        height: height,
+        padding: padding,
+      }}
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
@@ -34,28 +36,28 @@ const TextInputPlaceholder = ({
 
 export default TextInputPlaceholder
 
-const Bone = styled.textarea<{ $height?: string; $padding?: string }>`
-  width: 100%;
-  height: ${(props) => props.$height ?? '56px'};
-  padding: ${(props) => props.$padding ?? '15px 24px'};
-  background-color: ${theme.colors.SecondaryGray[100]};
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-  border-radius: 12px;
-  border: none;
-  resize: none;
-  box-sizing: border-box;
-  display: block;
-  cursor: text;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
+// const Bone = styled.textarea<{ $height?: string; $padding?: string }>`
+//   width: 100%;
+//   height: ${(props) => props.$height ?? '56px'};
+//   padding: ${(props) => props.$padding ?? '15px 24px'};
+//   background-color: ${theme.colors.SecondaryGray[100]};
+//   ${(props) => textStyle(16, 400)(props)}
+//   color: ${theme.colors.SecondaryGray[800]};
+//   border-radius: 12px;
+//   border: none;
+//   resize: none;
+//   box-sizing: border-box;
+//   display: block;
+//   cursor: text;
+//   word-break: break-word;
+//   overflow-wrap: break-word;
+//   white-space: pre-wrap;
 
-  ::placeholder {
-    color: ${theme.colors.SecondaryGray[400]};
-  }
+//   ::placeholder {
+//     color: ${theme.colors.SecondaryGray[400]};
+//   }
 
-  @media (max-width: 743px) {
-    ${(props) => textStyle(14, 400)(props)}
-  }
-`
+//   @media (max-width: 743px) {
+//     ${(props) => textStyle(14, 400)(props)}
+//   }
+// `
