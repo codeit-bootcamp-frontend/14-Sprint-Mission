@@ -1,20 +1,18 @@
 import { AxiosRequestConfig } from 'axios'
-// requestInterceptor.ts
+import { useAuthStore } from '../../stores/useAuthStore'
+
 export const requestInterceptor = (
   config: AxiosRequestConfig
 ): AxiosRequestConfig => {
-  if (typeof window !== 'undefined') {
-    // 클라이언트 환경인지 확인
-    const token: string | null = localStorage.getItem('token')
+  // Zustand에서 토큰 직접 가져오기
+  const token = useAuthStore.getState().accessToken
 
-    const isAuthRequired =
-      config.url &&
-      !(config.url.includes('/products') && !config.url.includes('/favorite'))
+  const isPublicEndpoint =
+    config.url?.startsWith('/products') && !config.url?.includes('/favorite')
 
-    if (token && isAuthRequired) {
-      config.headers = config.headers || {}
-      config.headers['Authorization'] = `Basic ${token}`
-    }
+  if (token && !isPublicEndpoint) {
+    config.headers = config.headers || {}
+    config.headers['Authorization'] = `Bearer ${token}`
   }
 
   return config
