@@ -4,7 +4,7 @@ import React from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 
-import { useGetProductId } from '../../hooks/useProductService'
+import { useGetProductId } from '../../../hooks/useProductService'
 import Tag from '../../../components/common/Tag'
 import { formatDate } from '../../../utils/datetime'
 

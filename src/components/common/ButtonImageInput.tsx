@@ -59,6 +59,7 @@ const ButtonImageInput = () => {
         <div className={styles['error-message']}>{errorMeassage}</div>
       )}
       <input
+        className={styles['image-input']}
         type="file"
         ref={fileInputRef}
         accept="image/*"

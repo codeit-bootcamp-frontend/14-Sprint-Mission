@@ -66,6 +66,8 @@ const AddItem = () => {
             <div className={styles['product-text']}>상품명</div>
             <TextInputPlaceholder
               placeholder={'상품명을 입력해주세요'}
+              height="58px "
+              padding="16px 24px "
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
             />
@@ -84,6 +86,8 @@ const AddItem = () => {
             <div className={styles['product-text']}>판매 가격</div>
             <TextInputPlaceholder
               placeholder={'판매 가격을 입력해주세요'}
+              height="58px "
+              padding="16px 24px "
               value={productPrice}
               onChange={(e) => setProductPrice(e.target.value)}
             />
@@ -92,6 +96,8 @@ const AddItem = () => {
             <div className={styles['product-text']}>태그</div>
             <TextInputPlaceholder
               placeholder={'태그를 입력해주세요'}
+              height="58px "
+              padding="16px 24px "
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={handleEnterDown}

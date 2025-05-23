@@ -1,6 +1,5 @@
 @import '../../../styles/variables.scss';
 
-
 .article-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,23 +9,25 @@
 }
 .article-title {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   @include apply-font($font-20, 700);
 }
 .article-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 35.4rem;
 }
 .article-profile-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.6rem;
+  padding-right: 3.2rem;
+  border-right: 1px solid $secondaryGray-200;
 }
-
+.article-profile-image {
+  display: flex;
+}
 .article-profile-info {
   display: flex;
   align-items: center;
@@ -42,7 +43,9 @@
   @include apply-font($font-14, 400);
   color: $secondaryGray-400;
 }
-
+.article-heart-main-wrapper {
+  padding-left: 3.2rem;
+}
 .article-heart-wrapper {
   display: flex;
   align-items: center;
@@ -60,4 +63,7 @@
 .article-content-bottom {
   @include apply-font($font-18, 400);
   padding-top: 2.4rem;
+  @media (max-width: 1023px) {
+    padding-top: 1.6rem;
+  }
 }

@@ -35,6 +35,8 @@ const AddBoard = () => {
             <div className={styles['product-text']}>제목</div>
             <TextInputPlaceholder
               placeholder={'제목을 입력해주세요'}
+              height="58px"
+              padding="16px 24px 16px 24px"
               value={productTitle}
               onChange={(e) => setProductTitle(e.target.value)}
             />

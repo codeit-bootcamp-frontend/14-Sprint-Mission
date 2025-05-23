@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 
-import { useGetCommentService } from '../../hooks/useCommentService'
+import { useGetCommentService } from '../../../hooks/useCommentService'
 import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
 import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
 import Button from '../../../components/common/Button'

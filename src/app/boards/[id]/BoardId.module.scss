@@ -5,10 +5,12 @@
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-}
-.question-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 4rem;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+    gap: 4rem;
+  }
+  @media (max-width: 743px) {
+    width: 34.3rem;
+    gap: 3.2rem;
+  }
 }

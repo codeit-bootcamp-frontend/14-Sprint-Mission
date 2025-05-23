@@ -36,6 +36,7 @@ const Items = () => {
   const [selectedOption, setSelectedOption] = useState(selectList[0].value)
   const itemsPerPage = 10 // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const queryParams = new URLSearchParams()
@@ -122,7 +123,16 @@ const Items = () => {
       return prevPage
     })
   }
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 743)
+    }
 
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
   return (
     <>
       <ItemsNavVar isItemsPage={true} isBoardsPage={false} />
@@ -152,8 +162,8 @@ const Items = () => {
               </Button>
             </div>
             <DropDown
-              left="152px"
-              top="-24px"
+              left={isMobile ? '150px' : '0'}
+              top={isMobile ? '-44px' : '0'}
               selectList={selectList}
               selected={selectedOption}
               onChange={(value) => {

@@ -62,7 +62,7 @@ const BoardDescription = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className={styles['article-heart-main-wrapper']}>
             <div className={styles['article-heart-wrapper']}>
               <div className={styles['article-heart-image']}>
                 <Image src={HeartInactive} alt="하트 비활성화/활성화" />

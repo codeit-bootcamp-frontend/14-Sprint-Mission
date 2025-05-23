@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import productService from '../../lib/api/service/productService'
-import { GetProductIdTypes } from '../../types/product'
+import productService from '../lib/api/service/productService'
+import { GetProductIdTypes } from '../types/product'
 
 export const useGetProductId = (productId: number) => {
   const [productsId, setProductsId] = useState<GetProductIdTypes>()
