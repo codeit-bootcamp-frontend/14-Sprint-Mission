@@ -1,7 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { PropsWithChildren } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-function HomePage() {
+// Link 컴포넌트를 any로 캐스팅하여 임시 사용
+const Link: any = RouterLink;
+
+// HomePage 컴포넌트의 Props 타입 정의
+interface HomePageProps extends PropsWithChildren {}
+
+// React.FC 대신 직접 함수 시그니처 타이핑
+const HomePage: React.FC<HomePageProps> = () => {
   return (
     <main>
       <section id="hero" className="banner">
@@ -85,6 +92,6 @@ function HomePage() {
       </section>
     </main>
   );
-}
+};
 
 export default HomePage;
