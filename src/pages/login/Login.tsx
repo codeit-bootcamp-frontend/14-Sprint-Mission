@@ -17,7 +17,7 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const validateEmail = (value) => {
+  const validateEmail = (value: string) => {
     const trimmed = value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -26,7 +26,7 @@ export default function Login() {
     return "";
   };
 
-  const validatePassword = (value) => {
+  const validatePassword = (value: string) => {
     const trimmed = value.trim();
     if (!trimmed) return "비밀번호를 입력해주세요.";
     if (trimmed.length < 8) return "비밀번호를 8자 이상 입력해주세요.";
@@ -48,7 +48,7 @@ export default function Login() {
   const isFormValid =
     validateEmail(email) === "" && validatePassword(password) === "";
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isFormValid) return;
@@ -129,18 +129,24 @@ export default function Login() {
         </form>
 
         <div className="easy-login">
-          <span>간편 로그인하기</span>
-          <div className="login-icon">
-            <a href="https://www.google.com/" target="_blank" rel="noreferrer">
-              <img src="/images/google_logo.png" alt="구글 간편 로그인" />
-            </a>
-            <a
-              href="https://www.kakaocorp.com/page/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src="/images/kakao_logo.png" alt="카카오톡 간편 로그인" />
-            </a>
+          <div className="easy-login-container">
+            <span className="easy-login-text">간편 로그인하기</span>
+            <div className="login-icon">
+              <a
+                href="https://www.google.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src="/images/google_logo.png" alt="구글 간편 로그인" />
+              </a>
+              <a
+                href="https://www.kakaocorp.com/page/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src="/images/kakao_logo.png" alt="카카오톡 간편 로그인" />
+              </a>
+            </div>
           </div>
         </div>
 

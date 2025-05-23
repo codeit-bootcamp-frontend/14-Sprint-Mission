@@ -1,13 +1,3 @@
-body {
-  font-family: "Pretendard", sans-serif;
-  margin: 0;
-  background-color: #fcfcfc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .header {
   display: block;
   text-align: center;
@@ -20,7 +10,7 @@ body {
   height: 132px;
 }
 
-main {
+.signup-page {
   width: 640px;
   height: 857px;
   margin: auto;
@@ -117,7 +107,7 @@ button:focus {
   align-items: center;
   background-color: #e6f2ff;
   border-radius: 8px;
-  height: 42px;
+  min-height: 42px;
   padding: 16px 23px;
   margin-bottom: 24px;
 }
@@ -159,9 +149,9 @@ button:focus {
 #toggle-password,
 #toggle-password-confirm {
   position: absolute;
-  right: 16px;
+  right: 24px;
   top: 50%;
-  transform: translateY(-110%);
+  transform: translateY(-50%);
   background: none;
   border: none;
   width: 24px;

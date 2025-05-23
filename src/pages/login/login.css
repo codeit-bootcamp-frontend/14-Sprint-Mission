@@ -1,12 +1,3 @@
-body {
-  font-family: "Pretendard", sans-serif;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .header {
   display: flex;
   justify-content: center;
@@ -20,9 +11,10 @@ body {
   height: 132px;
 }
 
-main {
+.login-page {
   width: 640px;
   height: 618px;
+  margin: auto;
 }
 
 .login-container {
@@ -103,7 +95,23 @@ button:focus {
   outline-color: #3692ff;
 }
 
-.easy-login span {
+.easy-login {
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  padding: 16px 23px;
+  margin-bottom: 24px;
+  min-height: 42px;
+}
+
+.easy-login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.easy-login-text {
+  display: inline-block;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
@@ -113,18 +121,7 @@ button:focus {
   white-space: nowrap;
 }
 
-.easy-login {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #e6f2ff;
-  border-radius: 8px;
-  padding: 16px 23px;
-  margin-bottom: 24px;
-}
-
 .login-icon {
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +129,6 @@ button:focus {
 }
 
 .login-icon img {
-  box-sizing: border-box;
   width: 42px;
   height: 42px;
 }
