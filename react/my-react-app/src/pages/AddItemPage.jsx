@@ -13,6 +13,7 @@ import {
   ImageSection,
   ImageLabel,
   ErrorMessage,
+  SubmitButton,
 } from "../styles/pages/AddItemPage.styled";
 
 // 직접 버튼 컴포넌트 생성
@@ -64,35 +65,21 @@ function AddItemPage() {
   };
 
   // 텍스트 입력 핸들러
-  const handleTextChange = (e, field) => {
-    let value = e.target.value;
-    
-    if (field === "price") {
-      // 숫자가 아닌 문자가 입력되었는지 확인
-      if (/[^0-9]/.test(value)) {
+  const handleTextChange = (e) => {
+    const { name, value } = e.target;
+    let processedValue = value;
+
+    if (name === "price") {
+      // 숫자가 아닌 문자 제거 (정규식 사용)
+      processedValue = value.replace(/[^0-9]/g, "");
+      if (/[^0-9]/.test(value) && value !== "") {
+        // 공백이 아닐 때만 에러 메시지 표시
         setPriceError("숫자만 입력해주세요.");
-        // 숫자가 아닌 문자 제거
-        value = value.replace(/[^0-9]/g, "");
       } else {
         setPriceError("");
       }
     }
-    
-    setFormData({ ...formData, [field]: value });
-  };
-  
-  // 판매가격 입력창 키 입력 이벤트 핸들러
-  const handlePriceKeyDown = (e) => {
-    // 숫자 키, 백스페이스, 딜리트, 탭, 방향키만 허용
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];
-    
-    if (!allowedKeys.includes(e.key)) {
-      e.preventDefault();
-      setPriceError("숫자만 입력해주세요.");
-    } else {
-      // 숫자나 허용된 키를 입력하면 에러 메시지 삭제
-      setPriceError("");
-    }
+    setFormData({ ...formData, [name]: processedValue });
   };
 
   // 태그 추가 핸들러
@@ -117,6 +104,7 @@ function AddItemPage() {
     if (validateForm()) {
       alert("상품이 등록되었습니다! (API 연동 전)");
       console.log("Form submitted with data:", formData);
+      // TODO: API 연동
     } else {
       alert("모든 필드를 입력해주세요.");
     }
@@ -130,9 +118,9 @@ function AddItemPage() {
       <form onSubmit={handleSubmit} autoComplete="off">
         <FormHeader>
           <Title>상품 등록하기</Title>
-          <RegisterButton type="submit" disabled={!isFormValid}>
+          <SubmitButton type="submit" disabled={!isFormValid}>
             등록
-          </RegisterButton>
+          </SubmitButton>
         </FormHeader>
 
         <ImageSection>
@@ -148,9 +136,10 @@ function AddItemPage() {
         <FormSection>
           <TextInput
             label="상품명"
+            name="title"
             placeholder="상품명을 입력해주세요"
             value={formData.title}
-            onChange={(e) => handleTextChange(e, "title")}
+            onChange={handleTextChange}
             maxLength={40}
           />
         </FormSection>
@@ -158,9 +147,10 @@ function AddItemPage() {
         <FormSection>
           <TextArea
             label="상품 소개"
+            name="desc"
             placeholder="상품 소개를 입력해주세요"
             value={formData.desc}
-            onChange={(e) => handleTextChange(e, "desc")}
+            onChange={handleTextChange}
             maxLength={500}
           />
         </FormSection>
@@ -168,10 +158,10 @@ function AddItemPage() {
         <FormSection>
           <NumberInput
             label="판매가격"
+            name="price"
             placeholder="판매 가격을 입력해주세요"
             value={formData.price}
-            onChange={(e) => handleTextChange(e, "price")}
-            onKeyDown={handlePriceKeyDown}
+            onChange={handleTextChange}
             min={0}
             error={priceError}
           />
