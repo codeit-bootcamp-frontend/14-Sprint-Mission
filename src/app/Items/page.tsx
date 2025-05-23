@@ -4,22 +4,20 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import { GetProductIdTypes } from '../types/product'
+import { GetProductIdTypes } from '../../types/product'
 
-import ItemsNavVar from '../common/ItemsNavVar'
+import ItemsNavVar from '../../components/domain/Nav/ItemsNavVar'
 import BestItems from './BestItems'
 import RecentItems from './RecentItems'
-import DropDown from '../common/DropDown'
-import productService from '../api/services/productService'
-import Button from '../common/Button'
+import DropDown from '../../components/common/DropDown'
+import productService from '../../lib/api/service/productService'
+import Button from '../../components/common/Button'
 
-import Search from '../../../public/assets/svg/Search.svg'
-import ArrowLeft from '../../../public/assets/svg/ArrowLeft.svg'
-import ArrowRight from '../../../public/assets/svg/ArrowRight.svg'
+import Search from '../../../public/assets/svg/search.svg'
+import ArrowLeft from '../../../public/assets/svg/arrow_left.svg'
+import ArrowRight from '../../../public/assets/svg/arrow_right.svg'
 
-import styled, { css } from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
+import styles from './items.module.scss'
 
 type SelectOption = {
   value: string
@@ -38,6 +36,7 @@ const Items = () => {
   const [selectedOption, setSelectedOption] = useState(selectList[0].value)
   const itemsPerPage = 10 // 페이지 네이션
   const [currentPage, setCurrentPage] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const queryParams = new URLSearchParams()
@@ -124,217 +123,82 @@ const Items = () => {
       return prevPage
     })
   }
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 743)
+    }
 
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
+
+    return () => window.removeEventListener('resize', checkIsMobile)
+  }, [])
   return (
     <>
       <ItemsNavVar isItemsPage={true} isBoardsPage={false} />
-      <Bone>
+      <div className={styles['bone']}>
         <BestItems products={bestProducts} />
 
-        <NavVAr>
-          <NavTitle>전체상품</NavTitle>
-          <NavRightWrapper>
-            <SearchIcon>
+        <div className={styles['nav-var']}>
+          <div className={styles['nav-title']}>전체상품</div>
+          <div className={styles['nav-right-wrapper']}>
+            <div className={styles['search-icon']}>
               <Image src={Search} alt="검색 아이콘" />
-            </SearchIcon>
-            <NavSearch placeholder="검색할 상품 입력해주세요" />
-            <ButtonWrapper>
-              <RegisterButton size={42.5} onClick={handleAdditem}>
+            </div>
+            <div className={styles['nav-search']}>
+              <input
+                type="text"
+                placeholder="검색할 상품 입력해주세요"
+                className={styles['search-input']}
+              />
+            </div>
+            <div className={styles['button-wrapper']}>
+              <Button
+                size={48.5}
+                className={styles['register-button']}
+                onClick={handleAdditem}
+              >
                 상품 등록하기
-              </RegisterButton>
-            </ButtonWrapper>
+              </Button>
+            </div>
             <DropDown
-              left="152px"
-              top="-24px"
+              left={isMobile ? '150px' : '0'}
+              top={isMobile ? '-44px' : '0'}
               selectList={selectList}
               selected={selectedOption}
               onChange={(value) => {
                 setSelectedOption(value)
               }}
             />
-          </NavRightWrapper>
-        </NavVAr>
+          </div>
+        </div>
 
         <RecentItems products={sortedProducts} />
 
-        <Pagenation>
-          <LeftButton onClick={handlePrevPage}>
+        <div className={styles['pagination']}>
+          <div className={styles['arrow-button']} onClick={handlePrevPage}>
             <Image src={ArrowLeft} alt="왼쪽 페이지 화살표" />
-          </LeftButton>
+          </div>
           {pages.map((page) => (
-            <PageButton
+            <div
               key={page}
-              $isActive={currentPage === page}
+              className={`${styles['page-button']} ${
+                currentPage === page ? styles['active'] : ''
+              }`}
               onClick={() => {
                 setCurrentPage(page)
               }}
             >
               {page}
-            </PageButton>
+            </div>
           ))}
-          <LeftButton onClick={handleNextPage}>
+          <div className={styles['arrow-button']} onClick={handleNextPage}>
             <Image src={ArrowRight} alt="오른쪽 페이지 화살표" />
-          </LeftButton>
-        </Pagenation>
-      </Bone>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
 
 export default Items
-
-const Bone = styled.div`
-  width: 120rem;
-  margin: 2.4rem auto;
-  @media (max-width: 1023px) {
-    width: 69.6rem;
-  }
-  @media (max-width: 743px) {
-    width: 34.4rem;
-    margin: 1rem auto;
-  }
-`
-const NavVAr = styled.div`
-  height: 4.2rem;
-  width: 100%;
-  margin: 0 auto 2.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media (max-width: 743px) {
-    flex-wrap: wrap;
-    margin: 0 auto 6.6rem;
-  }
-`
-const NavTitle = styled.div`
-  ${(props) => textStyle(20, 700)(props)}
-  color: ${theme.colors.SecondaryGray[900]};
-  @media (max-width: 743px) {
-    height: 2.625rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`
-const NavRightWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  @media (max-width: 743px) {
-    flex-wrap: wrap;
-  }
-`
-const SearchIcon = styled.div`
-  position: absolute;
-  right: 585px;
-  z-index: 10;
-  display: flex;
-  @media (max-width: 1023px) {
-    right: 412px;
-  }
-  @media (max-width: 743px) {
-    right: 308px;
-    top: 28px;
-  }
-`
-const RegisterButton = styled(Button)`
-  padding: 0.8rem 2.3rem;
-  width: max-content;
-`
-const NavSearch = styled.input`
-  width: 32.5rem;
-  height: 100%;
-  padding: 0.9rem 10.7rem 0.9rem 4.4rem;
-  border-radius: 1.2rem;
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-  background-color: ${theme.colors.SecondaryGray[100]};
-  border: none;
-  margin-right: 1.2rem;
-  @media (max-width: 1023px) {
-    width: 15.125rem;
-    padding: 9px 24px 9px 44px;
-  }
-  @media (max-width: 743px) {
-    position: relative;
-    top: 19px;
-    padding: 9px 40px 9px 44px;
-    width: max-content;
-    margin: 0;
-  }
-`
-const ButtonWrapper = styled.div`
-  margin-right: 1.2rem;
-  @media (max-width: 743px) {
-    position: relative;
-    width: max-content;
-    top: -74px;
-    left: 206px;
-  }
-  button {
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-`
-
-const Pagenation = styled.div`
-  width: 30.4rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 4.3rem auto 0 auto;
-  @media (max-width: 1023px) {
-    margin: 2.5rem auto 0 auto;
-  }
-`
-const LeftButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid ${theme.colors.SecondaryGray[200]};
-  background: #ffffff;
-  color: ${({ theme }) => theme.colors.SecondaryGray[600]};
-  border-radius: 40px;
-  height: 40px;
-  width: 40px;
-  padding: 12px;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
-  }
-
-  &:disabled {
-    background: ${({ theme }) => theme.colors.SecondaryGray[400]};
-    cursor: not-allowed;
-  }
-`
-
-interface PageButtonProps {
-  $isActive: boolean
-}
-const PageButton = styled.button<PageButtonProps>`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid ${theme.colors.SecondaryGray[100]};
-  &:hover {
-    background: ${({ theme }) => theme.colors.PrimaryBlue[200]};
-  }
-
-  ${({ $isActive, theme }) =>
-    $isActive &&
-    css`
-      background-color: ${theme.colors.PrimaryBlue[100]};
-      color: ${theme.colors.SecondaryGray[50]};
-    `}
-`

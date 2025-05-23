@@ -1,0 +1,69 @@
+@import '../../../styles/variables.scss';
+
+.article-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid $secondaryGray-200;
+}
+.article-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  @include apply-font($font-20, 700);
+}
+.article-content {
+  display: flex;
+  align-items: center;
+}
+.article-profile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding-right: 3.2rem;
+  border-right: 1px solid $secondaryGray-200;
+}
+.article-profile-image {
+  display: flex;
+}
+.article-profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.article-profile-nickname {
+  @include apply-font($font-14, 500);
+}
+
+.article-profile-date {
+  @include apply-font($font-14, 400);
+  color: $secondaryGray-400;
+}
+.article-heart-main-wrapper {
+  padding-left: 3.2rem;
+}
+.article-heart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid $secondaryGray-200;
+  border-radius: 3.5rem;
+}
+
+.article-heart-image {
+  display: flex;
+}
+
+.article-content-bottom {
+  @include apply-font($font-18, 400);
+  padding-top: 2.4rem;
+  @media (max-width: 1023px) {
+    padding-top: 1.6rem;
+  }
+}

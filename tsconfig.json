@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,24 +17,37 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typeRoots": ["./node_modules/@types", "src/app/types"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "src/types"
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "src/**/*",
-    "src/app/types/**/*",
+    "src/types/**/*",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/styles"
+    "src/styles",
+    "src/utils",
+    "src/lib/api/service/authService.jsx",
+    "src/lib/api/service/imageService.jsx",
+    "src/lib/api/service/userService.jsx",
+    "src/components/domain/LoginAndSignup",
+    "babel.config.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

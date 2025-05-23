@@ -1,0 +1,62 @@
+// colors
+$primaryBlue-100: #3498db;
+$primaryBlue-200: #1967d6;
+$primaryBlue-300: #1251aa;
+
+$secondaryGray-50: #f9fafb;
+$secondaryGray-100: #f3f4f6;
+$secondaryGray-200: #e5e7eb;
+$secondaryGray-400: #9ca3af;
+$secondaryGray-500: #6b7280;
+$secondaryGray-600: #4b5563;
+$secondaryGray-700: #374151;
+$secondaryGray-800: #1f2937;
+$secondaryGray-900: #111827;
+
+$white: #ffffff;
+$black: #000000;
+$error: #f74747;
+
+// font sizes
+@mixin apply-font($font-map, $font-weight: 400) {
+  font-size: map-get($font-map, size);
+  line-height: map-get($font-map, line-height);
+  font-weight: $font-weight;
+}
+
+$font-12: (
+  size: 12px,
+  line-height: 18px,
+);
+$font-13: (
+  size: 13px,
+  line-height: 22px,
+);
+$font-14: (
+  size: 14px,
+  line-height: 24px,
+);
+$font-16: (
+  size: 16px,
+  line-height: 26px,
+);
+$font-18: (
+  size: 18px,
+  line-height: 26px,
+);
+$font-20: (
+  size: 20px,
+  line-height: 32px,
+);
+$font-24: (
+  size: 24px,
+  line-height: 32px,
+);
+$font-32: (
+  size: 32px,
+  line-height: 42px,
+);
+$font-40: (
+  size: 40px,
+  line-height: 56px,
+);

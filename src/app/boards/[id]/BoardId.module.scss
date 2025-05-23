@@ -1,0 +1,16 @@
+.bone {
+  width: 120rem;
+  height: 88.3rem;
+  margin: 3.2rem auto 9.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+    gap: 4rem;
+  }
+  @media (max-width: 743px) {
+    width: 34.3rem;
+    gap: 3.2rem;
+  }
+}

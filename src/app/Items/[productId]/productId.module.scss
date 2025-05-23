@@ -1,0 +1,34 @@
+@import '../../../styles/variables.scss';
+
+.bone {
+  width: 120rem;
+  margin: 1.5rem auto 22.2rem;
+
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+    margin: 1.5rem auto 24.3rem auto;
+  }
+  @media (max-width: 743px) {
+    width: 34.4rem;
+    margin: 1rem auto 6.5rem auto;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 4.6875rem auto;
+  width: max-content;
+  @include apply-font($font-18, 600);
+  color: $secondaryGray-100;
+  @media (max-width: 1023px) {
+    margin: 3.5rem auto 10.4375rem auto;
+  }
+  @media (max-width: 743px) {
+    margin: 4rem auto 2.5rem auto;
+  }
+}
+.list-button {
+  padding: 1.1rem 3.9rem;
+  width: max-content;
+}

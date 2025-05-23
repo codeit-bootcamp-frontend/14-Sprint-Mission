@@ -4,16 +4,14 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 
-import { useGetCommentService } from '../../hooks/useCommentService'
+import { useGetCommentService } from '../../../hooks/useCommentService'
 import ItemsDetailQuestionArrary from './ItemsDetailQuestionArrary'
-import TextInputPlaceholder from '../../common/TextInputPlaceholder'
-import Button from '../../common/Button'
+import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
+import Button from '../../../components/common/Button'
 
-import InquiryEmpty from '../../../../public/assets/svg/InquiryEmpty.svg'
+import InquiryEmpty from '../../../../public/assets/svg/inquiry_empty.svg'
 
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import styles from './ItemsDetailQuestionTextarea.module.scss'
 
 const ItemsDetailQuestionTextarea = () => {
   const params = useParams() // product 데어터 받기
@@ -44,9 +42,9 @@ const ItemsDetailQuestionTextarea = () => {
   }, [])
 
   return (
-    <Bone>
-      <ProductQuestionWrapper>
-        <ProductQuestionText>문의하기</ProductQuestionText>
+    <>
+      <div className={styles['product-question-wrapper']}>
+        <div className={styles['product-question-text']}>문의하기</div>
         <TextInputPlaceholder
           placeholder={
             '개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
@@ -56,24 +54,25 @@ const ItemsDetailQuestionTextarea = () => {
           value={questionText}
           onChange={(e) => setQuestionText(e.target.value)}
         />
-        <ButtonWrapper>
-          <RegisterButton
+        <div className={styles['button-wrapper']}>
+          <Button
+            className={styles['register-button']}
             size={42.5}
             disabled={questionText.trim().length === 0}
           >
             등록
-          </RegisterButton>
-        </ButtonWrapper>
-      </ProductQuestionWrapper>
+          </Button>
+        </div>
+      </div>
 
       {productQuestion.list.length === 0 ? (
-        <InquiryEmptyWrapper>
+        <div className={styles['inquiry-empty-wrapper']}>
           <Image src={InquiryEmpty} alt="문의가 없습니다" />
-          <InquiryEmptyText>문의가 없습니다</InquiryEmptyText>
-        </InquiryEmptyWrapper>
+          <div className={styles['inquiry-empty-text']}>문의가 없습니다</div>
+        </div>
       ) : (
         <>
-          <ItemsQuestionWrapper>
+          <div className={styles['items-question-wrapper']}>
             {productQuestion.list.map((question, index) => (
               <ItemsDetailQuestionArrary
                 key={index}
@@ -82,53 +81,11 @@ const ItemsDetailQuestionTextarea = () => {
                 isEditing={isEditing}
               />
             ))}
-          </ItemsQuestionWrapper>
+          </div>
         </>
       )}
-    </Bone>
+    </>
   )
 }
 
 export default ItemsDetailQuestionTextarea
-
-const Bone = styled.div``
-const ProductQuestionWrapper = styled.div`
-  margin: 4rem auto 2.4rem;
-  @media (max-width: 1023px) {
-    margin: 4rem auto;
-  }
-  @media (max-width: 743px) {
-    margin: 2.5rem auto;
-  }
-`
-const ProductQuestionText = styled.div`
-  ${(props) => textStyle(16, 600)(props)}
-  color: ${theme.colors.SecondaryGray[900]};
-  margin-bottom: 0.9rem;
-`
-
-const ButtonWrapper = styled.div`
-  width: fit-content;
-  margin: 1.6rem 0 0 auto;
-`
-const RegisterButton = styled(Button)`
-  padding: 0.8rem 2.3rem;
-  width: max-content;
-`
-const ItemsQuestionWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`
-
-const InquiryEmptyWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`
-const InquiryEmptyText = styled.div`
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-  margin-top: 0.5rem;
-`

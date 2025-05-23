@@ -1,43 +1,48 @@
-'use client'
-
 import React from 'react'
-
-import { GetArticleIdType } from '../types/article'
-import { diffDate } from '../utils/datetime'
-import { formatDate } from '../utils/datetime'
-
-import HeartInactive from '../../../public/assets/image/HeartInactive.png'
-
-import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { GetArticleIdType } from '../../types/article'
+import { diffDate } from '../../utils/datetime'
+import { formatDate } from '../../utils/datetime'
+
+import HeartInactive from '../../../public/assets/image/heart_inactive.png'
+
+import styles from './BoardDetailArrary.module.scss'
 
 type BestBoardsProps = {
   article: GetArticleIdType
 }
 
 const BoardDetailArrary = ({ article }: BestBoardsProps) => {
+  console.log('BoardDetailArrary', article)
+  const router = useRouter()
+  const handleClickBoardID = () => {
+    router.push(`/boards/${article.id}`)
+  }
   return (
     <>
-      <Bone>
-        <ContentWrappeer>
-          <QuestionContent>{article.content}</QuestionContent>
-          <img src={article.image} alt="게시글 상세 이미지" />
-        </ContentWrappeer>
-        <UserProfileImageWrapper>
-          <NameProfile>
+      <div className={styles['bone']} onClick={handleClickBoardID}>
+        <div className={styles['content-wrapper']}>
+          <div className={styles['question-content']}>{article.content}</div>
+          {article.image && (
+            <img src={article.image} alt="게시글 상세 이미지" />
+          )}
+        </div>
+        <div className={styles['user-profile-image-wrapper']}>
+          <div className={styles['name-profile']}>
             {/*이미지가 없을 경우 기본 이미지 적용*/}
-            <img
-              src={'/assets/svg/ProfileIcon.svg'}
+            <Image
+              src={'/assets/svg/profile_icon.svg'}
               alt="유저프로필사진"
               width={32}
               height={32}
             />
 
-            <UserProfileName>{article.writer.nickname}</UserProfileName>
+            <div className={styles['user-profile-name']}>
+              {article.writer.nickname}
+            </div>
             {/*날짜 차이가 31일을 넘길 경우 createAt을 출력*/}
-            <DiffDate>
+            <div className={styles['diff-date']}>
               {diffDate(article.createdAt) > 31 ? (
                 <>
                   <span>{formatDate(article.createdAt)}</span>
@@ -48,9 +53,9 @@ const BoardDetailArrary = ({ article }: BestBoardsProps) => {
                   <span>일 전</span>
                 </>
               )}
-            </DiffDate>
-          </NameProfile>
-          <HeartCount>
+            </div>
+          </div>
+          <div className={styles['heart-count']}>
             <Image
               src={HeartInactive}
               alt="HeartInactive"
@@ -58,75 +63,11 @@ const BoardDetailArrary = ({ article }: BestBoardsProps) => {
               height={24}
             />
             <>{article.likeCount}</>
-          </HeartCount>
-        </UserProfileImageWrapper>
-      </Bone>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
 
 export default BoardDetailArrary
-
-const Bone = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: max-content;
-  border-bottom: 1px solid ${theme.colors.SecondaryGray[200]};
-  position: relative;
-  padding-bottom: 2.4rem;
-  padding-right: 2rem;
-  margin-top: 2.4rem;
-  @media (max-width: 743px) {
-    margin-top: 0;
-    margin-bottom: 2.4rem;
-  }
-`
-const ContentWrappeer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  img {
-    width: 7.2rem;
-    height: 7.2rem;
-  }
-`
-
-const QuestionContent = styled.div`
-  ${(props) => textStyle(20, 600)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-  margin-bottom: 2.4rem;
-  @media (max-width: 743px) {
-    ${(props) => textStyle(18, 600)(props)}
-  }
-`
-const UserProfileImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  img {
-    width: 2.6rem;
-    height: 2.6rem;
-    border-radius: 50%;
-  }
-`
-const NameProfile = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-`
-const UserProfileName = styled.div`
-  ${(props) => textStyle(12, 400)(props)}
-  color: ${theme.colors.SecondaryGray[600]};
-`
-const DiffDate = styled.div`
-  ${(props) => textStyle(12, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-`
-const HeartCount = styled.div`
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[500]};
-  display: flex;
-  gap: 0.8rem;
-`

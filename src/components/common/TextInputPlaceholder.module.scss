@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  width: 100%;
+
+  background-color: $secondaryGray-100;
+  @include apply-font($font-16, 400);
+  color: $secondaryGray-800;
+  border-radius: 12px;
+  border: none;
+  resize: none;
+  box-sizing: border-box;
+  display: block;
+  cursor: text;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  &::placeholder {
+    color: $secondaryGray-400;
+  }
+
+  @media (max-width: 743px) {
+    @include apply-font($font-14, 400);
+  }
+}

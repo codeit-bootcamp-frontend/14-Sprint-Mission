@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+
+.bone {
+  width: 120rem;
+  display: flex;
+  align-items: center;
+  margin: 1.5rem auto 6.9rem auto;
+  flex-direction: column;
+  @media (max-width: 1023px) {
+    width: 69.6rem;
+    margin-bottom: 7.8rem;
+  }
+  @media (max-width: 743px) {
+    width: 34.6rem;
+    margin-bottom: 7rem;
+  }
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3.2rem;
+}
+.product-register {
+  @include apply-font($font-20, 700);
+  color: $secondaryGray-800;
+}
+.button-wrapper {
+  width: max-content;
+}
+.register-button {
+  padding: 0.8rem 2.3rem;
+  width: max-content;
+}
+.main {
+  width: 100%;
+}
+.display-wrapper {
+  width: 100%;
+  margin-bottom: 2.4rem;
+  @media (max-width: 743px) {
+    margin-bottom: 1.6rem;
+  }
+}
+.product-text {
+  @include apply-font($font-18, 700);
+  color: $secondaryGray-800;
+  margin-bottom: 1.6rem;
+}
+.tag-display {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  flex-wrap: wrap;
+}

@@ -3,23 +3,21 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
-import { PostCommentType } from '../../types/comment'
-import Button from '../../common/Button'
-import TextInputPlaceholder from '../../common/TextInputPlaceholder'
-import commentService from '../../../../src/app/api/services/commentService'
-import { diffDate } from '../../utils/datetime'
-import { formatDate } from '../../utils/datetime'
+import { PostCommentType } from '../../../types/comment'
+import Button from '../../../components/common/Button'
+import TextInputPlaceholder from '../../../components/common/TextInputPlaceholder'
+import commentService from '../../../lib/api/service/commentService'
+import { diffDate } from '../../../utils/datetime'
+import { formatDate } from '../../../utils/datetime'
 
-import Setting from '../../../../public/assets/svg/Setting.svg'
+import Setting from '../../../../public/assets/svg/setting_icon.svg'
 
-import styled from 'styled-components'
-import { theme } from '../../styles/theme'
-import { textStyle } from '../../styles/textStyle'
+import styles from './ItemsDetailQuestionArrary.module.scss'
 
 interface ItemsDetailQuestionArraryProps {
   productQuestion: PostCommentType
-  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>
-  isEditing: boolean
+  setIsEditing?: React.Dispatch<React.SetStateAction<boolean>>
+  isEditing?: boolean
 }
 
 const ItemsDetailQuestionArrary = ({
@@ -68,8 +66,8 @@ const ItemsDetailQuestionArrary = ({
   return (
     <>
       {isEditingState ? (
-        <EditBone>
-          <EditingWrapper>
+        <div className={styles['edit-bone']}>
+          <div className={styles['editing-wrapper']}>
             {/*로그인을 하지 않아 토큰?전달이 되지 않은 상태*/}
             <TextInputPlaceholder
               height="84px"
@@ -77,41 +75,50 @@ const ItemsDetailQuestionArrary = ({
               padding="16px 24px 40px 24px"
               onChange={(e) => setUserComment(e.target.value)}
             />
-            <ButtonEditWrapper>
-              <EditCalcelButton onClick={handleEditCancle}>
+            <div className={styles['button-edit-wrapper']}>
+              <button
+                className={styles['edit-cancel-button']}
+                onClick={handleEditCancle}
+              >
                 취소
-              </EditCalcelButton>
-              <ButtonWrapper>
-                <EditButton size={42.5} onClick={handleEditSuccessClick}>
+              </button>
+              <div>
+                <Button
+                  className={styles['edit-button']}
+                  size={42.5}
+                  onClick={handleEditSuccessClick}
+                >
                   수정완료
-                </EditButton>
-              </ButtonWrapper>
-            </ButtonEditWrapper>
-          </EditingWrapper>
-        </EditBone>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         <></>
       )}
 
-      <Bone>
+      <div className={styles['bone']}>
         <div>
-          <QuestionContent>{productQuestion.content}</QuestionContent>
-          <UserProfileImageWrapper>
+          <div className={styles['question-content']}>
+            {productQuestion.content}
+          </div>
+          <div className={styles['user-profile-image-wrapper']}>
             {/*이미지가 없을 경우 기본 이미지 적용*/}
             <img
               src={
-                productQuestion.writer.image || '/assets/svg/ProfileIcon.svg'
+                productQuestion.writer.image || '/assets/svg/profile_icon.svg'
               }
               alt="유저프로필사진"
               width={32}
               height={32}
             />
-            <UserProfileImageRight>
-              <UserProfileName>
+            <div className={styles['user-profile-image-right']}>
+              <div className={styles['user-profile-name']}>
                 {productQuestion.writer.nickname}
-              </UserProfileName>
+              </div>
               {/*날짜 차이가 31일을 넘길 경우 createAt을 출력*/}
-              <DiffDate>
+              <div className={styles['diff-date']}>
                 {diffDate(productQuestion.createdAt) > 31 ? (
                   <>
                     <span>{formatDate(productQuestion.createdAt)}</span>
@@ -122,151 +129,28 @@ const ItemsDetailQuestionArrary = ({
                     <span>일 전</span>
                   </>
                 )}
-              </DiffDate>
-            </UserProfileImageRight>
-          </UserProfileImageWrapper>
+              </div>
+            </div>
+          </div>
         </div>
-        <SettingButtonWrapper ref={dropDownRef}>
+        <div className={styles['setting-button-wrapper']} ref={dropDownRef}>
           <Image
             src={Setting}
             alt="수정, 삭제 선택 버튼"
             onClick={handleSettingClick}
           />
           {isDropDownOpen && (
-            <SelectOption>
-              <Option onClick={handleEditClick}>수정하기</Option>
-              <Option>삭제하기</Option>
-            </SelectOption>
+            <ul className={styles['select-option']}>
+              <li className={styles['option']} onClick={handleEditClick}>
+                수정하기
+              </li>
+              <li className={styles['option']}>삭제하기</li>
+            </ul>
           )}
-        </SettingButtonWrapper>
-      </Bone>
+        </div>
+      </div>
     </>
   )
 }
 
 export default ItemsDetailQuestionArrary
-
-const EditBone = styled.div`
-  position: relative;
-  margin: 1rem 0 7rem;
-  z-index: 1;
-`
-const EditingWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: -212px;
-  @media (max-width: 1023px) {
-    bottom: -190px;
-  }
-`
-const ButtonWrapper = styled.div`
-  width: max-content;
-`
-const EditButton = styled(Button)`
-  padding: 0.8rem 2.3rem;
-  width: max-content;
-`
-const ButtonEditWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 1.6rem 0 2.4rem;
-  gap: 0.4rem;
-`
-const EditCalcelButton = styled.button`
-  ${(props) => textStyle(16, 600)(props)}
-  color: ${theme.colors.SecondaryGray[500]};
-  width: 68px;
-  height: 47px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Bone = styled.div`
-  border-bottom: 1px solid ${theme.colors.SecondaryGray[200]};
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  height: 10rem;
-  position: relative;
-  padding-bottom: 1.2rem;
-
-  margin-top: 2.4rem;
-  @media (max-width: 1023px) {
-    margin-top: 0;
-  }
-`
-
-const QuestionContent = styled.div`
-  ${(props) => textStyle(14, 400)(props)}
-  color: ${theme.colors.SecondaryGray[800]};
-  margin-bottom: 2.4rem;
-`
-const UserProfileImageWrapper = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  img {
-    border-radius: 50%;
-  }
-`
-const UserProfileImageRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const UserProfileName = styled.div`
-  ${(props) => textStyle(12, 400)(props)}
-  color: ${theme.colors.SecondaryGray[600]};
-`
-const DiffDate = styled.div`
-  ${(props) => textStyle(12, 400)(props)}
-  color: ${theme.colors.SecondaryGray[400]};
-`
-const SettingButtonWrapper = styled.div`
-  position: relative;
-  top: -42px;
-  cursor: pointer;
-`
-
-const SelectOption = styled.ul`
-  position: absolute;
-  top: 1.8rem;
-  left: -124px;
-  border: 1px solid #cccccc;
-  border-radius: 12px;
-  background-color: #ffffff;
-  color: #181818;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  max-height: 300px;
-  overflow-y: auto;
-  z-index: 10;
-  list-style: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-  @media (max-width: 743px) {
-    position: absolute;
-    top: 30px;
-    left: -110px;
-    z-index: 1;
-    width: 130px;
-    height: 84px;
-  }
-`
-const Option = styled.li`
-  ${(props) => textStyle(16, 400)(props)}
-  color: ${theme.colors.SecondaryGray[500]};
-  padding: 12px 40px;
-  cursor: pointer;
-  &:hover {
-    background-color: #f6f6f6;
-  }
-  @media (max-width: 743px) {
-    padding: 7px 35px;
-  }
-`
