@@ -10,14 +10,14 @@ export default function Navbar() {
   return (
     <header className="header-container">
       <section className="header-left-container">
-        <div>
+        <Link to="/">
           <img className="logo-img" src={logoImg} alt="판다 로고" />
           <img
             className="logo-mobile-img"
             src={logoMobileImg}
             alt="판다 모바일 로고"
           />
-        </div>
+        </Link>
         <div className="link-container">
           <Link
             className={`link ${pathname === "/board" ? "link-active" : ""}`}
