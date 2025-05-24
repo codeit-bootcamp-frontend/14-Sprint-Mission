@@ -151,6 +151,7 @@ html {
   padding: 16px 56px 16px 24px;
   border-radius: 12px;
   background-color: var(--gray100);
+  border: 1px solid var(--gray100);
   box-sizing: border-box;
   line-height: 26px;
   font-size: 16px;
@@ -165,6 +166,21 @@ html {
   transform: translateY(-50%);
   text-indent: -9999px;
 }
+.input_box.error input {
+  border-color: #f74747;
+}
+.error_msg {
+  display: none;
+  margin: 8px 16px -6px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #f74747;
+}
+.input_box.error .error_msg {
+  display: block;
+}
+
 .input_box .btn_pw {
   background: url(images/ico_visibility_off.png) no-repeat;
 }
@@ -247,6 +263,7 @@ html {
   .input_box .label {
     margin-bottom: 8px;
   }
+
   .footer {
     position: relative;
     padding-left: 8%;

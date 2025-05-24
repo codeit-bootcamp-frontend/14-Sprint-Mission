@@ -53,6 +53,7 @@
                 id="input_email"
                 placeholder="이메일을 입력해주세요"
               />
+              <span class="error_msg"></span>
             </div>
             <div class="input_box">
               <label for="input_nickname" class="label">닉네임</label>
@@ -61,36 +62,51 @@
                 id="input_nickname"
                 placeholder="닉네임을 입력해주세요"
               />
+              <span class="error_msg"></span>
             </div>
             <div class="input_box">
               <label for="input_pw" class="label">비밀번호</label>
-              <div class="input btn_group">
-                <input
-                  type="password"
-                  id="input_pw"
-                  placeholder="비밀번호를 입력해주세요"
-                />
-                <button type="button" class="btn btn_pw">
-                  <span>비밀번호 보이기</span>
-                </button>
-                <!--<button type="button" class="btn btn_pw show"><span>비밀번호 보이기</span></button> -->
+              <div class="btn_group">
+                <div class="input">
+                  <input
+                    type="password"
+                    id="input_pw"
+                    placeholder="비밀번호를 입력해주세요"
+                  />
+                  <div class="btn_pw_show">
+                    <button type="button" class="btn btn_pw">
+                      <span>비밀번호 보이기</span>
+                    </button>
+                  </div>
+                </div>
+                <span class="error_msg"></span>
               </div>
             </div>
             <div class="input_box">
-              <label for="input_pw" class="label">비밀번호 확인</label>
-              <div class="input btn_group">
-                <input
-                  type="password"
-                  id="input_pw"
-                  placeholder="비밀번호를 다시 한 번 입력해주세요"
-                />
-                <button type="button" class="btn btn_pw">
-                  <span>비밀번호 보이기</span>
-                </button>
-                <!--<button type="button" class="btn btn_pw show"><span>비밀번호 보이기</span></button> -->
+              <label for="input_pw_check" class="label">비밀번호 확인</label>
+              <div class="btn_group">
+                <div class="input">
+                  <input
+                    type="password"
+                    id="input_pw_check"
+                    placeholder="비밀번호를 다시 한 번 입력해주세요"
+                  />
+                  <div class="btn_pw_show">
+                    <button type="button" class="btn btn_pw">
+                      <span>비밀번호 보이기</span>
+                    </button>
+                  </div>
+                </div>
+                <span class="error_msg"></span>
               </div>
             </div>
-            <button type="submit" class="btn-blue large wide" disabled>
+            <button
+              type="button"
+              class="btn-blue large wide"
+              id="buttonJoin"
+              onClick="location.href='./login.html'"
+              disabled
+            >
               <span>회원가입</span>
             </button>
             <div class="blue_box">
@@ -122,5 +138,109 @@
         </form>
       </div>
     </main>
+
+    <script>
+      const inputs = document.querySelectorAll('input');
+      const inputEmail = document.querySelector('#input_email');
+      const inputPw = document.querySelector('#input_pw');
+      const inputPwCheck = document.querySelector('#input_pw_check');
+      const email_regex = /^[A-Za-z0-9_.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+$/;
+
+      inputs.forEach(function (input) {
+        input.addEventListener('focusout', function () {
+          inputValidate(input);
+          if (input.id === 'input_pw') inputValidate(inputPwCheck);
+          if (input.id === 'input_pw_check') inputValidate(inputPw);
+          toggleJoinButton();
+        });
+      });
+      function inputValidate(input) {
+        let msg = '';
+        let inputId = input.getAttribute('id');
+        if (input.value == '') {
+          if (inputId == 'input_email') msg = '이메일을 입력해주세요.';
+          if (inputId == 'input_nickname') msg = '닉네임을 입력해주세요.';
+          else if (inputId == 'input_pw' || inputId == 'input_pw_check')
+            msg = '비밀번호를 입력해주세요.';
+        } else {
+          if (inputId == 'input_email') {
+            if (email_regex.test(inputEmail.value) == false)
+              msg = '잘못된 이메일 형식입니다.';
+          } else {
+            msg = '';
+          }
+
+          if (inputId == 'input_pw' || inputId == 'input_pw_check') {
+            const pw = inputPw.value;
+            const pwCheck = inputPwCheck.value;
+            if (inputId === 'input_pw' && pw.length < 8) {
+              msg = '비밀번호를 8자 이상 입력해주세요.';
+            } else if (inputId === 'input_pw_check' && pwCheck.length < 8) {
+              msg = '비밀번호를 8자 이상 입력해주세요.';
+            } else if (pw !== '' && pwCheck !== '' && pw !== pwCheck) {
+              msg = '비밀번호가 일치하지 않습니다.';
+            } else {
+              msg = '';
+            }
+          }
+
+          if (inputId == 'input_nickname') {
+            msg = '';
+          }
+        }
+
+        setInputBlurMessage(input, msg);
+      }
+      function setInputBlurMessage(input, msg) {
+        let inputBox = input.closest('.input_box');
+        let errorMsg = inputBox.querySelector('.error_msg');
+        inputBox.classList.remove('error');
+        errorMsg.innerText = '';
+        if (msg) {
+          inputBox.classList.add('error');
+          errorMsg.innerText = msg;
+        }
+      }
+
+      function toggleJoinButton() {
+        const buttonJoin = document.querySelector('#buttonJoin');
+        const inputs = document.querySelectorAll('input');
+        const errors = document.querySelectorAll('.error_msg');
+
+        const emptyInputs = Array.from(inputs).filter(
+          (input) => input.value.trim() === ''
+        );
+
+        const errorMessages = Array.from(errors).filter(
+          (error) => error.innerText.trim() !== ''
+        );
+
+        if (emptyInputs.length === 0 && errorMessages.length === 0) {
+          buttonJoin.removeAttribute('disabled');
+        } else {
+          buttonJoin.setAttribute('disabled', 'disabled');
+        }
+      }
+      const toggleButtons = document.querySelectorAll('.btn_pw');
+
+      toggleButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const inputWrapper = button.closest('.input');
+          const input = inputWrapper.querySelector('input');
+          const span = button.querySelector('span');
+
+          if (input.value == '') return;
+          if (input.type === 'password') {
+            button.classList.add('show');
+            input.type = 'text';
+            span.innerText = '비밀번호 숨기기';
+          } else {
+            button.classList.remove('show');
+            input.type = 'password';
+            span.innerText = '비밀번호 보이기';
+          }
+        });
+      });
+    </script>
   </body>
 </html>
