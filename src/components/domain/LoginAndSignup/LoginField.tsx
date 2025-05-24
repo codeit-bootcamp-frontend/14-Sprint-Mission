@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 
 import styles from './LoginField.module.scss'
@@ -11,7 +11,7 @@ interface LoginFieldtProps {
   placeholder: string
   icon?: string | null
   onIconClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-  validate?: (value: string) => string
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   value: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   error?: string
@@ -23,18 +23,11 @@ const LoginField = ({
   placeholder,
   icon = null,
   onIconClick,
-  validate,
+  onBlur,
   value,
   onChange,
+  error,
 }: LoginFieldtProps) => {
-  const [error, setError] = useState('')
-
-  const handleBlur = () => {
-    if (validate) {
-      setError(validate(value))
-    }
-  }
-
   return (
     <div className={styles['input-wrapper']}>
       {/* label 하지 않은 이유는 아이콘 클릭시 input에 포커스 가기 때문에 label을 삭제하고 div를 넣음*/}
@@ -50,7 +43,7 @@ const LoginField = ({
           id={id}
           value={value}
           onChange={onChange}
-          onBlur={handleBlur}
+          onBlur={onBlur}
         />
         {icon && (
           <div

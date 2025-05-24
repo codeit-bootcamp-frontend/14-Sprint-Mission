@@ -3,6 +3,7 @@ import { create } from 'zustand'
 interface AuthState {
   accessToken: string | null
   setAccessToken: (token: string) => void
+  clearAccessToken: () => void
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -13,4 +14,5 @@ export const useAuthStore = create<AuthState>((set) => ({
       localStorage.setItem('token', token)
     }
   },
+  clearAccessToken: () => set({ accessToken: null }),
 }))

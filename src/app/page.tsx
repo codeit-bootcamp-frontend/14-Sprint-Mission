@@ -24,7 +24,7 @@ function Home() {
       <S.HeaderTop>
         <S.HeaderNav>
           <S.HeaderLogo>
-            <Link href="/" prefetch={true}>
+            <Link href="/">
               <S.PandaLogo>
                 <Image
                   src={LogoFace}
@@ -34,7 +34,7 @@ function Home() {
                 />
               </S.PandaLogo>
             </Link>
-            <Link href="/" prefetch={true}>
+            <Link href="/">
               <S.PandaLogoName>
                 <Image
                   src={Logo}
@@ -46,12 +46,7 @@ function Home() {
             </Link>
           </S.HeaderLogo>
 
-          <Button
-            to="/login"
-            as={Link}
-            size={48.5}
-            style={{ padding: '1.1rem 4.3rem' }}
-          >
+          <Button to="/login" size={48.5} style={{ padding: '1.1rem 4.3rem' }}>
             로그인
           </Button>
         </S.HeaderNav>
@@ -148,10 +143,10 @@ function Home() {
           <S.FooterNavMain>
             <S.Codeit>©codeit - 2024</S.Codeit>
             <S.PrivacyFaq>
-              <Link href="/privacy" prefetch={true}>
+              <Link href="/privacy">
                 <S.Privacy>Privacy Policy</S.Privacy>
               </Link>
-              <Link href="/faq" prefetch={true}>
+              <Link href="/faq">
                 <S.Faq>FAQ</S.Faq>
               </Link>
             </S.PrivacyFaq>
