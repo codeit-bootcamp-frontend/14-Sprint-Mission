@@ -3,11 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import * as S from './page.style'
 import Button from '../components/common/Button'
+import HomeNavVar from '@/components/domain/Nav/HomeNavVar'
 
-import Logo from '../../public/assets/image/logo_text.png'
-import LogoFace from '../../public/assets/image/logo_face.png'
 import HomeTop from '../../public/assets/image/home_top.png'
 import HomeBottom from '../../public/assets/image/home_bottom.png'
 import HomeHotItems from '../../public/assets/image/home_hot_items.png'
@@ -18,139 +16,114 @@ import Instagram from '../../public/assets/svg/instagram.svg'
 import Twitter from '../../public/assets/svg/twitter.svg'
 import Youtube from '../../public/assets/svg/youtube.svg'
 
+import styles from './page.style.module.scss'
+
 function Home() {
   return (
     <>
-      <S.HeaderTop>
-        <S.HeaderNav>
-          <S.HeaderLogo>
-            <Link href="/">
-              <S.PandaLogo>
-                <Image
-                  src={LogoFace}
-                  alt="판다마켓 로고 사진"
-                  width={40}
-                  height={40}
-                />
-              </S.PandaLogo>
-            </Link>
-            <Link href="/">
-              <S.PandaLogoName>
-                <Image
-                  src={Logo}
-                  alt="판다마켓 로고 사진"
-                  width={103}
-                  height={35}
-                />
-              </S.PandaLogoName>
-            </Link>
-          </S.HeaderLogo>
-
-          <Button to="/login" size={48.5} style={{ padding: '1.1rem 4.3rem' }}>
-            로그인
-          </Button>
-        </S.HeaderNav>
-      </S.HeaderTop>
-      <S.HeaderMain>
-        <S.HeaderMainContainer>
-          <S.HeaderMainTitle>
-            <S.HeaderTitleFont>
+      <HomeNavVar />
+      <div className={styles['header-main']}>
+        <div className={styles['header-main-container']}>
+          <div className={styles['header-main-title']}>
+            <h1 className={styles['header-title-font']}>
               일상의 모든 물건을 거래해 보세요
-            </S.HeaderTitleFont>
+            </h1>
 
-            <S.ItemsButton to="/items" size={56}>
+            <Button className={styles['header-button']} to="/items" size={56}>
               구경하러 가기
-            </S.ItemsButton>
-          </S.HeaderMainTitle>
-          <S.PandaBackground>
+            </Button>
+          </div>
+          <div className={styles['panda-background']}>
             <Image src={HomeTop} alt="판다마켓 백그라운드사진" fill />
-          </S.PandaBackground>
-        </S.HeaderMainContainer>
-      </S.HeaderMain>
-      <S.MainBasic>
-        <S.MainTheme>
-          <S.MainPopularSellImage>
+          </div>
+        </div>
+      </div>
+      <main className={styles['main-basic']}>
+        <div className={styles['main-theme']}>
+          <div className={styles['main-popular-sell-image']}>
             <Image src={HomeHotItems} alt="판다마켓 인기 상품 사진" />
-          </S.MainPopularSellImage>
-          <S.MainThemeBasic>
+          </div>
+          <div className={styles['main-theme-basic']}>
             <div>
-              <S.MainPopularSellFontTop>Hot item</S.MainPopularSellFontTop>
+              <p className={styles['main-popular-sell-font-top']}>Hot item</p>
             </div>
             <div>
-              <S.MainPopularSellFontMiddle>
+              <h2 className={styles['main-popular-sell-font-middle']}>
                 인기 상품을 확인해 보세요
-              </S.MainPopularSellFontMiddle>
+              </h2>
             </div>
             <div>
-              <S.MainPopularSellFontBottom>
+              <p className={styles['main-popular-sell-font-bottom']}>
                 가장 HOT한 중고거래 물품을 판다 마켓에서 확인해 보세요
-              </S.MainPopularSellFontBottom>
+              </p>
             </div>
-          </S.MainThemeBasic>
-        </S.MainTheme>
-        <S.MainThemeCenter>
-          <S.MainThemeBasicMiddle>
+          </div>
+        </div>
+        <div className={styles['main-theme-center']}>
+          <div className={styles['main-theme-basic-middle']}>
             <div>
-              <S.MainPopularSellFontTop>Search</S.MainPopularSellFontTop>
+              <p className={styles['main-popular-sell-font-top']}>Search</p>
             </div>
             <div>
-              <S.MainPopularSellFontMiddle>
+              <h2 className={styles['main-popular-sell-font-middle']}>
                 구매를 원하는 상품을 검색하세요
-              </S.MainPopularSellFontMiddle>
+              </h2>
             </div>
             <div>
-              <S.MainPopularSellFontBottom>
+              <p className={styles['main-popular-sell-font-bottom']}>
                 구매하고 싶은 물품은 검색해서 쉽게 찾아보세요
-              </S.MainPopularSellFontBottom>
+              </p>
             </div>
-          </S.MainThemeBasicMiddle>
-          <S.MainSearchImage>
+          </div>
+          <div className={styles['main-search-image']}>
             <Image src={HomeSearch} alt="판다마켓 상품 검색 사진" />
-          </S.MainSearchImage>
-        </S.MainThemeCenter>
-        <S.MainTheme>
-          <S.MainPopularSellImage>
+          </div>
+        </div>
+        <div className={styles['main-theme']}>
+          <div className={styles['main-popular-sell-image']}>
             <Image src={HomeRegister} alt="판다마켓 인기 상품 등록" />
-          </S.MainPopularSellImage>
-          <S.MainThemeBasic>
+          </div>
+          <div className={styles['main-theme-basic']}>
             <div>
-              <S.MainPopularSellFontTop>Register</S.MainPopularSellFontTop>
+              <p className={styles['main-popular-sell-font-top']}>Register</p>
             </div>
             <div>
-              <S.MainPopularSellFontMiddle>
+              <h2 className={styles['main-popular-sell-font-middle']}>
                 판매를 원하는 상품을 등록하세요
-              </S.MainPopularSellFontMiddle>
+              </h2>
             </div>
             <div>
-              <S.MainPopularSellFontBottom>
+              <p className={styles['main-popular-sell-font-bottom']}>
                 어떤 물건이든 판매하고 싶은 상품을 쉽게 등록하세요
-              </S.MainPopularSellFontBottom>
+              </p>
             </div>
-          </S.MainThemeBasic>
-        </S.MainTheme>
-      </S.MainBasic>
-      <S.FooterMainContainer>
-        <S.FooterEmpty></S.FooterEmpty>
-        <S.FooterContainer>
-          <S.FooterBackground>
-            <S.FooterFont>믿을 수 있는 판다마켓 중고 거래</S.FooterFont>
-            <S.FooterImage>
+          </div>
+        </div>
+      </main>
+      <footer className={styles['footer-main-container']}>
+        <div className={styles['footer-empty']}></div>
+        <div className={styles['footer-container']}>
+          <div className={styles['footer-background']}>
+            <div className={styles['footer-font']}>
+              믿을 수 있는 판다마켓 중고 거래
+            </div>
+            <div className={styles['footer-image']}>
               <Image src={HomeBottom} alt="판다마켓 백그라운드사진" />
-            </S.FooterImage>
-          </S.FooterBackground>
-        </S.FooterContainer>
-        <S.FooterNav>
-          <S.FooterNavMain>
-            <S.Codeit>©codeit - 2024</S.Codeit>
-            <S.PrivacyFaq>
+            </div>
+          </div>
+        </div>
+        <div className={styles['footer-nav']}>
+          <div className={styles['footer-nav-main']}>
+            <p className={styles['codeit']}>©codeit - 2024</p>
+            <div className={styles['privacy-faq']}>
               <Link href="/privacy">
-                <S.Privacy>Privacy Policy</S.Privacy>
+                <p className={styles['privacy']}>Privacy Policy</p>
               </Link>
               <Link href="/faq">
-                <S.Faq>FAQ</S.Faq>
+                <p className={styles['faq']}>FAQ</p>
               </Link>
-            </S.PrivacyFaq>
-            <S.Social>
+            </div>
+            <div className={styles['social']}>
               <a href="https://www.facebook.com/" target="_blank">
                 <Image src={Facebook} alt="페이스북 로고 사진" />
               </a>
@@ -163,10 +136,10 @@ function Home() {
               <a href="https://www.instagram.com/" target="_blank">
                 <Image src={Instagram} alt="인스타그램 로고 사진" />
               </a>
-            </S.Social>
-          </S.FooterNavMain>
-        </S.FooterNav>
-      </S.FooterMainContainer>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }

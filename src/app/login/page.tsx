@@ -23,7 +23,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [isState, setIsState] = useState(false)
+  const [isLoginState, setIsLoginState] = useState(false)
   const router = useRouter()
   const { mutate: signin, isPending } = useSigninMutation()
   const [signinFormError, setSigninFormError] = useState<
@@ -63,7 +63,7 @@ const Login = () => {
     password: baseSigninSchema.pick({ password: true }),
   }
 
-  // 필드별 유효성 검사 함수 예
+  // 필드별 유효성 검사 함수
   function validateField(field: keyof SigninForm, value: string) {
     const schema = partialSchemas[field]
     if (!schema) return
@@ -81,13 +81,21 @@ const Login = () => {
       }))
     }
   }
-
+  // 로그인 버튼 활성화 상태 관리
   useEffect(() => {
     const hasError = Object.values(signinFormError).some((msg) => msg)
     const hasEmpty = !email || !password
     const valid = !hasError && !hasEmpty
-    setIsState(valid)
+    setIsLoginState(valid)
   }, [email, password, signinFormError])
+
+  // 페이지가 로드될 때 토큰이 있으면 홈으로 리다이렉트
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+      router.replace('/')
+    }
+  }, [router])
 
   return (
     <div className={styles['bone']}>
@@ -122,7 +130,7 @@ const Login = () => {
         id="password"
         icon={showPassword ? Visibillity : VisibillityOff}
         onIconClick={(e) => {
-          e.stopPropagation()
+          e.preventDefault()
           togglePasswordVisibility()
         }}
         value={password}
@@ -137,11 +145,10 @@ const Login = () => {
           className={styles['login-button']}
           size={56}
           onClick={handleSignin}
-          disabled={!isState}
+          disabled={!isLoginState}
         >
-          로그인
+          {isPending ? '로그인 중...' : '로그인'}
         </Button>
-        {isPending ? '로그인 중...' : '로그인'}
       </div>
       <div className={styles['simple-login-wrapper']}>
         <div className={styles['simple-login']}>간편 로그인하기</div>

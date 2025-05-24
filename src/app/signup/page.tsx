@@ -10,7 +10,7 @@ import {
   signupSchema,
   baseSignupSchema,
 } from '@/hooks/useSignupForm'
-import authService from '@/lib/api/service/authService'
+import { useSignupMutation } from '@/hooks/useSignupMutation'
 import LoginField from '../../components/domain/LoginAndSignup/LoginField'
 import Button from '../../components/common/Button'
 
@@ -29,6 +29,7 @@ const Signup = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const [nickname, setNickname] = useState('')
   const [isState, setIsState] = useState(false)
+  const { mutate: signup, isPending } = useSignupMutation()
   const [passwordVisibility, setPasswordVisibility] = useState({
     password: false,
     confirmPassword: false,
@@ -62,31 +63,14 @@ const Signup = () => {
         const field = issue.path[0] as keyof SignupForm
         fieldErrors[field] = issue.message
       }
-
+      setSignupFormError(fieldErrors)
       return
     }
-
-    try {
-      const response = await authService.postAuthSignup({
-        email: form.email,
-        nickname: form.nickname,
-        password: form.password,
-        passwordConfirmation: form.passwordConfirmation,
-      })
-
-      if (response.status === 200 || response.status === 201) {
+    signup(form, {
+      onSuccess: () => {
         router.push('/login')
-      }
-    } catch (err) {
-      const error = err as Error
-      if (error.message) {
-        console.error('서버 응답 에러:', error.message)
-        alert(JSON.stringify(error.message))
-      } else {
-        console.error('기타 에러:', error)
-        alert(error)
-      }
-    }
+      },
+    })
   }
 
   // 부분검사용 스키마 (필드별 검사)
@@ -123,6 +107,7 @@ const Signup = () => {
     setIsState(valid)
   }, [email, password, passwordConfirmation, nickname, signupFormError])
 
+  // 페이지가 로드될 때 토큰이 있으면 홈으로 리다이렉트
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (token) {
@@ -196,7 +181,7 @@ const Signup = () => {
           onClick={handleSignup}
           disabled={!isState}
         >
-          회원가입
+          {isPending ? '회원가입 중...' : '회원가입'}
         </Button>
       </div>
       <div className={styles['simple-login-wrapper']}>
