@@ -3,22 +3,25 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { useItemsList } from '../../hooks/useItemsList'
 import { GetProductIdTypes } from '../../types/product'
 
 import HeartInactive from '../../../public/assets/image/heart_inactive.png'
 
 import styles from './BestItems.module.scss'
 
-interface BestItemsProps {
-  products: GetProductIdTypes[]
-}
-
-const BestItems = ({ products }: BestItemsProps) => {
+const BestItems = () => {
   const [itemsDisplay, setItemsDisplay] = useState(1)
-  const list = products || []
-  console.log(products)
+  const { productListAll } = useItemsList({
+    itemsDisplay,
+    page: 1,
+    orderBy: 'favorite',
+    enabled: true,
+  })
+
+  // 화면 크기에 따라 표시할 아이템 수를 조정하는 useEffect
   useEffect(() => {
-    const handleReasize = () => {
+    const handleResize = () => {
       if (window.innerWidth <= 743) {
         setItemsDisplay(1)
       } else if (window.innerWidth <= 1023) {
@@ -27,10 +30,10 @@ const BestItems = ({ products }: BestItemsProps) => {
         setItemsDisplay(4)
       }
     }
-    handleReasize()
-    window.addEventListener('resize', handleReasize)
+    handleResize()
+    window.addEventListener('resize', handleResize)
 
-    return () => window.removeEventListener('resize', handleReasize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
@@ -39,31 +42,33 @@ const BestItems = ({ products }: BestItemsProps) => {
       <div className={styles['title']}>베스트 상품</div>
 
       <div className={styles['best-items-display']}>
-        {list.slice(0, itemsDisplay).map((product) => (
-          <Link key={product.id} href={`/items/${product.id}`} prefetch={true}>
-            <div className={styles['best-item']}>
-              <img
-                className={styles['best-item-image']}
-                src={
-                  Array.isArray(product.images) && product.images.length > 0
-                    ? product.images[0]
-                    : ''
-                }
-                alt={product.name}
-              />
-              <div className={styles['product-description']}>
-                <div className={styles['product-name']}>{product.name}</div>
-                <div className={styles['product-price']}>
-                  {product.price.toLocaleString('ko-KR')}원
-                </div>
-                <div className={styles['product-favorite-count']}>
-                  <Image src={HeartInactive} alt="HeartInactive" />
-                  {product.favoriteCount}
+        {productListAll.data?.list
+          ?.slice(0, itemsDisplay)
+          .map((product: GetProductIdTypes) => (
+            <Link key={product.id} href={`/items/${product.id}`}>
+              <div className={styles['best-item']}>
+                <img
+                  className={styles['best-item-image']}
+                  src={
+                    Array.isArray(product.images) && product.images.length > 0
+                      ? product.images[0]
+                      : ''
+                  }
+                  alt={product.name}
+                />
+                <div className={styles['product-description']}>
+                  <div className={styles['product-name']}>{product.name}</div>
+                  <div className={styles['product-price']}>
+                    {product.price.toLocaleString('ko-KR')}원
+                  </div>
+                  <div className={styles['product-favorite-count']}>
+                    <Image src={HeartInactive} alt="HeartInactive" />
+                    {product.favoriteCount}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
       </div>
     </div>
   )

@@ -38,3 +38,15 @@
   align-items: center;
   gap: 0.85rem;
 }
+.header-nav-dropdown {
+  position: absolute;
+  top: 56px;
+  right: 402px;
+  z-index: 10;
+  padding: 1.6rem 4.1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid $secondaryGray-100;
+  color: $secondaryGray-500;
+  @include apply-font($font-16, 400);
+}

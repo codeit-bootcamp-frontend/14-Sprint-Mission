@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ThemeProvider } from 'styled-components'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { theme } from '../styles/theme'
 import GlobalStyles from '../styles/GlobalStyles'
 
 export default function ClientLayout({
@@ -13,13 +12,12 @@ export default function ClientLayout({
   children: React.ReactNode
 }) {
   const [queryClient] = useState(() => new QueryClient())
-
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        {children}
-      </ThemeProvider>
+      <GlobalStyles />
+      {children}
+
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
