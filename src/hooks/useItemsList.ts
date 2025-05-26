@@ -3,16 +3,16 @@ import { useQuery } from '@tanstack/react-query'
 import productService from '@/lib/api/service/productService'
 
 interface UseItemsListOptions {
-  itemsDisplay: number
   page: number
+  itemsDisplay: number
   orderBy?: string
   keyword?: string
   enabled?: boolean
 }
 
 export const useItemsList = ({
-  itemsDisplay,
   page,
+  itemsDisplay,
   orderBy = 'recent',
   keyword,
   enabled = true,

@@ -3,12 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useQuery } from '@tanstack/react-query'
+import { useDebounce } from 'use-debounce'
 
 import { useItemsList } from '../../hooks/useItemsList'
 import { GetProductIdTypes } from '../../types/product'
 import DropDown from '@/components/common/DropDown'
-import productService from '@/lib/api/service/productService'
 
 import HeartInactive from '../../../public/assets/image/heart_inactive.png'
 import NoImage from '../../../public/assets/image/no_image.png'
@@ -26,6 +25,7 @@ type SelectOption = {
 const ProductListItems = () => {
   const [itemsDisplay, setItemsDisplay] = useState(1)
   const [isMobile, setIsMobile] = useState(false)
+
   const selectList: SelectOption[] = [
     { value: 'recent', name: '최신순' },
     { value: 'favorite', name: '좋아요순' },
@@ -34,17 +34,17 @@ const ProductListItems = () => {
   const [selectedOption, setSelectedOption] = useState(selectList[0].value)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 300)
 
   // 상품리스트 가져오는 useQuery 훅
   const { productListAll } = useItemsList({
+    page: currentPage,
     itemsDisplay,
-    page: 1,
-    orderBy: 'recent',
-    keyword: searchTerm,
-    enabled: true,
+    orderBy: selectedOption,
+    keyword: debouncedSearchTerm.trim(),
   })
 
-  // 페이지네이션
+  // 페이지네이션 관련 변수 설정
   const totalPages = Math.ceil(productListAll.data?.totalCount / itemsPerPage)
   const pages = (() => {
     if (totalPages <= 5) {
@@ -104,7 +104,10 @@ const ProductListItems = () => {
               placeholder="검색할 상품 입력해주세요"
               className={styles['search-input']}
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+                setCurrentPage(1)
+              }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setCurrentPage(1)
@@ -131,33 +134,31 @@ const ProductListItems = () => {
       </div>
       <div className={styles['recent-item']}>
         <div className={styles['recent-items-display']}>
-          {productListAll.data?.list
-            .slice(0, itemsDisplay)
-            .map((product: GetProductIdTypes) => (
-              <Link key={product.id} href={`/items/${product.id}`}>
-                <div className={styles['recent-item-key']} key={product.id}>
-                  <img
-                    className={styles['recent-item-image']}
-                    src={
-                      Array.isArray(product.images) && product.images.length > 0
-                        ? product.images[0]
-                        : NoImage.src
-                    }
-                    alt={product.name}
-                  />
-                  <div className={styles['product-description']}>
-                    <div className={styles['product-name']}>{product.name}</div>
-                    <div className={styles['product-price']}>
-                      {product.price.toLocaleString('ko-KR')}원
-                    </div>
-                    <div className={styles['product-favorite-count']}>
-                      <Image src={HeartInactive} alt="HeartInactive" />
-                      {product.favoriteCount}
-                    </div>
+          {productListAll.data?.list.map((product: GetProductIdTypes) => (
+            <Link key={product.id} href={`/items/${product.id}`}>
+              <div className={styles['recent-item-key']}>
+                <img
+                  className={styles['recent-item-image']}
+                  src={
+                    Array.isArray(product.images) && product.images.length > 0
+                      ? product.images[0]
+                      : NoImage.src
+                  }
+                  alt={product.name}
+                />
+                <div className={styles['product-description']}>
+                  <div className={styles['product-name']}>{product.name}</div>
+                  <div className={styles['product-price']}>
+                    {product.price.toLocaleString('ko-KR')}원
+                  </div>
+                  <div className={styles['product-favorite-count']}>
+                    <Image src={HeartInactive} alt="HeartInactive" />
+                    {product.favoriteCount}
                   </div>
                 </div>
-              </Link>
-            ))}
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
       <div className={styles['pagination']}>
