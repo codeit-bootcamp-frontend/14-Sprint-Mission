@@ -1,0 +1,126 @@
+@import '../../../styles/variables.scss';
+
+.bone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rem 0 20rem;
+  position: sticky;
+  border-bottom: 1px solid #dfdfdf;
+  height: 7rem;
+  @media (max-width: 1023px) {
+    padding: 0 2.4rem;
+  }
+  @media (max-width: 743px) {
+    padding: 0 1.6rem;
+  }
+}
+.left-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 38.6rem;
+  @include apply-font($font-18, 700);
+  color: $secondaryGray-600;
+  @media (max-width: 1023px) {
+    width: 23.375rem;
+  }
+  @media (max-width: 743px) {
+    width: 22.4rem;
+  }
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  @media (max-width: 743px) {
+    position: relative;
+    left: -8px;
+  }
+}
+.panda-logo-wrapper {
+  img {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+  }
+
+  @media (max-width: 743px) {
+    img {
+      display: none;
+    }
+  }
+}
+.panda-text-wrapper {
+  img {
+    width: 10.3rem;
+    height: 3.5rem;
+    display: flex;
+  }
+  @media (max-width: 1023px) {
+  }
+  @media (max-width: 743px) {
+    img {
+      width: 8.1rem;
+      height: 2.3rem;
+    }
+  }
+}
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 20rem;
+  @media (max-width: 743px) {
+    width: 13.5rem;
+    justify-content: space-between;
+  }
+}
+interface LinkProps {
+  $isActive: boolean;
+}
+
+.market-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 21px 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $secondaryGray-600;
+
+  &.active {
+    color: $primaryBlue-100;
+  }
+
+  &:hover {
+    color: $secondaryGray-600;
+  }
+
+  @media (max-width: 743px) {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 21px 0px;
+  }
+}
+.free-board-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 21px 15px;
+  @include apply-font($font-18, 700);
+
+  &.active {
+    color: $primaryBlue-100;
+  }
+
+  &:hover {
+    color: $secondaryGray-600;
+  }
+
+  @media (max-width: 743px) {
+    @include apply-font($font-16, 700);
+    padding: 21px 0px;
+  }
+}

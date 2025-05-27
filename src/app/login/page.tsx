@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
+import { SigninForm, baseSigninSchema } from '@/hooks/useSigninForm'
+import { useSigninMutation } from '@/hooks/useSigninMutation'
 import LoginField from '../../components/domain/LoginAndSignup/LoginField'
 import Button from '../../components/common/Button'
 
@@ -20,58 +22,91 @@ import styles from './login.module.scss'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [isState, setIsState] = useState(false)
+  const [isLoginState, setIsLoginState] = useState(false)
   const router = useRouter()
+  const { mutate: signin, isPending } = useSigninMutation()
+  const [signinFormError, setSigninFormError] = useState<
+    Partial<Record<keyof SigninForm, string>>
+  >({})
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev)
   }
 
-  const validateEmail = (email: string) => {
-    if (!email) return '이메일을 입력해주세요.'
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email) ? '' : '잘못된 이메일 형식입니다.'
+  const handleSignin = () => {
+    const form: SigninForm = { email, password }
+
+    // 전체 유효성 검사
+    const response = baseSigninSchema.safeParse(form)
+    if (!response.success) {
+      const fieldErrors: Partial<Record<keyof SigninForm, string>> = {}
+      for (const issue of response.error.issues) {
+        const field = issue.path[0] as keyof SigninForm
+        fieldErrors[field] = issue.message
+      }
+      setSigninFormError(fieldErrors)
+      return
+    }
+
+    // mutate 호출 시, onSuccess 콜백 등록해서 성공 시 리다이렉트 처리
+    signin(form, {
+      onSuccess: () => {
+        router.push('/')
+      },
+    })
   }
 
-  const validatePassword = (password: string) => {
-    if (!password || password === '') {
-      return '비밀번호를 입력해주세요.'
-    }
-    if (password.length < 8) {
-      return '비밀번호를 8자 이상 입력해주세요.'
-    }
-
-    return ''
+  // 부분검사용 스키마 (필드별 검사)
+  const partialSchemas = {
+    email: baseSigninSchema.pick({ email: true }),
+    password: baseSigninSchema.pick({ password: true }),
   }
 
-  const handleLogin = () => {
-    const emailValidation = validateEmail(email)
-    const passwordValidation = validatePassword(password)
+  // 필드별 유효성 검사 함수
+  function validateField(field: keyof SigninForm, value: string) {
+    const schema = partialSchemas[field]
+    if (!schema) return
 
-    setEmailError(emailValidation)
-    setPasswordError(passwordValidation)
-
-    if (!emailValidation && !passwordValidation) {
-      router.push('/items')
+    const result = schema.safeParse({ [field]: value })
+    if (!result.success) {
+      setSigninFormError((prev) => ({
+        ...prev,
+        [field]: result.error.issues[0].message,
+      }))
+    } else {
+      setSigninFormError((prev) => ({
+        ...prev,
+        [field]: '',
+      }))
     }
   }
+  // 로그인 버튼 활성화 상태 관리
   useEffect(() => {
-    const valid = password.length >= 8 && !!email
-    setIsState(valid)
-  }, [email, password])
+    const hasError = Object.values(signinFormError).some((msg) => msg)
+    const hasEmpty = !email || !password
+    const valid = !hasError && !hasEmpty
+    setIsLoginState(valid)
+  }, [email, password, signinFormError])
+
+  // 페이지가 로드될 때 토큰이 있으면 홈으로 리다이렉트
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+      router.replace('/')
+    }
+  }, [router])
+
   return (
     <div className={styles['bone']}>
       <div className={styles['logo-container']}>
         <div className={styles['logo-panda']}>
-          <Link href="/" prefetch={true}>
+          <Link href="/">
             <Image src={LogoFace} alt="판다마켓 로고 사진" />
           </Link>
         </div>
         <div className={styles['logo-panda-text']}>
-          <Link href="/" prefetch={true}>
+          <Link href="/">
             <Image src={Logo} alt="판다마켓 로고 사진" />
           </Link>
         </div>
@@ -81,12 +116,12 @@ const Login = () => {
         type="email"
         placeholder="이메일을 입력해주세요"
         id="email"
-        validate={validateEmail}
         value={email}
         onChange={(e) => {
           setEmail(e.target.value)
         }}
-        error={emailError}
+        onBlur={() => validateField('email', email)}
+        error={signinFormError.email}
       />
       <LoginField
         label="비밀번호"
@@ -95,24 +130,24 @@ const Login = () => {
         id="password"
         icon={showPassword ? Visibillity : VisibillityOff}
         onIconClick={(e) => {
-          e.stopPropagation()
+          e.preventDefault()
           togglePasswordVisibility()
         }}
-        validate={validatePassword}
         value={password}
         onChange={(e) => {
           setPassword(e.target.value)
         }}
-        error={passwordError}
+        onBlur={() => validateField('password', password)}
+        error={signinFormError.password}
       />
       <div className={styles['button-wrapper']}>
         <Button
           className={styles['login-button']}
           size={56}
-          onClick={handleLogin}
-          disabled={!isState}
+          onClick={handleSignin}
+          disabled={!isLoginState}
         >
-          로그인
+          {isPending ? '로그인 중...' : '로그인'}
         </Button>
       </div>
       <div className={styles['simple-login-wrapper']}>
@@ -129,9 +164,7 @@ const Login = () => {
       <div className={styles['footer-container']}>
         <div className={styles['first']}>판다마켓이 처음이신가요? &nbsp;</div>
         <div className={styles['register']}>
-          <Link href="/signup" prefetch={true}>
-            회원가입
-          </Link>
+          <Link href="/signup">회원가입</Link>
         </div>
       </div>
     </div>

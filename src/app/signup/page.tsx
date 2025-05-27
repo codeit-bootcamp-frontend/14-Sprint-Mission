@@ -5,6 +5,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
+import {
+  SignupForm,
+  signupSchema,
+  baseSignupSchema,
+} from '@/hooks/useSignupForm'
+import { useSignupMutation } from '@/hooks/useSignupMutation'
 import LoginField from '../../components/domain/LoginAndSignup/LoginField'
 import Button from '../../components/common/Button'
 
@@ -20,17 +26,20 @@ import styles from './signup.module.scss'
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [passwordConfirm, setPasswordConfirm] = useState('')
-  const [name, setName] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-  const [passwordConfirmError, setPasswordConfirmError] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const [nickname, setNickname] = useState('')
   const [isState, setIsState] = useState(false)
+  const { mutate: signup, isPending } = useSignupMutation()
   const [passwordVisibility, setPasswordVisibility] = useState({
     password: false,
     confirmPassword: false,
   })
   const router = useRouter()
+
+  const [signupFormError, setSignupFormError] = useState<
+    Partial<Record<keyof SignupForm, string>>
+  >({})
+
   const togglePasswordVisibility = (field: keyof typeof passwordVisibility) => {
     setPasswordVisibility((prev) => ({
       ...prev,
@@ -38,55 +47,83 @@ const Signup = () => {
     }))
   }
 
-  const validateEmail = (email: string) => {
-    if (!email) return '이메일을 입력해주세요.'
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email) ? '' : '잘못된 이메일 형식입니다.'
+  const handleSignup = async () => {
+    const form: SignupForm = {
+      email,
+      nickname,
+      password,
+      passwordConfirmation,
+    }
+
+    const response = signupSchema.safeParse(form)
+
+    if (!response.success) {
+      const fieldErrors: Partial<Record<keyof SignupForm, string>> = {}
+      for (const issue of response.error.issues) {
+        const field = issue.path[0] as keyof SignupForm
+        fieldErrors[field] = issue.message
+      }
+      setSignupFormError(fieldErrors)
+      return
+    }
+    signup(form, {
+      onSuccess: () => {
+        router.push('/login')
+      },
+    })
   }
 
-  const validatePassword = (password: string) => {
-    if (!password || password === '') {
-      return '비밀번호를 입력해주세요.'
-    }
-    if (password.length < 8) {
-      return '비밀번호를 8자 이상 입력해주세요.'
-    }
-    return ''
+  // 부분검사용 스키마 (필드별 검사)
+  const partialSchemas = {
+    email: baseSignupSchema.pick({ email: true }),
+    password: baseSignupSchema.pick({ password: true }),
+    passwordConfirmation: baseSignupSchema.pick({ passwordConfirmation: true }),
+    nickname: baseSignupSchema.pick({ nickname: true }),
   }
-  const validatePasswordConfirm = (passwordConfirm: string) => {
-    if (passwordConfirm !== password) {
-      return '비밀번호가 일치하지 않습니다.'
-    }
-    return ''
-  }
-  const handleLogin = () => {
-    const emailValidation = validateEmail(email)
-    const passwordValidation = validatePassword(password)
-    const passwordConfirmValidation = validatePasswordConfirm(passwordConfirm)
 
-    setEmailError(emailValidation)
-    setPasswordError(passwordValidation)
-    setPasswordConfirmError(passwordConfirmValidation)
-    if (!emailValidation && !passwordValidation && !passwordValidation) {
-      router.push('/login')
+  // 필드별 유효성 검사 함수 예
+  function validateField(field: keyof SignupForm, value: string) {
+    const schema = partialSchemas[field]
+    if (!schema) return
+
+    const result = schema.safeParse({ [field]: value })
+    if (!result.success) {
+      setSignupFormError((prev) => ({
+        ...prev,
+        [field]: result.error.issues[0].message,
+      }))
+    } else {
+      setSignupFormError((prev) => ({
+        ...prev,
+        [field]: '',
+      }))
     }
   }
 
   useEffect(() => {
-    const valid =
-      password.length >= 8 && !!email && passwordConfirm === password
+    const hasError = Object.values(signupFormError).some((msg) => msg)
+    const hasEmpty = !email || !password || !passwordConfirmation || !nickname
+    const valid = !hasError && !hasEmpty
     setIsState(valid)
-  }, [email, password, passwordConfirm])
+  }, [email, password, passwordConfirmation, nickname, signupFormError])
+
+  // 페이지가 로드될 때 토큰이 있으면 홈으로 리다이렉트
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+      router.replace('/')
+    }
+  }, [router])
   return (
     <div className={styles['bone']}>
       <div className={styles['logo-container']}>
         <div className={styles['logo-panda']}>
-          <Link href="/" prefetch={true}>
+          <Link href="/">
             <Image src={LogoFace} alt="판다마켓 로고 사진" />
           </Link>
         </div>
         <div className={styles['logo-panda-text']}>
-          <Link href="/" prefetch={true}>
+          <Link href="/">
             <Image src={Logo} alt="판다마켓 로고 사진" />
           </Link>
         </div>
@@ -96,23 +133,21 @@ const Signup = () => {
         type="email"
         placeholder="이메일을 입력해주세요"
         id="email"
-        validate={validateEmail}
         value={email}
-        onChange={(e) => {
-          setEmail(e.target.value)
-        }}
-        error={emailError}
+        onChange={(e) => setEmail(e.target.value)}
+        onBlur={() => validateField('email', email)}
+        error={signupFormError.email}
       />
       <LoginField
         label="닉네임"
-        type="name"
+        type="text"
         placeholder="닉네임을 입력해주세요"
-        id="name"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value)
-        }}
-      ></LoginField>
+        id="nickname"
+        value={nickname}
+        onChange={(e) => setNickname(e.target.value)}
+        onBlur={() => validateField('nickname', nickname)}
+        error={signupFormError.nickname}
+      />
       <LoginField
         label="비밀번호"
         type={passwordVisibility.password ? 'text' : 'password'}
@@ -120,35 +155,33 @@ const Signup = () => {
         id="password"
         icon={passwordVisibility.password ? Visibillity : VisibillityOff}
         onIconClick={() => togglePasswordVisibility('password')}
-        validate={validatePassword}
         value={password}
-        onChange={(e) => {
-          setPassword(e.target.value)
-        }}
-        error={passwordError}
+        onChange={(e) => setPassword(e.target.value)}
+        onBlur={() => validateField('password', password)}
+        error={signupFormError.password}
       />
       <LoginField
         label="비밀번호 확인"
         type={passwordVisibility.confirmPassword ? 'text' : 'password'}
         placeholder="비밀번호를 다시 한 번 입력해주세요"
-        id="confirm-password"
+        id="passwordConfirmation"
         icon={passwordVisibility.confirmPassword ? Visibillity : VisibillityOff}
         onIconClick={() => togglePasswordVisibility('confirmPassword')}
-        validate={validatePasswordConfirm}
-        value={passwordConfirm}
-        onChange={(e) => {
-          setPasswordConfirm(e.target.value)
-        }}
-        error={passwordConfirmError}
+        value={passwordConfirmation}
+        onChange={(e) => setPasswordConfirmation(e.target.value)}
+        onBlur={() =>
+          validateField('passwordConfirmation', passwordConfirmation)
+        }
+        error={signupFormError.passwordConfirmation}
       />
       <div className={styles['button-wrapper']}>
         <Button
           className={styles['signup-button']}
           size={56}
-          onClick={handleLogin}
+          onClick={handleSignup}
           disabled={!isState}
         >
-          회원가입
+          {isPending ? '회원가입 중...' : '회원가입'}
         </Button>
       </div>
       <div className={styles['simple-login-wrapper']}>
@@ -165,7 +198,7 @@ const Signup = () => {
       <div className={styles['footer-container']}>
         <div className={styles['first']}>이미 회원이신가요? &nbsp;</div>
         <div className={styles['register']}>
-          <Link href="/login" target="_blank" prefetch={true}>
+          <Link href="/login" target="_blank">
             로그인
           </Link>
         </div>

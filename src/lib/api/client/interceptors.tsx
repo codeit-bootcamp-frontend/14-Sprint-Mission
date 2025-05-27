@@ -1,12 +1,12 @@
-import { AxiosRequestConfig } from 'axios'
+import { InternalAxiosRequestConfig } from 'axios'
 import { useAuthStore } from '../../stores/useAuthStore'
 
 export const requestInterceptor = (
-  config: AxiosRequestConfig
-): AxiosRequestConfig => {
-  // Zustand에서 토큰 직접 가져오기
+  config: InternalAxiosRequestConfig
+): InternalAxiosRequestConfig => {
+  // 토큰 가져오기
   const token = useAuthStore.getState().accessToken
-
+  //
   const isPublicEndpoint =
     config.url?.startsWith('/products') && !config.url?.includes('/favorite')
 

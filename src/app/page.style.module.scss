@@ -1,48 +1,6 @@
-import styled from 'styled-components'
-import { theme } from '../styles/theme'
-import { textStyle } from '../styles/textStyle'
-import Button from '../components/common/Button'
+@import '../styles/variables.scss';
 
-export const HeaderTop = styled.header`
-  display: flex;
-  justify-content: center;
-
-  top: 0;
-  background-color: #ffffff;
-`
-
-export const HeaderNav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0.95rem 0px;
-  margin: 0 40rem;
-  @media (max-width: 1023px) {
-    margin: 0 2.4rem;
-  }
-  @media (max-width: 743px) {
-    margin: 0 1rem;
-  }
-`
-export const PandaLogo = styled.div`
-  display: flex;
-  @media (max-width: 743px) {
-    display: none;
-  }
-`
-export const PandaLogoName = styled.div`
-  display: flex;
-`
-export const HeaderLogo = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-`
-
-export const PandaBackground = styled.div`
+.panda-background {
   width: 74.6rem;
   height: 30.4rem;
   position: relative;
@@ -50,9 +8,9 @@ export const PandaBackground = styled.div`
     width: 100%;
     height: 20rem;
   }
-`
+}
 
-export const HeaderLogoFace = styled.img`
+.header-logo-face {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
@@ -60,21 +18,21 @@ export const HeaderLogoFace = styled.img`
   @media (max-width: 743px) {
     width: 0;
   }
-`
+}
 
-export const HeaderLogoName = styled.img`
+.header-logo-name {
   width: 6.44rem;
   height: 2.19rem;
   display: flex;
-`
+}
 
-export const HeaderLogin = styled.a`
+.header-login {
   width: 10.16rem;
   height: 3rem;
   background-color: #3692ff;
   border-radius: 8px;
-  ${(props) => textStyle(16, 600)(props)}
-  color: ${theme.colors.SecondaryGray[50]};
+  @include apply-font($font-16, 600);
+  color: $secondaryGray-50;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -85,15 +43,15 @@ export const HeaderLogin = styled.a`
   @media (max-width: 743px) {
     width: 9.73rem;
   }
-`
+}
 
-export const HeaderMain = styled.div`
+.header-main {
   width: 100%;
   background-color: #cfe5ff;
   position: relative;
-`
+}
 
-export const HeaderMainContainer = styled.div`
+.header-main-container {
   width: max-content;
   display: flex;
   padding: 20rem 0px 0px 0px;
@@ -113,9 +71,9 @@ export const HeaderMainContainer = styled.div`
       width: 100%;
     }
   }
-`
+}
 
-export const HeaderMainTitle = styled.div`
+.header-main-title {
   width: auto;
   margin: auto 0;
   @media (max-width: 1023px) {
@@ -129,39 +87,47 @@ export const HeaderMainTitle = styled.div`
     width: 24rem;
     margin-bottom: 13.2rem;
   }
-`
+}
 
-export const HeaderTitleFont = styled.h1`
+.header-title-font {
   width: 32.5rem;
-  ${(props) => textStyle(40, 700)(props)}
+  @include apply-font($font-40, 700);
   margin: 0 6.2rem 3.2rem 0;
-  color: ${theme.colors.SecondaryGray[700]};
+  color: $secondaryGray-700;
   @media (max-width: 1023px) {
     margin-top: 84px;
     width: auto;
     margin: 84px auto 24px;
   }
   @media (max-width: 743px) {
-    ${(props) => textStyle(32, 700)(props)}
+    @include apply-font($font-32, 700);
     width: 26rem;
     margin-bottom: 1.8rem;
     text-align: center;
   }
-`
+}
+.header-button {
+  padding: 1.2rem 12.4rem;
+  width: max-content;
 
-export const ItemsButton = styled(Button)`
+  @media (max-width: 743px) {
+    padding: 1.1rem 7.1rem;
+  }
+}
+
+.items-button {
   padding: 1.2rem 12.4rem;
   width: max-content;
   @media (max-width: 768px) {
     padding: 1.1rem 7.1rem;
   }
-`
-export const HeaderItems = styled.a`
+}
+.header-items {
   width: 7.25rem;
-  background-color: ${theme.colors.PrimaryBlue[100]};
+  background-color: $primaryBlue-100;
   border-radius: 40px;
-  ${(props) => textStyle(20, 600)(props)}
-  color: ${theme.colors.SecondaryGray[50]};
+  @include apply-font($font-20, 600);
+  color: $secondaryGray-50;
   text-decoration: none;
   padding: 0.75rem 7.75rem;
   display: inline-block;
@@ -169,11 +135,11 @@ export const HeaderItems = styled.a`
     padding: 0.5rem 4rem;
     margin-top: 1.13rem;
   }
-`
+}
 
 /* 메인 */
 
-export const MainBasic = styled.main`
+.main-basic {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,9 +149,9 @@ export const MainBasic = styled.main`
   @media (max-width: 743px) {
     margin: 52px 16px 2.5rem 15px;
   }
-`
+}
 
-export const MainTheme = styled.div`
+.main-theme {
   display: flex;
   background-color: #fcfcfc;
   margin: 13.8rem auto;
@@ -194,9 +160,9 @@ export const MainTheme = styled.div`
     flex-direction: column;
     margin: 0;
   }
-`
+}
 // 지우셈
-export const MainPopularSellImage = styled.div`
+.main-popular-sell-image {
   @media (max-width: 1023px) {
     img {
       width: 100%;
@@ -210,9 +176,9 @@ export const MainPopularSellImage = styled.div`
       height: 100%;
     }
   }
-`
+}
 
-export const MainThemeBasic = styled.div`
+.main-theme-basic {
   width: 30.8rem;
   display: flex;
   justify-content: center;
@@ -228,52 +194,52 @@ export const MainThemeBasic = styled.div`
     height: 134px;
     margin: 2.4rem auto 4rem 0;
   }
-`
+}
 
-export const MainPopularSellFontTop = styled.p`
+.main-popular-sell-font-top {
   margin: 0 0px 1.2rem 0;
-  ${(props) => textStyle(18, 700)(props)}
-  color: ${theme.colors.PrimaryBlue[100]};
+  @include apply-font($font-18, 700);
+  color: $primaryBlue-100;
   @media (max-width: 1023px) {
     margin: 2.4rem auto 1.6rem;
   }
   @media (max-width: 743px) {
     margin: 0 auto 0.5rem 0rem;
-    ${(props) => textStyle(16, 700)(props)}
+    @include apply-font($font-16, 700);
   }
-`
+}
 
-export const MainPopularSellFontMiddle = styled.h2`
+.main-popular-sell-font-middle {
   margin: 0 auto 2.4rem 0;
-  ${(props) => textStyle(40, 700)(props)}
-  color: ${theme.colors.SecondaryGray[700]};
+  @include apply-font($font-40, 700);
+  color: $secondaryGray-700;
   @media (max-width: 1023px) {
-    ${(props) => textStyle(32, 700)(props)}
-    width:100%;
+    @include apply-font($font-32, 700);
+    width: 100%;
   }
   @media (max-width: 743px) {
-    ${(props) => textStyle(24, 700)(props)}
+    @include apply-font($font-24, 700);
     margin-bottom: 1rem;
   }
-`
+}
 
-export const MainPopularSellFontBottom = styled.p`
-  ${(props) => textStyle(24, 500)(props)}
-  color: ${theme.colors.SecondaryGray[700]};
+.main-popular-sell-font-bottom {
+  @include apply-font($font-24, 500);
+  color: $secondaryGray-700;
 
   @media (max-width: 1023px) {
-    ${(props) => textStyle(18, 500)(props)}
+    @include apply-font($font-18, 500);
     width: 23.6rem;
     margin-bottom: 5.2rem;
   }
   @media (max-width: 743px) {
     margin: 0;
-    ${(props) => textStyle(16, 500)(props)}
+    @include apply-font($font-16, 500);
     width: 205px;
   }
-`
+}
 
-export const MainThemeCenter = styled.div`
+.main-theme-center {
   display: flex;
   background-color: #fcfcfc;
   margin: 13.8rem auto;
@@ -285,23 +251,30 @@ export const MainThemeCenter = styled.div`
   @media (max-width: 743px) {
     flex-wrap: wrap-reverse;
   }
-`
+}
 
-export const MainThemeBasicMiddle = styled(MainThemeBasic)`
+.main-theme-basic-middle {
+  width: 30.8rem;
+  display: flex;
+  justify-content: center;
+  background-color: #fcfcfc;
+  flex-direction: column;
+  margin: auto 2.3rem auto 6.4rem;
   align-items: flex-end;
   text-align: right;
 
   margin: auto 6.4rem auto 1.3rem;
   @media (max-width: 1023px) {
     margin: 0;
+    width: 100%;
   }
   @media (max-width: 743px) {
-    width: 330px;
+    width: 33rem;
     margin: 2.4rem auto 4rem auto;
   }
-`
+}
 
-export const MainSearchImage = styled.picture`
+.main-search-image {
   height: 44.4rem;
   @media (max-width: 1023px) {
     width: 100%;
@@ -320,16 +293,16 @@ export const MainSearchImage = styled.picture`
       height: 100%;
     }
   }
-`
+}
 /* footer */
 
-export const FooterMainContainer = styled.footer`
+.footer-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+}
 
-export const FooterEmpty = styled.div`
+.footer-empty {
   width: 100%;
   height: 13.8rem;
   background-color: #fcfcfc;
@@ -337,16 +310,16 @@ export const FooterEmpty = styled.div`
     width: 0;
     height: 0;
   }
-`
+}
 
-export const FooterContainer = styled.div`
+.footer-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #cfe5ff;
-`
-export const FooterBackground = styled.div`
+}
+.footer-background {
   display: flex;
   align-items: center;
   margin-top: 14.3rem;
@@ -357,10 +330,10 @@ export const FooterBackground = styled.div`
     margin-top: 0;
     height: 100%;
   }
-`
+}
 
-export const FooterFont = styled.div`
-  ${(props) => textStyle(40, 700)(props)}
+.footer-font {
+  @include apply-font($font-40, 700);
   width: 32.5rem;
   height: 17.2rem;
   margin-right: 6.5rem;
@@ -371,15 +344,15 @@ export const FooterFont = styled.div`
     line-height: 56px;
   }
   @media (max-width: 743px) {
-    ${(props) => textStyle(32, 700)(props)}
+    @include apply-font($font-32, 700);
     margin: 12rem auto 13rem;
     width: 254px;
     height: fit-content;
     text-align: center;
   }
-`
+}
 
-export const FooterImage = styled.picture`
+.footer-image {
   width: 74.6rem;
   height: 39rem;
   @media (max-width: 743px) {
@@ -390,16 +363,16 @@ export const FooterImage = styled.picture`
       width: 100%;
     }
   }
-`
+}
 
-export const FooterNav = styled.div`
+.footer-nav {
   width: 100%;
-  background-color: ${theme.colors.SecondaryGray[900]};
+  background-color: $secondaryGray-900;
   display: flex;
   justify-content: center;
-`
+}
 
-export const FooterNavMain = styled.div`
+.footer-nav-main {
   height: 2rem;
   width: 112rem;
   display: flex;
@@ -419,20 +392,20 @@ export const FooterNavMain = styled.div`
     width: 100%;
     height: 98px;
   }
-`
+}
 
-export const Codeit = styled.p`
-  color: ${theme.colors.SecondaryGray[400]};
+.codeit {
+  color: $secondaryGray-400;
   @media (max-width: 1023px) {
-    ${(props) => textStyle(16, 400)(props)}
+    @include apply-font($font-16, 400);
   }
   @media (max-width: 743px) {
     grid-area: ct;
     line-height: 18.4px;
   }
-`
+}
 
-export const PrivacyFaq = styled.div`
+.privacy-faq {
   display: flex;
   margin-right: 13px;
   @media (max-width: 743px) {
@@ -442,9 +415,9 @@ export const PrivacyFaq = styled.div`
     margin: 0;
     width: 12.32rem;
   }
-`
+}
 
-export const Social = styled.div`
+.social {
   width: 11.6rem;
   height: 2rem;
   display: flex;
@@ -453,24 +426,24 @@ export const Social = styled.div`
     width: 18px;
     height: 18px;
   }
-`
+}
 
-export const Privacy = styled.div`
+.privacy {
   margin: auto 2rem auto 0;
-  color: ${theme.colors.SecondaryGray[200]};
+  color: $secondaryGray-200;
   text-decoration: none;
   @media (max-width: 743px) {
-    ${(props) => textStyle(16, 400)(props)}
+    @include apply-font($font-16, 400);
     margin: 0 3rem 0 0;
     width: max-content;
   }
-`
+}
 
-export const Faq = styled.div`
-  color: ${theme.colors.SecondaryGray[200]};
+.faq {
+  color: $secondaryGray-200;
   text-decoration: none;
   margin: auto 0;
   @media (max-width: 743px) {
     margin-right: 2rem;
   }
-`
+}
